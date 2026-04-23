@@ -1,11 +1,26 @@
-name: Morning Bot
+name: Morning Stock Bot
 
 on:
+  schedule:
+    - cron: '0 23 * * *'  # 한국시간 오전 8시
   workflow_dispatch:
 
 jobs:
-  test:
+  run-bot:
     runs-on: ubuntu-latest
+
     steps:
-      - name: test
-        run: echo "hello"
+      - name: 코드 가져오기
+        uses: actions/checkout@v3
+
+      - name: 파이썬 설치
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 라이브러리 설치
+        run: |
+          pip install requests beautifulsoup4 python-telegram-bot
+
+      - name: 봇 실행
+        run: python bot.py
