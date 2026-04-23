@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import telegram
 
-TOKEN = 8696435525:AAFLWarYrwou-l1BoqaJ0PdbH0mUXOJnJXs
+TOKEN = "8696435525:AAFLWarYrwou-l1BoqaJ0PdbH0mUXOJnJXs"
 CHAT_ID = "1648839639"
 
 KEYWORDS = {
