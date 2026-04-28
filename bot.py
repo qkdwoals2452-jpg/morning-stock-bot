@@ -17,7 +17,7 @@ KEYWORDS = {
 def get_news():
     url = "https://www.hankyung.com/feed/economy"
     res = requests.get(url)
-    soup = BeautifulSoup(res.text, "xml")
+    soup = BeautifulSoup(res.text, "html.parser")
     titles = [item.title.text for item in soup.find_all("item")[:10]]
     return titles
 
