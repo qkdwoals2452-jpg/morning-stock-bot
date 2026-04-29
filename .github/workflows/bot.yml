@@ -2,7 +2,7 @@ name: Morning Stock Bot
 
 on:
   schedule:
-    - cron: '0 23 * * *'  # 한국시간 오전 8시
+    - cron: '0 23 * * *'
   workflow_dispatch:
 
 jobs:
@@ -20,10 +20,11 @@ jobs:
 
       - name: 라이브러리 설치
         run: |
-          pip install requests beautifulsoup4 python-telegram-bot
-          
+          pip install requests
+          pip install beautifulsoup4
+          pip install python-telegram-bot
 
       - name: 봇 실행
-  env:
-    TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-  run: python bot.py
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+        run: python bot.py
