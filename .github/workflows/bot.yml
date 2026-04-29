@@ -24,4 +24,6 @@ jobs:
           
 
       - name: 봇 실행
-        run: python bot.py
+  env:
+    TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  run: python bot.py
