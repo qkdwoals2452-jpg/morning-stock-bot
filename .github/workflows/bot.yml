@@ -1,30 +1,9 @@
-name: Morning Stock Bot
+name: test
 
-on:
-  schedule:
-    - cron: '0 23 * * *'
-  workflow_dispatch:
+on: workflow_dispatch
 
 jobs:
-  run-bot:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: 코드 가져오기
-        uses: actions/checkout@v3
-
-      - name: 파이썬 설치
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: 라이브러리 설치
-        run: |
-          pip install requests
-          pip install beautifulsoup4
-          pip install python-telegram-bot
-
-      - name: 봇 실행
-        env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-        run: python bot.py
+      - run: echo "hello"
