@@ -34,8 +34,7 @@ def send_telegram(msg):
     bot.send_message(chat_id=CHAT_ID, text=msg)
 
 def main():
-    titles = get_news()
-    keys = find_keywords(titles)
+    send_telegram("테스트")
 
     if not keys:
         return
