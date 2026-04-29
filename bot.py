@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import telegram
 import os
 
-TOKEN = TOKEN = os.getenv("TELEGRAM_TOKEN")
+TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = "1648839639"
 
 KEYWORDS = {
