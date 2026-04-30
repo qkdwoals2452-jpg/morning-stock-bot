@@ -49,22 +49,30 @@ def save_data(data):
         json.dump(data, f, ensure_ascii=False)
 
 def detect_3days(data):
-    dates = sorted(data.keys())[-3:]
+    dates = sorted([d for d in data.keys() if d != "last_msg"])[-3:]
     result = []
 
     if len(dates) < 3:
         return result
 
     for keyword in THEMES:
-        appeared = True
-        for d in dates:
-            if keyword not in data[d]:
-                appeared = False
-
-        if appeared:
+        if all(keyword in data[d] for d in dates):
             result.append(keyword)
 
     return result
+
+def calculate_score(today_counts, trend_3days):
+    scores = {}
+
+    for keyword, count in today_counts.items():
+        score = count
+
+        if keyword in trend_3days:
+            score += 3
+
+        scores[keyword] = score
+
+    return scores
 
 def send_telegram(msg):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
@@ -83,18 +91,27 @@ for keyword, titles in themes.items():
 
 data[today] = today_counts
 
+trend_3days = detect_3days(data)
+scores = calculate_score(today_counts, trend_3days)
+
 msg = "📈 한국경제 테마 감지\n\n"
 
-if themes:
-    for keyword, titles in themes.items():
+if scores:
+    sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+
+    for keyword, score in sorted_scores:
         stocks = THEMES[keyword]
-        msg += f"🔥 {keyword}\n"
+        titles = themes[keyword]
+
+        msg += f"🔥 {keyword} ({score}점)\n"
         msg += f"🥇 대장주: {stocks[0]}\n"
         msg += f"🥈 2등주: {stocks[1]}\n"
-        msg += f"기사 수: {len(titles)}개\n"
+        msg += f"기사 수: {today_counts[keyword]}개\n"
         msg += "관련 기사:\n"
+
         for t in titles[:2]:
             msg += f"• {t}\n"
+
         msg += "\n"
 else:
     msg += "오늘 감지된 테마 없음\n\n"
@@ -111,8 +128,6 @@ if surges:
         msg += f"{keyword} → 관련 기사 {count}개\n"
         msg += f"🥇 {stocks[0]} / 🥈 {stocks[1]}\n"
     msg += "\n"
-
-trend_3days = detect_3days(data)
 
 if trend_3days:
     msg += "🚨 3일 연속 등장 테마\n"
