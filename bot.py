@@ -49,7 +49,7 @@ def save_data(data):
         json.dump(data, f, ensure_ascii=False)
 
 def detect_3days(data):
-    dates = sorted([d for d in data.keys() if d != "last_msg"])[-3:]
+    dates = sorted(data.keys())[-3:]
     result = []
 
     if len(dates) < 3:
@@ -89,6 +89,11 @@ today_counts = {}
 for keyword, titles in themes.items():
     today_counts[keyword] = len(titles)
 
+# 어제 데이터 찾기
+past_dates = sorted(data.keys())
+yesterday_counts = data[past_dates[-1]] if past_dates else {}
+
+# 오늘 데이터 저장
 data[today] = today_counts
 
 trend_3days = detect_3days(data)
@@ -96,47 +101,53 @@ scores = calculate_score(today_counts, trend_3days)
 
 msg = "📈 한국경제 테마 감지\n\n"
 
+sent_count = 0
+
 if scores:
     sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
     for keyword, score in sorted_scores:
+        if score < 3:
+            continue
+
+        sent_count += 1
+
         stocks = THEMES[keyword]
         titles = themes[keyword]
 
-        msg += f"🔥 {keyword} ({score}점)\n"
-        msg += f"🥇 대장주: {stocks[0]}\n"
-        msg += f"🥈 2등주: {stocks[1]}\n"
-        msg += f"기사 수: {today_counts[keyword]}개\n"
-        msg += "관련 기사:\n"
+        today_count = today_counts.get(keyword, 0)
+        yesterday_count = yesterday_counts.get(keyword, 0)
+        increase = today_count - yesterday_count
 
+        if score >= 8:
+            level = "🚨 초강력"
+        elif score >= 5:
+            level = "🔥 강"
+        else:
+            level = "⚡ 초기"
+
+        msg += f"{level} {keyword} ({score}점)\n"
+
+        if yesterday_count == 0 and today_count >= 2:
+            msg += "🆕 신규 테마\n"
+
+        if increase >= 2:
+            msg += f"🚀 전일 대비 +{increase}개 급증\n"
+
+        if keyword in trend_3days:
+            msg += "📌 3일 연속 등장\n"
+
+        msg += f"🎯 핵심주: {', '.join(stocks[:2])}\n"
+        msg += f"📰 기사 수: {today_count}개\n"
+
+        msg += "🧠 핵심 뉴스:\n"
         for t in titles[:2]:
             msg += f"• {t}\n"
 
-        msg += "\n"
-else:
-    msg += "오늘 감지된 테마 없음\n\n"
+        msg += "━━━━━━━━━━━━━━\n"
 
-surges = []
-for keyword, count in today_counts.items():
-    if count >= 2:
-        surges.append((keyword, count))
-
-if surges:
-    msg += "⚠️ 급증 감지\n"
-    for keyword, count in surges:
-        stocks = THEMES[keyword]
-        msg += f"{keyword} → 관련 기사 {count}개\n"
-        msg += f"🥇 {stocks[0]} / 🥈 {stocks[1]}\n"
-    msg += "\n"
-
-if trend_3days:
-    msg += "🚨 3일 연속 등장 테마\n"
-    for keyword in trend_3days:
-        stocks = THEMES[keyword]
-        msg += f"{keyword}\n"
-        msg += f"🥇 {stocks[0]} / 🥈 {stocks[1]}\n"
-else:
-    msg += "아직 3일 연속 테마는 없음\n"
+if sent_count == 0:
+    msg += "오늘은 강한 테마 없음\n"
 
 send_telegram(msg)
 save_data(data)
