@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import json
 from datetime import datetime
 
-TOKEN = "8696435525:AAFLWarYrwou-l1BoqaJ0PdbH0mUXOJnJXs"
+TOKEN = "여기에_네_텔레그램_토큰"
 CHAT_ID = "1648839639"
 
 THEMES = {
@@ -14,6 +14,18 @@ THEMES = {
     "원전": ["두산에너빌리티", "한전기술"],
     "AI": ["삼성전자", "SK하이닉스"],
     "반도체": ["SK하이닉스", "한미반도체"]
+}
+
+STOCK_CODES = {
+    "삼성전자": "005930",
+    "SK하이닉스": "000660",
+    "한미반도체": "042700",
+    "삼성전기": "009150",
+    "삼화콘덴서": "001820",
+    "효성중공업": "298040",
+    "LS ELECTRIC": "010120",
+    "두산에너빌리티": "034020",
+    "한전기술": "052690"
 }
 
 def get_news():
@@ -74,6 +86,59 @@ def calculate_score(today_counts, trend_3days):
 
     return scores
 
+def get_stock_power(stock_name):
+    code = STOCK_CODES.get(stock_name)
+
+    if not code:
+        return {
+            "name": stock_name,
+            "change_rate": 0,
+            "volume": 0
+        }
+
+    try:
+        url = f"https://api.stock.naver.com/stock/{code}/basic"
+        headers = {
+            "User-Agent": "Mozilla/5.0"
+        }
+
+        res = requests.get(url, headers=headers, timeout=5)
+        data = res.json()
+
+        change_rate = data.get("fluctuationsRatio", "0")
+        volume = data.get("accumulatedTradingVolume", "0")
+
+        change_rate = float(str(change_rate).replace("%", "").replace(",", ""))
+        volume = int(str(volume).replace(",", ""))
+
+        return {
+            "name": stock_name,
+            "change_rate": change_rate,
+            "volume": volume
+        }
+
+    except:
+        return {
+            "name": stock_name,
+            "change_rate": 0,
+            "volume": 0
+        }
+
+def pick_leader(stocks):
+    stock_data = []
+
+    for stock in stocks:
+        power = get_stock_power(stock)
+        stock_data.append(power)
+
+    stock_data = sorted(
+        stock_data,
+        key=lambda x: (x["change_rate"], x["volume"]),
+        reverse=True
+    )
+
+    return stock_data
+
 def send_telegram(msg):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     data = {"chat_id": CHAT_ID, "text": msg}
@@ -89,11 +154,9 @@ today_counts = {}
 for keyword, titles in themes.items():
     today_counts[keyword] = len(titles)
 
-# 어제 데이터 찾기
 past_dates = sorted(data.keys())
 yesterday_counts = data[past_dates[-1]] if past_dates else {}
 
-# 오늘 데이터 저장
 data[today] = today_counts
 
 trend_3days = detect_3days(data)
@@ -119,6 +182,8 @@ if scores:
         yesterday_count = yesterday_counts.get(keyword, 0)
         increase = today_count - yesterday_count
 
+        stock_rank = pick_leader(stocks)
+
         if score >= 8:
             level = "🚨 초강력"
         elif score >= 5:
@@ -137,7 +202,14 @@ if scores:
         if keyword in trend_3days:
             msg += "📌 3일 연속 등장\n"
 
-        msg += f"🎯 핵심주: {', '.join(stocks[:2])}\n"
+        if stock_rank:
+            leader = stock_rank[0]
+            msg += f"🚀 대장주: {leader['name']} ({leader['change_rate']}%)\n"
+
+            if len(stock_rank) > 1:
+                second = stock_rank[1]
+                msg += f"⚡ 후발주: {second['name']} ({second['change_rate']}%)\n"
+
         msg += f"📰 기사 수: {today_count}개\n"
 
         msg += "🧠 핵심 뉴스:\n"
