@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import json
 from datetime import datetime
 
-TOKEN = "여기에_네_텔레그램_토큰"
+TOKEN = "8696435525:AAFLWarYrwou-l1BoqaJ0PdbH0mUXOJnJXs"
 CHAT_ID = "1648839639"
 
 THEMES = {
