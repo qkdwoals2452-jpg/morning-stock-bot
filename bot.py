@@ -268,12 +268,12 @@ if scores:
                 second = stock_rank[1]
                 msg += f"⚡ 후발주: {second['name']} ({second['change_rate']}%)\n"
 
-            if (
-    leader["change_rate"] >= 3 and
-    leader["value"] >= 1000_0000_0000 and
-    today_count >= 3
-):
-    msg += "🔥 강력 매매 신호\n"
+                        if (
+                leader["change_rate"] >= 3 and
+                leader["value"] >= 1000_0000_0000 and
+                today_count >= 3
+            ):
+                msg += "🔥 강력 매매 신호\n"
 
         msg += f"📰 기사 수: {today_count}개\n"
 
