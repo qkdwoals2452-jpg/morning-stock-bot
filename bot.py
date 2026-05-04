@@ -268,7 +268,7 @@ if scores:
                 second = stock_rank[1]
                 msg += f"⚡ 후발주: {second['name']} ({second['change_rate']}%)\n"
 
-                        if (
+            if (
                 leader["change_rate"] >= 3 and
                 leader["value"] >= 1000_0000_0000 and
                 today_count >= 3
