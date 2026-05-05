@@ -273,7 +273,13 @@ if scores:
                 leader["value"] >= 1000_0000_0000 and
                 today_count >= 3
             ):
-                msg += "🔥 강력 매매 신호\n"
+                msg += "🔥 강력 매매 신호\n"   
+
+            if (
+               leader["change_rate"] >= 5 and
+               leader["value"] >= 1500_0000_0000
+             ):
+               msg += "💣 상한가 후보\n"
 
         msg += f"📰 기사 수: {today_count}개\n"
 
