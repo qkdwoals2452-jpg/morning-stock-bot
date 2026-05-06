@@ -270,8 +270,8 @@ if scores:
 
             if (
                 leader["change_rate"] >= 3 and
-                leader["value"] >= 1000_0000_0000 and
-                today_count >= 3
+                leader["value"] >= 500_0000_0000 and
+                today_count >= 1
             ):
                 msg += "🔥 강력 매매 신호\n"   
 
