@@ -92,7 +92,7 @@ def get_news():
         if title is not None and title.text:
             titles.append(title.text.strip())
 
-    return titles[:20]
+    return titles[:100]
 
 def find_themes(news):
     result = {}
