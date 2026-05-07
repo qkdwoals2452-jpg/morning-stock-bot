@@ -96,10 +96,21 @@ def get_news():
 
 def find_themes(news):
     result = {}
+
     for title in news:
-        for keyword in THEMES:
+        for keyword, stocks in THEMES.items():
+
+            # 테마명 감지
             if keyword in title:
                 result.setdefault(keyword, []).append(title)
+                continue
+
+            # 종목명 감지
+            for stock in stocks:
+                if stock in title:
+                    result.setdefault(keyword, []).append(title)
+                    break
+
     return result
 
 def load_data():
