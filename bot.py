@@ -82,17 +82,29 @@ STOCK_CODES = {
 
 
 def get_news():
-    url = "https://www.hankyung.com/feed/finance"
-    res = requests.get(url)
-    root = ET.fromstring(res.content)
+    urls = [
+        "https://www.hankyung.com/feed/finance",
+        "https://www.hankyung.com/feed/economy",
+        "https://www.hankyung.com/feed/industry",
+    ]
 
     titles = []
-    for item in root.findall(".//item"):
-        title = item.find("title")
-        if title is not None and title.text:
-            titles.append(title.text.strip())
 
-    return titles[:100]
+    for url in urls:
+        try:
+            res = requests.get(url, timeout=10)
+            root = ET.fromstring(res.content)
+
+            for item in root.findall(".//item"):
+                title = item.find("title")
+
+                if title is not None and title.text:
+                    titles.append(title.text.strip())
+
+        except:
+            pass
+
+    return list(dict.fromkeys(titles))[:100]
 
 def find_themes(news):
     result = {}
