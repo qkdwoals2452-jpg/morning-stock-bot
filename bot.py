@@ -175,9 +175,42 @@ def get_stock_power(stock_name):
     if not code:
         return {
             "name": stock_name,
-            "change_rate": 0,
-            "volume": 0,
-            "value": 0
+            "change_rate": None,
+            "volume": None,
+            "value": None
+        }
+
+    try:
+        url = f"https://api.stock.naver.com/stock/{code}/basic"
+        headers = {"User-Agent": "Mozilla/5.0"}
+
+        res = requests.get(url, headers=headers, timeout=5)
+        data = res.json()
+
+        change_rate = data.get("fluctuationsRatio")
+        volume = data.get("accumulatedTradingVolume")
+        value = data.get("accumulatedTradingValue")
+
+        if change_rate is None or value is None:
+            raise Exception("stock data missing")
+
+        change_rate = float(str(change_rate).replace("%", "").replace(",", ""))
+        volume = int(str(volume).replace(",", ""))
+        value = int(str(value).replace(",", ""))
+
+        return {
+            "name": stock_name,
+            "change_rate": change_rate,
+            "volume": volume,
+            "value": value
+        }
+
+    except:
+        return {
+            "name": stock_name,
+            "change_rate": None,
+            "volume": None,
+            "value": None
         }
 
     try:
@@ -292,7 +325,7 @@ if scores:
             leader = stock_rank[0]
 
             msg += f"🚀 대장주: {leader['name']} ({leader['change_rate']}%)\n"
-            msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
+msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
 
             if len(stock_rank) > 1:
                 second = stock_rank[1]
