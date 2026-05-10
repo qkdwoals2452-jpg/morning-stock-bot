@@ -327,7 +327,6 @@ if scores:
             msg += f"🚀 대장주: {leader['name']} ({leader['change_rate']}%)\n"
 msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
 
-            
         if len(stock_rank) > 1:
                 second = stock_rank[1]
                 msg += f"⚡ 후발주: {second['name']} ({second['change_rate']}%)\n"
