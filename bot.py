@@ -327,22 +327,24 @@ if scores:
             msg += f"🚀 대장주: {leader['name']} ({leader['change_rate']}%)\n"
 msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
 
-            if len(stock_rank) > 1:
+            
+        if len(stock_rank) > 1:
                 second = stock_rank[1]
                 msg += f"⚡ 후발주: {second['name']} ({second['change_rate']}%)\n"
 
-            if (
-                leader["change_rate"] >= 3 and
-                leader["value"] >= 500_0000_0000 and
-                today_count >= 1
+            
+        if (
+            leader["change_rate"] >= 3 and
+            leader["value"] >= 500_0000_0000 and
+            today_count >= 1
             ):
-                msg += "🔥 강력 매매 신호\n"   
+            msg += "🔥 강력 매매 신호\n"   
 
-            if (
-               leader["change_rate"] >= 5 and
-               leader["value"] >= 1500_0000_0000
+         if (
+            leader["change_rate"] >= 5 and
+            leader["value"] >= 1500_0000_0000
              ):
-               msg += "💣 상한가 후보\n"
+            msg += "💣 상한가 후보\n"
 
         msg += f"📰 기사 수: {today_count}개\n"
 
