@@ -325,19 +325,41 @@ if scores:
             leader = stock_rank[0]
 
             msg += f"🚀 대장주: {leader['name']} ({leader['change_rate']}%)\n"
-msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
+            msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
 
-        if len(stock_rank) > 1:
+            if stock_rank:
+            leader = stock_rank[0]
+
+            if leader["change_rate"] is None or leader["value"] is None:
+                msg += f"🚀 대장주: {leader['name']} (주가 데이터 확인 불가)\n"
+                msg += "💰 거래대금: 확인 불가\n"
+            else:
+                msg += f"🚀 대장주: {leader['name']} ({leader['change_rate']}%)\n"
+                msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
+
+            if len(stock_rank) > 1:
                 second = stock_rank[1]
                 msg += f"⚡ 후발주: {second['name']} ({second['change_rate']}%)\n"
 
-            
-        if (
-            leader["change_rate"] >= 3 and
-            leader["value"] >= 500_0000_0000 and
-            today_count >= 1
+            if (
+                leader["change_rate"] is not None and
+                leader["value"] is not None and
+                leader["change_rate"] >= 3 and
+                leader["value"] >= 500_0000_0000 and
+                today_count >= 1
             ):
-            msg += "🔥 강력 매매 신호\n"   
+                msg += "🔥 강력 매매 신호\n"
+
+         if leader["change_rate"] is None or leader["value"] is None:
+                msg += f"🚀 대장주: {leader['name']} (주가 데이터 확인 불가)\n"
+                msg += "💰 거래대금: 확인 불가\n"
+            else:
+                msg += f"🚀 대장주: {leader['name']} ({leader['change_rate']}%)\n"
+                msg += f"💰 거래대금: {leader['value'] // 100000000}억\n"
+
+            if len(stock_rank) > 1:
+                second = stock_rank[1]
+                msg += f"⚡ 후발주: {second['name']} ({second['
 
          if (
             leader["change_rate"] >= 5 and
