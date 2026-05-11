@@ -1,6 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 import json
+import re
 from datetime import datetime
 
 TOKEN = "8696435525:AAFLWarYrwou-l1BoqaJ0PdbH0mUXOJnJXs"
@@ -107,12 +108,10 @@ def get_news():
                         "title": title.text.strip(),
                         "link": link.text.strip() if link is not None and link.text else ""
                     })
-
         except:
             pass
 
     unique = {}
-
     for article in articles:
         unique[article["title"]] = article
 
@@ -136,6 +135,36 @@ def find_themes(news):
                     break
 
     return result
+
+def extract_mentioned_stocks(article):
+    text = article["title"]
+
+    if article.get("link"):
+        try:
+            res = requests.get(
+                article["link"],
+                headers={"User-Agent": "Mozilla/5.0"},
+                timeout=5
+            )
+
+            html = res.text
+
+            body = re.sub(r"<[^>]+>", " ", html)
+            body = body.replace("&nbsp;", " ")
+            body = body.replace("&amp;", "&")
+
+            text += " " + body
+
+        except:
+            pass
+
+    mentioned = []
+
+    for stock in STOCK_CODES.keys():
+        if stock in text:
+            mentioned.append(stock)
+
+    return list(dict.fromkeys(mentioned))
 
 def load_data():
     try:
@@ -347,6 +376,11 @@ if scores:
 
             if article["link"]:
                 msg += f"{article['link']}\n"
+
+            mentioned_stocks = extract_mentioned_stocks(article)
+
+            if mentioned_stocks:
+                msg += f"📌 기사 언급 종목: {', '.join(mentioned_stocks[:5])}\n"
 
         msg += "━━━━━━━━━━━━━━\n"
 
