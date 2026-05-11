@@ -53,6 +53,7 @@ STOCK_CODES = {
     "에코프로": "086520",
     "포스코퓨처엠": "003670",
     "SKC": "011790",
+
     "효성중공업": "298040",
     "LS ELECTRIC": "010120",
     "두산에너빌리티": "034020",
@@ -68,9 +69,6 @@ STOCK_CODES = {
     "HL만도": "204320",
 
     "LIG넥스원": "079550",
-    "현대건설": "000720",
-    "GS건설": "006360",
-    "대우건설": "047040",
 
     "삼성바이오로직스": "207940",
     "셀트리온": "068270",
@@ -93,7 +91,7 @@ def get_news():
         "https://www.hankyung.com/feed/industry",
     ]
 
-    titles = []
+    articles = []
 
     for url in urls:
         try:
@@ -102,26 +100,39 @@ def get_news():
 
             for item in root.findall(".//item"):
                 title = item.find("title")
+                link = item.find("link")
+
                 if title is not None and title.text:
-                    titles.append(title.text.strip())
+                    articles.append({
+                        "title": title.text.strip(),
+                        "link": link.text.strip() if link is not None and link.text else ""
+                    })
+
         except:
             pass
 
-    return list(dict.fromkeys(titles))[:100]
+    unique = {}
+
+    for article in articles:
+        unique[article["title"]] = article
+
+    return list(unique.values())[:100]
 
 def find_themes(news):
     result = {}
 
-    for title in news:
+    for article in news:
+        title = article["title"]
+
         for keyword, stocks in THEMES.items():
 
             if keyword in title:
-                result.setdefault(keyword, []).append(title)
+                result.setdefault(keyword, []).append(article)
                 continue
 
             for stock in stocks:
                 if stock in title:
-                    result.setdefault(keyword, []).append(title)
+                    result.setdefault(keyword, []).append(article)
                     break
 
     return result
@@ -238,8 +249,9 @@ today = datetime.now().strftime("%Y-%m-%d")
 data = load_data()
 
 today_counts = {}
-for keyword, titles in themes.items():
-    today_counts[keyword] = len(titles)
+
+for keyword, articles in themes.items():
+    today_counts[keyword] = len(articles)
 
 past_dates = sorted(data.keys())
 yesterday_counts = data[past_dates[-1]] if past_dates else {}
@@ -257,16 +269,18 @@ if scores:
     sorted_scores = sorted(scores.items(), key=lambda x: x[1], reverse=True)
 
     for keyword, score in sorted_scores:
+
         if score < 3:
             continue
 
         sent_count += 1
 
         stocks = THEMES[keyword]
-        titles = themes[keyword]
+        articles = themes[keyword]
 
         today_count = today_counts.get(keyword, 0)
         yesterday_count = yesterday_counts.get(keyword, 0)
+
         increase = today_count - yesterday_count
 
         stock_rank = pick_leader(stocks)
@@ -327,8 +341,12 @@ if scores:
         msg += f"📰 기사 수: {today_count}개\n"
 
         msg += "🧠 핵심 뉴스:\n"
-        for t in titles[:2]:
-            msg += f"• {t}\n"
+
+        for article in articles[:2]:
+            msg += f"• {article['title']}\n"
+
+            if article["link"]:
+                msg += f"{article['link']}\n"
 
         msg += "━━━━━━━━━━━━━━\n"
 
