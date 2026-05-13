@@ -215,8 +215,12 @@ def get_stock_power(stock_name):
         }
 
     try:
-        url = f"https://api.stock.naver.com/stock/{code}/basic"
-        headers = {"User-Agent": "Mozilla/5.0"}
+        url = f"https://m.stock.naver.com/api/stock/{code}/basic"
+
+        headers = {
+            "User-Agent": "Mozilla/5.0",
+            "Referer": f"https://m.stock.naver.com/domestic/stock/{code}/total"
+        }
 
         res = requests.get(url, headers=headers, timeout=5)
         data = res.json()
@@ -239,7 +243,7 @@ def get_stock_power(stock_name):
             "value": value
         }
 
-    except:
+    except Exception as e:
         return {
             "name": stock_name,
             "change_rate": None,
