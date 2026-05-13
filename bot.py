@@ -311,7 +311,7 @@ yesterday_counts = data[past_dates[-1]] if past_dates else {}
 data[today] = today_counts
 
 trend_3days = detect_3days(data)
-scores = calculate_score(today_counts, trend_3days)
+scores = calculate_score(today_counts, yesterday_counts, trend_3days)
 
 msg = "📈 한국경제 테마 감지\n\n"
 
