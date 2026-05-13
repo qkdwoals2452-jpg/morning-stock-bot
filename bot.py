@@ -190,14 +190,33 @@ def detect_3days(data):
 
     return result
 
-def calculate_score(today_counts, trend_3days):
+def calculate_score(today_counts, yesterday_counts, trend_3days):
     scores = {}
 
-    for keyword, count in today_counts.items():
-        score = count
+    for keyword, today_count in today_counts.items():
+        yesterday_count = yesterday_counts.get(keyword, 0)
+        increase = today_count - yesterday_count
 
+        score = 0
+
+        # 기본 기사 수 점수
+        score += today_count
+
+        # 전일 대비 급증 보너스
+        if increase >= 3:
+            score += 3
+        elif increase >= 2:
+            score += 2
+        elif increase >= 1:
+            score += 1
+
+        # 3일 연속 등장 보너스
         if keyword in trend_3days:
             score += 3
+
+        # 기사 3개 이상이면 집중도 보너스
+        if today_count >= 3:
+            score += 2
 
         scores[keyword] = score
 
