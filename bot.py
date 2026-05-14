@@ -158,13 +158,21 @@ def extract_mentioned_stocks(article):
         except:
             pass
 
-    mentioned = []
+    stock_counts = {}
 
     for stock in STOCK_CODES.keys():
-        if stock in text:
-            mentioned.append(stock)
+        count = text.count(stock)
 
-    return list(dict.fromkeys(mentioned))
+        if count > 0:
+            stock_counts[stock] = count
+
+    sorted_stocks = sorted(
+        stock_counts.items(),
+        key=lambda x: x[1],
+        reverse=True
+    )
+
+    return [stock for stock, count in sorted_stocks[:5]]
 
 def load_data():
     try:
