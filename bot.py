@@ -330,7 +330,7 @@ if scores:
 
     for keyword, score in sorted_scores:
 
-        if score < 3:
+        if score < 2 :
             continue
 
         sent_count += 1
