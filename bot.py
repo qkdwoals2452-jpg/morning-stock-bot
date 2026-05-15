@@ -87,9 +87,20 @@ STOCK_CODES = {
 
 def get_news():
     urls = [
+        # 한국경제
         "https://www.hankyung.com/feed/finance",
         "https://www.hankyung.com/feed/economy",
         "https://www.hankyung.com/feed/industry",
+
+        # 매일경제
+        "https://www.mk.co.kr/rss/30100041/",  # 경제
+        "https://www.mk.co.kr/rss/50200011/",  # 증권
+        "https://www.mk.co.kr/rss/50100032/",  # 기업/경영
+
+        # 이데일리
+        "http://rss.edaily.co.kr/stock_news.xml",
+        "http://rss.edaily.co.kr/economy_news.xml",
+        "http://rss.edaily.co.kr/enterprise_news.xml",
     ]
 
     articles = []
@@ -108,14 +119,39 @@ def get_news():
                         "title": title.text.strip(),
                         "link": link.text.strip() if link is not None and link.text else ""
                     })
+
         except:
             pass
 
-    unique = {}
-    for article in articles:
-        unique[article["title"]] = article
+    # 비슷한 제목 기사 제거
+    filtered = []
+    seen_keywords = []
 
-    return list(unique.values())[:100]
+    for article in articles:
+        title = article["title"]
+
+        keywords = set(
+            title.replace(",", " ")
+                 .replace("…", " ")
+                 .replace('"', " ")
+                 .replace("'", " ")
+                 .split()
+        )
+
+        is_duplicate = False
+
+        for old_keywords in seen_keywords:
+            overlap = len(keywords & old_keywords)
+
+            if overlap >= 3:
+                is_duplicate = True
+                break
+
+        if not is_duplicate:
+            filtered.append(article)
+            seen_keywords.append(keywords)
+
+    return filtered[:150]
 
 def find_themes(news):
     result = {}
