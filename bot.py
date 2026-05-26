@@ -199,7 +199,8 @@ def extract_mentioned_stocks(article):
     stock_counts = {}
 
     for stock in STOCK_CODES.keys():
-        count = text.count(stock)
+        pattern = r'(?<![가-힣A-Za-z])' + re.escape(stock) + r'(?![가-힣A-Za-z])'
+        count = len(re.findall(pattern, text))
 
         if count > 0:
             stock_counts[stock] = count
