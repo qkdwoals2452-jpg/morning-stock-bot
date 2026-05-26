@@ -166,7 +166,9 @@ def find_themes(news):
                 continue
 
             for stock in stocks:
-                if stock in title:
+                pattern = r'(?<![가-힣A-Za-z])' + re.escape(stock) + r'(?![가-힣A-Za-z])'
+
+                if re.search(pattern, title):
                     result.setdefault(keyword, []).append(article)
                     break
 
