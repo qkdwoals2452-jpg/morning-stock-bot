@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import base64
 from bs4 import BeautifulSoup
 from openai import OpenAI
 
@@ -8,7 +9,12 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 st.set_page_config(page_title="신문기사 공부장", page_icon="📰")
 
 st.title("📰 신문기사 공부장")
-st.write("네이버 기사 URL 또는 기사 내용을 넣으면 쉽게 정리해줍니다.")
+st.write("신문 스크랩 사진, 네이버 기사 URL, 기사 내용 붙여넣기 모두 가능합니다.")
+
+uploaded_image = st.file_uploader(
+    "신문기사 사진 업로드",
+    type=["jpg", "jpeg", "png"]
+)
 
 url = st.text_input("네이버 기사 URL")
 title = st.text_input("기사 제목")
@@ -20,7 +26,7 @@ def get_naver_article(url):
         "User-Agent": "Mozilla/5.0"
     }
 
-    res = requests.get(url, headers=headers)
+    res = requests.get(url, headers=headers, timeout=10)
     soup = BeautifulSoup(res.text, "html.parser")
 
     title_tag = soup.select_one("#title_area span")
@@ -32,22 +38,8 @@ def get_naver_article(url):
     return article_title, article_content
 
 
-if st.button("분석하기"):
-
-    final_title = title
-    final_article = article
-
-    if url:
-        try:
-            final_title, final_article = get_naver_article(url)
-        except Exception as e:
-            st.error("기사 URL을 읽지 못했습니다. 기사 내용을 직접 붙여넣어 주세요.")
-            st.stop()
-
-    if final_article == "":
-        st.warning("기사 URL 또는 기사 내용을 입력해주세요.")
-    else:
-        prompt = f"""
+def analyze_text(final_title, final_article):
+    prompt = f"""
 너는 경제신문을 쉽게 설명해주는 한국 주식 전문가다.
 
 아래 기사 내용을 분석해서 다음 형식으로 정리해줘.
@@ -86,19 +78,111 @@ if st.button("분석하기"):
 
 9. 투자자가 주의할 점
 
-10. 내가 외워야 할 한 문장
+10. 블로그 제목 5개
+
+11. 내가 외워야 할 한 문장
 """
 
-        with st.spinner("분석 중입니다..."):
-            response = client.chat.completions.create(
-                model="gpt-4o-mini",
-                messages=[
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
+    )
+
+    return response.choices[0].message.content
+
+
+def analyze_image(uploaded_image):
+    image_bytes = uploaded_image.read()
+    image_base64 = base64.b64encode(image_bytes).decode("utf-8")
+
+    prompt = """
+너는 경제신문 스크랩 이미지를 읽고 한국 주식 투자자에게 쉽게 설명해주는 전문가다.
+
+이미지 속 기사 제목과 본문을 최대한 정확히 읽고,
+아래 형식으로 정리해줘.
+
+1. 기사 내용 정리
+- 기사 전체 흐름 설명
+- 핵심 내용 자세히 정리
+- 신문기사 읽듯 자연스럽게 설명
+
+2. 핵심 포인트 3가지
+
+3. 초보자용 쉬운 설명
+
+4. 어려운 용어 설명
+- 용어:
+- 뜻:
+
+5. 왜 중요한 기사인가?
+
+6. 한국 증시에 미칠 영향
+
+7. 관련 테마
+
+8. 관련 종목
+- 대장주
+- 후발주
+- 이유
+
+9. 투자자가 주의할 점
+
+10. 블로그 제목 5개
+
+11. 내가 외워야 할 한 문장
+"""
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+                "role": "user",
+                "content": [
                     {
-                        "role": "user",
-                        "content": prompt
+                        "type": "text",
+                        "text": prompt
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": f"data:image/jpeg;base64,{image_base64}"
+                        }
                     }
                 ]
-            )
+            }
+        ]
+    )
 
-        result = response.choices[0].message.content
-        st.markdown(result)
+    return response.choices[0].message.content
+
+
+if st.button("분석하기"):
+
+    with st.spinner("분석 중입니다..."):
+
+        if uploaded_image is not None:
+            result = analyze_image(uploaded_image)
+            st.markdown(result)
+
+        else:
+            final_title = title
+            final_article = article
+
+            if url:
+                try:
+                    final_title, final_article = get_naver_article(url)
+                except Exception:
+                    st.error("기사 URL을 읽지 못했습니다. 기사 내용을 직접 붙여넣어 주세요.")
+                    st.stop()
+
+            if final_article == "":
+                st.warning("기사 사진, 기사 URL, 기사 내용 중 하나를 입력해주세요.")
+                st.stop()
+
+            result = analyze_text(final_title, final_article)
+            st.markdown(result)
