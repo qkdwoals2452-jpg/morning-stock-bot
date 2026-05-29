@@ -1,4 +1,6 @@
 import streamlit as st
+import requests
+from bs4 import BeautifulSoup
 from openai import OpenAI
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
@@ -6,32 +8,55 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 st.set_page_config(page_title="신문기사 공부장", page_icon="📰")
 
 st.title("📰 신문기사 공부장")
+st.write("네이버 기사 URL 또는 기사 내용을 넣으면 쉽게 정리해줍니다.")
 
-st.write("기사 내용을 넣으면 핵심 내용을 쉽게 정리해줍니다.")
-
+url = st.text_input("네이버 기사 URL")
 title = st.text_input("기사 제목")
+article = st.text_area("기사 내용 붙여넣기", height=300)
 
-article = st.text_area(
-    "기사 내용 붙여넣기",
-    height=300
-)
+
+def get_naver_article(url):
+    headers = {
+        "User-Agent": "Mozilla/5.0"
+    }
+
+    res = requests.get(url, headers=headers)
+    soup = BeautifulSoup(res.text, "html.parser")
+
+    title_tag = soup.select_one("#title_area span")
+    content_tag = soup.select_one("#dic_area")
+
+    article_title = title_tag.get_text(strip=True) if title_tag else ""
+    article_content = content_tag.get_text("\n", strip=True) if content_tag else ""
+
+    return article_title, article_content
+
 
 if st.button("분석하기"):
 
-    if article == "":
-        st.warning("기사 내용을 입력해주세요.")
-    else:
+    final_title = title
+    final_article = article
 
+    if url:
+        try:
+            final_title, final_article = get_naver_article(url)
+        except Exception as e:
+            st.error("기사 URL을 읽지 못했습니다. 기사 내용을 직접 붙여넣어 주세요.")
+            st.stop()
+
+    if final_article == "":
+        st.warning("기사 URL 또는 기사 내용을 입력해주세요.")
+    else:
         prompt = f"""
 너는 경제신문을 쉽게 설명해주는 한국 주식 전문가다.
 
 아래 기사 내용을 분석해서 다음 형식으로 정리해줘.
 
 [기사 제목]
-{title}
+{final_title}
 
 [기사 내용]
-{article}
+{final_article}
 
 정리 형식:
 
@@ -59,19 +84,21 @@ if st.button("분석하기"):
 - 후발주
 - 이유
 
-9. 내가 외워야 할 한 문장
+9. 투자자가 주의할 점
+
+10. 내가 외워야 할 한 문장
 """
 
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ]
-        )
+        with st.spinner("분석 중입니다..."):
+            response = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ]
+            )
 
         result = response.choices[0].message.content
-
         st.markdown(result)
