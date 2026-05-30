@@ -101,10 +101,18 @@ def analyze_image(uploaded_image):
     image_base64 = base64.b64encode(image_bytes).decode("utf-8")
 
     prompt = """
-너는 경제신문 스크랩 이미지를 읽고 한국 주식 투자자에게 쉽게 설명해주는 전문가다.
+너는 한국 주식 투자자를 위한 경제신문 해설 전문가다.
 
-이미지 속 기사 제목과 본문을 최대한 정확히 읽고,
-아래 형식으로 정리해줘.
+첨부된 이미지는 사용자가 공부하려고 올린 경제신문 기사 스크랩이다.
+이미지 속 글자를 가능한 범위에서 읽고, 원문 전체를 그대로 복사하지 말고 핵심 내용을 요약·해설해줘.
+
+중요:
+- 기사 원문을 길게 그대로 베끼지 말 것
+- 이미지 속 기사 내용을 바탕으로 핵심만 정리할 것
+- 읽기 어려운 부분은 추정하지 말고 "확인 어려움"이라고 표시할 것
+- 한국 주식 투자자 관점에서 설명할 것
+
+정리 형식:
 
 1. 기사 내용 정리
 - 기사 전체 흐름 설명
@@ -143,23 +151,19 @@ def analyze_image(uploaded_image):
             {
                 "role": "user",
                 "content": [
-                    {
-                        "type": "text",
-                        "text": prompt
-                    },
+                    {"type": "text", "text": prompt},
                     {
                         "type": "image_url",
                         "image_url": {
                             "url": f"data:image/jpeg;base64,{image_base64}"
-                        }
-                    }
-                ]
+                        },
+                    },
+                ],
             }
-        ]
+        ],
     )
 
     return response.choices[0].message.content
-
 
 if st.button("분석하기"):
 
