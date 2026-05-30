@@ -170,9 +170,12 @@ if st.button("분석하기"):
 
     with st.spinner("분석 중입니다..."):
 
-        if uploaded_image is not None:
-            result = analyze_image(uploaded_image)
-            st.markdown(result)
+        if uploaded_images:
+    for idx, uploaded_image in enumerate(uploaded_images, start=1):
+        st.subheader(f"📌 기사 사진 {idx} 분석")
+        result = analyze_image(uploaded_image)
+        st.markdown(result)
+        st.divider()
 
         else:
             final_title = title
