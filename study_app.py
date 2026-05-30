@@ -11,9 +11,10 @@ st.set_page_config(page_title="신문기사 공부장", page_icon="📰")
 st.title("📰 신문기사 공부장")
 st.write("신문 스크랩 사진, 네이버 기사 URL, 기사 내용 붙여넣기 모두 가능합니다.")
 
-uploaded_image = st.file_uploader(
+uploaded_images = st.file_uploader(
     "신문기사 사진 업로드",
-    type=["jpg", "jpeg", "png"]
+    type=["jpg", "jpeg", "png"],
+    accept_multiple_files=True
 )
 
 url = st.text_input("네이버 기사 URL")
