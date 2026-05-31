@@ -170,27 +170,27 @@ if st.button("분석하기"):
 
     with st.spinner("분석 중입니다..."):
 
-        if uploaded_images:
+        if uploaded_images and len(uploaded_images) > 0:
             for idx, uploaded_image in enumerate(uploaded_images, start=1):
                 st.subheader(f"📌 기사 사진 {idx} 분석")
                 result = analyze_image(uploaded_image)
                 st.markdown(result)
                 st.divider()
+            st.stop()
 
-        else:
-            final_title = title
-            final_article = article
+        final_title = title
+        final_article = article
 
-            if url:
-                try:
-                    final_title, final_article = get_naver_article(url)
-                except Exception:
-                    st.error("기사 URL을 읽지 못했습니다. 기사 내용을 직접 붙여넣어 주세요.")
-                    st.stop()
-
-            if final_article == "":
-                st.warning("기사 사진, 기사 URL, 기사 내용 중 하나를 입력해주세요.")
+        if url:
+            try:
+                final_title, final_article = get_naver_article(url)
+            except Exception:
+                st.error("기사 URL을 읽지 못했습니다. 기사 내용을 직접 붙여넣어 주세요.")
                 st.stop()
 
-            result = analyze_text(final_title, final_article)
-            st.markdown(result)
+        if final_article == "":
+            st.warning("기사 사진, 기사 URL, 기사 내용 중 하나를 입력해주세요.")
+            st.stop()
+
+        result = analyze_text(final_title, final_article)
+        st.markdown(result)
