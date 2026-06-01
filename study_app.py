@@ -295,10 +295,10 @@ if st.button("분석하기"):
 
             if theme.lower() in result.lower():
 
-        theme_result += f"\n\n🔥 {theme}\n"
+                theme_result += f"\n\n🔥 {theme}\n"
 
-        for stock in stocks:
-            theme_result += f"- {stock}\n"
+                for stock in stocks:
+                    theme_result += f"- {stock}\n"
 
         if theme_result:
 
