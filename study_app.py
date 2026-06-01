@@ -286,4 +286,21 @@ if st.button("분석하기"):
             st.stop()
 
         result = analyze_text(final_title, final_article)
+
         st.markdown(result)
+
+        theme_result = ""
+
+        for theme, stocks in THEME_DB.items():
+
+            if theme.lower() in result.lower():
+
+        theme_result += f"\n\n🔥 {theme}\n"
+
+        for stock in stocks:
+            theme_result += f"- {stock}\n"
+
+        if theme_result:
+
+            st.markdown("## 📈 내 DB 기준 관련주")
+            st.markdown(theme_result)
