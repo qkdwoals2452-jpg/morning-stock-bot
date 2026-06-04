@@ -1,12 +1,16 @@
 import streamlit as st
 import pandas as pd
 from datetime import date
-
+import os
 st.set_page_config(page_title="3뿜빠이 정산기")
 
 st.title("💰 3뿜빠이 정산기")
 
-if "records" not in st.session_state:
+DATA_FILE = "ppumbbai_data.csv"
+
+if os.path.exists(DATA_FILE):
+    st.session_state.records = pd.read_csv(DATA_FILE).to_dict("records")
+else:
     st.session_state.records = []
 
 st.subheader("오늘 정산 입력")
@@ -33,7 +37,10 @@ if st.button("저장"):
         "C": each,
         "공금": fund
     })
-
+    pd.DataFrame(st.session_state.records).to_csv(
+    DATA_FILE,
+    index=False
+    )
     st.success("저장 완료")
 
 if st.session_state.records:
