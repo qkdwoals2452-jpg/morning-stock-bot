@@ -82,6 +82,11 @@ if st.button("선택 기록 삭제"):
     )
 
     st.rerun()
+    st.subheader("이름 설정")
+
+    name_a = st.text_input("A 이름", "A")
+    name_b = st.text_input("B 이름", "B")
+    name_c = st.text_input("C 이름", "C")
     st.subheader("월간 합계")
 
     total_sales = df["총금액"].sum()
