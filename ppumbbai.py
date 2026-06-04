@@ -46,7 +46,21 @@ if st.button("저장"):
 if st.session_state.records:
 
     df = pd.DataFrame(st.session_state.records)
+    df["날짜"] = pd.to_datetime(df["날짜"])
 
+month_list = sorted(
+    df["날짜"].dt.strftime("%Y-%m").unique(),
+    reverse=True
+)
+
+selected_month = st.selectbox(
+    "조회 월 선택",
+    month_list
+)
+
+df = df[
+    df["날짜"].dt.strftime("%Y-%m") == selected_month
+]
     st.subheader("일별 정산 내역")
     st.dataframe(df, use_container_width=True)
     st.subheader("기록 삭제")
