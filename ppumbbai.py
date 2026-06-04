@@ -8,9 +8,12 @@ st.title("💰 3뿜빠이 정산기")
 
 DATA_FILE = "ppumbbai_data.csv"
 
-if os.path.exists(DATA_FILE):
-    st.session_state.records = pd.read_csv(DATA_FILE).to_dict("records")
-else:
+try:
+    if os.path.exists(DATA_FILE) and os.path.getsize(DATA_FILE) > 0:
+        st.session_state.records = pd.read_csv(DATA_FILE).to_dict("records")
+    else:
+        st.session_state.records = []
+except:
     st.session_state.records = []
 
 st.subheader("오늘 정산 입력")
