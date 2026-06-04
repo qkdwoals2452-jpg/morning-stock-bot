@@ -49,7 +49,24 @@ if st.session_state.records:
 
     st.subheader("일별 정산 내역")
     st.dataframe(df, use_container_width=True)
+    st.subheader("기록 삭제")
 
+delete_idx = st.number_input(
+    "삭제할 행 번호",
+    min_value=0,
+    max_value=len(df)-1,
+    step=1
+)
+
+if st.button("선택 기록 삭제"):
+    st.session_state.records.pop(delete_idx)
+
+    pd.DataFrame(st.session_state.records).to_csv(
+        DATA_FILE,
+        index=False
+    )
+
+    st.rerun()
     st.subheader("월간 합계")
 
     total_sales = df["총금액"].sum()
