@@ -61,6 +61,7 @@ if st.session_state.records:
     df = df[
     df["날짜"].dt.strftime("%Y-%m") == selected_month
     ]
+    df["날짜"] = df["날짜"].dt.strftime("%Y-%m-%d")
     st.subheader("일별 정산 내역")
     st.dataframe(df, use_container_width=True)
     st.subheader("기록 삭제")
