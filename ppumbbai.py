@@ -89,7 +89,8 @@ if st.session_state.records:
     target_money = int(latest["A"])
     a_pay = int(latest["A현금지급"])
     b_pay = int(latest["B현금지급"])
-    c_pay = int(latest["C현금지급"])fund_money = int(latest["공금"])
+    c_pay = int(latest["C현금지급"])
+    fund_money = int(latest["공금"])
 
     st.metric("총매출", f"{total_money:,}원")
     st.metric("1인 목표금액", f"{target_money:,}원")
