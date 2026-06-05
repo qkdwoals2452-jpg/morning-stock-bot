@@ -90,16 +90,16 @@ if st.session_state.records:
     name_c = st.text_input("C 이름", default_c)
 
     if st.button("이름 저장"):
-    pd.DataFrame([{
-        "A": name_a,
-        "B": name_b,
-        "C": name_c
-    }]).to_csv(
-        SETTING_FILE,
-        index=False
-    )
+        pd.DataFrame([{
+            "A": name_a,
+            "B": name_b,
+            "C": name_c
+        }]).to_csv(
+            SETTING_FILE,
+            index=False
+        )
 
-    st.success("이름 저장 완료")
+        st.success("이름 저장 완료")
 
     st.subheader("월간 합계")
 
