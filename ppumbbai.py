@@ -6,7 +6,7 @@ import os
 st.set_page_config(page_title="3뿜빠이 정산기")
 st.title("💰 3뿜빠이 정산기")
 
-DATA_FILE = "ppumbbai_data.csv"
+DATA_FILE = "ppumbbai_data_v2.csv"
 SETTING_FILE = "ppumbbai_settings.csv"
 if os.path.exists(SETTING_FILE):
     settings = pd.read_csv(SETTING_FILE)
