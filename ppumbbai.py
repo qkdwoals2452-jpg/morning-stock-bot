@@ -28,13 +28,21 @@ except:
 st.subheader("오늘 정산 입력")
 
 input_date = st.date_input("날짜", date.today())
-card = st.number_input("카드 매출", min_value=0, step=10000)
-cash = st.number_input("현금 매출", min_value=0, step=10000)
+a_card = st.number_input("A 카드", min_value=0, step=10000)
+b_card = st.number_input("B 카드", min_value=0, step=10000)
+c_card = st.number_input("C 카드", min_value=0, step=10000)
+
+cash_total = st.number_input("현금 총액", min_value=0, step=10000)
 
 if st.button("저장"):
-    total = card + cash
+    total = a_card + b_card + c_card + cash_total
+
     each = (total // 3) // 10000 * 10000
     fund = total - (each * 3)
+
+    a_cash = max(0, each - a_card)
+    b_cash = max(0, each - b_card)
+    c_cash = max(0, each - c_card)
 
     st.session_state.records.append({
         "날짜": input_date,
