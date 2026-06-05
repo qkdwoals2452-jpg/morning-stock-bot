@@ -46,8 +46,14 @@ if st.button("저장"):
 
     st.session_state.records.append({
         "날짜": input_date,
-        "카드": card,
-        "현금": cash,
+        "A카드": a_card,
+        "B카드": b_card,
+        "C카드": c_card,
+        "현금총액": cash_total,
+
+        "A현금지급": a_cash,
+        "B현금지급": b_cash,
+        "C현금지급": c_cash,
         "총금액": total,
         "A": each,
         "B": each,
