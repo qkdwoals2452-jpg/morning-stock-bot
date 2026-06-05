@@ -85,14 +85,20 @@ if st.session_state.records:
 
     st.subheader("오늘 현금 분배 결과")
 
-    st.metric("총매출", f"{latest['총금액']:,}원")
-    st.metric("1인 목표금액", f"{latest['A']:,}원")
+    total_money = int(latest["총금액"])
+    target_money = int(latest["A"])
+    a_pay = int(latest["A현금지급"])
+    b_pay = int(latest["B현금지급"])
+    c_pay = int(latest["C현금지급"])fund_money = int(latest["공금"])
 
-    st.write(f"{name_a} 현금 지급: {latest['A현금지급']:,}원")
-    st.write(f"{name_b} 현금 지급: {latest['B현금지급']:,}원")
-    st.write(f"{name_c} 현금 지급: {latest['C현금지급']:,}원")
+    st.metric("총매출", f"{total_money:,}원")
+    st.metric("1인 목표금액", f"{target_money:,}원")
 
-    st.metric("공금", f"{latest['공금']:,}원")
+st.write(f"{name_a} 현금 지급: {a_pay:,}원")
+st.write(f"{name_b} 현금 지급: {b_pay:,}원")
+st.write(f"{name_c} 현금 지급: {c_pay:,}원")
+
+st.metric("공금", f"{fund_money:,}원")
     if len(df) > 0:
         st.subheader("기록 수정")
 
