@@ -69,6 +69,53 @@ if st.session_state.records:
     st.dataframe(df, use_container_width=True)
 
     if len(df) > 0:
+        st.subheader("기록 수정")
+
+    if len(df) > 0:
+
+        edit_idx = st.number_input(
+            "수정할 행 번호",
+            min_value=0,
+            max_value=len(df)-1,
+            step=1,
+            key="edit_idx"
+        )
+
+        new_card = st.number_input(
+            "수정 카드 매출",
+            min_value=0,
+            step=10000,
+            key="new_card"
+        )
+
+        new_cash = st.number_input(
+           "수정 현금 매출",
+           min_value=0,
+           step=10000,
+           key="new_cash"
+        )
+
+    if st.button("수정 저장"):
+
+        total = new_card + new_cash
+        each = (total // 3) // 10000 * 10000
+        fund = total - (each * 3)
+
+        st.session_state.records[edit_idx]["카드"] = new_card
+        st.session_state.records[edit_idx]["현금"] = new_cash
+        st.session_state.records[edit_idx]["총금액"] = total
+        st.session_state.records[edit_idx]["A"] = each
+        st.session_state.records[edit_idx]["B"] = each
+        st.session_state.records[edit_idx]["C"] = each
+        st.session_state.records[edit_idx]["공금"] = fund
+
+        pd.DataFrame(st.session_state.records).to_csv(
+            DATA_FILE,
+            index=False
+        )
+
+        st.success("수정 완료")
+        st.rerun()
         st.subheader("기록 삭제")
 
         delete_idx = st.number_input(
