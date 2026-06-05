@@ -100,8 +100,8 @@ st.write(f"{name_b} 현금 지급: {b_pay:,}원")
 st.write(f"{name_c} 현금 지급: {c_pay:,}원")
 
 st.metric("공금", f"{fund_money:,}원")
-    if len(df) > 0:
-        st.subheader("기록 수정")
+if len(df) > 0:
+    st.subheader("기록 수정")
 
     if len(df) > 0:
 
