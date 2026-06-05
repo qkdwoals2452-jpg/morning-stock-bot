@@ -7,7 +7,16 @@ st.set_page_config(page_title="3뿜빠이 정산기")
 st.title("💰 3뿜빠이 정산기")
 
 DATA_FILE = "ppumbbai_data.csv"
-
+SETTING_FILE = "ppumbbai_settings.csv"
+if os.path.exists(SETTING_FILE):
+    settings = pd.read_csv(SETTING_FILE)
+    default_a = settings.loc[0, "A"]
+    default_b = settings.loc[0, "B"]
+    default_c = settings.loc[0, "C"]
+else:
+    default_a = "A"
+    default_b = "B"
+    default_c = "C"
 try:
     if os.path.exists(DATA_FILE) and os.path.getsize(DATA_FILE) > 0:
         st.session_state.records = pd.read_csv(DATA_FILE).to_dict("records")
@@ -76,9 +85,21 @@ if st.session_state.records:
 
     st.subheader("이름 설정")
 
-    name_a = st.text_input("A 이름", "A")
-    name_b = st.text_input("B 이름", "B")
-    name_c = st.text_input("C 이름", "C")
+    name_a = st.text_input("A 이름", default_a)
+    name_b = st.text_input("B 이름", default_b)
+    name_c = st.text_input("C 이름", default_c)
+
+    if st.button("이름 저장"):
+    pd.DataFrame([{
+        "A": name_a,
+        "B": name_b,
+        "C": name_c
+    }]).to_csv(
+        SETTING_FILE,
+        index=False
+    )
+
+    st.success("이름 저장 완료")
 
     st.subheader("월간 합계")
 
