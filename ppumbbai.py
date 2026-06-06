@@ -95,10 +95,9 @@ if st.session_state.records:
     st.metric("총매출", f"{total_money:,}원")
     st.metric("1인 목표금액", f"{target_money:,}원")
 
-st.text("A 현금 지급: " + str(a_pay) + "원")
-st.text("B 현금 지급: " + str(b_pay) + "원")
-st.text("C 현금 지급: " + str(c_pay) + "원")
-
+st.text("A 현금 지급: " + str(int(latest["A현금지급"])) + "원")
+st.text("B 현금 지급: " + str(int(latest["B현금지급"])) + "원")
+st.text("C 현금 지급: " + str(int(latest["C현금지급"])) + "원")
 st.metric("공금", f"{fund_money:,}원")
 
 st.subheader("기록 수정")
