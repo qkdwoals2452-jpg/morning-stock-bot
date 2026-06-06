@@ -111,28 +111,28 @@ edit_idx = st.number_input(
         key="edit_idx"
     )
 
-    edit_a_card = st.number_input(
+edit_a_card = st.number_input(
         "수정 A 카드",
         min_value=0,
         step=10000,
         key="edit_a_card"
     )
 
-    edit_b_card = st.number_input(
+edit_b_card = st.number_input(
         "수정 B 카드",
         min_value=0,
         step=10000,
         key="edit_b_card"
     )
 
-    edit_c_card = st.number_input(
+edit_c_card = st.number_input(
         "수정 C 카드",
         min_value=0,
         step=10000,
         key="edit_c_card"
     )
 
-    edit_cash_total = st.number_input(
+edit_cash_total = st.number_input(
         "수정 현금 총액",
         min_value=0,
         step=10000,
