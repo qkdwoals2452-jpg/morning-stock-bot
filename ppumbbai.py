@@ -103,7 +103,7 @@ st.metric("공금", f"{fund_money:,}원")
 
 st.subheader("기록 수정")
 
-    edit_idx = st.number_input(
+edit_idx = st.number_input(
         "수정할 행 번호",
         min_value=0,
         max_value=len(df)-1,
