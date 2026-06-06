@@ -164,39 +164,43 @@ if st.button("수정 저장"):
 
         pd.DataFrame(st.session_state.records).to_csv(DATA_FILE, index=False)
 
-        st.success("수정 완료")
-        st.rerun()
-        st.subheader("기록 삭제")
+    st.success("수정 완료")
+st.rerun()
 
-        delete_idx = st.number_input(
-            "삭제할 행 번호",
-            min_value=0,
-            max_value=len(df)-1,
-            step=1
-        )
+st.subheader("기록 삭제")
 
-        if st.button("선택 기록 삭제"):
-            st.session_state.records.pop(delete_idx)
-            pd.DataFrame(st.session_state.records).to_csv(DATA_FILE, index=False)
-            st.rerun()
+delete_idx = st.number_input(
+    "삭제할 행 번호",
+    min_value=0,
+    max_value=len(df)-1,
+    step=1
+)
 
-    st.subheader("이름 설정")
+if st.button("선택 기록 삭제"):
+    st.session_state.records.pop(delete_idx)
+    pd.DataFrame(st.session_state.records).to_csv(
+        DATA_FILE,
+        index=False
+    )
+    st.rerun()
 
-    name_a = st.text_input("A 이름", default_a)
-    name_b = st.text_input("B 이름", default_b)
-    name_c = st.text_input("C 이름", default_c)
+st.subheader("이름 설정")
 
-    if st.button("이름 저장"):
-        pd.DataFrame([{
-            "A": name_a,
-            "B": name_b,
-            "C": name_c
-        }]).to_csv(
-            SETTING_FILE,
-            index=False
-        )
+name_a = st.text_input("A 이름", default_a)
+name_b = st.text_input("B 이름", default_b)
+name_c = st.text_input("C 이름", default_c)
 
-        st.success("이름 저장 완료")
+if st.button("이름 저장"):
+    pd.DataFrame([{
+        "A": name_a,
+        "B": name_b,
+        "C": name_c
+    }]).to_csv(
+        SETTING_FILE,
+        index=False
+    )
+
+    st.success("이름 저장 완료")
 
     st.subheader("월간 합계")
 
