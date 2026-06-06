@@ -100,7 +100,7 @@ st.text("B 현금 지급: " + str(b_pay) + "원")
 st.text("C 현금 지급: " + str(c_pay) + "원")
 
 st.metric("공금", f"{fund_money:,}원")
-if len(df) > 0:
+
     st.subheader("기록 수정")
 
     edit_idx = st.number_input(
