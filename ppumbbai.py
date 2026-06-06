@@ -164,8 +164,8 @@ if st.button("수정 저장"):
 
         pd.DataFrame(st.session_state.records).to_csv(DATA_FILE, index=False)
 
-    st.success("수정 완료")
-st.rerun()
+        st.success("수정 완료")
+        st.rerun()
 
 st.subheader("기록 삭제")
 
