@@ -212,5 +212,5 @@ st.metric("공금", f"{fund_money:,}원")
     st.metric(f"{name_c} 누적", f"{c_total:,}원")
     st.metric("공금 총액", f"{fund_total:,}원")
 
-else:
-    st.info("아직 저장된 정산 내역이 없습니다.")
+
+
