@@ -202,19 +202,19 @@ if st.button("이름 저장"):
 
     st.success("이름 저장 완료")
 
-    st.subheader("월간 합계")
+st.subheader("월간 합계")
 
-    total_sales = df["총금액"].sum()
-    a_total = df["A"].sum()
-    b_total = df["B"].sum()
-    c_total = df["C"].sum()
-    fund_total = df["공금"].sum()
+total_sales = df["총금액"].sum()
+a_total = df["A"].sum()
+b_total = df["B"].sum()
+c_total = df["C"].sum()
+fund_total = df["공금"].sum()
 
-    st.metric("총매출", f"{total_sales:,}원")
-    st.metric(f"{name_a} 누적", f"{a_total:,}원")
-    st.metric(f"{name_b} 누적", f"{b_total:,}원")
-    st.metric(f"{name_c} 누적", f"{c_total:,}원")
-    st.metric("공금 총액", f"{fund_total:,}원")
+st.metric("총매출", f"{total_sales:,}원")
+st.metric(f"{name_a} 누적", f"{a_total:,}원")
+st.metric(f"{name_b} 누적", f"{b_total:,}원")
+st.metric(f"{name_c} 누적", f"{c_total:,}원")
+st.metric("공금 총액", f"{fund_total:,}원")
 
 
 
