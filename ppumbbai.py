@@ -139,7 +139,7 @@ edit_cash_total = st.number_input(
         key="edit_cash_total"
     )
 
-    if st.button("수정 저장"):
+if st.button("수정 저장"):
         total = edit_a_card + edit_b_card + edit_c_card + edit_cash_total
 
         each = (total // 3) // 10000 * 10000
