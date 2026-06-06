@@ -95,9 +95,9 @@ if st.session_state.records:
     st.metric("총매출", f"{total_money:,}원")
     st.metric("1인 목표금액", f"{target_money:,}원")
 
-st.write("A 현금 지급: " + format(a_pay, ",") + "원")
-st.write("B 현금 지급: " + format(b_pay, ",") + "원")
-st.write("C 현금 지급: " + format(c_pay, ",") + "원")
+st.text("A 현금 지급: " + str(a_pay) + "원")
+st.text("B 현금 지급: " + str(b_pay) + "원")
+st.text("C 현금 지급: " + str(c_pay) + "원")
 
 st.metric("공금", f"{fund_money:,}원")
 if len(df) > 0:
