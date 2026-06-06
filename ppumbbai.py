@@ -101,7 +101,7 @@ st.text("C 현금 지급: " + str(c_pay) + "원")
 
 st.metric("공금", f"{fund_money:,}원")
 
-    st.subheader("기록 수정")
+st.subheader("기록 수정")
 
     edit_idx = st.number_input(
         "수정할 행 번호",
