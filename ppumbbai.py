@@ -30,9 +30,9 @@ except:
 st.subheader("오늘 정산 입력")
 
 input_date = st.date_input("날짜", date.today())
-a_card = st.number_input("A 카드", min_value=0, step=10000)
-b_card = st.number_input("B 카드", min_value=0, step=10000)
-c_card = st.number_input("C 카드", min_value=0, step=10000)
+a_card = st.number_input(f"{default_a} 카드", min_value=0, step=10000)
+b_card = st.number_input(f"{default_b} 카드", min_value=0, step=10000)
+c_card = st.number_input(f"{default_c} 카드", min_value=0, step=10000)
 cash_total = st.number_input("현금 총액", min_value=0, step=10000)
 
 if st.button("저장"):
@@ -82,9 +82,9 @@ if st.session_state.records:
     st.subheader("오늘 현금 분배 결과")
     st.metric("총매출", str(int(latest["총금액"])) + "원")
     st.metric("1인 목표금액", str(int(latest["A"])) + "원")
-    st.text("A 현금 지급: " + str(int(latest["A현금지급"])) + "원")
-    st.text("B 현금 지급: " + str(int(latest["B현금지급"])) + "원")
-    st.text("C 현금 지급: " + str(int(latest["C현금지급"])) + "원")
+    st.text(f"{default_a} 현금 지급: {int(latest['A현금지급'])}원")
+    st.text(f"{default_b} 현금 지급: {int(latest['B현금지급'])}원")
+    st.text(f"{default_c} 현금 지급: {int(latest['C현금지급'])}원")
     st.metric("공금", str(int(latest["공금"])) + "원")
 
     st.subheader("기록 수정")
