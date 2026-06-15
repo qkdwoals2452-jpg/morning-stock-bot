@@ -1,7 +1,8 @@
 from config import *
 from news_engine import get_all_news
-from theme_engine import extract_themes
+from theme_engine import extract_themes, expand_theme_words
 from stock_engine import load_korean_stocks, find_related_stocks
+from company_engine import get_company_match_score
 from finance_engine import get_finance_score
 from market_engine import get_market_score
 from scoring_engine import make_stock_result, sort_results, make_grade
@@ -18,23 +19,19 @@ def run():
     final_results = []
 
     for theme in themes[:TOP_THEME_COUNT]:
-
         if theme["score"] < MIN_THEME_SCORE:
             continue
 
-        candidates = find_related_stocks(
-            theme,
-            stocks,
-            news
-        )
+        candidates = find_related_stocks(theme, stocks, news)
+        theme_words = expand_theme_words(theme["name"])
 
         ranked = []
 
         for stock in candidates:
-
             finance = get_finance_score(stock)
             market = get_market_score(stock)
             learning = get_learning_score(stock["name"])
+            company = get_company_match_score(stock, theme_words)
 
             result = make_stock_result(
                 stock=stock,
@@ -43,13 +40,22 @@ def run():
                 market=market
             )
 
+            # 사업내용 점수 반영
+            result["final_score"] += company["score"]
+            result["company"] = company
+
+            if company["score"] > 0:
+                result["reason"].append(company["memo"])
+
+            # 과거 학습 점수 반영
             result["final_score"] += learning["score"]
-            result["grade"] = make_grade(result["final_score"])
+            result["learning"] = learning
 
             if learning["score"] != 0:
                 result["reason"].append(learning["memo"])
 
-            result["learning"] = learning
+            # 최종 등급 재계산
+            result["grade"] = make_grade(result["final_score"])
 
             ranked.append(result)
 
