@@ -1,0 +1,279 @@
+import requests
+from config import DART_API_KEY
+
+HEADERS = {
+    "User-Agent": "Mozilla/5.0"
+}
+
+
+def to_float(value):
+    try:
+        return float(str(value).replace(",", "").replace("%", ""))
+    except:
+        return None
+
+
+def to_int(value):
+    try:
+        return int(str(value).replace(",", ""))
+    except:
+        return None
+
+
+# ------------------------
+# 네이버 기본정보
+# ------------------------
+
+def get_naver_basic(code):
+
+    try:
+        url = f"https://m.stock.naver.com/api/stock/{code}/basic"
+
+        res = requests.get(
+            url,
+            headers=HEADERS,
+            timeout=5
+        )
+
+        data = res.json()
+
+        return {
+            "per": to_float(data.get("per")),
+            "pbr": to_float(data.get("pbr"))
+        }
+
+    except:
+        return {
+            "per": None,
+            "pbr": None
+        }
+
+
+# ------------------------
+# DART 기업코드
+# ------------------------
+
+def get_corp_code(stock_code):
+
+    if DART_API_KEY == "":
+        return None
+
+    try:
+        url = "https://opendart.fss.or.kr/api/company.json"
+
+        params = {
+            "crtfc_key": DART_API_KEY,
+            "stock_code": stock_code
+        }
+
+        res = requests.get(
+            url,
+            params=params,
+            timeout=10
+        )
+
+        data = res.json()
+
+        if data.get("status") == "000":
+            return data.get("corp_code")
+
+    except:
+        pass
+
+    return None
+
+
+# ------------------------
+# DART 재무
+# ------------------------
+
+def get_dart_finance(stock_code):
+
+    corp_code = get_corp_code(stock_code)
+
+    if corp_code is None:
+        return {
+            "op_margin": None,
+            "debt_ratio": None
+        }
+
+    year = 2025
+
+    try:
+
+        url = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json"
+
+        params = {
+            "crtfc_key": DART_API_KEY,
+            "corp_code": corp_code,
+            "bsns_year": str(year),
+            "reprt_code": "11011",
+            "fs_div": "CFS"
+        }
+
+        res = requests.get(
+            url,
+            params=params,
+            timeout=10
+        )
+
+        data = res.json()
+
+        if data.get("status") != "000":
+            return {
+                "op_margin": None,
+                "debt_ratio": None
+            }
+
+        sales = 0
+        op = 0
+        asset = 0
+        debt = 0
+
+        for row in data.get("list", []):
+
+            name = row.get("account_nm", "")
+            amount = to_int(row.get("thstrm_amount", 0))
+
+            if amount is None:
+                amount = 0
+
+            if name in [
+                "매출액",
+                "영업수익",
+                "수익(매출액)"
+            ]:
+                sales = max(
+                    sales,
+                    amount
+                )
+
+            elif name == "영업이익":
+                op = amount
+
+            elif name == "자산총계":
+                asset = amount
+
+            elif name == "부채총계":
+                debt = amount
+
+        op_margin = None
+        debt_ratio = None
+
+        if sales > 0:
+            op_margin = round(
+                op / sales * 100,
+                2
+            )
+
+        equity = asset - debt
+
+        if equity > 0:
+            debt_ratio = round(
+                debt / equity * 100,
+                2
+            )
+
+        return {
+            "op_margin": op_margin,
+            "debt_ratio": debt_ratio
+        }
+
+    except:
+
+        return {
+            "op_margin": None,
+            "debt_ratio": None
+        }
+
+
+# ------------------------
+# 최종 점수
+# ------------------------
+
+def get_finance_score(stock):
+
+    code = stock["code"]
+
+    basic = get_naver_basic(code)
+    dart = get_dart_finance(code)
+
+    score = 0
+
+    memo = []
+
+    per = basic["per"]
+    pbr = basic["pbr"]
+
+    if per is not None:
+
+        if per <= 15:
+            score += 10
+            memo.append("PER 저평가")
+
+        elif per <= 30:
+            score += 5
+            memo.append("PER 양호")
+
+        else:
+            score -= 5
+            memo.append("PER 고평가")
+
+    if pbr is not None:
+
+        if pbr <= 1:
+            score += 10
+            memo.append("PBR 저평가")
+
+        elif pbr <= 3:
+            score += 5
+            memo.append("PBR 보통")
+
+        else:
+            score -= 5
+            memo.append("PBR 높음")
+
+    op_margin = dart["op_margin"]
+
+    if op_margin is not None:
+
+        if op_margin >= 15:
+            score += 15
+            memo.append("영업이익률 우수")
+
+        elif op_margin >= 7:
+            score += 10
+            memo.append("영업이익률 양호")
+
+        elif op_margin > 0:
+            score += 3
+            memo.append("흑자")
+
+        else:
+            score -= 15
+            memo.append("영업적자")
+
+    debt_ratio = dart["debt_ratio"]
+
+    if debt_ratio is not None:
+
+        if debt_ratio <= 100:
+            score += 10
+            memo.append("부채 안정")
+
+        elif debt_ratio <= 200:
+            score += 3
+            memo.append("부채 보통")
+
+        else:
+            score -= 10
+            memo.append("부채 높음")
+
+    return {
+        "score": score,
+        "memo": ", ".join(memo),
+        "per": per,
+        "pbr": pbr,
+        "op_margin": op_margin,
+        "debt_ratio": debt_ratio
+    }
