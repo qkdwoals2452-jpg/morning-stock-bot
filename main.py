@@ -5,6 +5,7 @@ from stock_engine import load_korean_stocks, find_related_stocks
 from company_engine import get_company_match_score
 from finance_engine import get_finance_score
 from market_engine import get_market_score
+from chart_engine import get_chart_score
 from scoring_engine import make_stock_result, sort_results, make_grade
 from memory_engine import save_today_result, get_project_status
 from memory_learning_engine import get_learning_score, save_prediction
@@ -22,14 +23,22 @@ def run():
         if theme["score"] < MIN_THEME_SCORE:
             continue
 
-        candidates = find_related_stocks(theme, stocks, news)
-        theme_words = expand_theme_words(theme["name"])
+        candidates = find_related_stocks(
+            theme,
+            stocks,
+            news
+        )
+
+        theme_words = expand_theme_words(
+            theme["name"]
+        )
 
         ranked = []
 
         for stock in candidates:
             finance = get_finance_score(stock)
             market = get_market_score(stock)
+            chart = get_chart_score(stock)
             learning = get_learning_score(stock["name"])
             company = get_company_match_score(stock, theme_words)
 
@@ -40,14 +49,21 @@ def run():
                 market=market
             )
 
-            # 사업내용 점수 반영
+            # 사업내용 점수
             result["final_score"] += company["score"]
             result["company"] = company
 
             if company["score"] > 0:
                 result["reason"].append(company["memo"])
 
-            # 과거 학습 점수 반영
+            # 차트 점수
+            result["final_score"] += chart["score"]
+            result["chart"] = chart
+
+            if chart["score"] != 0:
+                result["reason"].append(chart["memo"])
+
+            # 과거 학습 점수
             result["final_score"] += learning["score"]
             result["learning"] = learning
 
@@ -55,7 +71,9 @@ def run():
                 result["reason"].append(learning["memo"])
 
             # 최종 등급 재계산
-            result["grade"] = make_grade(result["final_score"])
+            result["grade"] = make_grade(
+                result["final_score"]
+            )
 
             ranked.append(result)
 
