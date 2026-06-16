@@ -6,44 +6,53 @@ HEADERS = {
 }
 
 
-def search_company_business(stock_name):
+def clean_html(text):
+    text = re.sub(r"<[^>]+>", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    return text
+
+
+def search_text(query):
+    try:
+        res = requests.get(
+            "https://search.naver.com/search.naver",
+            params={"query": query},
+            headers=HEADERS,
+            timeout=7
+        )
+        return clean_html(res.text)
+    except:
+        return ""
+
+
+def collect_company_text(stock_name):
     queries = [
         f"{stock_name} 사업내용",
         f"{stock_name} 주요사업",
+        f"{stock_name} 주요제품",
+        f"{stock_name} 주요고객",
+        f"{stock_name} 공급망",
+        f"{stock_name} 수주",
         f"{stock_name} 투자",
-        f"{stock_name} 수주"
+        f"{stock_name} 증설",
+        f"{stock_name} CAPEX",
+        f"{stock_name} 지분 투자",
+        f"{stock_name} 관계사",
     ]
 
     text = ""
 
     for q in queries:
-        try:
-            res = requests.get(
-                "https://search.naver.com/search.naver",
-                params={"query": q},
-                headers=HEADERS,
-                timeout=7
-            )
-            text += " " + res.text
-        except:
-            pass
+        text += " " + search_text(q)
 
-    clean = re.sub(r"<[^>]+>", " ", text)
-    clean = re.sub(r"\s+", " ", clean)
-
-    return clean
+    return text
 
 
-def get_company_match_score(stock, theme_words):
-    stock_name = stock["name"]
-    sector = stock.get("sector", "")
-
-    text = sector + " " + search_company_business(stock_name)
-
+def count_matches(text, words):
     score = 0
     matched = []
 
-    for word in theme_words:
+    for word in words:
         if not word:
             continue
 
@@ -51,17 +60,92 @@ def get_company_match_score(stock, theme_words):
             score += 5
             matched.append(word)
 
-    if score >= 20:
-        memo = "사업내용 강한 일치"
-    elif score >= 10:
-        memo = "사업내용 일부 일치"
-    elif score > 0:
-        memo = "사업내용 약한 일치"
+    return score, list(set(matched))
+
+
+def get_company_match_score(stock, theme_words):
+    stock_name = stock["name"]
+    sector = stock.get("sector", "")
+
+    company_text = sector + " " + collect_company_text(stock_name)
+
+    business_score, business_matched = count_matches(
+        company_text,
+        theme_words
+    )
+
+    customer_keywords = [
+        "고객", "납품", "공급", "수주", "계약", "북미", "미국",
+        "Microsoft", "Amazon", "Google", "Meta", "Nvidia", "Tesla",
+        "SpaceX", "OpenAI"
+    ]
+
+    customer_score, customer_matched = count_matches(
+        company_text,
+        customer_keywords
+    )
+
+    supply_keywords = [
+        "공급망", "부품", "소재", "장비", "협력사", "벤더",
+        "변압기", "전선", "전력기기", "반도체", "기판", "냉각",
+        "배터리", "동박", "방산", "우주항공"
+    ]
+
+    supply_score, supply_matched = count_matches(
+        company_text,
+        supply_keywords
+    )
+
+    capex_keywords = [
+        "증설", "공장", "투자", "CAPEX", "생산능력", "신규라인",
+        "북미공장", "미국공장"
+    ]
+
+    capex_score, capex_matched = count_matches(
+        company_text,
+        capex_keywords
+    )
+
+    investment_keywords = [
+        "지분", "투자", "출자", "관계사", "자회사", "비상장",
+        "IPO", "SpaceX", "OpenAI", "xAI", "Anthropic", "Starlink"
+    ]
+
+    investment_score, investment_matched = count_matches(
+        company_text,
+        investment_keywords
+    )
+
+    total_score = (
+        business_score
+        + customer_score
+        + supply_score
+        + capex_score
+        + investment_score
+    )
+
+    if total_score >= 60:
+        memo = "기업카드 강한 일치"
+    elif total_score >= 35:
+        memo = "기업카드 일부 일치"
+    elif total_score > 0:
+        memo = "기업카드 약한 일치"
     else:
-        memo = "사업내용 매칭 약함"
+        memo = "기업카드 매칭 약함"
 
     return {
-        "score": score,
+        "score": total_score,
         "memo": memo,
-        "matched": list(set(matched))[:5]
+        "business_score": business_score,
+        "customer_score": customer_score,
+        "supply_score": supply_score,
+        "capex_score": capex_score,
+        "investment_score": investment_score,
+        "matched": {
+            "business": business_matched[:5],
+            "customer": customer_matched[:5],
+            "supply": supply_matched[:5],
+            "capex": capex_matched[:5],
+            "investment": investment_matched[:5],
+        }
     }
