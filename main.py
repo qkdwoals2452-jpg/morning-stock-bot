@@ -17,6 +17,10 @@ def run():
     news = get_all_news()
     themes = extract_themes(news)
 
+    print("뉴스 개수:", len(news))
+    print("테마 개수:", len(themes))
+    print(themes[:5])
+
     final_results = []
 
     for theme in themes[:TOP_THEME_COUNT]:
@@ -83,7 +87,12 @@ def run():
             continue
 
         top_ranked = ranked[:TOP_STOCK_COUNT]
-
+        print(
+            "추가됨:",
+            theme["name"],
+            "종목수:",
+            len(top_ranked)
+        )
         final_results.append({
             "theme": theme,
             "ranked": top_ranked
