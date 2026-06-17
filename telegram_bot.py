@@ -136,9 +136,22 @@ def send_telegram(
             "📰 핵심 뉴스\n"
         )
 
-        for article in theme[
-            "articles"
-        ][:3]:
+        seen_titles = set()
+        unique_articles = []
+
+        for article in theme["articles"]:
+            title = article.get("title", "").strip()
+
+            if not title:
+                continue
+
+            if title in seen_titles:
+                continue
+
+            seen_titles.add(title)
+            unique_articles.append(article)
+
+        for article in unique_articles[:3]:
 
             if (
                 article["market"]
