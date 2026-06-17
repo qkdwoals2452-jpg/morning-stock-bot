@@ -7,7 +7,7 @@ HOLDING_COMPANIES = [
 
 def holding_penalty(stock_name):
     if stock_name in HOLDING_COMPANIES:
-        return 80
+        return 150
     return 0
 def safe_score(data):
     if isinstance(data, dict):
