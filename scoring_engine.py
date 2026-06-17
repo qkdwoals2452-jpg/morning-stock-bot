@@ -1,3 +1,8 @@
+def safe_score(data):
+    if isinstance(data, dict):
+        return data.get("score", 0) or 0
+    return 0
+    
 def make_final_score(
     theme_score,
     relation_score,
