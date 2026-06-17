@@ -8,17 +8,6 @@ HEADERS = {
 }
 
 
-
-
-def search_naver_related(theme_name, stocks):
-    found = {}
-
-    queries = [
-        f"{theme_name} 관련주",
-        f"{theme_name} 수혜주",
-        f"{theme_name} 대장주",
-        f"{theme_name} 테마주",
-    ]
 def load_korean_stocks():
     url = "https://kind.krx.co.kr/corpgeneral/corpList.do?method=download"
 
@@ -27,7 +16,6 @@ def load_korean_stocks():
         res.encoding = "euc-kr"
 
         df = pd.read_html(res.text, header=0)[0]
-
         df["종목코드"] = df["종목코드"].astype(str).str.zfill(6)
 
         stocks = []
@@ -40,12 +28,22 @@ def load_korean_stocks():
             })
 
         print("KRX 종목 수:", len(stocks))
-
         return stocks
 
     except Exception as e:
         print("KRX 전체 종목 불러오기 실패:", e)
         return []
+
+
+def search_naver_related(theme_name, stocks):
+    found = {}
+
+    queries = [
+        f"{theme_name} 관련주",
+        f"{theme_name} 수혜주",
+        f"{theme_name} 대장주",
+        f"{theme_name} 테마주",
+    ]
 
     for query in queries:
         try:
@@ -53,7 +51,7 @@ def load_korean_stocks():
                 "https://search.naver.com/search.naver",
                 params={"query": query},
                 headers=HEADERS,
-                timeout=7
+                timeout=5
             )
 
             text = res.text
@@ -61,11 +59,11 @@ def load_korean_stocks():
             for stock in stocks:
                 name = stock["name"]
 
-                if name in text:
+                if name and name in text:
                     found.setdefault(name, 0)
                     found[name] += 5
 
-            time.sleep(0.2)
+            time.sleep(0.1)
 
         except Exception:
             pass
@@ -82,7 +80,7 @@ def find_direct_mentions(theme, stocks, news):
     for stock in stocks:
         name = stock["name"]
 
-        if name in text:
+        if name and name in text:
             found.setdefault(name, 0)
             found[name] += 12
 
@@ -130,28 +128,26 @@ def find_sector_match(theme_name, stocks):
 
 
 def merge_scores(stocks, score_maps):
+    stock_map = {s["name"]: s for s in stocks}
     merged = {}
 
     for score_map in score_maps:
-
         if not score_map:
             continue
 
         for name, score in score_map.items():
+            if name not in stock_map:
+                continue
 
-            if name not in merged:
-                merged[name] = 0
-
+            merged.setdefault(name, 0)
             merged[name] += score
 
     candidates = []
 
-    for stock in stocks:
-        name = stock.get("name", "")
-
-        if name in merged:
-            stock["relation_score"] = merged[name]
-            candidates.append(stock)
+    for name, score in merged.items():
+        stock = stock_map[name].copy()
+        stock["relation_score"] = score
+        candidates.append(stock)
 
     candidates = sorted(
         candidates,
@@ -159,7 +155,7 @@ def merge_scores(stocks, score_maps):
         reverse=True
     )
 
-    return candidates
+    return candidates[:50]
 
 
 def find_related_stocks(theme, stocks, news):
@@ -170,5 +166,11 @@ def find_related_stocks(theme, stocks, news):
     sector = find_sector_match(theme_name, stocks)
 
     candidates = merge_scores(stocks, [direct, naver, sector])
+
+    print(
+        "후보 종목 수:",
+        theme_name,
+        len(candidates)
+    )
 
     return candidates
