@@ -104,8 +104,8 @@ def make_stock_result(
     final_score = make_final_score(
         theme_score=theme_score,
         relation_score=stock["relation_score"],
-        finance_score=finance["score"],
-        market_score=market["score"]
+        finance_score=safe_score(finance),
+        market_score=safe_score(market)
     )
 
     return {
