@@ -34,6 +34,77 @@ CONCEPT_EXPANSION = {
     "self driving": ["자율주행", "전장", "센서", "ADAS"],
 }
 
+THEME_ARTICLE_KEYWORDS = {
+    "AI": ["ai", "artificial intelligence", "인공지능", "엔비디아", "nvidia", "openai", "gpu"],
+    "ai": ["ai", "artificial intelligence", "인공지능", "엔비디아", "nvidia", "openai", "gpu"],
+
+    "반도체": ["semiconductor", "chip", "memory", "hbm", "dram", "micron", "sk hynix", "삼성전자", "반도체"],
+    "HBM": ["hbm", "memory", "dram", "micron", "sk hynix", "삼성전자", "하이닉스"],
+    "GPU": ["gpu", "nvidia", "엔비디아", "ai chip"],
+
+    "데이터센터": ["data center", "datacenter", "server", "cloud", "데이터센터", "서버", "전력", "냉각"],
+    "전력": ["power", "electricity", "grid", "transformer", "전력", "변압기", "전선", "송전", "배전"],
+    "전력기기": ["power", "grid", "transformer", "전력기기", "변압기"],
+    "변압기": ["transformer", "grid", "변압기", "전력기기"],
+    "전선": ["cable", "wire", "grid", "전선", "케이블"],
+
+    "원전": ["nuclear", "smr", "원전", "원자력"],
+    "SMR": ["smr", "nuclear", "소형모듈원전"],
+
+    "로봇": ["robot", "robotics", "로봇", "휴머노이드"],
+    "방산": ["defense", "missile", "radar", "방산", "미사일", "레이더"],
+    "우주항공": ["space", "spacex", "starlink", "rocket", "우주", "항공"],
+    "2차전지": ["battery", "lithium", "배터리", "2차전지"],
+}
+
+
+def article_matches_theme(theme_name, article):
+    title = article.get("title", "")
+    lower = title.lower()
+
+    keywords = THEME_ARTICLE_KEYWORDS.get(theme_name, [])
+
+    if not keywords:
+        expanded = expand_theme_words(theme_name)
+        keywords = [str(x).lower() for x in expanded]
+
+    for kw in keywords:
+        if not kw:
+            continue
+
+        if str(kw).lower() in lower:
+            return True
+
+    return False
+
+
+def unique_articles_for_theme(theme_name, articles, limit=10):
+    result = []
+    seen = set()
+
+    for article in articles:
+        title = article.get("title", "").strip()
+        link = article.get("link", "").strip()
+
+        if not title:
+            continue
+
+        key = link or title
+
+        if key in seen:
+            continue
+
+        if not article_matches_theme(theme_name, article):
+            continue
+
+        seen.add(key)
+        result.append(article)
+
+        if len(result) >= limit:
+            break
+
+    return result
+
 
 def make_reason(theme_name, articles):
     us_count = len([a for a in articles if a.get("market") == "US"])
@@ -56,7 +127,6 @@ def extract_themes(news):
         title = article.get("title", "")
         lower = title.lower()
 
-        # 1) 미국 핵심 키워드 → 한국 산업으로 확장
         for phrase, expanded_words in CONCEPT_EXPANSION.items():
             if phrase in lower:
                 score = 6 if article.get("market") == "US" else 3
@@ -68,7 +138,6 @@ def extract_themes(news):
                     counter[word] += score
                     theme_articles.setdefault(word, []).append(article)
 
-        # 2) 뉴스 제목 단어에서 자동 테마 후보 추출
         clean = re.sub(r"[^가-힣A-Za-z0-9 ]", " ", title)
         words = clean.split()
 
@@ -90,7 +159,11 @@ def extract_themes(news):
     themes = []
 
     for name, score in counter.most_common(20):
-        articles = theme_articles.get(name, [])
+        raw_articles = theme_articles.get(name, [])
+        articles = unique_articles_for_theme(name, raw_articles, limit=10)
+
+        if not articles:
+            continue
 
         themes.append({
             "name": name,
