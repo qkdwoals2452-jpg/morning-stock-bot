@@ -1,3 +1,14 @@
+HOLDING_COMPANIES = [
+    "SK", "LG", "CJ", "GS", "LS", "한화",
+    "두산", "HD현대", "롯데지주", "효성",
+    "한국앤컴퍼니", "HL홀딩스"
+]
+
+
+def holding_penalty(stock_name):
+    if stock_name in HOLDING_COMPANIES:
+        return 80
+    return 0
 def safe_score(data):
     if isinstance(data, dict):
         return data.get("score", 0) or 0
