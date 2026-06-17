@@ -34,7 +34,8 @@ def run():
             stocks,
             news
         )
-
+        candidates = candidates[:10]
+        print("실제 정밀분석 종목 수:", len(candidates))
         theme_words = expand_theme_words(
             theme["name"]
         )
