@@ -29,15 +29,8 @@ def collect_company_text(stock_name):
     queries = [
         f"{stock_name} 사업내용",
         f"{stock_name} 주요사업",
-        f"{stock_name} 주요제품",
-        f"{stock_name} 주요고객",
-        f"{stock_name} 공급망",
         f"{stock_name} 수주",
-        f"{stock_name} 투자",
-        f"{stock_name} 증설",
-        f"{stock_name} CAPEX",
-        f"{stock_name} 지분 투자",
-        f"{stock_name} 관계사",
+        
     ]
 
     text = ""
