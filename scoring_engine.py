@@ -54,6 +54,12 @@ def make_grade(score):
     return "⚠️ 관심"
 
 
+def safe_score(data):
+    if isinstance(data, dict):
+        return data.get("score", 0) or 0
+    return 0
+
+
 def make_reason(
     theme_score,
     relation_score,
@@ -63,48 +69,30 @@ def make_reason(
 
     reason = []
 
-    # ------------------
-    # 뉴스
-    # ------------------
+    finance_score = safe_score(finance)
+    market_score = safe_score(market)
 
     if theme_score >= 15:
         reason.append("미국뉴스 강한 연관")
-
     elif theme_score >= 8:
         reason.append("뉴스 연관")
 
-    # ------------------
-    # 관련도
-    # ------------------
-
     if relation_score >= 15:
         reason.append("사업영역 일치")
-
     elif relation_score >= 8:
         reason.append("관련주 가능성")
 
-    # ------------------
-    # 재무
-    # ------------------
-
-    if finance["score"] >= 20:
+    if finance_score >= 20:
         reason.append("재무 우수")
-
-    elif finance["score"] >= 10:
+    elif finance_score >= 10:
         reason.append("재무 양호")
 
-    # ------------------
-    # 시장
-    # ------------------
-
-    if market["score"] >= 20:
+    if market_score >= 20:
         reason.append("거래대금 증가")
-
-    elif market["score"] >= 10:
+    elif market_score >= 10:
         reason.append("시장 반응")
 
     return reason
-
 
 def make_stock_result(
     stock,
