@@ -19,11 +19,15 @@ def search_naver_related(theme_name, stocks):
         f"{theme_name} 대장주",
         f"{theme_name} 테마주",
     ]
-    def load_korean_stocks():
+def load_korean_stocks():
     url = "https://kind.krx.co.kr/corpgeneral/corpList.do?method=download"
 
     try:
-        df = pd.read_html(url, header=0)[0]
+        res = requests.get(url, timeout=10)
+        res.encoding = "euc-kr"
+
+        df = pd.read_html(res.text, header=0)[0]
+
         df["종목코드"] = df["종목코드"].astype(str).str.zfill(6)
 
         stocks = []
@@ -34,6 +38,8 @@ def search_naver_related(theme_name, stocks):
                 "code": str(row["종목코드"]).strip(),
                 "sector": str(row.get("업종", "")).strip()
             })
+
+        print("KRX 종목 수:", len(stocks))
 
         return stocks
 
