@@ -22,8 +22,10 @@ def run():
     print(themes[:5])
 
     final_results = []
-
-    for theme in themes[:TOP_THEME_COUNT]:
+    themes = themes[:TOP_THEME_COUNT]
+    print("실제 분석 테마 수:", len(themes))
+    
+    for theme in themes:
         if theme["score"] < MIN_THEME_SCORE:
             continue
 
