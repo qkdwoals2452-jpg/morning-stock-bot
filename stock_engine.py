@@ -130,27 +130,36 @@ def find_sector_match(theme_name, stocks):
 
 
 def merge_scores(stocks, score_maps):
-    stock_map = {s["name"]: s for s in stocks}
     merged = {}
 
     for score_map in score_maps:
-        for name, score in score_map.items():
-            if name not in stock_map:
-                continue
 
-            merged.setdefault(name, 0)
+        if not score_map:
+            continue
+
+        for name, score in score_map.items():
+
+            if name not in merged:
+                merged[name] = 0
+
             merged[name] += score
 
-    result = []
+    candidates = []
 
-    for name, score in merged.items():
-        stock = stock_map[name].copy()
-        stock["relation_score"] = score
-        result.append(stock)
+    for stock in stocks:
+        name = stock.get("name", "")
 
-    result = sorted(result, key=lambda x: x["relation_score"], reverse=True)
+        if name in merged:
+            stock["relation_score"] = merged[name]
+            candidates.append(stock)
 
-    return result[:30]
+    candidates = sorted(
+        candidates,
+        key=lambda x: x["relation_score"],
+        reverse=True
+    )
+
+    return candidates
 
 
 def find_related_stocks(theme, stocks, news):
