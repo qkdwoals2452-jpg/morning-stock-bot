@@ -8,7 +8,18 @@ HEADERS = {
 }
 
 
-def load_korean_stocks():
+
+
+def search_naver_related(theme_name, stocks):
+    found = {}
+
+    queries = [
+        f"{theme_name} 관련주",
+        f"{theme_name} 수혜주",
+        f"{theme_name} 대장주",
+        f"{theme_name} 테마주",
+    ]
+    def load_korean_stocks():
     url = "https://kind.krx.co.kr/corpgeneral/corpList.do?method=download"
 
     try:
@@ -29,17 +40,6 @@ def load_korean_stocks():
     except Exception as e:
         print("KRX 전체 종목 불러오기 실패:", e)
         return []
-
-
-def search_naver_related(theme_name, stocks):
-    found = {}
-
-    queries = [
-        f"{theme_name} 관련주",
-        f"{theme_name} 수혜주",
-        f"{theme_name} 대장주",
-        f"{theme_name} 테마주",
-    ]
 
     for query in queries:
         try:
