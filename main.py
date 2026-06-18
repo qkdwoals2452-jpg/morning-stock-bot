@@ -58,7 +58,7 @@ def run():
             )
 
             # 사업내용 점수
-            result["final_score"] += company["score"]
+            result["final_score"] += min(company["score"], 30)
             result["company"] = company
 
             if company["score"] > 0:
