@@ -61,7 +61,10 @@ THEME_ARTICLE_KEYWORDS = {
 def article_matches_theme(theme_name, article):
     title = article.get("title", "")
     lower = title.lower()
-
+    if theme_name in ["AI", "ai"]:
+        exclude_words = ["spacex", "space stock", "rocket", "starlink"]
+        if any(word in lower for word in exclude_words):
+            return False
     keywords = THEME_ARTICLE_KEYWORDS.get(theme_name, [])
 
     if not keywords:
