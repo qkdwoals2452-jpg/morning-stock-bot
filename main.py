@@ -43,6 +43,15 @@ def run():
         ranked = []
 
         for stock in candidates:
+             if stock["name"] in [
+
+                 "SK", "LG", "CJ", "GS",
+
+                 "LS", "한화", "두산", "HD현대"
+
+             ]:
+
+                 continue
             finance = get_finance_score(stock)
             market = get_market_score(stock)
             chart = get_chart_score(stock)
