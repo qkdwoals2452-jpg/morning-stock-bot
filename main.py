@@ -51,6 +51,7 @@ def run():
 
              ]:
 
+                 
                  continue
             finance = get_finance_score(stock)
             market = get_market_score(stock)
