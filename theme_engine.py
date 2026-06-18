@@ -35,8 +35,8 @@ CONCEPT_EXPANSION = {
 }
 
 THEME_ARTICLE_KEYWORDS = {
-    "AI": ["ai", "artificial intelligence", "인공지능", "엔비디아", "nvidia", "openai", "gpu"],
-    "ai": ["ai", "artificial intelligence", "인공지능", "엔비디아", "nvidia", "openai", "gpu"],
+    "AI": ["ai", "artificial intelligence", "인공지능", "nvidia", "openai", "gpu", "ai chip", "machine learning"],
+    "ai": ["ai", "artificial intelligence", "인공지능", "nvidia", "openai", "gpu", "ai chip", "machine learning"],
 
     "반도체": ["semiconductor", "chip", "memory", "hbm", "dram", "micron", "sk hynix", "삼성전자", "반도체"],
     "HBM": ["hbm", "memory", "dram", "micron", "sk hynix", "삼성전자", "하이닉스"],
