@@ -113,9 +113,10 @@ def find_sector_match(theme_name, stocks):
             if any(x in sector for x in ["반도체", "전자", "전기", "기계"]):
                 score += 2
 
+           
         if any(w in lower_words for w in ["data center", "datacenter", "power demand", "electricity demand", "grid", "transformer"]):
-            if any(x in sector for x in ["전기", "전자", "기계", "건설", "전력"]):
-                score += 2
+           if any(x in sector for x in ["전기", "전자", "기계", "건설", "전력", "에너지"]):
+               score += 15
 
         if any(w in lower_words for w in ["nuclear", "smr"]):
             if any(x in sector for x in ["전기", "기계", "건설", "엔지니어링"]):
