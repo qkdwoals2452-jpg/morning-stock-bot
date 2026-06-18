@@ -141,16 +141,18 @@ def send_telegram(
 
         for article in theme["articles"]:
             title = article.get("title", "").strip()
+            link = article.get("link", "").strip()
 
-            if not title:
+            key = link or title
+
+            if not key:
                 continue
 
-            if title in seen_titles:
+            if key in seen_titles:
                 continue
 
-            seen_titles.add(title)
+            seen_titles.add(key)
             unique_articles.append(article)
-
         for article in unique_articles[:3]:
 
             if (
