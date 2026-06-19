@@ -32,6 +32,9 @@ CONCEPT_EXPANSION = {
     "rare earth": ["희토류", "자석", "전기차", "방산"],
     "autonomous": ["자율주행", "전장", "센서", "ADAS"],
     "self driving": ["자율주행", "전장", "센서", "ADAS"],
+    "robotaxi": ["자율주행", "전장", "센서", "ADAS", "로보택시"],
+    "cybercab": ["자율주행", "전장", "센서", "ADAS", "로보택시"],
+    "tesla": ["자율주행", "전장", "센서", "ADAS", "로보택시"],
     "spacex": ["우주항공", "위성", "위성통신", "발사체"],
     "starlink": ["우주항공", "위성통신", "통신장비"],
     "satellite": ["우주항공", "위성", "위성통신"],
@@ -58,6 +61,7 @@ THEME_ARTICLE_KEYWORDS = {
     "로봇": ["robot", "robotics", "로봇", "휴머노이드"],
     "방산": ["defense", "missile", "radar", "방산", "미사일", "레이더"],
     "우주항공": ["spacex", "starlink", "satellite", "rocket", "space", "위성", "위성통신", "우주"],
+    "자율주행": ["robotaxi", "cybercab", "tesla", "autonomous", "self driving", "자율주행", "로보택시", "전장", "ADAS"],
     "2차전지": ["battery", "lithium", "배터리", "2차전지"],
 }
 
