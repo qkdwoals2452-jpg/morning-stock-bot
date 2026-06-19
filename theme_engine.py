@@ -61,6 +61,9 @@ THEME_ARTICLE_KEYWORDS = {
     "로봇": ["robot", "robotics", "로봇", "휴머노이드"],
     "방산": ["defense", "missile", "radar", "방산", "미사일", "레이더"],
     "우주항공": ["spacex", "starlink", "satellite", "rocket", "space", "위성", "위성통신", "우주"],
+    "스타링크": ["starlink", "satellite internet", "위성통신", "저궤도위성"],
+    "위성통신": ["satellite", "starlink", "communication satellite", "위성통신"],
+    "우주": ["space", "spacex", "rocket", "launch", "orbit", "우주", "위성"],
     "자율주행": ["robotaxi", "cybercab", "tesla", "autonomous", "self driving", "자율주행", "로보택시", "전장", "ADAS"],
     "2차전지": ["battery", "lithium", "배터리", "2차전지"],
 }
