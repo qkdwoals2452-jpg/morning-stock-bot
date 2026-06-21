@@ -57,6 +57,9 @@ def count_matches(text, words):
 
 
 def get_company_match_score(stock, theme_words):
+    if len(stock["code"]) != 6 or not stock["code"].isdigit():
+        return {"score": 0, "memo": "비상장/코드오류 제외", "matched": {}}
+        
     stock_name = stock["name"]
     sector = stock.get("sector", "")
 
