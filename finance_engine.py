@@ -269,11 +269,28 @@ def get_finance_score(stock):
             score -= 10
             memo.append("부채 높음")
 
+       exclude = False
+    exclude_reason = ""
+
+    if op_margin is not None and op_margin < 0:
+        exclude = True
+        exclude_reason = "영업적자 제외"
+
+    if debt_ratio is not None and debt_ratio >= 300:
+        exclude = True
+        exclude_reason = "부채비율 과다 제외"
+
+    if pbr is not None and pbr >= 10:
+        exclude = True
+        exclude_reason = "PBR 과도 제외"
+
     return {
         "score": score,
         "memo": ", ".join(memo),
         "per": per,
         "pbr": pbr,
         "op_margin": op_margin,
-        "debt_ratio": debt_ratio
+        "debt_ratio": debt_ratio,
+        "exclude": exclude,
+        "exclude_reason": exclude_reason
     }
