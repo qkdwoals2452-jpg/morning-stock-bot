@@ -46,6 +46,8 @@ def run():
             if stock["name"] in ["SG"]:
                continue
             finance = get_finance_score(stock)
+            if finance.get("exclude"):
+                continue
             market = get_market_score(stock)
             chart = get_chart_score(stock)
             learning = get_learning_score(stock["name"])
