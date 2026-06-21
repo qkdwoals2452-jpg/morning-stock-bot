@@ -9,7 +9,19 @@ STOPWORDS = {
     "the", "and", "for", "with", "from", "after", "before", "into", "over",
     "this", "that", "are", "was", "will", "has", "have", "says", "new"
 }
-
+BIG_PLAYERS = {
+    "meta": "데이터센터",
+    "microsoft": "데이터센터",
+    "amazon": "클라우드",
+    "google": "AI",
+    "alphabet": "AI",
+    "nvidia": "반도체",
+    "amd": "반도체",
+    "tesla": "자율주행",
+    "spacex": "우주항공",
+    "starlink": "위성통신",
+    "openai": "AI"
+}
 CONCEPT_EXPANSION = {
     "ai": ["AI", "데이터센터", "전력", "반도체", "HBM", "냉각", "서버"],
     "artificial intelligence": ["AI", "데이터센터", "전력", "반도체", "HBM", "냉각"],
@@ -140,7 +152,14 @@ def extract_themes(news):
     for article in news:
         title = article.get("title", "")
         lower = title.lower()
+    for company, theme in BIG_PLAYERS.items():
 
+    if company in lower:
+
+        score = 10 if article.get("market") == "US" else 5
+
+        counter[theme] += score
+        theme_articles.setdefault(theme, []).append(article)
         for phrase, expanded_words in CONCEPT_EXPANSION.items():
             if phrase in lower:
                 score = 6 if article.get("market") == "US" else 3
