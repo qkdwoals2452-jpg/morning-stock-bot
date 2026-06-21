@@ -269,7 +269,7 @@ def get_finance_score(stock):
             score -= 10
             memo.append("부채 높음")
 
-       exclude = False
+    exclude = False
     exclude_reason = ""
 
     if op_margin is not None and op_margin < 0:
