@@ -65,7 +65,7 @@ def run():
                 finance=finance,
                 market=market
             )
-
+            result["verify"] = verify
             # 사업내용 점수
             result["final_score"] += min(company["score"], 30)
             result["company"] = company
