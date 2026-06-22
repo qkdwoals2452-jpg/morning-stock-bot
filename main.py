@@ -66,8 +66,19 @@ def run():
                 market=market
             )
             result["verify"] = verify
+            if verify["score"] >= 90:
+
+                result["final_score"] += 20
+
+                result["reason"].append("사업내용 검증 우수")
+
+            elif verify["score"] >= 70:
+
+                result["final_score"] += 10
+
+                result["reason"].append("사업내용 검증 통과")
             # 사업내용 점수
-            result["final_score"] += min(company["score"], 30)
+            result["final_score"] += min(company["score"], 20)
             result["company"] = company
 
             if company["score"] > 0:
