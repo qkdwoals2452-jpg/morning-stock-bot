@@ -1,3 +1,4 @@
+from company_verify_engine import verify_company_theme
 from config import *
 from news_engine import get_all_news
 from theme_engine import extract_themes, expand_theme_words
@@ -45,6 +46,11 @@ def run():
         for stock in candidates:
             if stock["name"] in ["SG"]:
                continue
+            verify = verify_company_theme(stock, theme["name"])
+
+            if not verify["pass"]:
+                continue
+
             finance = get_finance_score(stock)
            # if finance.get("exclude"):
            #     continue
