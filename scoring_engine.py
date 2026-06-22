@@ -89,12 +89,12 @@ def make_reason(
     market_score = safe_score(market)
 
     if theme_score >= 15:
-        reason.append("미국뉴스 강한 연관")
+        reason.append("미국뉴스 키워드 감지")
     elif theme_score >= 8:
         reason.append("뉴스 연관")
 
     if relation_score >= 15:
-        reason.append("사업영역 일치")
+        reason.append("사업영역 후보")
     elif relation_score >= 8:
         reason.append("관련주 가능성")
 
@@ -104,7 +104,7 @@ def make_reason(
         reason.append("재무 양호")
 
     if market_score >= 20:
-        reason.append("거래대금 증가")
+        reason.append("시장 반응 확인")
     elif market_score >= 10:
         reason.append("시장 반응")
 
