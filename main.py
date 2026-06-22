@@ -45,7 +45,7 @@ def run():
 
         for stock in candidates:
             if stock["name"] in ["SG"]:
-               continue
+                continue
             verify = verify_company_theme(stock, theme["name"])
 
             if not verify["pass"]:
