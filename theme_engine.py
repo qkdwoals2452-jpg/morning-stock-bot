@@ -152,14 +152,14 @@ def extract_themes(news):
     for article in news:
         title = article.get("title", "")
         lower = title.lower()
-    for company, theme in BIG_PLAYERS.items():
+        for company, theme in BIG_PLAYERS.items():
 
-        if company in lower:
+            if company in lower:
 
-            score = 10 if article.get("market") == "US" else 5
+               score = 10 if article.get("market") == "US" else 5
 
-            counter[theme] += score
-            theme_articles.setdefault(theme, []).append(article)
+               counter[theme] += score
+               theme_articles.setdefault(theme, []).append(article)
         for phrase, expanded_words in CONCEPT_EXPANSION.items():
             if phrase in lower:
                 score = 6 if article.get("market") == "US" else 3
