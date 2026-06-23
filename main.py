@@ -20,7 +20,7 @@ def run():
 
     print("뉴스 개수:", len(news))
     print("테마 개수:", len(themes))
-    print(themes[:5])
+    # print(themes[:5])
 
     final_results = []
     themes = themes[:TOP_THEME_COUNT]
