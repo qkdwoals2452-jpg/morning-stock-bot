@@ -212,7 +212,8 @@ def extract_themes(news):
 def expand_theme_words(theme_name):
     words = set()
     words.add(theme_name)
-
+    for w in expand_with_industry_map(theme_name):
+        words.add(w)
     lower = theme_name.lower()
 
     if lower in CONCEPT_EXPANSION:
