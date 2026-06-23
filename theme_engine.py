@@ -1,4 +1,5 @@
 import re
+from industry_map import INDUSTRY_MAP
 from collections import Counter
 
 STOPWORDS = {
@@ -223,5 +224,20 @@ def expand_theme_words(theme_name):
             words.add(key)
             for v in values:
                 words.add(v)
+
+    return list(words)
+def expand_with_industry_map(theme_name):
+    words = set()
+    words.add(theme_name)
+
+    if theme_name in INDUSTRY_MAP:
+        for item in INDUSTRY_MAP[theme_name]:
+            words.add(item)
+
+    for key, values in INDUSTRY_MAP.items():
+        if theme_name in values:
+            words.add(key)
+            for item in values:
+                words.add(item)
 
     return list(words)
