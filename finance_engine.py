@@ -97,7 +97,7 @@ def get_dart_finance(stock_code):
             "debt_ratio": None
         }
 
-    year = 2025
+    year = 2024
 
     try:
 
