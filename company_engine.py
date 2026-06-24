@@ -112,20 +112,18 @@ def get_company_match_score(stock, theme_words):
         investment_keywords
     )
 
-    total_score = (
-        business_score
-        + customer_score
-        + supply_score
-        + capex_score
-        + investment_score
-    )
+    # 1차 수정: 오탐 제거
+    # 고객/공급/투자/증설 단어는 네이버 검색 결과에 너무 쉽게 섞이므로
+    # 아직 점수에 반영하지 않는다.
+    total_score = business_score
+    
 
     if total_score >= 60:
-        memo = "기업카드 강한 일치"
+        memo = "사업내용 키워드 일치"
     elif total_score >= 35:
-        memo = "기업카드 일부 일치"
+        memo = "사업내용 일부 일치"
     elif total_score > 0:
-        memo = "기업카드 약한 일치"
+        memo = "사업내용 약한 일치"
     else:
         memo = "기업카드 매칭 약함"
 
