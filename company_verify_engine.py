@@ -31,9 +31,7 @@ def search_company_text(stock_name):
         f"{stock_name} 사업내용",
         f"{stock_name} 주요사업",
         f"{stock_name} 주요제품",
-        f"{stock_name} 수주",
-        f"{stock_name} 공급",
-        f"{stock_name} 투자"
+        
     ]
 
     text = ""
@@ -74,12 +72,12 @@ def verify_company_theme(stock, theme_name):
 
     for word in words:
         if word in text:
-            score += 15
+            score += 10
             matched.append(word)
 
     matched = list(set(matched))
 
-    if score >= 70:
+    if score >= 50 and len(set(matched)) >= 3:
         passed = True
         memo = "사업내용 검증 통과"
     elif score >= 40:
