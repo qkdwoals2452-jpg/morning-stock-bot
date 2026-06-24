@@ -59,13 +59,13 @@ def run():
             learning = get_learning_score(stock["name"])
             company = get_company_match_score(stock, theme_words)
             
-                print("==========")
-                print(stock["name"])
-                print("verify:", verify)
-                print("company:", company)
-                print("finance:", finance)
-                print("market:", market)
-                print("chart:", chart)
+            print("==========")
+            print(stock["name"])
+            print("verify:", verify)
+            print("company:", company)
+            print("finance:", finance)
+            print("market:", market)
+            print("chart:", chart)
             result = make_stock_result(
                 stock=stock,
                 theme_score=theme["score"],
