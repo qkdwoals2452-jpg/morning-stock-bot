@@ -29,7 +29,7 @@ def collect_company_text(stock_name):
     queries = [
         f"{stock_name} 사업내용",
         f"{stock_name} 주요사업",
-        f"{stock_name} 수주",
+        
         
     ]
 
@@ -50,7 +50,7 @@ def count_matches(text, words):
             continue
 
         if word in text:
-            score += 5
+            score += 3
             matched.append(word)
 
     return score, list(set(matched))
