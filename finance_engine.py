@@ -154,7 +154,7 @@ def get_dart_finance(stock_code):
             account_id = row.get("account_id", "")
             amount = to_int(row.get("thstrm_amount", 0))
 
-            print(name, account_id, amount)
+            
 
             if amount is None:
                 amount = 0
@@ -163,13 +163,18 @@ def get_dart_finance(stock_code):
                 "매출액",
                 "영업수익",
                 "수익(매출액)"
-            ]:
+                "매출",
+                "영업수익(매출액)"
+
+            ] or "Revenue" in account_id:
+
+
                 sales = max(
                     sales,
                     amount
                 )
 
-            elif name == "영업이익":
+            elif name in ["영업이익", "영업이익(손실)"] or "OperatingIncomeLoss" in account_id:
                 op = amount
 
             elif name == "자산총계":
