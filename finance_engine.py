@@ -44,7 +44,7 @@ def get_naver_basic(code):
         )
 
         data = res.json()
-
+        print("NAVER:", code, data)
         return {
             "per": to_float(data.get("per")),
             "pbr": to_float(data.get("pbr"))
