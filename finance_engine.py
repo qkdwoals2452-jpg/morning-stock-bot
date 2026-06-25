@@ -71,11 +71,13 @@ def get_corp_code(stock_code):
             params=params,
             timeout=10
         )
-
         data = res.json()
+
+        print("DART company:", stock_code, data)
 
         if data.get("status") == "000":
             return data.get("corp_code")
+
 
     except:
         pass
@@ -97,7 +99,7 @@ def get_dart_finance(stock_code):
             "debt_ratio": None
         }
 
-    year = 2024
+    year = 2025
 
     try:
 
@@ -118,6 +120,8 @@ def get_dart_finance(stock_code):
         )
 
         data = res.json()
+
+        print("DART finance:", stock_code, data)
 
         if data.get("status") != "000":
             return {
