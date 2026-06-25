@@ -1,4 +1,12 @@
 import requests
+import pandas as pd
+
+corp_df = pd.read_csv("corp_code.csv", dtype=str)
+
+corp_map = dict(zip(
+    corp_df["stock_code"],
+    corp_df["corp_code"]
+))
 from config import DART_API_KEY
 
 HEADERS = {
@@ -54,7 +62,13 @@ def get_naver_basic(code):
 # ------------------------
 
 def get_corp_code(stock_code):
+    stock_code = str(stock_code).zfill(6)
 
+    corp_code = corp_map.get(stock_code)
+
+    print("corp lookup:", stock_code, corp_code)
+
+    return corp_code
     if DART_API_KEY == "":
         return None
 
