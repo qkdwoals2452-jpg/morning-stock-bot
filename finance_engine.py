@@ -151,7 +151,10 @@ def get_dart_finance(stock_code):
         for row in data.get("list", []):
 
             name = row.get("account_nm", "")
+            account_id = row.get("account_id", "")
             amount = to_int(row.get("thstrm_amount", 0))
+
+            print(name, account_id, amount)
 
             if amount is None:
                 amount = 0
