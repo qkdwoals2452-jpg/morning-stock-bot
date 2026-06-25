@@ -1,3 +1,5 @@
+import os
+import build_corp_db
 from company_verify_engine import verify_company_theme
 from config import *
 from news_engine import get_all_news
@@ -14,7 +16,12 @@ from telegram_bot import send_telegram
 
 
 def run():
+    if not os.path.exists("corp_code.csv"):
+        print("corp_code.csv 없음 → DART 기업코드 생성")
+        build_corp_db
+
     stocks = load_korean_stocks()
+    
     news = get_all_news()
     themes = extract_themes(news)
 
