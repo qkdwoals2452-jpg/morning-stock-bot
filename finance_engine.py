@@ -35,22 +35,38 @@ def to_int(value):
 def get_naver_basic(code):
 
     try:
-        url = f"https://m.stock.naver.com/api/stock/{code}/basic"
+        url = f"https://finance.naver.com/item/main.naver?code={code}"
 
         res = requests.get(
             url,
             headers=HEADERS,
-            timeout=5
+            timeout=7
         )
 
-        data = res.json()
-        print(data.keys())
+        text = res.text
+
+        per = None
+        pbr = None
+
+        per_match = re.search(r"PER</th>\s*<td[^>]*>\s*<em[^>]*>(.*?)</em>", text)
+        pbr_match = re.search(r"PBR</th>\s*<td[^>]*>\s*<em[^>]*>(.*?)</em>", text)
+
+        if per_match:
+            per = to_float(per_match.group(1))
+
+        if pbr_match:
+            pbr = to_float(pbr_match.group(1))
+
+        print("NAVER PER/PBR:", code, per, pbr)
+
         return {
-            "per": to_float(data.get("per")),
-            "pbr": to_float(data.get("pbr"))
+            "per": per,
+            "pbr": pbr
         }
 
-    except:
+    except Exception as e:
+        print("NAVER ERROR:", code, e)
+
         return {
             "per": None,
             "pbr": None
