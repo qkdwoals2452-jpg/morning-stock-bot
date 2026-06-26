@@ -45,7 +45,14 @@ def get_naver_basic(code):
         )
 
         text = res.text
-        print(text[:5000])
+        for keyword in ["PER", "PBR", "per", "pbr"]:
+
+            idx = text.find(keyword)
+
+            print("FIND", keyword, idx)
+            if idx != -1:
+
+                print(text[idx-300:idx+300])
         per = None
         pbr = None
 
