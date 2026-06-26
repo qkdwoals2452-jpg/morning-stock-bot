@@ -45,7 +45,7 @@ def get_naver_basic(code):
         )
 
         text = res.text
-
+        print(text[:5000])
         per = None
         pbr = None
 
