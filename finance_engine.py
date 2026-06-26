@@ -45,19 +45,19 @@ def get_naver_basic(code):
         )
 
         text = res.text
-        for keyword in ["PER", "PBR", "per", "pbr"]:
 
-            idx = text.find(keyword)
-
-            print("FIND", keyword, idx)
-            if idx != -1:
-
-                print(text[idx-300:idx+300])
         per = None
         pbr = None
 
-        per_match = re.search(r"PER</th>\s*<td[^>]*>\s*<em[^>]*>(.*?)</em>", text)
-        pbr_match = re.search(r"PBR</th>\s*<td[^>]*>\s*<em[^>]*>(.*?)</em>", text)
+        per_match = re.search(
+            r"<strong>PER\(배\)</strong>\s*</th>\s*<td[^>]*>\s*([\d\.,\-]+)",
+            text
+        )
+
+        pbr_match = re.search(
+            r"<strong>PBR\(배\)</strong>\s*</th>\s*<td[^>]*>\s*([\d\.,\-]+)",
+            text
+        )
 
         if per_match:
             per = to_float(per_match.group(1))
@@ -79,7 +79,6 @@ def get_naver_basic(code):
             "per": None,
             "pbr": None
         }
-
 
 # ------------------------
 # DART 기업코드
