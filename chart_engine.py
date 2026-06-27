@@ -33,6 +33,9 @@ def get_price_history(code):
             )
 
             data = res.json()
+            print("CHART URL:", url)
+            print("CHART TYPE:", type(data))
+            print("CHART SAMPLE:", str(data)[:1000])
 
             if isinstance(data, dict):
                 raw = data.get("priceInfos") or data.get("data") or []
