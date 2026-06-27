@@ -92,34 +92,6 @@ def get_corp_code(stock_code):
     print("corp lookup:", stock_code, corp_code)
 
     return corp_code
-    if DART_API_KEY == "":
-        return None
-
-    try:
-        url = "https://opendart.fss.or.kr/api/company.json"
-
-        params = {
-            "crtfc_key": DART_API_KEY,
-            "stock_code": stock_code
-        }
-
-        res = requests.get(
-            url,
-            params=params,
-            timeout=10
-        )
-        data = res.json()
-
-        print("DART company:", stock_code, data)
-
-        if data.get("status") == "000":
-            return data.get("corp_code")
-
-
-    except:
-        pass
-
-    return None
 
 
 # ------------------------
@@ -185,7 +157,7 @@ def get_dart_finance(stock_code):
             if name in [
                 "매출액",
                 "영업수익",
-                "수익(매출액)"
+                "수익(매출액)",
                 "매출",
                 "영업수익(매출액)"
 
