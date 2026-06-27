@@ -181,7 +181,7 @@ def get_chart_score(stock):
 
     if not memo:
         memo.append("차트 중립")
-
+    print("CHART RESULT:", code, score, memo)
     return {
         "score": score,
         "memo": ", ".join(memo),
