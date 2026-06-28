@@ -14,14 +14,17 @@ def to_float(value):
 
 
 def get_price_history(code):
-    """
-    네이버 모바일 차트 API에서 최근 일봉 데이터를 가져온다.
-    실패하면 빈 리스트 반환.
-    """
+    from datetime import datetime, timedelta
+
+    end = datetime.now()
+    start = end - timedelta(days=400)
+
+    start_date = start.strftime("%Y%m%d")
+    end_date = end.strftime("%Y%m%d")
 
     urls = [
-        f"https://m.stock.naver.com/api/stock/{code}/chart/day?periodType=dayCandle",
-        f"https://api.stock.naver.com/chart/domestic/item/{code}/day?periodType=dayCandle"
+        f"https://api.stock.naver.com/chart/domestic/item/{code}/day?startDateTime={start_date}&endDateTime={end_date}",
+        f"https://m.stock.naver.com/api/stock/{code}/chart/day?startDateTime={start_date}&endDateTime={end_date}"
     ]
 
     for url in urls:
@@ -33,9 +36,6 @@ def get_price_history(code):
             )
 
             data = res.json()
-            print("CHART URL:", url)
-            print("CHART TYPE:", type(data))
-            print("CHART SAMPLE:", str(data)[:1000])
 
             if isinstance(data, dict):
                 raw = data.get("priceInfos") or data.get("data") or []
@@ -79,14 +79,15 @@ def get_price_history(code):
                         "volume": volume
                     })
 
+            print("CHART COUNT:", code, len(prices))
+
             if prices:
                 return prices[-260:]
 
-        except:
-            pass
+        except Exception as e:
+            print("CHART ERROR:", code, e)
 
     return []
-
 
 def moving_average(values, days):
     if len(values) < days:
