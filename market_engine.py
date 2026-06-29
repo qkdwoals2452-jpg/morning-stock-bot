@@ -30,7 +30,7 @@ def get_naver_market(code):
         )
 
         data = res.json()
-
+        print("MARKET DATA:", code, data)
         return {
             "change_rate": to_float(data.get("fluctuationsRatio")),
             "volume": to_int(data.get("accumulatedTradingVolume")),
