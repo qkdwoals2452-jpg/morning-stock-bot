@@ -21,29 +21,76 @@ def to_int(value):
 
 def get_naver_market(code):
     try:
-        url = f"https://m.stock.naver.com/api/stock/{code}/basic"
+        # 1) 기본정보: 등락률
+        basic_url = f"https://m.stock.naver.com/api/stock/{code}/basic"
 
-        res = requests.get(
-            url,
+        basic_res = requests.get(
+            basic_url,
             headers=HEADERS,
             timeout=5
         )
 
-        data = res.json()
-        print("MARKET DATA:", code, data)
+        basic = basic_res.json()
+
+        change_rate = to_float(
+            basic.get("fluctuationsRatio")
+        )
+
+        # 2) 차트 API: 거래량
+        chart_url = f"https://api.stock.naver.com/chart/domestic/item/{code}/day?periodType=dayCandle"
+
+        chart_res = requests.get(
+            chart_url,
+            headers=HEADERS,
+            timeout=5
+        )
+
+        chart_data = chart_res.json()
+
+        volume = None
+        close_price = None
+
+        if isinstance(chart_data, list) and len(chart_data) > 0:
+            latest = chart_data[0]
+
+            volume = to_int(
+                latest.get("accumulatedTradingVolume")
+            )
+
+            close_price = to_float(
+                latest.get("closePrice")
+            )
+
+        trading_value = None
+
+        if volume is not None and close_price is not None:
+            trading_value = int(volume * close_price)
+
+        print(
+            "MARKET VALUE:",
+            code,
+            "change:",
+            change_rate,
+            "volume:",
+            volume,
+            "trading_value:",
+            trading_value
+        )
+
         return {
-            "change_rate": to_float(data.get("fluctuationsRatio")),
-            "volume": to_int(data.get("accumulatedTradingVolume")),
-            "trading_value": to_int(data.get("accumulatedTradingValue")),
+            "change_rate": change_rate,
+            "volume": volume,
+            "trading_value": trading_value
         }
 
-    except:
+    except Exception as e:
+        print("MARKET ERROR:", code, e)
+
         return {
             "change_rate": None,
             "volume": None,
-            "trading_value": None,
+            "trading_value": None
         }
-
 
 def get_market_score(stock):
     code = stock["code"]
