@@ -153,21 +153,23 @@ def get_dart_finance(stock_code):
 
             if amount is None:
                 amount = 0
+      
+            if (
+                name in [
+                    "매출액",
+                    "매출",
+                    "영업수익",
+                    "영업수익(매출액)"
+                ]
+                or account_id in [
+                    "ifrs-full_Revenue",
+                    "ifrs-full_GrossRevenue",
+                    "ifrs-full_RevenueFromContractsWithCustomers"
+                ]
+            ):
 
-            if name in [
-                "매출액",
-                "영업수익",
-                "수익(매출액)",
-                "매출",
-                "영업수익(매출액)"
-
-            ] or "Revenue" in account_id:
-
-
-                sales = max(
-                    sales,
-                    amount
-                )
+                if amount > sales:
+                    sales = amount
 
             elif name in ["영업이익", "영업이익(손실)"] or "OperatingIncomeLoss" in account_id:
                 op = amount
@@ -177,7 +179,8 @@ def get_dart_finance(stock_code):
 
             elif name == "부채총계":
                 debt = amount
-
+        print("SALES:", sales, "OP:", op)
+        
         op_margin = None
         debt_ratio = None
 
