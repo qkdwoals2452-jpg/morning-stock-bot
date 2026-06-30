@@ -97,7 +97,14 @@ def run():
 
             if company["score"] > 0:
                 result["reason"].append(company["memo"])
+            # 시장 점수
 
+            result["final_score"] += market["score"]
+            result["market"] = market
+
+            if market["score"] != 0:
+                result["reason"].append(market["memo"])
+                
             # 차트 점수
             result["final_score"] += chart["score"]
             result["chart"] = chart
