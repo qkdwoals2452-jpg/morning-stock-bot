@@ -18,34 +18,34 @@ def make_final_score(
     theme_score,
     relation_score,
     finance_score,
-    market_score
+    market_score,
+    company_score,
+    chart_score,
+    learning_score
 ):
 
     score = 0
 
-    # ------------------
-    # 미국/국내 뉴스
-    # ------------------
-
+    # 뉴스
     score += theme_score
 
-    # ------------------
     # 관련도
-    # ------------------
-
     score += relation_score * 3
 
-    # ------------------
     # 재무
-    # ------------------
-
     score += finance_score
 
-    # ------------------
-    # 시장반응
-    # ------------------
-
+    # 시장
     score += market_score
+
+    # 사업내용
+    score += min(company_score, 20)
+
+    # 차트
+    score += chart_score
+
+    # 과거학습
+    score += learning_score
 
     return score
 
@@ -121,7 +121,10 @@ def make_stock_result(
         theme_score=theme_score,
         relation_score=stock["relation_score"],
         finance_score=safe_score(finance),
-        market_score=safe_score(market)
+        market_score=safe_score(market),
+        company_score=safe_score(company),
+        chart_score=safe_score(chart),
+        learning_score=safe_score(learning)
     )
 
     return {
