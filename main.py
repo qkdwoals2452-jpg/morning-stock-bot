@@ -117,45 +117,12 @@ def run():
                 theme_score=theme["score"],
                 finance=finance,
                 market=market
+                verify=verify,
+                company=company,
+                chart=chart,
+                learning=learning
             )
-            result["verify"] = verify
-            if verify["score"] >= 90:
-
-                result["final_score"] += 20
-
-                result["reason"].append("사업내용 검증 우수")
-
-            elif verify["score"] >= 70:
-
-                result["final_score"] += 10
-
-                result["reason"].append("사업내용 검증 통과")
-            # 사업내용 점수
-            result["final_score"] += min(company["score"], 20)
-            result["company"] = company
-
-            if company["score"] > 0:
-                result["reason"].append(company["memo"])
             
-            # 차트 점수
-            result["final_score"] += chart["score"]
-            result["chart"] = chart
-
-            if chart["score"] != 0:
-                result["reason"].append(chart["memo"])
-
-            # 과거 학습 점수
-            result["final_score"] += learning["score"]
-            result["learning"] = learning
-
-            if learning["score"] != 0:
-                result["reason"].append(learning["memo"])
-
-            # 최종 등급 재계산
-            result["grade"] = make_grade(
-                result["final_score"]
-            )
-
             ranked.append(result)
 
         ranked = sort_results(ranked)
