@@ -122,9 +122,8 @@ def make_stock_result(
         relation_score=stock["relation_score"],
         finance_score=safe_score(finance),
         market_score=safe_score(market),
-        company_score=safe_score(company),
-        chart_score=safe_score(chart),
-        learning_score=safe_score(learning)
+        
+        
     )
 
     return {
