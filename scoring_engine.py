@@ -19,43 +19,29 @@ def make_final_score(
     relation_score,
     finance_score,
     market_score,
+    verify_score=0,
+    company_score=0,
+    chart_score=0,
+    learning_score=0
 ):
 
     score = 0
 
     score += theme_score
-
     score += relation_score * 3
-
     score += finance_score
-
     score += market_score
 
-    return score
+    if verify_score >= 90:
+        score += 20
+    elif verify_score >= 70:
+        score += 10
 
-    # 뉴스
-    score += theme_score
-
-    # 관련도
-    score += relation_score * 3
-
-    # 재무
-    score += finance_score
-
-    # 시장
-    score += market_score
-
-    # 사업내용
     score += min(company_score, 20)
-
-    # 차트
     score += chart_score
-
-    # 과거학습
     score += learning_score
 
     return score
-
 
 def make_grade(score):
 
@@ -121,43 +107,66 @@ def make_stock_result(
     stock,
     theme_score,
     finance,
-    market
+    market,
+    verify=None,
+    company=None,
+    chart=None,
+    learning=None
 ):
+
+    verify = verify or {}
+    company = company or {}
+    chart = chart or {}
+    learning = learning or {}
 
     final_score = make_final_score(
         theme_score=theme_score,
         relation_score=stock["relation_score"],
         finance_score=safe_score(finance),
         market_score=safe_score(market),
-        
-        
+        verify_score=safe_score(verify),
+        company_score=safe_score(company),
+        chart_score=safe_score(chart),
+        learning_score=safe_score(learning)
     )
+
+    reason = make_reason(
+        theme_score,
+        stock["relation_score"],
+        finance,
+        market
+    )
+
+    if verify.get("score", 0) >= 90:
+        reason.append("사업내용 검증 우수")
+    elif verify.get("score", 0) >= 70:
+        reason.append("사업내용 검증 통과")
+
+    if company.get("score", 0) > 0:
+        reason.append(company.get("memo", ""))
+
+    if chart.get("score", 0) != 0:
+        reason.append(chart.get("memo", ""))
+
+    if learning.get("score", 0) != 0:
+        reason.append(learning.get("memo", ""))
 
     return {
         "name": stock["name"],
         "code": stock["code"],
         "sector": stock.get("sector", ""),
-
         "theme_score": theme_score,
         "relation_score": stock["relation_score"],
-
         "finance": finance,
         "market": market,
-
+        "verify": verify,
+        "company": company,
+        "chart": chart,
+        "learning": learning,
         "final_score": final_score,
-
-        "grade": make_grade(
-            final_score
-        ),
-
-        "reason": make_reason(
-            theme_score,
-            stock["relation_score"],
-            finance,
-            market
-        )
+        "grade": make_grade(final_score),
+        "reason": reason
     }
-
 
 def sort_results(results):
 
