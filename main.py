@@ -73,6 +73,45 @@ def run():
             print("finance:", finance)
             print("market:", market)
             print("chart:", chart)
+            # 추천 제외 필터
+
+            if finance.get("exclude") == True:
+
+                print("제외:", stock["name"], finance.get("exclude_reason"))
+
+                continue
+
+            if chart.get("details", {}).get("high_52w_gap") is not None:
+
+                if chart["details"]["high_52w_gap"] <= -60:
+
+                    print("제외:", stock["name"], "52주 고점 대비 -60% 이하")
+
+                    continue
+
+            if chart.get("details", {}).get("ma120") is not None:
+
+                current = chart["details"].get("current")
+
+                ma120 = chart["details"].get("ma120")
+
+                if current is not None and current < ma120:
+
+                    print("제외:", stock["name"], "120일선 아래")
+
+                    continue
+
+            if market.get("trading_value") is None:
+
+                print("제외:", stock["name"], "거래대금 없음")
+
+                continue
+
+            if market["trading_value"] < 30_0000_0000:
+
+                print("제외:", stock["name"], "거래대금 30억 미만")
+
+                continue
             result = make_stock_result(
                 stock=stock,
                 theme_score=theme["score"],
