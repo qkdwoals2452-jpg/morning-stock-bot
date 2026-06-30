@@ -116,7 +116,7 @@ def run():
                 stock=stock,
                 theme_score=theme["score"],
                 finance=finance,
-                market=market
+                market=market,
                 verify=verify,
                 company=company,
                 chart=chart,
