@@ -19,12 +19,19 @@ def make_final_score(
     relation_score,
     finance_score,
     market_score,
-    company_score,
-    chart_score,
-    learning_score
 ):
 
     score = 0
+
+    score += theme_score
+
+    score += relation_score * 3
+
+    score += finance_score
+
+    score += market_score
+
+    return score
 
     # 뉴스
     score += theme_score
