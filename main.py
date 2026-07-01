@@ -81,9 +81,7 @@ def run():
 
                 continue
 
-            if company.get("business_score", 0) < 40:
-                print("제외:", stock["name"], "사업내용 약함")
-                continue
+            
 
             if chart.get("details", {}).get("high_52w_gap") is not None:
 
