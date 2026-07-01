@@ -56,73 +56,118 @@ def count_matches(text, words):
     return score, list(set(matched))
 
 
+def count_matches(text, words, point=3, limit=30):
+    score = 0
+    matched = []
+
+    text_low = text.lower()
+
+    for word in words:
+        if not word:
+            continue
+
+        if word.lower() in text_low:
+            score += point
+            matched.append(word)
+
+    return min(score, limit), list(set(matched))
+
+
 def get_company_match_score(stock, theme_words):
     if len(stock["code"]) != 6 or not stock["code"].isdigit():
-        return {"score": 0, "memo": "비상장/코드오류 제외", "matched": {}}
-        
+        return {
+            "score": 0,
+            "memo": "비상장/코드오류 제외",
+            "business_score": 0,
+            "customer_score": 0,
+            "supply_score": 0,
+            "capex_score": 0,
+            "investment_score": 0,
+            "matched": {}
+        }
+
     stock_name = stock["name"]
     sector = stock.get("sector", "")
 
     company_text = sector + " " + collect_company_text(stock_name)
 
+    core_keywords = list(set(theme_words + [
+        "AI", "인공지능", "데이터센터", "HBM", "반도체",
+        "GPU", "서버", "패키징", "메모리", "전력",
+        "전력기기", "변압기", "냉각", "ESS"
+    ]))
+
     business_score, business_matched = count_matches(
         company_text,
-        theme_words
+        core_keywords,
+        point=6,
+        limit=60
     )
 
     customer_keywords = [
-        "고객", "납품", "공급", "수주", "계약", "북미", "미국",
-        "Microsoft", "Amazon", "Google", "Meta", "Nvidia", "Tesla",
-        "SpaceX", "OpenAI"
+        "고객", "납품", "공급", "수주", "계약",
+        "Nvidia", "엔비디아", "Microsoft", "Amazon",
+        "Google", "Meta", "Tesla", "OpenAI", "SpaceX"
     ]
 
     customer_score, customer_matched = count_matches(
         company_text,
-        customer_keywords
+        customer_keywords,
+        point=4,
+        limit=20
     )
 
     supply_keywords = [
         "공급망", "부품", "소재", "장비", "협력사", "벤더",
-        "변압기", "전선", "전력기기", "반도체", "기판", "냉각",
-        "배터리", "동박", "방산", "우주항공"
+        "패키징", "기판", "냉각", "전력기기", "변압기",
+        "반도체", "배터리"
     ]
 
     supply_score, supply_matched = count_matches(
         company_text,
-        supply_keywords
+        supply_keywords,
+        point=3,
+        limit=15
     )
 
     capex_keywords = [
-        "증설", "공장", "투자", "CAPEX", "생산능력", "신규라인",
-        "북미공장", "미국공장"
+        "증설", "공장", "투자", "CAPEX", "생산능력",
+        "신규라인", "북미공장", "미국공장"
     ]
 
     capex_score, capex_matched = count_matches(
         company_text,
-        capex_keywords
+        capex_keywords,
+        point=3,
+        limit=10
     )
 
     investment_keywords = [
-        "지분", "투자", "출자", "관계사", "자회사", "비상장",
-        "IPO", "SpaceX", "OpenAI", "xAI", "Anthropic", "Starlink"
+        "지분", "투자", "출자", "관계사", "자회사",
+        "비상장", "IPO", "SpaceX", "OpenAI", "xAI",
+        "Anthropic", "Starlink"
     ]
 
     investment_score, investment_matched = count_matches(
         company_text,
-        investment_keywords
+        investment_keywords,
+        point=3,
+        limit=10
     )
 
-    # 1차 수정: 오탐 제거
-    # 고객/공급/투자/증설 단어는 네이버 검색 결과에 너무 쉽게 섞이므로
-    # 아직 점수에 반영하지 않는다.
-    total_score = business_score
-    
+    total_score = (
+        business_score
+        + customer_score
+        + supply_score
+        + capex_score
+        + investment_score
+    )
 
-    if total_score >= 60:
-        memo = "사업내용 키워드 일치"
-    elif total_score >= 35:
+    if total_score >= 70:
+        memo = "사업내용 강한 일치"
+    elif total_score >= 45:
         memo = "사업내용 일부 일치"
-    elif total_score > 0:
+    elif total_score >= 20:
         memo = "사업내용 약한 일치"
     else:
         memo = "기업카드 매칭 약함"
@@ -136,10 +181,10 @@ def get_company_match_score(stock, theme_words):
         "capex_score": capex_score,
         "investment_score": investment_score,
         "matched": {
-            "business": business_matched[:5],
+            "business": business_matched[:8],
             "customer": customer_matched[:5],
             "supply": supply_matched[:5],
             "capex": capex_matched[:5],
-            "investment": investment_matched[:5],
+            "investment": investment_matched[:5]
         }
     }
