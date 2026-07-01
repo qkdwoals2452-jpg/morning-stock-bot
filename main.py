@@ -105,7 +105,7 @@ def run():
 
                 print("제외:", stock["name"], "거래대금 없음")
 
-                continue
+                
 
             if market["trading_value"] < 30_0000_0000:
 
