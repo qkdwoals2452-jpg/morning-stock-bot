@@ -21,70 +21,59 @@ def to_int(value):
 
 def get_naver_market(code):
     try:
-        # 1) 기본정보: 등락률
-        basic_url = f"https://m.stock.naver.com/api/stock/{code}/basic"
+        url = "http://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
 
-        basic_res = requests.get(
-            basic_url,
+        data = {
+            "bld": "dbms/MDC/STAT/standard/MDCSTAT01501",
+            "mktId": "ALL",
+            "trdDd": "",
+            "share": "1",
+            "money": "1",
+            "csvxls_isNo": "false"
+        }
+
+        res = requests.post(
+            url,
             headers=HEADERS,
-            timeout=5
+            data=data,
+            timeout=10
         )
 
-        basic = basic_res.json()
+        rows = res.json().get("OutBlock_1", [])
 
-        change_rate = to_float(
-            basic.get("fluctuationsRatio")
-        )
+        code = str(code).zfill(6)
 
-        # 2) 차트 API: 거래량
-        chart_url = f"https://api.stock.naver.com/chart/domestic/item/{code}/day?periodType=dayCandle"
+        for row in rows:
+            if row.get("ISU_SRT_CD") == code:
+                change_rate = to_float(row.get("FLUC_RT"))
+                volume = to_int(row.get("ACC_TRDVOL"))
+                trading_value = to_int(row.get("ACC_TRDVAL"))
 
-        chart_res = requests.get(
-            chart_url,
-            headers=HEADERS,
-            timeout=5
-        )
+                print(
+                    "KRX MARKET:",
+                    code,
+                    "change:",
+                    change_rate,
+                    "volume:",
+                    volume,
+                    "trading_value:",
+                    trading_value
+                )
 
-        chart_data = chart_res.json()
-
-        volume = None
-        close_price = None
-
-        if isinstance(chart_data, list) and len(chart_data) > 0:
-            latest = chart_data[0]
-
-            volume = to_int(
-                latest.get("accumulatedTradingVolume")
-            )
-
-            close_price = to_float(
-                latest.get("closePrice")
-            )
-
-        trading_value = None
-
-        if volume is not None and close_price is not None:
-            trading_value = int(volume * close_price)
-
-        print(
-            "MARKET VALUE:",
-            code,
-            "change:",
-            change_rate,
-            "volume:",
-            volume,
-            "trading_value:",
-            trading_value
-        )
+                return {
+                    "change_rate": change_rate,
+                    "volume": volume,
+                    "trading_value": trading_value
+                }
 
         return {
-            "change_rate": change_rate,
-            "volume": volume,
-            "trading_value": trading_value
+            "change_rate": None,
+            "volume": None,
+            "trading_value": None
         }
 
     except Exception as e:
-        print("MARKET ERROR:", code, e)
+        print("KRX MARKET ERROR:", code, e)
 
         return {
             "change_rate": None,
