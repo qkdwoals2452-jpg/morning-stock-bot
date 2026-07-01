@@ -102,16 +102,11 @@ def run():
                     continue
 
             if market.get("trading_value") is None:
-
-                print("제외:", stock["name"], "거래대금 없음")
-
-                
-
-            if market["trading_value"] < 30_0000_0000:
-
-                print("제외:", stock["name"], "거래대금 30억 미만")
-
-                continue
+                print("거래대금 없음:", stock["name"])
+            else:
+                if market["trading_value"] < 30_0000_0000:
+                    print("제외:", stock["name"], "거래대금 30억 미만")
+                    continue
             result = make_stock_result(
                 stock=stock,
                 theme_score=theme["score"],
