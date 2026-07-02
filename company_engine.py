@@ -194,5 +194,8 @@ def get_company_match_score(stock, theme_words):
             "supply": supply_matched[:5],
             "capex": capex_matched[:5],
             "investment": investment_matched[:5]
-        }
+        },
+        "exclude": exclude,
+
+        "exclude_reason": exclude_reason
     }
