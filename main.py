@@ -133,8 +133,7 @@ def run():
                 result["final_score"] -= 40
                 result["reason"].append("대형주/지주사는 방향 확인용")
             ranked.append(result)
-
-    ranked = sort_results(ranked)
+        ranked = sort_results(ranked)
 
         if not ranked:
             continue
