@@ -162,7 +162,15 @@ def get_company_match_score(stock, theme_words):
         + capex_score
         + investment_score
     )
+    exclude = False
 
+    exclude_reason = ""
+
+    if total_score < 45:
+
+    exclude = True
+
+    exclude_reason = "사업내용 매칭 약함"
     if total_score >= 70:
         memo = "사업내용 강한 일치"
     elif total_score >= 45:
