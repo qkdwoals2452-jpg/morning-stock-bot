@@ -121,10 +121,20 @@ def run():
                 chart=chart,
                 learning=learning
             )
-            
+            # 대형주/지주사는 TOP 추천에서 감점
+            mega_caps = [
+                "삼성전자",
+                "SK하이닉스",
+                "SK",
+                "SK스퀘어"
+            ]
+
+            if stock["name"] in mega_caps:
+                result["final_score"] -= 40
+                result["reason"].append("대형주/지주사는 방향 확인용")
             ranked.append(result)
 
-        ranked = sort_results(ranked)
+    ranked = sort_results(ranked)
 
         if not ranked:
             continue
