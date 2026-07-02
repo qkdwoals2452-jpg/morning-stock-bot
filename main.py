@@ -80,7 +80,9 @@ def run():
                 print("제외:", stock["name"], finance.get("exclude_reason"))
 
                 continue
-
+            if company.get("exclude") == True:
+                print("제외:", stock["name"], company.get("exclude_reason"))
+                continue
             
 
             if chart.get("details", {}).get("high_52w_gap") is not None:
