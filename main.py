@@ -130,8 +130,12 @@ def run():
             ]
 
             if stock["name"] in mega_caps:
-                result["final_score"] -= 40
-                result["reason"].append("대형주/지주사는 방향 확인용")
+                
+
+                print("참고용:", stock["name"], "대형주/지주사")
+
+                 
+                continue
             ranked.append(result)
         ranked = sort_results(ranked)
 
