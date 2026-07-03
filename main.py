@@ -162,7 +162,7 @@ def run():
             )
 
     save_today_result(final_results)
-
+    save_recommendations(final_results)
     project_status = get_project_status()
 
     send_telegram(
