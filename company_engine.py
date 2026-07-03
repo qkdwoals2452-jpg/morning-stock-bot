@@ -166,7 +166,7 @@ def get_company_match_score(stock, theme_words):
 
     exclude_reason = ""
 
-    if total_score < 45:
+    if total_score < 35:
 
         exclude = True
 
