@@ -164,6 +164,7 @@ def run():
 
     save_today_result(final_results)
     save_recommendations(final_results)
+    update_backtest_prices(stocks)
     project_status = get_project_status()
 
     send_telegram(
