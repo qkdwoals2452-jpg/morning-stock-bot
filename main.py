@@ -11,7 +11,7 @@ from market_engine import get_market_score
 from chart_engine import get_chart_score
 from scoring_engine import make_stock_result, sort_results, make_grade
 from memory_engine import save_today_result, get_project_status
-from backtest_engine import save_recommendations
+from backtest_engine import save_recommendations, update_backtest_prices
 from memory_learning_engine import get_learning_score, save_prediction
 from telegram_bot import send_telegram
 
@@ -22,7 +22,7 @@ def run():
         build_corp_db
 
     stocks = load_korean_stocks()
-    
+    update_backtest_prices(stocks)
     news = get_all_news()
     themes = extract_themes(news)
 
