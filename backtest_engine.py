@@ -91,3 +91,49 @@ def save_recommendations(final_results):
     save_backtest(data)
 
     print("백테스트 저장 완료:", len(data))
+def update_backtest_prices(stocks):
+    data = load_backtest()
+
+    if not data:
+        print("백테스트 업데이트 대상 없음")
+        return
+
+    price_map = {}
+
+    for stock in stocks:
+        code = str(stock.get("code", "")).zfill(6)
+        price = stock.get("price") or stock.get("close") or stock.get("current")
+
+        if price is not None:
+            price_map[code] = price
+
+    updated = 0
+
+    for item in data:
+        code = str(item.get("code", "")).zfill(6)
+        start_price = item.get("start_price")
+        current_price = price_map.get(code)
+
+        if start_price is None or current_price is None:
+            continue
+
+        try:
+            start_price = float(start_price)
+            current_price = float(current_price)
+
+            if start_price <= 0:
+                continue
+
+            rate = round((current_price - start_price) / start_price * 100, 2)
+
+            item["current_price"] = current_price
+            item["current_return"] = rate
+
+            updated += 1
+
+        except:
+            continue
+
+    save_backtest(data)
+
+    print("백테스트 가격 업데이트 완료:", updated)
