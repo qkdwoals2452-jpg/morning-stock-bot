@@ -66,7 +66,33 @@ def run():
             chart = get_chart_score(stock)
             learning = get_learning_score(stock["name"])
             company = get_company_match_score(stock, theme_words)
-            
+            # AI 업종 필터
+
+            if theme["name"] == "AI":
+
+                text = (
+
+                      str(company.get("matched", {})) +
+
+                      stock.get("name", "")
+
+                )
+
+                allow_words = [
+
+                    "반도체", "HBM", "AI", "서버", "GPU",
+
+                    "데이터센터", "메모리", "전력",
+
+                    "네트워크", "보안", "장비"
+
+                ]
+
+                if not any(word in text for word in allow_words):
+
+                    print("제외:", stock["name"], "AI 업종 부적합")
+
+                    continue
             print("==========")
             print(stock["name"])
             print("verify:", verify)
