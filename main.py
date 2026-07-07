@@ -1,5 +1,6 @@
 import os
 import build_corp_db
+from sector_filter_engine import pass_theme_sector_filter
 from company_verify_engine import verify_company_theme
 from config import *
 from news_engine import get_all_news
