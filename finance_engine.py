@@ -9,7 +9,7 @@ corp_map = dict(zip(
     corp_df["corp_code"]
 ))
 from config import DART_API_KEY
-
+from quality_engine import get_quality_score
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
 }
@@ -221,7 +221,7 @@ def get_finance_score(stock):
 
     basic = get_naver_basic(code)
     dart = get_dart_finance(code)
-
+    quality = get_quality_score(stock)
     score = 0
 
     memo = []
@@ -292,6 +292,11 @@ def get_finance_score(stock):
         else:
             score -= 10
             memo.append("부채 높음")
+        # Champion Score 반영
+        if quality.get("score", 0) > 0:
+            quality_bonus = int(quality["score"] * 0.3)
+            score += quality_bonus
+            memo.append(f"Champion {quality['score']}점")
 
     exclude = False
     exclude_reason = ""
@@ -315,6 +320,7 @@ def get_finance_score(stock):
         "pbr": pbr,
         "op_margin": op_margin,
         "debt_ratio": debt_ratio,
+        "quality": quality,
         "exclude": exclude,
         "exclude_reason": exclude_reason
     }
