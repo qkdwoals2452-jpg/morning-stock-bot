@@ -1,5 +1,6 @@
 import os
 import build_corp_db
+from news_quality_engine import filter_core_news
 from sector_filter_engine import pass_theme_sector_filter
 from company_verify_engine import verify_company_theme
 from config import *
@@ -25,6 +26,11 @@ def run():
     stocks = load_korean_stocks()
     update_backtest_prices(stocks)
     news = get_all_news()
+    print("전체 뉴스 수:", len(news))
+
+    news = filter_core_news(news)
+
+    print("핵심 뉴스 수:", len(news))
     themes = extract_themes(news)
 
     print("뉴스 개수:", len(news))
