@@ -1,3 +1,4 @@
+import html
 import requests
 import time
 
@@ -16,8 +17,13 @@ def send_message(message):
     )
 
     data = {
+
         "chat_id": TELEGRAM_CHAT_ID,
+
         "text": message,
+
+        "parse_mode": "HTML",
+
         "disable_web_page_preview": True
     }
 
@@ -163,10 +169,39 @@ def send_telegram(
             else:
                 flag = "🇰🇷"
 
-            msg += (
-                f"{flag} "
-                f"{article['title']}\n"
+            title = html.escape(
+
+                article.get("title", "")
+
             )
+
+            link = article.get(
+
+                "link",
+
+                ""
+
+            )
+
+            if link:
+
+                msg += (
+
+                    f'{flag} '
+
+                    f'<a href="{link}">{title}</a>\n'
+
+                )
+
+             else:
+
+                 msg += (
+
+                     f"{flag} "
+
+                     f"{title}\n"
+
+                 )
 
         msg += (
             "\n━━━━━━━━━━━━━━\n\n"
