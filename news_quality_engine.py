@@ -50,7 +50,7 @@ def score_news_quality(article):
     return {
         "score": score,
         "reason": reason,
-        "is_core": score >= 50
+        "is_core": score >= 20
     }
 
 
