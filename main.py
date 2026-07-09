@@ -31,6 +31,13 @@ def run():
     news = filter_core_news(news)
 
     print("핵심 뉴스 수:", len(news))
+    print("핵심 뉴스 TOP:")
+    for article in news[:10]:
+        print(
+            article.get("market", ""),
+            article.get("quality_score", 0),
+            article.get("title", "")
+        )
     themes = extract_themes(news)
 
     print("뉴스 개수:", len(news))
