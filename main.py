@@ -31,7 +31,7 @@ def run():
     news = filter_core_news(news)
 
     print("핵심 뉴스 수:", len(news))
-    print("핵심 뉴스 TOP:")
+    print("\n===== 핵심 뉴스 TOP10 =====")
     for article in news[:10]:
         print(
             article.get("market", ""),
