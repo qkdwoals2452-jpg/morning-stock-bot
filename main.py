@@ -32,33 +32,33 @@ def run():
 
     events = build_events(news)
 
-   print("생성된 사건 수:", len(events))
+    print("생성된 사건 수:", len(events))
 
-   print("\n===== 핵심 사건 TOP10 =====")
+    print("\n===== 핵심 사건 TOP10 =====")
 
-  for event in events[:10]:
+    for event in events[:10]:
 
-      print(
+        print(
 
-          event.get("event_grade", ""),
+            event.get("event_grade", ""),
 
-          event.get("event_score", 0),
+            event.get("event_score", 0),
 
-          event.get("event_title", "")
+            event.get("event_title", "")
 
-      )
+        )
 
-      print(
+        print(
 
-           "출처 수:",
+            "출처 수:",
 
-           event.get("source_count", 0),
+            event.get("source_count", 0),
 
-           "| 돈의 흐름:",
+            "| 돈의 흐름:",
 
-           event.get("money_flow", [])
+            event.get("money_flow", [])
 
-      )
+        )
 
     # 기존 시스템은 아직 유지
     news = filter_core_news(news)
