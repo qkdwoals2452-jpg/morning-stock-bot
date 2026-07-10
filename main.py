@@ -1,6 +1,7 @@
 import os
 import build_corp_db
 from news_quality_engine import filter_core_news
+from event_engine import build_events
 from sector_filter_engine import pass_theme_sector_filter
 from company_verify_engine import verify_company_theme
 from config import *
@@ -27,7 +28,39 @@ def run():
     update_backtest_prices(stocks)
     news = get_all_news()
     print("전체 뉴스 수:", len(news))
+    # Event Engine 테스트
 
+    events = build_events(news)
+
+   print("생성된 사건 수:", len(events))
+
+   print("\n===== 핵심 사건 TOP10 =====")
+
+  for event in events[:10]:
+
+      print(
+
+          event.get("event_grade", ""),
+
+          event.get("event_score", 0),
+
+          event.get("event_title", "")
+
+      )
+
+      print(
+
+           "출처 수:",
+
+           event.get("source_count", 0),
+
+           "| 돈의 흐름:",
+
+           event.get("money_flow", [])
+
+      )
+
+    # 기존 시스템은 아직 유지
     news = filter_core_news(news)
 
     print("핵심 뉴스 수:", len(news))
