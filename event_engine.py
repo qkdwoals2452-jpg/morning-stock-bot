@@ -16,16 +16,73 @@ IMPORTANT_KEYWORDS = [
     "금리", "연준", "관세", "수출규제"
 ]
 
-
 BLOCK_KEYWORDS = [
-    "should investors care", "top stocks", "stocks to buy",
-    "watchlist", "preview", "opinion", "column",
-    "billionaire", "why shares",
+    # 투자 권유·목록형 기사
+    "should investors care",
+    "stocks to buy",
+    "top stocks",
+    "best stocks",
+    "watchlist",
+    "stock picks",
 
-    "포럼", "세미나", "간담회", "출범",
-    "기념식", "토론회", "칼럼", "루머"
+    # 비교·해설·의견 기사
+    " vs. ",
+    " vs ",
+    "versus",
+    "comparison",
+    "what revenue growth",
+    "what investors need to know",
+    "for investors",
+    "opinion",
+    "column",
+    "preview",
+    "why shares",
+    "billionaire",
+    "analyst says",
+
+    # 한국 저품질 기사
+    "포럼",
+    "세미나",
+    "간담회",
+    "출범",
+    "기념식",
+    "토론회",
+    "칼럼",
+    "루머",
+    "추천주",
+    "주목할 종목",
 ]
 
+STRONG_EVENT_RULES = {
+    # 실제 계약·수주
+    "long-term supply agreement": 50,
+    "long-term contract": 50,
+    "supply agreement": 40,
+    "supply contract": 40,
+    "wins contract": 40,
+
+    # 실제 투자·증설
+    "to invest": 40,
+    "will invest": 40,
+    "investment of": 35,
+    "capital spending": 35,
+    "capex": 35,
+    "new factory": 35,
+    "new plant": 35,
+    "expand production": 35,
+
+    # 한국어
+    "장기 공급 계약": 50,
+    "장기 공급계약": 50,
+    "공급 계약": 40,
+    "공급계약": 40,
+    "대규모 수주": 40,
+    "투자 확대": 35,
+    "공장 투자": 35,
+    "공장 증설": 35,
+    "생산 확대": 35,
+    "양산 시작": 35,
+}
 
 def normalize_title(title):
     title = title.lower()
@@ -51,7 +108,6 @@ def is_block_news(article):
 
     return False, ""
 
-
 def calc_event_score(article):
     title = article.get("title", "").lower()
     market = article.get("market", "")
@@ -59,24 +115,38 @@ def calc_event_score(article):
     score = 0
     reasons = []
 
+    # 1. 사건이 아닌 기사 먼저 제거
     block, block_word = is_block_news(article)
 
     if block:
         return 0, [f"제외:{block_word}"]
 
-    for word in IMPORTANT_KEYWORDS:
-        if word.lower() in title:
-            score += 15
-            reasons.append(word)
+    # 2. 실제 계약·투자·증설 사건에 강한 점수
+    for phrase, bonus in STRONG_EVENT_RULES.items():
+        if phrase.lower() in title:
+            score += bonus
+            reasons.append(f"강한사건:{phrase}")
 
+    # 3. 일반 중요 키워드 점수
+    matched_words = set()
+
+    for word in IMPORTANT_KEYWORDS:
+        word_lower = word.lower()
+
+        if word_lower in title and word_lower not in matched_words:
+            score += 10
+            reasons.append(word)
+            matched_words.add(word_lower)
+
+    # 4. 미국 원문 사건 가산점
     if market == "US":
         score += 10
         reasons.append("US")
 
-    if score > 100:
-        score = 100
+    score = min(score, 100)
 
     return score, reasons
+
 
 
 def make_event_grade(score):
