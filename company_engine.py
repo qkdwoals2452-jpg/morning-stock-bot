@@ -41,19 +41,7 @@ def collect_company_text(stock_name):
     return text
 
 
-def count_matches(text, words):
-    score = 0
-    matched = []
 
-    for word in words:
-        if not word:
-            continue
-
-        if word in text:
-            score += 3
-            matched.append(word)
-
-    return score, list(set(matched))
 
 
 def count_matches(text, words, point=3, limit=30):
