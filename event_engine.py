@@ -51,6 +51,12 @@ BLOCK_KEYWORDS = [
     "루머",
     "추천주",
     "주목할 종목",
+    # 미국 해설/분석 기사
+    "what it means",
+    "what you need to know",
+    "should investors worry",
+    "investors should be watching",
+    "likely to strengthen",
 ]
 
 STRONG_EVENT_RULES = {
