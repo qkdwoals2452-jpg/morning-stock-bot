@@ -56,7 +56,7 @@ BLOCK_KEYWORDS = [
     "what you need to know",
     "should investors worry",
     "investors should be watching",
-    "likely to strengthen",
+    
 ]
 
 STRONG_EVENT_RULES = {
