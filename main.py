@@ -82,6 +82,7 @@ def run():
     print("실제 분석 테마 수:", len(themes))
     
     for theme in themes:
+        print("테마 확인:", theme["name"], "점수:", theme["score"], "통과기준:", MIN_THEME_SCORE)
         if theme["score"] < MIN_THEME_SCORE:
             continue
 
