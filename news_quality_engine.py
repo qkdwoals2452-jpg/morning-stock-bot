@@ -9,9 +9,9 @@ def score_news_quality(article):
     # 진짜 돈이 움직이는 뉴스
     strong_words = [
         "invest", "investment", "spend", "spending", "capex",
-        "build", "expand", "expansion", "contract", "deal",
+        "build", "expand", "expansion", "contract", 
         "supply", "order", "factory", "plant", "production",
-        "earnings", "revenue", "guidance", "beat", "raise",
+        "revenue", "guidance", "beat", "raise",
         "acquisition", "merger", "partnership",
         "투자", "증설", "수주", "계약", "공급", "공장",
         "양산", "생산", "실적", "매출", "영업이익", "인수", "합병"
