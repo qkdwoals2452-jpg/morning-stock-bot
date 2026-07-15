@@ -77,6 +77,49 @@ STRONG_EVENT_RULES = {
     "new plant": 35,
     "expand production": 35,
 
+        
+    # 양산
+
+    "mass production": 40,
+
+    "commercial production": 40,
+
+    "volume production": 40,
+
+    # 승인
+
+    "approval": 35,
+
+    "FDA approval": 45,
+
+    # 인수
+
+    "acquisition": 45,
+
+    "acquires": 45,
+
+    "acquired": 45,
+
+    "merger": 45,
+
+    # 데이터센터
+
+    "data center": 35,
+
+    "datacenter": 35,
+
+    # AI 투자
+
+    "AI infrastructure": 40,
+
+    "AI investment": 40,
+
+    # 신규 고객
+
+    "new customer": 35,
+
+    "major customer": 35,
+
     # 한국어
     "장기 공급 계약": 50,
     "장기 공급계약": 50,
@@ -88,6 +131,21 @@ STRONG_EVENT_RULES = {
     "공장 증설": 35,
     "생산 확대": 35,
     "양산 시작": 35,
+    "양산": 40,
+
+    "상업 생산": 40,
+
+    "FDA 승인": 45,
+
+    "인수": 45,
+
+    "합병": 45,
+
+    "데이터센터": 35,
+
+    "AI 인프라": 40,
+
+    "신규 고객": 35,
 }
 
 def normalize_title(title):
