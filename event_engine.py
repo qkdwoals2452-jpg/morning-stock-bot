@@ -56,6 +56,41 @@ BLOCK_KEYWORDS = [
     "what you need to know",
     "should investors worry",
     "investors should be watching",
+    "outlook",
+
+    "analysis",
+
+    "commentary",
+
+    "insight",
+
+    "review",
+
+    "summary",
+
+    # 한국 해설/분석 기사
+
+    
+
+    "평가",
+
+    "주목",
+
+    "가능성",
+
+    "분석",
+
+    "의견",
+
+    "진단",
+
+    "해설",
+
+    "브리핑",
+
+    "시황",
+
+    
     
 ]
 
