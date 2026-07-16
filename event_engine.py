@@ -88,7 +88,7 @@ STRONG_EVENT_RULES = {
 
     # 승인
 
-    "approval": 35,
+    
 
     "FDA approval": 45,
 
@@ -104,9 +104,7 @@ STRONG_EVENT_RULES = {
 
     # 데이터센터
 
-    "data center": 35,
-
-    "datacenter": 35,
+    
 
     # AI 투자
 
