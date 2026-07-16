@@ -9,6 +9,42 @@ STOPWORDS = {
     "news", "stock", "stocks", "market", "shares", "company", "earnings",
     "the", "and", "for", "with", "from", "after", "before", "into", "over",
     "this", "that", "are", "was", "will", "has", "have", "says", "new"
+        
+    "계약",
+
+    "공급",
+
+    "공급계약",
+
+    "수주",
+
+    "인수",
+
+    "합병",
+
+    "양산",
+
+    "생산",
+
+    "공장",
+
+    "증설",
+
+    "매출",
+
+    "실적",
+
+    "영업이익",
+
+    "분기",
+
+    "Q1",
+
+    "Q2",
+
+    "Q3",
+
+    "Q4",
 }
 BIG_PLAYERS = {
     "meta": "데이터센터",
