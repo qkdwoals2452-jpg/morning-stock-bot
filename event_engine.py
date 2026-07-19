@@ -89,7 +89,31 @@ BLOCK_KEYWORDS = [
     "브리핑",
 
     "시황",
+    "three reasons",
 
+    "stands to win",
+
+    "week in review",
+
+    "what's moving markets",
+
+    "what is moving markets",
+
+    "stock investors",
+
+    "세가지 이유",
+
+    "세 가지 이유",
+
+    "주가상승 기대",
+
+    "투자 포인트",
+
+    "낙폭 과대주",
+
+    "당분간 관망",
+
+    "[종목+]",
     
     
 ]
