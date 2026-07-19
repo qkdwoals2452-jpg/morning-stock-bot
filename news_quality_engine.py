@@ -8,7 +8,7 @@ def score_news_quality(article):
 
     # 진짜 돈이 움직이는 뉴스
     strong_words = [
-        "invest", "investment", "spend", "spending", "capex",
+        "to invest", "will invest", "invests", "investment of", "investment", "spend", "spending", "capex",
         "build", "expand", "expansion", "contract", 
         "supply", "order", "factory", "plant", "production",
         "revenue", "guidance", "beat", "raise",
