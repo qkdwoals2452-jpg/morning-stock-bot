@@ -76,7 +76,9 @@ def run():
     print("뉴스 개수:", len(news))
     print("테마 개수:", len(themes))
     # print(themes[:5])
+    for t in themes[:10]:
 
+        print("테마순위:", t["name"], t["score"])
     final_results = []
     themes = themes[:TOP_THEME_COUNT]
     print("실제 분석 테마 수:", len(themes))
