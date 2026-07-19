@@ -199,7 +199,7 @@ def extract_themes(news):
                theme_articles.setdefault(theme, []).append(article)
         for phrase, expanded_words in CONCEPT_EXPANSION.items():
             if phrase in lower:
-                score = 6 if article.get("market") == "US" else 3
+                score = 10 if article.get("market") == "US" else 5
 
                 counter[phrase] += score
                 theme_articles.setdefault(phrase, []).append(article)
