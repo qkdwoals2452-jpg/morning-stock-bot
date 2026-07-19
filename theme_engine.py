@@ -8,7 +8,7 @@ STOPWORDS = {
     "속보", "단독", "종합", "마감", "개장", "특징주",
     "news", "stock", "stocks", "market", "shares", "company", "earnings",
     "the", "and", "for", "with", "from", "after", "before", "into", "over",
-    "this", "that", "are", "was", "will", "has", "have", "says", "new"
+    "this", "that", "are", "was", "will", "has", "have", "says", "new",
         
     "계약",
 
