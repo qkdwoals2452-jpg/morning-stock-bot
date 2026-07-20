@@ -1,51 +1,28 @@
 import re
-from industry_map import INDUSTRY_MAP
 from collections import Counter
+
+from industry_map import INDUSTRY_MAP
+
 
 STOPWORDS = {
     "증시", "주가", "상승", "하락", "급등", "급락", "오늘", "국내", "미국",
     "한국", "시장", "투자", "기업", "관련", "기대", "우려", "전망", "기록",
     "속보", "단독", "종합", "마감", "개장", "특징주",
+
+    "계약", "공급", "공급계약", "수주", "인수", "합병",
+    "양산", "생산", "공장", "증설",
+    "매출", "실적", "영업이익", "분기",
+    "지분",
+
     "news", "stock", "stocks", "market", "shares", "company", "earnings",
     "the", "and", "for", "with", "from", "after", "before", "into", "over",
     "this", "that", "are", "was", "will", "has", "have", "says", "new",
-        
-    "계약",
 
-    "공급",
-
-    "공급계약",
-
-    "수주",
-
-    "인수",
-
-    "합병",
-
-    "양산",
-
-    "생산",
-
-    "공장",
-
-    "증설",
-
-    "매출",
-
-    "실적",
-
-    "영업이익",
-
-    "분기",
-
-    "Q1",
-
-    "Q2",
-
-    "Q3",
-
-    "Q4",
+    # 아래에서는 소문자로 비교하므로 소문자로 저장
+    "q1", "q2", "q3", "q4",
 }
+
+
 BIG_PLAYERS = {
     "meta": "데이터센터",
     "microsoft": "데이터센터",
@@ -57,85 +34,245 @@ BIG_PLAYERS = {
     "tesla": "자율주행",
     "spacex": "우주항공",
     "starlink": "위성통신",
-    "openai": "AI"
+    "openai": "AI",
 }
+
+
 CONCEPT_EXPANSION = {
-    "ai": ["AI", "데이터센터", "전력", "반도체", "HBM", "냉각", "서버"],
-    "artificial intelligence": ["AI", "데이터센터", "전력", "반도체", "HBM", "냉각"],
-    "data center": ["데이터센터", "전력", "전력기기", "변압기", "전선", "냉각", "냉각시스템", "ESS", "발전", "원전", "SMR", "배전", "송전"],
-    "data center": ["데이터센터", "전력", "전력기기", "변압기", "전선", "냉각", "냉각시스템", "ESS", "발전", "원전", "SMR", "배전", "송전"],
-    "power demand": ["전력", "전력기기", "변압기", "전선", "원전", "ESS"],
-    "electricity demand": ["전력", "전력기기", "변압기", "전선", "원전", "ESS"],
-    "grid": ["전력망", "전력기기", "변압기", "송전", "배전"],
-    "transformer": ["변압기", "전력기기", "전력망"],
-    "nuclear": ["원전", "SMR", "전력", "발전"],
-    "smr": ["SMR", "원전", "발전"],
-    "gpu": ["GPU", "HBM", "반도체", "패키징", "기판"],
-    "hbm": ["HBM", "반도체", "패키징", "검사장비"],
-    "semiconductor": ["반도체", "HBM", "장비", "소재", "기판"],
-    "robot": ["로봇", "감속기", "센서", "자동화"],
-    "robotics": ["로봇", "감속기", "센서", "자동화"],
-    "defense": ["방산", "미사일", "레이더", "항공우주"],
-    "battery": ["2차전지", "양극재", "음극재", "전해액", "동박"],
-    "copper": ["구리", "전선", "동박", "전력"],
-    "rare earth": ["희토류", "자석", "전기차", "방산"],
-    "autonomous": ["자율주행", "전장", "센서", "ADAS"],
-    "self driving": ["자율주행", "전장", "센서", "ADAS"],
-    "robotaxi": ["자율주행", "전장", "센서", "ADAS", "로보택시"],
-    "cybercab": ["자율주행", "전장", "센서", "ADAS", "로보택시"],
-    "tesla": ["자율주행", "전장", "센서", "ADAS", "로보택시"],
-    "spacex": ["우주항공", "위성", "위성통신", "발사체"],
-    "starlink": ["우주항공", "위성통신", "통신장비"],
-    "satellite": ["우주항공", "위성", "위성통신"],
-    "rocket": ["우주항공", "발사체"],
+    "ai": [
+        "AI", "데이터센터", "전력", "반도체",
+        "HBM", "냉각", "서버",
+    ],
+
+    "artificial intelligence": [
+        "AI", "데이터센터", "전력",
+        "반도체", "HBM", "냉각",
+    ],
+
+    "data center": [
+        "데이터센터", "전력", "전력기기", "변압기",
+        "전선", "냉각", "냉각시스템", "ESS",
+        "발전", "원전", "SMR", "배전", "송전",
+    ],
+
+    "power demand": [
+        "전력", "전력기기", "변압기", "전선", "원전", "ESS",
+    ],
+
+    "electricity demand": [
+        "전력", "전력기기", "변압기", "전선", "원전", "ESS",
+    ],
+
+    "grid": [
+        "전력망", "전력기기", "변압기", "송전", "배전",
+    ],
+
+    "transformer": [
+        "변압기", "전력기기", "전력망",
+    ],
+
+    "nuclear": [
+        "원전", "SMR", "전력", "발전",
+    ],
+
+    "smr": [
+        "SMR", "원전", "발전",
+    ],
+
+    "gpu": [
+        "GPU", "HBM", "반도체", "패키징", "기판",
+    ],
+
+    "hbm": [
+        "HBM", "반도체", "패키징", "검사장비",
+    ],
+
+    "semiconductor": [
+        "반도체", "HBM", "장비", "소재", "기판",
+    ],
+
+    "robot": [
+        "로봇", "감속기", "센서", "자동화",
+    ],
+
+    "robotics": [
+        "로봇", "감속기", "센서", "자동화",
+    ],
+
+    "defense": [
+        "방산", "미사일", "레이더", "항공우주",
+    ],
+
+    "battery": [
+        "2차전지", "양극재", "음극재", "전해액", "동박",
+    ],
+
+    "copper": [
+        "구리", "전선", "동박", "전력",
+    ],
+
+    "rare earth": [
+        "희토류", "자석", "전기차", "방산",
+    ],
+
+    "autonomous": [
+        "자율주행", "전장", "센서", "ADAS",
+    ],
+
+    "self driving": [
+        "자율주행", "전장", "센서", "ADAS",
+    ],
+
+    "robotaxi": [
+        "자율주행", "전장", "센서", "ADAS", "로보택시",
+    ],
+
+    "cybercab": [
+        "자율주행", "전장", "센서", "ADAS", "로보택시",
+    ],
+
+    "tesla": [
+        "자율주행", "전장", "센서", "ADAS", "로보택시",
+    ],
+
+    "spacex": [
+        "우주항공", "위성", "위성통신", "발사체",
+    ],
+
+    "starlink": [
+        "우주항공", "위성통신", "통신장비",
+    ],
+
+    "satellite": [
+        "우주항공", "위성", "위성통신",
+    ],
+
+    "rocket": [
+        "우주항공", "발사체",
+    ],
 }
+
 
 THEME_ARTICLE_KEYWORDS = {
-    "AI": ["ai", "artificial intelligence", "인공지능", "nvidia", "openai", "gpu", "ai chip", "machine learning"],
-    "ai": ["ai", "artificial intelligence", "인공지능", "nvidia", "openai", "gpu", "ai chip", "machine learning"],
+    "AI": [
+        "ai", "artificial intelligence", "인공지능",
+        "nvidia", "openai", "gpu", "ai chip",
+        "machine learning",
+    ],
 
-    "반도체": ["semiconductor", "chip", "memory", "hbm", "dram", "micron", "sk hynix", "삼성전자", "반도체"],
-    "HBM": ["hbm", "memory", "dram", "micron", "sk hynix", "삼성전자", "하이닉스"],
-    "GPU": ["gpu", "nvidia", "엔비디아", "ai chip"],
+    "반도체": [
+        "semiconductor", "chip", "memory", "hbm",
+        "dram", "micron", "sk hynix", "삼성전자", "반도체",
+    ],
 
-    "데이터센터": ["data center", "datacenter", "server", "cloud", "데이터센터", "서버", "전력", "냉각"],
-    "전력": ["power", "electricity", "grid", "transformer", "전력", "변압기", "전선", "송전", "배전"],
-    "전력기기": ["power", "grid", "transformer", "전력기기", "변압기"],
-    "변압기": ["transformer", "grid", "변압기", "전력기기"],
-    "전선": ["cable", "wire", "grid", "전선", "케이블"],
+    "HBM": [
+        "hbm", "memory", "dram", "micron",
+        "sk hynix", "삼성전자", "하이닉스",
+    ],
 
-    "원전": ["nuclear", "smr", "원전", "원자력"],
-    "SMR": ["smr", "nuclear", "소형모듈원전"],
+    "GPU": [
+        "gpu", "nvidia", "엔비디아", "ai chip",
+    ],
 
-    "로봇": ["robot", "robotics", "로봇", "휴머노이드"],
-    "방산": ["defense", "missile", "radar", "방산", "미사일", "레이더"],
-    "우주항공": ["spacex", "starlink", "satellite", "rocket", "space", "위성", "위성통신", "우주"],
-    "스타링크": ["starlink", "satellite internet", "위성통신", "저궤도위성"],
-    "위성통신": ["satellite", "starlink", "communication satellite", "위성통신"],
-    "우주": ["space", "spacex", "rocket", "launch", "orbit", "우주", "위성"],
-    "자율주행": ["robotaxi", "cybercab", "tesla", "autonomous", "self driving", "자율주행", "로보택시", "전장", "ADAS"],
-    "2차전지": ["battery", "lithium", "배터리", "2차전지"],
+    "데이터센터": [
+        "data center", "datacenter", "server", "cloud",
+        "데이터센터", "서버", "전력", "냉각",
+    ],
+
+    "전력": [
+        "power", "electricity", "grid", "transformer",
+        "전력", "변압기", "전선", "송전", "배전",
+    ],
+
+    "전력기기": [
+        "power", "grid", "transformer", "전력기기", "변압기",
+    ],
+
+    "변압기": [
+        "transformer", "grid", "변압기", "전력기기",
+    ],
+
+    "전선": [
+        "cable", "wire", "grid", "전선", "케이블",
+    ],
+
+    "원전": [
+        "nuclear", "smr", "원전", "원자력",
+    ],
+
+    "SMR": [
+        "smr", "nuclear", "소형모듈원전",
+    ],
+
+    "로봇": [
+        "robot", "robotics", "로봇", "휴머노이드",
+    ],
+
+    "방산": [
+        "defense", "missile", "radar",
+        "방산", "미사일", "레이더",
+    ],
+
+    "우주항공": [
+        "spacex", "starlink", "satellite", "rocket",
+        "space", "위성", "위성통신", "우주",
+    ],
+
+    "스타링크": [
+        "starlink", "satellite internet",
+        "위성통신", "저궤도위성",
+    ],
+
+    "위성통신": [
+        "satellite", "starlink",
+        "communication satellite", "위성통신",
+    ],
+
+    "우주": [
+        "space", "spacex", "rocket",
+        "launch", "orbit", "우주", "위성",
+    ],
+
+    "자율주행": [
+        "robotaxi", "cybercab", "tesla",
+        "autonomous", "self driving",
+        "자율주행", "로보택시", "전장", "adas",
+    ],
+
+    "2차전지": [
+        "battery", "lithium", "배터리", "2차전지",
+    ],
 }
 
 
 def article_matches_theme(theme_name, article):
     title = article.get("title", "")
     lower = title.lower()
-    if theme_name in ["AI", "ai"]:
-        exclude_words = ["spacex", "space stock", "rocket", "starlink"]
+
+    if theme_name == "AI":
+        exclude_words = [
+            "spacex",
+            "space stock",
+            "rocket",
+            "starlink",
+        ]
+
         if any(word in lower for word in exclude_words):
             return False
+
     keywords = THEME_ARTICLE_KEYWORDS.get(theme_name, [])
 
     if not keywords:
         expanded = expand_theme_words(theme_name)
-        keywords = [str(x).lower() for x in expanded]
+        keywords = [str(item).lower() for item in expanded]
 
-    for kw in keywords:
-        if not kw:
+    for keyword in keywords:
+        keyword = str(keyword).strip().lower()
+
+        if not keyword:
             continue
 
-        if str(kw).lower() in lower:
+        if keyword in lower:
             return True
 
     return False
@@ -170,11 +307,23 @@ def unique_articles_for_theme(theme_name, articles, limit=10):
 
 
 def make_reason(theme_name, articles):
-    us_count = len([a for a in articles if a.get("market") == "US"])
-    kr_count = len([a for a in articles if a.get("market") == "KR"])
+    us_count = len([
+        article
+        for article in articles
+        if article.get("market") == "US"
+    ])
+
+    kr_count = len([
+        article
+        for article in articles
+        if article.get("market") == "KR"
+    ])
 
     if us_count > 0 and kr_count > 0:
-        return f"미국뉴스 {us_count}개와 국내뉴스 {kr_count}개가 동시에 감지됨"
+        return (
+            f"미국뉴스 {us_count}개와 "
+            f"국내뉴스 {kr_count}개가 동시에 감지됨"
+        )
 
     if us_count > 0:
         return f"미국뉴스 {us_count}개에서 먼저 감지된 테마"
@@ -189,48 +338,71 @@ def extract_themes(news):
     for article in news:
         title = article.get("title", "")
         lower = title.lower()
+        market = article.get("market")
+
+        # 대형 기업명 기반 테마 감지
         for company, theme in BIG_PLAYERS.items():
-
             if company in lower:
+                score = 10 if market == "US" else 5
 
-               score = 10 if article.get("market") == "US" else 5
+                counter[theme] += score
+                theme_articles.setdefault(theme, []).append(article)
 
-               counter[theme] += score
-               theme_articles.setdefault(theme, []).append(article)
+        # 개념 키워드 기반 테마 확장
         for phrase, expanded_words in CONCEPT_EXPANSION.items():
             if phrase in lower:
-                score = 10 if article.get("market") == "US" else 5
+                score = 10 if market == "US" else 5
 
-                counter[phrase] += score
-                theme_articles.setdefault(phrase, []).append(article)
-
+                # phrase는 감지용 키워드이므로
+                # ai, copper 등을 별도 테마로 저장하지 않는다.
                 for word in expanded_words:
                     counter[word] += score
                     theme_articles.setdefault(word, []).append(article)
 
-        clean = re.sub(r"[^가-힣A-Za-z0-9 ]", " ", title)
+        # 제목 안의 일반 단어 추출
+        clean = re.sub(
+            r"[^가-힣A-Za-z0-9 ]",
+            " ",
+            title,
+        )
+
         words = clean.split()
 
         for word in words:
-            w = word.strip()
-            lw = w.lower()
+            word = word.strip()
+            lower_word = word.lower()
 
-            if len(w) < 2:
+            if len(word) < 2:
                 continue
 
-            if lw in STOPWORDS:
+            # 07, 2026 등 숫자만 있는 단어 제외
+            if word.isdigit():
                 continue
 
-            score = 2 if article.get("market") == "US" else 1
+            if lower_word in STOPWORDS:
+                continue
 
-            counter[w] += score
-            theme_articles.setdefault(w, []).append(article)
+            # AI, ai, Ai를 모두 AI로 통일
+            theme_name = "AI" if lower_word == "ai" else word
+
+            score = 2 if market == "US" else 1
+
+            counter[theme_name] += score
+            theme_articles.setdefault(
+                theme_name,
+                [],
+            ).append(article)
 
     themes = []
 
     for name, score in counter.most_common(20):
         raw_articles = theme_articles.get(name, [])
-        articles = unique_articles_for_theme(name, raw_articles, limit=10)
+
+        articles = unique_articles_for_theme(
+            name,
+            raw_articles,
+            limit=10,
+        )
 
         if not articles:
             continue
@@ -239,33 +411,36 @@ def extract_themes(news):
             "name": name,
             "score": score,
             "reason": make_reason(name, articles),
-            "articles": articles
+            "articles": articles,
         })
 
     return themes
 
 
 def expand_theme_words(theme_name):
-    words = set()
-    words.add(theme_name)
-    for w in expand_with_industry_map(theme_name):
-        words.add(w)
-    lower = theme_name.lower()
+    words = {theme_name}
 
-    if lower in CONCEPT_EXPANSION:
-        for w in CONCEPT_EXPANSION[lower]:
-            words.add(w)
+    for word in expand_with_industry_map(theme_name):
+        words.add(word)
+
+    lower_theme = theme_name.lower()
+
+    if lower_theme in CONCEPT_EXPANSION:
+        for word in CONCEPT_EXPANSION[lower_theme]:
+            words.add(word)
 
     for key, values in CONCEPT_EXPANSION.items():
         if theme_name in values:
             words.add(key)
-            for v in values:
-                words.add(v)
+
+            for value in values:
+                words.add(value)
 
     return list(words)
+
+
 def expand_with_industry_map(theme_name):
-    words = set()
-    words.add(theme_name)
+    words = {theme_name}
 
     if theme_name in INDUSTRY_MAP:
         for item in INDUSTRY_MAP[theme_name]:
@@ -274,6 +449,7 @@ def expand_with_industry_map(theme_name):
     for key, values in INDUSTRY_MAP.items():
         if theme_name in values:
             words.add(key)
+
             for item in values:
                 words.add(item)
 
