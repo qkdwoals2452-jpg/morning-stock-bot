@@ -98,6 +98,11 @@ def moving_average(values, days):
 
 def get_chart_score(stock):
     code = stock["code"]
+    name = stock.get("name", code)
+
+    print("\n" + "=" * 50)
+
+    print("차트 분석:", name, code)
 
     history = get_price_history(code)
 
@@ -182,7 +187,7 @@ def get_chart_score(stock):
 
     if not memo:
         memo.append("차트 중립")
-    print("CHART RESULT:", code, score, memo)
+    print("CHART RESULT:", name, code, score, memo)
     return {
         "score": score,
         "memo": ", ".join(memo),
