@@ -7,7 +7,7 @@ from config import (
     TELEGRAM_CHAT_ID
 
 )
-from money_flow_engine import make_money_flow
+
 
 def send_message(message):
 
@@ -105,15 +105,7 @@ def send_telegram(
             f"🧠 "
             f"{theme['reason']}\n\n"
         )
-        flow = make_money_flow(theme["name"])
-
-        if flow:
-
-            msg += "💰 돈의 흐름\n"
-
-            msg += " → ".join(flow)
-
-            msg += "\n\n"
+        
         msg += (
             "🏆 추천 TOP5\n"
         )
