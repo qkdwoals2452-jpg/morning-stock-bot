@@ -158,17 +158,17 @@ def run():
 
                     continue
 
-            if chart.get("details", {}).get("ma120") is not None:
+            #if chart.get("details", {}).get("ma120") is not None:
 
-                current = chart["details"].get("current")
+            #    current = chart["details"].get("current")
 
-                ma120 = chart["details"].get("ma120")
+            #    ma120 = chart["details"].get("ma120")
 
-                if current is not None and current < ma120:
+            #    if current is not None and current < ma120:
 
-                    print("제외:", stock["name"], "120일선 아래")
+            #        print("제외:", stock["name"], "120일선 아래")
 
-                    continue
+            #        continue
 
             if market.get("trading_value") is None:
                 print("거래대금 없음:", stock["name"])
