@@ -5,9 +5,9 @@ import time
 from config import (
     TELEGRAM_TOKEN,
     TELEGRAM_CHAT_ID
-from money_flow_engine import make_money_flow
-)
 
+)
+from money_flow_engine import make_money_flow
 
 def send_message(message):
 
