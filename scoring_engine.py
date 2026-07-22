@@ -37,7 +37,7 @@ def make_final_score(
     elif verify_score >= 70:
         score += 10
 
-    score += min(company_score, 20)
+    score += min(company_score, 40)
     score += chart_score
     score += learning_score
 
