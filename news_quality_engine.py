@@ -44,7 +44,39 @@ def score_news_quality(article):
             "reason": ["차단뉴스:week in review"],
             "is_core": False
         }
+    block_phrases = [
 
+        "stocks to buy",
+
+        "buy now",
+
+        "on sale",
+
+        "etfs to consider",
+
+        "stocks to consider",
+
+        "top stocks",
+
+        "best stocks",
+
+        "watchlist",
+
+    ]
+
+    for phrase in block_phrases:
+
+        if phrase in text:
+
+            return {
+
+                "score": 0,
+
+                "reason": [f"차단뉴스:{phrase}"],
+
+                "is_core": False
+
+            }
     # 진짜 돈이 움직이는 뉴스
     strong_words = [
         "to invest", "will invest", "invests", "investment of", "investment", "spend", "spending", "capex",
