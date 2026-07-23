@@ -236,11 +236,22 @@ def score_news_quality(article):
         "토론회", "컨퍼런스", "전망", "분석", "칼럼"
     ]
 
+
+    matched_strong = set()
     for w in strong_words:
-        # 수정 2: MarketBeat 안의 beat 오탐 방지
+        normalized_w = w.lower().strip()
+
+        if normalized_w in matched_strong:
+
+            continue
+
         if contains_keyword(text, w):
+
             score += 20
+
             reason.append(f"강한뉴스:{w}")
+
+            matched_strong.add(normalized_w)
 
     for w in weak_words:
         if contains_keyword(text, w):
