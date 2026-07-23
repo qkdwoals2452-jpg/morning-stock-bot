@@ -85,6 +85,17 @@ def run():
     
     for theme in themes:
         print("테마 확인:", theme["name"], "점수:", theme["score"], "통과기준:", MIN_THEME_SCORE)
+        print("THEME KEYS:", theme.keys())
+
+        articles = theme.get("articles", [])
+
+        print("ARTICLE COUNT:", len(articles))
+
+        if articles:
+
+            print("ARTICLE KEYS:", articles[0].keys())
+
+            print("FIRST ARTICLE:", articles[0])
         if theme["score"] < MIN_THEME_SCORE:
             continue
 
