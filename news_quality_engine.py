@@ -25,9 +25,14 @@ def contains_keyword(text, keyword):
 
 
 def score_news_quality(article):
-    title = article.get("title", "").lower()
+
+    title = article.get("title", "")
+
+    summary = article.get("summary", "")
+
     market = article.get("market", "")
-    text = title
+
+    text = f"{title} {summary}".lower()
 
     score = 0
     reason = []
@@ -48,7 +53,7 @@ def score_news_quality(article):
         "revenue", "guidance", "beat", "raise",
         "acquisition", "merger", "partnership",
         "투자", "증설", "수주", "계약", "공급", "공장",
-        "양산", "생산", "실적", "매출", "영업이익", "인수", "합병"
+        "양산", "생산", "실적", "매출", "영업이익", "인수", "합병",
          
 
         "to invest",
