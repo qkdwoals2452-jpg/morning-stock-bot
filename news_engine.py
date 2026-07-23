@@ -1,6 +1,7 @@
 import requests
 import xml.etree.ElementTree as ET
 import re
+import html
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -8,29 +9,86 @@ HEADERS = {
 
 
 def parse_rss(url, market, source_name):
+
     articles = []
 
     try:
+
         res = requests.get(url, headers=HEADERS, timeout=10)
+
+        res.raise_for_status()
+
         root = ET.fromstring(res.content)
 
         for item in root.findall(".//item"):
-            title = item.find("title")
-            link = item.find("link")
 
-            if title is not None and title.text:
-                articles.append({
-                    "title": title.text.strip(),
-                    "link": link.text.strip() if link is not None and link.text else "",
-                    "market": market,
-                    "source": source_name
-                })
+            title_tag = item.find("title")
 
-    except Exception:
-        pass
+            link_tag = item.find("link")
+
+            description_tag = item.find("description")
+
+            content_tag = item.find(
+
+                "{http://purl.org/rss/1.0/modules/content/}encoded"
+
+            )
+
+            if title_tag is None or not title_tag.text:
+
+                continue
+
+            title = title_tag.text.strip()
+
+            link = ""
+
+            if link_tag is not None and link_tag.text:
+
+                link = link_tag.text.strip()
+
+            description = ""
+
+            if description_tag is not None and description_tag.text:
+
+                description = description_tag.text.strip()
+
+            content = ""
+
+            if content_tag is not None and content_tag.text:
+
+                content = content_tag.text.strip()
+
+            # content가 있으면 우선 사용하고, 없으면 description 사용
+
+            summary = content or description
+
+            # HTML 태그 및 특수문자 정리
+
+            summary = html.unescape(summary)
+
+            summary = re.sub(r"<[^>]+>", " ", summary)
+
+            summary = re.sub(r"\s+", " ", summary).strip()
+
+            articles.append({
+
+                "title": title,
+
+                "summary": summary,
+
+                "link": link,
+
+                "market": market,
+
+                "source": source_name
+
+            })
+
+    except Exception as e:
+
+        print("RSS 수집 오류:", source_name, str(e))
 
     return articles
-
 
 def remove_duplicates(articles):
     result = []
