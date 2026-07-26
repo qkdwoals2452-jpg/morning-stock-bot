@@ -121,8 +121,19 @@ def run():
                 continue
 
             finance = get_finance_score(stock)
-           # if finance.get("exclude"):
-           #     continue
+            if finance.get("exclude"):
+
+                print(
+
+                    "제외:",
+
+                    stock["name"],
+
+                    finance.get("exclude_reason", "재무 기준 미달")
+
+                )
+
+                continue
             market = get_market_score(stock)
             chart = get_chart_score(stock)
             learning = get_learning_score(stock["name"])
