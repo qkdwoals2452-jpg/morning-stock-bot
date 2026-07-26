@@ -28,7 +28,7 @@ def make_final_score(
     score = 0
 
     score += theme_score
-    score += relation_score * 3
+    score += relation_score * 2
     score += finance_score
     score += market_score
 
