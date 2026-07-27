@@ -20,13 +20,26 @@ def get_news_impact_score(stock, theme, articles, company):
 
     direct_matched = []
 
-    for word in company_words:
-        if not word:
-            continue
+    STOP_WORDS = {
+    "AI",
+    "인공지능",
+    "반도체",
+    "공급",
+    "투자",
+    "계약",
+    "장비"
+   }
 
-        if word.lower() in article_text:
-            direct_matched.append(word)
+   for word in company_words:
+       if not word:
+           continue
 
+       # 공통 키워드는 직접 수혜 판단에서 제외
+       if word in STOP_WORDS:
+           continue
+
+       if word.lower() in article_text:
+           direct_matched.append(word)
     score = 0
 
     if stock_name and stock_name.lower() in article_text:
