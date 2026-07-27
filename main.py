@@ -139,6 +139,33 @@ def run():
             chart = get_chart_score(stock)
             learning = get_learning_score(stock["name"])
             company = get_company_match_score(stock, theme_words)
+            impact = get_news_impact_score(
+
+                stock=stock,
+
+                theme=theme,
+
+                articles=articles,
+
+                company=company
+
+            )
+
+            print("impact:", impact)
+
+            if impact.get("exclude"):
+
+                print(
+
+                    "제외:",
+
+                    stock["name"],
+
+                    impact.get("exclude_reason")
+
+                )
+
+                continue
             ok, reason = pass_theme_sector_filter(
 
                 theme["name"],
