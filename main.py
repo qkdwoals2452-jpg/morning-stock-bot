@@ -9,6 +9,7 @@ from news_engine import get_all_news
 from theme_engine import extract_themes, expand_theme_words
 from stock_engine import load_korean_stocks, find_related_stocks
 from company_engine import get_company_match_score
+from impact_engine import get_news_impact_score
 from finance_engine import get_finance_score
 from market_engine import get_market_score
 from chart_engine import get_chart_score
