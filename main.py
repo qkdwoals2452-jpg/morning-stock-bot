@@ -153,6 +153,7 @@ def run():
                 print("제외:", stock["name"], reason)
 
                 continue
+        if stock["name"] == "데이터솔루션":
             print("==========")
             print(stock["name"])
             print("verify:", verify)
