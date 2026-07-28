@@ -175,7 +175,7 @@ def run():
                 company
 
             )
-
+            print("SECTOR FILTER:", stock["name"], ok, reason)
             if not ok:
 
                 print("제외:", stock["name"], reason)
