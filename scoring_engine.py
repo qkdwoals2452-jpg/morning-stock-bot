@@ -111,7 +111,7 @@ def make_stock_result(
     verify=None,
     company=None,
     chart=None,
-    learning=None
+    learning=None,
     impact=None
 ):
 
