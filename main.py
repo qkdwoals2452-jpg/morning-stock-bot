@@ -169,7 +169,7 @@ def run():
                 print("제외:", stock["name"], reason)
 
                 continue
-        
+            print("HERE1")
             print("==========")
             print(stock["name"])
             print("verify:", verify)
