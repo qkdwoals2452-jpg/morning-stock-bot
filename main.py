@@ -224,6 +224,7 @@ def run():
                 company=company,
                 chart=chart,
                 learning=learning
+                impact=impact
             )
             # 대형주/지주사는 TOP 추천에서 감점
             mega_caps = [
