@@ -112,12 +112,14 @@ def make_stock_result(
     company=None,
     chart=None,
     learning=None
+    impact=None
 ):
 
     verify = verify or {}
     company = company or {}
     chart = chart or {}
     learning = learning or {}
+    impact = impact or {}
     print("=" * 60)
 
     print(stock["name"])
@@ -137,6 +139,7 @@ def make_stock_result(
     print("chart     :", safe_score(chart))
 
     print("learning  :", safe_score(learning))
+    print("impact    :", safe_score(impact))
     final_score = make_final_score(
         theme_score=theme_score,
         relation_score=stock["relation_score"],
@@ -146,6 +149,7 @@ def make_stock_result(
         company_score=safe_score(company),
         chart_score=safe_score(chart),
         learning_score=safe_score(learning)
+        impact_score=safe_score(impact)
     )
     print("FINAL     :", final_score)
 
@@ -172,6 +176,11 @@ def make_stock_result(
     if learning.get("score", 0) != 0:
         reason.append(learning.get("memo", ""))
 
+
+    if impact.get("score", 0) != 0:
+
+        reason.append(impact.get("memo", ""))
+
     return {
         "name": stock["name"],
         "code": stock["code"],
@@ -184,6 +193,7 @@ def make_stock_result(
         "company": company,
         "chart": chart,
         "learning": learning,
+        "impact": impact,
         "final_score": final_score,
         "grade": make_grade(final_score),
         "reason": reason
