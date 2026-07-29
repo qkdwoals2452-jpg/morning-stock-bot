@@ -148,7 +148,7 @@ def make_stock_result(
         verify_score=safe_score(verify),
         company_score=safe_score(company),
         chart_score=safe_score(chart),
-        learning_score=safe_score(learning)
+        learning_score=safe_score(learning),
         impact_score=safe_score(impact)
     )
     print("FINAL     :", final_score)
