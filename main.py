@@ -153,19 +153,7 @@ def run():
 
             print("impact:", impact)
 
-            if impact.get("exclude"):
-
-                print(
-
-                    "제외:",
-
-                    stock["name"],
-
-                    impact.get("exclude_reason")
-
-                )
-
-                continue
+            
             ok, reason = pass_theme_sector_filter(
 
                 theme["name"],
