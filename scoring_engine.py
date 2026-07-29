@@ -22,7 +22,8 @@ def make_final_score(
     verify_score=0,
     company_score=0,
     chart_score=0,
-    learning_score=0
+    learning_score=0,
+    impact_score=0
 ):
 
     score = 0
@@ -40,6 +41,7 @@ def make_final_score(
     score += min(company_score, 40)
     score += chart_score
     score += learning_score
+    score += impact_score
 
     return score
 
