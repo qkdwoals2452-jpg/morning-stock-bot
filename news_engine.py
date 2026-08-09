@@ -114,19 +114,41 @@ def remove_duplicates(articles):
 
 def get_us_news():
     rss_list = [
+        # 기존 미국 뉴스
+
         ("YahooFinance", "https://feeds.finance.yahoo.com/rss/2.0/headline?s=NVDA,MSFT,GOOGL,AMZN,AMD,TSLA,SMCI,AVGO,META&region=US&lang=en-US"),
+
         ("Investing_Tech", "https://www.investing.com/rss/news_25.rss"),
+
         ("Investing_Economy", "https://www.investing.com/rss/news_285.rss"),
+
         ("Nasdaq_Tech", "https://www.nasdaq.com/feed/rssoutbound?category=Technology"),
+
+        # Fed 공식
+
+        ("FED_All", "https://www.federalreserve.gov/feeds/press_all.xml"),
+
+        ("FED_Monetary", "https://www.federalreserve.gov/feeds/press_monetary.xml"),
+
+        ("FED_Speeches", "https://www.federalreserve.gov/feeds/speeches.xml"),
+
+        # 미국 경제지표 공식
+
+        ("BLS_Employment", "https://www.bls.gov/feed/empsit.rss"),
+
+        ("BLS_CPI", "https://www.bls.gov/feed/cpi.rss"),
+
+        ("BLS_PPI", "https://www.bls.gov/feed/ppi.rss"),
+
     ]
 
     news = []
 
     for source_name, url in rss_list:
+
         news += parse_rss(url, "US", source_name)
 
-    return remove_duplicates(news)[:120]
-
+    return remove_duplicates(news)[:200]
 
 def get_korea_news():
     rss_list = [
