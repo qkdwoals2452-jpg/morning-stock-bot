@@ -245,12 +245,93 @@ def detect_event_type(article):
     # -------------------------------------------------
     # 1. 공식기관 이벤트
     # -------------------------------------------------
+    # -------------------------------------------------
+    # Fed 공식자료 - 출처가 아니라 '내용'으로 중요도 판단
+    # -------------------------------------------------
     if source.startswith("FED_"):
+
+        # 1. FOMC 금리결정 / 통화정책 결정
+        if any(p in text for p in [
+            "fomc statement",
+            "federal open market committee",
+            "interest rate decision",
+            "target range for the federal funds rate",
+            "raises the federal funds rate",
+            "lowers the federal funds rate",
+            "maintain the target range",
+            "rate cut",
+            "rate hike",
+            "금리 인하",
+            "금리 인상",
+            "금리 동결"
+        ]):
+            return {
+                "is_event": True,
+                "event_type": "FOMC",
+                "importance": 95,
+                "reason": "FOMC·미국 통화정책 결정"
+            }
+
+        # 2. 파월의 중요한 통화정책 발언
+        if "powell" in text and any(p in text for p in [
+            "monetary policy",
+            "inflation",
+            "interest rate",
+            "federal funds rate",
+            "labor market",
+            "employment",
+            "economic outlook"
+        ]):
+            return {
+                "is_event": True,
+                "event_type": "POWELL",
+                "importance": 90,
+                "reason": "파월 핵심 통화정책·경제 발언"
+            }
+
+        # 3. 다른 Fed 위원의 금리·인플레이션 관련 발언
+        if any(p in text for p in [
+            "monetary policy",
+            "interest rate",
+            "federal funds rate",
+            "rate cuts",
+            "rate cut",
+            "rate hikes",
+            "rate hike",
+            "inflation",
+            "price stability",
+            "labor market",
+            "employment"
+        ]):
+            return {
+                "is_event": True,
+                "event_type": "FED_SPEECH",
+                "importance": 70,
+                "reason": "Fed 위원 통화정책·경제 핵심 발언"
+            }
+
+        # 4. 은행 규제/금융시스템 정책
+        if any(p in text for p in [
+            "bank regulation",
+            "financial regulation",
+            "capital requirements",
+            "bank supervision",
+            "bank examinations",
+            "financial stability"
+        ]):
+            return {
+                "is_event": True,
+                "event_type": "FED_REGULATION",
+                "importance": 55,
+                "reason": "Fed 금융규제·금융시스템 정책"
+            }
+
+        # 5. 나머지 Fed 연설·행정자료는 핵심 사건에서 제외
         return {
-            "is_event": True,
-            "event_type": "FED",
-            "importance": 90,
-            "reason": "미 연준 공식 발표"
+            "is_event": False,
+            "event_type": "FED_GENERAL",
+            "importance": 0,
+            "reason": "Fed 일반 연설·행정자료"
         }
 
     if source.startswith("BLS_"):
