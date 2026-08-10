@@ -229,45 +229,272 @@ def is_block_news(article):
 
     return False, ""
 
-def calc_event_score(article):
-    title = article.get("title", "").lower()
+def detect_event_type(article):
+    """
+    기사에서 '실제로 발생한 사건'이 있는지 먼저 판정한다.
+    단순 키워드 개수는 세지 않는다.
+    """
+
+    title = str(article.get("title", "") or "")
+    summary = str(article.get("summary", "") or "")
+    source = str(article.get("source", "") or "")
     market = article.get("market", "")
 
-    score = 0
-    reasons = []
+    text = f"{title} {summary}".lower()
 
-    # 1. 사건이 아닌 기사 먼저 제거
-    block, block_word = is_block_news(article)
+    # -------------------------------------------------
+    # 1. 공식기관 이벤트
+    # -------------------------------------------------
+    if source.startswith("FED_"):
+        return {
+            "is_event": True,
+            "event_type": "FED",
+            "importance": 90,
+            "reason": "미 연준 공식 발표"
+        }
 
-    if block:
-        return 0, [f"제외:{block_word}"]
+    if source.startswith("BLS_"):
+        return {
+            "is_event": True,
+            "event_type": "MACRO",
+            "importance": 90,
+            "reason": "미국 공식 경제지표"
+        }
 
-    # 2. 실제 계약·투자·증설 사건에 강한 점수
-    for phrase, bonus in STRONG_EVENT_RULES.items():
-        if phrase.lower() in title:
-            score += bonus
-            reasons.append(f"강한사건:{phrase}")
+    # -------------------------------------------------
+    # 2. 투자권유/가정/단순 전망형은 '사건'으로 인정하지 않음
+    # -------------------------------------------------
+    non_event_patterns = [
+        "worth buying",
+        "worth investing",
+        "should you buy",
+        "is it time to buy",
+        "could be worth",
+        "will be worth",
+        "stock pick",
+        "stocks to buy",
+        "buy now",
+        "price target",
+        "what if you invested",
+        "$10,000 investment",
+        "what investors need to know",
+        "to consider",
+        "could rise",
+        "could soar",
+        "may rise",
+        "might rise",
+    ]
 
-    # 3. 일반 중요 키워드 점수
-    matched_words = set()
+    if any(p in text for p in non_event_patterns):
+        return {
+            "is_event": False,
+            "event_type": "NO_EVENT",
+            "importance": 0,
+            "reason": "실제 사건 없는 투자/전망형 콘텐츠"
+        }
 
-    for word in IMPORTANT_KEYWORDS:
-        word_lower = word.lower()
+    # -------------------------------------------------
+    # 3. 실제 사건 유형 판별
+    #    '산업 단어'가 아니라 '행동/변화'를 찾는다.
+    # -------------------------------------------------
 
-        if word_lower in title and word_lower not in matched_words:
-            score += 10
-            reasons.append(word)
-            matched_words.add(word_lower)
+    # 금리 / 통화정책
+    if any(p in text for p in [
+        "fomc",
+        "interest rate decision",
+        "raises rates",
+        "cuts rates",
+        "holds rates",
+        "rate hike",
+        "rate cut",
+        "금리 인상",
+        "금리 인하",
+        "금리 동결"
+    ]):
+        return {
+            "is_event": True,
+            "event_type": "MONETARY_POLICY",
+            "importance": 95,
+            "reason": "금리·통화정책 변화"
+        }
 
-    # 4. 미국 원문 사건 가산점
+    # 관세 / 규제 / 정부정책
+    if any(p in text for p in [
+        "imposes tariff",
+        "raises tariff",
+        "cuts tariff",
+        "export ban",
+        "export restriction",
+        "sanctions",
+        "new regulation",
+        "tariff announced",
+        "관세 부과",
+        "관세 인상",
+        "수출 규제",
+        "수출 금지",
+        "제재 발표"
+    ]):
+        return {
+            "is_event": True,
+            "event_type": "POLICY",
+            "importance": 90,
+            "reason": "정부 정책·관세·규제 변화"
+        }
+
+    # 실적 발표
+    earnings_action = any(p in text for p in [
+        "reports revenue",
+        "reported revenue",
+        "reports earnings",
+        "reported earnings",
+        "earnings beat",
+        "earnings miss",
+        "raises guidance",
+        "cuts guidance",
+        "lowered guidance",
+        "quarterly results",
+        "실적 발표",
+        "영업이익",
+        "매출액"
+    ])
+
+    if earnings_action:
+        return {
+            "is_event": True,
+            "event_type": "EARNINGS",
+            "importance": 70,
+            "reason": "기업 실적·가이던스 변화"
+        }
+
+    # 실제 투자 / CAPEX
+    capex_action = any(p in text for p in [
+        "will invest",
+        "to invest",
+        "plans to invest",
+        "announced investment",
+        "capital expenditure",
+        "raises capex",
+        "increases capex",
+        "cuts capex",
+        "spending plan",
+        "투자 확대",
+        "투자 계획",
+        "설비투자",
+        "투자 축소"
+    ])
+
+    if capex_action:
+        return {
+            "is_event": True,
+            "event_type": "CAPEX",
+            "importance": 80,
+            "reason": "실제 투자·CAPEX 변화"
+        }
+
+    # 계약 / 수주 / 공급
+    contract_action = any(p in text for p in [
+        "wins contract",
+        "signed contract",
+        "signs contract",
+        "supply agreement",
+        "supply contract",
+        "purchase order",
+        "long-term agreement",
+        "공급계약 체결",
+        "장기 공급계약",
+        "수주",
+        "계약 체결"
+    ])
+
+    if contract_action:
+        return {
+            "is_event": True,
+            "event_type": "CONTRACT",
+            "importance": 75,
+            "reason": "실제 계약·수주 발생"
+        }
+
+    # 공장 / 증설 / 양산
+    production_action = any(p in text for p in [
+        "new factory",
+        "new plant",
+        "expand production",
+        "expands production",
+        "mass production",
+        "commercial production",
+        "begins production",
+        "공장 증설",
+        "생산 확대",
+        "양산 시작",
+        "양산 본격화"
+    ])
+
+    if production_action:
+        return {
+            "is_event": True,
+            "event_type": "PRODUCTION",
+            "importance": 75,
+            "reason": "생산능력 변화·양산"
+        }
+
+    # M&A
+    ma_action = any(p in text for p in [
+        "acquires",
+        "acquired",
+        "acquisition",
+        "merger",
+        "to acquire",
+        "인수",
+        "합병"
+    ])
+
+    if ma_action:
+        return {
+            "is_event": True,
+            "event_type": "M&A",
+            "importance": 75,
+            "reason": "인수·합병"
+        }
+
+    # -------------------------------------------------
+    # 실제 변화가 확인되지 않으면 사건으로 만들지 않음
+    # -------------------------------------------------
+    return {
+        "is_event": False,
+        "event_type": "NO_EVENT",
+        "importance": 0,
+        "reason": "실제 행동·변화 확인 안 됨"
+    }
+
+
+def calc_event_score(article):
+
+    event = detect_event_type(article)
+
+    if not event["is_event"]:
+        return 0, [
+            event["reason"]
+        ]
+
+    score = event["importance"]
+
+    reasons = [
+        f"사건유형:{event['event_type']}",
+        event["reason"]
+    ]
+
+    market = article.get("market", "")
+    source = article.get("source", "")
+
+    # 미국 공식/원문이면 신뢰도 보강
     if market == "US":
-        score += 10
         reasons.append("US")
 
-    score = min(score, 100)
+    if source.startswith("FED_") or source.startswith("BLS_"):
+        score = min(100, score + 5)
+        reasons.append("공식출처")
 
-    return score, reasons
-
+    return min(score, 100), reasons
 
 
 def make_event_grade(score):
