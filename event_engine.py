@@ -547,19 +547,116 @@ def detect_event_type(article):
         "reason": "실제 행동·변화 확인 안 됨"
     }
 
+def classify_event_status(article):
+    """
+    사건의 '신분'을 분류한다.
 
+    PRIMARY   : 공식기관/기업이 직접 발표한 1차 정보
+    CONFIRMED : 실제 발생한 사건을 보도한 기사
+    ANALYSIS  : 전망/해설/분석/투자아이디어
+    RUMOR     : 루머/가능성/협상설 등 미확정 정보
+    """
+
+    title = str(article.get("title", "") or "")
+    summary = str(article.get("summary", "") or "")
+    source = str(article.get("source", "") or "")
+
+    text = f"{title} {summary}".lower()
+
+    # ---------------------------------------------
+    # 1. RUMOR - 가장 먼저 검사
+    # ---------------------------------------------
+    rumor_patterns = [
+        "rumor",
+        "rumors",
+        "reportedly",
+        "may acquire",
+        "might acquire",
+        "could acquire",
+        "possible merger",
+        "considering acquisition",
+        "in talks",
+        "early talks",
+        "exploring a deal",
+        "인수설",
+        "합병설",
+        "매각설",
+        "검토 중",
+        "협상 중",
+        "가능성"
+    ]
+
+    if any(p in text for p in rumor_patterns):
+        return "RUMOR"
+
+    # ---------------------------------------------
+    # 2. 공식 1차 출처
+    # ---------------------------------------------
+    if source.startswith("FED_"):
+        return "PRIMARY"
+
+    if source.startswith("BLS_"):
+        return "PRIMARY"
+
+    # 향후 White House / SEC / 기업 IR 추가 시
+    # 이곳에서 PRIMARY로 분류한다.
+
+    # ---------------------------------------------
+    # 3. 해설 / 전망 / 투자아이디어
+    # ---------------------------------------------
+    analysis_patterns = [
+        "outlook",
+        "analysis",
+        "commentary",
+        "opinion",
+        "preview",
+        "what it means",
+        "what investors",
+        "should investors",
+        "worth buying",
+        "stocks to buy",
+        "stock pick",
+        "price target",
+        "could rise",
+        "could soar",
+        "전망",
+        "분석",
+        "해설",
+        "칼럼",
+        "주간",
+        "위클리",
+        "투자 포인트",
+        "주목할 종목"
+    ]
+
+    if any(p in text for p in analysis_patterns):
+        return "ANALYSIS"
+
+    # ---------------------------------------------
+    # 4. 나머지 실제 사건 기사
+    # ---------------------------------------------
+    return "CONFIRMED"
 def calc_event_score(article):
 
     event = detect_event_type(article)
+    status = classify_event_status(article)
 
     if not event["is_event"]:
         return 0, [
             event["reason"]
         ]
+    # 루머는 실제 사건으로 사용하지 않는다.
+    if status == "RUMOR":
+        return 0, ["사건신분:RUMOR", "미확정 정보"]
+
+    # 해설/전망은 Money Flow 시작 사건으로 사용하지 않는다.
+    if status == "ANALYSIS":
+        return 0, ["사건신분:ANALYSIS", "해설·전망 기사"]
 
     score = event["importance"]
 
     reasons = [
+        f"사건신분:{status}",
         f"사건유형:{event['event_type']}",
         event["reason"]
     ]
