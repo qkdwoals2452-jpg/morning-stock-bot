@@ -91,7 +91,7 @@ def parse_rss(url, market, source_name):
 
                 "market": market,
 
-                "source": source_name
+                "source": source_name,
                 "published_at": published_at
 
             })
