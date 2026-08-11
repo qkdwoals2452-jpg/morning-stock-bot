@@ -190,3 +190,23 @@ def get_all_news():
     kr_news = get_korea_news()
 
     return us_news + kr_news
+        
+    print("\n===== 뉴스 날짜 확인 TOP10 =====")
+
+    for article in all_news[:10]:
+
+        print(
+
+            article.get("source", ""),
+
+            "|",
+
+            article.get("published_at", ""),
+
+            "|",
+
+            article.get("title", "")
+
+        )
+
+    return all_news
