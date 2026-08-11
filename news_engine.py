@@ -2,6 +2,7 @@ import requests
 import xml.etree.ElementTree as ET
 import re
 import html
+from email.utils import parsedate_to_datetime
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -27,6 +28,16 @@ def parse_rss(url, market, source_name):
             link_tag = item.find("link")
 
             description_tag = item.find("description")
+            pubdate_tag = item.find("pubDate")
+
+            published_at = ""
+
+            if pubdate_tag is not None and pubdate_tag.text:
+                try:
+                   dt = parsedate_to_datetime(pubdate_tag.text.strip())
+                   published_at = dt.isoformat()
+                except Exception:
+                    published_at = pubdate_tag.text.strip()
 
             content_tag = item.find(
 
@@ -81,6 +92,7 @@ def parse_rss(url, market, source_name):
                 "market": market,
 
                 "source": source_name
+                "published_at": published_at
 
             })
 
