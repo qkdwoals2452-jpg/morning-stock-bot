@@ -102,7 +102,85 @@ def parse_rss(url, market, source_name):
         print("RSS 수집 오류:", source_name, str(e))
 
     return articles
+def parse_atom(url, market, source_name):
 
+    articles = []
+
+    try:
+
+        res = requests.get(url, headers=HEADERS, timeout=10)
+
+        res.raise_for_status()
+
+        root = ET.fromstring(res.content)
+
+        ns = {
+
+            "atom": "http://www.w3.org/2005/Atom"
+
+        }
+
+        for entry in root.findall("atom:entry", ns):
+
+            title_tag = entry.find("atom:title", ns)
+
+            link_tag = entry.find("atom:link", ns)
+
+            summary_tag = entry.find("atom:summary", ns)
+
+            updated_tag = entry.find("atom:updated", ns)
+
+            if title_tag is None or not title_tag.text:
+
+                continue
+
+            title = title_tag.text.strip()
+
+            link = ""
+
+            if link_tag is not None:
+
+                link = link_tag.attrib.get("href", "").strip()
+
+            summary = ""
+
+            if summary_tag is not None and summary_tag.text:
+
+                summary = summary_tag.text.strip()
+
+            summary = html.unescape(summary)
+
+            summary = re.sub(r"<[^>]+>", " ", summary)
+
+            summary = re.sub(r"\s+", " ", summary).strip()
+
+            published_at = ""
+
+            if updated_tag is not None and updated_tag.text:
+
+                published_at = updated_tag.text.strip()
+
+            articles.append({
+
+                "title": title,
+
+                "summary": summary,
+
+                "link": link,
+
+                "market": market,
+
+                "source": source_name,
+
+                "published_at": published_at
+
+            })
+
+    except Exception as e:
+
+        print("ATOM 수집 오류:", source_name, str(e))
+
+    return articles
 def remove_duplicates(articles):
     result = []
     seen = []
@@ -192,9 +270,16 @@ def get_us_news():
     news = []
 
     for source_name, url in rss_list:
-
         news += parse_rss(url, "US", source_name)
+    news += parse_atom(
 
+    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom",
+
+    "US",
+
+    "SEC_Filings"
+
+    )
     news = filter_recent_news(news, hours=36)
     news = remove_duplicates(news)
 
