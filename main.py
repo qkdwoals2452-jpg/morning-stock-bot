@@ -36,14 +36,14 @@ def run():
     print("미국 뉴스 수:", len(us_news))
     print("\n===== 미국 원본 뉴스 TOP20 =====")
 
-   for article in us_news[:20]:
-       print(
-           article.get("source", ""),
-           "|",
-           article.get("published_at", ""),
-           "|",
-           article.get("title", "")
-      )
+    for article in us_news[:20]:
+        print(
+            article.get("source", ""),
+            "|",
+            article.get("published_at", ""),
+            "|",
+            article.get("title", "")
+        )
     print("한국 뉴스 수:", len(kr_news))
     print("전체 뉴스 수:", len(news))
 
