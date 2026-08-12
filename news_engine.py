@@ -168,7 +168,9 @@ def get_us_news():
         ("Investing_Economy", "https://www.investing.com/rss/news_285.rss"),
 
         ("Nasdaq_Tech", "https://www.nasdaq.com/feed/rssoutbound?category=Technology"),
+        # SEC 공식
 
+        ("SEC_Filings", "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom"),
         # Fed 공식
 
         ("FED_All", "https://www.federalreserve.gov/feeds/press_all.xml"),
