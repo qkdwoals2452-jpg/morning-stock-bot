@@ -137,6 +137,29 @@ def parse_atom(url, market, source_name):
                 continue
 
             title = title_tag.text.strip()
+            # SEC 핵심 공시만 통과
+
+            if source_name == "SEC_Filings":
+
+                important_forms = [
+
+                    "8-K",
+
+                    "10-Q",
+
+                    "10-K",
+
+                    "6-K",
+
+                    "S-4"
+
+                ]
+
+                form_type = title.split(" - ")[0].strip()
+
+                if form_type not in important_forms:
+
+                    continue
 
             link = ""
 
