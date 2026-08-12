@@ -6,7 +6,9 @@ from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0"
+    "User-Agent": "ORION Stock Research Bot qkdwoals2452@gmail.com",
+
+    "Accept-Encoding": "gzip, deflate"
 }
 
 
