@@ -229,177 +229,105 @@ def is_block_news(article):
 
     return False, ""
 
+
 def detect_event_type(article):
     """
-    기사에서 '실제로 발생한 사건'이 있는지 먼저 판정한다.
-    단순 키워드 개수는 세지 않는다.
+    ORION V2 사건 판별기
+
+    핵심:
+    1. 기사에서 가능한 사건을 전부 찾는다.
+    2. 첫 키워드에 걸렸다고 바로 종료하지 않는다.
+    3. 가장 구체적이고 실제 돈의 흐름과 가까운 사건을 주 사건으로 선택한다.
     """
 
     title = str(article.get("title", "") or "")
     summary = str(article.get("summary", "") or "")
     source = str(article.get("source", "") or "")
-    market = article.get("market", "")
 
     text = f"{title} {summary}".lower()
 
-    # -------------------------------------------------
-    # 1. 공식기관 이벤트
-    # -------------------------------------------------
-    # -------------------------------------------------
-    # Fed 공식자료 - 출처가 아니라 '내용'으로 중요도 판단
-    # -------------------------------------------------
+    candidates = []
+
+    def add_event(event_type, importance, reason):
+        candidates.append({
+            "event_type": event_type,
+            "importance": importance,
+            "reason": reason
+        })
+
+    # =================================================
+    # 1. 공식기관 사건
+    # =================================================
+
     if source.startswith("FED_"):
 
-        # 1. FOMC 금리결정 / 통화정책 결정
         if any(p in text for p in [
             "fomc statement",
             "federal open market committee",
-            "interest rate decision",
             "target range for the federal funds rate",
-            "raises the federal funds rate",
-            "lowers the federal funds rate",
+            "interest rate decision",
             "maintain the target range",
             "rate cut",
-            "rate hike",
-            "금리 인하",
-            "금리 인상",
-            "금리 동결"
+            "rate hike"
         ]):
-            return {
-                "is_event": True,
-                "event_type": "FOMC",
-                "importance": 95,
-                "reason": "FOMC·미국 통화정책 결정"
-            }
+            add_event(
+                "FOMC",
+                95,
+                "FOMC·미국 통화정책 결정"
+            )
 
-        # 2. 파월의 중요한 통화정책 발언
         if "powell" in text and any(p in text for p in [
             "monetary policy",
             "inflation",
             "interest rate",
-            "federal funds rate",
             "labor market",
             "employment",
             "economic outlook"
         ]):
-            return {
-                "is_event": True,
-                "event_type": "POWELL",
-                "importance": 90,
-                "reason": "파월 핵심 통화정책·경제 발언"
-            }
+            add_event(
+                "POWELL",
+                90,
+                "파월 핵심 통화정책·경제 발언"
+            )
 
-        # 3. 다른 Fed 위원의 금리·인플레이션 관련 발언
         if any(p in text for p in [
             "monetary policy",
             "interest rate",
-            "federal funds rate",
-            "rate cuts",
-            "rate cut",
-            "rate hikes",
-            "rate hike",
             "inflation",
             "price stability",
             "labor market",
             "employment"
         ]):
-            return {
-                "is_event": True,
-                "event_type": "FED_SPEECH",
-                "importance": 70,
-                "reason": "Fed 위원 통화정책·경제 핵심 발언"
-            }
+            add_event(
+                "FED_SPEECH",
+                70,
+                "Fed 위원 통화정책·경제 발언"
+            )
 
-        # 4. 은행 규제/금융시스템 정책
         if any(p in text for p in [
             "bank regulation",
             "financial regulation",
             "capital requirements",
             "bank supervision",
-            "bank examinations",
             "financial stability"
         ]):
-            return {
-                "is_event": True,
-                "event_type": "FED_REGULATION",
-                "importance": 55,
-                "reason": "Fed 금융규제·금융시스템 정책"
-            }
-
-        # 5. 나머지 Fed 연설·행정자료는 핵심 사건에서 제외
-        return {
-            "is_event": False,
-            "event_type": "FED_GENERAL",
-            "importance": 0,
-            "reason": "Fed 일반 연설·행정자료"
-        }
+            add_event(
+                "FED_REGULATION",
+                55,
+                "Fed 금융규제·금융시스템 정책"
+            )
 
     if source.startswith("BLS_"):
-        return {
-            "is_event": True,
-            "event_type": "MACRO",
-            "importance": 90,
-            "reason": "미국 공식 경제지표"
-        }
+        add_event(
+            "MACRO",
+            90,
+            "미국 공식 경제지표"
+        )
 
-    # -------------------------------------------------
-    # 2. 투자권유/가정/단순 전망형은 '사건'으로 인정하지 않음
-    # -------------------------------------------------
-    non_event_patterns = [
-        "worth buying",
-        "worth investing",
-        "should you buy",
-        "is it time to buy",
-        "could be worth",
-        "will be worth",
-        "stock pick",
-        "stocks to buy",
-        "buy now",
-        "price target",
-        "what if you invested",
-        "$10,000 investment",
-        "what investors need to know",
-        "to consider",
-        "could rise",
-        "could soar",
-        "may rise",
-        "might rise",
-    ]
+    # =================================================
+    # 2. 정책 / 관세 / 규제
+    # =================================================
 
-    if any(p in text for p in non_event_patterns):
-        return {
-            "is_event": False,
-            "event_type": "NO_EVENT",
-            "importance": 0,
-            "reason": "실제 사건 없는 투자/전망형 콘텐츠"
-        }
-
-    # -------------------------------------------------
-    # 3. 실제 사건 유형 판별
-    #    '산업 단어'가 아니라 '행동/변화'를 찾는다.
-    # -------------------------------------------------
-
-    # 금리 / 통화정책
-    if any(p in text for p in [
-        "fomc",
-        "interest rate decision",
-        "raises rates",
-        "cuts rates",
-        "holds rates",
-        "rate hike",
-        "rate cut",
-        "금리 인상",
-        "금리 인하",
-        "금리 동결"
-    ]):
-        return {
-            "is_event": True,
-            "event_type": "MONETARY_POLICY",
-            "importance": 95,
-            "reason": "금리·통화정책 변화"
-        }
-
-    # 관세 / 규제 / 정부정책
     if any(p in text for p in [
         "imposes tariff",
         "raises tariff",
@@ -407,7 +335,6 @@ def detect_event_type(article):
         "export ban",
         "export restriction",
         "sanctions",
-        "new regulation",
         "tariff announced",
         "관세 부과",
         "관세 인상",
@@ -415,42 +342,37 @@ def detect_event_type(article):
         "수출 금지",
         "제재 발표"
     ]):
-        return {
-            "is_event": True,
-            "event_type": "POLICY",
-            "importance": 90,
-            "reason": "정부 정책·관세·규제 변화"
-        }
+        add_event(
+            "POLICY",
+            90,
+            "정부 정책·관세·규제 변화"
+        )
 
-    #
+    # =================================================
+    # 3. M&A
+    # =================================================
 
-    # 실제 투자 / CAPEX
-    capex_action = any(p in text for p in [
-        "will invest",
-        "to invest",
-        "plans to invest",
-        "announced investment",
-        "capital expenditure",
-        "raises capex",
-        "increases capex",
-        "cuts capex",
-        "spending plan",
-        "투자 확대",
-        "투자 계획",
-        "설비투자",
-        "투자 축소"
-    ])
+    if any(p in text for p in [
+        "acquires",
+        "acquired",
+        "acquisition",
+        "to acquire",
+        "merger",
+        "takeover bid",
+        "인수",
+        "합병"
+    ]):
+        add_event(
+            "M&A",
+            80,
+            "인수·합병 발생"
+        )
 
-    if capex_action:
-        return {
-            "is_event": True,
-            "event_type": "CAPEX",
-            "importance": 80,
-            "reason": "실제 투자·CAPEX 변화"
-        }
+    # =================================================
+    # 4. 계약 / 수주 / 수주잔고
+    # =================================================
 
-    # 계약 / 수주 / 공급
-    contract_action = any(p in text for p in [
+    if any(p in text for p in [
         "wins contract",
         "signed contract",
         "signs contract",
@@ -458,22 +380,49 @@ def detect_event_type(article):
         "supply contract",
         "purchase order",
         "long-term agreement",
+        "orderbook",
+        "backlog",
         "공급계약 체결",
         "장기 공급계약",
         "수주",
+        "수주잔고",
         "계약 체결"
-    ])
+    ]):
+        add_event(
+            "CONTRACT",
+            80,
+            "계약·수주·수주잔고 변화"
+        )
 
-    if contract_action:
-        return {
-            "is_event": True,
-            "event_type": "CONTRACT",
-            "importance": 75,
-            "reason": "실제 계약·수주 발생"
-        }
+    # =================================================
+    # 5. 투자 / CAPEX
+    # =================================================
 
-    # 공장 / 증설 / 양산
-    production_action = any(p in text for p in [
+    if any(p in text for p in [
+        "will invest",
+        "to invest",
+        "plans to invest",
+        "announced investment",
+        "capital expenditure",
+        "capex",
+        "spending plan",
+        "spending plans",
+        "투자 확대",
+        "투자 계획",
+        "설비투자",
+        "투자 축소"
+    ]):
+        add_event(
+            "CAPEX",
+            80,
+            "투자·CAPEX 변화"
+        )
+
+    # =================================================
+    # 6. 생산 / 증설 / 양산
+    # =================================================
+
+    if any(p in text for p in [
         "new factory",
         "new plant",
         "expand production",
@@ -485,68 +434,101 @@ def detect_event_type(article):
         "생산 확대",
         "양산 시작",
         "양산 본격화"
-    ])
+    ]):
+        add_event(
+            "PRODUCTION",
+            75,
+            "생산능력·증설·양산 변화"
+        )
 
-    if production_action:
-        return {
-            "is_event": True,
-            "event_type": "PRODUCTION",
-            "importance": 75,
-            "reason": "생산능력 변화·양산"
-        }
+    # =================================================
+    # 7. 실적 / 가이던스
+    #    다른 구체적 사건보다 뒤에서 판정
+    # =================================================
 
-    # M&A
-    ma_action = any(p in text for p in [
-        "acquires",
-        "acquired",
-        "acquisition",
-        "merger",
-        "to acquire",
-        "인수",
-        "합병"
-    ])
-
-    if ma_action:
-        return {
-            "is_event": True,
-            "event_type": "M&A",
-            "importance": 75,
-            "reason": "인수·합병"
-        }
-    # 실적 발표
-    earnings_action = any(p in text for p in [
+    earnings_signals = [
         "reports revenue",
         "reported revenue",
+        "record revenue",
+        "revenue rose",
+        "revenue grew",
+        "revenue growth",
         "reports earnings",
         "reported earnings",
         "earnings beat",
         "earnings miss",
+        "profit surge",
+        "profit rose",
+        "profit growth",
         "raises guidance",
+        "raised guidance",
+        "raised guide",
         "cuts guidance",
         "lowered guidance",
         "quarterly results",
         "실적 발표",
         "영업이익",
-        "매출액"
-    ])
+        "매출액",
+        "매출 증가",
+        "영업이익 증가"
+    ]
 
-    if earnings_action:
+    if any(p in text for p in earnings_signals):
+        add_event(
+            "EARNINGS",
+            70,
+            "기업 실적·가이던스 변화"
+        )
+
+    # =================================================
+    # 8. 후보가 없으면 사건 아님
+    # =================================================
+
+    if not candidates:
         return {
-            "is_event": True,
-            "event_type": "EARNINGS",
-            "importance": 70,
-            "reason": "기업 실적·가이던스 변화"
+            "is_event": False,
+            "event_type": "NO_EVENT",
+            "importance": 0,
+            "reason": "실제 행동·변화 확인 안 됨"
         }
-    # -------------------------------------------------
-    # 실제 변화가 확인되지 않으면 사건으로 만들지 않음
-    # -------------------------------------------------
-    return {
-        "is_event": False,
-        "event_type": "NO_EVENT",
-        "importance": 0,
-        "reason": "실제 행동·변화 확인 안 됨"
+
+    # =================================================
+    # 9. 가장 중요한 사건 선택
+    # =================================================
+
+    priority = {
+        "FOMC": 100,
+        "POLICY": 95,
+        "POWELL": 90,
+        "M&A": 85,
+        "CONTRACT": 84,
+        "CAPEX": 83,
+        "PRODUCTION": 82,
+        "MACRO": 80,
+        "EARNINGS": 70,
+        "FED_SPEECH": 60,
+        "FED_REGULATION": 50
     }
 
+    best = max(
+        candidates,
+        key=lambda x: (
+            priority.get(x["event_type"], 0),
+            x["importance"]
+        )
+    )
+
+    return {
+        "is_event": True,
+        "event_type": best["event_type"],
+        "importance": best["importance"],
+        "reason": best["reason"],
+        "detected_events": [
+            x["event_type"]
+            for x in candidates
+        ]
+    }
+    
 def classify_event_status(article):
     """
     사건의 '신분'을 분류한다.
