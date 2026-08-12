@@ -27,11 +27,17 @@ def run():
 
     stocks = load_korean_stocks()
     update_backtest_prices(stocks)
-    news = get_all_news()
-    print("전체 뉴스 수:", len(news))
-    # Event Engine 테스트
 
-    events = build_events(news)
+    us_news = get_us_news()
+    kr_news = get_korea_news()
+
+    news = us_news + kr_news
+
+    print("미국 뉴스 수:", len(us_news))
+    print("한국 뉴스 수:", len(kr_news))
+    print("전체 뉴스 수:", len(news))
+
+    events = build_events(us_news)
 
     print("생성된 사건 수:", len(events))
 
