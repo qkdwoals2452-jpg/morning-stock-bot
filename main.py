@@ -5,7 +5,7 @@ from event_engine import build_events
 from sector_filter_engine import pass_theme_sector_filter
 from company_verify_engine import verify_company_theme
 from config import *
-from news_engine import get_all_news
+from news_engine import get_us_news, get_korea_news
 from theme_engine import extract_themes, expand_theme_words
 from stock_engine import load_korean_stocks, find_related_stocks
 from company_engine import get_company_match_score
