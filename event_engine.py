@@ -422,30 +422,7 @@ def detect_event_type(article):
             "reason": "정부 정책·관세·규제 변화"
         }
 
-    # 실적 발표
-    earnings_action = any(p in text for p in [
-        "reports revenue",
-        "reported revenue",
-        "reports earnings",
-        "reported earnings",
-        "earnings beat",
-        "earnings miss",
-        "raises guidance",
-        "cuts guidance",
-        "lowered guidance",
-        "quarterly results",
-        "실적 발표",
-        "영업이익",
-        "매출액"
-    ])
-
-    if earnings_action:
-        return {
-            "is_event": True,
-            "event_type": "EARNINGS",
-            "importance": 70,
-            "reason": "기업 실적·가이던스 변화"
-        }
+    #
 
     # 실제 투자 / CAPEX
     capex_action = any(p in text for p in [
@@ -536,7 +513,30 @@ def detect_event_type(article):
             "importance": 75,
             "reason": "인수·합병"
         }
+    # 실적 발표
+    earnings_action = any(p in text for p in [
+        "reports revenue",
+        "reported revenue",
+        "reports earnings",
+        "reported earnings",
+        "earnings beat",
+        "earnings miss",
+        "raises guidance",
+        "cuts guidance",
+        "lowered guidance",
+        "quarterly results",
+        "실적 발표",
+        "영업이익",
+        "매출액"
+    ])
 
+    if earnings_action:
+        return {
+            "is_event": True,
+            "event_type": "EARNINGS",
+            "importance": 70,
+            "reason": "기업 실적·가이던스 변화"
+        }
     # -------------------------------------------------
     # 실제 변화가 확인되지 않으면 사건으로 만들지 않음
     # -------------------------------------------------
