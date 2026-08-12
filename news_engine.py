@@ -275,11 +275,11 @@ def get_us_news():
         news += parse_rss(url, "US", source_name)
     news += parse_atom(
 
-    "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom",
+        "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom",
 
-    "US",
+        "US",
 
-    "SEC_Filings"
+        "SEC_Filings"
 
     )
     news = filter_recent_news(news, hours=36)
