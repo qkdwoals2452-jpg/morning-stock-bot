@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 import re
 import html
 from email.utils import parsedate_to_datetime
+from datetime import datetime, timezone
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -122,7 +123,39 @@ def remove_duplicates(articles):
             seen.append(words)
 
     return result
+def filter_recent_news(articles, hours=36):
 
+    now = datetime.now(timezone.utc)
+
+    result = []
+
+    for article in articles:
+
+        published_at = article.get("published_at", "")
+
+        # 날짜 없는 기사는 일단 제외
+        if not published_at:
+            continue
+
+        try:
+            dt = datetime.fromisoformat(
+                published_at.replace("Z", "+00:00")
+            )
+
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+
+            age_hours = (
+                now - dt.astimezone(timezone.utc)
+            ).total_seconds() / 3600
+
+            if 0 <= age_hours <= hours:
+                result.append(article)
+
+        except Exception:
+            continue
+
+    return result
 
 def get_us_news():
     rss_list = [
@@ -160,7 +193,10 @@ def get_us_news():
 
         news += parse_rss(url, "US", source_name)
 
-    return remove_duplicates(news)[:200]
+    news = filter_recent_news(news, hours=36)
+    news = remove_duplicates(news)
+
+    return news[:200]
 
 def get_korea_news():
     rss_list = [
@@ -182,7 +218,11 @@ def get_korea_news():
     for source_name, url in rss_list:
         news += parse_rss(url, "KR", source_name)
 
-    return remove_duplicates(news)[:180]
+    news = filter_recent_news(news, hours=36)
+
+    news = remove_duplicates(news)
+
+    return news[:180]
 
 
 def get_all_news():
