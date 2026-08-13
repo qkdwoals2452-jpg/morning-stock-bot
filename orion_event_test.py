@@ -256,3 +256,48 @@ if __name__ == "__main__":
         print("🔴 본체 연결 금지")
 
     print("=" * 70)
+from news_engine import get_all_news
+from event_engine import calc_event_score
+
+
+print("\n" + "=" * 70)
+print("ORION EVENT ENGINE LIVE TEST")
+print("=" * 70)
+
+news = get_all_news()
+
+print(f"\n실제 수집 뉴스 수: {len(news)}")
+
+live_events = []
+
+for article in news:
+    score, reasons = calc_event_score(article)
+
+    if score > 0:
+        live_events.append({
+            "score": score,
+            "title": article.get("title", ""),
+            "market": article.get("market", ""),
+            "source": article.get("source", ""),
+            "reasons": reasons
+        })
+
+live_events.sort(key=lambda x: x["score"], reverse=True)
+
+print(f"실제 감지 사건 수: {len(live_events)}")
+
+print("\n===== 실전 사건 TOP20 =====")
+
+for i, event in enumerate(live_events[:20], 1):
+    print(
+        f"{i:02d}. "
+        f"[{event['market']}] "
+        f"{event['score']}점 "
+        f"{event['title']}"
+    )
+    print(f"    출처: {event['source']}")
+    print(f"    이유: {event['reasons']}")
+
+print("\n" + "=" * 70)
+print("실전 테스트 종료")
+print("=" * 70)
