@@ -1,3 +1,4 @@
+from event_understanding_engine import understand_event
 # ORION Event Engine Test Set v1
 # 실제 사건 판별기의 성능을 본 시스템 연결 전에 검증한다.
 
@@ -168,23 +169,90 @@ TEST_CASES = [
     },
 ]
 
-
 if __name__ == "__main__":
 
-    print("=" * 60)
-    print("ORION EVENT TEST SET v1")
-    print("=" * 60)
+    print("=" * 70)
+    print("ORION EVENT ENGINE TEST v1")
+    print("=" * 70)
 
-    real_events = sum(
-        1 for case in TEST_CASES
-        if case["expected_event"]
+    correct = 0
+    wrong = 0
+
+    for case in TEST_CASES:
+
+        article = {
+            "title": case["title"],
+            "summary": ""
+        }
+
+        result = understand_event(article)
+
+        event_ok = (
+            result["is_real_event"]
+            == case["expected_event"]
+        )
+
+        type_ok = (
+            result["event_type"]
+            == case["expected_type"]
+        )
+
+        passed = event_ok and type_ok
+
+        if passed:
+            correct += 1
+            mark = "✅"
+        else:
+            wrong += 1
+            mark = "❌"
+
+        print()
+        print(
+            mark,
+            f"{case['id']:02d}",
+            case["title"]
+        )
+
+        print(
+            "   정답:",
+            case["expected_event"],
+            case["expected_type"]
+        )
+
+        print(
+            "   판정:",
+            result["is_real_event"],
+            result["event_type"]
+        )
+
+        print(
+            "   이유:",
+            result["reason"]
+        )
+
+
+    score = (
+        correct / len(TEST_CASES)
+    ) * 100
+
+    print()
+    print("=" * 70)
+
+    print(
+        f"결과: {correct}/{len(TEST_CASES)}"
     )
 
-    rejected = len(TEST_CASES) - real_events
+    print(
+        f"정확도: {score:.1f}%"
+    )
 
-    print("전체 테스트 :", len(TEST_CASES))
-    print("잡아야 할 사건 :", real_events)
-    print("버려야 할 기사 :", rejected)
+    print(
+        f"오답: {wrong}개"
+    )
 
-    print("\n정답지 생성 완료")
-    print("다음 단계: 새 Event Engine을 이 정답지에 연결")
+    if correct >= 18:
+        print("🟢 1차 통과")
+    else:
+        print("🔴 본체 연결 금지")
+
+    print("=" * 70)
