@@ -601,6 +601,21 @@ def classify_event_status(article):
         "price target",
         "could rise",
         "could soar",
+        "stocks to watch",
+
+        "stock to watch",
+
+        "shares rise",
+
+        "shares jump",
+
+        "stock rises",
+
+        "stock jumps",
+
+        "benefit from",
+
+        "beneficiary",
         "전망",
         "분석",
         "해설",
@@ -609,6 +624,23 @@ def classify_event_status(article):
         "위클리",
         "투자 포인트",
         "주목할 종목"
+        "주목",
+
+        "수혜",
+
+        "기대감",
+
+        "추천",
+
+        "추천 후",
+
+        "주가 상승",
+
+        "주가 상승세",
+
+        "주식 초고수",
+
+        "mk시그널",
     ]
 
     if any(p in text for p in analysis_patterns):
