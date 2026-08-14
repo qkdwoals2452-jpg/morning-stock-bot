@@ -374,19 +374,20 @@ def detect_event_type(article):
 
         "품고",
 
-]
 
-if any(p in title.lower() for p in ma_strong_title):
+    ]
 
-    add_event(
+    if any(p in title.lower() for p in ma_strong_title):
 
-        "M&A",
+        add_event(
 
-        80,
+            "M&A",
 
-        "인수·합병 발생"
+            80,
 
-    )
+            "인수·합병 발생"
+
+        )
 
     # =================================================
     # 4. 계약 / 수주 / 수주잔고
