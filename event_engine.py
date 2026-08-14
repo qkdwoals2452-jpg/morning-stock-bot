@@ -352,21 +352,41 @@ def detect_event_type(article):
     # 3. M&A
     # =================================================
 
-    if any(p in text for p in [
+    ma_strong_title = [
+
         "acquires",
+
         "acquired",
+
         "acquisition",
+
         "to acquire",
+
         "merger",
+
         "takeover bid",
+
         "인수",
-        "합병"
-    ]):
-        add_event(
-            "M&A",
-            80,
-            "인수·합병 발생"
-        )
+
+        "합병",
+
+        "품었다",
+
+        "품고",
+
+]
+
+if any(p in title.lower() for p in ma_strong_title):
+
+    add_event(
+
+        "M&A",
+
+        80,
+
+        "인수·합병 발생"
+
+    )
 
     # =================================================
     # 4. 계약 / 수주 / 수주잔고
