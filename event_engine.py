@@ -663,6 +663,18 @@ def classify_event_status(article):
 
         "mk시그널",
         "why investors",
+        "실적 발표 예정",
+
+        "실적 발표 앞두고",
+
+        "실적 발표를 앞두고",
+
+        "earnings due",
+        "설비투자 대비",
+
+        "투자 여력",
+
+        "투자 재원",
     ]
 
     if any(p in text for p in analysis_patterns):
