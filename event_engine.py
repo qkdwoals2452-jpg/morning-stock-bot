@@ -350,45 +350,76 @@ def detect_event_type(article):
 
     # =================================================
     # 3. M&A
-    # =================================================
 
-    ma_strong_title = [
+   # 실제 인수·합병 "행동"이 제목에 확인될 때만 인정
 
-        "acquires",
+   # =================================================
 
-        "acquired",
+   ma_action_patterns = [
 
-        "acquisition",
+       # 영어 - 실제 행동
 
-        "to acquire",
+       " acquires ",
 
-        "merger",
+       " acquired ",
 
-        "takeover bid",
+       " to acquire ",
 
-        "인수",
+       " agrees to acquire ",
 
-        "합병",
+       " agreed to acquire ",
 
-        "품었다",
+       " completes acquisition",
 
-        "품고",
+       " completed acquisition",
 
+       " merger completed",
 
-    ]
+       " completes merger",
 
-    if any(p in title.lower() for p in ma_strong_title):
+       " takeover bid",
 
-        add_event(
+       # 한국어 - 실제 행동
 
-            "M&A",
+       "인수한다",
 
-            80,
+       "인수했다",
 
-            "인수·합병 발생"
+       "인수 완료",
 
-        )
+       "인수 확정",
 
+       "인수 계약",
+
+       "인수키로",
+
+       "합병한다",
+
+       "합병했다",
+
+       "합병 완료",
+
+       "합병 확정",
+
+       "품었다",
+
+       "품고",
+
+   ]
+
+   title_check = f" {title.lower()} "
+
+   if any(p in title_check for p in ma_action_patterns):
+
+       add_event(
+
+           "M&A",
+
+           80,
+
+           "실제 인수·합병 행동 발생"
+
+       )
     # =================================================
     # 4. 계약 / 수주 / 수주잔고
     # =================================================
