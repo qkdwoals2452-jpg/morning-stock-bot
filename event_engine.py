@@ -587,6 +587,15 @@ def classify_event_status(article):
         "검토 중",
         "협상 중",
         "가능성"
+        "곧 발표",
+
+        "발표 예정",
+
+        "발표할 예정",
+
+        "expected to announce",
+
+        "set to announce",
     ]
 
     if any(p in text for p in rumor_patterns):
