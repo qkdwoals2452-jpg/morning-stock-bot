@@ -662,6 +662,7 @@ def classify_event_status(article):
         "주식 초고수",
 
         "mk시그널",
+        "why investors",
     ]
 
     if any(p in text for p in analysis_patterns):
