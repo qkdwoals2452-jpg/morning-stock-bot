@@ -422,10 +422,14 @@ def detect_event_type(article):
         )
     # =================================================
     # 4. 계약 / 수주 / 수주잔고
+    
+
+    # 실제 계약·수주가 제목에서 확인될 때만 인정
     # =================================================
 
-    if any(p in text for p in [
+    contract_title_patterns = [
         "wins contract",
+        "won contract",
         "signed contract",
         "signs contract",
         "supply agreement",
@@ -434,16 +438,20 @@ def detect_event_type(article):
         "long-term agreement",
         "orderbook",
         "backlog",
+
         "공급계약 체결",
+        "공급계약",
         "장기 공급계약",
         "수주",
         "수주잔고",
-        "계약 체결"
-    ]):
+        "계약 체결",
+    ]
+
+    if any(p in title.lower() for p in contract_title_patterns):
         add_event(
             "CONTRACT",
             80,
-            "계약·수주·수주잔고 변화"
+            "실제 계약·수주·수주잔고 변화"
         )
 
     # =================================================
