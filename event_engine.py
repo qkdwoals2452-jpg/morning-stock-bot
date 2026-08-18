@@ -351,75 +351,75 @@ def detect_event_type(article):
     # =================================================
     # 3. M&A
 
-   # 실제 인수·합병 "행동"이 제목에 확인될 때만 인정
+    # 실제 인수·합병 "행동"이 제목에 확인될 때만 인정
 
-   # =================================================
+    # =================================================
 
-   ma_action_patterns = [
+    ma_action_patterns = [
 
-       # 영어 - 실제 행동
+        # 영어 - 실제 행동
 
-       " acquires ",
+        " acquires ",
 
-       " acquired ",
+        " acquired ",
 
-       " to acquire ",
+        " to acquire ",
 
-       " agrees to acquire ",
+        " agrees to acquire ",
 
-       " agreed to acquire ",
+        " agreed to acquire ",
 
-       " completes acquisition",
+        " completes acquisition",
 
-       " completed acquisition",
+        " completed acquisition",
 
-       " merger completed",
+        " merger completed",
 
-       " completes merger",
+        " completes merger",
 
-       " takeover bid",
+        " takeover bid",
 
-       # 한국어 - 실제 행동
+        # 한국어 - 실제 행동
 
-       "인수한다",
+        "인수한다",
 
-       "인수했다",
+        "인수했다",
 
-       "인수 완료",
+        "인수 완료",
 
-       "인수 확정",
+        "인수 확정",
 
-       "인수 계약",
+        "인수 계약",
 
-       "인수키로",
+        "인수키로",
 
-       "합병한다",
+        "합병한다",
 
-       "합병했다",
+        "합병했다",
 
-       "합병 완료",
+        "합병 완료",
 
-       "합병 확정",
+        "합병 확정",
 
-       "품었다",
+        "품었다",
 
-       "품고",
+        "품고",
 
-   ]
+    ]
 
-   title_check = f" {title.lower()} "
+    title_check = f" {title.lower()} "
 
-   if any(p in title_check for p in ma_action_patterns):
+    if any(p in title_check for p in ma_action_patterns):
 
-       add_event(
+        add_event(
 
-           "M&A",
+            "M&A",
 
-           80,
+            80,
 
-           "실제 인수·합병 행동 발생"
+            "실제 인수·합병 행동 발생"
 
-       )
+        )
     # =================================================
     # 4. 계약 / 수주 / 수주잔고
     # =================================================
