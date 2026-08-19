@@ -459,32 +459,32 @@ def detect_event_type(article):
     # =================================================
 
     capex_title_patterns = [
-    "will invest",
-    "to invest",
-    "plans to invest",
-    "announced investment",
-    "capital expenditure",
-    "capex",
-    "spending plan",
-    "spending plans",
-    "boosts spending",
-    "raises spending",
+        "will invest",
+        "to invest",
+        "plans to invest",
+        "announced investment",
+        "capital expenditure",
+        "capex",
+        "spending plan",
+        "spending plans",
+        "boosts spending",
+        "raises spending",
 
-    "투자 확대",
-    "투자 계획",
-    "설비투자",
-    "투자 축소",
-    "투자한다",
-    "투자하기로",
-    "투자 결정",
-]
+        "투자 확대",
+        "투자 계획",
+        "설비투자",
+        "투자 축소",
+        "투자한다",
+        "투자하기로",
+        "투자 결정",
+    ]
 
-if any(p in title.lower() for p in capex_title_patterns):
-    add_event(
-        "CAPEX",
-        80,
-        "실제 투자·CAPEX 변화"
-    )
+    if any(p in title.lower() for p in capex_title_patterns):
+        add_event(
+            "CAPEX",
+            80,
+            "실제 투자·CAPEX 변화"
+        )
 
     # =================================================
     # 6. 생산 / 증설 / 양산
