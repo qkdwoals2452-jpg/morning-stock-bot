@@ -805,20 +805,99 @@ def make_event_grade(score):
         return "D"
 
 
+
 def make_event_key(article):
-    title = normalize_title(article.get("title", ""))
 
-    core_words = []
+    title = str(
+        article.get("title", "") or ""
+    )
 
-    for word in IMPORTANT_KEYWORDS:
-        if word.lower() in title:
-            core_words.append(word.lower())
+    normalized = normalize_title(title)
 
-    if core_words:
-        return "_".join(sorted(core_words[:4]))
+    # 사건 종류
+    event = detect_event_type(article)
 
-    return title[:60]
+    event_type = event.get(
+        "event_type",
+        "UNKNOWN"
+    )
 
+    # -------------------------------------------------
+    # 회사/기업 식별용 영문 토큰 추출
+    #
+    # 예:
+    # TJX컴퍼니스 → TJX
+    # TJX earnings → TJX
+    # NVIDIA → NVIDIA
+    # TSMC → TSMC
+    # -------------------------------------------------
+
+    company_tokens = re.findall(
+        r"\b[A-Z][A-Z0-9]{1,9}\b",
+        title
+    )
+
+    # 기업명이 아닌 흔한 토큰 제거
+    stop_tokens = {
+        "US",
+        "AI",
+        "CEO",
+        "CFO",
+        "ETF",
+        "IPO",
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4",
+        "FY",
+        "GDP",
+        "CPI",
+        "PPI",
+        "FOMC",
+    }
+
+    company_tokens = [
+        token
+        for token in company_tokens
+        if token not in stop_tokens
+    ]
+
+    # 회사 식별자가 있으면
+    # 사건종류 + 회사로 묶는다.
+    if company_tokens:
+
+        company = company_tokens[0]
+
+        return (
+            f"{company}_"
+            f"{event_type}"
+        )
+
+    # -------------------------------------------------
+    # 영문 식별자가 없는 한국 기업 기사
+    # 제목 앞부분 + 사건종류 사용
+    # -------------------------------------------------
+
+    clean_title = re.sub(
+        r"[^가-힣A-Za-z0-9 ]",
+        " ",
+        normalized
+    )
+
+    clean_title = re.sub(
+        r"\s+",
+        " ",
+        clean_title
+    ).strip()
+
+    first_words = clean_title.split()[:4]
+
+    title_key = "_".join(first_words)
+
+    return (
+        f"{title_key}_"
+        f"{event_type}"
+    )
 
 def merge_same_events(news):
     grouped = defaultdict(list)
