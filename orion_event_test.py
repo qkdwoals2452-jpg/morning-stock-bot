@@ -257,7 +257,7 @@ if __name__ == "__main__":
 
     print("=" * 70)
 from news_engine import get_all_news
-from event_engine import calc_event_score
+from event_engine import merge_same_events
 
 
 print("\n" + "=" * 70)
@@ -268,35 +268,38 @@ news = get_all_news()
 
 print(f"\n실제 수집 뉴스 수: {len(news)}")
 
-live_events = []
+live_events = merge_same_events(news)
 
-for article in news:
-    score, reasons = calc_event_score(article)
-
-    if score > 0:
-        live_events.append({
-            "score": score,
-            "title": article.get("title", ""),
-            "market": article.get("market", ""),
-            "source": article.get("source", ""),
-            "reasons": reasons
-        })
-
-live_events.sort(key=lambda x: x["score"], reverse=True)
-
-print(f"실제 감지 사건 수: {len(live_events)}")
+print(
+    f"중복 제거 후 실제 사건 수: "
+    f"{len(live_events)}"
+)
 
 print("\n===== 실전 사건 TOP20 =====")
 
 for i, event in enumerate(live_events[:20], 1):
+
     print(
         f"{i:02d}. "
         f"[{event['market']}] "
-        f"{event['score']}점 "
-        f"{event['title']}"
+        f"{event['event_score']}점 "
+        f"{event['event_title']}"
     )
-    print(f"    출처: {event['source']}")
-    print(f"    이유: {event['reasons']}")
+
+    print(
+        f"    출처 수: "
+        f"{event['source_count']}"
+    )
+
+    print(
+        f"    EVENT KEY: "
+        f"{event['event_key']}"
+    )
+
+    print(
+        f"    이유: "
+        f"{event['reason']}"
+    )
 
 print("\n" + "=" * 70)
 print("실전 테스트 종료")
