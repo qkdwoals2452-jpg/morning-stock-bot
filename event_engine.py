@@ -938,27 +938,27 @@ def make_event_key(article):
         "won",
     }
 
-# 영어 제목
-if words and re.fullmatch(r"[a-zA-Z0-9]+", words[0]):
+    # 영어 제목
+    if words and re.fullmatch(r"[a-zA-Z0-9]+", words[0]):
 
-    if (
-        len(words) >= 2
-        and words[1].lower() not in event_action_words
-    ):
-        company_words = words[:2]
+        if (
+            len(words) >= 2
+            and words[1].lower() not in event_action_words
+        ):
+            company_words = words[:2]
+        else:
+            company_words = words[:1]
+
+    # 한국어 제목
     else:
-        company_words = words[:1]
+        company_words = words[:2]
 
-# 한국어 제목
-else:
-    company_words = words[:2]
+    title_key = "_".join(company_words)
 
-title_key = "_".join(company_words)
-
-return (
-    f"{title_key}_"
-    f"{event_type}"
-)
+    return (
+        f"{title_key}_"
+        f"{event_type}"
+    )
 
 def merge_same_events(news):
     grouped = defaultdict(list)
