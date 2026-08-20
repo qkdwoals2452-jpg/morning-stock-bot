@@ -859,6 +859,7 @@ def make_event_key(article):
     stop_tokens = {
         "US",
         "AI",
+        "EV",
         "CEO",
         "CFO",
         "ETF",
@@ -908,7 +909,7 @@ def make_event_key(article):
         clean_title
     ).strip()
 
-    first_words = clean_title.split()[:4]
+    first_words = clean_title.split()[:2]
 
     title_key = "_".join(first_words)
 
