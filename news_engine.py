@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 import re
 import html
 from email.utils import parsedate_to_datetime
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 HEADERS = {
     "User-Agent": "ORION Stock Research Bot qkdwoals2452@gmail.com",
@@ -338,15 +338,46 @@ def get_korea_news():
 
 
 
+
 def get_all_news():
     us_news = get_us_news()
     kr_news = get_korea_news()
 
     all_news = us_news + kr_news
 
+    now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(hours=36)
+
+    fresh_news = []
+
+    for article in all_news:
+        published_at = article.get("published_at", "")
+
+        if not published_at:
+            continue
+
+        try:
+            dt = datetime.fromisoformat(
+                published_at.replace("Z", "+00:00")
+            )
+
+            if dt >= cutoff:
+                fresh_news.append(article)
+
+        except Exception:
+            continue
+
+    print(
+        f"\n전체 뉴스 수: {len(all_news)}"
+    )
+
+    print(
+        f"최근 36시간 뉴스 수: {len(fresh_news)}"
+    )
+
     print("\n===== 뉴스 날짜 확인 TOP10 =====")
 
-    for article in all_news[:10]:
+    for article in fresh_news[:10]:
         print(
             article.get("source", ""),
             "|",
@@ -355,5 +386,4 @@ def get_all_news():
             article.get("title", "")
         )
 
-    return all_news    
-   
+    return fresh_news    
