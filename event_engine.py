@@ -754,6 +754,8 @@ def classify_event_status(article):
         "투자 여력",
 
         "투자 재원",
+        "장세 복귀",
+        "복귀 대기",
     ]
     title_lower = title.lower().strip()
 
