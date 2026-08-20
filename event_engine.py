@@ -860,48 +860,64 @@ def make_event_key(article):
     # TSMC → TSMC
     # -------------------------------------------------
 
-    company_tokens = re.findall(
-        r"\b[A-Z][A-Z0-9]{1,9}\b",
+    # -------------------------------------------------
+    # 영문 기사 회사명 추출
+    # 제목 맨 앞 회사명을 우선 사용한다.
+    # -------------------------------------------------
+
+    clean_title_for_company = re.sub(
+        r"[^A-Za-z0-9 ]",
+        " ",
         title
     )
 
-    # 기업명이 아닌 흔한 토큰 제거
-    stop_tokens = {
-        "US",
-        "AI",
-        "EV",
-        "CEO",
-        "CFO",
-        "ETF",
-        "IPO",
-        "Q1",
-        "Q2",
-        "Q3",
-        "Q4",
-        "FY",
-        "GDP",
-        "CPI",
-        "PPI",
-        "FOMC",
+    clean_title_for_company = re.sub(
+        r"\s+",
+        " ",
+    ㅠ.  clean_title_for_company
+    ).strip()
+
+    company_words = clean_title_for_company.split()
+
+    event_action_words = {
+        "reports",
+        "reported",
+        "raises",
+        "raised",
+        "guides",
+        "guided",
+        "forecasts",
+        "forecast",
+        "expects",
+        "cuts",
+        "cut",
+        "acquires",
+        "acquired",
+        "agrees",
+        "wins",
+        "won",
+        "targets",
     }
 
-    company_tokens = [
-        token
-        for token in company_tokens
-        if token not in stop_tokens
-    ]
+    if company_words:
 
-    # 회사 식별자가 있으면
-    # 사건종류 + 회사로 묶는다.
-    if company_tokens:
+        # 첫 단어 다음이 행동어면 회사명은 1단어
+        if (
+            len(company_words) >= 2
+            and company_words[1].lower() in event_action_words
+        ):
+            company = company_words[0]
 
-        company = company_tokens[0]
+        # 첫 두 단어를 회사명으로 사용
+        else:
+            company = "_".join(
+                company_words[:2]
+            )
 
         return (
-            f"{company}_"
+            f"{company.lower()}_"
             f"{event_type}"
-        )
-
+    )
     # -------------------------------------------------
     # 영문 식별자가 없는 한국 기업 기사
     # 제목 앞부분 + 사건종류 사용
