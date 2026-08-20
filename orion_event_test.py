@@ -167,6 +167,14 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "과거 실적을 이용한 밸류에이션 해설"
     },
+
+    {
+        "id": 21,
+        "title": "Stripe agrees to acquire AI model router OpenRouter",
+        "expected_event": True,
+        "expected_type": "M&A",
+        "note": "실제 AI 기업 인수"
+    },
 ]
 
 if __name__ == "__main__":
