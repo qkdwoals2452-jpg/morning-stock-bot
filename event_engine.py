@@ -874,7 +874,7 @@ def make_event_key(article):
     clean_title_for_company = re.sub(
         r"\s+",
         " ",
-    ㅠ.  clean_title_for_company
+        clean_title_for_company
     ).strip()
 
     company_words = clean_title_for_company.split()
