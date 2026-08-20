@@ -116,6 +116,8 @@ def understand_event(article):
     ma_patterns = [
         "agrees to buy",
         "agreed to buy",
+        "agrees to acquire",
+        "agreed to acquire",
         "acquires",
         "acquired",
         "acquisition",
