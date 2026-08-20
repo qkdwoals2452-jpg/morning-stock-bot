@@ -314,7 +314,7 @@ def get_korea_news():
     rss_list = [
         ("한국경제_증권", "https://www.hankyung.com/feed/finance"),
         ("한국경제_경제", "https://www.hankyung.com/feed/economy"),
-        ("한국경제_산업", "https://www.hankyung.com/feed/industry"),
+        
 
         ("매일경제_경제", "https://www.mk.co.kr/rss/30100041/"),
         ("매일경제_증권", "https://www.mk.co.kr/rss/50200011/"),
