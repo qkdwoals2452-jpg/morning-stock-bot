@@ -747,7 +747,23 @@ def classify_event_status(article):
 
         "투자 재원",
     ]
+    title_lower = title.lower().strip()
 
+    if title_lower.startswith((
+
+        "will ",
+
+        "should ",
+
+        "can ",
+
+        "why ",
+
+        "how "
+
+    )):
+
+        return "ANALYSIS"
     if any(p in text for p in analysis_patterns):
         return "ANALYSIS"
 
