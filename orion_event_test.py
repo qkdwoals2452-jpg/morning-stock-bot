@@ -275,6 +275,12 @@ print("=" * 70)
 news = get_all_news()
 
 print(f"\n실제 수집 뉴스 수: {len(news)}")
+for article in news:
+    if "Einride" in article.get("title", ""):
+        print("\n===== EINRIDE 원문 확인 =====")
+        print("제목:", article.get("title", ""))
+        print("요약:", article.get("summary", ""))
+        print("출처:", article.get("source", ""))
 
 live_events = merge_same_events(news)
 
