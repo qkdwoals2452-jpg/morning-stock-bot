@@ -265,7 +265,7 @@ if __name__ == "__main__":
 
     print("=" * 70)
 from news_engine import get_all_news
-from event_engine import merge_same_events
+from event_engine import merge_same_events, calc_event_score
 
 
 print("\n" + "=" * 70)
@@ -273,32 +273,31 @@ print("ORION EVENT ENGINE LIVE TEST")
 print("=" * 70)
 
 news = get_all_news()
-print("\n===== 문제 기사 원문 확인 =====")
-
-for article in news:
-
-    title = article.get("title", "")
-
-    if (
-        "4억 뇌물" in title
-        or "원전 르네상스" in title
-        or "금호건설" in title
-    ):
-        print()
-        print("제목:", title)
-        print("요약:", article.get("summary", ""))
-        print("출처:", article.get("source", ""))
-        print("날짜:", article.get("published_at", ""))
-
-print("=" * 70)
 
 print(f"\n실제 수집 뉴스 수: {len(news)}")
+print("\n===== ORION REVIEW QUEUE =====")
+
+review_count = 0
+
 for article in news:
-    if "Einride" in article.get("title", ""):
-        print("\n===== EINRIDE 원문 확인 =====")
+    score, reasons = calc_event_score(article)
+
+    if score > 0:
+        review_count += 1
+
+        print()
+        print(f"[REVIEW {review_count:02d}]")
         print("제목:", article.get("title", ""))
         print("요약:", article.get("summary", ""))
         print("출처:", article.get("source", ""))
+        print("시장:", article.get("market", ""))
+        print("날짜:", article.get("published_at", ""))
+        print("점수:", score)
+        print("판정이유:", reasons)
+
+print()
+print(f"검토 대상 기사 수: {review_count}")
+print("=" * 70)
 
 live_events = merge_same_events(news)
 
