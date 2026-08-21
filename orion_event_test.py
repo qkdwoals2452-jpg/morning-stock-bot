@@ -273,6 +273,24 @@ print("ORION EVENT ENGINE LIVE TEST")
 print("=" * 70)
 
 news = get_all_news()
+print("\n===== 문제 기사 원문 확인 =====")
+
+for article in news:
+
+    title = article.get("title", "")
+
+    if (
+        "4억 뇌물" in title
+        or "원전 르네상스" in title
+        or "금호건설" in title
+    ):
+        print()
+        print("제목:", title)
+        print("요약:", article.get("summary", ""))
+        print("출처:", article.get("source", ""))
+        print("날짜:", article.get("published_at", ""))
+
+print("=" * 70)
 
 print(f"\n실제 수집 뉴스 수: {len(news)}")
 for article in news:
