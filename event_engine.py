@@ -849,6 +849,22 @@ def make_event_key(article):
         "event_type",
         "UNKNOWN"
     )
+    # 한국어 기사면 제목 첫 단어를 기업명으로 사용
+    if re.search(r"[가-힣]", title):
+
+        korean_company = re.split(
+            r"[,·…:\"'“”\s]",
+            title.strip()
+        )[0]
+
+        korean_company = re.sub(
+            r"[^가-힣A-Za-z0-9]",
+            "",
+            korean_company
+        )
+
+        if korean_company:
+            return f"{korean_company}_{event_type}"
 
     # -------------------------------------------------
     # 회사/기업 식별용 영문 토큰 추출
