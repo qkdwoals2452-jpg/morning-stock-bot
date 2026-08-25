@@ -108,7 +108,33 @@ def understand_event(article):
             "reason": "투자권유·해설·시장반응 콘텐츠"
         }
 
+    # =====================================================
+    # 2. FOMC / 미국 금리 결정
+    # =====================================================
 
+    fomc_patterns = [
+        "federal reserve cuts interest rates",
+        "federal reserve raises interest rates",
+        "fed cuts interest rates",
+        "fed raises interest rates",
+        "cuts interest rates by",
+        "raises interest rates by",
+        "rate cut",
+        "rate hike",
+        "interest rate decision",
+        "기준금리 인하",
+        "기준금리 인상",
+        "금리 인하",
+        "금리 인상",
+    ]
+
+    if contains_any(text, fomc_patterns):
+
+        return {
+            "is_real_event": True,
+            "event_type": "FOMC",
+            "reason": "실제 미국 통화정책·금리 결정"
+        }
     # =====================================================
     # 2. M&A
     # =====================================================
