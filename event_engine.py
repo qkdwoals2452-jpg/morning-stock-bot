@@ -1,3 +1,4 @@
+from event_understanding_engine import understand_event
 from collections import defaultdict
 import re
 
@@ -783,41 +784,54 @@ def classify_event_status(article):
     return "CONFIRMED"
 def calc_event_score(article):
 
-    event = detect_event_type(article)
-    status = classify_event_status(article)
+def calc_event_score(article):
 
-    if not event["is_event"]:
+    result = understand_event(article)
+
+    # 실제 사건이 아니면 즉시 제거
+    if not result["is_real_event"]:
         return 0, [
-            event["reason"]
+            result["reason"]
         ]
-    # 루머는 실제 사건으로 사용하지 않는다.
-    if status == "RUMOR":
-        return 0, ["사건신분:RUMOR", "미확정 정보"]
 
-    # 해설/전망은 Money Flow 시작 사건으로 사용하지 않는다.
-    if status == "ANALYSIS":
-        return 0, ["사건신분:ANALYSIS", "해설·전망 기사"]
+    event_type = result["event_type"]
 
-    score = event["importance"]
+    # 사건 종류별 기본 점수
+    importance = {
+        "FOMC": 95,
+        "POLICY": 90,
+        "POWELL": 90,
+        "M&A": 85,
+        "CONTRACT": 80,
+        "CAPEX": 80,
+        "PRODUCTION": 75,
+        "MACRO": 90,
+        "EARNINGS": 70,
+        "FED_SPEECH": 70,
+        "FED_REGULATION": 55,
+    }
+
+    score = importance.get(event_type, 70)
 
     reasons = [
-        f"사건신분:{status}",
-        f"사건유형:{event['event_type']}",
-        event["reason"]
+        "사건신분:CONFIRMED",
+        f"사건유형:{event_type}",
+        result["reason"],
     ]
 
     market = article.get("market", "")
     source = article.get("source", "")
 
-    # 미국 공식/원문이면 신뢰도 보강
     if market == "US":
         reasons.append("US")
 
+    # 공식기관 원문
     if source.startswith("FED_") or source.startswith("BLS_"):
+        reasons[0] = "사건신분:PRIMARY"
         score = min(100, score + 5)
         reasons.append("공식출처")
 
-    return min(score, 100), reasons
+    return min(score, 100), reasons    
 
 
 def make_event_grade(score):
