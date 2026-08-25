@@ -782,7 +782,7 @@ def classify_event_status(article):
     # 4. 나머지 실제 사건 기사
     # ---------------------------------------------
     return "CONFIRMED"
-def calc_event_score(article):
+
 
 def calc_event_score(article):
 
