@@ -344,7 +344,7 @@ if __name__ == "__main__":
         f"오답: {wrong}개"
     )
 
-    if correct >= 95:
+    if score >= 95:
         print("🟢 1차 통과")
     else:
         print("🔴 본체 연결 금지")
