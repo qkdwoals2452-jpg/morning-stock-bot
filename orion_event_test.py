@@ -168,12 +168,98 @@ TEST_CASES = [
         "note": "과거 실적을 이용한 밸류에이션 해설"
     },
 
-    {
+        
+    
+    { 
         "id": 21,
         "title": "Stripe agrees to acquire AI model router OpenRouter",
         "expected_event": True,
         "expected_type": "M&A",
         "note": "실제 AI 기업 인수"
+    },
+
+    # -------------------------------
+    # 실전 오탐 + 정책/루머 경계 테스트
+    # -------------------------------
+
+    {
+        "id": 22,
+        "title": "[사설] N% 성과급 파업 확산, 노사 갈등 더 이상 방치 안 돼",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "영업이익이 언급돼도 사설·노사갈등은 실적 사건 아님"
+    },
+
+    {
+        "id": 23,
+        "title": "4억 뇌물에 1.7조억 수주 '유리한 평가' 악재…LIG D&A, 급락",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "과거 수주가 언급된 수사·악재 기사"
+    },
+
+    {
+        "id": 24,
+        "title": "\"한화에어로, K9 美 진출 '단일 수주 이상 의미'…목표가↑\"-DS",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "증권사 목표가·분석 기사이며 신규 수주 아님"
+    },
+
+    {
+        "id": 25,
+        "title": "TSLA Stock Eyes Another Winning Week: Musk Sees 'Crazy' Tesla Growth",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "성장 전망·주가반응 기사이며 실제 실적 발표 아님"
+    },
+
+    {
+        "id": 26,
+        "title": "S&P 500, Nasdaq end down on tech stocks, investors weigh Iran moves",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "시장 종합기사 속 정책 언급은 직접 정책 사건으로 보지 않음"
+    },
+
+    {
+        "id": 27,
+        "title": "Federal Reserve cuts interest rates by 25 basis points",
+        "expected_event": True,
+        "expected_type": "FOMC",
+        "note": "실제 미국 기준금리 결정"
+    },
+
+    {
+        "id": 28,
+        "title": "US imposes new export restrictions on advanced AI chips",
+        "expected_event": True,
+        "expected_type": "POLICY",
+        "note": "실제 정부 수출규제 시행"
+    },
+
+    {
+        "id": 29,
+        "title": "Trump announces 25% tariff on semiconductor imports",
+        "expected_event": True,
+        "expected_type": "POLICY",
+        "note": "실제 관세 정책 발표"
+    },
+
+    {
+        "id": 30,
+        "title": "Apple reportedly in talks to acquire AI startup",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "인수 협상설·미확정 M&A"
+    },
+
+    {
+        "id": 31,
+        "title": "Nvidia announces $50 billion investment in AI infrastructure",
+        "expected_event": True,
+        "expected_type": "CAPEX",
+        "note": "실제 기업 투자 발표"
     },
 ]
 
