@@ -136,6 +136,37 @@ def understand_event(article):
             "reason": "실제 미국 통화정책·금리 결정"
         }
     # =====================================================
+    # 3. POLICY / 관세 / 수출규제 / 제재
+    # =====================================================
+
+    policy_patterns = [
+        "imposes tariff",
+        "impose tariff",
+        "announces tariff",
+        "raises tariff",
+        "tariff on",
+        "export restrictions",
+        "export restriction",
+        "export ban",
+        "imposes sanctions",
+        "announces sanctions",
+
+        "관세 부과",
+        "관세 인상",
+        "수출 규제",
+        "수출 제한",
+        "수출 금지",
+        "제재 발표",
+    ]
+
+    if contains_any(text, policy_patterns):
+
+        return {
+            "is_real_event": True,
+            "event_type": "POLICY",
+            "reason": "실제 정부 정책·관세·수출규제 변화"
+        }
+    # =====================================================
     # 2. M&A
     # =====================================================
 
