@@ -215,7 +215,6 @@ def understand_event(article):
         "orderbook",
         "공급계약",
         "공급 계약",
-        "수주",
         "계약 체결",
         "수주잔고",
     ]
