@@ -124,8 +124,11 @@ def understand_event(article):
         "interest rate decision",
         "기준금리 인하",
         "기준금리 인상",
-        "금리 인하",
-        "금리 인상",
+        "연준 금리 인하",
+        "연준 금리 인상",
+        "연방준비제도 금리 인하",
+        "연방준비제도 금리 인상",
+        
     ]
 
     if contains_any(text, fomc_patterns):
