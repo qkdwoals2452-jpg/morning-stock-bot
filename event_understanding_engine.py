@@ -272,6 +272,8 @@ def understand_event(article):
     # =====================================================
 
     earnings_patterns = [
+        
+        # 영어 실제 실적
         "reports revenue",
         "reported revenue",
         "revenue doubles",
@@ -292,13 +294,11 @@ def understand_event(article):
         "revenue above estimates",
         "record revenue",
 
-        # 한국어
-        "매출 ",
-        "매출액 ",
-        "영업이익",
-        "순이익",
+        # 한국어 - 행동 자체가 명확한 경우
         "흑자전환",
+        "흑자 전환",
         "적자전환",
+        "적자 전환",
         "실적 발표",
         "가이던스 상향",
         "가이던스 하향",
@@ -311,6 +311,24 @@ def understand_event(article):
             "event_type": "EARNINGS",
             "reason": "실제 실적·가이던스 변화"
         }
+
+
+    # 한국어 매출/이익 기사는 실제 숫자가 있을 때만 실적으로 인정
+    korean_earnings_number = re.search(
+        r"(매출(?:액)?|영업이익|순이익)"
+        r".{0,20}?"
+        r"\d[\d,.]*\s*(억|조|만원|원|%)",
+        text
+    )
+
+    if korean_earnings_number:
+
+        return {
+            "is_real_event": True,
+            "event_type": "EARNINGS",
+            "reason": "실제 실적 수치 확인"
+        }
+      
 
 
     # =====================================================
