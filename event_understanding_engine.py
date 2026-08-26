@@ -268,6 +268,21 @@ def understand_event(article):
             "event_type": "CAPEX",
             "reason": "실제 투자·CAPEX·생산능력 변화"
         }
+    # "announces $50 billion investment in ..." 같은
+    # 실제 투자 발표 문장 처리
+
+    if re.search(
+        r"\b(announces|announced|plans|planned|commits|committed)\b"
+        r".{0,40}"
+        r"\binvestment\b",
+        text
+    ):
+
+        return {
+            "is_real_event": True,
+            "event_type": "CAPEX",
+            "reason": "실제 투자·CAPEX·생산능력 변화"
+        }
 
 
     # =====================================================
