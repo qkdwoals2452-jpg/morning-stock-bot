@@ -269,6 +269,14 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "매출 증가세·향후 수주 전망일 뿐 확정 실적/신규 수주 사건 아님"
     },
+
+    {
+        "id": 33,
+        "title": "Amazon.com vs. e.l.f. Beauty: Which High-Growth Consumer Stock Is a Better Investment in 2026?",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "종목 비교·투자 아이디어이며 기업의 실제 CAPEX가 아님"
+    },
 ]
 
 if __name__ == "__main__":
