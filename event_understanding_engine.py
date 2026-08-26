@@ -241,7 +241,7 @@ def understand_event(article):
         "plans to invest",
         "announces investment",
         "announced investment",
-        "investment in",
+        
         "invest $",
         "invests $",
         "capital expenditure",
