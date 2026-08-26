@@ -857,7 +857,7 @@ def make_event_key(article):
     normalized = normalize_title(title)
 
     # 사건 종류
-    event = detect_event_type(article)
+    event = understand_event(article)
 
     event_type = event.get(
         "event_type",
