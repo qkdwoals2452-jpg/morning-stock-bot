@@ -896,9 +896,9 @@ def make_event_key(article):
     # -------------------------------------------------
 
     clean_title_for_company = re.sub(
-        r"[^A-Za-z0-9 ]",
-        " ",
-        title
+    r"[^A-Za-z0-9 ]",
+    " ",
+    title
     )
 
     clean_title_for_company = re.sub(
@@ -909,45 +909,86 @@ def make_event_key(article):
 
     company_words = clean_title_for_company.split()
 
-    event_action_words = {
-        "reports",
-        "reported",
-        "raises",
-        "raised",
-        "guides",
-        "guided",
-        "forecasts",
-        "forecast",
-        "expects",
-        "cuts",
-        "cut",
-        "acquires",
-        "acquired",
-        "agrees",
-        "wins",
-        "won",
-        "targets",
+    # -------------------------------------------------
+    # 영문 회사명 추출
+    # 같은 회사의 서로 다른 기사 제목이
+    # 다른 EVENT KEY로 갈라지는 문제 방지
+    # -------------------------------------------------
+
+    company_aliases = {
+        "nvidia": "nvidia",
+        "nvda": "nvidia",
+
+        "tsmc": "tsmc",
+        "taiwan semiconductor": "tsmc",
+
+        "micron": "micron",
+        "mu": "micron",
+
+        "amazon": "amazon",
+        "amazon com": "amazon",
+
+        "microsoft": "microsoft",
+        "meta": "meta",
+        "google": "google",
+        "alphabet": "alphabet",
+        "apple": "apple",
+        "tesla": "tesla",
+        "broadcom": "broadcom",
+        "amd": "amd",
+        "advanced micro devices": "amd",
     }
 
-    if company_words:
+    title_company_check = clean_title_for_company.lower()
 
-        # 첫 단어 다음이 행동어면 회사명은 1단어
+    company = None
+
+    # 제목 맨 앞의 알려진 회사명 우선 확인
+    for alias, canonical in sorted(
+        company_aliases.items(),
+        key=lambda x: len(x[0]),
+        reverse=True
+    ):
+        if title_company_check.startswith(alias):
+            company = canonical
+            break
+
+    # DB에 없는 회사는 기존 방식 유지
+    if company is None and company_words:
+
+        event_action_words = {
+            "reports",
+            "reported",
+            "raises",
+            "raised",
+            "guides",
+            "guided",
+            "forecasts",
+            "forecast",
+            "expects",
+            "cuts",
+            "cut",
+            "acquires",
+            "acquired",
+            "agrees",
+            "wins",
+            "won",
+            "targets",
+        }
+
         if (
             len(company_words) >= 2
             and company_words[1].lower() in event_action_words
         ):
-            company = company_words[0]
+            company = company_words[0].lower()
 
-        # 첫 두 단어를 회사명으로 사용
         else:
             company = "_".join(
                 company_words[:2]
-            )
+            ).lower()
 
-        return (
-            f"{company.lower()}_"
-            f"{event_type}"
-    )
+    if company:
+        return f"{company}_{event_type}"
     # -------------------------------------------------
     # 영문 식별자가 없는 한국 기업 기사
     # 제목 앞부분 + 사건종류 사용
