@@ -277,6 +277,14 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "종목 비교·투자 아이디어이며 기업의 실제 CAPEX가 아님"
     },
+
+    {
+        "id": 34,
+        "title": "코스피, 한은 2연속 기준금리 인상에 장중 상승폭 축소",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "한국은행 금리 결정 및 시장반응 기사이며 미국 FOMC 사건이 아님"
+    },
 ]
 
 if __name__ == "__main__":
