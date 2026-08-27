@@ -285,6 +285,21 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "한국은행 금리 결정 및 시장반응 기사이며 미국 FOMC 사건이 아님"
     },
+    {
+        "id": 35,
+        "title": "화장품 매출 비중 쑥…저점 대비 67% 반등한 파마리서치",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "매출 비중과 주가 반등 기사이며 실제 기업 실적 발표가 아님"
+    },
+
+    {
+        "id": 36,
+        "title": "\"3개년 순이익 50% 주주환원\" 동원수산 '기업가치 제고 계획' 공시",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "순이익의 주주환원 비율을 말한 것이며 실제 실적 발표가 아님"
+    },
 ]
 
 if __name__ == "__main__":
