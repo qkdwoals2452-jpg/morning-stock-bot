@@ -108,31 +108,39 @@ def understand_event(article):
             "reason": "투자권유·해설·시장반응 콘텐츠"
         }
 
-    # =====================================================
-    # 2. FOMC / 미국 금리 결정
-    # =====================================================
+    # =========================================================
+    # FOMC / FED 정책 이벤트
+    # 반드시 미국 연준이 주체여야 함
+    # =========================================================
 
-    fomc_patterns = [
-        "federal reserve cuts interest rates",
-        "federal reserve raises interest rates",
-        "fed cuts interest rates",
-        "fed raises interest rates",
-        "cuts interest rates by",
-        "raises interest rates by",
-        "rate cut",
-        "rate hike",
-        "interest rate decision",
-        "기준금리 인하",
-        "기준금리 인상",
-        "연준 금리 인하",
-        "연준 금리 인상",
-        "연방준비제도 금리 인하",
-        "연방준비제도 금리 인상",
-        
+    fed_subject_patterns = [
+        "federal reserve",
+        "the fed",
+        "fed ",
+        "fed's",
+        "fomc",
+        "연준",
+        "미 연준",
+        "미국 연준",
+        "연방준비제도",
     ]
 
-    if contains_any(text, fomc_patterns):
+    fed_action_patterns = [
+        "cuts interest rates",
+        "cut interest rates",
+        "raises interest rates",
+        "raise interest rates",
+        "rate cut",
+        "rate hike",
+        "cuts rates",
+        "raises rates",
+        "금리 인하",
+        "금리 인상",
+        "기준금리 인하",
+        "기준금리 인상",
+    ]
 
+    if contains_any(text, fed_subject_patterns) and contains_any(text, fed_action_patterns):
         return {
             "is_real_event": True,
             "event_type": "FOMC",
