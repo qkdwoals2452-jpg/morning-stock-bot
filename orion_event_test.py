@@ -436,11 +436,18 @@ print(f"\n실제 수집 뉴스 수: {len(news)}")
 print("\n===== ORION REVIEW QUEUE =====")
 
 review_count = 0
+reject_candidates = []
 
 for article in news:
+
     score, reasons = calc_event_score(article)
 
+    # =====================================================
+    # 실제 사건으로 통과한 기사
+    # =====================================================
+
     if score > 0:
+
         review_count += 1
 
         print()
@@ -453,9 +460,191 @@ for article in news:
         print("점수:", score)
         print("판정이유:", reasons)
 
+    # =====================================================
+    # NO_EVENT로 버려진 기사 중
+    # 실제 사건을 놓쳤을 가능성이 있는 기사 수집
+    #
+    # 목적:
+    # 오탐(False Positive)뿐 아니라
+    # 미탐(False Negative)도 확인한다.
+    # =====================================================
+
+    else:
+
+        result = understand_event(article)
+
+        title = str(
+            article.get("title", "") or ""
+        ).lower()
+
+        summary = str(
+            article.get("summary", "") or ""
+        ).lower()
+
+        text = f"{title} {summary}"
+
+        # -------------------------------------------------
+        # 사건 냄새가 강한 단어
+        #
+        # 여기서는 실제 사건으로 판정하지 않는다.
+        # 단지 사람이 확인할 후보만 뽑는다.
+        # -------------------------------------------------
+
+        suspicious_words = [
+
+            # 실적
+            "revenue",
+            "profit",
+            "earnings",
+            "guidance",
+            "매출",
+            "영업이익",
+            "순이익",
+            "실적",
+
+            # 투자 / CAPEX
+            "invest",
+            "investment",
+            "capex",
+            "factory",
+            "plant",
+            "production",
+            "투자",
+            "증설",
+            "공장",
+            "생산능력",
+
+            # 계약 / 수주
+            "contract",
+            "agreement",
+            "order",
+            "backlog",
+            "supply",
+            "계약",
+            "수주",
+            "공급",
+
+            # M&A
+            "acquire",
+            "acquisition",
+            "merger",
+            "인수",
+            "합병",
+
+            # 정책 / FOMC
+            "federal reserve",
+            "fomc",
+            "tariff",
+            "sanction",
+            "export restriction",
+            "연준",
+            "금리",
+            "관세",
+            "수출 제한",
+            "수출 규제",
+        ]
+
+        matched_words = []
+
+        for word in suspicious_words:
+
+            if word in text:
+                matched_words.append(word)
+
+        if matched_words:
+
+            reject_candidates.append(
+                {
+                    "article": article,
+                    "result": result,
+                    "matched_words": matched_words,
+                }
+            )
+
+
 print()
 print(f"검토 대상 기사 수: {review_count}")
 print("=" * 70)
+
+
+# =========================================================
+# REJECT REVIEW
+#
+# NO_EVENT 처리됐지만 사건 관련 단어가 존재하는 기사
+# → 미탐 여부 확인용
+# =========================================================
+
+print("\n===== ORION REJECT REVIEW =====")
+
+# 너무 많은 기사가 출력되지 않도록
+# 우선 최대 30개만 사람이 확인한다.
+reject_candidates = reject_candidates[:30]
+
+if not reject_candidates:
+
+    print("의심되는 미탐 후보 없음")
+
+else:
+
+    for i, item in enumerate(
+        reject_candidates,
+        1
+    ):
+
+        article = item["article"]
+        result = item["result"]
+
+        print()
+        print(f"[REJECT {i:02d}]")
+
+        print(
+            "제목:",
+            article.get("title", "")
+        )
+
+        print(
+            "요약:",
+            article.get("summary", "")
+        )
+
+        print(
+            "출처:",
+            article.get("source", "")
+        )
+
+        print(
+            "시장:",
+            article.get("market", "")
+        )
+
+        print(
+            "날짜:",
+            article.get("published_at", "")
+        )
+
+        print(
+            "NO_EVENT 이유:",
+            result.get("reason", "")
+        )
+
+        print(
+            "감지 단어:",
+            item["matched_words"]
+        )
+
+
+print()
+print(
+    f"미탐 검토 후보 수: "
+    f"{len(reject_candidates)}"
+)
+
+print("=" * 70)
+
+
+# =========================================================
+# 실제 사건 병합
+# =========================================================
 
 live_events = merge_same_events(news)
 
@@ -466,7 +655,10 @@ print(
 
 print("\n===== 실전 사건 TOP20 =====")
 
-for i, event in enumerate(live_events[:20], 1):
+for i, event in enumerate(
+    live_events[:20],
+    1
+):
 
     print(
         f"{i:02d}. "
@@ -489,6 +681,7 @@ for i, event in enumerate(live_events[:20], 1):
         f"    이유: "
         f"{event['reason']}"
     )
+
 
 print("\n" + "=" * 70)
 print("실전 테스트 종료")
