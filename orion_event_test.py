@@ -300,6 +300,33 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "순이익의 주주환원 비율을 말한 것이며 실제 실적 발표가 아님"
     },
+
+    {
+        "id": 37,
+        "title": "The Biggest Risk Facing Tesla Stock Right Now",
+        "summary": "Tesla is pouring billions into investment, but what happens if these bets pay off later than expected?",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "기존 투자에 대한 위험 분석 기사이며 신규 CAPEX 발표가 아님"
+    },
+
+    {
+        "id": 38,
+        "title": "美 금리 인상 우려 '쑥'…'칠천피' 탈환 시험대[주간증시전망]",
+        "summary": "워시 의장이 인플레이션에 대한 강한 경계감을 드러내면서 미국의 9월 기준금리 인상 가능성이 급부상했다.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "금리 인상 가능성에 대한 전망 기사이며 실제 연준 금리 결정이 아님"
+    },
+
+    {
+        "id": 39,
+        "title": "中 CXMT 매출 10배 폭증…삼성·SK 기술 추격 잰걸음",
+        "summary": "기업공개로 확보한 자금과 현금을 더해 생산능력 확대와 첨단 D램 개발에 속도가 붙을 전망이다.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "향후 생산능력 확대 전망이지 신규 증설 또는 CAPEX 결정 발표가 아님"
+    },
 ]
 
 if __name__ == "__main__":
@@ -315,8 +342,9 @@ if __name__ == "__main__":
 
         article = {
             "title": case["title"],
-            "summary": ""
+            "summary": case.get("summary", "")
         }
+        
 
         result = understand_event(article)
 
