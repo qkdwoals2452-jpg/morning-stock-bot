@@ -856,49 +856,151 @@ def make_event_key(article):
 
     normalized = normalize_title(title)
 
+    # -------------------------------------------------
     # 사건 종류
+    # -------------------------------------------------
+
     event = understand_event(article)
 
     event_type = event.get(
         "event_type",
         "UNKNOWN"
     )
-    # 한국어 기사면 제목 첫 단어를 기업명으로 사용
-    if re.search(r"[가-힣]", title):
 
-        korean_company = re.split(
-            r"[,·…:\"'“”\s]",
-            title.strip()
-        )[0]
 
-        korean_company = re.sub(
-            r"[^가-힣A-Za-z0-9]",
-            "",
-            korean_company
-        )
-
-        if korean_company:
-            return f"{korean_company}_{event_type}"
-
-    # -------------------------------------------------
-    # 회사/기업 식별용 영문 토큰 추출
+    # =================================================
+    # 1. 한국어 기사
+    #
+    # 제목 첫 단어가 아니라
+    # "사건 행동 바로 앞의 기업명"을 우선 찾는다.
     #
     # 예:
-    # TJX컴퍼니스 → TJX
-    # TJX earnings → TJX
-    # NVIDIA → NVIDIA
-    # TSMC → TSMC
-    # -------------------------------------------------
+    # 엔비디아 수요 대응…심텍, 증설 결정
+    #                  ↑
+    #                심텍
+    # =================================================
 
-    # -------------------------------------------------
-    # 영문 기사 회사명 추출
-    # 제목 맨 앞 회사명을 우선 사용한다.
-    # -------------------------------------------------
+    if re.search(r"[가-힣]", title):
+
+        korean_event_words = [
+            "증설",
+            "공급계약",
+            "공급 계약",
+            "수주",
+            "계약 체결",
+            "본계약",
+            "투자",
+            "공장 건설",
+            "생산능력 확대",
+            "인수",
+            "합병",
+            "실적 발표",
+            "매출",
+            "영업이익",
+            "순이익",
+        ]
+
+        # 사건 단어가 등장하는 위치 찾기
+        event_positions = []
+
+        for word in korean_event_words:
+
+            pos = title.find(word)
+
+            if pos != -1:
+                event_positions.append(pos)
+
+        if event_positions:
+
+            event_pos = min(event_positions)
+
+            # 사건 단어 앞부분만 사용
+            before_event = title[:event_pos]
+
+            # 따옴표 안의 설명 문구 제거
+            before_event = re.sub(
+                r'["“][^"”]*["”]',
+                " ",
+                before_event
+            )
+
+            # 괄호/특수문자 → 공백
+            before_event = re.sub(
+                r"[^가-힣A-Za-z0-9]+",
+                " ",
+                before_event
+            )
+
+            before_event = re.sub(
+                r"\s+",
+                " ",
+                before_event
+            ).strip()
+
+            words = before_event.split()
+
+            # 사건 직전 마지막 단어를 주체 후보로 사용
+            if words:
+
+                company = words[-1]
+
+                # 너무 일반적인 단어 제외
+                bad_company_words = {
+                    "매출",
+                    "영업이익",
+                    "순이익",
+                    "정부",
+                    "시장",
+                    "코스피",
+                    "코스닥",
+                    "증시",
+                    "주가",
+                    "실적",
+                    "분기",
+                    "상반기",
+                    "하반기",
+                }
+
+                if company not in bad_company_words:
+
+                    return (
+                        f"{company}_"
+                        f"{event_type}"
+                    )
+
+
+        # -------------------------------------------------
+        # 사건 위치 방식으로 회사명을 못 찾았을 경우
+        # 쉼표 앞 기업명을 사용
+        #
+        # 예:
+        # SK, ...
+        # 삼성전자, ...
+        # -------------------------------------------------
+
+        comma_match = re.search(
+            r"([가-힣A-Za-z0-9&]+)\s*,",
+            title
+        )
+
+        if comma_match:
+
+            company = comma_match.group(1)
+
+            return (
+                f"{company}_"
+                f"{event_type}"
+            )
+
+
+    # =================================================
+    # 2. 영문 기사
+    # =================================================
 
     clean_title_for_company = re.sub(
-    r"[^A-Za-z0-9 ]",
-    " ",
-    title
+        r"[^A-Za-z0-9 ]",
+        " ",
+        title
     )
 
     clean_title_for_company = re.sub(
@@ -907,26 +1009,34 @@ def make_event_key(article):
         clean_title_for_company
     ).strip()
 
-    company_words = clean_title_for_company.split()
+    title_company_check = (
+        clean_title_for_company.lower()
+    )
+
 
     # -------------------------------------------------
-    # 영문 회사명 추출
-    # 같은 회사의 서로 다른 기사 제목이
-    # 다른 EVENT KEY로 갈라지는 문제 방지
+    # 주요 회사 alias
+    #
+    # 중요한 변화:
+    # startswith()가 아니라 제목 전체에서 찾는다.
     # -------------------------------------------------
 
     company_aliases = {
+
+        "advanced micro devices": "amd",
+        "amd": "amd",
+
+        "taiwan semiconductor": "tsmc",
+        "tsmc": "tsmc",
+
         "nvidia": "nvidia",
         "nvda": "nvidia",
-
-        "tsmc": "tsmc",
-        "taiwan semiconductor": "tsmc",
 
         "micron": "micron",
         "mu": "micron",
 
-        "amazon": "amazon",
         "amazon com": "amazon",
+        "amazon": "amazon",
 
         "microsoft": "microsoft",
         "meta": "meta",
@@ -935,64 +1045,123 @@ def make_event_key(article):
         "apple": "apple",
         "tesla": "tesla",
         "broadcom": "broadcom",
-        "amd": "amd",
-        "advanced micro devices": "amd",
     }
 
-    title_company_check = clean_title_for_company.lower()
 
     company = None
 
-    # 제목 맨 앞의 알려진 회사명 우선 확인
+
+    # -------------------------------------------------
+    # 제목 전체에서 회사명 탐색
+    #
+    # 단어 경계를 사용해서
+    # mu 같은 짧은 ticker 오탐 방지
+    # -------------------------------------------------
+
     for alias, canonical in sorted(
         company_aliases.items(),
         key=lambda x: len(x[0]),
         reverse=True
     ):
-        if title_company_check.startswith(alias):
+
+        pattern = (
+            r"\b"
+            + re.escape(alias)
+            + r"\b"
+        )
+
+        if re.search(
+            pattern,
+            title_company_check
+        ):
+
             company = canonical
             break
 
-    # DB에 없는 회사는 기존 방식 유지
-    if company is None and company_words:
 
-        event_action_words = {
-            "reports",
-            "reported",
-            "raises",
-            "raised",
-            "guides",
-            "guided",
-            "forecasts",
-            "forecast",
-            "expects",
-            "cuts",
-            "cut",
-            "acquires",
-            "acquired",
-            "agrees",
-            "wins",
-            "won",
-            "targets",
-        }
+    if company:
+
+        return (
+            f"{company}_"
+            f"{event_type}"
+        )
+
+
+    # =================================================
+    # 3. DB에 없는 영문 기업
+    #
+    # 제목 앞 회사명 + 행동 단어 구조 사용
+    # =================================================
+
+    company_words = (
+        clean_title_for_company.split()
+    )
+
+    event_action_words = {
+        "reports",
+        "reported",
+        "raises",
+        "raised",
+        "guides",
+        "guided",
+        "forecasts",
+        "forecast",
+        "expects",
+        "cuts",
+        "cut",
+        "acquires",
+        "acquired",
+        "agrees",
+        "wins",
+        "won",
+        "targets",
+        "invests",
+        "announces",
+    }
+
+
+    if company_words:
 
         if (
             len(company_words) >= 2
-            and company_words[1].lower() in event_action_words
+            and
+            company_words[1].lower()
+            in event_action_words
         ):
-            company = company_words[0].lower()
+
+            company = (
+                company_words[0].lower()
+            )
+
+        elif (
+            len(company_words) >= 3
+            and
+            company_words[2].lower()
+            in event_action_words
+        ):
+
+            company = (
+                company_words[0]
+                + "_"
+                + company_words[1]
+            ).lower()
 
         else:
+
             company = "_".join(
                 company_words[:2]
             ).lower()
 
-    if company:
-        return f"{company}_{event_type}"
-    # -------------------------------------------------
-    # 영문 식별자가 없는 한국 기업 기사
-    # 제목 앞부분 + 사건종류 사용
-    # -------------------------------------------------
+
+        return (
+            f"{company}_"
+            f"{event_type}"
+        )
+
+
+    # =================================================
+    # 4. 마지막 fallback
+    # =================================================
 
     clean_title = re.sub(
         r"[^가-힣A-Za-z0-9 ]",
@@ -1008,47 +1177,14 @@ def make_event_key(article):
 
     words = clean_title.split()
 
-    event_action_words = {
-        "guided",
-        "guides",
-        "raises",
-        "raised",
-        "reports",
-        "reported",
-        "forecasts",
-        "forecast",
-        "expects",
-        "cuts",
-        "cut",
-        "acquires",
-        "acquired",
-        "agrees",
-        "wins",
-        "won",
-    }
-
-    # 영어 제목
-    if words and re.fullmatch(r"[a-zA-Z0-9]+", words[0]):
-
-        if (
-            len(words) >= 2
-            and words[1].lower() not in event_action_words
-        ):
-            company_words = words[:2]
-        else:
-            company_words = words[:1]
-
-    # 한국어 제목
-    else:
-        company_words = words[:2]
-
-    title_key = "_".join(company_words)
+    title_key = "_".join(
+        words[:2]
+    )
 
     return (
         f"{title_key}_"
         f"{event_type}"
     )
-
 def merge_same_events(news):
     grouped = defaultdict(list)
 
