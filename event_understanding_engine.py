@@ -27,7 +27,69 @@ def contains_any(text, patterns):
         for pattern in patterns
     )
 
+def has_speculative_context(text):
+    """
+    실제 확정 사건이 아니라
+    전망·가능성·우려·가정·분석 문맥인지 판별
+    """
 
+    speculative_patterns = [
+        # 한국어
+        "가능성",
+        "가능성이",
+        "전망이다",
+        "전망된다",
+        "전망",
+        "예상된다",
+        "예상",
+        "우려",
+        "기대된다",
+        "기대",
+        "관측",
+        "될 수",
+        "할 수",
+        "주간증시전망",
+
+        # 영어
+        "could",
+        "may ",
+        "might",
+        "potential",
+        "possibly",
+        "expected to",
+        "could happen",
+        "what happens if",
+    ]
+
+    return contains_any(
+        text,
+        speculative_patterns
+    )
+
+
+def is_analysis_article(title):
+    """
+    새로운 사건 발표가 아니라
+    투자분석·위험분석·전망 기사인지 판별
+    """
+
+    analysis_patterns = [
+        "biggest risk",
+        "risk facing",
+        "what happens if",
+        "is it a buy",
+        "should you buy",
+        "prediction:",
+        "what to do now",
+        "outlook",
+        "주간증시전망",
+        "증시전망",
+    ]
+
+    return contains_any(
+        title,
+        analysis_patterns
+    )
 def understand_event(article):
 
     title = normalize_text(
@@ -40,7 +102,19 @@ def understand_event(article):
 
     text = f"{title} {summary}".strip()
 
+        # =====================================================
+    # 기사 역할 판별
+    #
+    # 새로운 사건 발표가 아닌
+    # 위험분석·투자분석·시장전망 기사는 사건에서 제외
+    # =====================================================
 
+    if is_analysis_article(title):
+        return {
+            "is_real_event": False,
+            "event_type": "NO_EVENT",
+            "reason": "분석·전망 기사이며 신규 확정 사건이 아님"
+        }
     # =====================================================
     # 1. 명백한 비사건 콘텐츠
     # 가장 먼저 제거한다.
@@ -112,7 +186,7 @@ def understand_event(article):
     # FOMC / FED 정책 이벤트
     # 반드시 미국 연준이 주체여야 함
     # =========================================================
-
+    
     fed_subject_patterns = [
         "federal reserve",
         "the fed",
@@ -140,7 +214,19 @@ def understand_event(article):
         "기준금리 인상",
     ]
 
-    if contains_any(text, fed_subject_patterns) and contains_any(text, fed_action_patterns):
+    if (
+        contains_any(text, fed_subject_patterns)
+        and contains_any(text, fed_action_patterns)
+    ):
+
+        # 가능성·전망·우려는 실제 FOMC 결정이 아니다.
+        if has_speculative_context(text):
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "reason": "미국 금리 전망·가능성이며 실제 정책 결정이 아님"
+            }
+
         return {
             "is_real_event": True,
             "event_type": "FOMC",
@@ -271,6 +357,14 @@ def understand_event(article):
 
     if contains_any(text, capex_patterns):
 
+        # 향후 투자·증설 전망은 실제 신규 CAPEX 사건이 아니다.
+        if has_speculative_context(text):
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "reason": "투자·증설 전망이며 실제 확정 CAPEX가 아님"
+            }
+
         return {
             "is_real_event": True,
             "event_type": "CAPEX",
@@ -286,12 +380,18 @@ def understand_event(article):
         text
     ):
 
+        if has_speculative_context(text):
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "reason": "투자 전망이며 실제 확정 CAPEX가 아님"
+            }
+
         return {
             "is_real_event": True,
             "event_type": "CAPEX",
             "reason": "실제 투자·CAPEX·생산능력 변화"
         }
-
 
     # =====================================================
     # 5. 실적 / 가이던스
