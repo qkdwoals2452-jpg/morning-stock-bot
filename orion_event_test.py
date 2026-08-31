@@ -358,6 +358,41 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "매출액은 회사 규모 설명일 뿐 신규 실적 발표가 아님"
     },
+    {
+        "id": 43,
+        "title": "화웨이, 상반기 순이익 36% 급감…\"R&D 투자·메모리 원가 부담\"",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "EARNINGS",
+    },
+    {
+        "id": 44,
+        "title": "토스뱅크, 상반기 사상 최대 실적",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "EARNINGS",
+    },
+    {
+        "id": 45,
+        "title": "마벨, 구글 계약 효과로 6년간 최대 1200억달러 매출 기대…니덤, 목표주가 상향",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 46,
+        "title": "美, 캐나다산 자동차에 50% 관세 부과 시 최대 피해자는?",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 47,
+        "title": "[TODAY엔비디아] AI 오픈소스 플랫폼 허깅페이스 인수…개장전↑",
+        "summary": "엔비디아(NVDA)가 인공지능(AI) 모델 허브이자 오픈소스 AI 도구 플랫폼인 허깅페이스를 인수했다고 DA 데이비슨이 31일(현지시간) 전했다. 이번 인수는 오픈소스 AI 생태계를 보호하기 위한 방어적 전략으로 풀이된다. 허깅페이스는 AI 모델과 오픈소스 AI 도구를 위한 저장소 역할을 하며, 연간 환산 매출은 약 1억5000만달러에 달한다.",
+        "expected_event": True,
+        "expected_type": "M&A",
+    },
 ]
 
 if __name__ == "__main__":
