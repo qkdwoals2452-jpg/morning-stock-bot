@@ -341,6 +341,23 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "실제 CrowdStrike 실적을 언급하지만 후속 시장반응 기사이므로 PRIMARY_EVENT는 아님"
     },
+
+    {
+        "id": 41,
+        "title": "삼성중공업, 컨테이너운반선 2척 4445억원 수주",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "CONTRACT",
+        "note": "구체적인 수주 금액과 수주 사실이 있는 실제 계약 사건"
+    },
+    {
+        "id": 42,
+        "title": "매출 200억 자동차 부품사 매물로",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "매출액은 회사 규모 설명일 뿐 신규 실적 발표가 아님"
+    },
 ]
 
 if __name__ == "__main__":
