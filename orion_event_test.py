@@ -332,6 +332,15 @@ TEST_CASES = [
         "expected_type": "NO_EVENT",
         "note": "향후 생산능력 확대 전망이지 신규 증설 또는 CAPEX 결정 발표가 아님"
     },
+
+    {
+        "id": 40,
+        "title": "CrowdStrike Just Lit a Fire Under Cybersecurity Stocks. Is Palo Alto Networks Next?",
+        "summary": "CrowdStrike just posted its best quarter ever and sent cybersecurity stocks surging, but history shows Palo Alto Networks has a nasty habit of falling on strong earnings reports, and the buy side has already baked in a beat.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+        "note": "실제 CrowdStrike 실적을 언급하지만 후속 시장반응 기사이므로 PRIMARY_EVENT는 아님"
+    },
 ]
 
 if __name__ == "__main__":
