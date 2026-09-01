@@ -255,46 +255,91 @@ def understand_event(article):
         "수출 금지",
         "제재 발표",
     ]
-
     if contains_any(text, policy_patterns):
+
+        # "관세 부과 시", "부과할 경우" 등은
+        # 실제 정책 시행이 아니라 가정이다.
+        hypothetical_policy = contains_any(
+            title,
+            [
+                "관세 부과 시",
+                "관세 부과할 경우",
+                "관세를 부과할 경우",
+                "tariff if",
+                "if tariff",
+            ]
+        )
+
+        if hypothetical_policy:
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "reason": "가정형 정책 기사이며 실제 정책 결정이 아님"
+            }
 
         return {
             "is_real_event": True,
             "event_type": "POLICY",
             "reason": "실제 정부 정책·관세·수출규제 변화"
-        }
+        } 
+
+        
     # =====================================================
     # 2. M&A
+    #
+    # 핵심:
+    # '인수'라는 단어가 있다는 것과
+    # 실제 인수가 확정됐다는 것은 다르다.
     # =====================================================
 
-    ma_patterns = [
+    ma_confirmed_en = [
         "agrees to buy",
         "agreed to buy",
         "agrees to acquire",
         "agreed to acquire",
         "acquires",
         "acquired",
-        "acquisition",
         "completes acquisition",
         "completed acquisition",
         "merger completed",
         "merger approved",
-        "인수한다",
-        "인수 완료",
-        "인수 계약",
-        "합병 결의",
-        "합병 승인",
-        "합병 완료",
     ]
 
-    if contains_any(text, ma_patterns):
-
+    if contains_any(text, ma_confirmed_en):
         return {
             "is_real_event": True,
             "event_type": "M&A",
             "reason": "실제 인수·합병 사건"
         }
 
+    korean_ma_candidate = contains_any(
+        title,
+        [
+            "인수",
+            "합병",
+        ]
+    )
+
+    korean_ma_uncertain = contains_any(
+        title,
+        [
+            "인수 검토",
+            "인수 추진 검토",
+            "인수설",
+            "인수 가능성",
+            "인수 협상",
+            "합병 검토",
+            "합병 가능성",
+            "동시 검토",
+        ]
+    )
+
+    if korean_ma_candidate and not korean_ma_uncertain:
+        return {
+            "is_real_event": True,
+            "event_type": "M&A",
+            "reason": "제목에서 확인된 실제 인수·합병 사건"
+        }
 
     # =====================================================
     # 3. 계약 / 수주 / 공급
@@ -325,38 +370,44 @@ def understand_event(article):
         }
 
     # -----------------------------------------------------
-    # 한국어 실제 수주
+    # 한국어 신규 수주
     #
-    # 단순히 '수주'라는 단어만 있다고 사건으로 만들지 않는다.
-    # 수주 + 구체적인 금액 또는 수량이 같이 있어야 한다.
-    #
-    # 예:
-    # 삼성중공업, 컨테이너운반선 2척 4445억원 수주
-    # → CONTRACT
-    #
-    # "하반기 수주 가속화"
-    # → 해당 안 됨
+    # 숫자 + '수주'만으로는 부족하다.
+    # 과거 수주 조사/비리/평가 문맥은 신규 사건이 아니다.
     # -----------------------------------------------------
 
-    korean_order_action = (
-        "수주" in text
-        and (
-            re.search(
-                r"\d[\d,.]*\s*(억|억원|조|조원|만원|원)",
-                text
-            )
-            or re.search(
-                r"\d[\d,.]*\s*(척|대|개|건)",
-                text
-            )
+    korean_order_has_value = (
+        re.search(
+            r"\d[\d,.]*\s*(억|억원|조|조원|만원|원)",
+            title
+        )
+        or re.search(
+            r"\d[\d,.]*\s*(척|대|개|건)",
+            title
         )
     )
 
-    if korean_order_action:
+    korean_order_context_only = contains_any(
+        title,
+        [
+            "수주 과정",
+            "수주 과정 조사",
+            "수주 비리",
+            "수주 의혹",
+            "수주 관련 조사",
+            "유리한 평가",
+        ]
+    )
+
+    if (
+        "수주" in title
+        and korean_order_has_value
+        and not korean_order_context_only
+    ):
         return {
             "is_real_event": True,
             "event_type": "CONTRACT",
-            "reason": "구체적 금액·수량이 확인된 실제 수주"
+            "reason": "제목에서 금액·수량과 함께 확인된 신규 수주"
         }
 
     # =====================================================
@@ -476,21 +527,13 @@ def understand_event(article):
     # -----------------------------------------------------
     # 한국어 실제 실적
     #
-    # '매출 200억'처럼 단순 회사 규모 설명만으로는 부족.
-    # 실적 기간 또는 실적 변화/발표 문맥이 함께 있어야 한다.
+    # 실적은 반드시 '금액'이 있어야 하는 것이 아니다.
+    # 기간 + 실적지표 + 확정된 결과 변화도 실제 실적이다.
     # -----------------------------------------------------
 
-    korean_earnings_number = re.search(
-        r"(매출(?:액)?|영업이익|순이익)"
-        r".{0,20}?"
-        r"\d[\d,.]*\s*(억|억원|조|조원|만원|원)",
-        text
-    )
-
-    korean_earnings_context = contains_any(
-        text,
+    korean_period = contains_any(
+        title,
         [
-            # 실적 기간
             "1분기",
             "2분기",
             "3분기",
@@ -498,33 +541,70 @@ def understand_event(article):
             "상반기",
             "하반기",
             "연간",
-
-            # 실제 결과 변화
-            "급증",
-            "증가",
-            "늘었다",
-            "감소",
-            "줄었다",
-            "돌파",
-            "달성",
-            "사상 최대",
-            "사상 첫",
-
-            # 발표 문맥
-            "실적 발표",
-            "잠정 실적",
-            "잠정실적",
         ]
     )
 
+    korean_metric = contains_any(
+        title,
+        [
+            "매출",
+            "영업이익",
+            "순이익",
+            "실적",
+        ]
+    )
+
+    korean_result_change = contains_any(
+        title,
+        [
+            "급증",
+            "급감",
+            "증가",
+            "감소",
+            "늘어",
+            "줄어",
+            "사상 최대",
+            "사상 첫",
+            "최대 실적",
+            "최대 매출",
+            "흑자전환",
+            "흑자 전환",
+            "적자전환",
+            "적자 전환",
+        ]
+    )
+
+    korean_result_number = bool(
+        re.search(
+            r"(매출(?:액)?|영업이익|순이익)"
+            r".{0,25}?"
+            r"\d[\d,.]*\s*(억|억원|조|조원|만원|원)",
+            title
+        )
+    )
+
+    korean_result_percent = bool(
+        re.search(
+            r"(매출(?:액)?|영업이익|순이익)"
+            r".{0,25}?"
+            r"\d[\d,.]*\s*%",
+            title
+        )
+    )
+
     if (
-        korean_earnings_number
-        and korean_earnings_context
+        korean_period
+        and korean_metric
+        and (
+            korean_result_change
+            or korean_result_number
+            or korean_result_percent
+        )
     ):
         return {
             "is_real_event": True,
             "event_type": "EARNINGS",
-            "reason": "실적 기간·변화와 실제 금액 확인"
+            "reason": "실적 기간과 확정된 실적 변화 확인"
         }
 
 
