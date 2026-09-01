@@ -539,7 +539,7 @@ def understand_event(article):
             "3분기",
             "4분기",
             "상반기",
-            "하반기",
+            
             "연간",
         ]
     )
