@@ -393,6 +393,53 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "M&A",
     },
+        {
+        "id": 48,
+        "title": "엔비디아, 허깅페이스 인수",
+        "summary": "허깅페이스의 연간 매출은 1억5000만달러다.",
+        "expected_event": True,
+        "expected_type": "M&A",
+    },
+
+    {
+        "id": 49,
+        "title": "A사, B사 인수 검토",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+
+    {
+        "id": 50,
+        "title": "A사, 상반기 순이익 36% 급감",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "EARNINGS",
+    },
+
+    {
+        "id": 51,
+        "title": "A사 비리 의혹…1조원 수주 과정 조사",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+
+    {
+        "id": 52,
+        "title": "미국, 자동차에 25% 관세 부과",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "POLICY",
+    },
+
+    {
+        "id": 53,
+        "title": "미국, 자동차에 50% 관세 부과 시 최대 피해자는?",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
