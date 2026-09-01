@@ -440,6 +440,28 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 54,
+        "title": "Stock Market Today, Sept. 1: Fervo Energy Surges 28% on 396-Megawatt Google Power Deal",
+        "summary": "Today, Sept. 1, 2026, the geothermal developer signed a landmark commercial agreement that validates firm power demand and clears a path to Cape Station revenue.",
+        "expected_event": True,
+        "expected_type": "CONTRACT",
+    },
+    {
+        "id": 55,
+        "title": "Dell Technologies Inc. Q2 2027 Earnings: Recap of $DELL Earnings Call, Forecast",
+        "summary": "The PC giant-turned-AI infrastructure player smashed expectations, raising FY 2027 revenue expectations by $25 billion.",
+        "expected_event": True,
+        "expected_type": "EARNINGS",
+    },
+    {
+        "id": 56,
+        "title": "엔비디아, 대만 팹리스 미디어텍 CB에 35억달러 투자",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "CAPEX",
+    },
+    
 ]
 
 if __name__ == "__main__":
