@@ -461,6 +461,27 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "CAPEX",
     },
+    {
+        "id": 57,
+        "title": "'1조원 잭팟' 삼성전기…이틀째 투자 고수들 매수세 몰렸다",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 58,
+        "title": "Jyske Bank enters into an agreement to acquire Formuepleje",
+        "summary": "Jyske Bank has entered into a binding agreement on the acquisition of 100% of the shares.",
+        "expected_event": True,
+        "expected_type": "M&A",
+    },
+    {
+        "id": 59,
+        "title": "웨이버스 \"산업연구원 '지역산업 종합정보시스템 구축 사업' 수주\"",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "CONTRACT",
+    }, 
     
 ]
 
