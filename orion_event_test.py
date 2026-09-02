@@ -497,6 +497,27 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "EARNINGS",
     },
+    {
+        "id": 62,
+        "title": "Why Goldgroup Mining Stock Soared on Wednesday",
+        "summary": "Precious metals were having a good day, thanks to renewed hope that the Fed won't be as eager to raise interest rates.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 63,
+        "title": "Broadcom Stock Falls Despite Better-Than-Expected Fiscal Q3 Results",
+        "summary": "Broadcom beat estimates for its fiscal third quarter and with its guidance for the current period. But Broadcom stock fell.",
+        "expected_event": True,
+        "expected_type": "EARNINGS",
+    },
+    {
+        "id": 64,
+        "title": "러트닉 \"수입 반도체 관세 부과 방안 검토 중\"…또 대미투자 압박",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
