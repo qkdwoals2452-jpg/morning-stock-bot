@@ -102,7 +102,7 @@ def understand_event(article):
 
     text = f"{title} {summary}".strip()
 
-        # =====================================================
+    # =====================================================
     # 기사 역할 판별
     #
     # 새로운 사건 발표가 아닌
@@ -303,6 +303,8 @@ def understand_event(article):
         "completed acquisition",
         "merger completed",
         "merger approved",
+        "enters into an agreement to acquire",
+        "entered into an agreement to acquire",
     ]
 
     if contains_any(text, ma_confirmed_en):
@@ -474,7 +476,7 @@ def understand_event(article):
         r"\d[\d,.]*\s*"
         r"(억달러|만달러|달러|억원|억|조원|조)"
         r".{0,20}"
-        r"투자",
+        r"(투자$|투자한다|투자하기로|투자 결정|투자 확정)",
         title
     )
 
@@ -482,7 +484,7 @@ def understand_event(article):
         return {
             "is_real_event": True,
             "event_type": "CAPEX",
-            "reason": "구체적 투자 금액이 확인된 실제 투자"
+            "reason": "구체적 투자 금액과 확정 투자 행동 확인"
         }
     # "announces $50 billion investment in ..." 같은
     # 실제 투자 발표 문장 처리
