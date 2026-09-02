@@ -368,7 +368,21 @@ def understand_event(article):
             "event_type": "CONTRACT",
             "reason": "실제 계약·수주·공급 변화"
         }
+        
+    # 영어: 실제 계약 체결 문장
+    confirmed_agreement = re.search(
+        r"\b(signed|signs|entered into|enters into)\b"
+        r".{0,60}"
+        r"\b(agreement|deal)\b",
+        text
+    )
 
+    if confirmed_agreement:
+        return {
+            "is_real_event": True,
+            "event_type": "CONTRACT",
+            "reason": "실제 계약 체결 문장 확인"
+        }
     # -----------------------------------------------------
     # 한국어 신규 수주
     #
@@ -455,6 +469,21 @@ def understand_event(article):
             "event_type": "CAPEX",
             "reason": "실제 투자·CAPEX·생산능력 변화"
         }
+    # 한국어: 구체적인 금액이 있는 실제 투자
+    korean_investment_amount = re.search(
+        r"\d[\d,.]*\s*"
+        r"(억달러|만달러|달러|억원|억|조원|조)"
+        r".{0,20}"
+        r"투자",
+        title
+    )
+
+    if korean_investment_amount:
+        return {
+            "is_real_event": True,
+            "event_type": "CAPEX",
+            "reason": "구체적 투자 금액이 확인된 실제 투자"
+        }
     # "announces $50 billion investment in ..." 같은
     # 실제 투자 발표 문장 처리
 
@@ -521,6 +550,35 @@ def understand_event(article):
             "is_real_event": True,
             "event_type": "EARNINGS",
             "reason": "실제 실적·가이던스 변화"
+        }
+    # 영어: 분기 실적 결과 + 예상치 상회 / 가이던스 상향
+    english_earnings_result = (
+        re.search(
+            r"\bq[1-4]\s+\d{4}\s+earnings\b",
+            title
+        )
+        and (
+            re.search(
+                r"\b(beat|beats|beat expectations|"
+                r"smashed|topped|exceeded)\b"
+                r".{0,50}"
+                r"\b(expectations|estimates)\b",
+                text
+            )
+            or re.search(
+                r"\b(raise|raises|raised|raising)\b"
+                r".{0,60}"
+                r"\b(revenue|guidance|forecast|outlook|expectations)\b",
+                text
+            )
+        )
+    )
+
+    if english_earnings_result:
+        return {
+            "is_real_event": True,
+            "event_type": "EARNINGS",
+            "reason": "분기 실적 결과와 예상치·가이던스 변화 확인"
         }
 
 
