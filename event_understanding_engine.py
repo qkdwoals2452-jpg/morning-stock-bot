@@ -425,7 +425,49 @@ def understand_event(article):
             "event_type": "CONTRACT",
             "reason": "제목에서 금액·수량과 함께 확인된 신규 수주"
         }
+        
+    # -----------------------------------------------------
+    # 한국어 신규 수주 - 금액이 제목에 없는 경우
+    #
+    # "A사, B기관 사업 수주"처럼
+    # 금액·수량이 없어도 수주 행동 자체가 제목에서
+    # 직접 발표된 경우를 잡는다.
+    #
+    # 단, 주가반응·분석·전망·과거수주 문맥은 제외한다.
+    # -----------------------------------------------------
 
+    korean_direct_order = (
+        "수주" in title
+        and not korean_order_context_only
+    )
+
+    korean_order_secondary = contains_any(
+        title,
+        [
+            "주가",
+            "급등",
+            "급락",
+            "상승",
+            "하락",
+            "반등",
+            "이유는",
+            "왜",
+            "목표가",
+            "전망",
+            "기대",
+            "수주 가속화",
+        ]
+    )
+
+    if (
+        korean_direct_order
+        and not korean_order_secondary
+    ):
+        return {
+            "is_real_event": True,
+            "event_type": "CONTRACT",
+            "reason": "제목에서 직접 확인된 신규 수주"
+        }
     # =====================================================
     # 4. CAPEX / 투자 / 증설
     # =====================================================
