@@ -481,8 +481,15 @@ TEST_CASES = [
         "summary": "",
         "expected_event": True,
         "expected_type": "CONTRACT",
+        
     }, 
-    
+    {
+        "id": 60,
+        "title": "'역대 최대 수주' 삼성전기 주가가 되레 하락한 이유는",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
