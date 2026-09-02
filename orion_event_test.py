@@ -490,6 +490,13 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 61,
+        "title": "Palo Alto Networks Inc (PANW) (Q4 2026) Earnings Call Highlights: Record RPO Surpasses $20 Billion",
+        "summary": "Cybersecurity leader delivers a record fiscal Q4 with platformization momentum accelerating, while guiding to a more normalized growth trajectory in fiscal 2027.",
+        "expected_event": True,
+        "expected_type": "EARNINGS",
+    },
 ]
 
 if __name__ == "__main__":
