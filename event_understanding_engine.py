@@ -581,6 +581,39 @@ def understand_event(article):
             "reason": "실제 투자·CAPEX·생산능력 변화"
         }
     # 한국어: 구체적인 금액이 있는 실제 투자
+    # -----------------------------------------------------
+    # 한국어: 실제 물리적 설비 / 공장 / 생산시설 신규 구축
+    # -----------------------------------------------------
+
+    korean_facility_build = re.search(
+        r"(발전설비|생산설비|제조설비|설비|생산라인|공장|생산시설)"
+        r".{0,25}"
+        r"(신규\s*구축|신설|설치|착공)",
+        title
+    )
+
+    korean_facility_uncertain = contains_any(
+        title,
+        [
+            "구축 계획",
+            "신설 계획",
+            "설치 계획",
+            "착공 계획",
+            "구축 예정",
+            "신설 예정",
+            "검토 중",
+            "검토중",
+            "가능성",
+            "전망",
+        ]
+    )
+
+    if korean_facility_build and not korean_facility_uncertain:
+        return {
+            "is_real_event": True,
+            "event_type": "CAPEX",
+            "reason": "실제 설비·생산시설 신규 구축 확인"
+        }
     korean_investment_amount = re.search(
         r"\d[\d,.]*\s*"
         r"(억달러|만달러|달러|억원|억|조원|조)"
