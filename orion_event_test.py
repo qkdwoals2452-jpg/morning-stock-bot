@@ -525,6 +525,13 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "CAPEX",
     },
+    {
+        "id": 66,
+        "title": "[단독] 삼성·SK 신규 팹에 주문 몰렸다…'워트' 공장 90% 가동",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "PRODUCTION",
+    },
 ]
 
 if __name__ == "__main__":
