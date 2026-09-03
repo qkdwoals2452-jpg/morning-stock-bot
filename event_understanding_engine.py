@@ -219,8 +219,33 @@ def understand_event(article):
         and contains_any(text, fed_action_patterns)
     ):
 
-        # 가능성·전망·우려는 실제 FOMC 결정이 아니다.
-        if has_speculative_context(text):
+        fed_uncertain_context = contains_any(
+            text,
+            [
+                "expected to",
+                "expectation",
+                "expectations",
+                "hope that",
+                "hopes that",
+                "renewed hope",
+                "likely to",
+                "unlikely to",
+                "could",
+                "might",
+                "may ",
+                "won't be as eager",
+                "would raise",
+                "would cut",
+                "금리 인상 우려",
+                "금리 인하 기대",
+                "금리 인상 가능성",
+                "금리 인하 가능성",
+                "금리 인상 전망",
+                "금리 인하 전망",
+            ]
+        )
+
+        if has_speculative_context(text) or fed_uncertain_context:
             return {
                 "is_real_event": False,
                 "event_type": "NO_EVENT",
@@ -256,6 +281,48 @@ def understand_event(article):
         "제재 발표",
     ]
     if contains_any(text, policy_patterns):
+        policy_uncertain = contains_any(
+
+            text,
+
+            [
+
+                "검토 중",
+
+                "검토중",
+
+                "방안 검토",
+
+                "부과 검토",
+
+                "도입 검토",
+
+                "considering",
+
+                "under consideration",
+
+                "may impose",
+
+                "could impose",
+
+                "might impose",
+
+            ]
+
+        )
+
+        if policy_uncertain:
+
+            return {
+
+                "is_real_event": False,
+
+                "event_type": "NO_EVENT",
+
+                "reason": "정책 검토 단계이며 실제 확정 정책이 아님"
+
+            }
+
 
         # "관세 부과 시", "부과할 경우" 등은
         # 실제 정책 시행이 아니라 가정이다.
@@ -624,7 +691,44 @@ def understand_event(article):
             "event_type": "EARNINGS",
             "reason": "분기 실적 결과와 예상치·가이던스 변화 확인"
         }
+    # 영어: 분기 실적 기사 + 실제 결과 신호
+    #
+    # Q4 Earnings Call Highlights
+    # Fiscal Q3 Results
+    # 같은 형식의 실제 실적 기사 처리
+    english_period_report = (
+        re.search(
+            r"\b(?:fiscal\s+)?q[1-4]\s+\d{4}\b"
+            r".{0,40}"
+            r"\b(earnings|results|earnings call)\b",
+            title
+        )
+        or re.search(
+            r"\b(earnings call highlights|fiscal q[1-4] results)\b",
+            title
+        )
+    )
 
+    english_actual_result_signal = (
+        re.search(
+            r"\b(better-than-expected|beat|beats|beating|"
+            r"record|surpasses|surpassed|exceeds|exceeded)\b",
+            text
+        )
+        or re.search(
+            r"\b(raise|raises|raised|raising|guide|guides|guiding)\b"
+            r".{0,60}"
+            r"\b(guidance|revenue|profit|earnings|growth|outlook)\b",
+            text
+        )
+    )
+
+    if english_period_report and english_actual_result_signal:
+        return {
+            "is_real_event": True,
+            "event_type": "EARNINGS",
+            "reason": "분기 실적 기사에서 실제 결과·가이던스 변화 확인"
+        }
 
     # -----------------------------------------------------
     # 한국어 실제 실적
