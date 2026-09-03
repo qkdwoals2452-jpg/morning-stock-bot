@@ -614,6 +614,53 @@ def understand_event(article):
             "event_type": "CAPEX",
             "reason": "실제 설비·생산시설 신규 구축 확인"
         }
+    # =========================================================
+
+    # PRODUCTION / 실제 생산·가동 변화
+
+    # =========================================================
+
+    # 한국어: 실제 공장·생산시설 가동률 확인
+
+    korean_operation_rate = (
+
+        re.search(
+
+            r"(공장|생산라인|생산시설|라인)"
+
+            r".{0,30}"
+
+            r"\d+(?:\.\d+)?\s*%\s*가동",
+
+            title
+
+        )
+
+        or re.search(
+
+            r"\d+(?:\.\d+)?\s*%\s*가동"
+
+            r".{0,30}"
+
+            r"(공장|생산라인|생산시설|라인)",
+
+            title
+
+        )
+
+    )
+
+    if korean_operation_rate:
+
+        return {
+
+            "is_real_event": True,
+
+            "event_type": "PRODUCTION",
+
+            "reason": "실제 공장·생산시설 가동률 변화 확인"
+
+        }
     korean_investment_amount = re.search(
         r"\d[\d,.]*\s*"
         r"(억달러|만달러|달러|억원|억|조원|조)"
