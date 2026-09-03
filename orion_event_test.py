@@ -518,6 +518,13 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 65,
+        "title": "한국타이어, 금산공장에 자가소비형 태양광 발전설비 신규 구축",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "CAPEX",
+    },
 ]
 
 if __name__ == "__main__":
