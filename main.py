@@ -168,6 +168,22 @@ def run():
             )
 
             print("impact:", impact)
+            # =====================================================
+            # 기사 ↔ 종목 직접 관계성 HARD GATE
+            # =====================================================
+
+            if impact.get("exclude") is True:
+
+                print(
+                    "제외:",
+                    stock["name"],
+                    impact.get(
+                        "exclude_reason",
+                        "기사와 기업의 직접 연결 근거 부족"
+                    )
+                )
+
+                continue
 
             
             ok, reason = pass_theme_sector_filter(
