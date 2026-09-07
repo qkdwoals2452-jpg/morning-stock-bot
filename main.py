@@ -47,7 +47,7 @@ def run():
     print("한국 뉴스 수:", len(kr_news))
     print("전체 뉴스 수:", len(news))
 
-    events = build_events(us_news)
+    events = build_events(news)
 
     print("생성된 사건 수:", len(events))
 
@@ -78,7 +78,34 @@ def run():
         )
 
     # 기존 시스템은 아직 유지
-    news = filter_core_news(news)
+    # =====================================================
+    # ORION EVENT QUALITY HARD GATE
+    # S/A급 실제 사건의 원본 기사만 추천 엔진으로 전달
+    # =====================================================
+
+    important_events = [
+        event
+        for event in events
+        if event.get("event_score", 0) >= 70
+    ]
+
+    event_news = []
+    seen = set()
+
+    for event in important_events:
+        for article in event.get("articles", []):
+            key = (
+                article.get("link", "")
+                or article.get("title", "")
+            )
+
+            if key in seen:
+                continue
+
+            seen.add(key)
+            event_news.append(article)
+
+    news = event_news
 
     print("핵심 뉴스 수:", len(news))
     print("\n===== 핵심 뉴스 TOP10 =====")
