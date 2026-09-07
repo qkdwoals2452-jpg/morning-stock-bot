@@ -75,17 +75,23 @@ def find_direct_mentions(theme, stocks, news):
     found = {}
 
     articles = theme.get("articles", [])
-    text = " ".join([a.get("title", "") for a in articles])
+
+    text_parts = []
+
+    for article in articles:
+        text_parts.append(article.get("title", ""))
+        text_parts.append(article.get("summary", ""))
+        text_parts.append(article.get("description", ""))
+
+    text = " ".join(text_parts)
 
     for stock in stocks:
         name = stock["name"]
 
         if name and name in text:
-            found.setdefault(name, 0)
-            found[name] += 12
+            found[name] = 100
 
     return found
-
 
 def find_sector_match(theme_name, stocks):
     found = {}
@@ -157,21 +163,39 @@ def merge_scores(stocks, score_maps):
     )
 
     return candidates[:50]
-
-
+    
 def find_related_stocks(theme, stocks, news):
     theme_name = theme["name"]
 
-    direct = find_direct_mentions(theme, stocks, news)
-    naver = search_naver_related(theme_name, stocks)
-    sector = find_sector_match(theme_name, stocks)
+    # =====================================================
+    # ORION DIRECT RELATION CANDIDATE GATE
+    # 기사에 실제로 등장한 한국 상장사만 1차 후보 허용
+    # =====================================================
 
-    candidates = merge_scores(stocks, [direct, naver, sector])
+    direct = find_direct_mentions(
+        theme,
+        stocks,
+        news
+    )
+
+    candidates = merge_scores(
+        stocks,
+        [direct]
+    )
 
     print(
-        "후보 종목 수:",
+        "직접 언급 후보 수:",
         theme_name,
         len(candidates)
     )
+
+    if candidates:
+        print(
+            "직접 언급 후보:",
+            [
+                stock["name"]
+                for stock in candidates[:20]
+            ]
+        )
 
     return candidates
