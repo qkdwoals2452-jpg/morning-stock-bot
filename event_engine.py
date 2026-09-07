@@ -1226,6 +1226,7 @@ def merge_same_events(news):
         events.append({
             "event_title": best.get("title", ""),
             "event_key": key,
+            "event_type": event_info.get("event_type", "NO_EVENT"),
             "event_score": score,
             "event_grade": make_event_grade(score),
             "articles": articles,
