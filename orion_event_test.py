@@ -532,6 +532,34 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "PRODUCTION",
     },
+    {
+        "id": 67,
+        "title": "Wall Street falls on elevated Fed rate hike bets",
+        "summary": "Stocks fell as investors increased bets on a possible Fed rate hike.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 68,
+        "title": "Nvidia vs. Broadcom: Comparing Recent Quarterly Revenue Trajectories",
+        "summary": "A comparison of the companies' recent quarterly revenue performance.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 69,
+        "title": "\"적자 끝 보이나\"…대한유화, 3분기 흑자전환 전망에 반등 기대",
+        "summary": "대한유화가 3분기 흑자전환할 것이라는 전망이 나오고 있다.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 70,
+        "title": "대미 원전투자 최종관문…'WEC 지분 인수'인 이유",
+        "summary": "대미 원전 투자 과정에서 WEC 지분 인수가 필요한 이유를 분석했다.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
