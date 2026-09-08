@@ -108,7 +108,46 @@ def run():
             event_news.append(article)
 
     news = event_news
+    # =====================================================
+    # ORION EVENT → DIRECT COMPANY TEST
+    # 중요한 사건에서 기사에 직접 등장한 한국 상장사 확인
+    # 아직 실제 추천에는 사용하지 않음
+    # =====================================================
 
+    print("\n===== EVENT → DIRECT COMPANY TEST =====")
+
+    for event in important_events:
+
+        event_articles = event.get("articles", [])
+
+        test_theme = {
+            "name": event.get("event_type", "EVENT"),
+            "score": event.get("event_score", 0),
+            "articles": event_articles
+        }
+
+        direct_candidates = find_related_stocks(
+            test_theme,
+            stocks,
+            event_articles
+        )
+
+        print(
+            event.get("event_grade", ""),
+            event.get("event_score", 0),
+            event.get("event_type", ""),
+            event.get("event_title", "")
+        )
+
+        print(
+            "직접 연결 한국종목:",
+            [
+                stock["name"]
+                for stock in direct_candidates
+            ]
+        )
+
+        print("-----")
     print("핵심 뉴스 수:", len(news))
     print("\n===== 핵심 뉴스 TOP10 =====")
     for article in news[:10]:
