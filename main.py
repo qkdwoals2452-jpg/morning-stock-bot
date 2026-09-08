@@ -61,6 +61,8 @@ def run():
 
             event.get("event_score", 0),
 
+            event.get("event_type", ""),
+
             event.get("event_title", "")
 
         )
