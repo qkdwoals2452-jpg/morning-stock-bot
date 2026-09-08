@@ -393,19 +393,27 @@ def understand_event(article):
     )
 
     korean_ma_uncertain = contains_any(
-        title,
-        [
-            "인수 검토",
-            "인수 추진 검토",
-            "인수설",
-            "인수 가능성",
-            "인수 협상",
-            "합병 검토",
-            "합병 가능성",
-            "동시 검토",
-        ]
-    )
+    title,
+    [
+        # 미확정
+        "인수 검토",
+        "인수 추진 검토",
+        "인수설",
+        "인수 가능성",
+        "인수 협상",
+        "합병 검토",
+        "합병 가능성",
+        "동시 검토",
 
+        # 설명·분석
+        "인수인 이유",
+        "인수 이유",
+        "인수해야",
+        "인수 필요",
+        "인수가 필요한",
+        "합병 이유",
+    ]
+)
     if korean_ma_candidate and not korean_ma_uncertain:
         return {
             "is_real_event": True,
