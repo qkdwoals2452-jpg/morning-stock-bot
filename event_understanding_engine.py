@@ -236,6 +236,9 @@ def understand_event(article):
                 "won't be as eager",
                 "would raise",
                 "would cut",
+                "rate hike bets",
+                "rate cut bets",
+                "bets on",
                 "금리 인상 우려",
                 "금리 인하 기대",
                 "금리 인상 가능성",
@@ -735,13 +738,51 @@ def understand_event(article):
         "가이던스 하향",
     ]
 
+    
     if contains_any(text, earnings_patterns):
+
+        # -------------------------------------------------
+        # 실적 분석·비교·전망은 실제 신규 실적 발표가 아니다.
+        # -------------------------------------------------
+
+        earnings_secondary = contains_any(
+            title,
+            [
+                # 영어 비교·분석
+                "comparing",
+                "comparison",
+                " vs. ",
+                " vs ",
+                "trajectory",
+                "trajectories",
+
+                # 영어 미래 전망
+                "expected to",
+                "expects to",
+                "forecast",
+                "outlook",
+
+                # 한국어 전망·기대
+                "전망",
+                "예상",
+                "기대",
+                "추정",
+            ]
+        )
+
+        if earnings_secondary:
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "reason": "실적 비교·분석·전망이며 신규 확정 실적이 아님"
+            }
 
         return {
             "is_real_event": True,
             "event_type": "EARNINGS",
             "reason": "실제 실적·가이던스 변화"
         }
+        
     # 영어: 분기 실적 결과 + 예상치 상회 / 가이던스 상향
     english_earnings_result = (
         re.search(
