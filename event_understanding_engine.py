@@ -70,8 +70,19 @@ def has_speculative_context(text):
 def is_analysis_article(title):
     """
     새로운 사건 발표가 아니라
-    투자분석·위험분석·전망 기사인지 판별
+    분석·전망·시장반응·해설 성격의 기사인지 판별한다.
+
+    핵심 원칙:
+    사건 관련 단어가 포함되어 있어도
+    기사 자체의 목적이 '새 사건 발표'가 아니면
+    Event Engine으로 내려보내지 않는다.
     """
+
+    title = normalize_text(title)
+
+    # =====================================================
+    # 1. 투자 분석 / 전망
+    # =====================================================
 
     analysis_patterns = [
         "biggest risk",
@@ -82,14 +93,59 @@ def is_analysis_article(title):
         "prediction:",
         "what to do now",
         "outlook",
+
         "주간증시전망",
         "증시전망",
     ]
 
-    return contains_any(
-        title,
-        analysis_patterns
-    )
+    if contains_any(title, analysis_patterns):
+        return True
+
+    # =====================================================
+    # 2. 시장·주가 반응 기사
+    #
+    # 기업의 새로운 행동이 아니라
+    # 이미 존재하는 재료에 주가가 반응한 기사
+    # =====================================================
+
+    market_reaction_patterns = [
+        "[특징주]",
+        "특징주]",
+        "[종목",
+        "급등",
+        "급락",
+        "상한가",
+        "하한가",
+    ]
+
+    if contains_any(title, market_reaction_patterns):
+        return True
+
+    # 퍼센트 주가 움직임 표현
+    # 예: 12%대↑ / 8%↓ / 15% 상승
+    if re.search(
+        r"\d+(?:\.\d+)?\s*%[^가-힣A-Za-z0-9]{0,5}"
+        r"(↑|↓|상승|하락|급등|급락)",
+        title
+    ):
+        return True
+
+    # =====================================================
+    # 3. 비교 / 해설형 제목
+    # =====================================================
+
+    explainer_patterns = [
+        "comparing",
+        "comparison",
+        "what it means",
+        "here's why",
+        "here’s why",
+    ]
+
+    if contains_any(title, explainer_patterns):
+        return True
+
+    return False
 def understand_event(article):
 
     title = normalize_text(
