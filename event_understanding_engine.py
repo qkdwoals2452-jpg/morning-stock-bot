@@ -414,7 +414,32 @@ def understand_event(article):
         "합병 이유",
     ]
 )
-    if korean_ma_candidate and not korean_ma_uncertain:
+    korean_ma_explainer = contains_any(
+
+        title,
+
+        [
+
+            "이유",
+
+            "왜 ",
+
+            "왜?",
+
+            "필요성",
+
+            "의미",
+
+            "최종관문",
+
+        ]
+
+    )   
+    if (
+        korean_ma_candidate
+        and not korean_ma_uncertain
+        and not korean_ma_explainer
+    ):
         return {
             "is_real_event": True,
             "event_type": "M&A",
