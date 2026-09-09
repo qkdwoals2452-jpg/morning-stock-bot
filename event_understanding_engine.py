@@ -517,11 +517,29 @@ def understand_event(article):
             "유리한 평가",
         ]
     )
+    # 신규 계약 발표가 아니라
+    # 수주 전망·업종 동향·분석을 설명하는 기사
+    korean_order_secondary = contains_any(
+        title,
+        [
+            "전망",
+            "예상",
+            "기대",
+            "목표",
+            "건설주",
+            "관련주",
+            "사이클",
+            "수주 증가",
+            "수주 확대",
+            "수주 가속화",
+        ]
+    )
 
     if (
         "수주" in title
         and korean_order_has_value
         and not korean_order_context_only
+        and not korean_order_secondary
     ):
         return {
             "is_real_event": True,
