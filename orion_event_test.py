@@ -560,6 +560,27 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 71,
+        "title": "\"지엔씨에너지, 신규수주 올해 4700억→2028년 1조원 전망\"-IBK",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 72,
+        "title": "국내 공공망 확충에 해외 수주까지… 건설주, 새로운 사이클 진입",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 73,
+        "title": "[단독] PE 트루블루, 국내 1위 주차인프라社 인수 추진",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
