@@ -767,8 +767,8 @@ def understand_event(article):
                 # 영어 미래 전망
                 "expected to",
                 "expects to",
-                "forecast",
-                "outlook",
+                
+    
 
                 # 한국어 전망·기대
                 "전망",
