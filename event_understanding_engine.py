@@ -398,6 +398,7 @@ def understand_event(article):
         # 미확정
         "인수 검토",
         "인수 추진 검토",
+        "인수 추진",
         "인수설",
         "인수 가능성",
         "인수 협상",
@@ -522,15 +523,43 @@ def understand_event(article):
     korean_order_secondary = contains_any(
         title,
         [
+            
+            "주가",
+
+            "급등",
+
+            "급락",
+
+            "상승",
+
+            "하락",
+
+            "반등",
+
+            "이유는",
+
+            "왜",
+
+            "목표가",
+
             "전망",
+
             "예상",
+
             "기대",
+
             "목표",
+
             "건설주",
+
             "관련주",
+
             "사이클",
+
             "수주 증가",
+
             "수주 확대",
+
             "수주 가속화",
         ]
     )
@@ -562,23 +591,7 @@ def understand_event(article):
         and not korean_order_context_only
     )
 
-    korean_order_secondary = contains_any(
-        title,
-        [
-            "주가",
-            "급등",
-            "급락",
-            "상승",
-            "하락",
-            "반등",
-            "이유는",
-            "왜",
-            "목표가",
-            "전망",
-            "기대",
-            "수주 가속화",
-        ]
-    )
+    
 
     if (
         korean_direct_order
