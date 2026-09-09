@@ -581,6 +581,20 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 74,
+        "title": "두산퓨얼셀, 美 데이터센터 수주 재평가 지속…12%대↑[특징주]",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 75,
+        "title": "Qualcomm, Corning, Casey’s, Braze, and More Stocks That Explain Today’s Market",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
