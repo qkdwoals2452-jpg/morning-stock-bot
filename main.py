@@ -162,8 +162,46 @@ def run():
     print("테마 개수:", len(themes))
     # print(themes[:5])
     for t in themes[:10]:
+        
 
         print("테마순위:", t["name"], t["score"])
+    # =====================================================
+    # EVENT → ANALYSIS OBJECT TEST
+    # Event를 기존 종목 검증엔진과 연결하기 위한 중간 구조
+    # 아직 실제 추천에는 사용하지 않음
+    # =====================================================
+
+    event_analysis_objects = []
+
+    for event in important_events:
+
+        event_articles = event.get("articles", [])
+
+        event_object = {
+            "name": event.get("event_type", "EVENT"),
+            "score": event.get("event_score", 0),
+            "articles": event_articles,
+
+            # Event 고유 정보
+            "event_title": event.get("event_title", ""),
+            "event_type": event.get("event_type", "NO_EVENT"),
+            "money_flow": event.get("money_flow", {}),
+            "source_count": event.get("source_count", 0),
+        }
+
+        event_analysis_objects.append(event_object)
+
+
+    print("\n===== EVENT ANALYSIS OBJECTS =====")
+
+    for obj in event_analysis_objects:
+        print(
+            obj["event_type"],
+            obj["score"],
+            obj["event_title"],
+            "기사수:",
+            len(obj["articles"])
+        )
     final_results = []
     themes = themes[:TOP_THEME_COUNT]
     print("실제 분석 테마 수:", len(themes))
