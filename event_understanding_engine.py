@@ -146,6 +146,111 @@ def is_analysis_article(title):
         return True
 
     return False
+    
+def classify_article_role(title, summary=""):
+    """
+    기사 자체의 역할을 먼저 판별한다.
+
+    반환값:
+    EVENT
+    ANALYSIS
+    OUTLOOK
+    MARKET_REACTION
+    EXPLAINER
+    """
+
+    title = normalize_text(title)
+    summary = normalize_text(summary)
+    text = f"{title} {summary}".strip()
+
+    # =====================================================
+    # 1. 시장·주가 반응 기사
+    # =====================================================
+
+    market_reaction_patterns = [
+        "[특징주]",
+        "특징주]",
+        "[종목",
+        "stock surging",
+        "stock plunging",
+        "stock tumbling",
+        "stock sliding",
+    ]
+
+    if contains_any(title, market_reaction_patterns):
+        return "MARKET_REACTION"
+
+    if re.search(
+        r"\d+(?:\.\d+)?\s*%[^가-힣A-Za-z0-9]{0,5}"
+        r"(↑|↓|상승|하락|급등|급락)",
+        title
+    ):
+        return "MARKET_REACTION"
+
+    # =====================================================
+    # 2. 전망 / 기대 / 가능성 기사
+    # 실제 기업 행동과 구별
+    # =====================================================
+
+    outlook_patterns = [
+        "expected to",
+        "likely to",
+        "could",
+        "might",
+        "possibly",
+        "potential",
+        "전망",
+        "예상",
+        "가능성",
+        "기대",
+        "관측",
+    ]
+
+    if contains_any(title, outlook_patterns):
+        return "OUTLOOK"
+
+    # =====================================================
+    # 3. 비교 / 분석 기사
+    # =====================================================
+
+    analysis_patterns = [
+        "comparing",
+        "comparison",
+        " vs. ",
+        " vs ",
+        "biggest risk",
+        "risk facing",
+        "is it a buy",
+        "should you buy",
+        "what to do now",
+        "valuation",
+        "price target",
+        "주간증시전망",
+        "증시전망",
+    ]
+
+    if contains_any(title, analysis_patterns):
+        return "ANALYSIS"
+
+    # =====================================================
+    # 4. 설명 / 해설 기사
+    # =====================================================
+
+    explainer_patterns = [
+        "what it means",
+        "here's why",
+        "here’s why",
+        "이유",
+        "왜 ",
+        "왜?",
+        "의미",
+        "필요성",
+    ]
+
+    if contains_any(title, explainer_patterns):
+        return "EXPLAINER"
+
+    return "EVENT"
 def understand_event(article):
 
     title = normalize_text(
@@ -165,11 +270,17 @@ def understand_event(article):
     # 위험분석·투자분석·시장전망 기사는 사건에서 제외
     # =====================================================
 
-    if is_analysis_article(title):
+    article_role = classify_article_role(
+        title,
+        summary
+    )
+
+    if article_role != "EVENT":
         return {
             "is_real_event": False,
             "event_type": "NO_EVENT",
-            "reason": "분석·전망 기사이며 신규 확정 사건이 아님"
+            "article_role": article_role,
+            "reason": f"{article_role} 성격의 기사이며 신규 확정 사건이 아님"
         }
     # =====================================================
     # 1. 명백한 비사건 콘텐츠
@@ -1086,5 +1197,6 @@ def understand_event(article):
     return {
         "is_real_event": False,
         "event_type": "NO_EVENT",
+        "article_role": "EVENT",
         "reason": "확인 가능한 실제 행동·변화 없음"
-    }
+}
