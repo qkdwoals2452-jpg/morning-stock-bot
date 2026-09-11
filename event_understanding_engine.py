@@ -180,13 +180,25 @@ def classify_article_role(title, summary=""):
     if contains_any(title, market_reaction_patterns):
         return "MARKET_REACTION"
 
-    if re.search(
+    price_context = contains_any(
+        title,
+        [
+            "주가",
+            "주식",
+            "stock",
+            "shares",
+            "share price",
+        ]
+    )
+
+    percent_move = re.search(
         r"\d+(?:\.\d+)?\s*%[^가-힣A-Za-z0-9]{0,5}"
         r"(↑|↓|상승|하락|급등|급락)",
         title
-    ):
-        return "MARKET_REACTION"
+    )
 
+    if price_context and percent_move:
+        return "MARKET_REACTION"
     # =====================================================
     # 2. 전망 / 기대 / 가능성 기사
     # 실제 기업 행동과 구별
