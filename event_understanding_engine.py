@@ -1112,7 +1112,12 @@ def understand_event(article):
             "연간",
         ]
     )
-
+    korean_monthly_period = bool(
+        re.search(
+            r"\b(?:1[0-2]|[1-9])월\b",
+            title
+        )
+    )
     korean_metric = contains_any(
         title,
         [
@@ -1162,7 +1167,7 @@ def understand_event(article):
     )
 
     if (
-        korean_period
+        (korean_period or korean_monthly_period)
         and korean_metric
         and (
             korean_result_change
