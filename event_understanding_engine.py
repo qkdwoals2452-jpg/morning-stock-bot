@@ -644,7 +644,7 @@ def understand_event(article):
         "공급계약",
         "공급 계약",
         "계약 체결",
-        "수주잔고",
+        
     ]
 
     if contains_any(text, contract_patterns):
