@@ -1231,6 +1231,14 @@ def merge_same_events(news):
             "event_title": best.get("title", ""),
             "event_key": key,
             "event_type": event_info.get("event_type", "NO_EVENT"),
+            "evidence_strength": evidence.get(
+                "evidence_strength",
+                "WEAK"
+            ),
+            "evidence_reason": evidence.get(
+                "evidence_reason",
+                ""
+            ),
             "event_score": score,
             "event_grade": make_event_grade(score),
             "articles": articles,
