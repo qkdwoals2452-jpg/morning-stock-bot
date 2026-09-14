@@ -1215,6 +1215,10 @@ def merge_same_events(news):
             )
         )
         event_info = understand_event(best)
+        evidence = assess_event_evidence(
+            best,
+            event_info
+            )
         score = best.get("event_score_raw", 0)
 
         if source_count >= 2:
