@@ -595,6 +595,13 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 76,
+        "title": "TSMC, 8월 매출 21.9조 '역대 최대'…전년비 53.3% ↑",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "EARNINGS",
+    },
 ]
 
 if __name__ == "__main__":
