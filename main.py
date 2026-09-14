@@ -187,12 +187,28 @@ def run():
             "event_type": event.get("event_type", "NO_EVENT"),
             "money_flow": event.get("money_flow", {}),
             "source_count": event.get("source_count", 0),
+            "evidence_strength": event.get("evidence_strength", "WEAK"),
+            "evidence_reason": event.get("evidence_reason", ""),
         }
 
         event_analysis_objects.append(event_object)
 
 
     print("\n===== EVENT ANALYSIS OBJECTS =====")
+    print("\n===== EVENT ANALYSIS OBJECTS =====")
+
+    for obj in event_analysis_objects:
+        print(
+            obj["event_type"],
+            obj["score"],
+            obj["event_title"],
+            "기사수:",
+            len(obj["articles"]),
+            "| EVIDENCE:",
+            obj.get("evidence_strength", ""),
+            "|",
+            obj.get("evidence_reason", "")
+        )
 
     for obj in event_analysis_objects:
         print(
