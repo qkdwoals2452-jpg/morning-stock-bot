@@ -263,6 +263,233 @@ def classify_article_role(title, summary=""):
         return "EXPLAINER"
 
     return "EVENT"
+def assess_event_evidence(article, event_info):
+    """
+    실제 사건 판정 이후
+    그 사건을 뒷받침하는 근거의 강도를 평가한다.
+
+    STRONG:
+        계약 체결, 확정 수주, 투자 결정,
+        공장 신설, 실제 실적 숫자,
+        확정 M&A/정책 결정 등
+
+    MEDIUM:
+        실제 행동 가능성은 높지만
+        표현이 상대적으로 약하거나 계획/약정 중심
+
+    WEAK:
+        사건 근거가 부족함
+    """
+
+    title = normalize_text(
+        article.get("title", "")
+    )
+
+    summary = normalize_text(
+        article.get("summary", "")
+    )
+
+    text = f"{title} {summary}".strip()
+
+    event_type = event_info.get(
+        "event_type",
+        "NO_EVENT"
+    )
+
+    # 사건 자체가 아니면 근거도 없음
+    if not event_info.get("is_real_event"):
+        return {
+            "evidence_strength": "WEAK",
+            "evidence_reason": "실제 사건으로 확인되지 않음"
+        }
+
+    # =====================================================
+    # CONTRACT
+    # =====================================================
+
+    if event_type == "CONTRACT":
+
+        strong_contract = (
+            contains_any(
+                text,
+                [
+                    "signed contract",
+                    "signs contract",
+                    "won contract",
+                    "wins contract",
+                    "supply contract",
+                    "supply agreement",
+                    "entered into an agreement",
+                    "enters into an agreement",
+                    "공급계약",
+                    "공급 계약",
+                    "계약 체결",
+                ]
+            )
+            or (
+                "수주" in title
+                and bool(
+                    re.search(
+                        r"\d[\d,.]*\s*"
+                        r"(억|억원|조|조원|만원|원|척|대|개|건)",
+                        title
+                    )
+                )
+            )
+        )
+
+        if strong_contract:
+            return {
+                "evidence_strength": "STRONG",
+                "evidence_reason": "계약 체결·확정 수주 근거 확인"
+            }
+
+        return {
+            "evidence_strength": "MEDIUM",
+            "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간"
+        }
+
+    # =====================================================
+    # CAPEX
+    # =====================================================
+
+    if event_type == "CAPEX":
+
+        strong_capex = (
+            contains_any(
+                text,
+                [
+                    "announces investment",
+                    "announced investment",
+                    "commits",
+                    "committed",
+                    "new factory",
+                    "new plant",
+                    "공장 신설",
+                    "공장 건설",
+                    "투자 결정",
+                    "투자 확정",
+                    "설비투자",
+                    "신규 구축",
+                    "증설 결정",
+                    "증설 착수",
+                ]
+            )
+            or bool(
+                re.search(
+                    r"\d[\d,.]*\s*"
+                    r"(억달러|만달러|달러|억원|억|조원|조)"
+                    r".{0,30}"
+                    r"(투자|신설|증설|구축)",
+                    title
+                )
+            )
+        )
+
+        if strong_capex:
+            return {
+                "evidence_strength": "STRONG",
+                "evidence_reason": "구체적 투자·시설 확정 근거 확인"
+            }
+
+        return {
+            "evidence_strength": "MEDIUM",
+            "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간"
+        }
+
+    # =====================================================
+    # M&A
+    # =====================================================
+
+    if event_type == "M&A":
+
+        strong_ma = contains_any(
+            text,
+            [
+                "agrees to buy",
+                "agreed to buy",
+                "agrees to acquire",
+                "agreed to acquire",
+                "acquires",
+                "acquired",
+                "completed acquisition",
+                "merger completed",
+                "merger approved",
+                "인수 완료",
+                "인수 확정",
+                "인수 계약",
+                "합병 승인",
+            ]
+        )
+
+        if strong_ma:
+            return {
+                "evidence_strength": "STRONG",
+                "evidence_reason": "확정 인수·합병 근거 확인"
+            }
+
+        return {
+            "evidence_strength": "MEDIUM",
+            "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간"
+        }
+
+    # =====================================================
+    # EARNINGS
+    # =====================================================
+
+    if event_type == "EARNINGS":
+
+        actual_number = bool(
+            re.search(
+                r"\d[\d,.]*\s*"
+                r"(억|억원|조|조원|달러|%|퍼센트)",
+                title
+            )
+        )
+
+        actual_signal = contains_any(
+            title,
+            [
+                "매출",
+                "영업이익",
+                "순이익",
+                "흑자전환",
+                "적자전환",
+                "revenue",
+                "profit",
+                "earnings",
+            ]
+        )
+
+        if actual_number and actual_signal:
+            return {
+                "evidence_strength": "STRONG",
+                "evidence_reason": "실제 실적 수치·결과 확인"
+            }
+
+        return {
+            "evidence_strength": "MEDIUM",
+            "evidence_reason": "실적 변화는 확인됐으나 수치 근거는 제한적"
+        }
+
+    # =====================================================
+    # 정책 / FOMC / 생산
+    # =====================================================
+
+    if event_type in [
+        "FOMC",
+        "POLICY",
+        "PRODUCTION",
+    ]:
+        return {
+            "evidence_strength": "STRONG",
+            "evidence_reason": "확정 정책·생산 행동 확인"
+        }
+
+    return {
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "실제 사건이나 근거 강도 추가 확인 필요"
+    }
 def understand_event(article):
 
     title = normalize_text(
