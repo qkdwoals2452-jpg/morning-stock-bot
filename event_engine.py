@@ -1,4 +1,7 @@
-from event_understanding_engine import understand_event
+from event_understanding_engine import (
+    understand_event,
+    assess_event_evidence,
+)
 from collections import defaultdict
 import re
 
