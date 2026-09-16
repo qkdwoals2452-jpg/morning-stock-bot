@@ -71,6 +71,7 @@ def search_naver_related(theme_name, stocks):
     return found
 
 
+
 def find_direct_mentions(theme, stocks, news):
     found = {}
 
@@ -85,14 +86,68 @@ def find_direct_mentions(theme, stocks, news):
 
     text = " ".join(text_parts)
 
-    for stock in stocks:
-        name = stock["name"]
+    # =====================================================
+    # ORION COMPANY ALIAS MAP
+    # 언론에서 자주 사용하는 회사 약칭 → KRX 정식 회사명
+    # =====================================================
+    company_aliases = {
+        "삼성重": "삼성중공업",
+        "삼성중": "삼성중공업",
+        "한화에어로": "한화에어로스페이스",
+    }
 
-        if name and name in text:
-            found[name] = 100
+    # 1. 약칭 직접 매칭
+    for alias, official_name in company_aliases.items():
+        if alias in text:
+            found[official_name] = 100
 
-    return found
+    # =====================================================
+    # 2. KRX 정식 회사명 매칭
+    #
+    # 긴 회사명을 먼저 찾는다.
+    # 이미 더 긴 회사명 안에서 발견된 짧은 회사명은 제외한다.
+    #
+    # 예:
+    # SK하이닉스 → SK 제외
+    # SK하이닉스 → 이닉스 제외
+    # =====================================================
 
+    matched_names = []
+
+    sorted_stocks = sorted(
+        stocks,
+        key=lambda x: len(x.get("name", "")),
+        reverse=True
+    )
+
+    for stock in sorted_stocks:
+        name = stock.get("name", "").strip()
+
+        if not name:
+            continue
+
+        if name not in text:
+            continue
+
+        # 너무 짧은 회사명은 단순 문자열 매칭 금지
+        if len(name) <= 2:
+            continue
+
+        # 이미 발견한 더 긴 회사명의 일부라면 제외
+        is_substring = False
+
+        for matched_name in matched_names:
+            if name != matched_name and name in matched_name:
+                is_substring = True
+                break
+
+        if is_substring:
+            continue
+
+        found[name] = 100
+        matched_names.append(name)
+
+    return found   
 def find_sector_match(theme_name, stocks):
     found = {}
     words = expand_theme_words(theme_name)
