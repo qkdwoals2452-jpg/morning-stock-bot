@@ -602,6 +602,18 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "EARNINGS",
     },
+    {
+        "id": 77,
+
+        "title": "AI 붐 올라탄 두산, 반도체 소재에 1조 투자",
+
+        "summary": "",
+
+        "expected_event": True,
+
+        "expected_type": "CAPEX",
+
+    }
 ]
 
 if __name__ == "__main__":
