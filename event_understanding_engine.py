@@ -581,13 +581,34 @@ def understand_event(article):
         summary
     )
 
+    
+    
     if article_role != "EVENT":
-        return {
-            "is_real_event": False,
-            "event_type": "NO_EVENT",
-            "article_role": article_role,
-            "reason": f"{article_role} 성격의 기사이며 신규 확정 사건이 아님"
-        }
+
+        # -------------------------------------------------
+        # MARKET_REACTION 예외
+        #
+        # 제목은 주가반응 기사라도 summary 안에서
+        # 독립적인 신규 확정 사건이 확인되면
+        # 아래 Event 판정 로직까지 통과시킨다.
+        # -------------------------------------------------
+
+        if (
+            article_role == "MARKET_REACTION"
+            and has_confirmed_event_inside_reaction(
+                title,
+                summary
+            )
+        ):
+            pass
+
+        else:
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "article_role": article_role,
+                "reason": f"{article_role} 성격의 기사이며 신규 확정 사건이 아님"
+            }
     # =====================================================
     # 1. 명백한 비사건 콘텐츠
     # 가장 먼저 제거한다.
@@ -647,13 +668,24 @@ def understand_event(article):
         "사야 할까",
     ]
 
+    
     if contains_any(text, no_event_patterns):
 
-        return {
-            "is_real_event": False,
-            "event_type": "NO_EVENT",
-            "reason": "투자권유·해설·시장반응 콘텐츠"
-        }
+        reaction_event_override = (
+            article_role == "MARKET_REACTION"
+            and has_confirmed_event_inside_reaction(
+                title,
+                summary
+            )
+        )
+
+        if not reaction_event_override:
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "reason": "투자권유·해설·시장반응 콘텐츠"
+            }
+        
 
     # =========================================================
     # FOMC / FED 정책 이벤트
