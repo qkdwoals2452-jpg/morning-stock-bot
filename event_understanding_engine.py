@@ -1292,15 +1292,18 @@ def understand_event(article):
             "reason": "실제 공장·생산시설 가동률 변화 확인"
 
         }
+    
     korean_investment_amount = re.search(
         r"\d[\d,.]*\s*"
         r"(억달러|만달러|달러|억원|억|조원|조)"
         r".{0,20}"
-        r"(투자$|투자한다|투자하기로|투자 결정|투자 확정)",
+        r"(투자(?:$|[^가-힣])|투자한다|투자하기로|투자 결정|투자 확정)",
         title
     )
-
-    if korean_investment_amount:
+    if (
+        korean_investment_amount
+        and not has_speculative_context(title)
+    ):
         return {
             "is_real_event": True,
             "event_type": "CAPEX",
