@@ -270,6 +270,66 @@ def classify_article_role(title, summary=""):
         return "EXPLAINER"
 
     return "EVENT"
+def has_confirmed_event_inside_reaction(title, summary=""):
+    """
+    주가반응형 기사라도 기사 내부에
+    신규 확정 사건의 강한 근거가 있는지 확인한다.
+
+    단순 '소식', '재평가', 과거 사건 언급은 살리지 않는다.
+    """
+
+    title = normalize_text(title)
+    summary = normalize_text(summary)
+
+    # 핵심:
+    # 시장반응 제목 자체가 아니라 summary에서
+    # 독립적인 확정 사건 근거를 우선 확인한다.
+    evidence_text = summary
+
+    if not evidence_text:
+        return False
+
+    confirmed_patterns = [
+        # CONTRACT
+        "signed contract",
+        "signs contract",
+        "supply contract",
+        "supply agreement",
+        "entered into an agreement",
+        "enters into an agreement",
+        "long-term supply agreement",
+        "will supply",
+        "공급계약",
+        "공급 계약",
+        "계약 체결",
+
+        # M&A
+        "agrees to acquire",
+        "agreed to acquire",
+        "agrees to buy",
+        "agreed to buy",
+        "completed acquisition",
+        "인수 계약",
+        "인수 확정",
+        "인수 완료",
+
+        # CAPEX
+        "announces investment",
+        "announced investment",
+        "committed to invest",
+        "new factory",
+        "new plant",
+        "공장 신설",
+        "투자 결정",
+        "투자 확정",
+        "증설 결정",
+        "신규 구축",
+    ]
+
+    return contains_any(
+        evidence_text,
+        confirmed_patterns
+    )
 def assess_event_evidence(article, event_info):
     """
     실제 사건 판정 이후
