@@ -774,6 +774,7 @@ def understand_event(article):
     if (
         contains_any(text, fed_subject_patterns)
         and contains_any(text, fed_action_patterns)
+    ):
         # -------------------------------------------------
         # FOMC 후속 시장반응 기사 제외
         #
