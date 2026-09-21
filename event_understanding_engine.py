@@ -807,7 +807,7 @@ def understand_event(article):
                 "event_type": "NO_EVENT",
                 "reason": "미국 금리 결정 이후 시장반응 기사이며 FOMC 원사건이 아님"
             }
-    ):
+    
 
         fed_uncertain_context = contains_any(
             text,
