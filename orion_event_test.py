@@ -613,7 +613,7 @@ TEST_CASES = [
 
         "expected_type": "CAPEX",
 
-    }
+    },
     {
         "id": 78,
         "title": "Fed '매파적 금리 인상'에 코스피도 긴장…\"믿을 건 반도체\"",
