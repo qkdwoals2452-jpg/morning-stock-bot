@@ -774,6 +774,38 @@ def understand_event(article):
     if (
         contains_any(text, fed_subject_patterns)
         and contains_any(text, fed_action_patterns)
+        # -------------------------------------------------
+        # FOMC 후속 시장반응 기사 제외
+        #
+        # 실제 Fed 결정 자체가 아니라
+        # 그 결정 이후 주식·환율·채권시장의 반응을 다룬 기사
+        # -------------------------------------------------
+
+        fed_market_reaction = contains_any(
+            title,
+            [
+                "코스피",
+                "코스닥",
+                "나스닥",
+                "다우",
+                "s&p 500",
+                "증시",
+                "주가",
+                "환율",
+                "원·달러",
+                "원달러",
+                "미국채",
+                "국채금리",
+                "채권금리",
+            ]
+        )
+
+        if fed_market_reaction:
+            return {
+                "is_real_event": False,
+                "event_type": "NO_EVENT",
+                "reason": "미국 금리 결정 이후 시장반응 기사이며 FOMC 원사건이 아님"
+            }
     ):
 
         fed_uncertain_context = contains_any(
