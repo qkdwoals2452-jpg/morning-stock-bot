@@ -642,6 +642,13 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 82,
+        "title": "GPU 몸값 또 오른다…AI 속도 조절은 성립 불가",
+        "summary": "네비우스는 10월 1일부터 GPU 온디맨드 렌탈가를 최대 21% 인상하기로 결정했다.",
+        "expected_event": True,
+        "expected_type": "PRICE_CHANGE",
+    },
 ]
 
 if __name__ == "__main__":
