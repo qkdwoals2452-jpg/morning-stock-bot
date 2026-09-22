@@ -621,6 +621,20 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 79,
+        "title": '"형님 믿고 수주 대박"…이 주식, 내년 영업이익 1조 넘본다',
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 80,
+        "title": "조선주, 고부가 선박 수주잔고가 실적 가시성 높인다…투자금이 고민이라면?",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
