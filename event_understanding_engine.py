@@ -1214,7 +1214,7 @@ def understand_event(article):
         "new plant",
         "expand production",
         "expands production",
-        "투자한다",
+        
         "투자 계획",
         "설비투자",
         "설비투자",
