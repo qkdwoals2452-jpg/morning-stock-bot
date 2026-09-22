@@ -635,6 +635,13 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 81,
+        "title": "[속보] 우버, 배민 인수 본격화…공정위 기업결합 사전심사 개시",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
