@@ -1078,6 +1078,34 @@ def understand_event(article):
             "is_real_event": True,
             "event_type": "CONTRACT",
             "reason": "실제 계약 체결 문장 확인"
+            
+        }
+    # -----------------------------------------------------
+    # 영어: 구체적 금액이 확인된 실제 수주잔고
+    #
+    # 예:
+    # Super Micro reports $60 billion order backlog
+    #
+    # 단순 order backlog / orderbook 언급은 통과시키지 않는다.
+    # -----------------------------------------------------
+
+    confirmed_order_backlog = bool(
+        re.search(
+            r"(?:reports?|reported|posts?|posted|records?|recorded)"
+            r".{0,60}"
+            r"\$[\d,.]+\s*"
+            r"(?:million|billion|trillion)?"
+            r".{0,40}"
+            r"(?:order backlog|orderbook)",
+            text
+        )
+    )
+
+    if confirmed_order_backlog:
+        return {
+            "is_real_event": True,
+            "event_type": "CONTRACT",
+            "reason": "구체적 금액이 확인된 실제 수주잔고 발표"
         }
     # -----------------------------------------------------
     # 한국어 신규 수주
