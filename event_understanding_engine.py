@@ -1077,7 +1077,8 @@ def understand_event(article):
 
     korean_direct_ma = bool(
         re.search(
-            r"^[^…]{1,60}[,\s]+[^…]{1,60}\s+(인수|합병)\s*$",
+            r"^[^…]{1,60}[,\s]+[^…]{1,60}\s+(인수|합병)"
+            r"(?:\s*$|…(?:개장전|장중|시간외)?[↑↓]?\s*$)",
             title
         )
     )
