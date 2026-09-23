@@ -851,6 +851,127 @@ def understand_event(article):
             "reason": "실제 미국 통화정책·금리 결정"
         }
     # =====================================================
+    # PRICE_CHANGE
+    # 실제 제품·서비스 가격의 확정 인상/인하
+    #
+    # 예:
+    # GPU 렌탈가를 최대 21% 인상하기로 결정
+    # 제품 가격을 10% 인하한다고 발표
+    #
+    # 주가 상승/하락, 목표가, 가격 전망은 제외
+    # =====================================================
+
+    price_target_patterns = [
+        "가격",
+        "판매가",
+        "렌탈가",
+        "이용료",
+        "요금",
+        "구독료",
+        "단가",
+        "price",
+        "pricing",
+        "rental price",
+        "subscription price",
+        "fee",
+    ]
+
+    price_change_patterns = [
+        "가격 인상",
+        "가격 인하",
+        "판매가 인상",
+        "판매가 인하",
+        "렌탈가 인상",
+        "렌탈가 인하",
+        "이용료 인상",
+        "이용료 인하",
+        "요금 인상",
+        "요금 인하",
+        "구독료 인상",
+        "구독료 인하",
+        "단가 인상",
+        "단가 인하",
+        "raise prices",
+        "raises prices",
+        "raised prices",
+        "price increase",
+        "price increases",
+        "increase prices",
+        "increases prices",
+        "cut prices",
+        "cuts prices",
+        "price cut",
+        "price reduction",
+        "lower prices",
+    ]
+
+    price_confirmed_patterns = [
+        "결정",
+        "결정했다",
+        "결정해",
+        "발표",
+        "발표했다",
+        "시행",
+        "적용",
+        "부터",
+        "하기로",
+        "will raise",
+        "will increase",
+        "will cut",
+        "announced",
+        "effective",
+    ]
+
+    price_speculative_patterns = [
+        "전망",
+        "예상",
+        "기대",
+        "가능성",
+        "관측",
+        "검토",
+        "우려",
+        "오를 것",
+        "내릴 것",
+        "상승 전망",
+        "하락 전망",
+        "could",
+        "might",
+        "may raise",
+        "may increase",
+        "may cut",
+        "expected to",
+        "likely to",
+    ]
+
+    # 주식 자체의 가격 변동은 PRICE_CHANGE가 아니다.
+    stock_price_context = contains_any(
+        text,
+        [
+            "주가",
+            "목표주가",
+            "목표가",
+            "stock price",
+            "share price",
+            "shares rose",
+            "shares fell",
+        ]
+    )
+
+    confirmed_price_change = (
+        contains_any(text, price_target_patterns)
+        and contains_any(text, price_change_patterns)
+        and contains_any(text, price_confirmed_patterns)
+        and not contains_any(text, price_speculative_patterns)
+        and not stock_price_context
+    )
+
+    if confirmed_price_change:
+        return {
+            "is_real_event": True,
+            "event_type": "PRICE_CHANGE",
+            "reason": "제품·서비스의 실제 가격 변경 결정 확인"
+        }
+    # =====================================================
     # 3. POLICY / 관세 / 수출규제 / 제재
     # =====================================================
 
