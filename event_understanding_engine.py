@@ -957,9 +957,20 @@ def understand_event(article):
         ]
     )
 
+    structured_price_change = bool(
+        re.search(
+            r"(가격|판매가|렌탈가|이용료|요금|구독료|단가)"
+            r".{0,30}"
+            r"(인상|인하)",
+            text
+        )
+    )
     confirmed_price_change = (
         contains_any(text, price_target_patterns)
-        and contains_any(text, price_change_patterns)
+        and (
+            contains_any(text, price_change_patterns)
+            or structured_price_change
+        )
         and contains_any(text, price_confirmed_patterns)
         and not contains_any(text, price_speculative_patterns)
         and not stock_price_context
