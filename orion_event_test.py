@@ -649,6 +649,20 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "PRICE_CHANGE",
     },
+    {
+        "id": 83,
+        "title": "삼성전자 영업이익 3분기 100조 넘을듯",
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
+    {
+        "id": 84,
+        "title": "탑런토탈솔루션, 베트남 공급망 진입…전기이륜차 외장부품 9종 수주",
+        "summary": "탑런토탈솔루션은 베트남 법인이 현지 주요 모빌리티 업체의 전기이륜차 라인업에 탑재되는 외장부품 공급 프로젝트를 수주했다고 28일 밝혔다.",
+        "expected_event": True,
+        "expected_type": "CONTRACT",
+    },
 ]
 
 if __name__ == "__main__":
