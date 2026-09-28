@@ -1824,10 +1824,27 @@ def understand_event(article):
             title
         )
     )
+    korean_earnings_speculative = contains_any(
+        title,
+        [
+            "전망",
+            "예상",
+            "기대",
+            "추정",
+            "넘을듯",
+            "넘을 듯",
+            "예상된다",
+            "전망된다",
+            "것으로 보인다",
+            "것으로 예상",
+            "것으로 전망",
+        ]
+    )
 
     if (
         (korean_period or korean_monthly_period)
         and korean_metric
+        and not korean_earnings_speculative
         and (
             korean_result_change
             or korean_result_number
