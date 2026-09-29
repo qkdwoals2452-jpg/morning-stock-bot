@@ -1368,7 +1368,7 @@ def understand_event(article):
 
     korean_order_quantity = bool(
         re.search(
-            r"\d[\d,.]*\s*(척|대|개|건)"
+            r"\d[\d,.]*\s*(척|대|개|건|종)"
             r".{0,40}"
             r"수주",
             title
