@@ -670,6 +670,13 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+    {
+        "id": 86,
+        "title": "[단독] LS전선, 경북 구미에 희토류 영구자석 공장 짓는다",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "CAPEX",
+    },
 ]
 
 if __name__ == "__main__":
