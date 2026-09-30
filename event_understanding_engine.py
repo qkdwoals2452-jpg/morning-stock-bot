@@ -1441,8 +1441,7 @@ def understand_event(article):
         
         "invest $",
         "invests $",
-        "capital expenditure",
-        "capex",
+        
         "spending plan",
         "raises spending",
         "boosts spending",
