@@ -663,6 +663,13 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "CONTRACT",
     },
+    {
+        "id": 85,
+        "title": "Tesla secures $30B in new credit lines as it looks to scale Cybercab, Optimus",
+        "summary": "The company says it won't draw on the new debt facilities this year, as it has already planned at least $25 billion in capital expenditures.",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
