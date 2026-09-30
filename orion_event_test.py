@@ -677,6 +677,13 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "CAPEX",
     },
+    {
+        "id": 87,
+        "title": "[단독] 한화생명, 센트로이드 손잡고 애큐온캐피탈 인수…SPA 체결",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "M&A",
+    },
 ]
 
 if __name__ == "__main__":
