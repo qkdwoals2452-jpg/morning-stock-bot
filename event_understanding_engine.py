@@ -1487,7 +1487,7 @@ def understand_event(article):
     korean_facility_build = re.search(
         r"(발전설비|생산설비|제조설비|설비|생산라인|공장|생산시설)"
         r".{0,25}"
-        r"(신규\s*구축|신설|설치|착공)",
+        r"(신규\s*구축|신설|설치|착공|짓는다|건설한다)",
         title
     )
 
