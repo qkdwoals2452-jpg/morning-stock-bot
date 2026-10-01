@@ -580,7 +580,7 @@ def understand_event(article):
         title,
         summary
     )
-
+    print("DEBUG ARTICLE ROLE:", title, "=>", article_role)
     
     
     if article_role != "EVENT":
