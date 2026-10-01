@@ -1186,6 +1186,25 @@ def understand_event(article):
             "합병키로",
         ]
     )
+    # 인수·매각 + 실제 거래계약 체결
+    korean_ma_transaction_signed = bool(
+        re.search(
+            r"(인수|매각|합병)"
+            r".{0,40}"
+            r"(SPA\s*체결|주식매매계약\s*체결|본계약\s*체결|매각\s*계약\s*체결)",
+            title
+        )
+    )
+
+    if (
+        korean_ma_transaction_signed
+        and not korean_ma_explainer
+    ):
+        return {
+            "is_real_event": True,
+            "event_type": "M&A",
+            "reason": "인수·매각 관련 실제 거래계약 체결 확인"
+        }
 
     if (
         korean_ma_confirmed
