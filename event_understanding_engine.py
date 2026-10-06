@@ -1431,15 +1431,53 @@ def understand_event(article):
             title
         )
     )
+    # -----------------------------------------------------
+    # 계약이라는 단어가 생략된 '확정 공급' 제목
+    #
+    # 예:
+    # 포스코퓨처엠, 삼성SDI에 양극재 6조 공급
+    # LG전자, 르노 첫 상용 SDV에 '통합 콕핏' 공급
+    #
+    # 공급 전망 / 공급 가능성 / 공급 부족 등은 제외
+    # -----------------------------------------------------
+
+    korean_direct_supply = bool(
+        re.search(
+            r".{1,80}"
+            r"(에|에게)\s*"
+            r".{1,60}"
+            r"공급(?:$|[\s\"'…·,])",
+            title
+        )
+    )
+
+    korean_supply_uncertain = contains_any(
+        title,
+        [
+            "공급 전망",
+            "공급 예상",
+            "공급 기대",
+            "공급 가능성",
+            "공급 검토",
+            "공급 계획",
+            "공급 예정",
+            "공급 부족",
+            "공급 우려",
+            "공급 확대 전망",
+            "공급 증가 전망",
+        ]
+    )
 
     if (
         (
             korean_order_quantity
             or korean_order_amount
             or korean_direct_order
+            or korean_direct_supply
         )
         and not korean_order_context_only
         and not korean_order_secondary
+        and not korean_supply_uncertain
     ):
         return {
             "is_real_event": True,
