@@ -1191,7 +1191,7 @@ def understand_event(article):
         re.search(
             r"(인수|매각|합병)"
             r".{0,40}"
-            r"(SPA\s*체결|주식매매계약\s*체결|본계약\s*체결|매각\s*계약\s*체결)",
+            r"(spa\s*체결|주식매매계약\s*체결|본계약\s*체결|매각\s*계약\s*체결)",
             title
         )
     )
