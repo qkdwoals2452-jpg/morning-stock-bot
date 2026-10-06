@@ -684,6 +684,13 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "M&A",
     },
+    {
+        "id": 88,
+        "title": "포스코퓨처엠, 삼성SDI에 양극재 6조 공급",
+        "summary": "",
+        "expected_event": True,
+        "expected_type": "CONTRACT",
+    },
 ]
 
 if __name__ == "__main__":
