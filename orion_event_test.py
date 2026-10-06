@@ -691,6 +691,17 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "CONTRACT",
     },
+    {
+        "title": "Black Hills stock surges 5% on $1.8B Google data center deal",
+        "summary": (
+            "Investing.com -- Black Hills Corporation (NYSE:BKH) shares rose 5% "
+            "in after-hours trading Tuesday following the announcement of "
+            "definitive agreements to serve a planned Google data center "
+            "in Cheyenne, Wyoming."
+        ),
+        "expected_real": True,
+        "expected_type": "CONTRACT",
+    },
 ]
 
 if __name__ == "__main__":
