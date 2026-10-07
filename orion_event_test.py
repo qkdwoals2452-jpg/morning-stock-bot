@@ -699,7 +699,7 @@ TEST_CASES = [
             "definitive agreements to serve a planned Google data center "
             "in Cheyenne, Wyoming."
         ),
-        "expected_real": True,
+        "expected_event": True,
         "expected_type": "CONTRACT",
     },
 ]
