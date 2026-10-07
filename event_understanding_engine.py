@@ -291,6 +291,8 @@ def has_confirmed_event_inside_reaction(title, summary=""):
 
     confirmed_patterns = [
         # CONTRACT
+        "definitive agreement",
+        "definitive agreements",
         "signed contract",
         "signs contract",
         "supply contract",
