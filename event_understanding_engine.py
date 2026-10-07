@@ -1291,6 +1291,30 @@ def understand_event(article):
             
         }
     # -----------------------------------------------------
+    # 영어: 확정 계약 + 실제 공급/서비스 이행
+    #
+    # 예:
+    # definitive agreements to serve a Google data center
+    #
+    # 단순 agreement 언급은 인정하지 않는다.
+    # -----------------------------------------------------
+
+    definitive_service_agreement = bool(
+        re.search(
+            r"\bdefinitive agreements?\b"
+            r".{0,40}"
+            r"\bto\s+(serve|supply|provide|deliver)\b",
+            text
+        )
+    )
+
+    if definitive_service_agreement:
+        return {
+            "is_real_event": True,
+            "event_type": "CONTRACT",
+            "reason": "확정 계약과 실제 공급·서비스 이행 확인"
+        }
+    # -----------------------------------------------------
     # 영어: 구체적 금액이 확인된 실제 수주잔고
     #
     # 예:
