@@ -713,6 +713,16 @@ TEST_CASES = [
         "expected_event": False,
         "expected_type": "NO_EVENT",
     },
+        {
+            "id": 91,
+            "title": (
+                "[단독] 삼성 'HBM4E', 엔비디아 문턱 넘었다"
+                "…주요 고객사 품질테스트 통과"
+            ),
+            "summary": "",
+            "expected_event": True,
+            "expected_type": "APPROVAL",
+        },
 ]
 
 if __name__ == "__main__":
