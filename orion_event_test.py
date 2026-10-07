@@ -692,6 +692,7 @@ TEST_CASES = [
         "expected_type": "CONTRACT",
     },
     {
+        "id": 89
         "title": "Black Hills stock surges 5% on $1.8B Google data center deal",
         "summary": (
             "Investing.com -- Black Hills Corporation (NYSE:BKH) shares rose 5% "
