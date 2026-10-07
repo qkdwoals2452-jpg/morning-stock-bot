@@ -703,6 +703,16 @@ TEST_CASES = [
         "expected_event": True,
         "expected_type": "CONTRACT",
     },
+    {
+        "id": 90,
+        "title": (
+            '9월 FOMC "연내 금리 인상 한 번 더"'
+            '…인상 근거 놓고는 시각차 [Fed 워치]'
+        ),
+        "summary": "",
+        "expected_event": False,
+        "expected_type": "NO_EVENT",
+    },
 ]
 
 if __name__ == "__main__":
