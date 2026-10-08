@@ -1969,6 +1969,27 @@ def understand_event(article):
             "reason": "실제 생산·양산 변화"
         }
 
+    # =====================================================
+    # 고객사 품질테스트 통과 / 제품 승인
+    # =====================================================
+
+    customer_quality_approval = (
+        contains_any(title, [
+            "품질테스트 통과",
+            "품질 테스트 통과",
+            "고객사 품질검증 통과",
+            "고객사 품질 검증 통과",
+        ])
+        and not has_speculative_context(title)
+    )
+
+    if customer_quality_approval:
+        return {
+            "is_real_event": True,
+            "event_type": "APPROVAL",
+            "reason": "고객사 품질테스트 통과 확인"
+        }
+
 
     # =====================================================
     # 7. 어느 조건에도 해당하지 않으면 사건으로 만들지 않는다.
