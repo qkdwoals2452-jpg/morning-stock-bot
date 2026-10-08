@@ -582,7 +582,7 @@ def understand_event(article):
         title,
         summary
     )
-    print("DEBUG ARTICLE ROLE:", title, "=>", article_role)
+    # 디버그 출력은 대량 RSS 처리 시 기본 비활성화
     
     
     if article_role != "EVENT":
@@ -1717,6 +1717,9 @@ def understand_event(article):
         "forecasts annual revenue",
         "revenue above estimates",
         "record revenue",
+        "sales beat estimates",
+        "sales beats estimates",
+        "sales topped estimates",
 
         # 한국어 - 행동 자체가 명확한 경우
         "흑자전환",
