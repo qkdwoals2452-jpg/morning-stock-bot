@@ -903,6 +903,10 @@ def make_event_key(article):
             "순이익",
         ]
 
+        # 기업명이 아닌 실적 기간·수식어·업종명은 EVENT KEY 주체에서 제외
+        invalid_subjects = {"최대", "역대", "사상", "전년", "올해", "지난해",
+                            "1분기", "2분기", "3분기", "4분기", "전력", "업계", "관련"}
+
         # 사건 단어가 등장하는 위치 찾기
         event_positions = []
 
@@ -964,7 +968,9 @@ def make_event_key(article):
                     "하반기",
                 }
 
-                if company not in bad_company_words:
+                if (company not in bad_company_words
+                        and company not in invalid_subjects
+                        and not re.fullmatch(r"\d+분기", company)):
 
                     return (
                         f"{company}_"
