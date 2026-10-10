@@ -5,6 +5,9 @@ on:
     - cron: '0 23 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   run-bot:
     runs-on: ubuntu-latest
@@ -24,3 +27,23 @@ jobs:
 
       - name: 봇 실행
         run: python main.py
+
+      # 다음 예약 실행에서도 추천/가격 이력을 이어서 사용한다.
+      - name: 백테스트 이력 저장
+        if: always()
+        run: |
+          if [ ! -f orion_backtest.json ]; then
+            echo "백테스트 파일 없음: 저장 생략"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add orion_backtest.json
+          if git diff --cached --quiet; then
+            echo "백테스트 변경 없음"
+            exit 0
+          fi
+          git commit -m "chore: persist ORION backtest history [skip ci]"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
