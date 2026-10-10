@@ -286,14 +286,9 @@ def update_single_item(item, current_price, update_date):
             "return": current_return
         })
 
-    elapsed_days = days_since(item.get("date"))
-
-    if elapsed_days is not None:
-        update_result_by_day(
-            item,
-            elapsed_days,
-            current_return
-        )
+    # 날짜가 지났다는 이유만으로 해당 거래일의 종가라고 간주하지 않는다.
+    # 관측된 가격 이력은 보존하고, 거래일별 수익률은 과거 종가 조회를
+    # 검증한 뒤 별도로 계산한다.
 
     return True
 
