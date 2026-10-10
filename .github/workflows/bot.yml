@@ -30,7 +30,7 @@ jobs:
 
       # 다음 예약 실행에서도 추천/가격 이력을 이어서 사용한다.
       - name: 백테스트 이력 저장
-        if: success()
+        if: always()
         run: |
           if [ ! -f orion_backtest.json ]; then
             echo "백테스트 파일 없음: 저장 생략"
@@ -44,5 +44,6 @@ jobs:
             exit 0
           fi
           git commit -m "chore: persist ORION backtest history [skip ci]"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
 
