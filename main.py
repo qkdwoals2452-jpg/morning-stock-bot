@@ -5,7 +5,7 @@ from sector_filter_engine import pass_theme_sector_filter
 from company_verify_engine import verify_company_theme
 from config import *
 from news_engine import get_us_news, get_korea_news
-from theme_engine import extract_themes, expand_theme_words
+from theme_engine import extract_themes, expand_theme_words, build_event_analysis_themes
 from stock_engine import load_korean_stocks, find_related_stocks
 from company_engine import get_company_match_score
 from impact_engine import get_news_impact_score
@@ -220,12 +220,15 @@ def run():
             "기사수:",
             len(obj["articles"])
         )
+    # 키워드 빈도 대신 실제 사건 점수를 검증 입력으로 사용한다.
+    themes = build_event_analysis_themes(important_events, themes)
     final_results = []
     themes = themes[:TOP_THEME_COUNT]
     print("실제 분석 테마 수:", len(themes))
     
     for theme in themes:
         print("테마 확인:", theme["name"], "점수:", theme["score"], "통과기준:", MIN_THEME_SCORE)
+        print("사건 점수:", theme["event_score"], "키워드 빈도 점수:", theme["frequency_score"])
         print("THEME KEYS:", theme.keys())
 
         articles = theme.get("articles", [])
@@ -259,9 +262,13 @@ def run():
             verify = verify_company_theme(stock, theme["name"])
 
             if not verify["pass"]:
+                print("제외:", stock["name"], verify.get("memo", "사업내용 검증 미달"))
                 continue
 
             finance = get_finance_score(stock)
+            if finance.get("op_margin") is None or finance.get("debt_ratio") is None:
+                print("제외:", stock["name"], "핵심 재무 데이터 확인불가")
+                continue
             if finance.get("exclude"):
 
                 print(
@@ -345,6 +352,10 @@ def run():
                 continue
             
 
+            if chart.get("details", {}).get("high_52w_gap") is None:
+                print("제외:", stock["name"], "52주 고점 대비 낙폭 확인불가")
+                continue
+
             if chart.get("details", {}).get("high_52w_gap") is not None:
 
                 if chart["details"]["high_52w_gap"] <= -60:
@@ -366,7 +377,8 @@ def run():
             #        continue
 
             if market.get("trading_value") is None:
-                print("거래대금 없음:", stock["name"])
+                print("제외:", stock["name"], "거래대금 확인불가")
+                continue
             else:
                 if market["trading_value"] < 30_0000_0000:
                     print("제외:", stock["name"], "거래대금 30억 미만")

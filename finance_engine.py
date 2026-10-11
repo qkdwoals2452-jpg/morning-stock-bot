@@ -36,7 +36,7 @@ def to_int(value):
 def get_naver_basic(code):
 
     try:
-        url = f"https://finance.naver.com/item/main.naver?code={code}"
+        url = f"https://m.stock.naver.com/api/stock/{code}/integration"
 
         res = requests.get(
             url,
@@ -44,26 +44,11 @@ def get_naver_basic(code):
             timeout=7
         )
 
-        text = res.text
-
-        per = None
-        pbr = None
-
-        per_match = re.search(
-            r"<strong>PER\(배\)</strong>\s*</th>\s*<td[^>]*>\s*([\d\.,\-]+)",
-            text
-        )
-
-        pbr_match = re.search(
-            r"<strong>PBR\(배\)</strong>\s*</th>\s*<td[^>]*>\s*([\d\.,\-]+)",
-            text
-        )
-
-        if per_match:
-            per = to_float(per_match.group(1))
-
-        if pbr_match:
-            pbr = to_float(pbr_match.group(1))
+        res.raise_for_status()
+        values = {item.get("code"): item.get("value", "")
+                  for item in res.json().get("totalInfos", [])}
+        per = to_float(str(values.get("per", "")).replace("배", ""))
+        pbr = to_float(str(values.get("pbr", "")).replace("배", ""))
 
         print("NAVER PER/PBR:", code, per, pbr)
 
@@ -144,6 +129,9 @@ def get_dart_finance(stock_code):
         debt = 0
 
         for row in data.get("list", []):
+
+            if row.get("sj_div") not in {"BS", "IS", "CIS"}:
+                continue
 
             name = row.get("account_nm", "")
             account_id = row.get("account_id", "")
