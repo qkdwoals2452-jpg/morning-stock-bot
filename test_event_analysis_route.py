@@ -82,6 +82,9 @@ class EventAnalysisRouteTests(unittest.TestCase):
         self.assertEqual(calls, 1)
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0]['theme']['event_score'], 80)
+        self.assertEqual(results[0]['ranked'][0]['event_score'], 80)
+        self.assertIn('사건 신호 80점', results[0]['ranked'][0]['reason'])
+        self.assertNotIn('미국뉴스 키워드 감지', results[0]['ranked'][0]['reason'])
 
     def test_business_rejection_still_blocks_recommendation(self):
         calls, results = self.run_route(verify_pass=False)

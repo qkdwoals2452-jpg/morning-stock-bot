@@ -114,7 +114,8 @@ def make_stock_result(
     company=None,
     chart=None,
     learning=None,
-    impact=None
+    impact=None,
+    event_score=None
 ):
 
     verify = verify or {}
@@ -163,6 +164,11 @@ def make_stock_result(
         finance,
         market
     )
+    if event_score is not None:
+        reason = [f"사건 신호 {event_score}점"] + [
+            item for item in reason
+            if item not in {"미국뉴스 키워드 감지", "뉴스 연관"}
+        ]
 
     if verify.get("score", 0) >= 90:
         reason.append("사업내용 검증 우수")
@@ -188,6 +194,7 @@ def make_stock_result(
         "code": stock["code"],
         "sector": stock.get("sector", ""),
         "theme_score": theme_score,
+        "event_score": event_score,
         "relation_score": stock["relation_score"],
         "finance": finance,
         "market": market,
