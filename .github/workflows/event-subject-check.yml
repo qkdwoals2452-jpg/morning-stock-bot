@@ -1,0 +1,23 @@
+name: ORION Event Subject Check
+
+on:
+  push:
+    branches: [orion-subject-fix]
+  pull_request:
+    paths: [event_engine.py, test_orion_event_subject.py, .github/workflows/event-subject-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  subject-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Event subject, event fixtures and DART startup regressions
+        run: python -m unittest -v test_orion_event_subject test_dart_startup
