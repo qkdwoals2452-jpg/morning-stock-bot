@@ -907,6 +907,12 @@ def make_event_key(article):
         invalid_subjects = {"최대", "역대", "사상", "전년", "올해", "지난해",
                             "1분기", "2분기", "3분기", "4분기", "전력", "업계", "관련"}
 
+        # 시설명/지명을 계약 주체로 오인하지 않도록 고유한 미확인 키를 사용한다.
+        if "원전에" in title or "공장에" in title or "시설에" in title:
+            import hashlib
+            digest = hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:12]
+            return "UNKNOWN_" + digest + "_" + event_type
+
         # 사건 단어가 등장하는 위치 찾기
         event_positions = []
 
