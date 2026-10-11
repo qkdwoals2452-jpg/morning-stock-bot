@@ -245,6 +245,37 @@ THEME_ARTICLE_KEYWORDS = {
 }
 
 
+def build_event_analysis_themes(events, frequency_themes=()):
+    """고득점 사건을 명시된 분야의 검증 입력으로 연결한다."""
+    frequencies = {theme["name"]: theme["score"] for theme in frequency_themes}
+    grouped = {}
+    for event in events:
+        event_score = event.get("event_score", 0)
+        if event_score < 70:
+            continue
+        for name in THEME_ARTICLE_KEYWORDS:
+            articles = [article for article in event.get("articles", [])
+                        if article_matches_theme(name, article)]
+            if not articles:
+                continue
+            theme = grouped.setdefault(name, {
+                "name": name, "score": 0, "event_score": 0,
+                "frequency_score": frequencies.get(name, 0),
+                "articles": [], "event_keys": [],
+                "reason": "고득점 사건의 명시적 분야와 직접 언급 기업 검증",
+            })
+            theme["score"] = theme["event_score"] = max(theme["score"], event_score)
+            for article in articles:
+                if article not in theme["articles"]:
+                    theme["articles"].append(article)
+            key = event.get("event_key")
+            if key and key not in theme["event_keys"]:
+                theme["event_keys"].append(key)
+    return sorted(grouped.values(),
+                  key=lambda theme: (theme["event_score"], theme["frequency_score"]),
+                  reverse=True)
+
+
 def article_matches_theme(theme_name, article):
     title = article.get("title", "")
     lower = title.lower()
@@ -272,7 +303,10 @@ def article_matches_theme(theme_name, article):
         if not keyword:
             continue
 
-        if keyword in lower:
+        if keyword == "ai":
+            if re.search(r"\bai\b", lower):
+                return True
+        elif keyword in lower:
             return True
 
     return False

@@ -1,4 +1,6 @@
 import requests
+from datetime import datetime, timedelta, time
+from zoneinfo import ZoneInfo
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -21,74 +23,42 @@ def to_int(value):
 
 def get_naver_market(code):
     try:
-        basic_url = f"https://m.stock.naver.com/api/stock/{code}/basic"
-
-        basic_res = requests.get(
-            basic_url,
-            headers=HEADERS,
-            timeout=5
-        )
-
-        basic = basic_res.json()
-
-        change_rate = to_float(
-            basic.get("fluctuationsRatio")
-        )
-
-        chart_url = f"https://api.stock.naver.com/chart/domestic/item/{code}/day?periodType=dayCandle"
-
-        chart_res = requests.get(
-            chart_url,
-            headers=HEADERS,
-            timeout=7
-        )
-
-        chart_data = chart_res.json()
-
-        volume = None
-        close_price = None
-
-        if isinstance(chart_data, list) and len(chart_data) > 0:
-            latest = chart_data[0]
-
-            volume = to_int(
-                latest.get("accumulatedTradingVolume")
-            )
-
-            close_price = to_float(
-                latest.get("closePrice")
-            )
-
-        trading_value = None
-
-        if volume is not None and close_price is not None:
-            trading_value = int(volume * close_price)
-
-        print(
-            "MARKET VALUE:",
-            code,
-            "change:",
-            change_rate,
-            "volume:",
-            volume,
-            "trading_value:",
-            trading_value
-        )
-
+        now = datetime.now(ZoneInfo("Asia/Seoul"))
+        today = now.strftime("%Y%m%d")
+        url = f"https://api.stock.naver.com/chart/domestic/item/{code}/day"
+        res = requests.get(url, headers=HEADERS, params={
+            "startDateTime": (now - timedelta(days=70)).strftime("%Y%m%d"),
+            "endDateTime": today,
+        }, timeout=7)
+        res.raise_for_status()
+        rows = res.json()
+        if not isinstance(rows, list):
+            raise ValueError("일별 차트 응답 형식 오류")
+        # 아침에는 완료된 거래일을 사용하고, 날짜순으로 최신 행을 선택한다.
+        rows = sorted((row for row in rows
+                       if row.get("localDate")
+                       and (row["localDate"] < today
+                            or (row["localDate"] == today and now.time() >= time(15, 30)))),
+                      key=lambda row: row["localDate"])
+        if not rows:
+            raise ValueError("완료된 거래일 데이터 없음")
+        latest = rows[-1]
+        volume = to_int(latest.get("accumulatedTradingVolume"))
+        close = to_float(latest.get("closePrice"))
+        previous = to_float(rows[-2].get("closePrice")) if len(rows) >= 2 else None
+        change_rate = round((close / previous - 1) * 100, 2) if close is not None and previous else None
+        value = int(volume * close) if volume is not None and close is not None else None
+        print("MARKET VALUE:", code, "date:", latest["localDate"], "estimated:", value)
         return {
-            "change_rate": change_rate,
-            "volume": volume,
-            "trading_value": trading_value
+            "change_rate": change_rate, "volume": volume, "trading_value": value,
+            "trading_date": latest["localDate"], "trading_value_is_estimate": True,
         }
-
     except Exception as e:
-        print("MARKET ERROR:", code, e)
+        print("MARKET ERROR:", code, type(e).__name__)
+        return {"change_rate": None, "volume": None, "trading_value": None,
+                "trading_date": None, "trading_value_is_estimate": True}
 
-        return {
-            "change_rate": None,
-            "volume": None,
-            "trading_value": None
-        }
+
 def get_market_score(stock):
     code = stock["code"]
 
@@ -145,5 +115,7 @@ def get_market_score(stock):
         "memo": ", ".join(memo),
         "change_rate": change,
         "volume": market["volume"],
-        "trading_value": value
+        "trading_value": value,
+        "trading_date": market.get("trading_date"),
+        "trading_value_is_estimate": market.get("trading_value_is_estimate", True)
     }

@@ -1,0 +1,23 @@
+name: ORION Finance and Event Route Check
+
+on:
+  push:
+    branches: [orion-finance-data-fix]
+  pull_request:
+    paths: [quality_engine.py, finance_engine.py, market_engine.py, theme_engine.py, main.py, scoring_engine.py, test_financial_data.py, test_event_analysis_route.py, .github/workflows/finance-route-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  finance-route-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Financial parsing and event route regressions
+        run: python -m unittest -v test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject

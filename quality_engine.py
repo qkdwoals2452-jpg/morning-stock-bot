@@ -46,15 +46,25 @@ def get_dart_year_finance(stock_code, year):
 
         sales = 0
         op = 0
-        net_income = 0
+        net_income = None
         asset = 0
         debt = 0
         equity = 0
 
-        for row in data.get("list", []):
+        rows = data.get("list", [])
+        has_total_profit = any(row.get("sj_div") in {"IS", "CIS"}
+                               and row.get("account_id") == "ifrs-full_ProfitLoss"
+                               and to_int(row.get("thstrm_amount")) is not None
+                               for row in rows)
+        for row in rows:
+            # CF/SCE에는 같은 계정명의 현금흐름·자본 구성요소가 반복된다.
+            if row.get("sj_div") not in {"BS", "IS", "CIS"}:
+                continue
             name = row.get("account_nm", "")
             account_id = row.get("account_id", "")
-            amount = to_int(row.get("thstrm_amount", 0)) or 0
+            amount = to_int(row.get("thstrm_amount"))
+            if amount is None:
+                continue
 
             if (
                 name in ["매출액", "매출", "영업수익", "영업수익(매출액)"]
@@ -73,7 +83,8 @@ def get_dart_year_finance(stock_code, year):
                 "ifrs-full_ProfitLoss",
                 "ifrs-full_ProfitLossAttributableToOwnersOfParent"
             ]:
-                net_income = amount
+                if not has_total_profit or account_id == "ifrs-full_ProfitLoss":
+                    net_income = amount
 
             elif name == "자산총계":
                 asset = amount
@@ -92,7 +103,8 @@ def get_dart_year_finance(stock_code, year):
         debt_ratio = None
 
         if equity > 0:
-            roe = round(net_income / equity * 100, 2)
+            if net_income is not None:
+                roe = round(net_income / equity * 100, 2)
 
         if sales > 0:
             op_margin = round(op / sales * 100, 2)
