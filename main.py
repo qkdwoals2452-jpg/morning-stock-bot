@@ -9,7 +9,6 @@ from theme_engine import extract_themes, expand_theme_words
 from stock_engine import load_korean_stocks, find_related_stocks
 from company_engine import get_company_match_score
 from impact_engine import get_news_impact_score
-from finance_engine import get_finance_score
 from market_engine import get_market_score
 from chart_engine import get_chart_score
 from scoring_engine import make_stock_result, sort_results, make_grade
@@ -22,7 +21,11 @@ from telegram_bot import send_telegram
 def run():
     if not os.path.exists("corp_code.csv"):
         print("corp_code.csv 없음 → DART 기업코드 생성")
-        import build_corp_db  # 실행 시에만 DART 기업코드 생성
+        from build_corp_db import build_corp_db
+        build_corp_db()
+
+    # 재무 모듈은 기업코드 CSV를 읽으므로 생성 후 가져온다.
+    from finance_engine import get_finance_score
 
     stocks = load_korean_stocks()
     update_backtest_prices(stocks)
