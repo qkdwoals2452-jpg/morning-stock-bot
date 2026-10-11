@@ -385,7 +385,9 @@ def run():
                     continue
             result = make_stock_result(
                 stock=stock,
-                theme_score=theme["score"],
+                # 사건 점수는 분석 진입·우선순위에 사용한다.
+                # 최종 합산의 기존 빈도 점수 비중은 유지해 등급을 부풀리지 않는다.
+                theme_score=theme["frequency_score"],
                 finance=finance,
                 market=market,
                 verify=verify,

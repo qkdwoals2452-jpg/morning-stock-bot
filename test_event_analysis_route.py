@@ -83,6 +83,7 @@ class EventAnalysisRouteTests(unittest.TestCase):
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0]['theme']['event_score'], 80)
         self.assertEqual(results[0]['ranked'][0]['event_score'], 80)
+        self.assertEqual(results[0]['ranked'][0]['theme_score'], 6)
         self.assertIn('사건 신호 80점', results[0]['ranked'][0]['reason'])
         self.assertNotIn('미국뉴스 키워드 감지', results[0]['ranked'][0]['reason'])
 
