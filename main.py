@@ -1,5 +1,4 @@
 import os
-import build_corp_db
 from news_quality_engine import filter_core_news
 from event_engine import build_events
 from sector_filter_engine import pass_theme_sector_filter
@@ -23,7 +22,7 @@ from telegram_bot import send_telegram
 def run():
     if not os.path.exists("corp_code.csv"):
         print("corp_code.csv 없음 → DART 기업코드 생성")
-        build_corp_db
+        import build_corp_db  # 실행 시에만 DART 기업코드 생성
 
     stocks = load_korean_stocks()
     update_backtest_prices(stocks)
