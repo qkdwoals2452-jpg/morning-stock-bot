@@ -309,6 +309,37 @@ def fill_trading_checkpoints(item, daily_closes):
     return filled
 
 
+def fetch_daily_closes(code):
+    """Fetch dated daily closing prices; return [] when unavailable."""
+    from datetime import timedelta, timezone
+    from zoneinfo import ZoneInfo
+    code = normalize_code(code)
+    end = datetime.now(timezone.utc) + timedelta(days=1)
+    start = end - timedelta(days=100)
+    params = {"period1": int(start.timestamp()), "period2": int(end.timestamp()), "interval": "1d"}
+    for suffix in (".KS", ".KQ"):
+        try:
+            response = requests.get("https://query1.finance.yahoo.com/v8/finance/chart/" + code + suffix, params=params, headers=HEADERS, timeout=8)
+            response.raise_for_status()
+            results = response.json().get("chart", {}).get("result") or []
+            if not results:
+                continue
+            data = results[0]
+            quote = data.get("indicators", {}).get("quote") or []
+            closes = quote[0].get("close") if quote else []
+            rows = []
+            for stamp, price in zip(data.get("timestamp") or [], closes or []):
+                value = to_float(price)
+                if value is not None and value > 0:
+                    day = datetime.fromtimestamp(stamp, ZoneInfo("Asia/Seoul")).date().isoformat()
+                    rows.append((day, value))
+            if rows:
+                return sorted(dict(rows).items())
+        except (requests.RequestException, ValueError, TypeError, KeyError) as exc:
+            print("Historical close lookup failed:", code, suffix, str(exc)[:100])
+    return []
+
+
 def update_backtest_prices(stocks=None):
     """
     추천 종목 가격을 업데이트한다.
@@ -367,7 +398,18 @@ def update_backtest_prices(stocks=None):
         else:
             failed_count += 1
 
+    history_cache = {}
+    checkpoint_count = 0
+    for item in data:
+        if all(item.get("result_%dd" % n) is not None for n in (1, 3, 5, 10, 20)):
+            continue
+        code = normalize_code(item.get("code"))
+        if code not in history_cache:
+            history_cache[code] = fetch_daily_closes(code)
+        checkpoint_count += fill_trading_checkpoints(item, history_cache[code])
+
     save_backtest(data)
+    print("Verified trading-session checkpoints:", checkpoint_count)
 
     print(
         f"백테스트 가격 업데이트 완료: "
