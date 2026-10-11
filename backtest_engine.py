@@ -293,6 +293,22 @@ def update_single_item(item, current_price, update_date):
     return True
 
 
+def fill_trading_checkpoints(item, daily_closes):
+    """Use the Nth verified trading session after recommendation."""
+    start = to_float(item.get("start_price"))
+    recommended = item.get("date")
+    if not recommended or not start or start <= 0:
+        return 0
+    later = sorted((d, p) for d, p in daily_closes if d > recommended and to_float(p) is not None)
+    filled = 0
+    for n in (1, 3, 5, 10, 20):
+        field = "result_%dd" % n
+        if item.get(field) is None and len(later) >= n:
+            item[field] = calculate_return(start, later[n - 1][1])
+            filled += 1
+    return filled
+
+
 def update_backtest_prices(stocks=None):
     """
     추천 종목 가격을 업데이트한다.
