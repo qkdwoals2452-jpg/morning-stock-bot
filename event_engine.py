@@ -903,6 +903,17 @@ def make_event_key(article):
             "순이익",
         ]
 
+        # 쉼표 앞에 명시된 기업명을 우선한다.
+        explicit = re.match(r"^\\s*([가-힣A-Za-z0-9&.]{2,})\\s*[,，]", title)
+        if explicit:
+            return f"{explicit.group(1)}_{event_type}"
+
+        # 공급받는 시설/장소를 공급 기업으로 추측하지 않는다.
+        if re.search(r"(?:원전|공장|시설|데이터센터)(?:에|에서)\\s", title):
+            import hashlib
+            digest = hashlib.sha1(normalized.encode("utf-8")).hexdigest()[:12]
+            return f"UNKNOWN_{digest}_{event_type}"
+
         # 사건 단어가 등장하는 위치 찾기
         event_positions = []
 
