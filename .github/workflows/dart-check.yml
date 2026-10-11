@@ -1,0 +1,39 @@
+name: ORION DART Check
+
+on:
+  push:
+    branches: [orion-dart-startup-fix]
+  pull_request:
+    paths: [main.py, build_corp_db.py, test_dart_startup.py, .github/workflows/dart-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dart-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: DART startup regression tests
+        run: python -m unittest -v test_dart_startup
+      - name: Live DART download and finance lookup
+        run: |
+          python - <<'PY'
+          from build_corp_db import build_corp_db
+          build_corp_db()
+          import main
+          from finance_engine import get_dart_finance
+          import contextlib
+          import io
+          with contextlib.redirect_stdout(io.StringIO()):
+              result = get_dart_finance('005930')
+          assert result['op_margin'] is not None, result
+          assert result['debt_ratio'] is not None, result
+          print('DART LIVE PASS:', result)
+          PY

@@ -15,8 +15,12 @@ params = {
 def build_corp_db():
     print("Downloading DART corp code...")
 
-    res = requests.get(url, params=params, timeout=60)
-    res.raise_for_status()
+    try:
+        res = requests.get(url, params=params, timeout=60)
+        res.raise_for_status()
+    except requests.RequestException as exc:
+        # requests 예외에는 API 키가 포함된 요청 URL이 들어갈 수 있다.
+        raise RuntimeError(f"DART 기업코드 연결 실패 ({type(exc).__name__})") from None
 
     # OpenDART 오류 응답은 ZIP 대신 XML로 올 수 있다.
     # API 키나 요청 URL을 로그에 출력하지 않는다.
@@ -25,8 +29,15 @@ def build_corp_db():
     if not zipfile.is_zipfile(io.BytesIO(res.content)):
         try:
             error_root = ET.fromstring(res.content)
-            status = error_root.findtext("status", "unknown")
-            message = error_root.findtext("message", "unknown")
+            fields = {node.tag.rsplit("}", 1)[-1].lower(): node.text
+                      for node in error_root.iter()}
+            status = fields.get("status") or "unknown"
+            message = fields.get("message")
+            if not message:
+                # 오류 XML이 아닌 차단/점검 페이지도 원인을 남긴다.
+                summary = " ".join(error_root.itertext()).strip()
+                message = f"root={error_root.tag}, response={summary[:200]}"
+            message = message.replace(DART_API_KEY, "[REDACTED]") if DART_API_KEY else message
             raise RuntimeError(
                 f"DART 기업코드 다운로드 실패 (status={status}, message={message})"
             )
@@ -62,6 +73,9 @@ def build_corp_db():
             "corp_code": item.findtext("corp_code"),
             "corp_name": item.findtext("corp_name")
         })
+
+    if not rows:
+        raise RuntimeError("DART 기업코드 XML에 상장 종목이 없습니다. CSV 저장을 중단합니다.")
 
     df = pd.DataFrame(rows)
 
