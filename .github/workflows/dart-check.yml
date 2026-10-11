@@ -29,7 +29,10 @@ jobs:
           build_corp_db()
           import main
           from finance_engine import get_dart_finance
-          result = get_dart_finance('005930')
+          import contextlib
+          import io
+          with contextlib.redirect_stdout(io.StringIO()):
+              result = get_dart_finance('005930')
           assert result['op_margin'] is not None, result
           assert result['debt_ratio'] is not None, result
           print('DART LIVE PASS:', result)

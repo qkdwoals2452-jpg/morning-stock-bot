@@ -7,6 +7,7 @@ import tempfile
 import unittest
 from unittest.mock import Mock, patch
 import zipfile
+import requests
 
 import build_corp_db
 
@@ -64,6 +65,34 @@ class DartStartupTests(unittest.TestCase):
         response = Mock(content=b'<result><status>010</status><message>Invalid key</message></result>')
         with patch('requests.get', return_value=response):
             with self.assertRaisesRegex(RuntimeError, 'status=010, message=Invalid key'):
+                build_corp_db.build_corp_db()
+        self.assertFalse(Path('corp_code.csv').exists())
+
+    def test_namespaced_error_is_reported(self):
+        response = Mock(content=b'<result xmlns="urn:dart"><status>020</status>'
+                                b'<message>Request limit</message></result>')
+        with patch('requests.get', return_value=response):
+            with self.assertRaisesRegex(RuntimeError, 'status=020, message=Request limit'):
+                build_corp_db.build_corp_db()
+
+    def test_non_api_page_explains_unknown_status(self):
+        response = Mock(content=b'<html><body>Service unavailable</body></html>')
+        with patch('requests.get', return_value=response):
+            with self.assertRaisesRegex(RuntimeError, 'root=html, response=Service unavailable'):
+                build_corp_db.build_corp_db()
+
+    def test_connection_error_does_not_expose_key(self):
+        with patch('requests.get', side_effect=requests.ConnectionError('secret URL')):
+            with self.assertRaisesRegex(RuntimeError, r'연결 실패 \(ConnectionError\)') as error:
+                build_corp_db.build_corp_db()
+        self.assertNotIn('secret URL', str(error.exception))
+
+    def test_empty_zip_does_not_create_broken_csv(self):
+        archive = io.BytesIO()
+        with zipfile.ZipFile(archive, 'w') as z:
+            z.writestr('CORPCODE.xml', '<result/>')
+        with patch('requests.get', return_value=Mock(content=archive.getvalue())):
+            with self.assertRaisesRegex(RuntimeError, '상장 종목이 없습니다'):
                 build_corp_db.build_corp_db()
         self.assertFalse(Path('corp_code.csv').exists())
 
