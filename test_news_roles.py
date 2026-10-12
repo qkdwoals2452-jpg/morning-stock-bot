@@ -60,7 +60,8 @@ class NewsRoleTests(unittest.TestCase):
         for title, summary in [
             ('Nvidia stock rises 5%', 'Nvidia signed a $5 billion supply agreement with a new customer today.'),
             ('[특징주] 기가비스 급등', '기가비스는 오늘 111억원 규모 공급계약을 체결했다.'),
-            ('Why company shares jumped', 'The company signed a $5 billion supply contract today.'),
+            ("Here's why company shares jumped", 'The company signed a $5 billion supply contract today.'),
+            ('Company could grow after new contracts', 'The company signed a new $5 billion supply contract today.'),
         ]:
             with self.subTest(title=title):
                 result = engine.understand_event({'title': title, 'summary': summary})

@@ -160,6 +160,7 @@ def classify_article_role(title, summary=""):
     OUTLOOK
     MARKET_REACTION
     EXPLAINER
+    LIFESTYLE
     """
 
     title = normalize_text(title)
@@ -305,7 +306,7 @@ def classify_article_role(title, summary=""):
     return "EVENT_CANDIDATE"
 def has_confirmed_event_inside_reaction(title, summary=""):
     """
-    주가반응형 기사라도 기사 내부에
+    주가반응·전망·해설 기사라도 기사 내부에
     신규 확정 사건의 강한 근거가 있는지 확인한다.
 
     단순 '소식', '재평가', 과거 사건 언급은 살리지 않는다.
@@ -612,7 +613,7 @@ def understand_event(article):
     if article_role not in {"EVENT", "EVENT_CANDIDATE"}:
 
         # -------------------------------------------------
-        # MARKET_REACTION 예외
+        # 주가반응·전망·해설 혼합 기사 예외
         #
         # 제목은 주가반응 기사라도 summary 안에서
         # 독립적인 신규 확정 사건이 확인되면
