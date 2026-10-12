@@ -4,6 +4,7 @@ import re
 import html
 import time
 from urllib.parse import urlencode, urlsplit
+from event_identity_engine import duplicate_article
 from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone, timedelta
 
@@ -286,23 +287,9 @@ def parse_atom(url, market, source_name, diagnostics=None):
     return articles
 def remove_duplicates(articles):
     result = []
-    seen = []
-
     for article in articles:
-        title = article["title"]
-        words = set(re.sub(r"[^가-힣A-Za-z0-9 ]", " ", title).split())
-
-        duplicate = False
-
-        for old_words in seen:
-            if len(words & old_words) >= 3:
-                duplicate = True
-                break
-
-        if not duplicate:
+        if not any(duplicate_article(article, old) for old in result):
             result.append(article)
-            seen.append(words)
-
     return result
 def filter_recent_news(articles, hours=36):
 
