@@ -4,6 +4,7 @@ from event_understanding_engine import (
 )
 from collections import defaultdict
 import re
+from event_identity_engine import event_facts, same_event, instance_key, publisher, corroboration_bonus
 
 IMPORTANT_KEYWORDS = [
     "investment", "invest", "capex", "spending",
@@ -1212,11 +1213,17 @@ def merge_same_events(news):
         article["event_reasons"] = reasons
 
         key = make_event_key(article)
-        grouped[key].append(article)
+        groups = grouped[key]
+        for group in groups:
+            if all(same_event(article, old) for old in group):
+                group.append(article)
+                break
+        else:
+            groups.append([article])
 
     events = []
 
-    for key, articles in grouped.items():
+    for key, articles in ((key, group) for key, groups in grouped.items() for group in groups):
         best = max(
             articles,
             key=lambda x: x.get("event_score_raw", 0)
@@ -1224,7 +1231,7 @@ def merge_same_events(news):
 
         source_count = len(
             set(
-                a.get("source", "")
+                publisher(a)[0]
                 for a in articles
             )
         )
@@ -1235,15 +1242,17 @@ def merge_same_events(news):
             )
         score = best.get("event_score_raw", 0)
 
-        if source_count >= 2:
-            score += 10
+        source_bonus = corroboration_bonus(articles)
+        score += source_bonus
 
         if score > 100:
             score = 100
 
         events.append({
             "event_title": best.get("title", ""),
-            "event_key": key,
+            "event_key": instance_key(key, articles),
+            "event_subject_key": key,
+            "event_facts": event_facts(best),
             "event_type": event_info.get("event_type", "NO_EVENT"),
             "evidence_strength": evidence.get(
                 "evidence_strength",
@@ -1257,6 +1266,7 @@ def merge_same_events(news):
             "event_grade": make_event_grade(score),
             "articles": articles,
             "source_count": source_count,
+            "source_bonus": source_bonus,
             "market": best.get("market", ""),
             "reason": best.get("event_reasons", [])
         })
