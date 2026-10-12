@@ -1,0 +1,36 @@
+name: ORION News Source Check
+
+on:
+  push:
+    branches: [orion-news-source-fix]
+  pull_request:
+    paths: [news_engine.py, test_news_sources.py, .github/workflows/news-source-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  news-source-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Feed failure handling and existing ORION regressions
+        run: python -m unittest -v test_news_sources test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
+      - name: Live Nasdaq RSS and SEC Atom diagnostics
+        run: |
+          python - <<'PY'
+          from news_engine import parse_rss, parse_atom
+          diagnostics = {}
+          parse_rss('https://www.nasdaq.com/feed/rssoutbound?category=Technology', 'US', 'Nasdaq_Tech', diagnostics)
+          parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
+          # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.
+          for source, report in diagnostics.items():
+              assert report['status'] != 'error', (source, report)
+          print('LIVE FEED PASS:', diagnostics)
+          PY
