@@ -1,4 +1,6 @@
 import os
+from collections import Counter
+from event_understanding_engine import classify_article_role
 from news_quality_engine import filter_core_news
 from event_engine import build_events
 from sector_filter_engine import pass_theme_sector_filter
@@ -48,6 +50,9 @@ def run():
         )
     print("한국 뉴스 수:", len(kr_news))
     print("전체 뉴스 수:", len(news))
+    roles = Counter(classify_article_role(article.get("title", ""), article.get("summary", ""))
+                    for article in news)
+    print("기사 성격 집계 (후보는 확정 사건 아님):", dict(roles))
 
     events = build_events(news)
 
