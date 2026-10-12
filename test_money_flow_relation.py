@@ -32,6 +32,16 @@ class MoneyFlowRelationTests(unittest.TestCase):
         self.assertIn('이익 효과는 별도 검증', result['reason'])
         self.assertEqual(result['evidence'][0]['event_type'], 'CAPEX')
 
+    def test_live_posco_headline_preserves_actor_across_ellipsis(self):
+        result = self.relation('포스코DX', '포스코DX, ‘에이전틱 AI’ 승부수…인핸스에 20억 투자')
+        self.assertTrue(result['pass'])
+        self.assertEqual(result['role'], 'EVENT_ACTOR')
+        self.assertEqual(result['evidence'][0]['amount_text'], ['20억'])
+
+    def test_actor_after_headline_prefix_is_preserved(self):
+        result = self.relation('심텍', '엔비디아 수요 대응…심텍, 반도체 공장 증설 결정')
+        self.assertTrue(result['pass'])
+
     def test_named_counterparty_is_not_labeled_supplier(self):
         result = self.relation('삼성전자', '기가비스, 삼성전자와 검사장비 공급계약 체결')
         self.assertTrue(result['pass'])
@@ -92,6 +102,10 @@ class MoneyFlowRelationTests(unittest.TestCase):
     def test_alias_is_preserved(self):
         result = self.relation('삼성중공업', '삼성重, LNG 운반선 2척 수주 계약 체결')
         self.assertTrue(result['pass'])
+        score = get_news_impact_score({'name': '삼성중공업', 'code': '010140'}, {},
+                                     [article('삼성重, LNG 운반선 2척 수주 계약 체결')], {})
+        self.assertEqual(score['score'], 70)
+        self.assertFalse(score['exclude'])
 
     def test_exact_two_character_actor_is_candidate(self):
         stocks = [{'name': '원익', 'code': '032940'}, {'name': '원익IPS', 'code': '240810'}]
