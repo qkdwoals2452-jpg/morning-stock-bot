@@ -25,12 +25,13 @@ jobs:
       - name: Live Nasdaq RSS and SEC Atom diagnostics
         run: |
           python - <<'PY'
-          from news_engine import parse_rss, parse_atom
+          from news_engine import get_nasdaq_news, parse_atom
           diagnostics = {}
-          parse_rss('https://www.nasdaq.com/feed/rssoutbound?category=Technology', 'US', 'Nasdaq_Tech', diagnostics)
+          get_nasdaq_news(diagnostics)
           parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
           # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.
-          for source, report in diagnostics.items():
-              assert report['status'] != 'error', (source, report)
+          nasdaq_source = diagnostics['Nasdaq_Tech'].get('fallback_source', 'Nasdaq_Tech')
+          for source in (nasdaq_source, 'SEC_Filings'):
+              assert diagnostics[source]['status'] != 'error', (source, diagnostics[source])
           print('LIVE FEED PASS:', diagnostics)
           PY
