@@ -26,7 +26,12 @@ def assess_company_event_relation(stock, articles):
             continue
         # 기사 여러 개나 서로 다른 문장을 합쳐 관계를 만들어내지 않는다.
         for text in (article.get("title", ""), article.get("summary", "")):
-            for sentence in re.split(r"(?<=[.!?。])\s+|[\n;…]", str(text or "")):
+            sentences = re.split(r"(?<=[.!?。])\s+|[\n;]", str(text or ""))
+            # 제목의 말줄임표는 문장 종결이 아닐 수 있다. 전체 절과 각 절을 함께 확인한다.
+            # '포스코DX, AI 승부수…인핸스에 투자'의 주체가 사라지지 않게 한다.
+            clauses = [clause for sentence in sentences for clause in
+                       ([sentence] + sentence.split("…") if "…" in sentence else [sentence])]
+            for sentence in clauses:
                 if not re.search(boundary, sentence, re.I):
                     continue
                 if re.search(r"지난해|작년|과거|\d+년\s*전|당시|previously|last year|전망|예상|기대|검토|분석|평가|목표주가|애널리스트|analyst|expects?|could|might|주가|급등|급락|수혜주|관련주|투자자\s*관심|부인|미체결|취소|불발|체결하지|denied|\bnot\b|\bnever\b", sentence, re.I):
@@ -200,9 +205,9 @@ def get_news_impact_score(stock, theme, articles, company):
     reasons = []
 
     # 1. 회사명이 기사에 직접 등장
-    if stock_name and stock_name in article_text:
+    if relation["pass"] or (stock_name and stock_name in article_text):
         score += 70
-        reasons.append("기사에 회사명 직접 등장")
+        reasons.append("기사의 사건 당사자 기업명 확인" if relation["pass"] else "기사에 회사명 언급(사건 관계 미확인)")
 
     # 2. 종목코드가 기사에 등장
     if stock_code and stock_code in article_text:
