@@ -10,7 +10,7 @@ from news_engine import get_us_news, get_korea_news
 from theme_engine import extract_themes, expand_theme_words, build_event_analysis_themes
 from stock_engine import load_korean_stocks, find_related_stocks
 from company_engine import get_company_match_score
-from impact_engine import get_news_impact_score
+from impact_engine import get_news_impact_score, assess_company_event_relation
 from market_engine import get_market_score
 from chart_engine import get_chart_score
 from scoring_engine import make_stock_result, sort_results, make_grade
@@ -264,6 +264,11 @@ def run():
         for stock in candidates:
             if stock["name"] in ["SG"]:
                 continue
+            connection = assess_company_event_relation(stock, articles)
+            if not connection["pass"]:
+                print("제외:", stock["name"], connection["reason"])
+                continue
+            print("사건 연결 근거:", stock["name"], connection)
             verify = verify_company_theme(stock, theme["name"])
 
             if not verify["pass"]:
@@ -402,6 +407,7 @@ def run():
                 impact=impact,
                 event_score=theme["event_score"]
             )
+            result["event_connection"] = connection
             # 대형주/지주사는 TOP 추천에서 감점
             mega_caps = [
                 "삼성전자",
