@@ -1,0 +1,47 @@
+[
+  {
+    "date": "2026-10-12",
+    "recommended_at": "2026-10-12 11:02:38",
+    "date_timezone": "Asia/Seoul",
+    "theme": "AI",
+    "theme_score": 80,
+    "rank": 1,
+    "name": "포스코DX",
+    "code": "022100",
+    "score": 309,
+    "grade": "💎 S+",
+    "event_score": 80,
+    "frequency_score": 6,
+    "reasons": [
+      "사건 신호 80점",
+      "사업영역 후보",
+      "재무 양호",
+      "사업내용 강한 일치",
+      "20일선 아래, 60일선 아래, 120일선 아래, 장기 약세 주의",
+      "뉴스 직접 수혜 가능성 높음"
+    ],
+    "score_breakdown": {},
+    "start_price": 20100.0,
+    "return_basis": "reference_price_only",
+    "reference_price_status": "available",
+    "current_price": 20100.0,
+    "current_return": 0.0,
+    "highest_price": 20100.0,
+    "highest_return": 0.0,
+    "lowest_price": 20100.0,
+    "max_drawdown": 0.0,
+    "result_1d": null,
+    "result_3d": null,
+    "result_5d": null,
+    "result_10d": null,
+    "result_20d": null,
+    "price_history": [
+      {
+        "date": "2026-10-12",
+        "price": 20100.0,
+        "return": 0.0
+      }
+    ],
+    "last_updated": "2026-10-12"
+  }
+]
