@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import time
 from theme_engine import expand_theme_words
+from impact_engine import assess_company_event_relation
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -129,8 +130,11 @@ def find_direct_mentions(theme, stocks, news):
         if name not in text:
             continue
 
-        # 너무 짧은 회사명은 단순 문자열 매칭 금지
+        # 두 글자 이름도 확정 사건의 당사자 근거가 있으면 허용한다.
+        # 원익을 원익IPS의 일부로 찾거나 SK를 SK하이닉스로 오인하지 않는다.
         if len(name) <= 2:
+            if assess_company_event_relation(stock, articles)["pass"]:
+                found[name] = 100
             continue
 
         # 이미 발견한 더 긴 회사명의 일부라면 제외
