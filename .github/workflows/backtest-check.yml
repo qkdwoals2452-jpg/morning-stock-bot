@@ -1,0 +1,40 @@
+name: ORION Trading-day Backtest Check
+
+on:
+  push:
+    branches: [orion-backtest-fix]
+  pull_request:
+    paths: [backtest_engine.py, test_orion_backtest.py, .github/workflows/backtest-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  backtest-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Backtest and existing ORION regressions
+        run: python -m unittest -v test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
+      - name: Live historical closes and Wonik reference case
+        run: |
+          python - <<'PY'
+          import backtest_engine as bt
+          rows = bt.fetch_daily_closes('032940', '2026-09-02')
+          prices = dict(rows)
+          assert '2026-09-02' in prices and '2026-09-03' in prices
+          item = {'date': '2026-09-02', 'name': '원익', 'code': '032940',
+                  'start_price': prices['2026-09-02']}
+          bt.fill_trading_checkpoints(item, rows)
+          assert item['checkpoint_dates']['result_1d'] == '2026-09-03'
+          assert item['result_1d'] == bt.calculate_return(prices['2026-09-02'], prices['2026-09-03'])
+          assert all(day <= bt.last_completed_date().isoformat() for day, _ in rows)
+          print('LIVE HISTORICAL PASS:', len(rows), 'daily records', item['checkpoint_dates'])
+          print('REPLAY BASELINE: recommendation-date close; not original execution price')
+          PY
