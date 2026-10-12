@@ -42,7 +42,7 @@ class EventAnalysisRouteTests(unittest.TestCase):
         event = {'event_score': 80, 'articles': [{'title': 'Taiwan 업체, 신규 공장 투자 확정'}]}
         self.assertEqual(build_event_analysis_themes([event]), [])
 
-    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False):
+    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False, connection_pass=True):
         previous = os.getcwd()
         with tempfile.TemporaryDirectory() as directory:
             os.chdir(directory)
@@ -69,6 +69,9 @@ class EventAnalysisRouteTests(unittest.TestCase):
                     get_news_impact_score=Mock(return_value={'score': 70, 'exclude': False}),
                     pass_theme_sector_filter=Mock(return_value=(True, '')),
                 )
+                if not connection_pass:
+                    calls['assess_company_event_relation'] = Mock(return_value={
+                        'pass': False, 'reason': '사건 당사자 관계 미확인'})
                 with patch.multiple(main, **calls), patch.object(finance_module, 'get_finance_score', finance), contextlib.redirect_stdout(io.StringIO()):
                     main.run()
                 return finance.call_count, saved.call_args.args[0]
@@ -89,6 +92,11 @@ class EventAnalysisRouteTests(unittest.TestCase):
 
     def test_business_rejection_still_blocks_recommendation(self):
         calls, results = self.run_route(verify_pass=False)
+        self.assertEqual(calls, 0)
+        self.assertEqual(results, [])
+
+    def test_unverified_connection_blocks_before_finance_even_if_impact_mock_passes(self):
+        calls, results = self.run_route(connection_pass=False)
         self.assertEqual(calls, 0)
         self.assertEqual(results, [])
 
