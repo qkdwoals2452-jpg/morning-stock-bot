@@ -2,29 +2,100 @@ import requests
 import xml.etree.ElementTree as ET
 import re
 import html
+import time
+from urllib.parse import urlencode, urlsplit
 from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone, timedelta
 
 HEADERS = {
     "User-Agent": "ORION Stock Research Bot qkdwoals2452@gmail.com",
 
+    "Accept": "application/rss+xml, application/atom+xml, application/xml, text/xml;q=0.9, */*;q=0.5",
     "Accept-Encoding": "gzip, deflate"
 }
 
 
-def parse_rss(url, market, source_name):
+# 한 출처의 일시적 오류가 전체 수집을 중단하지 않도록 최대 두 번만 요청한다.
+FEED_TIMEOUT = (5, 15)
+FEED_MAX_ATTEMPTS = 2
+
+
+class FeedFetchError(Exception):
+    def __init__(self, reason, attempts, http_status=None):
+        super().__init__(reason)
+        self.reason = reason
+        self.attempts = attempts
+        self.http_status = http_status
+
+
+def _fetch_feed(url):
+    for attempt in range(1, FEED_MAX_ATTEMPTS + 1):
+        try:
+            res = requests.get(url, headers=HEADERS, timeout=FEED_TIMEOUT)
+        except (requests.Timeout, requests.ConnectionError) as exc:
+            reason = "timeout" if isinstance(exc, requests.Timeout) else "connection_error"
+            if attempt < FEED_MAX_ATTEMPTS:
+                time.sleep(1)
+                continue
+            raise FeedFetchError(reason, attempt) from exc
+        except requests.RequestException as exc:
+            raise FeedFetchError("request_error", attempt) from exc
+
+        status = res.status_code
+        if status in (403, 429):
+            # 차단/요청 제한은 즉시 재시도하지 않는다.
+            raise FeedFetchError("access_denied" if status == 403 else "rate_limited", attempt, status)
+        if 500 <= status < 600 and attempt < FEED_MAX_ATTEMPTS:
+            time.sleep(1)
+            continue
+        if not 200 <= status < 300:
+            raise FeedFetchError("http_error", attempt, status)
+        try:
+            root = ET.fromstring(res.content)
+        except ET.ParseError as exc:
+            raise FeedFetchError("invalid_xml", attempt, status) from exc
+        return root, attempt, status
+
+
+def _report_feed(source_name, articles, started, attempts, http_status,
+                 diagnostics, error=None, received=0):
+    recent = len(filter_recent_news(articles, hours=36))
+    status = ("error" if error else "empty_feed" if not received
+              else "no_relevant" if not articles else "no_recent" if not recent else "ok")
+    report = {
+        "status": status, "received": received, "parsed": len(articles), "recent": recent,
+        "attempts": attempts, "http_status": http_status,
+        "elapsed_seconds": round(time.monotonic() - started, 2),
+        "error": error,
+    }
+    if diagnostics is not None:
+        diagnostics[source_name] = report
+    print(f"뉴스 수집: {source_name} | 상태={status} | 응답항목={received} | 파싱={len(articles)} "
+          f"| 최근36시간={recent} | 요청={attempts} | HTTP={http_status} "
+          f"| {report['elapsed_seconds']}초" + (f" | 사유={error}" if error else ""))
+
+
+def parse_rss(url, market, source_name, diagnostics=None):
 
     articles = []
+    started = time.monotonic()
+    attempts, http_status, error, received = 0, None, None, 0
 
     try:
 
-        res = requests.get(url, headers=HEADERS, timeout=10)
+        root, attempts, http_status = _fetch_feed(url)
 
-        res.raise_for_status()
+        if root.tag != "rss":
+            raise FeedFetchError("unexpected_rss_root", attempts, http_status)
 
-        root = ET.fromstring(res.content)
-
-        for item in root.findall(".//item"):
+        items = root.findall(".//item")
+        received = len(items)
+        for item in items:
+            if source_name == "Nasdaq_GoogleRSS":
+                publisher = item.find("source")
+                host = urlsplit(publisher.get("url", "") if publisher is not None else "").hostname or ""
+                if host != "nasdaq.com" and not host.endswith(".nasdaq.com"):
+                    continue
 
             title_tag = item.find("title")
 
@@ -99,22 +170,24 @@ def parse_rss(url, market, source_name):
 
             })
 
-    except Exception as e:
+    except FeedFetchError as exc:
+        error, attempts, http_status = exc.reason, exc.attempts, exc.http_status
+    except Exception as exc:
+        error = type(exc).__name__
 
-        print("RSS 수집 오류:", source_name, str(e))
-
+    _report_feed(source_name, articles, started, attempts, http_status, diagnostics, error, received)
     return articles
-def parse_atom(url, market, source_name):
+def parse_atom(url, market, source_name, diagnostics=None):
 
     articles = []
+    started = time.monotonic()
+    attempts, http_status, error, received = 0, None, None, 0
 
     try:
 
-        res = requests.get(url, headers=HEADERS, timeout=10)
-
-        res.raise_for_status()
-
-        root = ET.fromstring(res.content)
+        root, attempts, http_status = _fetch_feed(url)
+        if root.tag != "{http://www.w3.org/2005/Atom}feed":
+            raise FeedFetchError("unexpected_atom_root", attempts, http_status)
 
         ns = {
 
@@ -122,11 +195,14 @@ def parse_atom(url, market, source_name):
 
         }
 
-        for entry in root.findall("atom:entry", ns):
+        entries = root.findall("atom:entry", ns)
+        received = len(entries)
+        for entry in entries:
 
             title_tag = entry.find("atom:title", ns)
 
-            link_tag = entry.find("atom:link", ns)
+            links = entry.findall("atom:link", ns)
+            link_tag = next((tag for tag in links if tag.get("rel", "alternate") == "alternate"), None)
 
             summary_tag = entry.find("atom:summary", ns)
 
@@ -201,10 +277,12 @@ def parse_atom(url, market, source_name):
 
             })
 
-    except Exception as e:
+    except FeedFetchError as exc:
+        error, attempts, http_status = exc.reason, exc.attempts, exc.http_status
+    except Exception as exc:
+        error = type(exc).__name__
 
-        print("ATOM 수집 오류:", source_name, str(e))
-
+    _report_feed(source_name, articles, started, attempts, http_status, diagnostics, error, received)
     return articles
 def remove_duplicates(articles):
     result = []
@@ -260,7 +338,24 @@ def filter_recent_news(articles, hours=36):
 
     return result
 
-def get_us_news():
+def get_nasdaq_news(diagnostics=None):
+    reports = diagnostics if diagnostics is not None else {}
+    articles = parse_rss(
+        "https://www.nasdaq.com/feed/rssoutbound?category=Technology",
+        "US", "Nasdaq_Tech", diagnostics=reports,
+    )
+    if reports["Nasdaq_Tech"]["status"] != "error":
+        return articles
+    # 직접 피드 장애 시 Nasdaq 기사 검색 인덱스만 사용한다.
+    # 원본 피드와 범위/수집 경로가 다르므로 별도 출처로 기록한다.
+    query = urlencode({"q": 'site:nasdaq.com/articles (technology OR semiconductor OR "data center" OR AI) when:2d',
+                       "hl": "en-US", "gl": "US", "ceid": "US:en"})
+    reports["Nasdaq_Tech"]["fallback_source"] = "Nasdaq_GoogleRSS"
+    return parse_rss("https://news.google.com/rss/search?" + query,
+                     "US", "Nasdaq_GoogleRSS", diagnostics=reports)
+
+
+def get_us_news(diagnostics=None):
     rss_list = [
         # 기존 미국 뉴스
 
@@ -270,10 +365,8 @@ def get_us_news():
 
         ("Investing_Economy", "https://www.investing.com/rss/news_285.rss"),
 
-        ("Nasdaq_Tech", "https://www.nasdaq.com/feed/rssoutbound?category=Technology"),
-        # SEC 공식
-
-        ("SEC_Filings", "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom"),
+        ("Nasdaq_Tech", None),
+        # SEC 공시는 아래 Atom 파서에서 한 번만 요청한다.
         # Fed 공식
 
         ("FED_All", "https://www.federalreserve.gov/feeds/press_all.xml"),
@@ -295,14 +388,20 @@ def get_us_news():
     news = []
 
     for source_name, url in rss_list:
-        news += parse_rss(url, "US", source_name)
+        if source_name == "Nasdaq_Tech":
+            news += get_nasdaq_news(diagnostics)
+            continue
+        # BLS의 .rss URL은 실제로 Atom 문서를 반환한다.
+        parser = parse_atom if source_name.startswith("BLS_") else parse_rss
+        news += parser(url, "US", source_name, diagnostics=diagnostics)
     news += parse_atom(
 
         "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom",
 
         "US",
 
-        "SEC_Filings"
+        "SEC_Filings",
+        diagnostics=diagnostics
 
     )
     news = filter_recent_news(news, hours=36)
@@ -310,7 +409,7 @@ def get_us_news():
 
     return news[:200]
 
-def get_korea_news():
+def get_korea_news(diagnostics=None):
     rss_list = [
         ("한국경제_증권", "https://www.hankyung.com/feed/finance"),
         ("한국경제_경제", "https://www.hankyung.com/feed/economy"),
@@ -328,7 +427,7 @@ def get_korea_news():
     news = []
 
     for source_name, url in rss_list:
-        news += parse_rss(url, "KR", source_name)
+        news += parse_rss(url, "KR", source_name, diagnostics=diagnostics)
 
     news = filter_recent_news(news, hours=36)
 
