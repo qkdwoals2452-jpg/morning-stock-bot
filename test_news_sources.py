@@ -16,7 +16,7 @@ def response(body, status=200):
 def rss(date=None):
     date = date or datetime.now(timezone.utc)
     return ('<rss><channel><item><title>Company signs supply contract</title>'
-            '<link>https://example.test/news</link>'
+            '<link>https://example.test/news</link><source url="https://www.nasdaq.com">Nasdaq</source>'
             '<description>&lt;b&gt;Signed&lt;/b&gt; &amp;amp; delivered</description>'
             f'<pubDate>{format_datetime(date)}</pubDate></item></channel></rss>')
 
@@ -141,21 +141,68 @@ class NewsSourceTests(unittest.TestCase):
     def test_sec_is_requested_once_with_atom_parser(self):
         diagnostics = {}
         def fetch(url, **kwargs):
-            return response(atom() if 'sec.gov' in url else '<rss><channel/></rss>')
+            return response(atom() if 'sec.gov' in url else '<feed xmlns="http://www.w3.org/2005/Atom"/>' if 'bls.gov' in url else '<rss><channel/></rss>')
         with patch('news_engine.requests.get', side_effect=fetch) as get:
             articles = news.get_us_news(diagnostics)
         sec_calls = [call for call in get.call_args_list if 'sec.gov' in call.args[0]]
         self.assertEqual(len(sec_calls), 1)
-        self.assertEqual(len(articles), 1)
-        self.assertEqual(articles[0]['source'], 'SEC_Filings')
+        self.assertIn('SEC_Filings', [a['source'] for a in articles])
         self.assertEqual(diagnostics['SEC_Filings']['received'], 1)
+
+    def test_nasdaq_timeout_uses_named_index_fallback(self):
+        diagnostics = {}
+        with patch('news_engine.requests.get', side_effect=[requests.ReadTimeout()] * 2 + [response(rss())]) as get, patch('news_engine.time.sleep'):
+            articles = news.get_nasdaq_news(diagnostics)
+        self.assertEqual(articles[0]['source'], 'Nasdaq_GoogleRSS')
+        self.assertEqual(diagnostics['Nasdaq_Tech']['status'], 'error')
+        self.assertEqual(diagnostics['Nasdaq_GoogleRSS']['status'], 'ok')
+        self.assertIn('news.google.com/rss/search?', get.call_args.args[0])
+        from urllib.parse import parse_qs, urlsplit
+        self.assertIn('site:nasdaq.com', parse_qs(urlsplit(get.call_args.args[0]).query)['q'][0])
+
+    def test_nasdaq_fallback_rejects_other_publishers(self):
+        diagnostics = {}
+        body = rss().replace('https://www.nasdaq.com', 'https://other.test')
+        articles, report, _, _ = self.parse([response(body)], source='Nasdaq_GoogleRSS')
+        self.assertEqual(articles, [])
+        self.assertEqual(report['status'], 'no_relevant')
+
+    def test_nasdaq_success_and_empty_do_not_use_fallback(self):
+        for body in (rss(), '<rss><channel/></rss>'):
+            with patch('news_engine.requests.get', return_value=response(body)) as get:
+                diagnostics = {}
+                news.get_nasdaq_news(diagnostics)
+            self.assertEqual(get.call_count, 1)
+            self.assertNotIn('Nasdaq_GoogleRSS', diagnostics)
+
+    def test_nasdaq_fallback_failure_remains_visible(self):
+        with patch('news_engine.requests.get', return_value=response('', 403)) as get:
+            diagnostics = {}
+            self.assertEqual(news.get_nasdaq_news(diagnostics), [])
+        self.assertEqual(get.call_count, 2)
+        self.assertEqual(diagnostics['Nasdaq_Tech']['error'], 'access_denied')
+        self.assertEqual(diagnostics['Nasdaq_GoogleRSS']['error'], 'access_denied')
+
+    def test_bls_rss_urls_use_atom_without_sec_form_filter(self):
+        diagnostics = {}
+        def fetch(url, **kwargs):
+            return response(atom('CPI release') if 'bls.gov' in url else
+                            atom('4') if 'sec.gov' in url else '<rss><channel/></rss>')
+        with patch('news_engine.requests.get', side_effect=fetch) as get:
+            articles = news.get_us_news(diagnostics)
+        for source in ('BLS_Employment', 'BLS_CPI', 'BLS_PPI'):
+            self.assertEqual(diagnostics[source]['status'], 'ok')
+            self.assertEqual(diagnostics[source]['parsed'], 1)
+        self.assertEqual(len([c for c in get.call_args_list if 'bls.gov' in c.args[0]]), 3)
+        self.assertTrue(articles)
+        self.assertEqual(diagnostics['SEC_Filings']['status'], 'no_relevant')
 
     def test_failed_source_does_not_stop_other_sources(self):
         diagnostics = {}
         def fetch(url, **kwargs):
             if 'nasdaq.com' in url:
                 raise requests.ReadTimeout()
-            return response(atom() if 'sec.gov' in url else rss())
+            return response(atom() if 'sec.gov' in url or 'bls.gov' in url else rss())
         with patch('news_engine.requests.get', side_effect=fetch), patch('news_engine.time.sleep'):
             articles = news.get_us_news(diagnostics)
         self.assertTrue(articles)
