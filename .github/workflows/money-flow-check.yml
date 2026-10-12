@@ -1,0 +1,24 @@
+name: ORION Money Flow Relation Check
+
+on:
+  push:
+    branches: [orion-money-flow-fix]
+  pull_request:
+    paths: [impact_engine.py, stock_engine.py, main.py, test_money_flow_relation.py, test_event_analysis_route.py, .github/workflows/money-flow-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  money-flow-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Event participant evidence and existing ORION regressions
+        run: python -m unittest -v test_money_flow_relation test_news_sources test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
