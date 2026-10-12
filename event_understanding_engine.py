@@ -1,4 +1,7 @@
 import re
+import os
+
+_LOGGED_ARTICLE_ROLES = set()
 
 
 # ---------------------------------------------------------
@@ -152,7 +155,7 @@ def classify_article_role(title, summary=""):
     기사 자체의 역할을 먼저 판별한다.
 
     반환값:
-    EVENT
+    EVENT_CANDIDATE (아직 실제 사건으로 확정한 것이 아님)
     ANALYSIS
     OUTLOOK
     MARKET_REACTION
@@ -162,6 +165,25 @@ def classify_article_role(title, summary=""):
     title = normalize_text(title)
     summary = normalize_text(summary)
     text = f"{title} {summary}".strip()
+
+    # 투자 목록·매수 조언은 본문에 관련 기업이 등장해도 사건 기사가 아니다.
+    recommendation_patterns = [
+        r"\bstocks?\s+to\s+(?:buy|own|watch)\b",
+        r"\b(?:stocks?|etfs?)\b.*\b(?:worth owning|worth buying|to own)\b",
+        r"\bshould you(?: really)? buy\b",
+        r"\b(?:best|top|unique)\s+etfs?\b.*\b(?:momentum|buy|own)\b",
+        r"추천주|매수 추천|주목할 종목|투자 포인트|사야 할까|살까",
+    ]
+    if any(re.search(pattern, title) for pattern in recommendation_patterns):
+        return "ANALYSIS"
+
+    lifestyle_patterns = [
+        r"먹는\s*법|데우는\s*법|요리\s*방법|요리\s*레시피",
+        r"\bhow to (?:cook|reheat|wash|clean)\b",
+        r"\b(?:hottest|favorite|popular)\b.*\bmovie genre\b",
+    ]
+    if any(re.search(pattern, title) for pattern in lifestyle_patterns):
+        return "LIFESTYLE"
 
     # =====================================================
     # 1. 시장·주가 반응 기사
@@ -179,6 +201,8 @@ def classify_article_role(title, summary=""):
         "stock plunging",
         "stock tumbling",
         "stock sliding",
+        "stocks lower at close",
+        "stocks higher at close",
     ]
 
     if contains_any(title, market_reaction_patterns):
@@ -201,7 +225,8 @@ def classify_article_role(title, summary=""):
         title
     )
 
-    if price_context and percent_move:
+    english_move = re.search(r"\b(?:stocks?|shares)\s+(?:rises?|falls?|gains?|drops?|jumps?|slumps?)\b", title)
+    if (price_context and percent_move) or english_move:
         return "MARKET_REACTION"
     # =====================================================
     # 2. 전망 / 기대 / 가능성 기사
@@ -220,6 +245,10 @@ def classify_article_role(title, summary=""):
         "가능성",
         "기대",
         "관측",
+        "dow jones futures",
+        "earnings preview",
+        "달릴까",
+        "오를까",
     ]
 
     if contains_any(title, outlook_patterns):
@@ -246,6 +275,9 @@ def classify_article_role(title, summary=""):
         "price target",
         "주간증시전망",
         "증시전망",
+        "history says",
+        "history suggests",
+        "street calls of the week",
     ]
 
     if contains_any(title, analysis_patterns):
@@ -264,12 +296,13 @@ def classify_article_role(title, summary=""):
         "왜?",
         "의미",
         "필요성",
+        "answer for why",
     ]
 
     if contains_any(title, explainer_patterns):
         return "EXPLAINER"
 
-    return "EVENT"
+    return "EVENT_CANDIDATE"
 def has_confirmed_event_inside_reaction(title, summary=""):
     """
     주가반응형 기사라도 기사 내부에
@@ -289,49 +322,32 @@ def has_confirmed_event_inside_reaction(title, summary=""):
     if not evidence_text:
         return False
 
-    confirmed_patterns = [
-        # CONTRACT
-        "definitive agreement",
-        "definitive agreements",
-        "signed contract",
-        "signs contract",
-        "supply contract",
-        "supply agreement",
-        "entered into an agreement",
-        "enters into an agreement",
-        "long-term supply agreement",
-        "will supply",
-        "공급계약",
-        "공급 계약",
-        "계약 체결",
-
-        # M&A
-        "agrees to acquire",
-        "agreed to acquire",
-        "agrees to buy",
-        "agreed to buy",
-        "completed acquisition",
-        "인수 계약",
-        "인수 확정",
-        "인수 완료",
-
-        # CAPEX
-        "announces investment",
-        "announced investment",
-        "committed to invest",
-        "new factory",
-        "new plant",
-        "공장 신설",
-        "투자 결정",
-        "투자 확정",
-        "증설 결정",
-        "신규 구축",
+    # 단순 계약 단어 대신 실제 체결·결정 행동을 확인한다.
+    action_patterns = [
+        r"\b(?:signed|signs|executed|entered into|enters into)\b.{0,100}\b(?:contract|agreement)\b",
+        r"\b(?:agrees? to acquire|agreed to acquire|completed acquisition|committed to invest)\b",
+        r"\b(?:announces?|announced)\b.{0,80}\binvestment\b",
+        r"\b(?:beat|beats|reported|reports)\b.{0,100}\b(?:estimates|revenue|earnings|results)\b",
+        r"(?:공급\s*계약|본계약|계약).{0,30}(?:체결|확정)",
+        r"(?:투자|증설|인수).{0,10}(?:결정|확정|완료)",
     ]
-
-    return contains_any(
-        evidence_text,
-        confirmed_patterns
-    )
+    for sentence in re.split(r"(?<=[.!?。])\s+|[\n;]", evidence_text):
+        if re.search(r"last year|previously|지난해|작년|과거|memorandum of understanding|non.binding|\bmou\b", sentence):
+            continue
+        for pattern in action_patterns:
+            for match in re.finditer(pattern, sentence):
+                before = sentence[max(0, match.start() - 35):match.start()]
+                after = sentence[match.end():match.end() + 12]
+                if re.search(r"\b(?:not|never|denied|denies|if|expected to|expects? to|plans? to|could|might|may)\b", before):
+                    continue
+                if re.search(r"\bno\s+(?:\w+\s+){0,3}(?:contract|agreement)\b", match.group()):
+                    continue
+                if re.search(r"\b(?:will|would)\s+(?:\w+\s+){0,2}$", before):
+                    continue
+                if re.search(r"예정|검토|미확정|가능성|하지 않|하지 않았|여부", after):
+                    continue
+                return True
+    return False
 def assess_event_evidence(article, event_info):
     """
     실제 사건 판정 이후
@@ -582,10 +598,18 @@ def understand_event(article):
         title,
         summary
     )
-    print("DEBUG ARTICLE ROLE:", title, "=>", article_role)
+    if os.getenv("ORION_DEBUG_EVENT_ROLE") == "1":
+        key = (title, summary, article_role)
+        if key not in _LOGGED_ARTICLE_ROLES:
+            print("DEBUG ARTICLE ROLE:", title, "=>", article_role)
+            _LOGGED_ARTICLE_ROLES.add(key)
     
     
-    if article_role != "EVENT":
+    confirmed_event_override = (
+        article_role in {"MARKET_REACTION", "OUTLOOK", "EXPLAINER"}
+        and has_confirmed_event_inside_reaction(title, summary)
+    )
+    if article_role not in {"EVENT", "EVENT_CANDIDATE"}:
 
         # -------------------------------------------------
         # MARKET_REACTION 예외
@@ -596,11 +620,7 @@ def understand_event(article):
         # -------------------------------------------------
 
         if (
-            article_role == "MARKET_REACTION"
-            and has_confirmed_event_inside_reaction(
-                title,
-                summary
-            )
+            confirmed_event_override
         ):
             pass
 
@@ -673,15 +693,7 @@ def understand_event(article):
     
     if contains_any(text, no_event_patterns):
 
-        reaction_event_override = (
-            article_role == "MARKET_REACTION"
-            and has_confirmed_event_inside_reaction(
-                title,
-                summary
-            )
-        )
-
-        if not reaction_event_override:
+        if not confirmed_event_override:
             return {
                 "is_real_event": False,
                 "event_type": "NO_EVENT",
@@ -1998,6 +2010,6 @@ def understand_event(article):
     return {
         "is_real_event": False,
         "event_type": "NO_EVENT",
-        "article_role": "EVENT",
+        "article_role": article_role,
         "reason": "확인 가능한 실제 행동·변화 없음"
 }

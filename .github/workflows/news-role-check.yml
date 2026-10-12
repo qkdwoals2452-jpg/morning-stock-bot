@@ -1,0 +1,23 @@
+name: ORION News Role Check
+
+on:
+  push:
+    branches: [orion-news-role-fix]
+  pull_request:
+    paths: [event_understanding_engine.py, main.py, test_news_roles.py, .github/workflows/news-role-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  news-role-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: News role and existing ORION regressions
+        run: python -m unittest -v test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
