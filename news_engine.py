@@ -3,6 +3,7 @@ import xml.etree.ElementTree as ET
 import re
 import html
 import time
+from urllib.parse import urlencode, urlsplit
 from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone, timedelta
 
@@ -90,6 +91,11 @@ def parse_rss(url, market, source_name, diagnostics=None):
         items = root.findall(".//item")
         received = len(items)
         for item in items:
+            if source_name == "Nasdaq_GoogleRSS":
+                publisher = item.find("source")
+                host = urlsplit(publisher.get("url", "") if publisher is not None else "").hostname or ""
+                if host != "nasdaq.com" and not host.endswith(".nasdaq.com"):
+                    continue
 
             title_tag = item.find("title")
 
@@ -332,6 +338,23 @@ def filter_recent_news(articles, hours=36):
 
     return result
 
+def get_nasdaq_news(diagnostics=None):
+    reports = diagnostics if diagnostics is not None else {}
+    articles = parse_rss(
+        "https://www.nasdaq.com/feed/rssoutbound?category=Technology",
+        "US", "Nasdaq_Tech", diagnostics=reports,
+    )
+    if reports["Nasdaq_Tech"]["status"] != "error":
+        return articles
+    # 직접 피드 장애 시 Nasdaq 기사 검색 인덱스만 사용한다.
+    # 원본 피드와 범위/수집 경로가 다르므로 별도 출처로 기록한다.
+    query = urlencode({"q": 'site:nasdaq.com (technology OR semiconductor OR "data center" OR AI)',
+                       "hl": "en-US", "gl": "US", "ceid": "US:en"})
+    reports["Nasdaq_Tech"]["fallback_source"] = "Nasdaq_GoogleRSS"
+    return parse_rss("https://news.google.com/rss/search?" + query,
+                     "US", "Nasdaq_GoogleRSS", diagnostics=reports)
+
+
 def get_us_news(diagnostics=None):
     rss_list = [
         # 기존 미국 뉴스
@@ -342,7 +365,7 @@ def get_us_news(diagnostics=None):
 
         ("Investing_Economy", "https://www.investing.com/rss/news_285.rss"),
 
-        ("Nasdaq_Tech", "https://www.nasdaq.com/feed/rssoutbound?category=Technology"),
+        ("Nasdaq_Tech", None),
         # SEC 공시는 아래 Atom 파서에서 한 번만 요청한다.
         # Fed 공식
 
@@ -365,7 +388,12 @@ def get_us_news(diagnostics=None):
     news = []
 
     for source_name, url in rss_list:
-        news += parse_rss(url, "US", source_name, diagnostics=diagnostics)
+        if source_name == "Nasdaq_Tech":
+            news += get_nasdaq_news(diagnostics)
+            continue
+        # BLS의 .rss URL은 실제로 Atom 문서를 반환한다.
+        parser = parse_atom if source_name.startswith("BLS_") else parse_rss
+        news += parser(url, "US", source_name, diagnostics=diagnostics)
     news += parse_atom(
 
         "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom",
