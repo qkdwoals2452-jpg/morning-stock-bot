@@ -296,7 +296,7 @@ def run():
                 continue
             market = get_market_score(stock)
             chart = get_chart_score(stock)
-            learning = get_learning_score(stock["name"])
+            learning = get_learning_score(stock)
             company = get_company_match_score(stock, theme_words)
             impact = get_news_impact_score(
 
@@ -449,7 +449,7 @@ def run():
             print("뉴스 이전 거래활동:", stock["name"], stock["pre_news_activity"])
             save_prediction(
                 theme["name"],
-                stock["name"],
+                stock,
                 stock["final_score"]
             )
 
