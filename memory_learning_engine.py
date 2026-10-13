@@ -1,5 +1,9 @@
 import json
 import os
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from statistics import mean
+from performance_validation_engine import completed_performance
 
 RESULT_FILE = "data/performance.json"
 
@@ -63,12 +67,22 @@ def save_prediction(
 ):
 
     history = load_result()
+    now = datetime.now(ZoneInfo('Asia/Seoul'))
+    name = stock.get('name', '') if isinstance(stock, dict) else stock
+    code = stock.get('code') if isinstance(stock, dict) else None
+    if any(item.get('date') == now.date().isoformat() and item.get('theme') == theme
+           and (item.get('code') == code if code else item.get('stock') == name)
+           for item in history if isinstance(item, dict)):
+        return
 
     history.append({
 
         "theme": theme,
 
-        "stock": stock,
+        "stock": name,
+        "code": code,
+        "date": now.date().isoformat(),
+        "recommended_at": now.isoformat(),
 
         "score": final_score,
 
@@ -117,142 +131,37 @@ def update_result(
 # AI 가중치
 # --------------------
 
-def get_learning_score(
-    stock
-):
-
-    history = load_result()
-
-    total = 0
-
-    count = 0
-
-    for item in history:
-
-        if (
-            item["stock"]
-            == stock
-        ):
-
-            if (
-                item["result"]
-                is not None
-            ):
-
-                total += (
-                    item["result"]
-                )
-
-                count += 1
-
-    if count == 0:
-
-        return {
-            "score": 0,
-            "memo": "학습없음"
-        }
-
-    avg = (
-        total / count
-    )
-
-    if avg >= 10:
-
-        return {
-            "score": 20,
-            "memo": "과거 강세"
-        }
-
-    elif avg >= 5:
-
-        return {
-            "score": 10,
-            "memo": "과거 상승"
-        }
-
-    elif avg >= 0:
-
-        return {
-            "score": 3,
-            "memo": "보통"
-        }
-
-    return {
-        "score": -10,
-        "memo": "과거 약세"
-    }
+def get_learning_score(stock, as_of=None, minimum_samples=5):
+    from backtest_engine import load_backtest
+    data = load_backtest()
+    code = stock.get('code') if isinstance(stock, dict) else None
+    name = stock.get('name', '') if isinstance(stock, dict) else stock
+    if isinstance(data, list):
+        data = [item for item in data if isinstance(item, dict)
+                and (item.get('code') == code if code else item.get('name') == name)]
+    report = completed_performance(data, as_of=as_of)
+    if not code and len({row['code'] for row in report['samples']}) > 1:
+        return {'score': 0, 'memo': '동명 종목 확인 필요', 'sample_count': 0}
+    count = report['count']
+    result = {'score': 0, 'memo': '검증 표본 부족', 'sample_count': count,
+              'status': report['status'],
+              'minimum_samples': minimum_samples, 'horizon': 5,
+              'average_return': mean(row['return'] for row in report['samples']) if count else None,
+              'excluded': report['excluded'],
+              'source': 'completed_trading_checkpoints'}
+    if not isinstance(minimum_samples, int) or isinstance(minimum_samples, bool) or minimum_samples < 5 or count < minimum_samples:
+        return result
+    avg = result['average_return']
+    result['score'] = 20 if avg >= 10 else 10 if avg >= 5 else 3 if avg >= 0 else -10
+    result['memo'] = f'검증된 D+5 기준가 성과 {count}개 평균 {avg:.4f}%'
+    return result
 
 
 # --------------------
 # 프로젝트 성적표
 # --------------------
 
-def get_project_report():
-
-    history = load_result()
-
-    success = 0
-
-    fail = 0
-
-    total_return = 0
-
-    count = 0
-
-    for item in history:
-
-        if (
-            item["result"]
-            is None
-        ):
-
-            continue
-
-        count += 1
-
-        total_return += (
-            item["result"]
-        )
-
-        if (
-            item["result"]
-            > 0
-        ):
-
-            success += 1
-
-        else:
-
-            fail += 1
-
-    if count == 0:
-
-        return {
-
-            "accuracy": 0,
-
-            "average": 0
-        }
-
-    return {
-
-        "accuracy":
-
-        round(
-            success
-            /
-            count
-            *
-            100,
-            1
-        ),
-
-        "average":
-
-        round(
-            total_return
-            /
-            count,
-            2
-        )
-    }
+def get_project_report(as_of=None):
+    from backtest_engine import load_backtest
+    report = completed_performance(load_backtest(), as_of=as_of)
+    return {key: value for key, value in report.items() if key != 'samples'}
