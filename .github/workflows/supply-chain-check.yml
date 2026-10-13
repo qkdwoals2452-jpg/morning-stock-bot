@@ -1,0 +1,24 @@
+name: ORION Supply Chain Check
+
+on:
+  push:
+    branches: [orion-us-kr-bridge-fix]
+  pull_request:
+    paths: [supply_chain_engine.py, supply_chain_evidence.json, test_supply_chain_bridge.py, main.py, telegram_bot.py, event_understanding_engine.py, .github/workflows/supply-chain-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  supply-chain-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Full regression and observation-only bridge tests
+        run: python -m unittest discover -v

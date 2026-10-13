@@ -19,6 +19,7 @@ from backtest_engine import save_recommendations, update_backtest_prices
 from memory_learning_engine import get_learning_score, save_prediction
 from telegram_bot import send_telegram
 from pre_news_activity_engine import get_pre_news_activity
+from supply_chain_engine import build_supply_chain_watch
 
 
 def run():
@@ -56,6 +57,8 @@ def run():
     print("기사 성격 집계 (후보는 확정 사건 아님):", dict(roles))
 
     events = build_events(news)
+    supply_chain_watch = build_supply_chain_watch(events, stocks)
+    print("미국 사건→국내 공급망 관찰(점수 반영 없음):", supply_chain_watch)
 
     print("생성된 사건 수:", len(events))
 
@@ -457,6 +460,7 @@ def run():
     save_recommendations(final_results)
     update_backtest_prices(stocks)
     project_status = get_project_status()
+    project_status['supply_chain_watch'] = supply_chain_watch
 
     send_telegram(
         final_results,

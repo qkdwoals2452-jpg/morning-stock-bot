@@ -87,6 +87,20 @@ def send_telegram(
         "🇰🇷 한국증시 AI 탐지\n\n"
     )
 
+    watch = project_status.get('supply_chain_watch', {})
+    if watch.get('paths'):
+        msg += "🔎 공급망 관찰 — 추천·신규 수주 확정 아님\n"
+        msg += f"관찰 경로 {len(watch['paths'])}개 중 최대 5개 표시\n"
+        for item in watch['paths'][:5]:
+            msg += html.escape(' → '.join(item['path'])) + '\n'
+            msg += "기존 관계 원자료 확인 / 이번 사건 매출·이익 귀속 미확정\n"
+            if item['knowledge_timing'] == 'retrospective_review':
+                msg += "현재 원자료를 검토한 연결이며 당시 탐지 실적이 아닙니다.\n"
+            msg += '<a href="' + html.escape(item['event_link'], quote=True) + '">미국 사건 원문</a>\n'
+            for edge in item['evidence']:
+                msg += '<a href="' + html.escape(edge['source_url'], quote=True) + '">관계 근거</a> (' + html.escape(edge['published_on']) + ')\n'
+        msg += '\n'
+
     for theme_data in results:
 
         theme = theme_data["theme"]

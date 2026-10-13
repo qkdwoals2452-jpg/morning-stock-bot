@@ -1830,6 +1830,10 @@ def understand_event(article):
             r"\b(earnings call highlights|fiscal q[1-4] results)\b",
             title
         )
+        or (re.search(r"\breports?\b|\breported\b", title)
+            and not re.search(r"\b(?:will|to|scheduled to)\s+report\b", title)
+            and re.search(r"\bfiscal\s+(?:first|second|third|fourth)[ -]quarter\b"
+                          r".{0,60}\b(?:results|earnings)\b", title))
     )
 
     english_actual_result_signal = (
