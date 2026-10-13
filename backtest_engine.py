@@ -5,6 +5,7 @@ import math
 import copy
 from datetime import datetime, date, timedelta, time
 from zoneinfo import ZoneInfo
+from performance_validation_engine import completed_performance
 
 BACKTEST_FILE = "orion_backtest.json"
 
@@ -362,6 +363,7 @@ def fill_trading_checkpoints(item, daily_closes, as_of=None):
             if price is not None:
                 item[field] = calculate_return(start, price)
                 dates[field] = day.isoformat()
+                item.setdefault('checkpoint_observed_at', {})[field] = datetime.now(ZoneInfo('Asia/Seoul')).isoformat()
                 filled += 1
     item["checkpoint_status"] = "complete" if all(item.get(field) is not None for field in fields) else "pending"
     return filled
@@ -524,39 +526,16 @@ def print_backtest_summary():
         print("백테스트 데이터 없음")
         return
 
-    valid_returns = [
-        item.get("current_return")
-        for item in data
-        if isinstance(item.get("current_return"), (int, float))
-    ]
-
-    winners = [
-        value for value in valid_returns
-        if value > 0
-    ]
-
-    losers = [
-        value for value in valid_returns
-        if value < 0
-    ]
-
-    win_rate = (
-        round(len(winners) / len(valid_returns) * 100, 2)
-        if valid_returns
-        else 0
-    )
-
-    average_return = (
-        round(sum(valid_returns) / len(valid_returns), 2)
-        if valid_returns
-        else 0
-    )
+    report = completed_performance(data)
 
     print("━━━━━━━━━━━━━━━━━━━━")
     print("📊 ORION 백테스트 현황")
     print("전체 추천:", len(data))
-    print("수익 종목:", len(winners))
-    print("손실 종목:", len(losers))
-    print("승률:", f"{win_rate}%")
-    print("평균 수익률:", f"{average_return}%")
+    print("평가 기준: 완료된 D+5 기준가 성과(비용 미포함)")
+    print("검증 표본:", report['count'])
+    print("수익 표본:", report.get('winners', 0))
+    print("손실 표본:", report.get('losers', 0))
+    print("승률:", f"{report['accuracy']}%" if report['count'] else "미확인(완료·확인 시점 근거 없음)")
+    print("평균 수익률:", f"{report['average']}%" if report['count'] else "미확인")
+    print("집계 제외:", report['excluded'])
     print("━━━━━━━━━━━━━━━━━━━━")
