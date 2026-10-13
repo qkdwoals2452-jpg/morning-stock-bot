@@ -1,0 +1,41 @@
+name: ORION Pre News Activity Check
+
+on:
+  push:
+    branches: [orion-pre-news-flow-fix]
+  pull_request:
+    paths: [pre_news_activity_engine.py, main.py, backtest_engine.py, test_pre_news_activity.py, test_event_analysis_route.py, .github/workflows/pre-news-activity-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pre-news-activity-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Pre-news windows and all existing ORION regressions
+        run: python -m unittest -v test_pre_news_activity test_event_identity test_money_flow_relation test_news_sources test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
+      - name: Live Wonik historical cutoff and future spike exclusion
+        run: |
+          python - <<'PY'
+          from datetime import datetime
+          from pre_news_activity_engine import fetch_daily_activity, analyze_pre_news_activity
+          # 9/2 08:00은 연산 검증용 기준 시각이며 실제 첫 뉴스 시각이 아니다.
+          cutoff = datetime.fromisoformat('2026-09-02T08:00:00+09:00')
+          rows, error = fetch_daily_activity('032940', cutoff)
+          assert error is None, error
+          result = analyze_pre_news_activity(rows, cutoff)
+          assert result['status'] == 'ok', result
+          assert result['last_session_date'] == '2026-09-01', result
+          rows.append({'localDate': '20260903', 'closePrice': 999999, 'accumulatedTradingVolume': 10**12})
+          checked = analyze_pre_news_activity(rows, cutoff, result['analysis_as_of'])
+          assert checked == result, (checked, result)
+          print('PRE NEWS LIVE PASS:', result)
+          PY
