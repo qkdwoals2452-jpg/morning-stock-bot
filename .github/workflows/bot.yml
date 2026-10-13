@@ -25,6 +25,41 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      # 첫 실행은 새로 받고 같은 KST 주의 후속 실행만 검증된 CSV를 재사용한다.
+      # 이전 주 캐시는 복원하지 않아 신규 상장사 코드 갱신을 무기한 미루지 않는다.
+      - name: DART 주간 캐시 키
+        id: corp-cache-key
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          year, week, _ = datetime.now(ZoneInfo('Asia/Seoul')).isocalendar()
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'week={year}-{week:02d}\n')
+          PY
+
+      - name: DART 기업코드 캐시 복원
+        id: corp-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: corp_code.csv
+          key: orion-corp-code-v1-${{ runner.os }}-${{ steps.corp-cache-key.outputs.week }}
+
+      - name: DART 기업코드 검증 및 준비
+        run: |
+          python - <<'PY'
+          from build_corp_db import ensure_corp_db
+          ensure_corp_db()
+          PY
+
+      - name: 검증된 DART 기업코드 캐시 저장
+        if: steps.corp-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: corp_code.csv
+          key: orion-corp-code-v1-${{ runner.os }}-${{ steps.corp-cache-key.outputs.week }}
+
       - name: 봇 실행
         run: python main.py
 

@@ -1,0 +1,41 @@
+name: ORION Collection Stability Check
+
+on:
+  push:
+    branches: [orion-collection-stability-fix]
+  pull_request:
+    paths: [news_engine.py, build_corp_db.py, test_dart_startup.py, test_collection_stability.py, .github/workflows/collection-stability-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  collection-stability-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: All ORION regression tests
+        run: python -m unittest discover -v
+      - name: Live bounded parallel news collection
+        run: |
+          python - <<'PY'
+          import json
+          import time
+          from news_engine import get_us_news, get_korea_news
+          diagnostics = {}
+          started = time.monotonic()
+          us = get_us_news(diagnostics)
+          kr = get_korea_news(diagnostics)
+          failures = {key: report['error'] for key, report in diagnostics.items() if report['status'] == 'error'}
+          print('LIVE COLLECTION:', json.dumps({'seconds': round(time.monotonic()-started, 2), 'us': len(us), 'kr': len(kr), 'failures': failures, 'diagnostics': diagnostics}, ensure_ascii=False))
+          # 일부 소스 실패를 숨기지 않되 네트워크 연동 자체와 양 시장 수집을 검증한다.
+          assert us and kr, 'No live articles in one or both markets'
+          if failures:
+              print('PARTIAL SOURCE FAILURE: not all sources are healthy')
+          PY

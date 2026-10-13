@@ -3,6 +3,8 @@ import xml.etree.ElementTree as ET
 import re
 import html
 import time
+from concurrent.futures import ThreadPoolExecutor
+from threading import BoundedSemaphore
 from urllib.parse import urlencode, urlsplit
 from event_identity_engine import duplicate_article
 from email.utils import parsedate_to_datetime
@@ -19,6 +21,7 @@ HEADERS = {
 # 한 출처의 일시적 오류가 전체 수집을 중단하지 않도록 최대 두 번만 요청한다.
 FEED_TIMEOUT = (5, 15)
 FEED_MAX_ATTEMPTS = 2
+FEED_WORKERS = 4
 
 
 class FeedFetchError(Exception):
@@ -34,7 +37,8 @@ def _fetch_feed(url):
         try:
             res = requests.get(url, headers=HEADERS, timeout=FEED_TIMEOUT)
         except (requests.Timeout, requests.ConnectionError) as exc:
-            reason = "timeout" if isinstance(exc, requests.Timeout) else "connection_error"
+            reason = ("connect_timeout" if isinstance(exc, requests.ConnectTimeout)
+                      else "timeout" if isinstance(exc, requests.Timeout) else "connection_error")
             if attempt < FEED_MAX_ATTEMPTS:
                 time.sleep(1)
                 continue
@@ -342,6 +346,35 @@ def get_nasdaq_news(diagnostics=None):
                      "US", "Nasdaq_GoogleRSS", diagnostics=reports)
 
 
+def _collect_feeds(feeds, market, diagnostics=None):
+    """독립 피드를 제한된 병렬도로 수집하되 기존 목록 순서로 합친다."""
+    feeds = list(feeds)
+    def host_key(feed):
+        source, url = feed
+        return "www.nasdaq.com" if source == "Nasdaq_Tech" else (urlsplit(url).hostname or url)
+    # Fed/BLS 등 같은 호스트의 여러 피드는 동시에 요청하지 않는다.
+    gates = {host_key(feed): BoundedSemaphore(1) for feed in feeds}
+    def collect(feed):
+        source_name, url = feed
+        reports = {}
+        with gates[host_key(feed)]:
+            if source_name == "Nasdaq_Tech":
+                articles = get_nasdaq_news(reports)
+            else:
+                parser = parse_atom if source_name.startswith("BLS_") or source_name == "SEC_Filings" else parse_rss
+                articles = parser(url, market, source_name, diagnostics=reports)
+        return articles, reports
+
+    articles = []
+    with ThreadPoolExecutor(max_workers=FEED_WORKERS) as executor:
+        # map 순서는 완료 순서가 아니라 입력 순서다. 진단 dict는 호출 스레드에서만 갱신한다.
+        for batch, reports in executor.map(collect, feeds):
+            articles.extend(batch)
+            if diagnostics is not None:
+                diagnostics.update(reports)
+    return articles
+
+
 def get_us_news(diagnostics=None):
     rss_list = [
         # 기존 미국 뉴스
@@ -372,25 +405,8 @@ def get_us_news(diagnostics=None):
 
     ]
 
-    news = []
-
-    for source_name, url in rss_list:
-        if source_name == "Nasdaq_Tech":
-            news += get_nasdaq_news(diagnostics)
-            continue
-        # BLS의 .rss URL은 실제로 Atom 문서를 반환한다.
-        parser = parse_atom if source_name.startswith("BLS_") else parse_rss
-        news += parser(url, "US", source_name, diagnostics=diagnostics)
-    news += parse_atom(
-
-        "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom",
-
-        "US",
-
-        "SEC_Filings",
-        diagnostics=diagnostics
-
-    )
+    rss_list.append(("SEC_Filings", "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom"))
+    news = _collect_feeds(rss_list, "US", diagnostics)
     news = filter_recent_news(news, hours=36)
     news = remove_duplicates(news)
 
@@ -411,10 +427,7 @@ def get_korea_news(diagnostics=None):
         ("이데일리_기업", "http://rss.edaily.co.kr/enterprise_news.xml"),
     ]
 
-    news = []
-
-    for source_name, url in rss_list:
-        news += parse_rss(url, "KR", source_name, diagnostics=diagnostics)
+    news = _collect_feeds(rss_list, "KR", diagnostics)
 
     news = filter_recent_news(news, hours=36)
 
