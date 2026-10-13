@@ -18,6 +18,7 @@ from memory_engine import save_today_result, get_project_status
 from backtest_engine import save_recommendations, update_backtest_prices
 from memory_learning_engine import get_learning_score, save_prediction
 from telegram_bot import send_telegram
+from pre_news_activity_engine import get_pre_news_activity
 
 
 def run():
@@ -228,6 +229,7 @@ def run():
     # 키워드 빈도 대신 실제 사건 점수를 검증 입력으로 사용한다.
     themes = build_event_analysis_themes(important_events, themes)
     final_results = []
+    pre_news_cache = {}
     themes = themes[:TOP_THEME_COUNT]
     print("실제 분석 테마 수:", len(themes))
     
@@ -442,6 +444,9 @@ def run():
         })
 
         for stock in top_ranked:
+            stock["pre_news_activity"] = get_pre_news_activity(
+                stock, stock.get("event_connection", {}), cache=pre_news_cache)
+            print("뉴스 이전 거래활동:", stock["name"], stock["pre_news_activity"])
             save_prediction(
                 theme["name"],
                 stock["name"],

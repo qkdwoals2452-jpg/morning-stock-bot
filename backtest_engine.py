@@ -2,6 +2,7 @@ import os
 import json
 import requests
 import math
+import copy
 from datetime import datetime, date, timedelta, time
 from zoneinfo import ZoneInfo
 
@@ -220,6 +221,8 @@ def save_recommendations(final_results):
                 "last_updated": None
             }
 
+            if isinstance(stock.get("pre_news_activity"), dict):
+                item["pre_news_activity"] = copy.deepcopy(stock["pre_news_activity"])
             data.append(item)
             saved_count += 1
 
