@@ -42,14 +42,14 @@ class EventSubjectKeyTests(unittest.TestCase):
         self.assertEqual(len(events), 2)
         self.assertTrue(all(event['event_key'].startswith('UNKNOWN_') for event in events))
 
-    def test_same_named_supplier_articles_are_merged(self):
+    def test_same_supplier_without_transaction_identity_is_not_enough_to_merge(self):
         events = merge_same_events([
             {"title": "기가비스, 중국 업체와 검사장비 공급계약 체결", "source": "a"},
             {"title": "기가비스, 중국 업체에 111억 검사장비 공급계약", "source": "b"},
         ])
-        self.assertEqual(len(events), 1)
-        self.assertEqual(events[0]['event_key'], '기가비스_CONTRACT')
-        self.assertEqual(events[0]['source_count'], 2)
+        self.assertEqual(len(events), 2)
+        self.assertTrue(all(event['event_subject_key'] == '기가비스_CONTRACT' for event in events))
+        self.assertTrue(all(event['source_bonus'] == 0 for event in events))
 
     def test_capex_subjects_preserved(self):
         for title, expected in [

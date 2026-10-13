@@ -1,0 +1,24 @@
+name: ORION Event Identity Check
+
+on:
+  push:
+    branches: [orion-event-merge-fix]
+  pull_request:
+    paths: [event_identity_engine.py, event_engine.py, news_engine.py, test_event_identity.py, test_orion_event_subject.py, .github/workflows/event-identity-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  event-identity-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Contract identity, source bonus and existing ORION regressions
+        run: python -m unittest -v test_event_identity test_money_flow_relation test_news_sources test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
