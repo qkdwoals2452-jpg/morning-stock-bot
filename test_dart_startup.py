@@ -12,6 +12,12 @@ import requests
 import build_corp_db
 
 
+def streamed_response(content):
+    response = Mock(content=content)
+    response.iter_content.return_value = [content]
+    return response
+
+
 class DartStartupTests(unittest.TestCase):
     def setUp(self):
         self.previous_cwd = os.getcwd()
@@ -36,7 +42,7 @@ class DartStartupTests(unittest.TestCase):
             z.writestr('CORPCODE.xml', '<result><list><corp_code>00126380</corp_code>'
                        '<corp_name>삼성전자</corp_name><stock_code>005930</stock_code>'
                        '</list></result>')
-        response = Mock(content=archive.getvalue())
+        response = streamed_response(archive.getvalue())
         main = importlib.import_module('main')
         class StopAfterStartup(Exception):
             pass
@@ -62,21 +68,21 @@ class DartStartupTests(unittest.TestCase):
         builder.assert_not_called()
 
     def test_dart_error_is_reported_without_creating_csv(self):
-        response = Mock(content=b'<result><status>010</status><message>Invalid key</message></result>')
+        response = streamed_response(b'<result><status>010</status><message>Invalid key</message></result>')
         with patch('requests.get', return_value=response):
             with self.assertRaisesRegex(RuntimeError, 'status=010, message=Invalid key'):
                 build_corp_db.build_corp_db()
         self.assertFalse(Path('corp_code.csv').exists())
 
     def test_namespaced_error_is_reported(self):
-        response = Mock(content=b'<result xmlns="urn:dart"><status>020</status>'
+        response = streamed_response(b'<result xmlns="urn:dart"><status>020</status>'
                                 b'<message>Request limit</message></result>')
         with patch('requests.get', return_value=response):
             with self.assertRaisesRegex(RuntimeError, 'status=020, message=Request limit'):
                 build_corp_db.build_corp_db()
 
     def test_non_api_page_explains_unknown_status(self):
-        response = Mock(content=b'<html><body>Service unavailable</body></html>')
+        response = streamed_response(b'<html><body>Service unavailable</body></html>')
         with patch('requests.get', return_value=response):
             with self.assertRaisesRegex(RuntimeError, 'root=html, response=Service unavailable'):
                 build_corp_db.build_corp_db()
@@ -91,7 +97,7 @@ class DartStartupTests(unittest.TestCase):
         archive = io.BytesIO()
         with zipfile.ZipFile(archive, 'w') as z:
             z.writestr('CORPCODE.xml', '<result/>')
-        with patch('requests.get', return_value=Mock(content=archive.getvalue())):
+        with patch('requests.get', return_value=streamed_response(archive.getvalue())):
             with self.assertRaisesRegex(RuntimeError, '상장 종목이 없습니다'):
                 build_corp_db.build_corp_db()
         self.assertFalse(Path('corp_code.csv').exists())
