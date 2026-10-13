@@ -1,0 +1,24 @@
+name: ORION Learning Validation Check
+
+on:
+  push:
+    branches: [orion-learning-validation-fix]
+  pull_request:
+    paths: [performance_validation_engine.py, memory_learning_engine.py, backtest_engine.py, main.py, test_performance_validation.py, .github/workflows/learning-validation-check.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  learning-validation-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Outcome availability, duplicate votes and all ORION regressions
+        run: python -m unittest -v test_performance_validation test_pre_news_activity test_event_identity test_money_flow_relation test_news_sources test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
