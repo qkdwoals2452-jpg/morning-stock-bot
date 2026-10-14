@@ -1,0 +1,30 @@
+name: ORION DART Contract Document Check
+on:
+  push:
+    branches: [orion-dart-document-fetch]
+  pull_request:
+    paths: [dart_document_engine.py, test_dart_document.py, supply_order_evidence.json, .github/workflows/dart-document-check.yml]
+permissions:
+  contents: read
+jobs:
+  document-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml
+      - name: Full regression tests
+        run: python -m unittest discover -v
+      - name: Read original individual contract documents (no bot or data writes)
+        run: |
+          python -u - <<'PY'
+          import json
+          from config import DART_API_KEY
+          from dart_document_engine import fetch_contract_document
+          for receipt in ('20260608800436', '20261006800023'):
+              doc = fetch_contract_document(receipt, '한미반도체', DART_API_KEY)
+              print('PRIMARY CONTRACT REVIEW:', json.dumps(doc, ensure_ascii=False))
+          PY
