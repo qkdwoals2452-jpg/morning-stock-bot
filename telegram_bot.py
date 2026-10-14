@@ -121,7 +121,7 @@ def send_telegram(
         )
 
         msg += (
-            f"📊 점수 "
+            f"📊 사건점수 "
             f"{theme['score']}\n"
         )
 
@@ -131,7 +131,7 @@ def send_telegram(
         )
         
         msg += (
-            "🏆 추천 TOP5\n"
+            f"🔎 검증 후보 TOP{min(len(ranked), 5)}\n"
         )
 
         for i, stock in enumerate(
