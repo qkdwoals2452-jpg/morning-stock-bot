@@ -99,6 +99,16 @@ def send_telegram(
             msg += '<a href="' + html.escape(item['event_link'], quote=True) + '">미국 사건 원문</a>\n'
             for edge in item['evidence']:
                 msg += '<a href="' + html.escape(edge['source_url'], quote=True) + '">관계 근거</a> (' + html.escape(edge['published_on']) + ')\n'
+            orders = item.get('order_review', {})
+            if orders.get('documented_orders'):
+                msg += "개별 주문 문서 확인 / 이 미국 사건과의 인과·매출 인식은 미확정\n"
+                for order in orders['documented_orders'][:2]:
+                    msg += html.escape(f"계약금액 {order['amount']:,} {order['currency']} / 주문일 {order['ordered_on']}") + '\n'
+                    if order['knowledge_timing'] == 'retrospective_review':
+                        msg += "사후 확인 문서이며 당시 탐지 실적이 아닙니다.\n"
+                    msg += '<a href="' + html.escape(order['source_url'], quote=True) + '">개별 주문 근거</a>\n'
+            elif orders:
+                msg += "대조 가능한 개별 주문 원자료 미확인 — 주문 없음 판정 아님\n"
         msg += '\n'
 
     for theme_data in results:

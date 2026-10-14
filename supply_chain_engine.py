@@ -11,6 +11,7 @@ from zoneinfo import ZoneInfo
 from event_identity_engine import canonical_link
 from event_understanding_engine import understand_event
 from pre_news_activity_engine import parse_timestamp
+from supply_order_engine import review_supply_orders
 
 SEOUL = ZoneInfo('Asia/Seoul')
 ALLOWED_HOSTS = {'REGULATORY_FILING': {'kind.krx.co.kr', 'dart.fss.or.kr'},
@@ -102,7 +103,7 @@ def _actor(entity, article):
     return None
 
 
-def build_supply_chain_watch(events, stocks, evidence=None, as_of=None):
+def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_evidence=None):
     """공급망 경로를 관찰 목록에만 반환한다. 모든 경로는 신규 매출/이익 귀속 미확정이다."""
     now = as_of or datetime.now(SEOUL)
     now, assumed = parse_timestamp(now)
@@ -202,6 +203,8 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None):
                                 'event_spending_state': ('disclosed_companywide_capex' if event.get('event_type') == 'EARNINGS'
                                                          else 'announced_action_not_supplier_order'),
                                 'recommendation_eligible': False,
+                                'order_review': review_supply_orders(edge['buyer'], target, context,
+                                    stamp, entities, now, order_evidence),
                                 'note': '원자료의 기존 관계만 확인. 신규 수주·매출·이익 귀속 및 현재 관계 지속은 별도 검증 필요.',
                             })
                         visit(target, route, nodes + [target])
