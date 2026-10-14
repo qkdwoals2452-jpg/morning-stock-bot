@@ -81,8 +81,13 @@ class DartDocumentTests(unittest.TestCase):
 
     def test_wrong_body_not_accepted(self):
         with patch.object(engine.requests, 'get', return_value=res(archive('<html>maintenance</html>'))):
-            with self.assertRaisesRegex(engine.DocumentUnavailable, 'content_mismatch'):
+            with self.assertRaises(engine.DocumentUnavailable):
                 engine.fetch_contract_document(RECEIPT, '한미반도체', api_key='secret')
+
+    def test_counterparty_mention_not_issuer_identity(self):
+        with patch.object(engine.requests, 'get', return_value=res(archive())):
+            with self.assertRaisesRegex(engine.DocumentUnavailable, 'issuer_mismatch'):
+                engine.fetch_contract_document(RECEIPT, 'Micron', api_key='secret')
 
     def test_multiple_xml_documents_not_guessed(self):
         stream = io.BytesIO()

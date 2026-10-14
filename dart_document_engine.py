@@ -163,6 +163,8 @@ def fetch_contract_document(receipt, issuer, api_key=None, budget_seconds=120):
             'PUBLIC_VIEWER', deadline))
         route = 'dart_public_viewer'
     text = visible_text(raw)
+    if route == 'opendart_xml' and not re.match(r'^\s*' + re.escape(issuer) + r'(?:/|\s)', text):
+        raise DocumentUnavailable('original_document_issuer_mismatch')
     if issuer not in text or '공급계약' not in text.replace(' ', '') or '단일판매' not in text.replace(' ', ''):
         raise DocumentUnavailable('contract_document_content_mismatch')
     if api_key:
