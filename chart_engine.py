@@ -1,4 +1,5 @@
 import requests
+import math
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0",
@@ -94,6 +95,23 @@ def moving_average(values, days):
         return None
 
     return sum(values[-days:]) / days
+
+
+def pass_long_term_trend(chart):
+    """120일선 데이터가 없거나 아래면 추천 제외. 등급/가산점으로 상쇄하지 않는다."""
+    details = chart.get('details', {}) if isinstance(chart, dict) else {}
+    if not isinstance(details, dict):
+        return False, '120일선 추세 데이터 확인불가'
+    values = []
+    for key in ('current', 'ma120'):
+        value = details.get(key)
+        number = to_float(value)
+        if isinstance(value, bool) or number is None or not math.isfinite(number) or number <= 0:
+            return False, '120일선 추세 데이터 확인불가'
+        values.append(number)
+    if values[0] < values[1]:
+        return False, '120일선 아래'
+    return True, '120일선 이상'
 
 
 def get_chart_score(stock):

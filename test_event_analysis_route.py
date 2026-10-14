@@ -42,7 +42,7 @@ class EventAnalysisRouteTests(unittest.TestCase):
         event = {'event_score': 80, 'articles': [{'title': 'Taiwan 업체, 신규 공장 투자 확정'}]}
         self.assertEqual(build_event_analysis_themes([event]), [])
 
-    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False, connection_pass=True):
+    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False, connection_pass=True, below_ma120=False, missing_trend=False):
         previous = os.getcwd()
         with tempfile.TemporaryDirectory() as directory:
             os.chdir(directory)
@@ -63,7 +63,9 @@ class EventAnalysisRouteTests(unittest.TestCase):
                     get_project_status=Mock(return_value={}), send_telegram=saved, save_prediction=Mock(),
                     verify_company_theme=Mock(return_value={'pass': verify_pass, 'score': 60, 'memo': '검증 결과'}),
                     get_market_score=Mock(return_value={'score': 0, 'trading_value': market_value}),
-                    get_chart_score=Mock(return_value={'score': 0, 'details': {'high_52w_gap': None if missing_chart else -10}}),
+                    get_chart_score=Mock(return_value={'score': 0, 'details': {
+                        'high_52w_gap': None if missing_chart else -10, 'current': 100,
+                        'ma120': None if missing_trend else 120 if below_ma120 else 90}}),
                     get_learning_score=Mock(return_value={'score': 0}),
                     get_company_match_score=Mock(return_value={'score': 40, 'exclude': False}),
                     get_news_impact_score=Mock(return_value={'score': 70, 'exclude': False}),
@@ -95,6 +97,16 @@ class EventAnalysisRouteTests(unittest.TestCase):
     def test_business_rejection_still_blocks_recommendation(self):
         calls, results = self.run_route(verify_pass=False)
         self.assertEqual(calls, 0)
+        self.assertEqual(results, [])
+
+    def test_below_ma120_blocked_even_with_strong_event(self):
+        calls, results = self.run_route(below_ma120=True)
+        self.assertEqual(calls, 1)
+        self.assertEqual(results, [])
+
+    def test_missing_ma120_not_assumed_to_pass(self):
+        calls, results = self.run_route(missing_trend=True)
+        self.assertEqual(calls, 1)
         self.assertEqual(results, [])
 
     def test_unverified_connection_blocks_before_finance_even_if_impact_mock_passes(self):

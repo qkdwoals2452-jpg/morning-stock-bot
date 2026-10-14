@@ -147,7 +147,7 @@ def send_telegram(
             )
 
             msg += (
-                f"   AI점수 "
+                f"   정렬점수(수익확률 아님) "
                 f"{stock['final_score']}\n"
             )
 
@@ -237,7 +237,7 @@ def send_telegram(
     )
 
     msg += (
-        f"저장일수 : "
+        f"기록 확인일수 : "
         f"{project_status['saved_days']}일\n"
     )
 
@@ -245,6 +245,7 @@ def send_telegram(
         f"누적 추천테마 : "
         f"{project_status['saved_themes']}개\n"
     )
+    msg += "날짜·테마 중복 제외 / 남아 있는 기록 기준\n"
 
     msg += (
         "\n🤖 "

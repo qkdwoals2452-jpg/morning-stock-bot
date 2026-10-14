@@ -199,6 +199,8 @@ def save_recommendations(final_results):
                 "frequency_score": theme.get("frequency_score"),
                 "reasons": stock.get("reasons") or stock.get("reason") or [],
                 "score_breakdown": score_breakdown,
+                "score_version": stock.get("score_version", "legacy_unversioned"),
+                "grade_status": stock.get("grade_status", "legacy_unvalidated"),
 
                 "start_price": start_price,
                 "return_basis": "reference_price_only",

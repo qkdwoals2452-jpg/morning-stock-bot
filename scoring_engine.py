@@ -1,3 +1,7 @@
+import math
+
+SCORE_VERSION = 'evidence_dedup_v2'
+
 HOLDING_COMPANIES = [
     "SK", "LG", "CJ", "GS", "LS", "한화",
     "두산", "HD현대", "롯데지주", "효성",
@@ -9,11 +13,24 @@ def holding_penalty(stock_name):
     if stock_name in HOLDING_COMPANIES:
         return 999
     return 0
-def safe_score(data):
-    if isinstance(data, dict):
-        return data.get("score", 0) or 0
-    return 0
-    
+def numeric_score(value):
+    if isinstance(value, bool):
+        return 0
+    try:
+        result = float(value)
+        return result if math.isfinite(result) else 0
+    except (TypeError, ValueError):
+        return 0
+
+
+def score_components(finance_score, market_score, verify_score=0, company_score=0,
+                     chart_score=0, learning_score=0):
+    # 사업 검증/기업카드는 같은 영역의 증거이므로 더 큰 값 하나만 사용한다.
+    verified = 20 if numeric_score(verify_score) >= 90 else 10 if numeric_score(verify_score) >= 70 else 0
+    return {'finance': numeric_score(finance_score), 'market': numeric_score(market_score),
+            'business': max(verified, min(max(numeric_score(company_score), 0), 40)),
+            'chart': numeric_score(chart_score), 'learning': numeric_score(learning_score)}
+
 def make_final_score(
     theme_score,
     relation_score,
@@ -26,48 +43,19 @@ def make_final_score(
     impact_score=0
 ):
 
-    score = 0
-
-    score += theme_score
-    score += relation_score * 2
-    score += finance_score
-    score += market_score
-
-    if verify_score >= 90:
-        score += 20
-    elif verify_score >= 70:
-        score += 10
-
-    score += min(company_score, 40)
-    score += chart_score
-    score += learning_score
-    score += impact_score
-
-    return score
+    # 기사 빈도·회사명 직접 언급·사건 당사자는 진입/정렬 근거이지 이익의 가산점이 아니다.
+    return sum(score_components(finance_score, market_score, verify_score, company_score,
+                                chart_score, learning_score).values())
 
 def make_grade(score):
 
-    if score >= 95:
-        return "💎 S+"
-
-    elif score >= 90:
-        return "🏆 S"
-
-    elif score >= 80:
-        return "🥇 A"
-
-    elif score >= 70:
-        return "🥈 B"
-
-    elif score >= 60:
-        return "🥉 C"
-
-    return "⚠️ 관심"
+    # 수익 예측력이 검증된 임계값이 생기기 전에는 정렬 점수로 등급을 만들지 않는다.
+    return "🧪 검증중"
 
 
 def safe_score(data):
     if isinstance(data, dict):
-        return data.get("score", 0) or 0
+        return numeric_score(data.get("score", 0))
     return 0
 
 
@@ -143,6 +131,12 @@ def make_stock_result(
 
     print("learning  :", safe_score(learning))
     print("impact    :", safe_score(impact))
+    samples = learning.get('sample_count')
+    usable_learning = (isinstance(samples, int) and not isinstance(samples, bool) and samples >= 5
+                       and learning.get('source') == 'completed_trading_checkpoints')
+    learning_points = safe_score(learning) if usable_learning else 0
+    components = score_components(safe_score(finance), safe_score(market), safe_score(verify),
+                                  safe_score(company), safe_score(chart), learning_points)
     final_score = make_final_score(
         theme_score=theme_score,
         relation_score=stock["relation_score"],
@@ -151,10 +145,11 @@ def make_stock_result(
         verify_score=safe_score(verify),
         company_score=safe_score(company),
         chart_score=safe_score(chart),
-        learning_score=safe_score(learning),
+        learning_score=learning_points,
         impact_score=safe_score(impact)
     )
     print("FINAL     :", final_score)
+    print("SCORE VERSION:", SCORE_VERSION, "COMPONENTS:", components)
 
     print("=" * 60)
 
@@ -181,7 +176,7 @@ def make_stock_result(
     if chart.get("score", 0) != 0:
         reason.append(chart.get("memo", ""))
 
-    if learning.get("score", 0) != 0:
+    if learning_points != 0:
         reason.append(learning.get("memo", ""))
 
 
@@ -204,6 +199,13 @@ def make_stock_result(
         "learning": learning,
         "impact": impact,
         "final_score": final_score,
+        "score_version": SCORE_VERSION,
+        "score_breakdown": components,
+        "score_excluded": {'article_frequency': numeric_score(theme_score),
+                           'direct_mention': numeric_score(stock['relation_score']),
+                           'event_relation': safe_score(impact)},
+        "score_unit": "heuristic_ranking_points_not_probability",
+        "grade_status": "uncalibrated",
         "grade": make_grade(final_score),
         "reason": reason
     }
