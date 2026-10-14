@@ -1,0 +1,20 @@
+name: ORION Score and History Check
+on:
+  push:
+    branches: [orion-score-history-fix]
+  pull_request:
+    paths: [scoring_engine.py, chart_engine.py, main.py, memory_engine.py, backtest_engine.py, telegram_bot.py, test_score_history.py, test_event_analysis_route.py, .github/workflows/bot.yml, .github/workflows/score-history-check.yml]
+permissions:
+  contents: read
+jobs:
+  score-history-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml
+      - name: Full regression tests and isolated POSCO DX replay
+        run: python -m unittest discover -v

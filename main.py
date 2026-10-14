@@ -12,7 +12,7 @@ from stock_engine import load_korean_stocks, find_related_stocks
 from company_engine import get_company_match_score
 from impact_engine import get_news_impact_score, assess_company_event_relation
 from market_engine import get_market_score
-from chart_engine import get_chart_score
+from chart_engine import get_chart_score, pass_long_term_trend
 from scoring_engine import make_stock_result, sort_results, make_grade
 from memory_engine import save_today_result, get_project_status
 from backtest_engine import save_recommendations, update_backtest_prices
@@ -381,17 +381,10 @@ def run():
 
                     continue
 
-            #if chart.get("details", {}).get("ma120") is not None:
-
-            #    current = chart["details"].get("current")
-
-            #    ma120 = chart["details"].get("ma120")
-
-            #    if current is not None and current < ma120:
-
-            #        print("제외:", stock["name"], "120일선 아래")
-
-            #        continue
+            trend_ok, trend_reason = pass_long_term_trend(chart)
+            if not trend_ok:
+                print("제외:", stock["name"], trend_reason)
+                continue
 
             if market.get("trading_value") is None:
                 print("제외:", stock["name"], "거래대금 확인불가")
@@ -403,7 +396,7 @@ def run():
             result = make_stock_result(
                 stock=stock,
                 # 사건 점수는 분석 진입·우선순위에 사용한다.
-                # 최종 합산의 기존 빈도 점수 비중은 유지해 등급을 부풀리지 않는다.
+                # 빈도는 감사용으로 보존하되 최종 정렬 점수에는 가산하지 않는다.
                 theme_score=theme["frequency_score"],
                 finance=finance,
                 market=market,

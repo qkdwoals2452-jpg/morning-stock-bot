@@ -1,6 +1,8 @@
 import json
 import os
-from datetime import datetime
+from copy import deepcopy
+from datetime import datetime, date
+from zoneinfo import ZoneInfo
 
 MEMORY_FILE = "data/history.json"
 
@@ -12,9 +14,6 @@ def make_folder():
 
 
 def load_memory():
-
-    make_folder()
-
     if not os.path.exists(MEMORY_FILE):
         return []
 
@@ -25,18 +24,26 @@ def load_memory():
             encoding="utf-8"
         ) as f:
 
-            return json.load(f)
-
-    except:
-        return []
+            data = json.load(f)
+        if not isinstance(data, list) or any(not isinstance(row, dict)
+                or not isinstance(row.get('results'), list) for row in data):
+            raise ValueError('invalid history schema')
+        if any(not isinstance(block, dict) or not isinstance(block.get('theme'), dict)
+               or not isinstance(block.get('ranked'), list)
+               or any(not isinstance(stock, dict) for stock in block['ranked'])
+               for row in data for block in row['results']):
+            raise ValueError('invalid recommendation schema')
+        return data
+    except (OSError, ValueError) as exc:
+        # 손상된 파일을 빈 이력으로 덮어쓰지 않는다.
+        raise RuntimeError('표시용 이력 읽기 실패: ' + type(exc).__name__) from None
 
 
 def save_memory(data):
-
     make_folder()
-
+    temporary = MEMORY_FILE + '.tmp'
     with open(
-        MEMORY_FILE,
+        temporary,
         "w",
         encoding="utf-8"
     ) as f:
@@ -47,6 +54,7 @@ def save_memory(data):
             ensure_ascii=False,
             indent=4
         )
+    os.replace(temporary, MEMORY_FILE)
 
 
 # --------------------------
@@ -54,17 +62,31 @@ def save_memory(data):
 # --------------------------
 
 def save_today_result(results):
-
     history = load_memory()
-
+    now = datetime.now(ZoneInfo('Asia/Seoul'))
+    today = now.date().isoformat()
+    existing = {(block.get('theme', {}).get('name'), stock.get('code'))
+                for day in history if day.get('date') == today
+                for block in day['results'] for stock in block.get('ranked', [])}
+    incoming = {(block.get('theme', {}).get('name'), stock.get('code'))
+                for block in results for stock in block.get('ranked', [])}
+    # 같은 날 동일 후보 재실행은 중복 저장하지 않고 과거 결과도 삭제하지 않는다.
+    if any(day.get('date') == today for day in history) and incoming.issubset(existing):
+        return
+    new_results = []
+    for block in results:
+        copied = deepcopy(block)
+        copied['ranked'] = []
+        for stock in block.get('ranked', []):
+            key = (block.get('theme', {}).get('name'), stock.get('code'))
+            if key not in existing:
+                copied['ranked'].append(deepcopy(stock))
+                existing.add(key)
+        if copied['ranked']:
+            new_results.append(copied)
     history.append({
-        "date":
-        datetime.now().strftime(
-            "%Y-%m-%d"
-        ),
-
-        "results":
-        results
+        'date': today, 'recorded_at': now.isoformat(), 'date_timezone': 'Asia/Seoul',
+        'results': new_results
     })
 
     save_memory(history)
@@ -199,16 +221,33 @@ def get_recent_result(
 # --------------------------
 
 def get_project_status():
-
+    from backtest_engine import load_backtest
     history = load_memory()
-
-    return {
-        "saved_days":
-        len(history),
-
-        "saved_themes":
-        sum(
-            len(day["results"])
-            for day in history
-        )
-    }
+    days, themes = set(), set()
+    def valid_day(value):
+        try:
+            return date.fromisoformat(value).isoformat()
+        except (TypeError, ValueError):
+            return None
+    for row in history:
+        day = valid_day(row.get('date'))
+        if not day:
+            continue
+        days.add(day)
+        for block in row['results']:
+            name = block.get('theme', {}).get('name')
+            if name and block.get('ranked'):
+                themes.add((day, name))
+    # 사라진 실행 일자를 추측하지 않는다. 보존된 추천일만 표시 통계에 합친다.
+    backtest_days = set()
+    for row in load_backtest():
+        if not isinstance(row, dict):
+            continue
+        day = valid_day(row.get('date'))
+        if day and row.get('theme') and row.get('code'):
+            backtest_days.add(day)
+            themes.add((day, row['theme']))
+    days.update(backtest_days)
+    return {'saved_days': len(days), 'saved_themes': len(themes),
+            'count_basis': 'distinct_recorded_dates_and_date_theme_pairs',
+            'known_dates': sorted(days), 'continuous_history_confirmed': False}
