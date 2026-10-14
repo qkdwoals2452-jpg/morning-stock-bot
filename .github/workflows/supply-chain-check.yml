@@ -2,9 +2,9 @@ name: ORION Supply Chain Check
 
 on:
   push:
-    branches: [orion-us-kr-bridge-fix]
+    branches: [orion-us-kr-bridge-fix, orion-order-evidence-review]
   pull_request:
-    paths: [supply_chain_engine.py, supply_chain_evidence.json, test_supply_chain_bridge.py, main.py, telegram_bot.py, event_understanding_engine.py, .github/workflows/supply-chain-check.yml]
+    paths: [supply_chain_engine.py, supply_chain_evidence.json, supply_order_engine.py, supply_order_evidence.json, test_supply_order_evidence.py, test_supply_chain_bridge.py, main.py, telegram_bot.py, event_understanding_engine.py, .github/workflows/supply-chain-check.yml]
   workflow_dispatch:
 
 permissions:
