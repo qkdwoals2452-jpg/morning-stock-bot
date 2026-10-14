@@ -1,0 +1,34 @@
+name: ORION KRX Startup Check
+
+on:
+  push:
+    branches: [orion-krx-startup-guard]
+  pull_request:
+    paths: [stock_engine.py, main.py, test_krx_startup.py, .github/workflows/krx-startup-check.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  krx-startup-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml
+      - name: Full ORION regression tests including KRX startup failure
+        run: python -m unittest discover -v
+      - name: Live KRX validated stock universe (no bot execution)
+        run: |
+          python - <<'PY'
+          import time
+          from stock_engine import load_korean_stocks
+          started = time.monotonic()
+          stocks = load_korean_stocks()
+          assert stocks
+          assert any(stock['code'] == '032940' for stock in stocks), 'Wonik missing'
+          print('KRX LIVE PASS:', len(stocks), 'stocks /', round(time.monotonic() - started, 2), 'seconds')
+          PY

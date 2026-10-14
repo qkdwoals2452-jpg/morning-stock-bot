@@ -1,6 +1,8 @@
 import requests
 import pandas as pd
 import time
+import io
+import re
 from theme_engine import expand_theme_words
 from impact_engine import assess_company_event_relation
 
@@ -11,29 +13,46 @@ HEADERS = {
 
 def load_korean_stocks():
     url = "https://kind.krx.co.kr/corpgeneral/corpList.do?method=download"
-
-    try:
-        res = requests.get(url, timeout=10)
-        res.encoding = "euc-kr"
-
-        df = pd.read_html(res.text, header=0)[0]
-        df["종목코드"] = df["종목코드"].astype(str).str.zfill(6)
-
-        stocks = []
-
-        for _, row in df.iterrows():
-            stocks.append({
-                "name": str(row["회사명"]).strip(),
-                "code": str(row["종목코드"]).strip(),
-                "sector": str(row.get("업종", "")).strip()
-            })
-
-        print("KRX 종목 수:", len(stocks))
-        return stocks
-
-    except Exception as e:
-        print("KRX 전체 종목 불러오기 실패:", e)
-        return []
+    # timeout은 소켓 대기 제한이며 전체 실행의 강제 종료 시간은 아니다.
+    last_error = "unknown"
+    for attempt in range(1, 3):
+        res = None
+        try:
+            res = requests.get(url, headers=HEADERS, timeout=(5, 10))
+            res.raise_for_status()
+            res.encoding = "euc-kr"
+            tables = pd.read_html(io.StringIO(res.text), header=0, flavor="lxml",
+                                  converters={"종목코드": str})
+            df = next((frame for frame in tables if
+                       {"회사명", "종목코드", "업종"}.issubset(frame.columns)), None)
+            if df is None or df.empty:
+                raise ValueError("invalid stock table")
+            stocks = []
+            codes = set()
+            for _, row in df.iterrows():
+                name = row["회사명"]
+                code = str(row["종목코드"]).strip()
+                if re.fullmatch(r"[0-9]{1,6}", code):
+                    code = code.zfill(6)
+                if (pd.isna(name) or not str(name).strip()
+                        or not re.fullmatch(r"[0-9A-Z]{6}", code) or code in codes):
+                    raise ValueError("invalid stock row")
+                codes.add(code)
+                sector = row["업종"]
+                stocks.append({"name": str(name).strip(), "code": code,
+                               "sector": "" if pd.isna(sector) else str(sector).strip()})
+            print("KRX 종목 수:", len(stocks))
+            return stocks
+        except (requests.RequestException, ValueError, KeyError) as exc:
+            # 요청 URL이나 응답 본문 대신 오류 종류만 기록한다.
+            last_error = type(exc).__name__
+            print(f"KRX 목록 조회 실패: 시도 {attempt}/2 | 사유={last_error}")
+        finally:
+            if res is not None:
+                res.close()
+        if attempt < 2:
+            time.sleep(1)
+    raise RuntimeError(f"KRX 종목 목록 확인불가 ({last_error}) → 추천 실행 중단") from None
 
 
 def search_naver_related(theme_name, stocks):

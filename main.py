@@ -32,6 +32,8 @@ def run():
     from finance_engine import get_finance_score
 
     stocks = load_korean_stocks()
+    if not stocks:
+        raise RuntimeError("KRX 종목 목록 확인불가 → 추천·운영 기록·전송 중단")
     update_backtest_prices(stocks)
 
     us_news = get_us_news()
