@@ -24,13 +24,13 @@
     "start_price": 20100.0,
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 19080.0,
-    "current_return": -5.07,
-    "highest_price": 20100.0,
-    "highest_return": 0.0,
+    "current_price": 20350.0,
+    "current_return": 1.24,
+    "highest_price": 20400.0,
+    "highest_return": 1.49,
     "lowest_price": 19080.0,
     "max_drawdown": -5.07,
-    "result_1d": null,
+    "result_1d": -0.95,
     "result_3d": null,
     "result_5d": null,
     "result_10d": null,
@@ -45,11 +45,21 @@
         "date": "2026-10-13",
         "price": 19080.0,
         "return": -5.07
+      },
+      {
+        "date": "2026-10-14",
+        "price": 20400.0,
+        "return": 1.49
       }
     ],
-    "last_updated": "2026-10-13",
+    "last_updated": "2026-10-14",
     "checkpoint_method": "trading_sessions_v1",
-    "checkpoint_dates": {},
-    "checkpoint_status": "pending"
+    "checkpoint_dates": {
+      "result_1d": "2026-10-13"
+    },
+    "checkpoint_status": "pending",
+    "checkpoint_observed_at": {
+      "result_1d": "2026-10-14T10:34:40.904672+09:00"
+    }
   }
 ]
