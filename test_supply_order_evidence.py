@@ -57,8 +57,8 @@ class SupplyOrderEvidenceTests(unittest.TestCase):
 
     def test_default_registry_does_not_promote_unread_candidates(self):
         book = load_supply_order_evidence()
-        self.assertEqual(book['orders'], [])
-        self.assertEqual(len(book['review_log']['unverified_filing_candidates']), 2)
+        self.assertEqual(len(book['orders']), 2)
+        self.assertEqual(book['review_log']['unverified_filing_candidates'], [])
         r = review_supply_orders('micron', 'hanmi', 'HBM', EVENT_AT, ENTITIES, NOW)
         self.assertEqual(r['status'], 'no_verified_order')
         self.assertFalse(r['documented_order_confirmed'])
@@ -70,6 +70,28 @@ class SupplyOrderEvidenceTests(unittest.TestCase):
         r = self.report()
         self.assertFalse(r['documented_orders'])
         self.assertEqual(r['excluded']['different_order_counterparty'], 1)
+
+    def test_real_skhynix_contract_is_documented_but_not_us_event_attributed(self):
+        r = review_supply_orders('sk_hynix', 'hanmi', 'HBM4 TC BONDER', EVENT_AT, ENTITIES,
+                                 '2026-10-14T16:00:00+09:00')
+        self.assertTrue(r['documented_order_confirmed'])
+        self.assertEqual([d['amount'] for d in r['documented_orders']], [44200000000])
+        self.assertEqual(r['documented_orders'][0]['knowledge_timing'], 'retrospective_review')
+        self.assertFalse(r['event_order_attribution_confirmed'])
+
+    def test_real_semco_msvp_order_not_micron_hbm_order(self):
+        micron = review_supply_orders('micron', 'hanmi', 'HBM4', EVENT_AT, ENTITIES,
+                                      '2026-10-14T16:00:00+09:00')
+        self.assertFalse(micron['documented_order_confirmed'])
+        semco = review_supply_orders('samsung_electro_mechanics', 'hanmi', 'MSVP', EVENT_AT,
+                                     ENTITIES, '2026-10-14T16:00:00+09:00')
+        self.assertEqual([d['amount'] for d in semco['documented_orders']], [24480000000])
+        self.assertFalse(semco['event_order_attribution_confirmed'])
+
+    def test_real_contracts_unavailable_before_today_review(self):
+        r = review_supply_orders('sk_hynix', 'hanmi', 'HBM4', EVENT_AT, ENTITIES,
+                                 '2026-10-14T15:50:00+09:00')
+        self.assertFalse(r['documented_order_confirmed'])
 
     def test_entity_and_primary_field_must_agree(self):
         self.order['source_fields']['buyer'] = 'SK하이닉스'

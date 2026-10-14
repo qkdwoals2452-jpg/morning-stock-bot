@@ -4,7 +4,8 @@
     "nvidia": {"name": "NVIDIA", "aliases": ["NVIDIA", "엔비디아"], "country": "US"},
     "micron": {"name": "Micron", "aliases": ["Micron", "Micron Technology", "Micron Technology, Inc.", "마이크론"], "country": "US", "official_hosts": ["investors.micron.com"]},
     "sk_hynix": {"name": "SK하이닉스", "aliases": ["SK hynix", "SK하이닉스"], "country": "KR", "code": "000660"},
-    "hanmi": {"name": "한미반도체", "aliases": ["HANMI Semiconductor", "한미반도체"], "country": "KR", "code": "042700"}
+    "hanmi": {"name": "한미반도체", "aliases": ["HANMI Semiconductor", "한미반도체"], "country": "KR", "code": "042700"},
+    "samsung_electro_mechanics": {"name": "삼성전기", "aliases": ["삼성전기", "SAMSUNG ELECTRO-MECHANICS CO., LTD."], "country": "KR", "code": "009150"}
   },
   "edges": [
     {
