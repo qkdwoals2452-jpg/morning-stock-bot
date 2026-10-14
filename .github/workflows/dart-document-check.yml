@@ -24,7 +24,10 @@ jobs:
           import json
           from config import DART_API_KEY
           from dart_document_engine import fetch_contract_document
+          expected = {'20260608800436': ('SK하이닉스', '44,200,000,000', 'HBM4'),
+                      '20261006800023': ('삼성전기', '24,480,000,000', 'MSVP')}
           for receipt in ('20260608800436', '20261006800023'):
               doc = fetch_contract_document(receipt, '한미반도체', DART_API_KEY)
+              assert all(value in doc['text'] for value in expected[receipt]), 'Primary contract fields mismatch'
               print('PRIMARY CONTRACT REVIEW:', json.dumps(doc, ensure_ascii=False))
           PY
