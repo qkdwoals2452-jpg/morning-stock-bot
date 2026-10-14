@@ -150,6 +150,34 @@ def is_analysis_article(title):
 
     return False
     
+def has_unconfirmed_transaction(text):
+    """협상·미체결·비구속 약정·미확인 보도를 확정 거래로 승격하지 않는다.
+
+    문장 단위의 보수적 필터다. 다른 문장의 계약으로 이 문장의 거래를
+    확정하거나, 익명 보도를 허위라고 판정하는 기능은 아니다.
+    """
+    text = normalize_text(text)
+    transaction = r"(?:invest\w*|acquir\w*|acquisition|merger|buy|contract|agreement|deal|factory|plant|투자|인수|합병|계약|수주|공장)"
+    uncertainty = r"(?:in talks|negotiat\w*|considering|exploring|seeking|검토|협상|논의|미확정)"
+    patterns = [
+        rf"{uncertainty}.{{0,100}}{transaction}",
+        rf"{transaction}.{{0,50}}{uncertainty}",
+        rf"\b(?:not|never|denied|denies)\b.{{0,60}}{transaction}",
+        r"\bsigned\s+no\s+(?:\w+\s+){0,3}(?:contract|agreement)\b",
+        r"\b(?:expects? to|plans? to|will|may|might|could)\s+sign\b.{0,80}\b(?:contract|agreement|deal)\b",
+        r"(?:계약|투자|인수|수주).{0,30}(?:체결하지|확정되지|사실무근|부인|체결\s*예정)",
+        rf"(?:memorandum of understanding|letter of intent|non.binding|\bmou\b|양해각서).{{0,100}}{transaction}",
+        rf"{transaction}.{{0,100}}(?:memorandum of understanding|letter of intent|non.binding|\bmou\b|양해각서)",
+        rf"(?:reportedly|sources? say|according to sources).{{0,120}}{transaction}",
+        rf"{transaction}.{{0,160}}(?:reportedly|sources? say|according to sources)",
+    ]
+    return any(
+        re.search(pattern, sentence)
+        for sentence in re.split(r"(?<=[.!?。])\s+|;", text)
+        for pattern in patterns
+    )
+
+
 def classify_article_role(title, summary=""):
     """
     기사 자체의 역할을 먼저 판별한다.
@@ -161,6 +189,7 @@ def classify_article_role(title, summary=""):
     MARKET_REACTION
     EXPLAINER
     LIFESTYLE
+    UNCONFIRMED_TRANSACTION
     """
 
     title = normalize_text(title)
@@ -174,9 +203,15 @@ def classify_article_role(title, summary=""):
         r"\bshould you(?: really)? buy\b",
         r"\b(?:best|top|unique)\s+etfs?\b.*\b(?:momentum|buy|own)\b",
         r"추천주|매수 추천|주목할 종목|투자 포인트|사야 할까|살까",
+        r"(?:은행\s*)?예금보다\s*(?:낫|좋)",
+        r"배당\s*쏠쏠|배당.{0,12}(?:매력적인|매력적|챙길\s*종목)",
     ]
     if any(re.search(pattern, title) for pattern in recommendation_patterns):
         return "ANALYSIS"
+
+    # 제목 또는 요약의 미확정 거래를 후단의 단순 거래 키워드로 되살리지 않는다.
+    if has_unconfirmed_transaction(title) or has_unconfirmed_transaction(summary):
+        return "UNCONFIRMED_TRANSACTION"
 
     lifestyle_patterns = [
         r"먹는\s*법|데우는\s*법|요리\s*방법|요리\s*레시피",
@@ -333,6 +368,8 @@ def has_confirmed_event_inside_reaction(title, summary=""):
         r"(?:투자|증설|인수).{0,10}(?:결정|확정|완료)",
     ]
     for sentence in re.split(r"(?<=[.!?。])\s+|[\n;]", evidence_text):
+        if has_unconfirmed_transaction(sentence):
+            continue
         if re.search(r"last year|previously|지난해|작년|과거|memorandum of understanding|non.binding|\bmou\b", sentence):
             continue
         for pattern in action_patterns:
