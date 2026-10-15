@@ -3,6 +3,7 @@ from collections import Counter
 from event_understanding_engine import classify_article_role
 from news_quality_engine import filter_core_news
 from event_engine import build_events
+from event_audit_engine import print_event_audit
 from sector_filter_engine import pass_theme_sector_filter
 from company_verify_engine import verify_company_theme
 from config import *
@@ -58,7 +59,9 @@ def run():
                     for article in news)
     print("기사 성격 집계 (후보는 확정 사건 아님):", dict(roles))
 
-    events = build_events(news)
+    event_decisions = []
+    events = build_events(news, decisions=event_decisions)
+    print_event_audit(event_decisions, len(events))
     supply_chain_watch = build_supply_chain_watch(events, stocks)
     print("미국 사건→국내 공급망 관찰(점수 반영 없음):", supply_chain_watch)
 

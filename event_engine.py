@@ -1,6 +1,7 @@
 from event_understanding_engine import (
     understand_event,
     assess_event_evidence,
+    classify_article_role,
 )
 from collections import defaultdict
 import re
@@ -1200,11 +1201,23 @@ def make_event_key(article):
         f"{title_key}_"
         f"{event_type}"
     )
-def merge_same_events(news):
+def merge_same_events(news, decisions=None):
     grouped = defaultdict(list)
 
     for article in news:
         score, reasons = calc_event_score(article)
+
+        # 실제 그룹화에 사용한 판정을 기록한다. 진단용 재채점은 하지 않는다.
+        if decisions is not None:
+            decisions.append({
+                'market': article.get('market', ''),
+                'source': article.get('source', ''),
+                'title': article.get('title', ''),
+                'role': classify_article_role(article.get('title', ''), article.get('summary', '')),
+                'score': score,
+                'accepted': score >= 30,
+                'reason': reasons[-1] if score < 30 else '사건 점수 기준 통과',
+            })
 
         if score < 30:
             continue
@@ -1320,8 +1333,8 @@ def extract_money_flow(event):
     return flows
 
 
-def build_events(news):
-    events = merge_same_events(news)
+def build_events(news, decisions=None):
+    events = merge_same_events(news, decisions=decisions)
 
     for event in events:
         event["money_flow"] = extract_money_flow(event)
