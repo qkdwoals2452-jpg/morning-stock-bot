@@ -178,6 +178,22 @@ def has_unconfirmed_transaction(text):
     )
 
 
+def earnings_context_without_benchmark(title):
+    """실적 제목에서 결과 비교인 '예상 상회/하회'만 전망 검사에서 분리.
+
+    원문·숫자는 바꾸지 않으며, 전망/가능성/예상 발표 등 다른 미래 표현은
+    그대로 둔다. '예상 상회할'처럼 미래형으로 이어지는 표현도 지우지 않는다.
+    """
+    title = normalize_text(title)
+    if not (re.search(r'(?:[1-4]분기|상반기|하반기|연간|(?:1[0-2]|[1-9])월)', title)
+            and re.search(r'매출|영업이익|순이익|순익|실적', title)):
+        return title
+    return re.sub(
+        r'(?:시장\s*)?예상(?:치)?(?:를|을)?\s*(?:크게\s*)?'
+        r'(?:(?:상회|하회)(?:했다|해|한)?|웃돌았다|밑돌았다|웃돌아|밑돌아)(?![가-힣])',
+        '실적 비교', title)
+
+
 def classify_article_role(title, summary=""):
     """
     기사 자체의 역할을 먼저 판별한다.
@@ -287,7 +303,7 @@ def classify_article_role(title, summary=""):
         "오를까",
     ]
 
-    if contains_any(title, outlook_patterns):
+    if contains_any(earnings_context_without_benchmark(title), outlook_patterns):
         return "OUTLOOK"
 
     # =====================================================
@@ -1785,7 +1801,7 @@ def understand_event(article):
         # -------------------------------------------------
 
         earnings_secondary = contains_any(
-            title,
+            earnings_context_without_benchmark(title),
             [
                 # 영어 비교·분석
                 "comparing",
@@ -1925,6 +1941,7 @@ def understand_event(article):
             "매출",
             "영업이익",
             "순이익",
+            "순익",
             "실적",
         ]
     )
@@ -1951,7 +1968,7 @@ def understand_event(article):
 
     korean_result_number = bool(
         re.search(
-            r"(매출(?:액)?|영업이익|순이익)"
+            r"(매출(?:액)?|영업이익|순이익|순익)"
             r".{0,25}?"
             r"\d[\d,.]*\s*(억|억원|조|조원|만원|원)",
             title
@@ -1960,14 +1977,14 @@ def understand_event(article):
 
     korean_result_percent = bool(
         re.search(
-            r"(매출(?:액)?|영업이익|순이익)"
+            r"(매출(?:액)?|영업이익|순이익|순익)"
             r".{0,25}?"
             r"\d[\d,.]*\s*%",
             title
         )
     )
     korean_earnings_speculative = contains_any(
-        title,
+        earnings_context_without_benchmark(title),
         [
             "전망",
             "예상",
