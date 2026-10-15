@@ -5,8 +5,9 @@ import html
 import time
 from concurrent.futures import ThreadPoolExecutor
 from threading import BoundedSemaphore
+from collections import defaultdict, deque
 from urllib.parse import urlencode, urlsplit
-from event_identity_engine import duplicate_article
+from event_identity_engine import duplicate_article, publisher
 from email.utils import parsedate_to_datetime
 from datetime import datetime, timezone, timedelta
 
@@ -22,6 +23,18 @@ HEADERS = {
 FEED_TIMEOUT = (5, 15)
 FEED_MAX_ATTEMPTS = 2
 FEED_WORKERS = 4
+
+# 공개 RSS의 제목/요약만 수집한다. 유료 본문이나 차단된 피드를 우회하지 않는다.
+# 2026-10-16 로컬 읽기 전용 점검: 모두 HTTP 200 / 최근 36시간 기사 확인.
+MAJOR_MEDIA_FEEDS = [
+    ('Bloomberg_Tech', 'https://www.bloomberg.com/feeds/technology/news.rss'),
+    ('Bloomberg_Markets', 'https://www.bloomberg.com/feeds/markets/news.rss'),
+    ('WSJ_Business', 'https://feeds.content.dowjones.io/public/rss/WSJcomUSBusiness'),
+    ('WSJ_Tech', 'https://feeds.content.dowjones.io/public/rss/RSSWSJD'),
+    ('WSJ_Markets', 'https://feeds.content.dowjones.io/public/rss/RSSMarketsMain'),
+    ('FT_International', 'https://www.ft.com/rss/home/international'),
+    ('BBC_Business', 'https://feeds.bbci.co.uk/news/business/rss.xml'),
+]
 
 
 class FeedFetchError(Exception):
@@ -171,6 +184,9 @@ def parse_rss(url, market, source_name, diagnostics=None):
                 "market": market,
 
                 "source": source_name,
+                # RSS가 명시한 원 발행처만 보존한다. 수집 경로(source)와 분리.
+                "origin_publisher": (item.findtext('source') or item.findtext(
+                    '{http://purl.org/dc/elements/1.1/}publisher') or '').strip(),
                 "published_at": published_at
 
             })
@@ -405,12 +421,35 @@ def get_us_news(diagnostics=None):
 
     ]
 
+    rss_list.extend(MAJOR_MEDIA_FEEDS)
     rss_list.append(("SEC_Filings", "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom"))
     news = _collect_feeds(rss_list, "US", diagnostics)
     news = filter_recent_news(news, hours=36)
     news = remove_duplicates(news)
 
-    return news[:200]
+    selected = select_diverse_news(news, limit=200)
+    counts = defaultdict(int)
+    for article in selected:
+        counts[publisher(article)[0]] += 1
+    print('미국/글로벌 뉴스 매체별 선택:', dict(counts),
+          '| 최근 중복제거 후:', len(news), '| 선택:', len(selected))
+    return selected
+
+
+def select_diverse_news(articles, limit=200):
+    """한 매체의 여러 피드가 한도를 독점하지 않도록 순환 선택한다."""
+    groups = defaultdict(deque)
+    for article in articles:
+        groups[publisher(article)[0]].append(article)
+    selected = []
+    while groups and len(selected) < max(0, limit):
+        for key in list(groups):
+            if len(selected) >= limit:
+                break
+            selected.append(groups[key].popleft())
+            if not groups[key]:
+                del groups[key]
+    return selected
 
 def get_korea_news(diagnostics=None):
     rss_list = [

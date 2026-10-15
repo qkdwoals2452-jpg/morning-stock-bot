@@ -155,11 +155,32 @@ def instance_key(subject_key, articles):
 
 def publisher(article):
     source = str(article.get("source", ""))
+    base = None
     for prefix, name in (("한국경제", "hankyung"), ("매일경제", "mk"), ("이데일리", "edaily"),
                          ("Yahoo", "yahoo"), ("Nasdaq", "nasdaq"), ("Investing", "investing"),
+                         ("Bloomberg_", "bloomberg"), ("WSJ_", "wsj"),
+                         ("FT_", "ft"), ("BBC_", "bbc"),
                          ("SEC_", "sec"), ("FED_", "fed"), ("BLS_", "bls")):
         if source.startswith(prefix):
-            return name, True
+            base = name
+            break
+    # 원 배포사 귀속이 명시된 재전송은 배포 매체 수만큼 독립 가산하지 않는다.
+    attribution = normalized_text(article.get('origin_publisher'))
+    for name, aliases in {
+        'reuters': ('reuters', 'thomson reuters'),
+        'ap': ('associated press', 'ap'),
+        'bloomberg': ('bloomberg', 'bloomberg news'),
+    }.items():
+        if attribution in aliases:
+            return name, base is not None
+    text = normalized_text(str(article.get('title', '')) + ' ' + str(article.get('summary', '')))
+    for pattern, name in [(r'\breuters\s*\)|according to reuters|reuters (?:reported|reports)', 'reuters'),
+                          (r'\bassociated press\b|\(ap\)', 'ap'),
+                          (r'\(bloomberg\)|according to bloomberg|bloomberg (?:reported|reports)', 'bloomberg')]:
+        if re.search(pattern, text):
+            return name, base is not None
+    if base is not None:
+        return base, True
     host = urlsplit(canonical_link(article.get("link"))).hostname
     return (host or f"label:{source}"), False
 
@@ -170,6 +191,7 @@ def corroboration_bonus(articles):
     for i, a in enumerate(candidates):
         for b in candidates[i + 1:]:
             if (publisher(a)[0] != publisher(b)[0]
+                    and normalized_text(a.get('title')) != normalized_text(b.get('title'))
                     and normalized_text(a.get("summary")) != normalized_text(b.get("summary"))
                     and strong_match(event_facts(a), event_facts(b))):
                 return 10

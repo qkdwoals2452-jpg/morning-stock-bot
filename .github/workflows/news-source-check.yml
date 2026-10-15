@@ -4,7 +4,7 @@ on:
   push:
     branches: [orion-news-source-fix]
   pull_request:
-    paths: [news_engine.py, test_news_sources.py, .github/workflows/news-source-check.yml]
+    paths: [news_engine.py, event_identity_engine.py, test_news_sources.py, test_major_media.py, .github/workflows/news-source-check.yml]
   workflow_dispatch:
 
 permissions:
@@ -21,7 +21,7 @@ jobs:
           python-version: '3.10'
       - run: pip install requests pandas
       - name: Feed failure handling and existing ORION regressions
-        run: python -m unittest -v test_news_sources test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
+        run: python -m unittest -v test_news_sources test_major_media test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
       - name: Live Nasdaq RSS and SEC Atom diagnostics
         run: |
           python - <<'PY'

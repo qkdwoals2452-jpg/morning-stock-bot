@@ -85,9 +85,12 @@ def run():
 
         print(
 
-            "출처 수:",
+            "식별 출처 수:",
 
             event.get("source_count", 0),
+
+            "| 보도 기사 수:", len(event.get("articles", [])),
+            "| 교차보도 가산:", event.get("source_bonus", 0),
 
             "| 돈의 흐름:",
 
