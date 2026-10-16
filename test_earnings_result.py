@@ -10,6 +10,32 @@ RECORDED_TITLE = '[속보] TSMC 3분기 순익 69% 급증·사상 최대…시�
 
 
 class EarningsResultTests(unittest.TestCase):
+    def test_recorded_earnings_stock_impact_commentary_is_excluded(self):
+        title = 'How Earnings Beat Will Impact Microsoft (MSFT) Stock'
+        for summary in ['', 'Microsoft reported quarterly revenue of $80 billion, up 15%.']:
+            article = {'title': title, 'summary': summary}
+            original = deepcopy(article)
+            self.assertEqual(classify_article_role(title, summary), 'ANALYSIS')
+            self.assertFalse(understand_event(article)['is_real_event'])
+            self.assertEqual(calc_event_score(article)[0], 0)
+            self.assertEqual(build_events([deepcopy(article)]), [])
+            self.assertEqual(article, original)
+
+    def test_earnings_impact_commentary_variants(self):
+        for title in ["How Microsoft's Earnings Beat Will Affect Its Shares",
+                      'How Quarterly Results May Impact Microsoft Share Price',
+                      'How Revenue Growth Will Affect Microsoft Stock']:
+            with self.subTest(title=title):
+                self.assertEqual(classify_article_role(title), 'ANALYSIS')
+                self.assertEqual(calc_event_score({'title': title})[0], 0)
+
+    def test_reported_results_are_not_blocked_by_impact_guard(self):
+        for title in ['Microsoft reports quarterly revenue of $80 billion, up 15%',
+                      'Anthropic’s Quarterly Revenue Jumped 45% to Nearly $17 Billion',
+                      '대한항공 실적 날았다…3분기 역대급 매출 5조']:
+            with self.subTest(title=title):
+                self.assertEqual(understand_event({'title': title})['event_type'], 'EARNINGS')
+
     def test_recorded_headline_reaches_earnings_pipeline(self):
         article = {'title': RECORDED_TITLE, 'market': 'KR', 'source': 'fixture'}
         original = deepcopy(article)

@@ -16,6 +16,44 @@ TITLE = '기가비스, 삼성전자와 111억원 검사장비 공급계약 체�
 
 
 class EventIdentityTests(unittest.TestCase):
+    def test_recorded_wsj_cross_feed_article_is_one_record_and_event(self):
+        title = 'Anthropic’s Quarterly Revenue Jumped 45% to Nearly $17 Billion'
+        url = 'https://www.wsj.com/tech/ai/anthropics-quarterly-revenue-jumped-45-to-nearly-17-billion-1c7e28b8'
+        summary = 'The artificial-intelligence giant met with public-market investors Wednesday ahead of its planned IPO next month.'
+        a = article(title, 'WSJ_Tech', url + '?mod=rss_Technology',
+                    '2026-10-15T00:17:00+00:00', summary)
+        b = article(title, 'WSJ_Markets', url + '?mod=rss_markets_main',
+                    '2026-10-15T00:17:00+00:00', summary)
+        a['market'] = b['market'] = 'US'
+        original = copy.deepcopy([a, b])
+        self.assertEqual(len(remove_duplicates([a, b])), 1)
+        events = self.events(a, b)
+        self.assertEqual(len(events), 1)
+        self.assertEqual(events[0]['source_count'], 1)
+        self.assertEqual(events[0]['source_bonus'], 0)
+        self.assertEqual(events[0]['event_score'], 70)
+        self.assertEqual([a, b], original)
+
+    def test_wsj_tracking_cleanup_preserves_article_identity_and_other_queries(self):
+        a = 'https://www.wsj.com/tech/article-a?mod=rss_Technology&id=111'
+        b = 'https://www.wsj.com/tech/article-a?mod=rss_markets_main&id=222'
+        c = 'https://www.wsj.com/tech/article-b?mod=rss_Technology&id=111'
+        self.assertNotEqual(canonical_link(a), canonical_link(b))
+        self.assertNotEqual(canonical_link(a), canonical_link(c))
+        self.assertIn('id=111', canonical_link(a))
+        for url in ['https://example.com/a?mod=rss_Technology',
+                    'https://www.wsj.com.evil.example/a?mod=rss_Technology',
+                    'https://www.wsj.com/a?mod=article123']:
+            with self.subTest(url=url):
+                self.assertEqual(canonical_link(url), url)
+
+    def test_wsj_matching_title_is_not_enough_to_merge_different_articles(self):
+        title = 'Anthropic’s Quarterly Revenue Jumped 45% to Nearly $17 Billion'
+        a = article(title, 'WSJ_Tech', 'https://www.wsj.com/tech/article-a?mod=rss_Technology')
+        b = article(title, 'WSJ_Markets', 'https://www.wsj.com/tech/article-b?mod=rss_markets_main')
+        self.assertEqual(len(remove_duplicates([a, b])), 2)
+        self.assertEqual(len(self.events(a, b)), 2)
+
     def events(self, *articles):
         return merge_same_events(copy.deepcopy(list(articles)))
 
