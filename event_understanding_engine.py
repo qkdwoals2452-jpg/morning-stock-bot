@@ -243,6 +243,15 @@ def classify_article_role(title, summary=""):
     if any(re.search(pattern, title) for pattern in recommendation_patterns):
         return "ANALYSIS"
 
+    # 실적 수치 자체의 발표와, 실적이 주가에 미칠 영향을 설명하는 글을 구분한다.
+    # ANALYSIS는 요약 속 실적 키워드로 확정 사건 예외를 적용하지 않는다.
+    if re.search(
+        r"^how\b.{0,100}\b(?:earnings|results|revenue|profit)\b"
+        r".{0,80}\b(?:impact|affect)\b.{0,80}\b(?:stock|shares|share price)\b",
+        title,
+    ):
+        return "ANALYSIS"
+
     if has_contract_cancellation_context(title) or has_contract_cancellation_context(summary):
         return "CONTRACT_CANCELLATION_CONTEXT"
 

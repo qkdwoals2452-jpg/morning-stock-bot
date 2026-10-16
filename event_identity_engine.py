@@ -17,8 +17,12 @@ def canonical_link(link):
         parts = urlsplit(str(link or ""))
         if parts.scheme not in ("http", "https") or not parts.hostname:
             return ""
+        # WSJ의 같은 원문이 여러 RSS에 실릴 때 붙는 유입 추적값만 제거한다.
+        # 다른 도메인의 mod나 기사 식별용 query는 그대로 보존한다.
+        wsj = parts.hostname.lower() in ("wsj.com", "www.wsj.com")
         query = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
-                 if not k.lower().startswith("utm_") and k.lower() not in ("fbclid", "gclid")]
+                 if not k.lower().startswith("utm_") and k.lower() not in ("fbclid", "gclid")
+                 and not (wsj and k.lower() == "mod" and v.lower().startswith("rss_"))]
         return urlunsplit((parts.scheme.lower(), parts.netloc.lower(), parts.path,
                            urlencode(sorted(query)), ""))
     except ValueError:
