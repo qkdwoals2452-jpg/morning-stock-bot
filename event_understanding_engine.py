@@ -178,6 +178,22 @@ def has_unconfirmed_transaction(text):
     )
 
 
+def has_contract_cancellation_context(text):
+    """계약 해소 문맥은 신규 수주로 승격하지 않는다. 확정성 판정은 별개다."""
+    text = normalize_text(text)
+    patterns = [
+        r'(?:계약|협약|수주|발주).{0,12}(?:해제|해지|취소|철회|파기)'
+        r'(?!\s*(?:조건|조항|없이|하지|되지))',
+        r'\b(?:cancels?|cancelled|canceled|cancelling|canceling|terminates?|terminated|'
+        r'terminating|rescinds?|rescinded)\b.{0,60}\b(?:contracts?|agreements?|orders?)\b',
+        r'\b(?:contracts?|agreements?|orders?)\b.{0,40}\b(?:cancelled|canceled|terminated|rescinded)\b',
+        r'\b(?:cancellation|termination|rescission) of\b.{0,40}\b(?:contracts?|agreements?|orders?)\b',
+    ]
+    return any(re.search(pattern, sentence)
+               for sentence in re.split(r'(?<=[.!?。])\s+|[;…]|\.{2,}|(?<!\d),(?!\d)', text)
+               for pattern in patterns)
+
+
 def earnings_context_without_benchmark(title):
     """실적 제목에서 결과 비교인 '예상 상회/하회'만 전망 검사에서 분리.
 
@@ -206,6 +222,7 @@ def classify_article_role(title, summary=""):
     EXPLAINER
     LIFESTYLE
     UNCONFIRMED_TRANSACTION
+    CONTRACT_CANCELLATION_CONTEXT
     """
 
     title = normalize_text(title)
@@ -217,6 +234,7 @@ def classify_article_role(title, summary=""):
         r"\bstocks?\s+to\s+(?:buy|own|watch)\b",
         r"\b(?:stocks?|etfs?)\b.*\b(?:worth owning|worth buying|to own)\b",
         r"\bshould you(?: really)? buy\b",
+        r"\bhow to invest\b",
         r"\b(?:best|top|unique)\s+etfs?\b.*\b(?:momentum|buy|own)\b",
         r"추천주|매수 추천|주목할 종목|투자 포인트|사야 할까|살까",
         r"(?:은행\s*)?예금보다\s*(?:낫|좋)",
@@ -224,6 +242,9 @@ def classify_article_role(title, summary=""):
     ]
     if any(re.search(pattern, title) for pattern in recommendation_patterns):
         return "ANALYSIS"
+
+    if has_contract_cancellation_context(title) or has_contract_cancellation_context(summary):
+        return "CONTRACT_CANCELLATION_CONTEXT"
 
     # 제목 또는 요약의 미확정 거래를 후단의 단순 거래 키워드로 되살리지 않는다.
     if has_unconfirmed_transaction(title) or has_unconfirmed_transaction(summary):
@@ -384,6 +405,8 @@ def has_confirmed_event_inside_reaction(title, summary=""):
         r"(?:투자|증설|인수).{0,10}(?:결정|확정|완료)",
     ]
     for sentence in re.split(r"(?<=[.!?。])\s+|[\n;]", evidence_text):
+        if has_contract_cancellation_context(sentence):
+            continue
         if has_unconfirmed_transaction(sentence):
             continue
         if re.search(r"last year|previously|지난해|작년|과거|memorandum of understanding|non.binding|\bmou\b", sentence):
@@ -657,6 +680,13 @@ def understand_event(article):
         if key not in _LOGGED_ARTICLE_ROLES:
             print("DEBUG ARTICLE ROLE:", title, "=>", article_role)
             _LOGGED_ARTICLE_ROLES.add(key)
+    if article_role == 'CONTRACT_CANCELLATION_CONTEXT':
+        return {
+            'is_real_event': False,
+            'event_type': 'NO_EVENT',
+            'article_role': article_role,
+            'reason': '계약 해제·해지·취소 문맥이며 신규 계약·수주 근거가 아님',
+        }
     
     
     confirmed_event_override = (
