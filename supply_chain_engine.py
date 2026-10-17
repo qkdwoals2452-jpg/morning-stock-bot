@@ -19,7 +19,7 @@ ALLOWED_HOSTS = {'REGULATORY_FILING': {'kind.krx.co.kr', 'dart.fss.or.kr'},
 RELATIONSHIPS = {'REPORTED_CUSTOMER', 'MEMORY_TECH_AGREEMENT'}
 MAX_SOURCE_AGE_DAYS = 366
 NEGATIVE = re.compile(r'\b(?:not|never|denied|cancelled|canceled|could|might|rumou?r|reportedly)\b|미체결|부인|취소|검토|수주\s*기대', re.I)
-SPENDING = re.compile(r'\b(?:capex|capital expenditures?|capital spending|invest(?:s|ed|ment|ments)?|supply contract|supply agreement|begins production|mass production)\b|설비투자|공급계약|양산', re.I)
+SPENDING = re.compile(r'\b(?:capex|capital expenditures?|capital spending|invest(?:s|ed|ment|ments)?|supply contract|supply agreement|data[- ]cent(?:er|re)\s+(?:deal|contract|agreement)|begins production|mass production)\b|설비투자|공급계약|양산', re.I)
 NON_MANUFACTURING = re.compile(r'\bresearch labs?\b|\bresearch and development\b|\bR&D\b|\bbuybacks?\b|\bdividends?\b|연구소|자사주|배당', re.I)
 
 
@@ -109,6 +109,7 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_ev
     now, assumed = parse_timestamp(now)
     report = {'status': 'ok', 'score_effect': 0, 'recommendation_eligible': False,
               'as_of': now.isoformat() if now else None, 'paths': [], 'excluded': {},
+              'event_assessments': [],
               'us_events_checked': 0, 'policy': 'reviewed_relationship_not_new_order'}
     book = evidence if evidence is not None else load_supply_chain_evidence()
     if not now or assumed or not isinstance(book, dict) or book.get('schema_version') != 1:
@@ -143,6 +144,10 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_ev
         if not us_articles:
             continue
         report['us_events_checked'] += 1
+        path_start = len(report['paths'])
+        excluded_before = excluded.copy()
+        assessed_actors = set()
+        spending_found = False
         for article in us_articles:
             stamp, _ = parse_timestamp(article.get('published_at'), article.get('source', ''))
             link = canonical_link(article.get('link'))
@@ -156,12 +161,14 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_ev
             if not SPENDING.search(text):
                 excluded['no_spending_or_production_evidence'] += 1
                 continue
+            spending_found = True
             for start, entity in entities.items():
                 if entity.get('country') != 'US':
                     continue
                 actor_text = _actor(entity, article)
                 if not actor_text:
                     continue
+                assessed_actors.add(start)
                 if NON_MANUFACTURING.search(actor_text):
                     excluded['non_manufacturing_spending'] += 1
                     continue
@@ -209,5 +216,32 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_ev
                             })
                         visit(target, route, nodes + [target])
                 visit(start, [], [start])
+        new_paths = report['paths'][path_start:]
+        orders_verified = any(p['order_review']['documented_order_confirmed'] for p in new_paths)
+        if new_paths:
+            stage = ('documented_order_event_unattributed' if orders_verified
+                     else 'documented_relationship_only')
+            missing = ([] if orders_verified else ['matching_individual_order_primary_document']) + [
+                'current_amendment_and_cancellation_review',
+                'specific_us_event_order_allocation', 'actual_delivery_and_acceptance',
+                'contract_specific_revenue_recognition', 'contract_specific_profit_effect']
+        else:
+            invalid = excluded - excluded_before
+            stage = ('event_input_unverified' if not spending_found and
+                     any(invalid[k] for k in ('invalid_event_timestamp_or_link', 'not_real_event')) else
+                     'no_spending_evidence' if not spending_found else
+                     'no_reviewed_spending_actor' if not assessed_actors else
+                     'no_verified_listed_supplier_path')
+            missing = ['reviewed_actor_product_supplier_path', 'matching_individual_order_primary_document',
+                       'specific_us_event_order_allocation', 'actual_delivery_and_acceptance',
+                       'contract_specific_revenue_recognition', 'contract_specific_profit_effect']
+        report['event_assessments'].append({
+            'event_key': event.get('event_key', ''), 'event_title': event.get('event_title', ''),
+            'stage': stage, 'reviewed_spending_actors': sorted(assessed_actors),
+            'listed_supplier_codes': sorted({p['code'] for p in new_paths}),
+            'missing_evidence': missing, 'excluded': dict(excluded - excluded_before),
+            'score_effect': 0, 'recommendation_eligible': False,
+            'note': '미확인은 관계·주문 부재를 뜻하지 않음. 계약금액·납기일만으로 매출·이익을 확정하지 않음.',
+        })
     report['excluded'] = dict(excluded)
     return report
