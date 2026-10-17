@@ -60,9 +60,14 @@
         "date": "2026-10-16",
         "price": 19760.0,
         "return": -1.69
+      },
+      {
+        "date": "2026-10-17",
+        "price": 19660.0,
+        "return": -2.19
       }
     ],
-    "last_updated": "2026-10-16",
+    "last_updated": "2026-10-17",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-10-13",
