@@ -194,6 +194,29 @@ def has_contract_cancellation_context(text):
                for pattern in patterns)
 
 
+def has_direct_us_rate_decision_title(title):
+    """요약의 배경 언급을 빌리지 않고 제목에 직접 드러난 미국 금리 결정만 허용."""
+    title = normalize_text(title)
+    title = re.sub(r'^(?:\[(?:속보|breaking)\]\s*|breaking\s*:\s*)', '', title)
+    if '?' in title or has_speculative_context(title) or re.search(
+        r'\b(?:expects?|expected|predicts?|bets?|previously|last year|last month|'
+        r'not|never|denies|denied|didn.t|won.t|would|if)\b|지난|과거|하지 않|안 했|부인|철회|취소', title
+    ):
+        return False
+    english = re.search(
+        r'^(?:the\s+)?(?:federal reserve|fed|fomc)\s+(?:has\s+)?'
+        r'(?:cuts?\s+(?:interest\s+)?rates\b|raises?\s+(?:interest\s+)?rates\b|'
+        r'(?:holds?|keeps?)\s+(?:interest\s+)?rates\s+(?:steady|unchanged)\b)', title
+    )
+    korean = re.search(
+        r'^(?:(?:미국|美|미)\s*,?\s*|(?:(?:미국|미)\s*)?'
+        r'(?:연준|연방준비제도|fomc)(?:은|이)?\s*,?\s*)'
+        r'(?:기준)?금리\s*(?:를\s*)?(?:[0-9.,%pＰ포인트]+\s*)?'
+        r'(?:인하|인상|동결)(?:\b|했다|한다|결정|을|에|…|·|,|$)', title
+    )
+    return bool(english or korean)
+
+
 def earnings_context_without_benchmark(title):
     """실적 제목에서 결과 비교인 '예상 상회/하회'만 전망 검사에서 분리.
 
@@ -845,43 +868,15 @@ def understand_event(article):
         )
     )
 
-    if korean_us_rate_decision:
+    if korean_us_rate_decision and has_direct_us_rate_decision_title(title):
         return {
             "is_real_event": True,
             "event_type": "FOMC",
             "reason": "미국 기준금리 실제 결정 확인"
         }
-    fed_subject_patterns = [
-        "federal reserve",
-        "the fed",
-        "fed ",
-        "fed's",
-        "fomc",
-        "연준",
-        "미 연준",
-        "미국 연준",
-        "연방준비제도",
-    ]
-
-    fed_action_patterns = [
-        "cuts interest rates",
-        "cut interest rates",
-        "raises interest rates",
-        "raise interest rates",
-        "rate cut",
-        "rate hike",
-        "cuts rates",
-        "raises rates",
-        "금리 인하",
-        "금리 인상",
-        "기준금리 인하",
-        "기준금리 인상",
-    ]
-
-    if (
-        contains_any(text, fed_subject_patterns)
-        and contains_any(text, fed_action_patterns)
-    ):
+    # 제목의 직접 결정이 없으면 FOMC 경로만 건너뛴다.
+    # 요약에 연준 배경이 있어도 제목의 별도 기업 계약·투자 사건은 계속 판정한다.
+    if has_direct_us_rate_decision_title(title):
         # -------------------------------------------------
         # FOMC 후속 시장반응 기사 제외
         #
