@@ -145,6 +145,23 @@ def review_supply_orders(buyer, supplier, context, event_at, entities, as_of, ev
                                         else 'retrospective_review')
         document['order_timing'] = ('predates_event' if date.fromisoformat(order['ordered_on']) < stamp.date()
                                     else 'same_day_or_later_not_causal_proof')
+        # 계약서상 예정 납기일은 실제 납품·검수·매출 인식의 증거가 아니다.
+        # 미검색 정정/취소 이력까지 현재 유효성 확인으로 승격하지 않는다.
+        document['delivery_period_state'] = (
+            'scheduled_end_passed_completion_unverified'
+            if date.fromisoformat(order['delivery_end_on']) < now.astimezone(SEOUL).date()
+            else 'within_scheduled_period_completion_unverified')
+        document['delivery_completion_confirmed'] = False
+        document['revenue_recognition_confirmed'] = False
+        document['profit_effect_confirmed'] = False
+        document['revision_search_complete'] = False
+        document['missing_evidence'] = [
+            'current_amendment_and_cancellation_review',
+            'specific_us_event_order_allocation',
+            'actual_delivery_and_acceptance',
+            'contract_specific_revenue_recognition',
+            'contract_specific_profit_effect',
+        ]
         # 원문에 사건별 배분 근거가 없는 계약을 전사 CAPEX/다른 고객 주문에 귀속하지 않는다.
         document['event_order_attribution_confirmed'] = False
         document['score_effect'] = 0
