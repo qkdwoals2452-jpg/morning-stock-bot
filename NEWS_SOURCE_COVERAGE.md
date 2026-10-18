@@ -41,3 +41,15 @@ Fed·BLS·SEC 공식 자료 수집은 유지한다. 미국 기업만의 기사 �
 - requests의 timeout은 전체 실행 시간 상한이 아니다. DNS·리다이렉트·분할 응답 등에 따라 총 소요 시간은 달라진다.
 - 직접 피드 오류, 대체 피드 HTTP 성공/빈 응답/오류를 별도 진단한다. 빈 대체 피드를 Nasdaq 기사 확보 성공으로 간주하지 않는다. 검색 범위·최근 36시간 필터·Nasdaq 발행사 확인은 유지한다.
 - 로컬 읽기 전용 점검에서는 직접 피드 3.00초 시간초과, 검색 인덱스도 14.41초 시간초과였다. 이 결과는 이 환경의 관측이며 Nasdaq 전체 서비스 장애나 복구를 의미하지 않는다. GitHub CI의 실수집 결과를 별도로 확인한다.
+
+
+### Nasdaq 정식 재배포 JSON 연결 준비 (2026-10-19)
+
+- 직접 Technology/Stocks RSS와 공개 JSON 뉴스 요청은 이 GitHub 환경에서 정상 기사 응답을 확보하지 못했다. 공개 Feeder 목록에서는 Nasdaq 기사 제목·원문 링크를 읽었고 Nasdaq 원문에서 10/18 발행을 확인했지만, 공개 목록은 상대 시각뿐이어서 정밀한 최근 36시간 집계에 사용하지 않는다.
+- Feeder 공식 Professional RSS/JSON 내보내기는 원문 URL·제목·date_published·summary를 제공한다. 공식 문서: https://feeder.co/help/rss/how-to-export-your-posts-as-rss-and-json-feeds/ 및 https://feeder.co/help/account/automation/feeder-api-and-integrations/ . Professional은 2026-10-19 확인 시 월 결제 $19.99/사용자, 연 결제 $179.88/사용자. 가입·결제·계정 연결은 미수행.
+- NASDAQ_SYNDICATED_FEED_URL에 정식 JSON 내보내기 주소를 설정하면 우선 읽는다. HTTPS Feeder 호스트만 요청하며 리다이렉트는 따라가지 않는다. 원문은 HTTPS Nasdaq 도메인의 /articles/ 경로, 발행시각은 시간대가 있는 절대 시각만 인정한다. 날짜 누락·상대 시각·시세 페이지·타 도메인·중복 원문 링크를 제외한다. 과거·미래 글은 최근 뉴스에 포함하지 않는다.
+- 출처는 Nasdaq_Syndicated, 수집 경로는 feeder_json_export로 명시한다. 원래 Technology RSS의 범위와 동일하다고 주장하지 않는다. 내보내기에는 Nasdaq 뉴스 피드만 담고 AI 생성 피드·요약은 혼합하지 않는다. 기사가 수집되어도 확정 사건·수혜 기업·추천 판정은 기존 검증을 그대로 거친다.
+- 환경변수가 없으면 기존 경로만 쓴다. 정식 제공 피드가 실패하거나 최근 기사가 없으면 그 진단을 남기고 기존 경로로 돌아간다. 내보내기 주소는 로그·저장소에 기록하지 않고 GitHub Secret으로만 설정한다.
+- 단위 테스트는 문서에 따른 합성 JSON으로 검증한다. 실제 계정의 내보내기 URL을 아직 확보하지 않았으므로 최신 기사 실수집·예약 운영 복구는 미검증이다. 유료 서비스 승인과 계정 연결 후 원문 날짜 대조 및 실제 봇 실행이 필요하다.
+
+- 비용 승인 전 권장 검증: 공식 안내 https://feeder.co/help/account/free-trials-and-discounts/ 에 따르면 지원팀에 Professional 체험을 요청할 수 있으며 카드 등록·자동 결제가 없고 종료 시 Free로 돌아간다. 계정 생성·지원팀 요청 메일은 별도 승인 전 미수행. 정식 피드를 받아 실제 기사/발행시각 대조에 성공한 다음에만 계속 사용 비용을 판단한다.
