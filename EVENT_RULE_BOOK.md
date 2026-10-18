@@ -277,6 +277,20 @@ Preview
 
 # ORION의 원칙
 
+2026-10-19 분야 힌트 부분 문자열 오탐 수정:
+
+- `money_flow`는 제목의 분야 힌트이며 지출·수혜의 원자료 증명이 아니다.
+  `gains`의 ai, `segment`의 gm, `shipping`의 ppi, `normal`의 nor 조각으로
+  AI·차량용 반도체·금리 분야를 생성하지 않도록 영문 단어 경계를 확인한다.
+- 명시적 AI/GPU/HBM/GM/NOR/CPI/PPI/Fed와 한국어 힌트는 유지한다.
+  HBM2/2E/3/3E/4, GPUs, tariffs, data-center(s) 등 명시적인 제품·복수형은
+  허용한다. Federal Reserve는 fed 부분 문자열 대신 명시적 구문으로 보존한다.
+- OpenAI 같은 기업명 속 AI만으로 분야를 확정하지 않는다. 같은 제목에
+  별도의 AI 표현이 있으면 해당 힌트는 유지한다.
+- 기록된 Travelers 실적 제목과 합성 요약 검사에서 EARNINGS 70점은 유지하고
+  잘못 붙었던 AI 힌트만 제거한다. 사건 판정·점수·공급망 근거·추천 조건을
+  완화하지 않으며 기존 이력/백테스트를 다시 쓰지 않는다.
+
 2026-10-17 FOMC 오탐 후속 수정:
 
 - 실행 #370의 `Pimco’s Balls Sees Good Value in Long End of Yield Curve`는
