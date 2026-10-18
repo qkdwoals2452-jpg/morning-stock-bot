@@ -73,7 +73,7 @@ class SupplyChainBridgeTests(unittest.TestCase):
         r = self.report(article(published_at='2026-10-13T07:30:00+09:00'),
                         now=datetime.fromisoformat('2026-10-13T08:00:00+09:00'))
         self.assertFalse(r['paths'])
-        self.assertEqual(r['excluded']['unavailable_at_assessment'], 3)
+        self.assertEqual(r['excluded']['unavailable_at_assessment'], len(self.book['edges']))
 
     def test_later_review_is_explicitly_retrospective_not_historical_signal(self):
         r = self.report(article(published_at='2026-09-30T20:00:00+00:00'))

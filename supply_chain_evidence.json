@@ -5,7 +5,10 @@
     "micron": {"name": "Micron", "aliases": ["Micron", "Micron Technology", "Micron Technology, Inc.", "마이크론"], "country": "US", "official_hosts": ["investors.micron.com"]},
     "sk_hynix": {"name": "SK하이닉스", "aliases": ["SK hynix", "SK하이닉스"], "country": "KR", "code": "000660"},
     "hanmi": {"name": "한미반도체", "aliases": ["HANMI Semiconductor", "한미반도체"], "country": "KR", "code": "042700"},
-    "samsung_electro_mechanics": {"name": "삼성전기", "aliases": ["삼성전기", "SAMSUNG ELECTRO-MECHANICS CO., LTD."], "country": "KR", "code": "009150"}
+    "samsung_electro_mechanics": {"name": "삼성전기", "aliases": ["삼성전기", "SAMSUNG ELECTRO-MECHANICS CO., LTD."], "country": "KR", "code": "009150"},
+    "bloom_energy": {"name": "Bloom Energy", "aliases": ["Bloom Energy", "Bloom Energy Corporation", "블룸에너지"], "country": "US"},
+    "ls_electric_america": {"name": "LS ELECTRIC AMERICA", "aliases": ["LS ELECTRIC AMERICA", "LS ELECTRIC AMERICA Inc."], "country": "US"},
+    "ls_electric": {"name": "LS ELECTRIC", "aliases": ["LS ELECTRIC", "엘에스일렉트릭", "엘에스일렉트릭 주식회사"], "country": "KR", "code": "010120"}
   },
   "edges": [
     {
@@ -37,6 +40,28 @@
       "reviewed_at": "2026-10-14T07:04:59+09:00", "review_method": "manual_primary_source",
       "evidence_summary": "NVIDIA 공식 발표의 다년 메모리 기술 협약 및 메모리 공급 지원 관계. 주문 수량·금액·국내 장비사 매출 귀속은 제시되지 않음.",
       "section": "News Summary / multiyear agreement"
+    },
+    {
+      "id": "bloom_lsamerica_fuelcell_project_20260514",
+      "buyer": "bloom_energy", "supplier": "ls_electric_america", "relationship": "REPORTED_CUSTOMER",
+      "context_terms": ["fuel cell", "fuel-cell", "SOFC", "연료전지"],
+      "source_url": "https://kind.krx.co.kr/external/2026/05/14/000304/20260514000649/91370.htm",
+      "source_kind": "REGULATORY_FILING", "published_on": "2026-05-14", "relationship_as_of": "2026-04-28",
+      "reviewed_at": "2026-10-19T06:48:03+09:00", "review_method": "manual_primary_source",
+      "evidence_scope": "historical_individual_project_not_ongoing_or_exclusive_supply",
+      "evidence_summary": "LS의 자회사 주요경영사항 정정공시 9항은 Bloom Energy 발주 북미 데이터센터 연료전지 전력설비 프로젝트를 LS ELECTRIC AMERICA가 수주했다고 명시한다. 이번 관찰 사건의 신규 주문·매출 귀속이나 관계의 현재 지속을 확정하지 않는다.",
+      "section": "9. 기타 투자판단과 관련한 중요사항 / Bloom Energy 발주 프로젝트"
+    },
+    {
+      "id": "lsamerica_lselectric_distribution_project_20260514",
+      "buyer": "ls_electric_america", "supplier": "ls_electric", "relationship": "REPORTED_CUSTOMER",
+      "context_terms": ["fuel cell", "fuel-cell", "SOFC", "연료전지"],
+      "source_url": "https://kind.krx.co.kr/external/2026/05/14/000304/20260514000649/91370.htm",
+      "source_kind": "REGULATORY_FILING", "published_on": "2026-05-14", "relationship_as_of": "2026-04-28",
+      "reviewed_at": "2026-10-19T06:48:03+09:00", "review_method": "manual_primary_source",
+      "evidence_scope": "historical_individual_project_not_ongoing_or_exclusive_supply",
+      "evidence_summary": "동일 공시는 엘에스일렉트릭을 공급 주체, 미국 자회사 LS ELECTRIC AMERICA Inc.를 계약상대로 명시하고 수배전반·배전변압기 공급을 설명한다. Bloom Energy와 한국 상장사 간 직접 계약으로 축약하지 않는다. 공시상 계약금액은 매출 인식액·이익이 아니며 예정 납기는 실제 납품 완료 증거가 아니다.",
+      "section": "자회사 주요경영사항 / 3. 계약상대 / 9. 수배전반·배전변압기 공급"
     }
   ]
 }
