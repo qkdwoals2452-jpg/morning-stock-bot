@@ -31,6 +31,18 @@ jobs:
           from news_engine import filter_recent_news
           recent_nasdaq = filter_recent_news(nasdaq_articles, hours=36)
           print("NASDAQ_RECOVERY:", {"parsed": len(nasdaq_articles), "recent": len(recent_nasdaq), "sample": [{"title": a["title"], "published_at": a["published_at"], "source": a["source"]} for a in recent_nasdaq[:12]]})
+          # 읽기 전용 조사: 다른 공개 색인의 기사 링크/날짜를 비교한다.
+          import requests, xml.etree.ElementTree as ET
+          from urllib.parse import urlencode
+          for label, url in [("BingNasdaq", "https://www.bing.com/news/search?" + urlencode({"q": "site:nasdaq.com/articles", "format": "rss"})), ("NasdaqStocks", "https://www.nasdaq.com/feed/rssoutbound?category=Stocks")]:
+              try:
+                  response = requests.get(url, timeout=(3, 5))
+                  print("RECOVERY_PROBE", label, response.status_code)
+                  if response.status_code == 200:
+                      root = ET.fromstring(response.content)
+                      print("RECOVERY_PROBE_ITEMS", label, [{"title": i.findtext("title"), "link": i.findtext("link"), "date": i.findtext("pubDate")} for i in root.findall(".//item")[:8]])
+              except Exception as error:
+                  print("RECOVERY_PROBE_ERROR", label, type(error).__name__)
           assert recent_nasdaq, "Nasdaq recovery unverified: no recent publisher-validated articles"
           parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
           # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.
