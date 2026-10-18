@@ -151,14 +151,43 @@ class NewsSourceTests(unittest.TestCase):
 
     def test_nasdaq_timeout_uses_named_index_fallback(self):
         diagnostics = {}
-        with patch('news_engine.requests.get', side_effect=[requests.ReadTimeout()] * 2 + [response(rss())]) as get, patch('news_engine.time.sleep'):
+        with patch('news_engine.requests.get', side_effect=[requests.ReadTimeout(), response(rss())]) as get, patch('news_engine.time.sleep'):
             articles = news.get_nasdaq_news(diagnostics)
         self.assertEqual(articles[0]['source'], 'Nasdaq_GoogleRSS')
         self.assertEqual(diagnostics['Nasdaq_Tech']['status'], 'error')
         self.assertEqual(diagnostics['Nasdaq_GoogleRSS']['status'], 'ok')
+        self.assertEqual(get.call_count, 2)
+        self.assertEqual(get.call_args_list[0].kwargs['timeout'], (3, 5))
+        self.assertEqual(get.call_args_list[1].kwargs['timeout'], (5, 15))
+        self.assertEqual(diagnostics['Nasdaq_Tech']['attempts'], 1)
         self.assertIn('news.google.com/rss/search?', get.call_args.args[0])
         from urllib.parse import parse_qs, urlsplit
         self.assertIn('site:nasdaq.com', parse_qs(urlsplit(get.call_args.args[0]).query)['q'][0])
+
+    def test_nasdaq_connection_failure_does_not_retry_direct_feed(self):
+        diagnostics = {}
+        with patch('news_engine.requests.get', side_effect=[requests.ConnectTimeout(), response(rss())]) as get, patch('news_engine.time.sleep') as sleep:
+            articles = news.get_nasdaq_news(diagnostics)
+        self.assertEqual(len(articles), 1)
+        self.assertEqual(get.call_count, 2)
+        self.assertEqual(diagnostics['Nasdaq_Tech']['error'], 'connect_timeout')
+        sleep.assert_not_called()
+
+    def test_nasdaq_server_failure_switches_to_index(self):
+        diagnostics = {}
+        with patch('news_engine.requests.get', side_effect=[response('', 503), response(rss())]) as get, patch('news_engine.time.sleep') as sleep:
+            articles = news.get_nasdaq_news(diagnostics)
+        self.assertEqual(len(articles), 1)
+        self.assertEqual(get.call_count, 2)
+        self.assertEqual(diagnostics['Nasdaq_Tech']['http_status'], 503)
+        sleep.assert_not_called()
+
+    def test_nasdaq_timeout_and_empty_index_remain_distinct(self):
+        diagnostics = {}
+        with patch('news_engine.requests.get', side_effect=[requests.ReadTimeout(), response('<rss><channel/></rss>')]):
+            self.assertEqual(news.get_nasdaq_news(diagnostics), [])
+        self.assertEqual(diagnostics['Nasdaq_Tech']['status'], 'error')
+        self.assertEqual(diagnostics['Nasdaq_GoogleRSS']['status'], 'empty_feed')
 
     def test_nasdaq_fallback_rejects_other_publishers(self):
         diagnostics = {}
