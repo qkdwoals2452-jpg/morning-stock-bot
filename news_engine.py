@@ -1,4 +1,5 @@
 import requests
+import os
 import xml.etree.ElementTree as ET
 import re
 import html
@@ -350,8 +351,86 @@ def filter_recent_news(articles, hours=36):
 
     return result
 
+def get_nasdaq_syndicated_news(url, diagnostics=None):
+    """정식으로 내보낸 Feeder JSON Feed를 읽되 원문 URL·절대 시각을 검증한다."""
+    name = "Nasdaq_Syndicated"
+    started = time.monotonic()
+    articles, received, status, error = [], 0, None, None
+    try:
+        endpoint = urlsplit(url)
+        host = endpoint.hostname or ""
+        if (endpoint.scheme != "https" or endpoint.username or endpoint.password
+                or endpoint.port not in (None, 443)
+                or not (host == "feeder.co" or host.endswith(".feeder.co"))):
+            raise ValueError("invalid_export_host")
+        # 외부 리다이렉트로 개인 내보내기 주소가 전달되지 않도록 자동 이동 금지.
+        response = requests.get(url, headers=HEADERS, timeout=NASDAQ_TIMEOUT,
+                                allow_redirects=False)
+        try:
+            status = response.status_code
+            if status != 200:
+                raise ValueError("export_http_error")
+            payload = response.json()
+        finally:
+            response.close()
+        if not isinstance(payload, dict) or payload.get("version") not in {
+                "https://jsonfeed.org/version/1", "https://jsonfeed.org/version/1.1"}:
+            raise ValueError("invalid_json_feed")
+        items = payload.get("items")
+        if not isinstance(items, list):
+            raise ValueError("invalid_items")
+        received = len(items)
+        seen = set()
+        for item in items:
+            if not isinstance(item, dict):
+                continue
+            title, link, published = (item.get(k) for k in ("title", "url", "date_published"))
+            if not all(isinstance(v, str) and v.strip() for v in (title, link, published)):
+                continue
+            try:
+                parsed = urlsplit(link)
+                article_port = parsed.port
+            except ValueError:
+                continue
+            if (parsed.scheme != "https" or parsed.username or parsed.password
+                    or article_port not in (None, 443)
+                    or not (parsed.hostname == "nasdaq.com" or (parsed.hostname or "").endswith(".nasdaq.com"))
+                    or not parsed.path.startswith("/articles/") or not parsed.path[len("/articles/"):].strip("/")):
+                continue
+            try:
+                date = datetime.fromisoformat(published.replace("Z", "+00:00"))
+                if date.tzinfo is None:
+                    continue
+            except ValueError:
+                continue
+            if link in seen:
+                continue
+            seen.add(link)
+            summary = item.get("summary", "")
+            summary = re.sub(r"<[^>]+>", " ", html.unescape(summary)) if isinstance(summary, str) else ""
+            articles.append({"title": title.strip(), "summary": re.sub(r"\s+", " ", summary).strip(),
+                             "link": link, "market": "US", "source": name,
+                             "origin_publisher": "", "published_at": date.isoformat(),
+                             "collection_route": "feeder_json_export"})
+    except (ValueError, TypeError) as exc:
+        error = str(exc) if str(exc) in {"invalid_export_host", "export_http_error", "invalid_json_feed", "invalid_items"} else "invalid_export"
+    except requests.RequestException:
+        error = "export_request_error"
+    except Exception:
+        error = "export_parse_error"
+    _report_feed(name, articles, started, 1 if status is not None or error != "invalid_export_host" else 0,
+                 status, diagnostics, error, received)
+    return articles
+
+
 def get_nasdaq_news(diagnostics=None):
     reports = diagnostics if diagnostics is not None else {}
+    syndicated_url = os.getenv("NASDAQ_SYNDICATED_FEED_URL", "").strip()
+    if syndicated_url:
+        syndicated = get_nasdaq_syndicated_news(syndicated_url, reports)
+        if filter_recent_news(syndicated, hours=36):
+            return syndicated
+        # 제공 피드의 장애·과거 기사 상태를 남기고 기존 직접/검색 경로로 돌아간다.
     articles = parse_rss(
         "https://www.nasdaq.com/feed/rssoutbound?category=Technology",
         "US", "Nasdaq_Tech", diagnostics=reports,
@@ -361,9 +440,7 @@ def get_nasdaq_news(diagnostics=None):
         return articles
     # 직접 피드 장애 시 Nasdaq 기사 검색 인덱스만 사용한다.
     # 원본 피드와 범위/수집 경로가 다르므로 별도 출처로 기록한다.
-    # 기사 경로는 유지하고 복합 기술 키워드의 교집합만 제거한다.
-    # 발행사 호스트 확인 및 최근 36시간 필터는 그대로 적용한다.
-    query = urlencode({"q": 'site:nasdaq.com/articles when:2d',
+    query = urlencode({"q": 'site:nasdaq.com/articles (technology OR semiconductor OR "data center" OR AI) when:2d',
                        "hl": "en-US", "gl": "US", "ceid": "US:en"})
     reports["Nasdaq_Tech"]["fallback_source"] = "Nasdaq_GoogleRSS"
     return parse_rss("https://news.google.com/rss/search?" + query,

@@ -61,6 +61,8 @@ jobs:
           key: orion-corp-code-v1-${{ runner.os }}-${{ steps.corp-cache-key.outputs.week }}
 
       - name: 봇 실행
+        env:
+          NASDAQ_SYNDICATED_FEED_URL: ${{ secrets.NASDAQ_SYNDICATED_FEED_URL }}
         run: python main.py
 
       # 다음 예약 실행에서도 추천/가격 이력을 이어서 사용한다.

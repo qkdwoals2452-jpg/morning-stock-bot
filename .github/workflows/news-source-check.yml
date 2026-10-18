@@ -4,7 +4,7 @@ on:
   push:
     branches: [orion-news-source-fix]
   pull_request:
-    paths: [news_engine.py, event_identity_engine.py, test_news_sources.py, test_major_media.py, .github/workflows/news-source-check.yml]
+    paths: [test_nasdaq_syndication.py, news_engine.py, event_identity_engine.py, test_news_sources.py, test_major_media.py, .github/workflows/news-source-check.yml]
   workflow_dispatch:
 
 permissions:
@@ -19,44 +19,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - run: pip install requests pandas beautifulsoup4
+      - run: pip install requests pandas
       - name: Feed failure handling and existing ORION regressions
-        run: python -m unittest -v test_news_sources test_major_media test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
+        run: python -m unittest -v test_nasdaq_syndication test_news_sources test_major_media test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
       - name: Live Nasdaq RSS and SEC Atom diagnostics
         run: |
           python - <<'PY'
           from news_engine import get_nasdaq_news, parse_atom
           diagnostics = {}
-          nasdaq_articles = get_nasdaq_news(diagnostics)
-          from news_engine import filter_recent_news
-          recent_nasdaq = filter_recent_news(nasdaq_articles, hours=36)
-          print("NASDAQ_RECOVERY:", {"parsed": len(nasdaq_articles), "recent": len(recent_nasdaq), "sample": [{"title": a["title"], "published_at": a["published_at"], "source": a["source"]} for a in recent_nasdaq[:12]]})
-          import requests, re
-          from bs4 import BeautifulSoup
-          from news_engine import HEADERS
-          try:
-              response = requests.get("https://feeder.co/ja/discover/fc264b9a53/nasdaq-com-feed-rssoutbound-symbol-nvda", headers=HEADERS, timeout=(3, 8))
-              print("PUBLIC_READER_PROBE", response.status_code, len(response.content))
-              if response.status_code == 200:
-                  soup = BeautifulSoup(response.content, "html.parser")
-                  print("PUBLIC_READER_TIMES", [{"attrs": t.attrs, "text": t.get_text()} for t in soup.find_all("time")[:5]])
-                  anchor = soup.find("a", href=re.compile(r"https://www[.]nasdaq[.]com/articles/"))
-                  if anchor:
-                      print("PUBLIC_READER_ITEM_HTML", str(anchor.parent.parent.parent)[:8000])
-                  print("PUBLIC_READER_DATE_FIELDS", re.findall(r".{0,100}(?:datePublished|publishedAt|published_at|datetime).{0,140}", response.text)[:8])
-          except Exception as error:
-              print("PUBLIC_READER_ERROR", type(error).__name__)
-          try:
-              article = requests.get("https://www.nasdaq.com/articles/5-trillion-club-which-better-stock-own-apple-or-nvidia", headers=HEADERS, timeout=(3, 5))
-              print("ORIGIN_ARTICLE_PROBE", article.status_code, len(article.content))
-              if article.status_code == 200:
-                  origin = BeautifulSoup(article.content, "html.parser")
-                  print("ORIGIN_ARTICLE_DATES", [t.attrs for t in origin.find_all("meta") if any(k in str(t).lower() for k in ["published", "created", "modified"])])
-                  print("ORIGIN_ARTICLE_TIME", [str(t)[:500] for t in origin.find_all("time")])
-                  print("ORIGIN_ARTICLE_JSON_DATES", re.findall(r".{0,50}datePublished.{0,100}", article.text)[:3])
-          except Exception as error:
-              print("ORIGIN_ARTICLE_ERROR", type(error).__name__)
-          assert recent_nasdaq, "Nasdaq recovery unverified: no recent publisher-validated articles"
+          get_nasdaq_news(diagnostics)
           parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
           # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.
           nasdaq_source = diagnostics['Nasdaq_Tech'].get('fallback_source', 'Nasdaq_Tech')
@@ -64,4 +35,3 @@ jobs:
               assert diagnostics[source]['status'] != 'error', (source, diagnostics[source])
           print('LIVE FEED PASS:', diagnostics)
           PY
-
