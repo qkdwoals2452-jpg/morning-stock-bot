@@ -46,6 +46,16 @@ jobs:
                   print("PUBLIC_READER_DATE_FIELDS", re.findall(r".{0,100}(?:datePublished|publishedAt|published_at|datetime).{0,140}", response.text)[:8])
           except Exception as error:
               print("PUBLIC_READER_ERROR", type(error).__name__)
+          try:
+              article = requests.get("https://www.nasdaq.com/articles/5-trillion-club-which-better-stock-own-apple-or-nvidia", headers=HEADERS, timeout=(3, 5))
+              print("ORIGIN_ARTICLE_PROBE", article.status_code, len(article.content))
+              if article.status_code == 200:
+                  origin = BeautifulSoup(article.content, "html.parser")
+                  print("ORIGIN_ARTICLE_DATES", [t.attrs for t in origin.find_all("meta") if any(k in str(t).lower() for k in ["published", "created", "modified"])])
+                  print("ORIGIN_ARTICLE_TIME", [str(t)[:500] for t in origin.find_all("time")])
+                  print("ORIGIN_ARTICLE_JSON_DATES", re.findall(r".{0,50}datePublished.{0,100}", article.text)[:3])
+          except Exception as error:
+              print("ORIGIN_ARTICLE_ERROR", type(error).__name__)
           assert recent_nasdaq, "Nasdaq recovery unverified: no recent publisher-validated articles"
           parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
           # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.
