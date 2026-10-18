@@ -1294,7 +1294,8 @@ def merge_same_events(news, decisions=None):
 
 
 def extract_money_flow(event):
-    title = event.get("event_title", "").lower()
+    # 이 값은 제목의 분야 힌트이며 실제 지출/수혜 증명은 아니다.
+    title = str(event.get("event_title", "") or "").lower()
     flows = []
 
     mapping = {
@@ -1311,6 +1312,7 @@ def extract_money_flow(event):
         "ufs": ["차량용 메모리"],
         "power": ["전력", "변압기"],
         "fed": ["금리", "환율", "은행"],
+        "federal reserve": ["금리", "환율", "은행"],
         "cpi": ["금리", "환율"],
         "ppi": ["금리", "환율"],
         "tariff": ["관세", "수출입"],
@@ -1325,7 +1327,18 @@ def extract_money_flow(event):
     }
 
     for key, values in mapping.items():
-        if key in title:
+        if re.search(r'[a-z]', key):
+            # gains→AI, segment→GM, shipping→PPI, normal→NOR 등 차단.
+            # AI-powered/AI반도체는 허용하되 OpenAI 같은 기업명 안의 AI는 빌리지 않는다.
+            pattern = re.escape(key).replace(r'\ ', r'[\s-]+')
+            if key == 'hbm':
+                pattern = r'hbm(?:[234]e?)?'
+            elif key in {'gpu', 'tariff', 'datacenter', 'data center'}:
+                pattern += 's?'
+            matched = re.search(r'(?<![a-z0-9])' + pattern + r'(?![a-z0-9])', title)
+        else:
+            matched = key in title
+        if matched:
             for v in values:
                 if v not in flows:
                     flows.append(v)
