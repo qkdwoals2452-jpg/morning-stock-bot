@@ -36,7 +36,7 @@ jobs:
           from news_engine import HEADERS
           for protocol in ["--http1.1", "--http2"]:
               try:
-                  result = subprocess.run(["curl", protocol, "--compressed", "--connect-timeout", "3", "--max-time", "8", "--silent", "--show-error", "--user-agent", HEADERS["User-Agent"], "--write-out", "\\nCURL_META %{http_code} %{http_version} %{time_total}", "https://www.nasdaq.com/feed/rssoutbound?category=Technology"], capture_output=True, text=True, timeout=10)
+                  result = subprocess.run(["curl", protocol, "--compressed", "--connect-timeout", "3", "--max-time", "8", "--silent", "--show-error", "--write-out", "\\nCURL_META %{http_code} %{http_version} %{time_total}", "https://www.nasdaq.com/feed/rssoutbound?category=Technology"], capture_output=True, text=True, timeout=10)
                   body, _, meta = result.stdout.rpartition("CURL_META ")
                   print("PROTOCOL_PROBE", protocol, result.returncode, meta.strip())
                   if result.returncode == 0:
@@ -48,7 +48,7 @@ jobs:
           import httpx
           for compression in ["gzip, deflate", "identity"]:
               try:
-                  with httpx.Client(http2=True, headers={**HEADERS, "Accept-Encoding": compression}, timeout=httpx.Timeout(8, connect=3), follow_redirects=True) as client:
+                  with httpx.Client(http2=True, headers={"Accept-Encoding": compression}, timeout=httpx.Timeout(8, connect=3), follow_redirects=True) as client:
                       response = client.get("https://www.nasdaq.com/feed/rssoutbound?category=Technology")
                       print("HTTPX_PROBE", compression, response.status_code, response.http_version, len(response.content))
                       if response.status_code == 200:
