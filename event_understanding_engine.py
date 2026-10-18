@@ -217,6 +217,29 @@ def has_direct_us_rate_decision_title(title):
     return bool(english or korean)
 
 
+def has_direct_policy_action_title(title):
+    """정책 명사·배경 설명 대신 제목의 실제 발표/시행 행동을 요구한다."""
+    title = normalize_text(title)
+    if not title or '?' in title or '？' in title:
+        return False
+    if re.search(
+        r"\b(?:no sign of|no signs of|not|never|denies?|denied|may|might|could|would|"
+        r"considering|expected to|plans? to|threatens? to|last year|previously)\b|"
+        r"징후\s*없|부과하지|시행하지|검토|가능성|전망|예정|지난해|작년|여부", title
+    ):
+        return False
+    policy = r"(?:tariffs?|export (?:restrictions?|ban)|sanctions?)"
+    action = r"(?:imposes?|imposed|announces?|announced|raises?|raised|cuts?|cut|"
+    action += r"implements?|implemented|enacts?|enacted|lifts?|lifted)"
+    return bool(
+        re.search(r"\b" + action + r"\b.{0,60}\b" + policy + r"\b", title)
+        or re.search(r"\b" + policy + r"\b.{0,35}\b(?:takes? effect|took effect|"
+                     r"comes? into force|came into force|is imposed|are imposed)\b", title)
+        or re.search(r"(?:관세|수출\s*(?:규제|제한|금지)|제재).{0,25}"
+                     r"(?:부과|인상|인하|발표|시행|발효|해제|철회)", title)
+    )
+
+
 def earnings_context_without_benchmark(title):
     """실적 제목에서 결과 비교인 '예상 상회/하회'만 전망 검사에서 분리.
 
@@ -1113,7 +1136,7 @@ def understand_event(article):
         "수출 금지",
         "제재 발표",
     ]
-    if contains_any(text, policy_patterns):
+    if contains_any(title, policy_patterns) and has_direct_policy_action_title(title):
         policy_uncertain = contains_any(
 
             text,
@@ -1653,10 +1676,22 @@ def understand_event(article):
         "생산능력 확대",
     ]
 
-    if contains_any(text, capex_patterns):
+    # 요약의 사업 소개·자금 사용 계획만으로 제목을 CAPEX로 승격하지 않는다.
+    # 기존 주가반응 혼합 기사 예외는 요약에 실제 투자 발표가 있을 때만 유지한다.
+    capex_text = title
+    if confirmed_event_override:
+        for sentence in re.split(r"(?<=[.!?。])\s+|[\n;]", summary):
+            if re.search(
+                r"\b(?:announces?|announced|committed to invest)\b.{0,80}"
+                r"\b(?:investment|invest)\b|(?:투자|증설).{0,10}(?:결정|확정|완료)",
+                sentence,
+            ) and has_confirmed_event_inside_reaction(title, sentence):
+                capex_text += f" {sentence}"
+
+    if contains_any(capex_text, capex_patterns):
 
         # 향후 투자·증설 전망은 실제 신규 CAPEX 사건이 아니다.
-        if has_speculative_context(text):
+        if has_speculative_context(capex_text):
             return {
                 "is_real_event": False,
                 "event_type": "NO_EVENT",
@@ -1775,10 +1810,10 @@ def understand_event(article):
         r"\b(announces|announced|plans|planned|commits|committed)\b"
         r".{0,40}"
         r"\binvestment\b",
-        text
+        capex_text
     ):
 
-        if has_speculative_context(text):
+        if has_speculative_context(capex_text):
             return {
                 "is_real_event": False,
                 "event_type": "NO_EVENT",
