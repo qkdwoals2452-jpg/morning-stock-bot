@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - run: pip install requests pandas
+      - run: pip install requests pandas "httpx[http2]"
       - name: Feed failure handling and existing ORION regressions
         run: python -m unittest -v test_news_sources test_major_media test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
       - name: Live Nasdaq RSS and SEC Atom diagnostics
@@ -45,6 +45,18 @@ jobs:
                       print("PROTOCOL_ARTICLES", protocol, len(items), [{"title": i.findtext("title"), "date": i.findtext("pubDate"), "link": i.findtext("link")} for i in items[:3]])
               except Exception as error:
                   print("PROTOCOL_ERROR", protocol, type(error).__name__)
+          import httpx
+          for compression in ["gzip, deflate", "identity"]:
+              try:
+                  with httpx.Client(http2=True, headers={**HEADERS, "Accept-Encoding": compression}, timeout=httpx.Timeout(8, connect=3), follow_redirects=True) as client:
+                      response = client.get("https://www.nasdaq.com/feed/rssoutbound?category=Technology")
+                      print("HTTPX_PROBE", compression, response.status_code, response.http_version, len(response.content))
+                      if response.status_code == 200:
+                          root = ET.fromstring(response.content)
+                          items = root.findall(".//item")
+                          print("HTTPX_ARTICLES", len(items), [{"title": i.findtext("title"), "date": i.findtext("pubDate"), "link": i.findtext("link")} for i in items[:3]])
+              except Exception as error:
+                  print("HTTPX_ERROR", compression, type(error).__name__)
           assert recent_nasdaq, "Nasdaq recovery unverified: no recent publisher-validated articles"
           parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
           # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.
