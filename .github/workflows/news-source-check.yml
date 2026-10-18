@@ -34,7 +34,7 @@ jobs:
           # 읽기 전용 조사: 다른 공개 색인의 기사 링크/날짜를 비교한다.
           import requests, xml.etree.ElementTree as ET
           from urllib.parse import urlencode
-          for label, url in [("BingNasdaq", "https://www.bing.com/news/search?" + urlencode({"q": "site:nasdaq.com/articles", "format": "rss"})), ("NasdaqStocks", "https://www.nasdaq.com/feed/rssoutbound?category=Stocks")]:
+          for label, url in [("BingNasdaq", "https://www.bing.com/news/search?" + urlencode({"q": "site:nasdaq.com", "format": "rss", "qft": 'sortbydate="1"'})), ("NasdaqStocks", "https://www.nasdaq.com/feed/rssoutbound?category=Stocks")]:
               try:
                   response = requests.get(url, timeout=(3, 5))
                   print("RECOVERY_PROBE", label, response.status_code)
