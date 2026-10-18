@@ -30,7 +30,7 @@ jobs:
           nasdaq_articles = get_nasdaq_news(diagnostics)
           from news_engine import filter_recent_news
           recent_nasdaq = filter_recent_news(nasdaq_articles, hours=36)
-          print("NASDAQ_RECOVERY:", {"parsed": len(nasdaq_articles), "recent": len(recent_nasdaq), "sample": [{"title": a["title"], "published_at": a["published_at"], "source": a["source"]} for a in recent_nasdaq[:3]]})
+          print("NASDAQ_RECOVERY:", {"parsed": len(nasdaq_articles), "recent": len(recent_nasdaq), "sample": [{"title": a["title"], "published_at": a["published_at"], "source": a["source"]} for a in recent_nasdaq[:12]]})
           assert recent_nasdaq, "Nasdaq recovery unverified: no recent publisher-validated articles"
           parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
           # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.

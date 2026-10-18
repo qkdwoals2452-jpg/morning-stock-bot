@@ -361,9 +361,9 @@ def get_nasdaq_news(diagnostics=None):
         return articles
     # 직접 피드 장애 시 Nasdaq 기사 검색 인덱스만 사용한다.
     # 원본 피드와 범위/수집 경로가 다르므로 별도 출처로 기록한다.
-    # 검색식에서 URL 경로·복합 키워드 교집합을 제거하고 Nasdaq 도메인으로 조회한다.
+    # 기사 경로는 유지하고 복합 기술 키워드의 교집합만 제거한다.
     # 발행사 호스트 확인 및 최근 36시간 필터는 그대로 적용한다.
-    query = urlencode({"q": 'site:nasdaq.com when:2d',
+    query = urlencode({"q": 'site:nasdaq.com/articles when:2d',
                        "hl": "en-US", "gl": "US", "ceid": "US:en"})
     reports["Nasdaq_Tech"]["fallback_source"] = "Nasdaq_GoogleRSS"
     return parse_rss("https://news.google.com/rss/search?" + query,
