@@ -23,6 +23,10 @@ HEADERS = {
 FEED_TIMEOUT = (5, 15)
 FEED_MAX_ATTEMPTS = 2
 FEED_WORKERS = 4
+# 반복 시간초과가 발생한 선택 소스는 짧게 확인하고 검색 인덱스로 전환한다.
+# requests timeout은 전체 실행 시간 제한이 아닌 연결/소켓 읽기 대기 제한이다.
+NASDAQ_TIMEOUT = (3, 5)
+NASDAQ_MAX_ATTEMPTS = 1
 
 # 공개 RSS의 제목/요약만 수집한다. 유료 본문이나 차단된 피드를 우회하지 않는다.
 # 2026-10-16 로컬 읽기 전용 점검: 모두 HTTP 200 / 최근 36시간 기사 확인.
@@ -45,14 +49,14 @@ class FeedFetchError(Exception):
         self.http_status = http_status
 
 
-def _fetch_feed(url):
-    for attempt in range(1, FEED_MAX_ATTEMPTS + 1):
+def _fetch_feed(url, *, timeout=FEED_TIMEOUT, max_attempts=FEED_MAX_ATTEMPTS):
+    for attempt in range(1, max_attempts + 1):
         try:
-            res = requests.get(url, headers=HEADERS, timeout=FEED_TIMEOUT)
+            res = requests.get(url, headers=HEADERS, timeout=timeout)
         except (requests.Timeout, requests.ConnectionError) as exc:
             reason = ("connect_timeout" if isinstance(exc, requests.ConnectTimeout)
                       else "timeout" if isinstance(exc, requests.Timeout) else "connection_error")
-            if attempt < FEED_MAX_ATTEMPTS:
+            if attempt < max_attempts:
                 time.sleep(1)
                 continue
             raise FeedFetchError(reason, attempt) from exc
@@ -63,7 +67,7 @@ def _fetch_feed(url):
         if status in (403, 429):
             # 차단/요청 제한은 즉시 재시도하지 않는다.
             raise FeedFetchError("access_denied" if status == 403 else "rate_limited", attempt, status)
-        if 500 <= status < 600 and attempt < FEED_MAX_ATTEMPTS:
+        if 500 <= status < 600 and attempt < max_attempts:
             time.sleep(1)
             continue
         if not 200 <= status < 300:
@@ -93,7 +97,8 @@ def _report_feed(source_name, articles, started, attempts, http_status,
           f"| {report['elapsed_seconds']}초" + (f" | 사유={error}" if error else ""))
 
 
-def parse_rss(url, market, source_name, diagnostics=None):
+def parse_rss(url, market, source_name, diagnostics=None, *,
+              timeout=FEED_TIMEOUT, max_attempts=FEED_MAX_ATTEMPTS):
 
     articles = []
     started = time.monotonic()
@@ -101,7 +106,7 @@ def parse_rss(url, market, source_name, diagnostics=None):
 
     try:
 
-        root, attempts, http_status = _fetch_feed(url)
+        root, attempts, http_status = _fetch_feed(url, timeout=timeout, max_attempts=max_attempts)
 
         if root.tag != "rss":
             raise FeedFetchError("unexpected_rss_root", attempts, http_status)
@@ -350,6 +355,7 @@ def get_nasdaq_news(diagnostics=None):
     articles = parse_rss(
         "https://www.nasdaq.com/feed/rssoutbound?category=Technology",
         "US", "Nasdaq_Tech", diagnostics=reports,
+        timeout=NASDAQ_TIMEOUT, max_attempts=NASDAQ_MAX_ATTEMPTS,
     )
     if reports["Nasdaq_Tech"]["status"] != "error":
         return articles
