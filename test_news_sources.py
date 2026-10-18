@@ -162,7 +162,7 @@ class NewsSourceTests(unittest.TestCase):
         self.assertEqual(diagnostics['Nasdaq_Tech']['attempts'], 1)
         self.assertIn('news.google.com/rss/search?', get.call_args.args[0])
         from urllib.parse import parse_qs, urlsplit
-        self.assertIn('site:nasdaq.com', parse_qs(urlsplit(get.call_args.args[0]).query)['q'][0])
+        self.assertEqual(parse_qs(urlsplit(get.call_args.args[0]).query)['q'][0], 'site:nasdaq.com when:2d')
 
     def test_nasdaq_connection_failure_does_not_retry_direct_feed(self):
         diagnostics = {}
