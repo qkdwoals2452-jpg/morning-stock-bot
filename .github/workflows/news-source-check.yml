@@ -42,7 +42,7 @@ jobs:
                   print("PUBLIC_READER_TIMES", [{"attrs": t.attrs, "text": t.get_text()} for t in soup.find_all("time")[:5]])
                   anchor = soup.find("a", href=re.compile(r"https://www[.]nasdaq[.]com/articles/"))
                   if anchor:
-                      print("PUBLIC_READER_ITEM_HTML", str(anchor.parent)[:5000])
+                      print("PUBLIC_READER_ITEM_HTML", str(anchor.parent.parent.parent)[:8000])
                   print("PUBLIC_READER_DATE_FIELDS", re.findall(r".{0,100}(?:datePublished|publishedAt|published_at|datetime).{0,140}", response.text)[:8])
           except Exception as error:
               print("PUBLIC_READER_ERROR", type(error).__name__)
@@ -54,3 +54,4 @@ jobs:
               assert diagnostics[source]['status'] != 'error', (source, diagnostics[source])
           print('LIVE FEED PASS:', diagnostics)
           PY
+
