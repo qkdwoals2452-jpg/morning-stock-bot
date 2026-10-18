@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-      - run: pip install requests pandas "httpx[http2]"
+      - run: pip install requests pandas beautifulsoup4
       - name: Feed failure handling and existing ORION regressions
         run: python -m unittest -v test_news_sources test_major_media test_news_roles test_orion_backtest test_financial_data test_event_analysis_route test_dart_startup test_orion_event_subject
       - name: Live Nasdaq RSS and SEC Atom diagnostics
@@ -31,17 +31,21 @@ jobs:
           from news_engine import filter_recent_news
           recent_nasdaq = filter_recent_news(nasdaq_articles, hours=36)
           print("NASDAQ_RECOVERY:", {"parsed": len(nasdaq_articles), "recent": len(recent_nasdaq), "sample": [{"title": a["title"], "published_at": a["published_at"], "source": a["source"]} for a in recent_nasdaq[:12]]})
-          # 오래된 RSS 대신 Nasdaq 웹사이트의 공개 JSON 뉴스 응답을 검증한다.
-          import requests, json
+          import requests, re
+          from bs4 import BeautifulSoup
           from news_engine import HEADERS
-          for label, url in [("LatestNews", "https://api.nasdaq.com/api/news/topic/latestnews?offset=0&limit=10"), ("SymbolNews", "https://api.nasdaq.com/api/news/topic/articlebysymbol?q=NVDA%7CSTOCKS&offset=0&limit=10&fallback=true")]:
-              try:
-                  response = requests.get(url, headers=HEADERS, timeout=(3, 5))
-                  print("NASDAQ_JSON_PROBE", label, response.status_code, response.headers.get("Content-Type"), len(response.content))
-                  if response.status_code == 200:
-                      print("NASDAQ_JSON_BODY", label, json.dumps(response.json(), ensure_ascii=False)[:12000])
-              except Exception as error:
-                  print("NASDAQ_JSON_ERROR", label, type(error).__name__)
+          try:
+              response = requests.get("https://feeder.co/ja/discover/fc264b9a53/nasdaq-com-feed-rssoutbound-symbol-nvda", headers=HEADERS, timeout=(3, 8))
+              print("PUBLIC_READER_PROBE", response.status_code, len(response.content))
+              if response.status_code == 200:
+                  soup = BeautifulSoup(response.content, "html.parser")
+                  print("PUBLIC_READER_TIMES", [{"attrs": t.attrs, "text": t.get_text()} for t in soup.find_all("time")[:5]])
+                  anchor = soup.find("a", href=re.compile(r"https://www[.]nasdaq[.]com/articles/"))
+                  if anchor:
+                      print("PUBLIC_READER_ITEM_HTML", str(anchor.parent)[:5000])
+                  print("PUBLIC_READER_DATE_FIELDS", re.findall(r".{0,100}(?:datePublished|publishedAt|published_at|datetime).{0,140}", response.text)[:8])
+          except Exception as error:
+              print("PUBLIC_READER_ERROR", type(error).__name__)
           assert recent_nasdaq, "Nasdaq recovery unverified: no recent publisher-validated articles"
           parse_atom('https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom', 'US', 'SEC_Filings', diagnostics)
           # 응답에 최근 핵심 기사가 없어도 정상 수집이다. 접근 오류는 실패로 표시한다.
