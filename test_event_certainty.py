@@ -15,6 +15,38 @@ from event_understanding_engine import (
 
 
 class EventCertaintyTests(unittest.TestCase):
+    def test_not_only_does_not_negate_signed_contract(self):
+        for title in [
+            'Company not only signs supply contract but also expands factory',
+            'Company not only signed a supply agreement but also increased production',
+        ]:
+            with self.subTest(title=title):
+                article = {'title': title}
+                self.assertEqual(understand_event(article)['event_type'], 'CONTRACT')
+                self.assertGreater(calc_event_score(article)[0], 0)
+                self.assertEqual(len(build_events([deepcopy(article)])), 1)
+
+    def test_not_only_summary_preserves_confirmed_reaction_exception(self):
+        summary = 'Company not only signed a supply contract but also increased production.'
+        article = {'title': 'Company stock rises', 'summary': summary}
+        self.assertTrue(has_confirmed_event_inside_reaction(article['title'], summary))
+        self.assertEqual(understand_event(article)['event_type'], 'CONTRACT')
+        self.assertGreater(calc_event_score(article)[0], 0)
+
+    def test_not_only_does_not_override_actual_uncertainty_or_denial(self):
+        for text in [
+            'Company has not signed a supply contract',
+            'Company never signed a supply contract',
+            'Company denied signing a supply contract',
+            'Company not only did not sign a supply contract but also lost a customer',
+            'Company not only plans to sign a supply contract but also seeks funding',
+            'Company not only aims to sign a supply contract but also seeks funding',
+            'Company not only reportedly signed a supply contract but also expanded production',
+        ]:
+            with self.subTest(text=text):
+                self.assert_not_confirmed({'title': text}, 'UNCONFIRMED_TRANSACTION')
+                self.assertFalse(has_confirmed_event_inside_reaction('Company stock rises', text))
+
     def test_contract_intentions_are_not_signed_orders(self):
         for title in [
             '기업, 500억원 공급계약 체결 추진',

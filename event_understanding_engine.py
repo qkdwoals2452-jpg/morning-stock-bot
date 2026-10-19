@@ -162,7 +162,8 @@ def has_unconfirmed_transaction(text):
     patterns = [
         rf"{uncertainty}.{{0,100}}{transaction}",
         rf"{transaction}.{{0,50}}{uncertainty}",
-        rf"\b(?:not|never|denied|denies)\b.{{0,60}}{transaction}",
+        # 'not only'는 추가 행동을 강조하는 표현이다. 별도의 not/denial은 계속 검사한다.
+        rf"(?:\bnot\b(?!\s+only\b)|\b(?:never|denied|denies)\b).{{0,60}}{transaction}",
         r"\bsigned\s+no\s+(?:\w+\s+){0,3}(?:contract|agreement)\b",
         r"\b(?:expects? to|plans? to|seeks? to|aims? to|hopes? to|will|may|might|could)\s+sign\b.{0,80}\b(?:contract|agreement|deal)\b",
         r"(?:계약|투자|인수|수주).{0,30}(?:체결하지|확정되지|사실무근|부인|체결\s*예정)",
@@ -503,7 +504,7 @@ def has_confirmed_event_inside_reaction(title, summary=""):
             for match in re.finditer(pattern, sentence):
                 before = sentence[max(0, match.start() - 35):match.start()]
                 after = sentence[match.end():match.end() + 12]
-                if re.search(r"\b(?:not|never|denied|denies|if|expected to|expects? to|plans? to|could|might|may)\b", before):
+                if re.search(r"\bnot\b(?!\s+only\b)|\b(?:never|denied|denies|if|expected to|expects? to|plans? to|could|might|may)\b", before):
                     continue
                 if re.search(r"\bno\s+(?:\w+\s+){0,3}(?:contract|agreement)\b", match.group()):
                     continue
