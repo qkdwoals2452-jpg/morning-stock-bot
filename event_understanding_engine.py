@@ -194,6 +194,31 @@ def has_contract_cancellation_context(text):
                for pattern in patterns)
 
 
+def has_investment_cancellation_context(text):
+    """취소·철회된 투자/증설을 신규 CAPEX 수혜 근거로 사용하지 않는다.
+
+    계약 취소와 별도 역할로 남긴다. 쉼표/문장 경계를 넘어 다른 행동의
+    취소를 빌리지 않으며, 부정적 사건 자체를 허위라고 판단하지 않는다.
+    """
+    text = normalize_text(text)
+    investment = r'\b(?:invest(?:ment|ments)?|capex|capital spending|new (?:plant|factory)|factory expansion)\b'
+    reversal = r'\b(?:cancels?|cancelled|canceled|abandons?|abandoned|scraps?|scrapped|shelves?|shelved)\b'
+    # 다른 행동/대상을 거쳐 투자 명사를 연결하지 않는다.
+    gap = r'(?:(?!\b(?:announces?|signs?|concert|conference|ceremony)\b).){0,80}'
+    korean_investment = r'(?:투자|공장\s*(?:신설|증설)|생산시설\s*증설)'
+    korean_reversal = r'(?:취소|철회|백지화|중단)(?!\s*(?:조건|조항|없이|하지|되지))'
+    patterns = [
+        reversal + gap + investment,
+        investment + gap + r'\b(?:cancelled|canceled|abandoned|scrapped|shelved)\b',
+        r'\b(?:cancellation|abandonment) of\b' + gap + investment,
+        korean_investment + r'.{0,25}' + korean_reversal,
+        r'(?:취소한|철회한|백지화한|중단한)\s*.{0,20}' + korean_investment,
+    ]
+    return any(re.search(pattern, clause)
+               for clause in re.split(r'(?<=[.!?。])\s+|[;…]|\.{2,}|(?<!\d),(?!\d)', text)
+               for pattern in patterns)
+
+
 def has_direct_us_rate_decision_title(title):
     """요약의 배경 언급을 빌리지 않고 제목에 직접 드러난 미국 금리 결정만 허용."""
     title = normalize_text(title)
@@ -269,6 +294,7 @@ def classify_article_role(title, summary=""):
     LIFESTYLE
     UNCONFIRMED_TRANSACTION
     CONTRACT_CANCELLATION_CONTEXT
+    INVESTMENT_CANCELLATION_CONTEXT
     """
 
     title = normalize_text(title)
@@ -300,6 +326,9 @@ def classify_article_role(title, summary=""):
 
     if has_contract_cancellation_context(title) or has_contract_cancellation_context(summary):
         return "CONTRACT_CANCELLATION_CONTEXT"
+
+    if has_investment_cancellation_context(title) or has_investment_cancellation_context(summary):
+        return "INVESTMENT_CANCELLATION_CONTEXT"
 
     # 제목 또는 요약의 미확정 거래를 후단의 단순 거래 키워드로 되살리지 않는다.
     if has_unconfirmed_transaction(title) or has_unconfirmed_transaction(summary):
@@ -460,7 +489,8 @@ def has_confirmed_event_inside_reaction(title, summary=""):
         r"(?:투자|증설|인수).{0,10}(?:결정|확정|완료)",
     ]
     for sentence in re.split(r"(?<=[.!?。])\s+|[\n;]", evidence_text):
-        if has_contract_cancellation_context(sentence):
+        if (has_contract_cancellation_context(sentence)
+                or has_investment_cancellation_context(sentence)):
             continue
         if has_unconfirmed_transaction(sentence):
             continue
