@@ -164,6 +164,8 @@ def has_unconfirmed_transaction(text):
         rf"{transaction}.{{0,50}}{uncertainty}",
         # 'not only'는 추가 행동을 강조하는 표현이다. 별도의 not/denial은 계속 검사한다.
         rf"(?:\bnot\b(?!\s+only\b)|\b(?:never|denied|denies)\b).{{0,60}}{transaction}",
+        # ASCII/스마트 따옴표 부정 축약형도 'not'과 같은 미체결 근거다.
+        rf"\b(?:(?:isn|aren|wasn|weren|don|doesn|didn|hasn|haven|hadn|won|wouldn|can|couldn|shouldn|mustn)['’]t|cannot)\b.{{0,60}}{transaction}",
         r"\bsigned\s+no\s+(?:\w+\s+){0,3}(?:contract|agreement)\b",
         r"\b(?:expects? to|plans? to|seeks? to|aims? to|hopes? to|will|may|might|could)\s+sign\b.{0,80}\b(?:contract|agreement|deal)\b",
         r"(?:계약|투자|인수|수주).{0,30}(?:체결하지|확정되지|사실무근|부인|체결\s*예정)",
