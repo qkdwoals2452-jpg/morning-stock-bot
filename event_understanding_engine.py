@@ -164,8 +164,11 @@ def has_unconfirmed_transaction(text):
         rf"{transaction}.{{0,50}}{uncertainty}",
         rf"\b(?:not|never|denied|denies)\b.{{0,60}}{transaction}",
         r"\bsigned\s+no\s+(?:\w+\s+){0,3}(?:contract|agreement)\b",
-        r"\b(?:expects? to|plans? to|will|may|might|could)\s+sign\b.{0,80}\b(?:contract|agreement|deal)\b",
+        r"\b(?:expects? to|plans? to|seeks? to|aims? to|hopes? to|will|may|might|could)\s+sign\b.{0,80}\b(?:contract|agreement|deal)\b",
         r"(?:계약|투자|인수|수주).{0,30}(?:체결하지|확정되지|사실무근|부인|체결\s*예정)",
+        # 계약 체결 '의향'만 제외한다. 체결 후 별도 증설/수주 목표를 빌리지 않는다.
+        r"계약(?:을|를)?\s*(?:체결(?:을)?\s*(?:위한\s*)?)?"
+        r"(?:추진|목표|협의\s*중)",
         rf"(?:memorandum of understanding|letter of intent|non.binding|\bmou\b|양해각서).{{0,100}}{transaction}",
         rf"{transaction}.{{0,100}}(?:memorandum of understanding|letter of intent|non.binding|\bmou\b|양해각서)",
         rf"(?:reportedly|sources? say|according to sources).{{0,120}}{transaction}",

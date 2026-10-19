@@ -3,8 +3,9 @@
 These fixtures do not claim to replay historical article bodies or verify facts.
 """
 import unittest
+from copy import deepcopy
 
-from event_engine import calc_event_score
+from event_engine import build_events, calc_event_score
 from event_understanding_engine import (
     assess_event_evidence,
     classify_article_role,
@@ -14,6 +15,41 @@ from event_understanding_engine import (
 
 
 class EventCertaintyTests(unittest.TestCase):
+    def test_contract_intentions_are_not_signed_orders(self):
+        for title in [
+            '기업, 500억원 공급계약 체결 추진',
+            '기업, 500억원 공급계약 추진',
+            '기업, 500억원 공급계약 체결 목표',
+            '기업, 공급계약 체결을 위한 협의 중',
+            '기업, 공급계약 체결 협의 중',
+            '기업, 공급계약을 협의 중',
+            'Company seeks to sign $500 million supply contract',
+            'Company aims to sign supply contract',
+            'Company hopes to sign a supply agreement',
+        ]:
+            with self.subTest(title=title):
+                article = {'title': title}
+                self.assert_not_confirmed(article, 'UNCONFIRMED_TRANSACTION')
+                self.assertEqual(build_events([deepcopy(article)]), [])
+
+    def test_contract_intent_summary_cannot_enable_reaction_override(self):
+        for summary in ['기업은 공급계약 체결을 위한 협의 중이다.',
+                        'Company aims to sign a supply contract.']:
+            with self.subTest(summary=summary):
+                self.assert_not_confirmed({'title': 'Company stock rises', 'summary': summary},
+                                          'UNCONFIRMED_TRANSACTION')
+                self.assertFalse(has_confirmed_event_inside_reaction('Company stock rises', summary))
+
+    def test_signed_contract_and_separate_expansion_intent_remain(self):
+        for title in ['기업, 500억원 공급계약 체결',
+                      '기업, 공급계약 체결 후 공장 증설 추진',
+                      '기업, 공급계약 체결…추가 수주 목표',
+                      'Company signs supply contract and aims to expand factory',
+                      'Company signs supply agreement',
+                      'Company signs supply contract to meet production targets']:
+            with self.subTest(title=title):
+                self.assertEqual(understand_event({'title': title})['event_type'], 'CONTRACT')
+
     def assert_not_confirmed(self, article, role):
         self.assertEqual(classify_article_role(article['title'], article.get('summary', '')), role)
         result = understand_event(article)
