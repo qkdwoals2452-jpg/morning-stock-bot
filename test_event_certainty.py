@@ -15,6 +15,37 @@ from event_understanding_engine import (
 
 
 class EventCertaintyTests(unittest.TestCase):
+    def test_contracted_negations_cannot_be_confirmed_contracts(self):
+        for title in [
+            "Company didn't sign a supply contract",
+            "Company hasn't signed a supply agreement",
+            "Company won't sign a supply contract",
+            'Company didn’t sign a supply contract',
+            'Company hasn’t signed a supply agreement',
+            'Company won’t sign a supply contract',
+            "Company doesn't have a supply contract",
+            "Company hadn't signed a supply agreement",
+            'Company cannot sign a supply contract',
+        ]:
+            with self.subTest(title=title):
+                self.assert_not_confirmed({'title': title}, 'UNCONFIRMED_TRANSACTION')
+                self.assertEqual(build_events([{'title': title}]), [])
+
+    def test_contracted_negation_summary_cannot_enable_reaction_override(self):
+        for summary in ["Company hasn't signed a supply contract.",
+                        'Company didn’t sign a supply agreement.']:
+            with self.subTest(summary=summary):
+                self.assert_not_confirmed({'title': 'Company stock rises', 'summary': summary},
+                                          'UNCONFIRMED_TRANSACTION')
+                self.assertFalse(has_confirmed_event_inside_reaction('Company stock rises', summary))
+
+    def test_positive_contractions_preserve_signed_contract(self):
+        for title in ["Company's signed a supply contract",
+                      'Company signs supply agreement',
+                      'Company not only signed a supply contract but also expanded production']:
+            with self.subTest(title=title):
+                self.assertEqual(understand_event({'title': title})['event_type'], 'CONTRACT')
+
     def test_not_only_does_not_negate_signed_contract(self):
         for title in [
             'Company not only signs supply contract but also expands factory',
