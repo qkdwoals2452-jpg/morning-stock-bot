@@ -15,6 +15,51 @@ from event_understanding_engine import (
 
 
 class EventCertaintyTests(unittest.TestCase):
+    def test_signed_company_purchase_is_ma_not_supply_contract(self):
+        # 운영 제목 + 공개 기사 첫 문장의 짧은 발췌. 운영 요약 전체 재생은 아니다.
+        article = {
+            'title': 'Salesforce to Buy Customer-Engagement Platform for Nearly $5.7 Billion',
+            'summary': 'Salesforce signed a deal to buy Braze for about $5.66 billion including debt.',
+            'market': 'US',
+        }
+        original = deepcopy(article)
+        result = understand_event(article)
+        self.assertEqual(result['event_type'], 'M&A')
+        self.assertIn('계약', result['reason'])
+        self.assertEqual(assess_event_evidence(article, result)['evidence_strength'], 'STRONG')
+        self.assertEqual(build_events([deepcopy(article)])[0]['event_type'], 'M&A')
+        self.assertEqual(article, original)
+
+    def test_signed_acquisition_variants_preserve_transaction_stage(self):
+        for text in [
+            'Company signed an agreement to buy a software company for $2 billion.',
+            'Company signs a deal to acquire a startup for $2 billion.',
+            'Company entered into a definitive agreement to buy Target, with Target shareholders receiving cash.',
+            'Company signed a merger agreement to buy Target for $2 billion.',
+        ]:
+            with self.subTest(text=text):
+                article = {'title': 'Company transaction update', 'summary': text}
+                self.assertEqual(understand_event(article)['event_type'], 'M&A')
+
+    def test_signed_purchase_of_goods_stays_contract(self):
+        for title in [
+            'Company signed a deal to buy GPUs for $2 billion',
+            'Company signed an agreement to buy electricity from a power company',
+            'Company signed a deal to buy a software platform for its employees',
+        ]:
+            with self.subTest(title=title):
+                self.assertEqual(understand_event({'title': title})['event_type'], 'CONTRACT')
+
+    def test_purchase_intent_and_unconfirmed_signed_deals_remain_excluded(self):
+        for text in [
+            'Company in talks to buy a software company for $2 billion',
+            'Company reportedly signed a deal to buy a software company',
+            'Company has not signed an agreement to buy a startup',
+            'Company signed a non-binding agreement to buy a software company',
+        ]:
+            with self.subTest(text=text):
+                self.assert_not_confirmed({'title': text}, 'UNCONFIRMED_TRANSACTION')
+
     def test_not_only_does_not_negate_signed_contract(self):
         for title in [
             'Company not only signs supply contract but also expands factory',
