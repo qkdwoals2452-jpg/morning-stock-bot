@@ -92,6 +92,15 @@ def search_naver_related(theme_name, stocks):
 
 
 
+def _has_company_mention(name, text):
+    # 하이브리드의 '하이브'처럼 다른 단어의 일부는 기업 언급이 아니다.
+    # 한국어 조사는 허용하되 조사 뒤에도 단어 경계를 요구한다.
+    pattern = (r"(?<![가-힣A-Za-z0-9])" + re.escape(name)
+               + r"(?=(?:은|는|이|가|을|를|와|과|의|에|에게|에서|으로부터|로부터|으로|로|도|만)?"
+                 r"(?:[^가-힣A-Za-z0-9]|$))")
+    return bool(re.search(pattern, text))
+
+
 def find_direct_mentions(theme, stocks, news):
     found = {}
 
@@ -118,7 +127,7 @@ def find_direct_mentions(theme, stocks, news):
 
     # 1. 약칭 직접 매칭
     for alias, official_name in company_aliases.items():
-        if alias in text:
+        if _has_company_mention(alias, text):
             found[official_name] = 100
 
     # =====================================================
@@ -146,7 +155,7 @@ def find_direct_mentions(theme, stocks, news):
         if not name:
             continue
 
-        if name not in text:
+        if not _has_company_mention(name, text):
             continue
 
         # 두 글자 이름도 확정 사건의 당사자 근거가 있으면 허용한다.
