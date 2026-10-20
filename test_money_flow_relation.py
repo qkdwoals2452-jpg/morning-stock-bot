@@ -120,6 +120,35 @@ class MoneyFlowRelationTests(unittest.TestCase):
         self.assertEqual(found, {'원익IPS': 100})
         self.assertFalse(self.relation('이닉스', 'SK하이닉스, HBM 공급계약 체결')['pass'])
 
+    def test_hybrid_order_does_not_mention_hybe(self):
+        proof = article('삼기에너지솔루션즈, 美 법인 1000억 규모 하이브리드 부품 수주…북미 공략 가속')
+        stocks = [{'name': '삼기에너지솔루션즈'}, {'name': '하이브'}]
+        found = find_direct_mentions({'articles': [proof]}, stocks, [proof])
+        self.assertEqual(found, {'삼기에너지솔루션즈': 100})
+
+    def test_company_mention_preserves_particles_and_article_fields(self):
+        for field in ['title', 'summary', 'description']:
+            for text in ['하이브, 계약 체결', '하이브는 계약을 체결했다',
+                         '하이브와 공급계약 체결', '하이브의 공시',
+                         '하이브에서 발표', '하이브를 선정', '(하이브)']:
+                with self.subTest(field=field, text=text):
+                    proof = {field: text}
+                    self.assertEqual(find_direct_mentions({'articles': [proof]},
+                                     [{'name': '하이브'}], [proof]), {'하이브': 100})
+
+    def test_longer_words_do_not_match_company_or_alias(self):
+        for text in ['하이브리드 부품 수주', '슈퍼하이브, 계약 체결',
+                     '하이브2, 계약 체결', '한화에어로봇, 공급계약 체결']:
+            with self.subTest(text=text):
+                proof = article(text)
+                self.assertEqual(find_direct_mentions({'articles': [proof]},
+                                 [{'name': '하이브'}, {'name': '한화에어로스페이스'}], [proof]), {})
+        for text in ['한화에어로, 수주 계약', '삼성重은 선박 수주', '삼성중과 계약']:
+            with self.subTest(alias=text):
+                proof = article(text)
+                found = find_direct_mentions({'articles': [proof]}, [], [proof])
+                self.assertEqual(len(found), 1)
+
     def test_named_actor_keeps_existing_impact_weight(self):
         result = get_news_impact_score({'name': '기가비스', 'code': '420770'}, {},
                                       [article('기가비스, 반도체 검사장비 공급계약 체결')], {})
