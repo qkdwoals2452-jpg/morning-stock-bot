@@ -1,4 +1,5 @@
 import requests
+import re
 import pandas as pd
 from datetime import datetime
 from config import DART_API_KEY
@@ -47,9 +48,9 @@ def get_dart_year_finance(stock_code, year):
         sales = 0
         op = 0
         net_income = None
-        asset = 0
-        debt = 0
-        equity = 0
+        asset = None
+        debt = None
+        equity = None
 
         rows = data.get("list", [])
         has_total_profit = any(row.get("sj_div") in {"IS", "CIS"}
@@ -60,7 +61,7 @@ def get_dart_year_finance(stock_code, year):
             # CF/SCE에는 같은 계정명의 현금흐름·자본 구성요소가 반복된다.
             if row.get("sj_div") not in {"BS", "IS", "CIS"}:
                 continue
-            name = row.get("account_nm", "")
+            name = re.sub(r"\s+", "", row.get("account_nm", ""))
             account_id = row.get("account_id", "")
             amount = to_int(row.get("thstrm_amount"))
             if amount is None:
@@ -86,30 +87,30 @@ def get_dart_year_finance(stock_code, year):
                 if not has_total_profit or account_id == "ifrs-full_ProfitLoss":
                     net_income = amount
 
-            elif name == "자산총계":
+            elif row.get("sj_div") == "BS" and (account_id == "ifrs-full_Assets" or name == "자산총계"):
                 asset = amount
 
-            elif name == "부채총계":
+            elif row.get("sj_div") == "BS" and (account_id == "ifrs-full_Liabilities" or name == "부채총계"):
                 debt = amount
 
-            elif name == "자본총계":
+            elif row.get("sj_div") == "BS" and (account_id == "ifrs-full_Equity" or name == "자본총계"):
                 equity = amount
 
-        if equity == 0 and asset > 0:
+        if equity is None and asset is not None and debt is not None:
             equity = asset - debt
 
         roe = None
         op_margin = None
         debt_ratio = None
 
-        if equity > 0:
+        if equity is not None and equity > 0:
             if net_income is not None:
                 roe = round(net_income / equity * 100, 2)
 
         if sales > 0:
             op_margin = round(op / sales * 100, 2)
 
-        if equity > 0:
+        if equity is not None and equity > 0 and debt is not None:
             debt_ratio = round(debt / equity * 100, 2)
 
         return {

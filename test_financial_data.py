@@ -63,6 +63,68 @@ class FinancialDataTests(unittest.TestCase):
         self.assertIsNone(result['roe'])
         self.assertIsNone(result['net_income'])
 
+    def test_samsung_electro_mechanics_operating_balance_totals(self):
+        # 2026-10-20 운영 로그의 2025 연결 재무: 총계 계정명에 공백이 있다.
+        rows = [
+            self.row('BS', 'ifrs-full_Assets', '자산 총계', 14595895255468),
+            self.row('BS', 'ifrs-full_Equity', '자본 총계', 9797343882863),
+            self.row('BS', 'ifrs-full_Liabilities', '부채 총계', 4798551372605),
+            self.row('CIS', 'ifrs-full_Revenue', '매출액', 11314459238100),
+            self.row('CIS', 'dart_OperatingIncomeLoss', '영업이익', 913331178557),
+            self.row('CIS', 'ifrs-full_ProfitLoss', '당기순이익', 730989517218),
+            self.row('SCE', 'ifrs-full_Equity', '자본 총계', 1),
+            self.row('CF', 'ifrs-full_Liabilities', '부채 총계', 1),
+        ]
+        # 테스트용 CSV의 종목을 운영 종목으로 매핑한다.
+        self.finance.corp_map['009150'] = '00126371'
+        self.quality.corp_map['009150'] = '00126371'
+        with patch('requests.get', return_value=Mock(json=lambda: {'status': '000', 'list': rows})), patch.object(
+            self.finance, 'get_quality_score', return_value={'score': 0}
+        ):
+            result = self.finance.get_finance_score({'code': '009150'})
+            quality = self.quality.get_dart_year_finance('009150', 2025)
+        self.assertEqual(result['op_margin'], 8.07)
+        self.assertEqual(result['debt_ratio'], 48.98)
+        self.assertFalse(result['exclude'])
+        self.assertEqual(quality['equity'], 9797343882863)
+        self.assertEqual(quality['debt_ratio'], 48.98)
+        self.assertEqual(quality['roe'], 7.46)
+
+    def test_balance_totals_support_ids_and_custom_spaced_names(self):
+        for ids, names in [
+            (['ifrs-full_Assets', 'ifrs-full_Liabilities', 'ifrs-full_Equity'],
+             ['Total assets', 'Total liabilities', 'Total equity']),
+            (['custom_assets', 'custom_debt', 'custom_equity'],
+             ['자산\u00a0총계', '부채 총계', '자본\t총계']),
+        ]:
+            with self.subTest(ids=ids):
+                rows = [self.row('BS', account, name, value)
+                        for account, name, value in zip(ids, names, [150, 50, 100])]
+                with patch('requests.get', return_value=Mock(json=lambda: {'status': '000', 'list': rows})):
+                    self.assertEqual(self.finance.get_dart_finance('022100')['debt_ratio'], 50)
+                    self.assertEqual(self.quality.get_dart_year_finance('022100', 2025)['debt_ratio'], 50)
+
+    def test_missing_balance_values_are_not_zero_debt(self):
+        for missing in [None, '-', '']:
+            rows = [self.row('BS', 'ifrs-full_Assets', '자산 총계', 150),
+                    self.row('BS', 'ifrs-full_Equity', '자본 총계', 100),
+                    self.row('BS', 'ifrs-full_Liabilities', '부채 총계', missing)]
+            with self.subTest(missing=missing), patch('requests.get', return_value=Mock(
+                json=lambda: {'status': '000', 'list': rows}
+            )):
+                self.assertIsNone(self.finance.get_dart_finance('022100')['debt_ratio'])
+                self.assertIsNone(self.quality.get_dart_year_finance('022100', 2025)['debt_ratio'])
+
+    def test_balance_equity_fallback_and_real_zero_debt(self):
+        for debt, expected in [(50, 50), (0, 0)]:
+            rows = [self.row('BS', 'ifrs-full_Assets', '자산 총계', 150),
+                    self.row('BS', 'ifrs-full_Liabilities', '부채 총계', debt)]
+            with self.subTest(debt=debt), patch('requests.get', return_value=Mock(
+                json=lambda: {'status': '000', 'list': rows}
+            )):
+                self.assertEqual(self.finance.get_dart_finance('022100')['debt_ratio'], expected)
+                self.assertEqual(self.quality.get_dart_year_finance('022100', 2025)['debt_ratio'], expected)
+
     def test_per_pbr_integration_fields(self):
         response = Mock(json=lambda: {'totalInfos': [
             {'code': 'per', 'value': '100.48배'}, {'code': 'pbr', 'value': '5.68배'}]})
