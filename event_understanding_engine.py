@@ -319,6 +319,17 @@ def classify_article_role(title, summary=""):
     if any(re.search(pattern, title) for pattern in recommendation_patterns):
         return "ANALYSIS"
 
+    # 주가에 대한 위험·장애물 의견은 요약의 과거 실적·계약으로 되살리지 않는다.
+    # 위험 단어만 보지 않고 의견 동사 + 위험 대상이 주가인 제목에 한정한다.
+    if re.search(
+        r"\b(?:sees?|warns? of|flags?|highlights?)\s+"
+        r"(?:(?:a|an|new|fresh|another|major|growing|more)\s+){0,3}"
+        r"(?:hurdles?|headwinds?|risks?|challenges?)\s+(?:for|to|facing)\b"
+        r".{0,100}\b(?:stocks?|shares|share price)\b",
+        title,
+    ):
+        return "ANALYSIS"
+
     # 실적 수치 자체의 발표와, 실적이 주가에 미칠 영향을 설명하는 글을 구분한다.
     # ANALYSIS는 요약 속 실적 키워드로 확정 사건 예외를 적용하지 않는다.
     if re.search(

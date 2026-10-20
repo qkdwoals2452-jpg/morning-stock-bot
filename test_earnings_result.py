@@ -10,6 +10,39 @@ RECORDED_TITLE = '[속보] TSMC 3분기 순익 69% 급증·사상 최대…시�
 
 
 class EarningsResultTests(unittest.TestCase):
+    def test_stock_risk_commentary_does_not_reuse_summary_earnings(self):
+        # 운영 로그에서 확인한 제목. 요약은 키워드 유출을 검증하는 합성 입력이다.
+        titles = [
+            'Morgan Stanley sees new hurdle for Microsoft stock',
+            'Analyst sees a fresh headwind for Nvidia shares',
+            'Wall Street flags growing risks to Apple stock',
+            'Analysts warn of new challenges facing Tesla shares',
+        ]
+        summaries = ['', 'Microsoft reported quarterly revenue of $80 billion, up 15%.',
+                     'The company signed a supply contract and raised guidance.']
+        for title in titles:
+            for summary in summaries:
+                with self.subTest(title=title, summary=summary):
+                    article = {'title': title, 'summary': summary, 'market': 'US'}
+                    original = deepcopy(article)
+                    self.assertEqual(classify_article_role(title, summary), 'ANALYSIS')
+                    self.assertFalse(understand_event(article)['is_real_event'])
+                    self.assertEqual(calc_event_score(article)[0], 0)
+                    self.assertEqual(build_events([deepcopy(article)]), [])
+                    self.assertEqual(article, original)
+
+    def test_stock_risk_guard_preserves_company_announcements(self):
+        for title in [
+            'Morgan Stanley reports quarterly revenue of $18 billion',
+            'Microsoft reports quarterly revenue of $80 billion despite headwinds',
+            'Nvidia raised guidance as quarterly revenue rose 20%',
+            'Company sees quarterly revenue above estimates',
+            'Microsoft signs supply contract despite risks to its stock',
+        ]:
+            with self.subTest(title=title):
+                self.assertEqual(classify_article_role(title), 'EVENT_CANDIDATE')
+                self.assertTrue(understand_event({'title': title})['is_real_event'])
+
     def test_recorded_earnings_stock_impact_commentary_is_excluded(self):
         title = 'How Earnings Beat Will Impact Microsoft (MSFT) Stock'
         for summary in ['', 'Microsoft reported quarterly revenue of $80 billion, up 15%.']:
