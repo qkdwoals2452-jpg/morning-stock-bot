@@ -357,9 +357,10 @@ def get_nasdaq_news(diagnostics=None):
         "US", "Nasdaq_Tech", diagnostics=reports,
         timeout=NASDAQ_TIMEOUT, max_attempts=NASDAQ_MAX_ATTEMPTS,
     )
-    if reports["Nasdaq_Tech"]["status"] != "error":
+    if reports["Nasdaq_Tech"]["status"] != "error" and reports["Nasdaq_Tech"]["recent"] > 0:
         return articles
-    # 직접 피드 장애 시 Nasdaq 기사 검색 인덱스만 사용한다.
+    # 오류 또는 최근 유효 기사 부재(빈 피드/오래된 기사/날짜 누락) 시 검색한다.
+    # HTTP 성공만으로 기사 확보 성공으로 간주하지 않는다.
     # 원본 피드와 범위/수집 경로가 다르므로 별도 출처로 기록한다.
     query = urlencode({"q": 'site:nasdaq.com/articles (technology OR semiconductor OR "data center" OR AI) when:2d',
                        "hl": "en-US", "gl": "US", "ceid": "US:en"})

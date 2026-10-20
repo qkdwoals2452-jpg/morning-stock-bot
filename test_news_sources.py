@@ -1,4 +1,5 @@
 import io
+import re
 import unittest
 from contextlib import redirect_stdout
 from datetime import datetime, timedelta, timezone
@@ -196,13 +197,60 @@ class NewsSourceTests(unittest.TestCase):
         self.assertEqual(articles, [])
         self.assertEqual(report['status'], 'no_relevant')
 
-    def test_nasdaq_success_and_empty_do_not_use_fallback(self):
-        for body in (rss(), '<rss><channel/></rss>'):
-            with patch('news_engine.requests.get', return_value=response(body)) as get:
+    def test_nasdaq_recent_success_does_not_use_fallback(self):
+        with patch('news_engine.requests.get', return_value=response(rss())) as get:
+            diagnostics = {}
+            news.get_nasdaq_news(diagnostics)
+        self.assertEqual(get.call_count, 1)
+        self.assertNotIn('Nasdaq_GoogleRSS', diagnostics)
+
+    def test_nasdaq_without_recent_articles_uses_fallback(self):
+        cases = [
+            ('empty_feed', '<rss><channel/></rss>'),
+            ('no_recent', rss(datetime.now(timezone.utc) - timedelta(days=3))),
+            ('no_recent', re.sub(r'<pubDate>.*?</pubDate>', '', rss())),
+            ('no_recent', re.sub(r'<pubDate>.*?</pubDate>', '<pubDate>invalid date</pubDate>', rss())),
+            ('no_recent', rss(datetime.now(timezone.utc) + timedelta(days=1))),
+        ]
+        for status, body in cases:
+            with self.subTest(status=status, body=body):
                 diagnostics = {}
-                news.get_nasdaq_news(diagnostics)
-            self.assertEqual(get.call_count, 1)
-            self.assertNotIn('Nasdaq_GoogleRSS', diagnostics)
+                with patch('news_engine.requests.get', side_effect=[response(body), response(rss())]) as get:
+                    articles = news.get_nasdaq_news(diagnostics)
+                self.assertEqual(get.call_count, 2)
+                self.assertEqual(diagnostics['Nasdaq_Tech']['status'], status)
+                self.assertEqual(diagnostics['Nasdaq_Tech']['recent'], 0)
+                self.assertEqual(diagnostics['Nasdaq_Tech']['fallback_source'], 'Nasdaq_GoogleRSS')
+                self.assertEqual(articles[0]['source'], 'Nasdaq_GoogleRSS')
+
+    def test_nasdaq_empty_direct_and_empty_index_are_not_recovery(self):
+        diagnostics = {}
+        with patch('news_engine.requests.get', return_value=response('<rss><channel/></rss>')) as get:
+            self.assertEqual(news.get_nasdaq_news(diagnostics), [])
+        self.assertEqual(get.call_count, 2)
+        self.assertEqual(diagnostics['Nasdaq_Tech']['status'], 'empty_feed')
+        self.assertEqual(diagnostics['Nasdaq_GoogleRSS']['status'], 'empty_feed')
+
+    def test_nasdaq_empty_direct_and_failed_index_keep_failure_visible(self):
+        diagnostics = {}
+        with patch('news_engine.requests.get', side_effect=[
+                response('<rss><channel/></rss>'), response('', 403)]) as get:
+            self.assertEqual(news.get_nasdaq_news(diagnostics), [])
+        self.assertEqual(get.call_count, 2)
+        self.assertEqual(diagnostics['Nasdaq_Tech']['status'], 'empty_feed')
+        self.assertEqual(diagnostics['Nasdaq_GoogleRSS']['error'], 'access_denied')
+
+    def test_nasdaq_mixed_recent_and_old_articles_do_not_use_fallback(self):
+        old_item = re.search(r'<item>.*?</item>', rss(
+            datetime.now(timezone.utc) - timedelta(days=3))).group()
+        body = rss().replace('</channel>', old_item + '</channel>')
+        diagnostics = {}
+        with patch('news_engine.requests.get', return_value=response(body)) as get:
+            articles = news.get_nasdaq_news(diagnostics)
+        self.assertEqual(get.call_count, 1)
+        self.assertEqual(len(articles), 2)
+        self.assertEqual(diagnostics['Nasdaq_Tech']['recent'], 1)
+        self.assertNotIn('Nasdaq_GoogleRSS', diagnostics)
 
     def test_nasdaq_fallback_failure_remains_visible(self):
         with patch('news_engine.requests.get', return_value=response('', 403)) as get:
