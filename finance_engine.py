@@ -125,22 +125,23 @@ def get_dart_finance(stock_code):
 
         sales = 0
         op = 0
-        asset = 0
-        debt = 0
+        asset = None
+        debt = None
+        equity = None
 
         for row in data.get("list", []):
 
             if row.get("sj_div") not in {"BS", "IS", "CIS"}:
                 continue
 
-            name = row.get("account_nm", "")
+            name = re.sub(r"\s+", "", row.get("account_nm", ""))
             account_id = row.get("account_id", "")
-            amount = to_int(row.get("thstrm_amount", 0))
+            amount = to_int(row.get("thstrm_amount"))
 
             
 
             if amount is None:
-                amount = 0
+                continue
       
             if (
                 name in [
@@ -162,11 +163,13 @@ def get_dart_finance(stock_code):
             elif name in ["영업이익", "영업이익(손실)"] or "OperatingIncomeLoss" in account_id:
                 op = amount
 
-            elif name == "자산총계":
+            elif row.get("sj_div") == "BS" and (account_id == "ifrs-full_Assets" or name == "자산총계"):
                 asset = amount
 
-            elif name == "부채총계":
+            elif row.get("sj_div") == "BS" and (account_id == "ifrs-full_Liabilities" or name == "부채총계"):
                 debt = amount
+            elif row.get("sj_div") == "BS" and (account_id == "ifrs-full_Equity" or name == "자본총계"):
+                equity = amount
         print("SALES:", sales, "OP:", op)
         
         op_margin = None
@@ -178,9 +181,10 @@ def get_dart_finance(stock_code):
                 2
             )
 
-        equity = asset - debt
+        if equity is None and asset is not None and debt is not None:
+            equity = asset - debt
 
-        if equity > 0:
+        if equity is not None and equity > 0 and debt is not None:
             debt_ratio = round(
                 debt / equity * 100,
                 2
