@@ -30,6 +30,32 @@ def contains_any(text, patterns):
         for pattern in patterns
     )
 
+def has_signed_acquisition_agreement(text):
+    """체결된 기업 인수 계약. 일반 물품 구매 및 거래 종결과 구별한다."""
+    for sentence in re.split(r"(?<=[.!?。])\s+|[\n;]", normalize_text(text)):
+        if has_unconfirmed_transaction(sentence):
+            continue
+        match = re.search(
+            r"\b(?:signed|signs|entered into|enters into)\s+"
+            r"(?:(?:a|an|the|definitive|binding)\s+){0,3}"
+            r"(?P<kind>(?:(?:merger|acquisition)\s+)?)"
+            r"(?:agreement|deal)\s+to\s+(?:buy|acquire)\s+(?P<target>.{1,240})",
+            sentence,
+        )
+        if not match:
+            continue
+        # 'buy electricity from a power company'의 판매자를 인수 대상으로 빌리지 않는다.
+        target = re.split(r"\b(?:for|from|with|to|and|as)\b", match['target'])[0]
+        corporate_target = re.search(
+            r"\b(?:compan(?:y|ies)|startups?|firms?|makers?|shares|stake)\b"
+            r"|\bbusiness(?:\s+unit)?\s*[,.]?$", target,
+        )
+        transaction_terms = re.search(r"\bincluding debt\b|\bshareholders?\b", match['target'])
+        if match['kind'] or corporate_target or transaction_terms:
+            return True
+    return False
+
+
 def has_speculative_context(text):
     """
     실제 확정 사건이 아니라
@@ -684,7 +710,7 @@ def assess_event_evidence(article, event_info):
             ]
         )
 
-        if strong_ma:
+        if strong_ma or has_signed_acquisition_agreement(title) or has_signed_acquisition_agreement(summary):
             return {
                 "evidence_strength": "STRONG",
                 "evidence_reason": "확정 인수·합병 근거 확인"
@@ -1274,6 +1300,13 @@ def understand_event(article):
         "enters into an agreement to acquire",
         "entered into an agreement to acquire",
     ]
+
+    if has_signed_acquisition_agreement(title) or has_signed_acquisition_agreement(summary):
+        return {
+            "is_real_event": True,
+            "event_type": "M&A",
+            "reason": "기업 인수·합병 거래 계약 체결 확인(거래 종결은 별도)",
+        }
 
     if contains_any(text, ma_confirmed_en):
         return {
