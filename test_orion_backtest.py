@@ -11,6 +11,35 @@ import backtest_engine as bt
 
 
 class TradingCheckpointTests(unittest.TestCase):
+    def test_same_day_price_drop_updates_history_and_current_together(self):
+        item = self.item(start_price=20100, price_history=[
+            {'date': '2026-10-20', 'price': 20000, 'return': -0.5},
+            {'date': '2026-10-21', 'price': 20200, 'return': 0.5}])
+        previous = copy.deepcopy(item['price_history'][0])
+        self.assertTrue(bt.update_single_item(item, 20100, '2026-10-21'))
+        self.assertEqual(item['current_price'], 20100)
+        self.assertEqual(item['current_return'], 0)
+        self.assertEqual(item['price_history'], [previous,
+            {'date': '2026-10-21', 'price': 20100, 'return': 0}])
+        self.assertEqual(item['last_updated'], '2026-10-21')
+
+    def test_older_update_and_invalid_price_leave_record_unchanged(self):
+        item = self.item(price_history=[{'date': '2026-10-21', 'price': 120, 'return': 20}],
+                         current_price=120, current_return=20, last_updated='2026-10-21')
+        original = copy.deepcopy(item)
+        for price, day in [(110, '2026-10-20'), (0, '2026-10-22'),
+                           (float('nan'), '2026-10-22'), (130, 'invalid')]:
+            self.assertFalse(bt.update_single_item(item, price, day))
+            self.assertEqual(item, original)
+
+    def test_new_day_preserves_prior_history_and_repeated_update_is_idempotent(self):
+        item = self.item(price_history=[{'date': '2026-10-20', 'price': 100, 'return': 0}])
+        self.assertTrue(bt.update_single_item(item, 120, '2026-10-21'))
+        original = copy.deepcopy(item)
+        self.assertTrue(bt.update_single_item(item, 120, '2026-10-21'))
+        self.assertEqual(item, original)
+        self.assertEqual(len(item['price_history']), 2)
+
     def item(self, **extra):
         item = {'date': '2026-10-02', 'start_price': 100, 'name': '검증 종목', 'code': '005930'}
         item.update({f'result_{n}d': None for n in (1, 3, 5, 10, 20)})
