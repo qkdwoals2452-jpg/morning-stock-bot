@@ -101,6 +101,12 @@ def _has_company_mention(name, text):
     return bool(re.search(pattern, text))
 
 
+def select_analysis_themes(themes, stocks, news, limit):
+    """사건 점수 순서를 유지하되 국내 직접 후보가 있는 분야를 먼저 검증한다."""
+    return sorted(themes, key=lambda theme: bool(find_direct_mentions(theme, stocks, news)),
+                  reverse=True)[:limit]
+
+
 def find_direct_mentions(theme, stocks, news):
     found = {}
 
