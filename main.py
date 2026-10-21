@@ -35,7 +35,8 @@ def run():
     stocks = load_korean_stocks()
     if not stocks:
         raise RuntimeError("KRX 종목 목록 확인불가 → 추천·운영 기록·전송 중단")
-    update_backtest_prices(stocks)
+    regular_price_cache = {}
+    update_backtest_prices(stocks, price_cache=regular_price_cache)
 
     us_news = get_us_news()
     kr_news = get_korea_news()
@@ -307,8 +308,8 @@ def run():
                 )
 
                 continue
-            market = get_market_score(stock)
-            chart = get_chart_score(stock)
+            market = get_market_score(stock, price_cache=regular_price_cache)
+            chart = get_chart_score(stock, price_cache=regular_price_cache)
             learning = get_learning_score(stock)
             company = get_company_match_score(stock, theme_words)
             impact = get_news_impact_score(
@@ -461,7 +462,7 @@ def run():
 
     save_today_result(final_results)
     save_recommendations(final_results)
-    update_backtest_prices(stocks)
+    update_backtest_prices(stocks, price_cache=regular_price_cache)
     project_status = get_project_status()
     project_status['supply_chain_watch'] = supply_chain_watch
 

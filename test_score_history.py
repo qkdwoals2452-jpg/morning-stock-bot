@@ -180,7 +180,8 @@ class MemoryPersistenceTests(unittest.TestCase):
         old = {'date': '2026-10-12', 'theme': 'AI', 'code': '022100', 'score': 309, 'grade': '💎 S+'}
         wonik = {'date': '2026-09-02', 'theme': '반도체', 'code': '032940', 'grade': 'S+', 'rank': 1}
         backtest.save_backtest([old, wonik])
-        with patch.object(backtest, 'get_current_price', return_value=100):
+        with patch.object(backtest, 'get_current_quote', return_value={
+            'price': 100, 'date': '2026-10-21', 'source': 'YAHOO_REGULAR_CLOSE'}):
             backtest.save_recommendations([{'theme': {'name': 'AI'}, 'ranked': [result()]}])
         saved = backtest.load_backtest()
         self.assertEqual(saved[:2], [old, wonik])
