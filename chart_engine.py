@@ -1,6 +1,6 @@
 import requests
 import math
-from datetime import datetime, timedelta, time
+from datetime import datetime, date, timedelta, time
 from zoneinfo import ZoneInfo
 
 HEADERS = {
@@ -22,7 +22,7 @@ def _positive_price(value):
     return number
 
 
-def _normalize_price_history(data, start, cutoff, source):
+def _normalize_price_history(data, start, cutoff, source, max_rows=260, allow_missing_close=False):
     """완료된 거래일을 정렬하고 날짜/가격이 모호한 응답은 사용하지 않는다."""
     raw = (data.get("priceInfos") or data.get("data") or []) if isinstance(data, dict) else data
     if not isinstance(raw, list):
@@ -40,9 +40,17 @@ def _normalize_price_history(data, start, cutoff, source):
         grouped.setdefault(day, []).append(row)
     by_date = {}
     # 계산에서 사용하지 않는 오래된 행의 결측으로 최신 260일을 버리지 않는다.
-    selected = [(day, row) for day in sorted(grouped)[-260:] for row in grouped[day]]
+    days = sorted(grouped)
+    if max_rows is not None:
+        days = days[-max_rows:]
+    selected = [(day, row) for day in days for row in grouped[day]]
     for day, row in selected:
-        close = _positive_price(row.get("closePrice", row.get("close", row.get("endPrice"))))
+        try:
+            close = _positive_price(row.get("closePrice", row.get("close", row.get("endPrice"))))
+        except ValueError:
+            if not allow_missing_close:
+                raise
+            close = None
         high_value = row.get("highPrice", row.get("high"))
         low_value = row.get("lowPrice", row.get("low"))
         def optional_price(value):
@@ -53,9 +61,9 @@ def _normalize_price_history(data, start, cutoff, source):
         high = optional_price(high_value)
         low = optional_price(low_value)
         # 종가는 이동평균에 사용하되 모순된 고가로 52주 낙폭을 만들지 않는다.
-        if high is not None and high < close:
+        if high is not None and close is not None and high < close:
             high = None
-        if low is not None and low > close:
+        if low is not None and close is not None and low > close:
             low = None
         volume_value = row.get("accumulatedTradingVolume", row.get("volume"))
         volume = to_float(volume_value)
@@ -95,7 +103,8 @@ def _regular_session_rows(payload, symbol):
     return rows
 
 
-def get_price_history(code, now=None):
+def get_price_history(code, now=None, *, cache=None, start_date=None, as_of=None,
+                      max_rows=260, allow_missing_close=False):
     if not isinstance(code, str) or len(code) != 6 or not code.isdigit() or code == "000000":
         print("CHART ERROR:", "유효하지 않은 종목코드")
         return []
@@ -106,6 +115,13 @@ def get_price_history(code, now=None):
     end = now.date()
     start = end - timedelta(days=400)
     cutoff = end if now.time() >= time(15, 30) else end - timedelta(days=1)
+    if as_of is not None:
+        cutoff = min(cutoff, date.fromisoformat(as_of))
+    if start_date is not None:
+        start = date.fromisoformat(start_date) - timedelta(days=14)
+    key = (code, start.isoformat(), cutoff.isoformat(), max_rows, allow_missing_close)
+    if cache is not None and key in cache:
+        return cache[key]
     params = {
         "period1": int(datetime.combine(start, time.min, ZoneInfo("Asia/Seoul")).timestamp()),
         "period2": int(datetime.combine(cutoff + timedelta(days=1), time.min,
@@ -127,7 +143,8 @@ def get_price_history(code, now=None):
 
             res.raise_for_status()
             raw = _regular_session_rows(res.json(), symbol)
-            prices = _normalize_price_history(raw, start, cutoff, source)
+            prices = _normalize_price_history(raw, start, cutoff, source,
+                                              max_rows, allow_missing_close)
             print("CHART COUNT:", code, len(prices), "source:", source)
 
             if prices:
@@ -136,11 +153,15 @@ def get_price_history(code, now=None):
                       "symbol:", symbol, "cutoff:", cutoff.isoformat())
                 if any(item["high"] is None for item in prices):
                     print("CHART QUALITY:", code, "고가 결측/불일치: 52주 고점 판정 보류")
+                if cache is not None:
+                    cache[key] = prices
                 return prices
 
         except Exception as e:
             print("CHART ERROR:", code, source, type(e).__name__)
 
+    if cache is not None:
+        cache[key] = []
     return []
 
 def moving_average(values, days):
@@ -167,7 +188,7 @@ def pass_long_term_trend(chart):
     return True, '120일선 이상'
 
 
-def get_chart_score(stock):
+def get_chart_score(stock, *, price_cache=None):
     code = stock["code"]
     name = stock.get("name", code)
 
@@ -175,7 +196,7 @@ def get_chart_score(stock):
 
     print("차트 분석:", name, code)
 
-    history = get_price_history(code)
+    history = get_price_history(code, cache=price_cache)
 
     if len(history) < 60:
         return {

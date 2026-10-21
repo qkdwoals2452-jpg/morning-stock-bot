@@ -143,10 +143,11 @@ class FinancialDataTests(unittest.TestCase):
             {'localDate': '20261012', 'closePrice': 21100, 'accumulatedTradingVolume': 7947},
             {'localDate': '20261007', 'closePrice': 21100, 'accumulatedTradingVolume': 201348},
         ]
-        with patch('requests.get', return_value=Mock(json=lambda: rows)), patch.object(
-            self.market, 'datetime', wraps=datetime
-        ) as clock:
-            clock.now.return_value = datetime(2026, 10, 12, 8, 32, tzinfo=ZoneInfo('Asia/Seoul'))
+        normalized = [{'date': '2026-10-07', 'close': 21100, 'volume': 201348,
+                       'source': 'YAHOO_REGULAR_CLOSE'},
+                      {'date': '2026-10-08', 'close': 20800, 'volume': 249834,
+                       'source': 'YAHOO_REGULAR_CLOSE'}]
+        with patch.object(self.market, 'get_price_history', return_value=normalized):
             result = self.market.get_market_score({'code': '022100'})
         self.assertEqual(result['trading_date'], '20261008')
         self.assertEqual(result['volume'], 249834)
@@ -155,7 +156,7 @@ class FinancialDataTests(unittest.TestCase):
         self.assertTrue(result['trading_value_is_estimate'])
 
     def test_empty_chart_does_not_fabricate_market_data(self):
-        with patch('requests.get', return_value=Mock(json=lambda: [])):
+        with patch.object(self.market, 'get_price_history', return_value=[]):
             result = self.market.get_naver_market('022100')
         self.assertIsNone(result['trading_value'])
 

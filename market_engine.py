@@ -1,4 +1,5 @@
 import requests
+from chart_engine import get_price_history
 from datetime import datetime, timedelta, time
 from zoneinfo import ZoneInfo
 
@@ -21,48 +22,36 @@ def to_int(value):
         return None
 
 
-def get_naver_market(code):
+def get_naver_market(code, *, price_cache=None):
+    """기존 호출 이름을 유지하며 차트와 같은 검증된 정규장 일봉을 사용한다."""
     try:
-        now = datetime.now(ZoneInfo("Asia/Seoul"))
-        today = now.strftime("%Y%m%d")
-        url = f"https://api.stock.naver.com/chart/domestic/item/{code}/day"
-        res = requests.get(url, headers=HEADERS, params={
-            "startDateTime": (now - timedelta(days=70)).strftime("%Y%m%d"),
-            "endDateTime": today,
-        }, timeout=7)
-        res.raise_for_status()
-        rows = res.json()
-        if not isinstance(rows, list):
-            raise ValueError("일별 차트 응답 형식 오류")
-        # 아침에는 완료된 거래일을 사용하고, 날짜순으로 최신 행을 선택한다.
-        rows = sorted((row for row in rows
-                       if row.get("localDate")
-                       and (row["localDate"] < today
-                            or (row["localDate"] == today and now.time() >= time(15, 30)))),
-                      key=lambda row: row["localDate"])
+        rows = get_price_history(code, cache=price_cache)
         if not rows:
             raise ValueError("완료된 거래일 데이터 없음")
         latest = rows[-1]
-        volume = to_int(latest.get("accumulatedTradingVolume"))
-        close = to_float(latest.get("closePrice"))
-        previous = to_float(rows[-2].get("closePrice")) if len(rows) >= 2 else None
+        volume = int(latest["volume"]) if latest.get("volume") is not None else None
+        close = latest["close"]
+        previous = rows[-2]["close"] if len(rows) >= 2 else None
         change_rate = round((close / previous - 1) * 100, 2) if close is not None and previous else None
         value = int(volume * close) if volume is not None and close is not None else None
-        print("MARKET VALUE:", code, "date:", latest["localDate"], "estimated:", value)
+        print("MARKET VALUE:", code, "date:", latest["date"], "close:", close,
+              "source:", latest["source"], "change_rate:", change_rate, "estimated:", value)
         return {
             "change_rate": change_rate, "volume": volume, "trading_value": value,
-            "trading_date": latest["localDate"], "trading_value_is_estimate": True,
+            "trading_date": latest["date"].replace("-", ""), "trading_value_is_estimate": True,
+            "close_price": close, "price_date": latest["date"], "price_source": latest["source"],
         }
     except Exception as e:
         print("MARKET ERROR:", code, type(e).__name__)
         return {"change_rate": None, "volume": None, "trading_value": None,
-                "trading_date": None, "trading_value_is_estimate": True}
+                "trading_date": None, "trading_value_is_estimate": True,
+                "close_price": None, "price_date": None, "price_source": None}
 
 
-def get_market_score(stock):
+def get_market_score(stock, *, price_cache=None):
     code = stock["code"]
 
-    market = get_naver_market(code)
+    market = get_naver_market(code, price_cache=price_cache)
 
     score = 0
     memo = []
@@ -117,5 +106,7 @@ def get_market_score(stock):
         "volume": market["volume"],
         "trading_value": value,
         "trading_date": market.get("trading_date"),
-        "trading_value_is_estimate": market.get("trading_value_is_estimate", True)
+        "trading_value_is_estimate": market.get("trading_value_is_estimate", True),
+        "close_price": market.get("close_price"), "price_date": market.get("price_date"),
+        "price_source": market.get("price_source")
     }

@@ -6,6 +6,7 @@ import copy
 from datetime import datetime, date, timedelta, time
 from zoneinfo import ZoneInfo
 from performance_validation_engine import completed_performance
+from chart_engine import get_price_history
 
 BACKTEST_FILE = "orion_backtest.json"
 
@@ -32,26 +33,74 @@ def normalize_code(code):
     return str(code or "").strip().zfill(6)
 
 
-def get_current_price(code):
-    """네이버 증권 모바일 API에서 현재가 또는 종가를 가져온다."""
+def get_current_quote(code, *, price_cache=None):
+    """정규장 종가와 실제 거래일을 함께 가져온다."""
     code = normalize_code(code)
-
     try:
-        url = f"https://m.stock.naver.com/api/stock/{code}/basic"
-
-        response = requests.get(
-            url,
-            headers=HEADERS,
-            timeout=5
-        )
-        response.raise_for_status()
-
-        data = response.json()
-        return to_float(data.get("closePrice"))
-
+        rows = get_price_history(code, cache=price_cache)
+        if rows:
+            latest = rows[-1]
+            return {"price": latest["close"], "date": latest["date"], "source": latest["source"]}
     except Exception as e:
-        print("현재가 조회 실패:", code, e)
-        return None
+        print("정규장 종가 조회 실패:", code, type(e).__name__)
+    return None
+
+
+def get_current_price(code):
+    """가격만 필요한 기존 호출용 래퍼."""
+    quote = get_current_quote(code)
+    return quote["price"] if quote else None
+
+
+def _valid_regular_quote(quote):
+    if not isinstance(quote, dict) or quote.get("source") != "YAHOO_REGULAR_CLOSE":
+        return False
+    price = to_float(quote.get("price"))
+    try:
+        day = date.fromisoformat(quote.get("date", ""))
+    except (TypeError, ValueError):
+        return False
+    return (not isinstance(quote.get("price"), bool) and price is not None and price > 0
+            and day <= last_completed_date())
+
+
+def apply_regular_quote(item, quote):
+    """옛 관측일 기준 가격은 원본을 보관하고 실제 거래일에 갱신한다."""
+    if not _valid_regular_quote(quote):
+        return False
+    candidate = copy.deepcopy(item)
+    if not candidate.get("current_price_source"):
+        keys = ("price_history", "current_price", "current_return", "last_updated",
+                "highest_price", "highest_return", "lowest_price", "max_drawdown")
+        candidate.setdefault("legacy_price_snapshot", {
+            "reason": "observation_dates_and_price_session_unverified",
+            **{key: copy.deepcopy(item[key]) for key in keys if key in item}})
+        # 예전 코드는 아침의 전일 가격도 오늘 날짜로 기록했다. 원본은 위에 보존한다.
+        history = candidate.get("price_history") or []
+        future = [row for row in history if row.get("date", "") > quote["date"]]
+        now = datetime.now(ZoneInfo("Asia/Seoul"))
+        today = now.date().isoformat()
+        if ((candidate.get("last_updated") or "") > quote["date"]
+                and (candidate.get("last_updated") != today or now.time() >= time(15, 30))):
+            return False
+        if any(row.get("price_source") or row.get("date") != today for row in future):
+            return False
+        if future and now.time() >= time(15, 30):
+            return False
+        candidate["price_history"] = [row for row in history if row.get("date", "") <= quote["date"]]
+        if (candidate.get("last_updated") or "") > quote["date"]:
+            candidate["last_updated"] = None
+    if not update_single_item(candidate, quote["price"], quote["date"]):
+        return False
+    candidate["current_price_source"] = quote["source"]
+    if any(item.get(key) != candidate.get(key) for key in
+           ("current_price", "last_updated", "current_price_source")):
+        candidate["price_observed_at"] = datetime.now(ZoneInfo("Asia/Seoul")).isoformat()
+    candidate["price_history"][-1]["price_source"] = quote["source"]
+    item.clear()
+    item.update(candidate)
+    print("BACKTEST REGULAR QUOTE:", item.get("code"), quote["date"], quote["price"], quote["source"])
+    return True
 
 
 def load_backtest():
@@ -162,21 +211,13 @@ def save_recommendations(final_results):
 
             market = stock.get("market") or {}
 
-            start_price = (
-                market.get("close_price")
-                or market.get("current_price")
-                or stock.get("price")
-                or stock.get("close")
-                or stock.get("current")
-            )
-
-            start_price = to_float(start_price)
-
-            # 전달받은 가격이 없으면 네이버 현재가로 보완
-            if start_price is None or start_price <= 0:
-                start_price = get_current_price(code)
-            if start_price is not None and start_price <= 0:
-                start_price = None
+            quote = {"price": market.get("close_price"), "date": market.get("price_date"),
+                     "source": market.get("price_source")}
+            if not _valid_regular_quote(quote):
+                quote = get_current_quote(code)
+            if not _valid_regular_quote(quote):
+                quote = None
+            start_price = to_float(quote["price"]) if quote else None
 
             score_breakdown = (
                 stock.get("score_breakdown")
@@ -203,6 +244,8 @@ def save_recommendations(final_results):
                 "grade_status": stock.get("grade_status", "legacy_unvalidated"),
 
                 "start_price": start_price,
+                "start_price_date": quote["date"] if quote else None,
+                "start_price_source": quote["source"] if quote else None,
                 "return_basis": "reference_price_only",
                 "reference_price_status": "available" if start_price is not None else "unavailable",
                 "current_price": start_price,
@@ -388,7 +431,7 @@ def fill_trading_checkpoints(item, daily_closes, as_of=None):
 
 
 def fetch_daily_closes(code, start_date=None, as_of=None):
-    """날짜가 있는 과거 종가를 조회하며 미완료 거래일은 제외한다."""
+    """차트와 같은 정규장 종가를 조회하며 결측 거래일은 None으로 보존한다."""
     code = normalize_code(code)
     if len(code) != 6 or not code.isdigit() or code == "000000":
         return []
@@ -397,68 +440,22 @@ def fetch_daily_closes(code, start_date=None, as_of=None):
         anchor = date.fromisoformat(start_date) if start_date else cutoff - timedelta(days=100)
     except (TypeError, ValueError):
         return []
-    begin = anchor - timedelta(days=14)
     try:
-        response = requests.get(
-            f"https://api.stock.naver.com/chart/domestic/item/{code}/day",
-            params={"startDateTime": begin.strftime("%Y%m%d"),
-                    "endDateTime": cutoff.strftime("%Y%m%d")},
-            headers=HEADERS, timeout=8,
-        )
-        response.raise_for_status()
-        raw = response.json()
-        if isinstance(raw, list):
-            rows = []
-            for row in raw:
-                try:
-                    day = datetime.strptime(row.get("localDate", ""), "%Y%m%d").date()
-                except (TypeError, ValueError):
-                    continue
-                if begin <= day <= cutoff:
-                    rows.append((day.isoformat(), to_float(row.get("closePrice"))))
-            if rows and (start_date is None or min(day for day, _ in rows) <= anchor.isoformat()):
-                return sorted(rows)
-    except (requests.RequestException, ValueError, TypeError) as exc:
-        print("과거 종가 조회 실패:", code, "NAVER", type(exc).__name__)
-
-    # 기존 검토 브랜치의 Yahoo 조회는 보조 경로로 유지한다.
-    begin_ts = int(datetime.combine(begin, time.min, ZoneInfo("Asia/Seoul")).timestamp())
-    end_ts = int(datetime.combine(cutoff + timedelta(days=1), time.min, ZoneInfo("Asia/Seoul")).timestamp())
-    for suffix in (".KS", ".KQ"):
-        try:
-            response = requests.get(
-                "https://query1.finance.yahoo.com/v8/finance/chart/" + code + suffix,
-                params={"period1": begin_ts, "period2": end_ts, "interval": "1d"},
-                headers=HEADERS, timeout=8,
-            )
-            response.raise_for_status()
-            payload = response.json()
-            if not isinstance(payload, dict):
-                continue
-            results = payload.get("chart", {}).get("result") or []
-            if not results:
-                continue
-            data = results[0]
-            quote = data.get("indicators", {}).get("quote") or []
-            closes = quote[0].get("close") if quote else []
-            rows = []
-            for stamp, value in zip(data.get("timestamp") or [], closes or []):
-                day = datetime.fromtimestamp(stamp, ZoneInfo("Asia/Seoul")).date()
-                if begin <= day <= cutoff:
-                    rows.append((day.isoformat(), to_float(value)))
-            if rows and (start_date is None or min(day for day, _ in rows) <= anchor.isoformat()):
-                return sorted(rows)
-        except (requests.RequestException, ValueError, TypeError, KeyError) as exc:
-            print("과거 종가 조회 실패:", code, suffix, type(exc).__name__)
+        raw = get_price_history(code, start_date=anchor.isoformat(), as_of=cutoff.isoformat(),
+                                max_rows=None, allow_missing_close=True)
+        rows = [(row["date"], row["close"]) for row in raw]
+        if rows and (start_date is None or rows[0][0] <= anchor.isoformat()):
+            return rows
+    except (ValueError, TypeError, KeyError) as exc:
+        print("과거 종가 조회 실패:", code, type(exc).__name__)
     return []
 
 
-def update_backtest_prices(stocks=None):
+def update_backtest_prices(stocks=None, *, price_cache=None):
     """
     추천 종목 가격을 업데이트한다.
 
-    stocks가 전달되면 전달된 가격을 우선 사용하고,
-    없거나 가격이 빠진 종목은 네이버 현재가를 조회한다.
+    날짜·세션을 확인할 수 없는 종목 목록의 가격은 사용하지 않는다.
     """
     data = load_backtest()
 
@@ -468,23 +465,6 @@ def update_backtest_prices(stocks=None):
 
     price_map = {}
 
-    if stocks:
-        for stock in stocks:
-            code = normalize_code(stock.get("code"))
-
-            price = (
-                stock.get("price")
-                or stock.get("close")
-                or stock.get("current")
-                or stock.get("current_price")
-            )
-
-            price = to_float(price)
-
-            if code and price is not None:
-                price_map[code] = price
-
-    update_date = datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y-%m-%d")
     updated_count = 0
     failed_count = 0
 
@@ -492,18 +472,14 @@ def update_backtest_prices(stocks=None):
         code = normalize_code(item.get("code"))
 
         if code not in price_map:
-            price_map[code] = get_current_price(code)
-        current_price = price_map[code]
+            price_map[code] = get_current_quote(code, price_cache=price_cache)
+        quote = price_map[code]
 
-        if current_price is None:
+        if not _valid_regular_quote(quote):
             failed_count += 1
             continue
 
-        updated = update_single_item(
-            item,
-            current_price,
-            update_date
-        )
+        updated = apply_regular_quote(item, quote)
 
         if updated:
             updated_count += 1
@@ -524,9 +500,13 @@ def update_backtest_prices(stocks=None):
     history_cache = {code: fetch_daily_closes(code, day) for code, day in earliest.items()}
     checkpoint_count = 0
     for item in pending:
+        missing = [f"result_{n}d" for n in (1, 3, 5, 10, 20) if item.get(f"result_{n}d") is None]
         checkpoint_count += fill_trading_checkpoints(
             item, history_cache.get(normalize_code(item.get("code")), [])
         )
+        for field in missing:
+            if item.get(field) is not None:
+                item.setdefault("checkpoint_price_sources", {})[field] = "YAHOO_REGULAR_CLOSE"
     save_backtest(data)
     print("거래일 기준 평가 저장:", checkpoint_count, "건")
 

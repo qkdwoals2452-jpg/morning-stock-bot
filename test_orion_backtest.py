@@ -8,6 +8,7 @@ from unittest.mock import Mock, patch
 from zoneinfo import ZoneInfo
 
 import backtest_engine as bt
+from test_chart_history import response as daily_response, row as daily_row
 
 
 class TradingCheckpointTests(unittest.TestCase):
@@ -62,10 +63,8 @@ class TradingCheckpointTests(unittest.TestCase):
         self.assertEqual(bt.fill_trading_checkpoints(item, [('2026-10-08', 150)], '2026-10-11'), 0)
         self.assertIsNone(item['result_1d'])
 
-    def test_historical_yahoo_response_is_parsed_as_fallback(self):
-        sample = {'chart': {'result': [{'timestamp': [1791244800],
-                  'indicators': {'quote': [{'close': [123.0]}]}}]}}
-        response = Mock(json=lambda: sample)
+    def test_historical_yahoo_regular_response_is_parsed(self):
+        response = daily_response([daily_row('2026-10-06', 123)], symbol='005930.KS')
         with patch.object(bt.requests, 'get', return_value=response):
             result = bt.fetch_daily_closes('005930', as_of='2026-10-11')
         self.assertEqual(len(result), 1)
@@ -144,27 +143,25 @@ class TradingCheckpointTests(unittest.TestCase):
         self.assertEqual(bt.last_completed_date(datetime(2026, 10, 12, 9, tzinfo=ZoneInfo('Asia/Seoul'))).isoformat(), '2026-10-11')
         self.assertEqual(bt.last_completed_date(datetime(2026, 10, 12, 16, tzinfo=ZoneInfo('Asia/Seoul'))).isoformat(), '2026-10-12')
 
-    def test_naver_response_sorts_and_excludes_unfinished_date(self):
-        response = Mock(json=lambda: [
-            {'localDate': '20261012', 'closePrice': 150},
-            {'localDate': '20261002', 'closePrice': 100},
-            {'localDate': '20261005', 'closePrice': 110},
-        ])
+    def test_regular_response_sorts_and_excludes_unfinished_date(self):
+        response = daily_response([daily_row('2026-10-12', 150),
+            daily_row('2026-10-02', 100), daily_row('2026-10-05', 110)], symbol='005930.KS')
         with patch.object(bt.requests, 'get', return_value=response):
             result = bt.fetch_daily_closes('005930', '2026-10-02', '2026-10-11')
         self.assertEqual(result, [('2026-10-02', 100), ('2026-10-05', 110)])
 
     def test_start_date_controls_request_for_old_recommendations(self):
-        response = Mock(json=lambda: [{'localDate': '20200101', 'closePrice': 100}])
+        response = daily_response([daily_row('2020-01-01', 100)], symbol='005930.KS')
         with patch.object(bt.requests, 'get', return_value=response) as get:
             bt.fetch_daily_closes('005930', '2020-01-01', '2026-10-11')
-        self.assertEqual(get.call_args.kwargs['params']['startDateTime'], '20191218')
+        begin = datetime.fromtimestamp(get.call_args.kwargs['params']['period1'], ZoneInfo('Asia/Seoul'))
+        self.assertEqual(begin.strftime('%Y%m%d'), '20191218')
 
     def test_update_persists_checkpoints_even_if_current_quote_fails(self):
         item = self.item()
         with tempfile.TemporaryDirectory() as directory, patch.object(bt, 'BACKTEST_FILE', str(Path(directory) / 'test.json')):
             bt.save_backtest([item])
-            with patch.object(bt, 'get_current_price', return_value=None), patch.object(bt, 'fetch_daily_closes',
+            with patch.object(bt, 'get_current_quote', return_value=None), patch.object(bt, 'fetch_daily_closes',
                 return_value=[('2026-10-02', 100), ('2026-10-05', 110)]) as history:
                 bt.update_backtest_prices()
             saved = bt.load_backtest()
@@ -176,16 +173,19 @@ class TradingCheckpointTests(unittest.TestCase):
         rows = [('2026-10-01', 100), ('2026-10-02', 105), ('2026-10-05', 110)]
         with tempfile.TemporaryDirectory() as directory, patch.object(bt, 'BACKTEST_FILE', str(Path(directory) / 'test.json')):
             bt.save_backtest(items)
-            with patch.object(bt, 'get_current_price', return_value=110) as quote, patch.object(
+            with patch.object(bt, 'get_current_quote', return_value={
+                'price': 110, 'date': '2026-10-05', 'source': 'YAHOO_REGULAR_CLOSE'}) as quote, patch.object(
                 bt, 'fetch_daily_closes', return_value=rows
             ) as history:
                 bt.update_backtest_prices()
-            quote.assert_called_once_with('005930')
+            quote.assert_called_once_with('005930', price_cache=None)
             history.assert_called_once_with('005930', '2026-10-01')
 
     def test_recommendation_dates_use_seoul_and_preserve_event_metadata(self):
         block = {'theme': {'name': 'AI', 'score': 80, 'frequency_score': 6},
                  'ranked': [{'name': '검증 종목', 'code': '005930', 'price': 100,
+                             'market': {'close_price': 100, 'price_date': '2026-10-08',
+                                        'price_source': 'YAHOO_REGULAR_CLOSE'},
                              'event_score': 80, 'reason': '사건 신호 80점'}]}
         from datetime import timezone
         utc = datetime(2026, 10, 11, 23, tzinfo=timezone.utc)
