@@ -266,6 +266,27 @@ def update_single_item(item, current_price, update_date):
     if start_price <= 0 or current_price <= 0:
         return False
 
+    try:
+        observed_day = date.fromisoformat(update_date)
+    except (TypeError, ValueError):
+        return False
+    history = item.get("price_history") or []
+    dated_rows = []
+    for row in history:
+        try:
+            day = date.fromisoformat(row.get("date", ""))
+        except (TypeError, ValueError, AttributeError):
+            continue
+        price = to_float(row.get("price"))
+        if price is not None and price > 0:
+            dated_rows.append(day)
+    try:
+        dated_rows.append(date.fromisoformat(item.get("last_updated", "")))
+    except (TypeError, ValueError):
+        pass
+    if dated_rows and observed_day < max(dated_rows):
+        return False
+
     current_return = calculate_return(
         start_price,
         current_price
@@ -287,20 +308,15 @@ def update_single_item(item, current_price, update_date):
         item["lowest_price"] = current_price
         item["max_drawdown"] = current_return
 
-    history = item.setdefault("price_history", [])
-
-    # 같은 날짜의 가격 기록 중복 방지
-    already_saved = any(
-        row.get("date") == update_date
-        for row in history
-    )
-
-    if not already_saved:
-        history.append({
-            "date": update_date,
-            "price": current_price,
-            "return": current_return
-        })
+    # 같은 날 재관측한 가격은 현재가와 날짜별 이력을 함께 갱신한다.
+    # 가격 하락 자체는 오래된 시세의 증거가 아니므로 정상 반영한다.
+    history = [row for row in history if row.get("date") != update_date]
+    history.append({
+        "date": update_date,
+        "price": current_price,
+        "return": current_return
+    })
+    item["price_history"] = history
 
     # 관측한 현재가를 과거 1/3/5/10/20일 종가로 기록하지 않는다.
     # 거래일별 수익률은 확인된 과거 종가로만 별도 계산한다.
