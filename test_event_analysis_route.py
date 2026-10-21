@@ -10,6 +10,7 @@ from unittest.mock import Mock, patch
 
 from event_engine import build_events
 from theme_engine import build_event_analysis_themes, extract_themes
+from stock_engine import select_analysis_themes
 
 
 ARTICLE = {'title': '포스코DX, AI 기업 인핸스에 20억 투자',
@@ -17,6 +18,24 @@ ARTICLE = {'title': '포스코DX, AI 기업 인핸스에 20억 투자',
 
 
 class EventAnalysisRouteTests(unittest.TestCase):
+    def test_direct_candidate_survives_top_three_without_borrowing_articles(self):
+        themes = [{'name': name, 'articles': [{'title': title}], 'score': score}
+                  for name, title, score in [('AI', 'OpenAI AI investment', 80),
+                    ('우주항공', 'SpaceX rocket profit', 70), ('자율주행', 'Tesla profit', 70),
+                    ('바이오', '검증제약, 치료제 공급계약 체결', 70)]]
+        selected = select_analysis_themes(themes, [{'name': '검증제약', 'code': '123456'}], [], 3)
+        self.assertEqual([t['name'] for t in selected], ['바이오', 'AI', '우주항공'])
+        self.assertEqual(selected[0], themes[3])
+        self.assertEqual(select_analysis_themes(themes, [], [], 3), themes[:3])
+
+    def test_biopharma_contract_has_explicit_analysis_route(self):
+        article = {'title': '삼성바이오에피스, 브라질 정부와 희귀질환 치료제 단독 공급계약',
+                   'summary': '', 'market': 'KR'}
+        themes = build_event_analysis_themes([
+            {'event_score': 80, 'articles': [article]}])
+        self.assertEqual([theme['name'] for theme in themes], ['바이오'])
+        self.assertEqual(themes[0]['articles'], [article])
+
     def test_strong_event_uses_its_score_and_explicit_theme(self):
         event = {'event_score': 80, 'event_key': '포스코DX_CAPEX', 'articles': [ARTICLE]}
         themes = build_event_analysis_themes([event], extract_themes([ARTICLE]))

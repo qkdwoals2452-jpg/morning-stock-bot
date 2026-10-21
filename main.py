@@ -9,7 +9,7 @@ from company_verify_engine import verify_company_theme
 from config import *
 from news_engine import get_us_news, get_korea_news
 from theme_engine import extract_themes, expand_theme_words, build_event_analysis_themes
-from stock_engine import load_korean_stocks, find_related_stocks
+from stock_engine import load_korean_stocks, find_related_stocks, select_analysis_themes
 from company_engine import get_company_match_score
 from impact_engine import get_news_impact_score, assess_company_event_relation
 from market_engine import get_market_score
@@ -241,7 +241,9 @@ def run():
     themes = build_event_analysis_themes(important_events, themes)
     final_results = []
     pre_news_cache = {}
-    themes = themes[:TOP_THEME_COUNT]
+    # 동일한 분석 개수 안에서 국내 직접 후보가 있는 사건을 먼저 검증한다.
+    # 후보 발견은 추천 자격이 아니며 아래 당사자·재무·차트 검증을 모두 거친다.
+    themes = select_analysis_themes(themes, stocks, news, TOP_THEME_COUNT)
     print("실제 분석 테마 수:", len(themes))
     
     for theme in themes:

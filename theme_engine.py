@@ -154,6 +154,7 @@ CONCEPT_EXPANSION = {
 
 
 THEME_ARTICLE_KEYWORDS = {
+    "바이오": ["바이오", "치료제", "의약품", "신약", "임상", "biopharma", "therapeutic"],
     "AI": [
         "ai", "artificial intelligence", "인공지능",
         "nvidia", "openai", "gpu", "ai chip",
