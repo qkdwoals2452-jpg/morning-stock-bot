@@ -24,8 +24,8 @@
     "start_price": 20100.0,
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 20050.0,
-    "current_return": -0.25,
+    "current_price": 20100.0,
+    "current_return": 0.0,
     "highest_price": 20550.0,
     "highest_return": 2.24,
     "lowest_price": 19080.0,
@@ -85,9 +85,14 @@
         "date": "2026-10-21",
         "price": 20050.0,
         "return": -0.25
+      },
+      {
+        "date": "2026-10-22",
+        "price": 20100.0,
+        "return": 0.0
       }
     ],
-    "last_updated": "2026-10-21",
+    "last_updated": "2026-10-22",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-10-13",
