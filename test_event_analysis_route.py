@@ -10,7 +10,7 @@ from unittest.mock import Mock, patch
 
 from event_engine import build_events
 from theme_engine import build_event_analysis_themes, extract_themes
-from stock_engine import select_analysis_themes
+from stock_engine import select_analysis_themes, build_analysis_routes
 
 
 ARTICLE = {'title': '포스코DX, AI 기업 인핸스에 20억 투자',
@@ -20,9 +20,61 @@ MEDICAL_ARTICLE = {
     'summary': '', 'market': 'KR', 'source': 'fixture'}
 MEDICAL_STOCK = {'name': '리메드', 'code': '302550',
                  'sector': '의료용 기기 제조업'}
+DISPLAY_ARTICLE = {
+    'title': 'LG디스플레이 3분기, 전기比 흑자전환…영업이익 2506억원',
+    'summary': '', 'market': 'KR', 'source': 'fixture'}
+DISPLAY_STOCK = {'name': 'LG디스플레이', 'code': '034220',
+                 'sector': '전자부품 제조업'}
 
 
 class EventAnalysisRouteTests(unittest.TestCase):
+    def test_unclassified_domestic_actor_routes_with_own_event_score(self):
+        events = build_events([dict(DISPLAY_ARTICLE)])
+        themes = build_event_analysis_themes(events)
+        self.assertEqual(themes, [])
+        routes = build_analysis_routes(events, themes, [DISPLAY_STOCK], [], 3)
+        self.assertEqual(len(routes), 1)
+        self.assertEqual(routes[0]['candidate_codes'], ['034220'])
+        self.assertEqual(routes[0]['event_score'], events[0]['event_score'])
+        self.assertEqual(routes[0]['articles'], events[0]['articles'])
+        self.assertEqual(routes[0]['frequency_score'], 0)
+
+    def test_direct_route_requires_actor_not_just_company_mention(self):
+        for title in ['LG디스플레이 주가 상승 기대, 실적 개선 전망',
+                      '과거 LG디스플레이 실적과 관련한 투자자 관심',
+                      '경쟁사, 150억원 투자…LG디스플레이 수혜주 관심']:
+            with self.subTest(title=title):
+                events = [{'event_score': 80, 'articles': [{'title': title}]}]
+                self.assertEqual(build_analysis_routes(events, [], [DISPLAY_STOCK], [], 3), [])
+
+    def test_direct_route_not_lost_at_theme_limit_and_no_cross_event_articles(self):
+        other = {'name': '검증기업', 'code': '123456', 'sector': '제조업'}
+        events = build_events([dict(DISPLAY_ARTICLE), {
+            'title': '검증기업, 신규 공장에 150억원 투자', 'market': 'KR'}])
+        themes = [{'name': 'AI', 'score': 90, 'articles': [{'title': 'OpenAI AI 투자'}]}]
+        routes = build_analysis_routes(events, themes, [DISPLAY_STOCK, other], [], 1)
+        direct = [route for route in routes if route.get('analysis_route') == 'DIRECT_EVENT']
+        self.assertEqual(len(direct), 2)
+        self.assertEqual({tuple(route['candidate_codes']) for route in direct},
+                         {('034220',), ('123456',)})
+        for route in direct:
+            self.assertEqual(len(route['articles']), 1)
+        self.assertEqual(len(build_analysis_routes(events + events, [], [DISPLAY_STOCK, other], [], 1)), 2)
+
+    def test_existing_supported_route_not_duplicated(self):
+        events = build_events([dict(ARTICLE)])
+        themes = build_event_analysis_themes(events)
+        stock = {'name': '포스코DX', 'code': '022100', 'sector': '소프트웨어'}
+        self.assertEqual(build_analysis_routes(events, themes, [stock], [], 3), themes)
+
+    def test_direct_verification_requires_listed_identity_and_sector(self):
+        from company_verify_engine import verify_direct_company_event
+        self.assertTrue(verify_direct_company_event(DISPLAY_STOCK, [DISPLAY_ARTICLE])['pass'])
+        self.assertEqual(verify_direct_company_event(DISPLAY_STOCK, [DISPLAY_ARTICLE])['score'], 0)
+        for stock in (dict(DISPLAY_STOCK, code=''), dict(DISPLAY_STOCK, sector=''),
+                      dict(DISPLAY_STOCK, name='무관기업')):
+            self.assertFalse(verify_direct_company_event(stock, [DISPLAY_ARTICLE])['pass'])
+
     def test_actual_neurotech_event_retains_article_and_direct_candidate(self):
         from stock_engine import find_related_stocks
         events = build_events([dict(MEDICAL_ARTICLE)])
@@ -147,6 +199,25 @@ class EventAnalysisRouteTests(unittest.TestCase):
                 _, results = self.run_route(article=MEDICAL_ARTICLE,
                                             stock=MEDICAL_STOCK, **failures)
                 self.assertEqual(results, [])
+
+    def test_unclassified_lg_display_runs_finance_and_retains_safety_gates(self):
+        calls, results = self.run_route(article=DISPLAY_ARTICLE, stock=DISPLAY_STOCK)
+        self.assertEqual(calls, 1)
+        self.assertEqual(results[0]['theme']['analysis_route'], 'DIRECT_EVENT')
+        self.assertEqual(results[0]['ranked'][0]['code'], '034220')
+        self.assertEqual(results[0]['ranked'][0]['company']['score'], 0)
+        self.assertEqual(results[0]['ranked'][0]['verify']['score'], 0)
+        for failures in ({'connection_pass': False}, {'missing_finance': True},
+                         {'below_ma120': True}, {'missing_chart': True},
+                         {'market_value': None}):
+            with self.subTest(failures=failures):
+                _, results = self.run_route(article=DISPLAY_ARTICLE,
+                                            stock=DISPLAY_STOCK, **failures)
+                self.assertEqual(results, [])
+        calls, results = self.run_route(article=DISPLAY_ARTICLE,
+                                       stock=dict(DISPLAY_STOCK, sector=''))
+        self.assertEqual(calls, 0)
+        self.assertEqual(results, [])
 
     def test_strong_candidate_reaches_finance_even_with_frequency_six(self):
         calls, results = self.run_route()

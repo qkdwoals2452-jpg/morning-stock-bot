@@ -96,3 +96,20 @@ def verify_company_theme(stock, theme_name):
         "memo": memo,
         "matched": matched[:5]
     }
+
+
+def verify_direct_company_event(stock, articles):
+    """산업 수혜 추정 대신 KRX 등록 업종과 해당 회사의 직접 사건을 검증한다."""
+    from impact_engine import assess_company_event_relation
+
+    relation = assess_company_event_relation(stock, articles)
+    sector = str(stock.get('sector', '') or '').strip()
+    valid = (bool(re.fullmatch(r'[0-9]{6}', str(stock.get('code', ''))))
+             and bool(sector) and relation['pass'])
+    return {
+        'pass': valid, 'score': 0,
+        'memo': ('KRX 등록 업종·기사 직접 사건 당사자 확인(산업 수혜 미확정)'
+                 if valid else '등록 업종 또는 직접 사건 근거 확인불가'),
+        'matched': [sector] if sector else [], 'source': 'KRX_LIST_AND_EVENT_ARTICLE',
+        'sector': sector, 'event_connection': relation,
+    }
