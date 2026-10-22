@@ -115,13 +115,18 @@ def fetch_article_originals(items, originals, limit=12):
         try:
             r=requests.get(url,timeout=(3,5),allow_redirects=False)
             if r.status_code==200 and len(r.content)<=3000000:
-                return original_from_article(r.text,url)
-        except (requests.RequestException,ValueError,TypeError): pass
-        return None
+                article=original_from_article(r.text,url)
+                return article, 'verified' if article else 'metadata_unverified'
+            return None, 'http_or_size_rejected'
+        except requests.Timeout: return None, 'timeout'
+        except (requests.RequestException,ValueError,TypeError): return None, 'request_or_parse_failed'
     with ThreadPoolExecutor(max_workers=4) as pool:
-        articles=[x for x in pool.map(fetch,urls) if x]
+        results=list(pool.map(fetch,urls))
+    from collections import Counter
+    articles=[article for article, reason in results if article]
     return articles,dict(article_attempted=len(urls),article_verified=len(articles),
-                         article_unverified=len(urls)-len(articles))
+                         article_unverified=len(urls)-len(articles),
+                         article_results=dict(Counter(reason for article,reason in results)))
 
 
 def fetch_verified_feeder(url, originals, diagnostics=None, *, verify_articles=False):
