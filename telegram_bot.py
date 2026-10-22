@@ -30,18 +30,18 @@ def send_message(message):
 
     try:
 
-        requests.post(
+        response = requests.post(
             url,
             data=data,
             timeout=10
         )
+        if response.status_code != 200 or response.json().get('ok') is not True:
+            raise RuntimeError('텔레그램 API 전송 거부')
+        print('TELEGRAM SENT:', response.json().get('result', {}).get('message_id'))
 
-    except Exception as e:
-
-        print(
-            "텔레그램 오류",
-            e
-        )
+    except Exception:
+        # 예외 문자열에는 토큰이 포함된 요청 URL이 들어갈 수 있다.
+        raise RuntimeError('텔레그램 전송 실패: API 응답 또는 네트워크 확인 필요') from None
 
 
 def split_message(
@@ -86,6 +86,33 @@ def send_telegram(
         "🇺🇸 미국뉴스 기반\n"
         "🇰🇷 한국증시 AI 탐지\n\n"
     )
+
+    analysis = project_status.get('analysis_status')
+    if analysis is not None:
+        msg += '🔎 이번 실행 분석 결과\n'
+        msg += (f"수집 뉴스 {analysis['news_count']}건 / "
+                f"핵심 사건 {analysis['strong_event_count']}건\n")
+        msg += (f"분석 종목 {analysis['analyzed_count']}개 / "
+                f"최종 검증 후보 {analysis['selected_count']}개\n")
+        if not analysis['selected_count']:
+            if not analysis['analyzed_count']:
+                msg += '이번 실행에서는 국내 직접 분석 후보가 연결되지 않았습니다.\n'
+            else:
+                msg += '이번 실행에서는 최종 검증 기준을 통과한 종목이 없습니다.\n'
+        excluded = []
+        seen = set()
+        for item in analysis.get('excluded', []):
+            key = (item['code'], item['reason'])
+            if key not in seen:
+                seen.add(key)
+                excluded.append(item)
+        if excluded:
+            msg += '\n제외·보류 사유\n'
+            for item in excluded[:5]:
+                msg += html.escape(f"• {item['name']} ({item['code']}): {item['reason']}") + '\n'
+            if len(excluded) > 5:
+                msg += f'외 {len(excluded) - 5}개 사유는 운영 로그에 기록했습니다.\n'
+        msg += '\n'
 
     watch = project_status.get('supply_chain_watch', {})
     if watch.get('paths'):

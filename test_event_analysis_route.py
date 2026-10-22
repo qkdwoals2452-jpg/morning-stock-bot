@@ -181,6 +181,7 @@ class EventAnalysisRouteTests(unittest.TestCase):
                         'pass': False, 'reason': '사건 당사자 관계 미확인'})
                 with patch.multiple(main, **calls), patch.object(finance_module, 'get_finance_score', finance), contextlib.redirect_stdout(io.StringIO()):
                     main.run()
+                self.last_analysis_status = saved.call_args.args[1]['analysis_status']
                 return finance.call_count, saved.call_args.args[0]
             finally:
                 os.chdir(previous)
@@ -218,6 +219,24 @@ class EventAnalysisRouteTests(unittest.TestCase):
                                        stock=dict(DISPLAY_STOCK, sector=''))
         self.assertEqual(calls, 0)
         self.assertEqual(results, [])
+
+    def test_telegram_status_uses_actual_candidate_decision(self):
+        cases = [({'below_ma120': True}, 'chart', '120일선 아래'),
+                 ({'missing_finance': True}, 'finance', '핵심 재무 데이터 확인불가'),
+                 ({'connection_pass': False}, 'connection', '사건 당사자 관계 미확인'),
+                 ({'missing_chart': True}, 'chart', '52주 고점 대비 낙폭 확인불가'),
+                 ({'market_value': None}, 'market', '거래대금 확인불가')]
+        for failures, stage, reason in cases:
+            with self.subTest(failures=failures):
+                self.run_route(article=DISPLAY_ARTICLE, stock=DISPLAY_STOCK, **failures)
+                status = self.last_analysis_status
+                self.assertEqual(status['analyzed_count'], 1)
+                self.assertEqual(status['selected_count'], 0)
+                self.assertEqual(status['excluded'], [dict(
+                    name='LG디스플레이', code='034220', stage=stage, reason=reason)])
+        self.run_route(article=DISPLAY_ARTICLE, stock=DISPLAY_STOCK)
+        self.assertEqual(self.last_analysis_status['selected_count'], 1)
+        self.assertEqual(self.last_analysis_status['excluded'], [])
 
     def test_strong_candidate_reaches_finance_even_with_frequency_six(self):
         calls, results = self.run_route()
