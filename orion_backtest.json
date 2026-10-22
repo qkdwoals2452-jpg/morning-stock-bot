@@ -24,8 +24,8 @@
     "start_price": 20100.0,
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 20050.0,
-    "current_return": -0.25,
+    "current_price": 19550.0,
+    "current_return": -2.74,
     "highest_price": 20550.0,
     "highest_return": 2.24,
     "lowest_price": 19080.0,
@@ -86,9 +86,15 @@
         "price": 20050.0,
         "return": -0.25,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-10-22",
+        "price": 19550.0,
+        "return": -2.74,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-10-21",
+    "last_updated": "2026-10-22",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-10-13",
@@ -169,6 +175,6 @@
       "max_drawdown": -5.07
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-10-22T07:39:09.055232+09:00"
+    "price_observed_at": "2026-10-23T06:46:34.635108+09:00"
   }
 ]
