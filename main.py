@@ -110,6 +110,16 @@ def run():
         for event in events
         if event.get("event_score", 0) >= 70
     ]
+    analysis_status = {'news_count': len(news), 'event_count': len(events),
+                       'strong_event_count': len(important_events), 'excluded': []}
+    analyzed_codes = set()
+
+    def reject(stock, stage, reason):
+        reason = reason or '검증 기준 미달'
+        analysis_status['excluded'].append({
+            'name': stock['name'], 'code': stock['code'],
+            'stage': stage, 'reason': reason})
+        print('제외:', stock['name'], reason)
 
     event_news = []
     seen = set()
@@ -280,11 +290,13 @@ def run():
         ranked = []
 
         for stock in candidates:
+            analyzed_codes.add(stock['code'])
             if stock["name"] in ["SG"]:
+                reject(stock, 'policy', '운영 제외 종목')
                 continue
             connection = assess_company_event_relation(stock, articles)
             if not connection["pass"]:
-                print("제외:", stock["name"], connection["reason"])
+                reject(stock, 'connection', connection['reason'])
                 continue
             print("사건 연결 근거:", stock["name"], connection)
             verify = (verify_direct_company_event(stock, articles)
@@ -293,25 +305,17 @@ def run():
             print('기업 검증:', stock['name'], verify)
 
             if not verify["pass"]:
-                print("제외:", stock["name"], verify.get("memo", "사업내용 검증 미달"))
+                reject(stock, 'business', verify.get('memo', '사업내용 검증 미달'))
                 continue
 
             finance = get_finance_score(stock)
             print('재무 검증:', stock['name'], finance)
             if finance.get("op_margin") is None or finance.get("debt_ratio") is None:
-                print("제외:", stock["name"], "핵심 재무 데이터 확인불가")
+                reject(stock, 'finance', '핵심 재무 데이터 확인불가')
                 continue
             if finance.get("exclude"):
 
-                print(
-
-                    "제외:",
-
-                    stock["name"],
-
-                    finance.get("exclude_reason", "재무 기준 미달")
-
-                )
+                reject(stock, 'finance', finance.get('exclude_reason', '재무 기준 미달'))
 
                 continue
             market = get_market_score(stock, price_cache=regular_price_cache)
@@ -347,14 +351,8 @@ def run():
 
             if impact.get("exclude") is True:
 
-                print(
-                    "제외:",
-                    stock["name"],
-                    impact.get(
-                        "exclude_reason",
-                        "기사와 기업의 직접 연결 근거 부족"
-                    )
-                )
+                reject(stock, 'connection', impact.get(
+                    'exclude_reason', '기사와 기업의 직접 연결 근거 부족'))
 
                 continue
 
@@ -371,7 +369,7 @@ def run():
             print("SECTOR FILTER:", stock["name"], ok, reason)
             if not ok:
 
-                print("제외:", stock["name"], reason)
+                reject(stock, 'sector', reason)
 
                 continue
             
@@ -386,37 +384,37 @@ def run():
 
             if finance.get("exclude") == True:
 
-                print("제외:", stock["name"], finance.get("exclude_reason"))
+                reject(stock, 'finance', finance.get('exclude_reason'))
 
                 continue
             if company.get("exclude") == True:
-                print("제외:", stock["name"], company.get("exclude_reason"))
+                reject(stock, 'business', company.get('exclude_reason'))
                 continue
             
 
             if chart.get("details", {}).get("high_52w_gap") is None:
-                print("제외:", stock["name"], "52주 고점 대비 낙폭 확인불가")
+                reject(stock, 'chart', '52주 고점 대비 낙폭 확인불가')
                 continue
 
             if chart.get("details", {}).get("high_52w_gap") is not None:
 
                 if chart["details"]["high_52w_gap"] <= -60:
 
-                    print("제외:", stock["name"], "52주 고점 대비 -60% 이하")
+                    reject(stock, 'chart', '52주 고점 대비 -60% 이하')
 
                     continue
 
             trend_ok, trend_reason = pass_long_term_trend(chart)
             if not trend_ok:
-                print("제외:", stock["name"], trend_reason)
+                reject(stock, 'chart', trend_reason)
                 continue
 
             if market.get("trading_value") is None:
-                print("제외:", stock["name"], "거래대금 확인불가")
+                reject(stock, 'market', '거래대금 확인불가')
                 continue
             else:
                 if market["trading_value"] < 30_0000_0000:
-                    print("제외:", stock["name"], "거래대금 30억 미만")
+                    reject(stock, 'market', '거래대금 30억 미만')
                     continue
             result = make_stock_result(
                 stock=stock,
@@ -442,6 +440,7 @@ def run():
             ]
 
             if stock["name"] in mega_caps:
+                reject(stock, 'policy', '대형주·지주사 참고용 제외')
                 
 
                 print("참고용:", stock["name"], "대형주/지주사")
@@ -455,6 +454,8 @@ def run():
             continue
 
         top_ranked = ranked[:TOP_STOCK_COUNT]
+        for stock in ranked[TOP_STOCK_COUNT:]:
+            reject(stock, 'rank_limit', '검증 통과 후 표시 개수 제한')
         print(
             "추가됨:",
             theme["name"],
@@ -481,6 +482,13 @@ def run():
     update_backtest_prices(stocks, price_cache=regular_price_cache)
     project_status = get_project_status()
     project_status['supply_chain_watch'] = supply_chain_watch
+    selected_codes = {stock['code'] for block in final_results for stock in block['ranked']}
+    analysis_status['analyzed_count'] = len(analyzed_codes)
+    analysis_status['selected_count'] = len(selected_codes)
+    analysis_status['excluded'] = [item for item in analysis_status['excluded']
+                                   if item['code'] not in selected_codes]
+    project_status['analysis_status'] = analysis_status
+    print('운영 분석 결과:', analysis_status)
 
     send_telegram(
         final_results,

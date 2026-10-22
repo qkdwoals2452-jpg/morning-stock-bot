@@ -10,15 +10,53 @@ import subprocess
 import tempfile
 import textwrap
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 import backtest_engine as backtest
 import memory_engine as memory
 from chart_engine import pass_long_term_trend
 from scoring_engine import make_final_score, make_grade, make_stock_result, SCORE_VERSION
-from telegram_bot import send_telegram
+from telegram_bot import send_telegram, send_message
 
 ROOT = Path(__file__).resolve().parent
+
+
+class TelegramAnalysisStatusTests(unittest.TestCase):
+    def render(self, analyzed=1, excluded=None, selected=0):
+        messages = []
+        status = {'saved_days': 10, 'saved_themes': 1, 'analysis_status': {
+            'news_count': 380, 'strong_event_count': 7, 'analyzed_count': analyzed,
+            'selected_count': selected, 'excluded': excluded or []}}
+        with patch('telegram_bot.send_message', side_effect=messages.append), patch('telegram_bot.time.sleep'):
+            send_telegram([], status)
+        return '\n'.join(messages)
+
+    def test_empty_recommendation_includes_real_rejection_and_escapes_html(self):
+        item = {'code': '034220', 'name': 'LG<디스플레이>', 'reason': '120일선 아래'}
+        text = self.render(excluded=[item, item])
+        self.assertIn('분석 종목 1개 / 최종 검증 후보 0개', text)
+        self.assertIn('LG&lt;디스플레이&gt;', text)
+        self.assertEqual(text.count('120일선 아래'), 1)
+        self.assertNotIn('이번 실행에서는 국내 직접 분석 후보가 연결되지 않았습니다.', text)
+
+    def test_no_candidate_and_no_final_selection_are_distinct(self):
+        self.assertIn('국내 직접 분석 후보가 연결되지 않았습니다.', self.render(analyzed=0))
+        self.assertIn('최종 검증 기준을 통과한 종목이 없습니다.', self.render())
+        self.assertNotIn('통과한 종목이 없습니다.', self.render(selected=1))
+
+    def test_telegram_acknowledgement_required(self):
+        with patch('telegram_bot.requests.post', return_value=Mock(
+                status_code=200, json=lambda: {'ok': True, 'result': {'message_id': 123}})):
+            send_message('fixture')
+        for response in (Mock(status_code=500), Mock(status_code=200, json=lambda: {'ok': False})):
+            with patch('telegram_bot.requests.post', return_value=response), self.assertRaises(RuntimeError):
+                send_message('fixture')
+
+    def test_send_error_does_not_expose_request_secrets(self):
+        with patch('telegram_bot.requests.post', side_effect=RuntimeError('SECRET_TOKEN')):
+            with self.assertRaises(RuntimeError) as caught:
+                send_message('fixture')
+        self.assertNotIn('SECRET_TOKEN', str(caught.exception))
 
 
 def result(learning=None):
