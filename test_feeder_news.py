@@ -49,3 +49,25 @@ class FeederFetchTests(unittest.TestCase):
         with patch('requests.get',return_value=response):
             self.assertEqual(len(fetch_verified_feeder('https://feeder.co/out/f/test.json',[o])),1)
             self.assertEqual(fetch_verified_feeder('https://feeder.co/out/f/test.json',[]),[])
+
+class FeederIntegrationTests(unittest.TestCase):
+    def test_collector_routes_verified_feed_and_preserves_diagnostics(self):
+        from unittest.mock import patch
+        from news_engine import _collect_feeds
+        article=FeederVerificationTests().original()
+        def collect(reports):
+            reports['Nasdaq_Feeder_Verified']={'status':'ok','verified':1}
+            return [article]
+        d={}
+        with patch('news_engine.get_verified_feeder_news',side_effect=collect):
+            self.assertEqual(_collect_feeds([('Nasdaq_Feeder_Verified',None)],'US',d),[article])
+        self.assertEqual(d['Nasdaq_Feeder_Verified']['verified'],1)
+    def test_original_failure_cannot_admit_proxy_only_articles(self):
+        from unittest.mock import patch,Mock
+        from news_engine import get_verified_feeder_news
+        r=Mock(status_code=200)
+        r.json.return_value={'version':'https://jsonfeed.org/version/1.1','items':[{'url':'https://www.nasdaq.com/articles/test'}]}
+        d={}
+        with patch('news_engine.parse_rss',return_value=[]),patch('requests.get',return_value=r):
+            self.assertEqual(get_verified_feeder_news(d),[])
+        self.assertEqual(d['Nasdaq_Feeder_Verified']['verified'],0)
