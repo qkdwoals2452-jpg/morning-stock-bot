@@ -33,6 +33,91 @@ def response(rows, symbol="009150.KS"):
 
 
 class ChartHistoryTests(unittest.TestCase):
+    def broken_historical_close(self):
+        return chart._normalize_price_history([
+            row('2026-03-26', 11530, highPrice=11920, lowPrice=11500),
+            row('2026-03-27', 11530, highPrice=11500, lowPrice=10930,
+                accumulatedTradingVolume=4167020),
+            row('2026-10-22', 7230)], date(2026, 3, 1), date(2026, 10, 22),
+            'YAHOO_REGULAR_CLOSE')
+
+    def secondary_response(self, *, code='034220', day='20260327', high=11500,
+                           low=10930, close=11500, volume=4167020):
+        return Mock(text=f'<protocol><chartdata symbol="{code}" timeframe="day">'
+                         f'<item data="{day}|11350|{high}|{low}|{close}|{volume}" />'
+                         '</chartdata></protocol>')
+
+    def test_actual_repeated_close_repaired_with_original_preserved(self):
+        original = self.broken_historical_close()
+        with patch.object(chart.requests, 'get', return_value=self.secondary_response()):
+            repaired = chart._repair_repeated_historical_close('034220', original)
+        self.assertIsNone(original[1]['high'])
+        self.assertEqual(original[1]['close'], 11530)
+        self.assertEqual(repaired[1]['close'], 11500)
+        self.assertEqual(repaired[1]['high'], 11500)
+        self.assertEqual(repaired[1]['price_correction']['original'], original[1])
+        self.assertEqual(repaired[-1], original[-1])
+        with patch.object(chart.requests, 'get') as get:
+            self.assertEqual(chart._repair_repeated_historical_close('034220', repaired), repaired)
+            get.assert_not_called()
+
+    def test_production_history_path_repairs_once_and_caches_same_regular_quote(self):
+        records = [row('2026-03-26', 11530, highPrice=11920, lowPrice=11500),
+                   row('2026-03-27', 11530, highPrice=11500, lowPrice=10930,
+                       accumulatedTradingVolume=4167020), row('2026-10-22', 7230)]
+        cache = {}
+        now = datetime(2026, 10, 23, 7, tzinfo=KST)
+        with patch.object(chart.requests, 'get', side_effect=[
+                response(records, symbol='034220.KS'), self.secondary_response()]) as get:
+            result = chart.get_price_history('034220', now=now, cache=cache)
+            self.assertIs(chart.get_price_history('034220', now=now, cache=cache), result)
+            self.assertEqual(get.call_count, 2)
+        self.assertEqual(result[1]['close'], 11500)
+        self.assertEqual(result[1]['high'], 11500)
+        self.assertEqual(result[-1]['close'], 7230)
+        self.assertEqual(result[-1]['source'], 'YAHOO_REGULAR_CLOSE')
+
+    def test_secondary_must_match_symbol_date_high_low_and_volume(self):
+        for change in ({'code': '009150'}, {'day': '20260326'}, {'high': 11510},
+                       {'low': 10920}, {'volume': 4167021}, {'close': 11530}):
+            with self.subTest(change=change):
+                original = self.broken_historical_close()
+                with patch.object(chart.requests, 'get', return_value=self.secondary_response(**change)):
+                    self.assertEqual(chart._repair_repeated_historical_close('034220', original), original)
+
+    def test_secondary_failure_does_not_guess_high_or_close(self):
+        for exc in (requests.Timeout(), ValueError('invalid XML')):
+            original = self.broken_historical_close()
+            with patch.object(chart.requests, 'get', side_effect=exc):
+                self.assertEqual(chart._repair_repeated_historical_close('034220', original), original)
+                self.assertIsNone(original[1]['high'])
+
+    def test_latest_or_non_repeated_bad_close_is_not_replaced(self):
+        for records in (self.broken_historical_close()[:2], self.broken_historical_close()):
+            if len(records) == 3:
+                records[0]['close'] = 11600
+            with patch.object(chart.requests, 'get') as get:
+                self.assertEqual(chart._repair_repeated_historical_close('034220', records), records)
+                get.assert_not_called()
+
+    def test_crosschecked_close_restores_52_week_calculation_in_real_history_shape(self):
+        start = date(2026, 3, 1)
+        records = [row((start + timedelta(days=i)).isoformat(), 11000,
+                       highPrice=12000, lowPrice=10000) for i in range(160)]
+        records[25] = row('2026-03-26', 11530, highPrice=11920, lowPrice=11500)
+        records[26] = row('2026-03-27', 11530, highPrice=11500, lowPrice=10930,
+                          accumulatedTradingVolume=4167020)
+        history = chart._normalize_price_history(records, start, date(2026, 10, 22),
+                                                  'YAHOO_REGULAR_CLOSE')
+        with patch.object(chart.requests, 'get', return_value=self.secondary_response()):
+            repaired = chart._repair_repeated_historical_close('034220', history)
+        with patch.object(chart, 'get_price_history', return_value=repaired):
+            result = chart.get_chart_score({'code': '034220'})
+        self.assertEqual(result['details']['high_52w'], 12000)
+        self.assertEqual(result['details']['high_52w_gap'], -8.33)
+        self.assertEqual(result['details']['high_52w_invalid_dates'], [])
+        self.assertEqual(result['details']['price_corrections'][0]['original']['close'], 11530)
+
     def history(self, rows, now=None):
         with patch.object(chart.requests, "get", return_value=response(rows)):
             return chart.get_price_history("009150", now=now or datetime(2026, 10, 22, 6, tzinfo=KST))
