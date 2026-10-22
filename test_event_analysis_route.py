@@ -15,9 +15,43 @@ from stock_engine import select_analysis_themes
 
 ARTICLE = {'title': '포스코DX, AI 기업 인핸스에 20억 투자',
            'summary': '', 'market': 'KR', 'source': 'fixture'}
+MEDICAL_ARTICLE = {
+    'title': '포인터스PE, 리메드에 150억원 투자…"글로벌 뉴로테크 성장 기회"',
+    'summary': '', 'market': 'KR', 'source': 'fixture'}
+MEDICAL_STOCK = {'name': '리메드', 'code': '302550',
+                 'sector': '의료용 기기 제조업'}
 
 
 class EventAnalysisRouteTests(unittest.TestCase):
+    def test_actual_neurotech_event_retains_article_and_direct_candidate(self):
+        from stock_engine import find_related_stocks
+        events = build_events([dict(MEDICAL_ARTICLE)])
+        themes = build_event_analysis_themes(events)
+        self.assertEqual([theme['name'] for theme in themes], ['의료기기'])
+        self.assertEqual(themes[0]['articles'], events[0]['articles'])
+        self.assertEqual(themes[0]['articles'][0]['title'], MEDICAL_ARTICLE['title'])
+        self.assertEqual(themes[0]['event_score'], events[0]['event_score'])
+        candidates = find_related_stocks(themes[0], [MEDICAL_STOCK], [])
+        self.assertEqual([stock['code'] for stock in candidates], ['302550'])
+
+    def test_medical_route_still_requires_business_evidence(self):
+        from company_verify_engine import verify_company_theme
+        with patch('company_verify_engine.search_company_text', return_value=''):
+            self.assertFalse(verify_company_theme(MEDICAL_STOCK, '의료기기')['pass'])
+        with patch('company_verify_engine.search_company_text', return_value=
+                   '의료기기 의료용 기기 뉴로테크 신경조절 자기자극 재활기기'):
+            self.assertTrue(verify_company_theme(MEDICAL_STOCK, '의료기기')['pass'])
+
+    def test_missing_domain_is_logged_without_inventing_theme(self):
+        event = {'event_score': 80, 'event_key': 'unknown_domain',
+                 'event_title': '검증회사, 150억원 투자 유치',
+                 'articles': [{'title': '검증회사, 150억원 투자 유치'}]}
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            self.assertEqual(build_event_analysis_themes([event]), [])
+        self.assertIn('사건 분석 경로 없음:', output.getvalue())
+        self.assertIn('unknown_domain', output.getvalue())
+
     def test_direct_candidate_survives_top_three_without_borrowing_articles(self):
         themes = [{'name': name, 'articles': [{'title': title}], 'score': score}
                   for name, title, score in [('AI', 'OpenAI AI investment', 80),
@@ -61,7 +95,7 @@ class EventAnalysisRouteTests(unittest.TestCase):
         event = {'event_score': 80, 'articles': [{'title': 'Taiwan 업체, 신규 공장 투자 확정'}]}
         self.assertEqual(build_event_analysis_themes([event]), [])
 
-    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False, connection_pass=True, below_ma120=False, missing_trend=False):
+    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False, connection_pass=True, below_ma120=False, missing_trend=False, article=None, stock=None):
         previous = os.getcwd()
         with tempfile.TemporaryDirectory() as directory:
             os.chdir(directory)
@@ -76,8 +110,8 @@ class EventAnalysisRouteTests(unittest.TestCase):
                                             'debt_ratio': 50})
                 saved = Mock()
                 calls = dict(
-                    load_korean_stocks=Mock(return_value=[{'name': '포스코DX', 'code': '022100', 'sector': '소프트웨어'}]),
-                    get_us_news=Mock(return_value=[]), get_korea_news=Mock(return_value=[dict(ARTICLE)]),
+                    load_korean_stocks=Mock(return_value=[stock or {'name': '포스코DX', 'code': '022100', 'sector': '소프트웨어'}]),
+                    get_us_news=Mock(return_value=[]), get_korea_news=Mock(return_value=[dict(article or ARTICLE)]),
                     update_backtest_prices=Mock(), save_today_result=Mock(), save_recommendations=Mock(),
                     get_project_status=Mock(return_value={}), send_telegram=saved, save_prediction=Mock(),
                     verify_company_theme=Mock(return_value={'pass': verify_pass, 'score': 60, 'memo': '검증 결과'}),
@@ -100,6 +134,19 @@ class EventAnalysisRouteTests(unittest.TestCase):
                 os.chdir(previous)
                 for name in ('main', 'finance_engine', 'quality_engine'):
                     sys.modules.pop(name, None)
+
+    def test_actual_medical_candidate_reaches_finance_and_preserves_gates(self):
+        calls, results = self.run_route(article=MEDICAL_ARTICLE, stock=MEDICAL_STOCK)
+        self.assertEqual(calls, 1)
+        self.assertEqual(results[0]['theme']['name'], '의료기기')
+        self.assertEqual(results[0]['ranked'][0]['code'], '302550')
+        for failures in ({'verify_pass': False}, {'connection_pass': False},
+                         {'missing_finance': True}, {'below_ma120': True},
+                         {'missing_chart': True}, {'market_value': None}):
+            with self.subTest(failures=failures):
+                _, results = self.run_route(article=MEDICAL_ARTICLE,
+                                            stock=MEDICAL_STOCK, **failures)
+                self.assertEqual(results, [])
 
     def test_strong_candidate_reaches_finance_even_with_frequency_six(self):
         calls, results = self.run_route()

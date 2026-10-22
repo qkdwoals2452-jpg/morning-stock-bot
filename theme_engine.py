@@ -155,6 +155,8 @@ CONCEPT_EXPANSION = {
 
 THEME_ARTICLE_KEYWORDS = {
     "바이오": ["바이오", "치료제", "의약품", "신약", "임상", "biopharma", "therapeutic"],
+    "의료기기": ["의료기기", "의료용 기기", "뉴로테크", "신경조절", "자기자극",
+                 "medical device", "neurotech", "neuromodulation"],
     "AI": [
         "ai", "artificial intelligence", "인공지능",
         "nvidia", "openai", "gpu", "ai chip",
@@ -254,11 +256,13 @@ def build_event_analysis_themes(events, frequency_themes=()):
         event_score = event.get("event_score", 0)
         if event_score < 70:
             continue
+        routed = False
         for name in THEME_ARTICLE_KEYWORDS:
             articles = [article for article in event.get("articles", [])
                         if article_matches_theme(name, article)]
             if not articles:
                 continue
+            routed = True
             theme = grouped.setdefault(name, {
                 "name": name, "score": 0, "event_score": 0,
                 "frequency_score": frequencies.get(name, 0),
@@ -272,6 +276,10 @@ def build_event_analysis_themes(events, frequency_themes=()):
             key = event.get("event_key")
             if key and key not in theme["event_keys"]:
                 theme["event_keys"].append(key)
+        if not routed:
+            print("사건 분석 경로 없음:", event.get("event_key", ""),
+                  event.get("event_title", ""), "점수:", event_score,
+                  "사유: 기사 제목에 지원하는 분석 분야 근거 없음")
     return sorted(grouped.values(),
                   key=lambda theme: (theme["event_score"], theme["frequency_score"]),
                   reverse=True)
