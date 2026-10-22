@@ -71,3 +71,35 @@ class FeederIntegrationTests(unittest.TestCase):
         with patch('news_engine.parse_rss',return_value=[]),patch('requests.get',return_value=r):
             self.assertEqual(get_verified_feeder_news(d),[])
         self.assertEqual(d['Nasdaq_Feeder_Verified']['verified'],0)
+
+class ArticleVerificationTests(unittest.TestCase):
+    url='https://www.nasdaq.com/articles/test'
+    def body(self, date='2026-10-22T14:16:07Z', identity=None):
+        import json
+        return '<link rel="canonical" href="'+self.url+'"><script type="application/ld+json">'+json.dumps({'@type':'NewsArticle','url':identity or self.url,'headline':'Original headline','description':'Original description','datePublished':date})+'</script>'
+    def test_original_article_without_rss_verifies(self):
+        from feeder_news_engine import original_from_article
+        a=original_from_article(self.body(),self.url)
+        self.assertEqual(a['publication_verified_by'],'Nasdaq_Article_JSONLD')
+        self.assertEqual(a['published_at'],'2026-10-22T14:16:07+00:00')
+    def test_missing_naive_or_conflicting_identity_rejected(self):
+        from feeder_news_engine import original_from_article
+        self.assertIsNone(original_from_article(self.body(date=''),self.url))
+        self.assertIsNone(original_from_article(self.body(date='2026-10-22T14:16:07'),self.url))
+        self.assertIsNone(original_from_article(self.body(identity='https://evil.test/'),self.url))
+        self.assertIsNone(original_from_article(self.body().replace('rel="canonical"','rel="alternate"'),self.url))
+    def test_conflicting_original_publication_dates_rejected(self):
+        from feeder_news_engine import original_from_article
+        self.assertIsNone(original_from_article(self.body()+self.body(date='2026-10-21T14:16:07Z'),self.url))
+    def test_live_adapter_fallback_uses_original_not_proxy_date(self):
+        from unittest.mock import patch,Mock
+        from feeder_news_engine import fetch_verified_feeder
+        export=Mock(status_code=200)
+        export.json.return_value={'version':'https://jsonfeed.org/version/1.1','items':[{'url':self.url,'date_published':'2026-10-22T20:00:00Z'}]}
+        article=Mock(status_code=200,text=self.body(),content=self.body().encode())
+        d={}
+        with patch('requests.get',side_effect=[export,article]):
+            a=fetch_verified_feeder('https://feeder.co/out/f/test.json',[],d,verify_articles=True)
+        self.assertEqual(a[0]['published_at'],'2026-10-22T14:16:07+00:00')
+        self.assertEqual(a[0]['publication_verified_by'],'Nasdaq_Article_JSONLD')
+        self.assertEqual(d['Nasdaq_Feeder_Verified']['article_verified'],1)
