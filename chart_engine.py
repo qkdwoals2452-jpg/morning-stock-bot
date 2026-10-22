@@ -1,5 +1,6 @@
 import requests
 import math
+import xml.etree.ElementTree as ET
 from datetime import datetime, date, timedelta, time
 from zoneinfo import ZoneInfo
 
@@ -117,6 +118,75 @@ def _regular_session_rows(payload, symbol):
     return rows
 
 
+def _secondary_candles(xml_text, code):
+    root = ET.fromstring(xml_text)
+    chart = root.find('chartdata')
+    if chart is None or chart.get('symbol') != code or chart.get('timeframe') != 'day':
+        raise ValueError('보조 일봉 종목/주기 불일치')
+    rows = {}
+    for node in chart.findall('item'):
+        fields = node.get('data', '').split('|')
+        if len(fields) != 6:
+            raise ValueError('보조 일봉 형식 오류')
+        day = datetime.strptime(fields[0], '%Y%m%d').date().isoformat()
+        prices = [_positive_price(value) for value in fields[1:5]]
+        opening, high, low, close = prices
+        volume = to_float(fields[5])
+        if (not low <= opening <= high or not low <= close <= high
+                or volume is None or not math.isfinite(volume) or volume <= 0):
+            # 거래정지/무거래 행은 교정 근거로 사용하지 않는다.
+            continue
+        row = {'high': high, 'low': low, 'close': close, 'volume': volume}
+        if day in rows and rows[day] != row:
+            raise ValueError('보조 일봉 날짜 충돌')
+        rows[day] = row
+    return rows
+
+
+def _repair_repeated_historical_close(code, prices):
+    """전일 종가가 반복된 모순 행만 같은 고가·저가·거래량의 원본으로 교정한다."""
+    targets = [index for index in range(1, len(prices) - 1)
+               if prices[index].get('quality_issues') == ['high_below_close']
+               and prices[index]['close'] == prices[index - 1]['close']]
+    if not targets:
+        return prices
+    try:
+        res = requests.get('https://fchart.stock.naver.com/sise.nhn', params={
+            'symbol': code, 'timeframe': 'day', 'count': 300, 'requestType': 0},
+            headers=HEADERS, timeout=7)
+        res.raise_for_status()
+        secondary = _secondary_candles(res.text, code)
+    except Exception as exc:
+        print('CHART REPAIR UNAVAILABLE:', code, type(exc).__name__)
+        return prices
+    repaired = list(prices)
+    for index in targets:
+        original = prices[index]
+        other = secondary.get(original['date'])
+        if (not other or other['high'] != to_float(original.get('raw_high'))
+                or other['low'] != to_float(original.get('raw_low'))
+                or other['volume'] != original.get('volume')
+                or other['close'] == original['close']):
+            print('CHART REPAIR REJECTED:', code, original['date'],
+                  '날짜·고가·저가·거래량 교차확인 불일치')
+            continue
+        item = dict(original)
+        item.update(close=other['close'], high=other['high'], low=other['low'],
+                    source='YAHOO_REGULAR_CLOSE_REPAIRED_NAVER_FCHART')
+        item.pop('quality_issues', None)
+        item['price_correction'] = {
+            'method': 'repeated_previous_close_with_matching_high_low_volume',
+            'source': 'NAVER_FCHART', 'original': dict(original),
+            'confirmed_fields': ['date', 'high', 'low', 'volume'],
+            'replacement_close': other['close'],
+        }
+        repaired[index] = item
+        print('CHART REPAIR:', code, item['date'], 'old_close:', original['close'],
+              'new_close:', item['close'], 'high:', item['high'], 'low:', item['low'],
+              'volume:', item['volume'], 'source:', item['source'])
+    return repaired
+
+
 def get_price_history(code, now=None, *, cache=None, start_date=None, as_of=None,
                       max_rows=260, allow_missing_close=False):
     if not isinstance(code, str) or len(code) != 6 or not code.isdigit() or code == "000000":
@@ -159,6 +229,7 @@ def get_price_history(code, now=None, *, cache=None, start_date=None, as_of=None
             raw = _regular_session_rows(res.json(), symbol)
             prices = _normalize_price_history(raw, start, cutoff, source,
                                               max_rows, allow_missing_close)
+            prices = _repair_repeated_historical_close(code, prices)
             print("CHART COUNT:", code, len(prices), "source:", source)
 
             if prices:
@@ -323,6 +394,9 @@ def get_chart_score(stock, *, price_cache=None):
             "high_52w_start_exclusive": high_start.isoformat(),
             "high_52w_end": high_end.isoformat(),
             "high_52w_invalid_dates": high_invalid_dates,
-            "high_52w_gap": high_gap
+            "high_52w_gap": high_gap,
+            "price_corrections": [
+                {'date': item['date'], **item['price_correction']}
+                for item in history if item.get('price_correction')]
         }
     }
