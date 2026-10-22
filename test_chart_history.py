@@ -182,6 +182,48 @@ class ChartHistoryTests(unittest.TestCase):
         self.assertEqual(result["details"]["ma120"], 100)
         self.assertIsNone(result["details"]["high_52w_gap"])
 
+    def test_actual_high_contradiction_preserves_raw_values_and_date(self):
+        result = self.history([row("2026-03-27", 457000,
+                                   highPrice=438500, lowPrice=430000)])
+        self.assertIsNone(result[0]["high"])
+        self.assertEqual(result[0]["raw_high"], 438500)
+        self.assertEqual(result[0]["close"], 457000)
+        self.assertEqual(result[0]["date"], "2026-03-27")
+        self.assertIn("high_below_close", result[0]["quality_issues"])
+
+    def test_high_window_excludes_older_peak_and_missing_high(self):
+        end = date(2026, 10, 21)
+        records = [row((end - timedelta(days=i * 3)).isoformat(), 100)
+                   for i in range(130)]
+        records[-1]["highPrice"] = 10000
+        records[-2]["highPrice"] = None
+        with patch.object(chart, "get_price_history", return_value=self.history(records)):
+            result = chart.get_chart_score({"code": "009150"})
+        self.assertEqual(result["details"]["high_52w"], 110)
+        self.assertEqual(result["details"]["high_52w_invalid_dates"], [])
+        self.assertEqual(result["details"]["high_52w_start_exclusive"], "2025-10-22")
+        self.assertEqual(result["details"]["high_52w_end"], "2026-10-21")
+
+    def test_missing_high_inside_window_keeps_gap_unknown_with_date(self):
+        end = date(2026, 10, 21)
+        records = [row((end - timedelta(days=i)).isoformat(), 100) for i in range(120)]
+        records[20]["highPrice"] = None
+        with patch.object(chart, "get_price_history", return_value=self.history(records)):
+            result = chart.get_chart_score({"code": "009150"})
+        self.assertIsNone(result["details"]["high_52w"])
+        self.assertIsNone(result["details"]["high_52w_gap"])
+        self.assertEqual(result["details"]["high_52w_invalid_dates"], ["2026-10-01"])
+
+    def test_high_window_boundary_is_exclusive(self):
+        end = date(2026, 10, 21)
+        records = [row((end - timedelta(days=i * 3)).isoformat(), 100)
+                   for i in range(120)]
+        records += [row("2025-10-22", 100, highPrice=10000),
+                    row("2025-10-23", 100, highPrice=200)]
+        with patch.object(chart, "get_price_history", return_value=self.history(records)):
+            result = chart.get_chart_score({"code": "009150"})
+        self.assertEqual(result["details"]["high_52w"], 200)
+
 
 if __name__ == "__main__":
     unittest.main()

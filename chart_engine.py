@@ -60,11 +60,21 @@ def _normalize_price_history(data, start, cutoff, source, max_rows=260, allow_mi
                 return None
         high = optional_price(high_value)
         low = optional_price(low_value)
+        issues = []
+        if high is None:
+            issues.append("high_missing_or_invalid")
+        if low is None:
+            issues.append("low_missing_or_invalid")
         # 종가는 이동평균에 사용하되 모순된 고가로 52주 낙폭을 만들지 않는다.
         if high is not None and close is not None and high < close:
+            issues.append("high_below_close")
             high = None
         if low is not None and close is not None and low > close:
+            issues.append("low_above_close")
             low = None
+        if high is not None and low is not None and high < low:
+            issues.append("high_below_low")
+            high = low = None
         volume_value = row.get("accumulatedTradingVolume", row.get("volume"))
         volume = to_float(volume_value)
         if volume_value is not None and (isinstance(volume_value, bool) or volume is None
@@ -72,6 +82,10 @@ def _normalize_price_history(data, start, cutoff, source, max_rows=260, allow_mi
             volume = None
         item = {"date": day.isoformat(), "close": close, "high": high,
                 "low": low, "volume": volume, "source": source}
+        if issues:
+            item["quality_issues"] = issues
+            item["raw_high"] = high_value
+            item["raw_low"] = low_value
         if day in by_date and by_date[day] != item:
             raise ValueError("동일 거래일 차트 값 충돌")
         by_date[day] = item
@@ -151,8 +165,13 @@ def get_price_history(code, now=None, *, cache=None, start_date=None, as_of=None
                 print("CHART SNAPSHOT:", code, "date:", prices[-1]["date"],
                       "close:", prices[-1]["close"], "source:", source,
                       "symbol:", symbol, "cutoff:", cutoff.isoformat())
-                if any(item["high"] is None for item in prices):
-                    print("CHART QUALITY:", code, "고가 결측/불일치: 52주 고점 판정 보류")
+                for item in prices:
+                    if item.get("quality_issues"):
+                        print("CHART QUALITY:", code, "date:", item["date"],
+                              "issues:", ",".join(item["quality_issues"]),
+                              "raw_high:", repr(item.get("raw_high"))[:80],
+                              "raw_low:", repr(item.get("raw_low"))[:80],
+                              "close:", item["close"], "source:", source)
                 if cache is not None:
                     cache[key] = prices
                 return prices
@@ -206,7 +225,6 @@ def get_chart_score(stock, *, price_cache=None):
         }
 
     closes = [x["close"] for x in history if x["close"] is not None]
-    highs = [x["high"] for x in history if x["high"] is not None]
 
     if not closes:
         return {
@@ -221,7 +239,18 @@ def get_chart_score(stock, *, price_cache=None):
     ma60 = moving_average(closes, 60)
     ma120 = moving_average(closes, 120)
 
-    high_52w = max(highs) if highs and len(highs) == len(history) else None
+    # 52주는 최근 260개 거래일과 다르다. 최신 완료 거래일을 끝으로
+    # 정확히 364일 구간만 사용하고, 그 안의 결측은 계속 판정 보류한다.
+    high_end = date.fromisoformat(history[-1]["date"])
+    high_start = high_end - timedelta(weeks=52)
+    high_rows = [x for x in history
+                 if high_start < date.fromisoformat(x["date"]) <= high_end]
+    highs = [x["high"] for x in high_rows if x["high"] is not None]
+    high_52w = max(highs) if highs and len(highs) == len(high_rows) else None
+    high_invalid_dates = [x["date"] for x in high_rows if x["high"] is None]
+    print("CHART HIGH WINDOW:", code, "start_exclusive:", high_start.isoformat(),
+          "end:", high_end.isoformat(), "rows:", len(high_rows),
+          "invalid_dates:", high_invalid_dates, "high:", high_52w)
 
     score = 0
     memo = []
@@ -290,6 +319,10 @@ def get_chart_score(stock, *, price_cache=None):
             "ma20": round(ma20, 2) if ma20 else None,
             "ma60": round(ma60, 2) if ma60 else None,
             "ma120": round(ma120, 2) if ma120 else None,
+            "high_52w": high_52w,
+            "high_52w_start_exclusive": high_start.isoformat(),
+            "high_52w_end": high_end.isoformat(),
+            "high_52w_invalid_dates": high_invalid_dates,
             "high_52w_gap": high_gap
         }
     }
