@@ -159,6 +159,9 @@ def instance_key(subject_key, articles):
 
 def publisher(article):
     source = str(article.get("source", ""))
+    # Company releases and distribution wires are primary statements, not independent reporting.
+    if source in ("NVIDIA_Newsroom", "PRNewswire_Tech"):
+        return ("nvidia" if source == "NVIDIA_Newsroom" else "prnewswire"), False
     base = None
     for prefix, name in (("한국경제", "hankyung"), ("매일경제", "mk"), ("이데일리", "edaily"),
                          ("Yahoo", "yahoo"), ("Nasdaq", "nasdaq"), ("Investing", "investing"),
