@@ -1,4 +1,4 @@
-"""Optional Feeder transport; only Nasdaq RSS-confirmed articles are eligible."""
+"""Feeder transport with original Nasdaq RSS or article metadata verification."""
 from datetime import datetime, timezone
 from urllib.parse import urlsplit
 from event_identity_engine import canonical_link
@@ -45,16 +45,90 @@ def verified_feeder_articles(items, originals):
             conflict = True
         counts['date_conflicts'] += int(conflict)
         result.append(dict(original, source='Nasdaq_Feeder_Verified',
-                           published_at=dt.isoformat(), publication_verified_by='Nasdaq_Stocks_RSS'))
+                           published_at=dt.isoformat(), publication_verified_by=original.get('publication_verified_by','Nasdaq_Stocks_RSS')))
     counts['verified'] = len(result)
     return result, counts
 
 
-def fetch_verified_feeder(url, originals, diagnostics=None):
+
+def original_from_article(body, url):
+    """Require an exact canonical article identity and explicit publication date."""
+    import json
+    import html
+    from html.parser import HTMLParser
+    class Metadata(HTMLParser):
+        def __init__(self):
+            super().__init__(); self.canonical=[]; self.scripts=[]; self.active=False
+        def handle_starttag(self, tag, attrs):
+            a=dict(attrs)
+            if tag=='link' and a.get('rel')=='canonical': self.canonical.append(a.get('href',''))
+            if tag=='script' and a.get('type')=='application/ld+json':
+                self.active=True; self.scripts.append('')
+        def handle_endtag(self, tag):
+            if tag=='script': self.active=False
+        def handle_data(self, data):
+            if self.active: self.scripts[-1]+=data
+    parser=Metadata(); parser.feed(body)
+    key=canonical_link(url)
+    if {canonical_link(x) for x in parser.canonical}!={key}: return None
+    candidates=[]
+    def walk(node):
+        if isinstance(node,list):
+            for child in node: walk(child)
+        elif isinstance(node,dict):
+            kind=node.get('@type',[])
+            if isinstance(kind,str): kind=[kind]
+            if any(x in ('NewsArticle','Article','ReportageNewsArticle') for x in kind):
+                identity=node.get('url') or node.get('mainEntityOfPage')
+                if isinstance(identity,dict): identity=identity.get('@id')
+                try:
+                    dt=datetime.fromisoformat(node.get('datePublished','').replace('Z','+00:00'))
+                    if dt.tzinfo and canonical_link(identity or '')==key and node.get('headline'):
+                        candidates.append(dict(link=key,title=html.unescape(node['headline']),
+                            summary=html.unescape(node.get('description','')),market='US',
+                            published_at=dt.astimezone(timezone.utc).isoformat(),
+                            publication_verified_by='Nasdaq_Article_JSONLD'))
+                except (ValueError,TypeError,AttributeError): pass
+            if '@graph' in node: walk(node['@graph'])
+    for script in parser.scripts:
+        try: walk(json.loads(script))
+        except (ValueError,TypeError): pass
+    if len({x['published_at'] for x in candidates})!=1: return None
+    return candidates[0]
+
+
+def fetch_article_originals(items, originals, limit=12):
+    """Bounded independent article checks; never follow redirects to other hosts."""
+    import requests
+    from concurrent.futures import ThreadPoolExecutor
+    known={canonical_link(x.get('link','')) for x in originals}
+    urls=[]
+    for item in items:
+        if not isinstance(item,dict): continue
+        url=canonical_link(item.get('url',''))
+        parts=urlsplit(url)
+        if (parts.scheme=='https' and parts.hostname in ('nasdaq.com','www.nasdaq.com')
+                and parts.path.startswith('/articles/') and url not in known):
+            known.add(url); urls.append(url)
+        if len(urls)>=limit: break
+    def fetch(url):
+        try:
+            r=requests.get(url,timeout=(3,5),allow_redirects=False)
+            if r.status_code==200 and len(r.content)<=3000000:
+                return original_from_article(r.text,url)
+        except (requests.RequestException,ValueError,TypeError): pass
+        return None
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        articles=[x for x in pool.map(fetch,urls) if x]
+    return articles,dict(article_attempted=len(urls),article_verified=len(articles),
+                         article_unverified=len(urls)-len(articles))
+
+
+def fetch_verified_feeder(url, originals, diagnostics=None, *, verify_articles=False):
     """Fetch an explicitly configured export without logging its address.
 
-    Caller must supply trusted original RSS articles. Empty/failed originals
-    deliberately produce no usable articles, rather than trusting proxy dates.
+    RSS matches are preferred. Optional article checks require canonical URL and
+    explicit timezone-aware original publication metadata; proxy dates never win.
     """
     import requests
     report = {'status': 'error', 'http_status': None}
@@ -70,6 +144,10 @@ def fetch_verified_feeder(url, originals, diagnostics=None):
         if (not isinstance(data, dict) or data.get('version') != 'https://jsonfeed.org/version/1.1'
                 or not isinstance(data.get('items'), list)):
             raise ValueError('invalid_json_feed')
+        if verify_articles:
+            additional, audit = fetch_article_originals(data['items'], originals)
+            originals = list(originals) + additional
+            report.update(audit)
         articles, counts = verified_feeder_articles(data['items'], originals)
         report.update(counts, status='ok' if articles else 'no_verified_articles')
     except (requests.RequestException, ValueError, TypeError):
