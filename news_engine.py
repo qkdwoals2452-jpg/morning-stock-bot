@@ -369,12 +369,28 @@ def get_nasdaq_news(diagnostics=None):
                      "US", "Nasdaq_GoogleRSS", diagnostics=reports)
 
 
+def get_verified_feeder_news(diagnostics=None):
+    """Supplemental Stocks feed; original RSS remains mandatory for verification."""
+    from feeder_news_engine import fetch_verified_feeder
+    reports = diagnostics if diagnostics is not None else {}
+    originals = parse_rss(
+        "https://www.nasdaq.com/feed/rssoutbound?category=Stocks",
+        "US", "Nasdaq_Stocks_RSS", diagnostics=reports,
+    )
+    articles = fetch_verified_feeder(
+        "https://feeder.co/out/f/4f2c9005b8.json", originals, reports,
+    )
+    report = reports["Nasdaq_Feeder_Verified"]
+    print("Feeder 검증 수집: " + " | ".join(f"{key}={value}" for key, value in report.items()))
+    return articles
+
+
 def _collect_feeds(feeds, market, diagnostics=None):
     """독립 피드를 제한된 병렬도로 수집하되 기존 목록 순서로 합친다."""
     feeds = list(feeds)
     def host_key(feed):
         source, url = feed
-        return "www.nasdaq.com" if source == "Nasdaq_Tech" else (urlsplit(url).hostname or url)
+        return "www.nasdaq.com" if source in ("Nasdaq_Tech", "Nasdaq_Feeder_Verified") else (urlsplit(url).hostname or url)
     # Fed/BLS 등 같은 호스트의 여러 피드는 동시에 요청하지 않는다.
     gates = {host_key(feed): BoundedSemaphore(1) for feed in feeds}
     def collect(feed):
@@ -383,6 +399,8 @@ def _collect_feeds(feeds, market, diagnostics=None):
         with gates[host_key(feed)]:
             if source_name == "Nasdaq_Tech":
                 articles = get_nasdaq_news(reports)
+            elif source_name == "Nasdaq_Feeder_Verified":
+                articles = get_verified_feeder_news(reports)
             else:
                 parser = parse_atom if source_name.startswith("BLS_") or source_name == "SEC_Filings" else parse_rss
                 articles = parser(url, market, source_name, diagnostics=reports)
@@ -409,6 +427,7 @@ def get_us_news(diagnostics=None):
         ("Investing_Economy", "https://www.investing.com/rss/news_285.rss"),
 
         ("Nasdaq_Tech", None),
+        ("Nasdaq_Feeder_Verified", None),
         # SEC 공시는 아래 Atom 파서에서 한 번만 요청한다.
         # Fed 공식
 
