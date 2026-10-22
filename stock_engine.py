@@ -107,6 +107,56 @@ def select_analysis_themes(themes, stocks, news, limit):
                   reverse=True)[:limit]
 
 
+def build_analysis_routes(events, themes, stocks, news, limit):
+    """분야 경로에서 빠진 국내 사건 당사자를 사건별로 직접 분석한다."""
+    from company_verify_engine import THEME_VERIFY_WORDS
+
+    selected = select_analysis_themes(themes, stocks, news, limit)
+    direct_routes = []
+    seen = set()
+    for event in events:
+        if event.get('event_score', 0) < 70:
+            continue
+        articles = event.get('articles', [])
+        mentions = find_direct_mentions({'articles': articles}, stocks, news)
+        for stock in stocks:
+            if stock['name'] not in mentions:
+                continue
+            code = stock.get('code', '')
+            if not re.fullmatch(r'[0-9]{6}', code):
+                continue
+            # 업종이나 회사명만으로 사건 당사자 자격을 만들지 않는다.
+            relevant = [article for article in articles
+                        if assess_company_event_relation(stock, [article])['pass']]
+            if not relevant:
+                continue
+            represented = any(
+                THEME_VERIFY_WORDS.get(theme['name'])
+                and any(article in theme.get('articles', []) for article in relevant)
+                and stock['name'] in find_direct_mentions(theme, [stock], news)
+                for theme in selected)
+            if represented:
+                continue
+            key = (code, event.get('event_key') or tuple(
+                article.get('link') or article.get('title', '') for article in relevant))
+            if key in seen:
+                continue
+            seen.add(key)
+            route = {
+                'name': '기업 직접사건', 'analysis_route': 'DIRECT_EVENT',
+                'candidate_codes': [code], 'articles': relevant,
+                'score': event['event_score'], 'event_score': event['event_score'],
+                'frequency_score': 0,
+                'event_keys': [event['event_key']] if event.get('event_key') else [],
+                'reason': '기사에 확인된 국내 상장사 직접사건 검증',
+            }
+            print('국내 직접사건 분석 연결:', stock['name'], code,
+                  '사건:', event.get('event_key', ''), '점수:', event['event_score'])
+            direct_routes.append(route)
+    # 표시 테마 개수 제한으로 확인된 직접 사건 당사자를 버리지 않는다.
+    return direct_routes + selected
+
+
 def find_direct_mentions(theme, stocks, news):
     found = {}
 
