@@ -41,6 +41,15 @@ MAJOR_MEDIA_FEEDS = [
 ]
 
 
+# Publisher/issuer feeds retain their own publication time; not proxy ingestion time.
+PRIMARY_NEWS_FEEDS = [
+    ('NVIDIA_Newsroom', 'https://nvidianews.nvidia.com/releases.xml'),
+    ('PRNewswire_Tech', 'https://www.prnewswire.com/rss/business-technology-latest-news/business-technology-latest-news-list.rss'),
+]
+PRIMARY_NEWS_HOSTS = {'NVIDIA_Newsroom': 'nvidianews.nvidia.com',
+                      'PRNewswire_Tech': 'www.prnewswire.com'}
+
+
 class FeedFetchError(Exception):
     def __init__(self, reason, attempts, http_status=None):
         super().__init__(reason)
@@ -178,6 +187,14 @@ def parse_rss(url, market, source_name, diagnostics=None, *,
 
             summary = re.sub(r"\s+", " ", summary).strip()
 
+            if source_name in PRIMARY_NEWS_HOSTS:
+                try:
+                    stamp = datetime.fromisoformat(published_at.replace('Z', '+00:00'))
+                    if stamp.tzinfo is None or urlsplit(link).hostname != PRIMARY_NEWS_HOSTS[source_name]:
+                        continue
+                except (ValueError, TypeError):
+                    continue
+
             articles.append({
 
                 "title": title,
@@ -192,7 +209,10 @@ def parse_rss(url, market, source_name, diagnostics=None, *,
                 # RSS가 명시한 원 발행처만 보존한다. 수집 경로(source)와 분리.
                 "origin_publisher": (item.findtext('source') or item.findtext(
                     '{http://purl.org/dc/elements/1.1/}publisher') or '').strip(),
-                "published_at": published_at
+                "published_at": published_at,
+                **({"publication_verified_by": "Publisher_RSS",
+                    "content_kind": "issuer_release" if source_name == "NVIDIA_Newsroom" else "distributed_press_release"}
+                   if source_name in PRIMARY_NEWS_HOSTS else {})
 
             })
 
@@ -448,6 +468,7 @@ def get_us_news(diagnostics=None):
     ]
 
     rss_list.extend(MAJOR_MEDIA_FEEDS)
+    rss_list.extend(PRIMARY_NEWS_FEEDS)
     rss_list.append(("SEC_Filings", "https://www.sec.gov/cgi-bin/browse-edgar?action=getcurrent&output=atom"))
     news = _collect_feeds(rss_list, "US", diagnostics)
     news = filter_recent_news(news, hours=36)

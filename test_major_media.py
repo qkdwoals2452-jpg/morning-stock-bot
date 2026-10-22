@@ -32,7 +32,7 @@ class MajorMediaTests(unittest.TestCase):
         with patch.object(news, '_collect_feeds', side_effect=collect), redirect_stdout(io.StringIO()):
             result = news.get_us_news({})
         self.assertTrue(set(news.MAJOR_MEDIA_FEEDS).issubset(set(calls)))
-        self.assertEqual(len(calls), 19)
+        self.assertEqual(len(calls), 21)
         self.assertTrue({'Bloomberg_Tech', 'WSJ_Business', 'FT_International', 'BBC_Business'}
                         .issubset({row['source'] for row in result}))
 
