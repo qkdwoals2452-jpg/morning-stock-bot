@@ -378,7 +378,7 @@ def get_verified_feeder_news(diagnostics=None):
         "US", "Nasdaq_Stocks_RSS", diagnostics=reports,
     )
     articles = fetch_verified_feeder(
-        "https://feeder.co/out/f/4f2c9005b8.json", originals, reports,
+        "https://feeder.co/out/f/4f2c9005b8.json", originals, reports, verify_articles=True,
     )
     report = reports["Nasdaq_Feeder_Verified"]
     print("Feeder 검증 수집: " + " | ".join(f"{key}={value}" for key, value in report.items()))
