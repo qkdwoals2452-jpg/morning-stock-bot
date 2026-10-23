@@ -172,7 +172,7 @@
     }
   ],
   "activation": {
-    "phase": "sending"
+    "phase": "sent"
   },
   "initialized_at": "2026-10-23T00:40:39.561269+00:00"
 }
