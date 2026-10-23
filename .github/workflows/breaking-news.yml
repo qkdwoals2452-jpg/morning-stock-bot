@@ -1,0 +1,41 @@
+name: ORION Breaking News
+on:
+  schedule:
+    - cron: '2-57/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: orion-breaking-news-live
+  cancel-in-progress: false
+jobs:
+  live-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml beautifulsoup4
+      - name: 영속 속보 상태 준비
+        run: |
+          git fetch origin orion-alert-state
+          git worktree add --detach "$RUNNER_TEMP/orion-alert-state" FETCH_HEAD
+          echo "ORION_ALERT_STATE_DIR=$RUNNER_TEMP/orion-alert-state" >> "$GITHUB_ENV"
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          year, week, _ = datetime.now(ZoneInfo('Asia/Seoul')).isocalendar()
+          with open(os.environ['GITHUB_ENV'], 'a') as f:
+              f.write(f'ORION_CORP_WEEK={year}-{week:02d}\n')
+          PY
+      - uses: actions/cache@v4
+        with:
+          path: corp_code.csv
+          key: orion-corp-code-v1-${{ runner.os }}-${{ env.ORION_CORP_WEEK }}
+      - name: 실제 RSS 감시 및 텔레그램 2단계 알림
+        run: python -u breaking_news.py
