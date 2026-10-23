@@ -1,0 +1,34 @@
+name: ORION Feeder Original Verification Check
+on:
+  pull_request:
+    paths: [feeder_news_engine.py, test_feeder_news.py, news_engine.py, .github/workflows/feeder-verification-check.yml]
+permissions:
+  contents: read
+jobs:
+  original-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml
+      - name: Full regression tests
+        run: python -m unittest discover -v
+      - name: Live original verification (no bot or Telegram)
+        run: |
+          python -u - <<'PY'
+          import json
+          from news_engine import get_verified_feeder_news, filter_recent_news
+          diagnostics = {}
+          articles = get_verified_feeder_news(diagnostics)
+          recent = filter_recent_news(articles, hours=36)
+          print('LIVE ORIGINAL VERIFICATION:', json.dumps({
+              'diagnostics': diagnostics, 'verified': len(articles),
+              'recent': len(recent),
+              'evidence': [{'title': a['title'], 'published_at': a['published_at'],
+                            'verified_by': a['publication_verified_by']} for a in recent],
+          }, ensure_ascii=False))
+          assert articles, 'No original-verified articles; transport recovery is NOT proven'
+          PY
