@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "records": [
+    {
+      "id": "9ac7dccfd4c35bfd",
+      "seen_at": "2026-10-23T00:40:39.561269+00:00",
+      "event": {
+        "event_title": "Nippon’s U.S. Steel to Invest Nearly $3 Billion in Hot Strip Mill Near Pittsburgh",
+        "event_key": "nippon_s_CAPEX_164745b343fb",
+        "event_subject_key": "nippon_s_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:3000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Nippon’s U.S. Steel to Invest Nearly $3 Billion in Hot Strip Mill Near Pittsburgh",
+            "summary": "U.S. Steel said the investment will replace aging equipment with modern steelmaking technology, increasing annual production capacity to about 3.5 million tons from 2.2 million tons.",
+            "link": "https://www.wsj.com/business/nippons-u-s-steel-to-invest-nearly-3-billion-in-hot-strip-mill-near-pittsburgh-b9784176?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-10-22T15:55:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "baseline"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "de1300cf0c4ef3c2",
+      "seen_at": "2026-10-23T00:40:39.561269+00:00",
+      "event": {
+        "event_title": "메타, 3분기 매출 26% 증가…사상 최대 실적",
+        "event_key": "메타_EARNINGS_7dcb7f54ef16",
+        "event_subject_key": "메타_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "메타, 3분기 매출 26% 증가…사상 최대 실적",
+            "summary": "페이스북과 인스타그램의 모회사 메타플랫폼스가 3분기 사상 최대 매출을 기록했다. 올해 인공지능(AI) 관련 설비투자 규모는 최대 1450억달러(약 192조4000억원)로 제시했다. 대규모 AI 투자에 필요한 자금을 조달하기 위해 의결권이 없는 새로운 종류의 주식도 도입하기로 했다. 메타가 AI 사업 확대에 한층 속도를 내는 모습이다.메타 로고 (사진=로이...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=01912246645615544",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-22T05:32:40+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "baseline"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "84d1f579903c3743",
+      "seen_at": "2026-10-23T00:40:39.561269+00:00",
+      "event": {
+        "event_title": "테슬라, 3분기 매출·이익 예상 상회…자동차 매출은 3% 감소",
+        "event_key": "테슬라_EARNINGS_d04cc5e9f007",
+        "event_subject_key": "테슬라_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "테슬라, 3분기 매출·이익 예상 상회…자동차 매출은 3% 감소",
+            "summary": "테슬라(TSLA)가 21일(현지 시간) 장 마감 후 실적을 발표했다. 회사는 올해 3분기 시장 예상을 웃도는 매출과 이익을 기록했지만, 주력인 자동차 사업 매출이 감소하고 인공지능(AI)과 로봇 투자 확대로 수익성은 악화했다. 테슬라에 따르면 3분기 조정 주당순이익(EPS)은 0.48달러로 LSEG가 집계한 시장 예상치 0.43달러를 웃돌았다. 매출도 2...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=01869606645615544",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-22T05:28:33+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "baseline"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    }
+  ],
+  "activation": {
+    "phase": "ready"
+  },
+  "initialized_at": "2026-10-23T00:40:39.561269+00:00"
+}
