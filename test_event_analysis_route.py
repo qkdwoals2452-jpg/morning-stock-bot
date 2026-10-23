@@ -147,7 +147,7 @@ class EventAnalysisRouteTests(unittest.TestCase):
         event = {'event_score': 80, 'articles': [{'title': 'Taiwan 업체, 신규 공장 투자 확정'}]}
         self.assertEqual(build_event_analysis_themes([event]), [])
 
-    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False, connection_pass=True, below_ma120=False, missing_trend=False, article=None, stock=None):
+    def run_route(self, verify_pass=True, market_value=4000000000, missing_finance=False, missing_chart=False, connection_pass=True, below_ma120=False, missing_trend=False, article=None, stock=None, breaking=False):
         previous = os.getcwd()
         with tempfile.TemporaryDirectory() as directory:
             os.chdir(directory)
@@ -180,6 +180,15 @@ class EventAnalysisRouteTests(unittest.TestCase):
                     calls['assess_company_event_relation'] = Mock(return_value={
                         'pass': False, 'reason': '사건 당사자 관계 미확인'})
                 with patch.multiple(main, **calls), patch.object(finance_module, 'get_finance_score', finance), contextlib.redirect_stdout(io.StringIO()):
+                    if breaking:
+                        results, status = main.run(news_override=[dict(article or ARTICLE)],
+                                                   notify=False, track_history=False)
+                        for name in ('get_us_news', 'get_korea_news', 'update_backtest_prices',
+                                     'save_today_result', 'save_recommendations', 'save_prediction',
+                                     'send_telegram'):
+                            calls[name].assert_not_called()
+                        self.last_analysis_status = status['analysis_status']
+                        return finance.call_count, results
                     main.run()
                 self.last_analysis_status = saved.call_args.args[1]['analysis_status']
                 return finance.call_count, saved.call_args.args[0]
@@ -200,6 +209,15 @@ class EventAnalysisRouteTests(unittest.TestCase):
                 _, results = self.run_route(article=MEDICAL_ARTICLE,
                                             stock=MEDICAL_STOCK, **failures)
                 self.assertEqual(results, [])
+
+    def test_breaking_followup_reuses_finance_and_price_gates_without_daily_writes(self):
+        calls, results = self.run_route(article=DISPLAY_ARTICLE, stock=DISPLAY_STOCK, breaking=True)
+        self.assertEqual(calls, 1)
+        self.assertEqual(results[0]['ranked'][0]['code'], '034220')
+        _, results = self.run_route(article=DISPLAY_ARTICLE, stock=DISPLAY_STOCK,
+                                    breaking=True, below_ma120=True)
+        self.assertEqual(results, [])
+        self.assertIn('120일선 아래', self.last_analysis_status['excluded'][0]['reason'])
 
     def test_unclassified_lg_display_runs_finance_and_retains_safety_gates(self):
         calls, results = self.run_route(article=DISPLAY_ARTICLE, stock=DISPLAY_STOCK)

@@ -436,7 +436,7 @@ def _collect_feeds(feeds, market, diagnostics=None):
     return articles
 
 
-def get_us_news(diagnostics=None):
+def get_us_news(diagnostics=None, limit=200):
     rss_list = [
         # 기존 미국 뉴스
 
@@ -474,7 +474,7 @@ def get_us_news(diagnostics=None):
     news = filter_recent_news(news, hours=36)
     news = remove_duplicates(news)
 
-    selected = select_diverse_news(news, limit=200)
+    selected = news if limit is None else select_diverse_news(news, limit=limit)
     counts = defaultdict(int)
     for article in selected:
         counts[publisher(article)[0]] += 1
@@ -498,7 +498,7 @@ def select_diverse_news(articles, limit=200):
                 del groups[key]
     return selected
 
-def get_korea_news(diagnostics=None):
+def get_korea_news(diagnostics=None, limit=180):
     rss_list = [
         ("한국경제_증권", "https://www.hankyung.com/feed/finance"),
         ("한국경제_경제", "https://www.hankyung.com/feed/economy"),
@@ -519,7 +519,7 @@ def get_korea_news(diagnostics=None):
 
     news = remove_duplicates(news)
 
-    return news[:180]
+    return news if limit is None else news[:limit]
 
 
 

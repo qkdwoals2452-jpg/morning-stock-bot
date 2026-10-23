@@ -23,7 +23,7 @@ from pre_news_activity_engine import get_pre_news_activity
 from supply_chain_engine import build_supply_chain_watch
 
 
-def run():
+def run(news_override=None, notify=True, track_history=True):
     if not os.path.exists("corp_code.csv"):
         print("corp_code.csv 없음 → DART 기업코드 생성")
         from build_corp_db import build_corp_db
@@ -36,10 +36,11 @@ def run():
     if not stocks:
         raise RuntimeError("KRX 종목 목록 확인불가 → 추천·운영 기록·전송 중단")
     regular_price_cache = {}
-    update_backtest_prices(stocks, price_cache=regular_price_cache)
+    if track_history:
+        update_backtest_prices(stocks, price_cache=regular_price_cache)
 
-    us_news = get_us_news()
-    kr_news = get_korea_news()
+    us_news = get_us_news() if news_override is None else [a for a in news_override if a.get('market') != 'KR']
+    kr_news = get_korea_news() if news_override is None else [a for a in news_override if a.get('market') == 'KR']
 
     news = us_news + kr_news
 
@@ -471,15 +472,13 @@ def run():
             stock["pre_news_activity"] = get_pre_news_activity(
                 stock, stock.get("event_connection", {}), cache=pre_news_cache)
             print("뉴스 이전 거래활동:", stock["name"], stock["pre_news_activity"])
-            save_prediction(
-                theme["name"],
-                stock,
-                stock["final_score"]
-            )
+            if track_history:
+                save_prediction(theme["name"], stock, stock["final_score"])
 
-    save_today_result(final_results)
-    save_recommendations(final_results)
-    update_backtest_prices(stocks, price_cache=regular_price_cache)
+    if track_history:
+        save_today_result(final_results)
+        save_recommendations(final_results)
+        update_backtest_prices(stocks, price_cache=regular_price_cache)
     project_status = get_project_status()
     project_status['supply_chain_watch'] = supply_chain_watch
     selected_codes = {stock['code'] for block in final_results for stock in block['ranked']}
@@ -490,10 +489,9 @@ def run():
     project_status['analysis_status'] = analysis_status
     print('운영 분석 결과:', analysis_status)
 
-    send_telegram(
-        final_results,
-        project_status
-    )
+    if notify:
+        send_telegram(final_results, project_status)
+    return final_results, project_status
 
 
 if __name__ == "__main__":
