@@ -32,3 +32,32 @@ jobs:
           }, ensure_ascii=False))
           assert articles, 'No original-verified articles; transport recovery is NOT proven'
           PY
+      - name: Public source protocol diagnostics
+        if: failure()
+        run: |
+          python -u - <<'PYDIAG'
+          import subprocess, tempfile, json, xml.etree.ElementTree as ET
+          from pathlib import Path
+          from feeder_news_engine import original_from_article
+          sources = [('rss', 'https://www.nasdaq.com/feed/rssoutbound?category=Stocks'),
+                     ('article', 'https://www.nasdaq.com/articles/coffee-prices-fall-ice-coffee-inventories-rise')]
+          for kind, url in sources:
+              for protocol in ('--http1.1', '--http2'):
+                  with tempfile.TemporaryDirectory() as directory:
+                      body = Path(directory) / 'response'
+                      result = subprocess.run(['curl', protocol, '--silent', '--show-error',
+                          '--connect-timeout', '3', '--max-time', '8',
+                          '--user-agent', 'ORION Stock Research Bot qkdwoals2452@gmail.com',
+                          '--output', str(body), '--write-out', '%{http_code} %{http_version}', url],
+                          capture_output=True, text=True, timeout=10)
+                      evidence = None
+                      if result.returncode == 0 and result.stdout.startswith('200'):
+                          try:
+                              text = body.read_text()
+                              evidence = (len(ET.fromstring(text).findall('.//item')) if kind == 'rss'
+                                          else bool(original_from_article(text, url)))
+                          except (ValueError, ET.ParseError):
+                              evidence = 'parse_failed'
+                      print('PUBLIC SOURCE PROTOCOL:', json.dumps({'kind': kind, 'protocol': protocol,
+                          'exit': result.returncode, 'http': result.stdout, 'evidence': evidence}))
+          PYDIAG
