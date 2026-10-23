@@ -169,6 +169,179 @@
         "phase": "ready",
         "attempts": 0
       }
+    },
+    {
+      "id": "a9810d799d6d3c80",
+      "seen_at": "2026-10-23T10:13:42.228354+00:00",
+      "event": {
+        "event_title": "How Elon Musk went from Tesla CEO to the 'most powerful civilian, non-governmental actor in history'",
+        "event_key": "tesla_M&A_63dd6ad99aa6",
+        "event_subject_key": "tesla_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "How Elon Musk went from Tesla CEO to the 'most powerful civilian, non-governmental actor in history'",
+            "summary": "Musk has acquired a degree of influence over national security, international relations, and the global economy that few private individuals have ever possessed.",
+            "link": "https://finance.yahoo.com/technology/article/how-elon-musk-went-from-tesla-ceo-to-the-most-powerful-civilian-non-governmental-actor-in-history-100000227.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-23T10:00:00+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "f09c1271e72a995e",
+      "seen_at": "2026-10-23T10:13:42.228354+00:00",
+      "event": {
+        "event_title": "Ship With Russian Diesel Signals US Port After Trump-Putin Deal",
+        "event_key": "ship_with_CONTRACT_6b6d391bb1b6",
+        "event_subject_key": "ship_with_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "russian diesel signals us port after trump"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Ship With Russian Diesel Signals US Port After Trump-Putin Deal",
+            "summary": "A tanker carrying diesel left the Russian port of Primorsk and intermittently signaled New York, potentially marking the first such shipment following a fuel-supply agreement between Vladimir Putin and Donald Trump.",
+            "link": "https://www.bloomberg.com/news/articles/2026-10-23/ship-with-russian-diesel-signals-us-port-after-trump-putin-deal",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-10-23T09:40:44+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "cfd261835be6ce0f",
+      "seen_at": "2026-10-23T10:13:42.228354+00:00",
+      "event": {
+        "event_title": "하나·우리금융, 3분기 순이익 1조 돌파",
+        "event_key": "3분기_EARNINGS_286e2a81111f",
+        "event_subject_key": "3분기_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:1000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "하나·우리금융, 3분기 순이익 1조 돌파",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026102318241",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-23T18:11:03+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
