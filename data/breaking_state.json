@@ -521,6 +521,124 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nWhy Nearly 25% of the Country Is Still Watching ‘Seinfeld’\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "3c6781c85c441d19",
+      "seen_at": "2026-10-23T22:02:08.160562+00:00",
+      "event": {
+        "event_title": "Exclusive: Meta acquires AI data platform Sundial",
+        "event_key": "meta_M&A_55f341ac6a59",
+        "event_subject_key": "meta_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Exclusive: Meta acquires AI data platform Sundial",
+            "summary": "Meta has acquired Sundial, an AI-powered data analytics platform founded by two former Meta employees, a spokesperson confirmed to Axios.",
+            "link": "https://www.axios.com/2026/10/23/meta-ai-data-platform-sundial#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-media?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-23T20:52:20+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "daa9456efacbb176",
+      "seen_at": "2026-10-23T22:02:08.160562+00:00",
+      "event": {
+        "event_title": "Howard Hughes Holdings Set to Join S&amp;P SmallCap 600",
+        "event_key": "howard_hughes_M&A_942ac72616bb",
+        "event_subject_key": "howard_hughes_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Howard Hughes Holdings Set to Join S&amp;P SmallCap 600",
+            "summary": "NEW YORK, Oct. 23, 2026 /PRNewswire/ -- Howard Hughes Holdings Inc. (NYSE: HHH) will replace Arcosa Inc. (NYSE: ACA) in the S&P SmallCap 600 effective prior to the opening of trading on Wednesday, October 28. S&P 500 constituent CRH plc (NYSE: CRH) has acquired Arcosa in a deal that...",
+            "link": "https://www.prnewswire.com/news-releases/howard-hughes-holdings-set-to-join-sp-smallcap-600-302918511.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-23T21:45:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
