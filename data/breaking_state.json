@@ -885,6 +885,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nBro went from a 700-person village in Slovakia to Google then built an app that makes $2k/day\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "864735521c631a34",
+      "seen_at": "2026-10-24T23:30:26.747526+00:00",
+      "event": {
+        "event_title": "An OpenAI Model Spent Ethereum Without Permission. Here's What That Means For Crypto Investors.",
+        "event_key": "an_openai_CAPEX_0c9c0b8810dd",
+        "event_subject_key": "an_openai_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "An OpenAI Model Spent Ethereum Without Permission. Here's What That Means For Crypto Investors.",
+            "summary": "Cybersecurity as it pertains to AI agents is rapidly becoming an issue that could make Ethereum more valuable.",
+            "link": "https://www.fool.com/investing/2026/10/24/an-openai-model-spent-ethereum-without-permission/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-24T21:26:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
