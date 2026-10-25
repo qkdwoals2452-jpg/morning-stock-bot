@@ -33,6 +33,9 @@ def replay(path):
     analysis = status['analysis_status']
     if analysis['analyzed_count'] != 2:
         raise RuntimeError('두 종목의 실제 검증 경로 진입 실패')
+    if (analysis['selected_count'] != 0 or len(analysis['excluded']) != 2
+            or any(item['stage'] != 'finance_model' for item in analysis['excluded'])):
+        raise RuntimeError('금융업 전용 재무 모델 미지원 보류 사유 검증 실패')
     print('LIVE STORED EVENT REPLAY:', json.dumps(analysis, ensure_ascii=False))
     print('원문 발행 시점의 과거 신호 재현이 아니라 현재 외부 데이터로 연결·제외 경로를 검증한 결과입니다.')
 

@@ -31,6 +31,22 @@ class FinancialDataTests(unittest.TestCase):
         return dict(sj_div=section, account_id=account, account_nm=name,
                     thstrm_amount=str(value))
 
+    def test_financial_sector_is_held_for_model_coverage_not_generic_debt_failure(self):
+        for sector in ('기타 금융업', '은행 및 저축기관', '보험업', '금융 지원 서비스업'):
+            with self.subTest(sector=sector), patch.object(self.finance, 'get_naver_basic') as basic:
+                result = self.finance.get_finance_score({'name': '검증회사', 'code': '123456', 'sector': sector})
+                self.assertTrue(result['exclude'])
+                self.assertEqual(result['model_coverage'], 'UNSUPPORTED_FINANCIAL_SECTOR')
+                self.assertIn('전용 재무 검증 미지원', result['exclude_reason'])
+                basic.assert_not_called()
+
+    def test_financial_word_in_software_company_name_does_not_block_normal_model(self):
+        with patch.object(self.finance, 'get_naver_basic', return_value={'per': 10, 'pbr': 1}), \
+             patch.object(self.finance, 'get_dart_finance', return_value={'op_margin': 8, 'debt_ratio': 50}), \
+             patch.object(self.finance, 'get_quality_score', return_value={'score': 10}):
+            result = self.finance.get_finance_score({'name': '금융IT', 'code': '123456', 'sector': '소프트웨어 개발업'})
+        self.assertFalse(result['exclude'])
+
     def test_statement_components_do_not_overwrite_totals(self):
         rows = [
             self.row('BS', 'ifrs-full_Assets', '자산총계', 834391536739),
