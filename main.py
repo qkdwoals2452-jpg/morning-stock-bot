@@ -311,6 +311,9 @@ def run(news_override=None, notify=True, track_history=True):
 
             finance = get_finance_score(stock)
             print('재무 검증:', stock['name'], finance)
+            if finance.get('model_coverage') == 'UNSUPPORTED_FINANCIAL_SECTOR':
+                reject(stock, 'finance_model', finance['exclude_reason'])
+                continue
             if finance.get("op_margin") is None or finance.get("debt_ratio") is None:
                 reject(stock, 'finance', '핵심 재무 데이터 확인불가')
                 continue

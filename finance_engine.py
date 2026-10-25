@@ -209,6 +209,15 @@ def get_dart_finance(stock_code):
 
 def get_finance_score(stock):
 
+    # 예수금·보험부채 등의 구조가 다른 업종을 일반기업 부채비율/매출 산식으로
+    # 불량 판정하지 않는다. 전용 검증 모델을 갖추기 전까지 추천은 보류한다.
+    if re.search(r'금융|은행|저축기관|보험|증권', str(stock.get('sector', ''))):
+        reason = '금융업 전용 재무 검증 미지원으로 보류'
+        return {'score': 0, 'memo': reason, 'per': None, 'pbr': None,
+                'op_margin': None, 'debt_ratio': None, 'quality': {},
+                'exclude': True, 'exclude_reason': reason,
+                'model_coverage': 'UNSUPPORTED_FINANCIAL_SECTOR'}
+
     code = stock["code"]
 
     basic = get_naver_basic(code)
