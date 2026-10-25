@@ -1123,6 +1123,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nDoes enough capital exist to finance everyone’s ambitious AI spending plans?\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "97a6dbeaf89e94ef",
+      "seen_at": "2026-10-25T23:39:47.397042+00:00",
+      "event": {
+        "event_title": "삼성SDI, 美 AOP에 수천억 규모 ESS 공급…북미 시장 공략 가속",
+        "event_key": "삼성SDI_CONTRACT_da2853968294",
+        "event_subject_key": "삼성SDI_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "aop"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성SDI, 美 AOP에 수천억 규모 ESS 공급…북미 시장 공략 가속",
+            "summary": "삼성SDI가 미국 에너지 전문기업 알파오메가파워(AOP)와 1기가와트시(GWh) 규모의 에너지저장장치(ESS) 공급 계약을 체결했다. 계약금액은 업계 추산 수천억원대로 추정된다. 미국 현지 생산 기반과 각형 배터리 기술력을 앞세워 잇따라 대규모 수주를 확보하며 북미 ESS 시장 공략에 속도를 내고 있다.삼성SDI는 26일 미주법인 삼성SDI 아메리카(SD...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02063126645616856",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T08:36:41+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
