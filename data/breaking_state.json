@@ -1183,6 +1183,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n삼성SDI, 美 AOP에 수천억 규모 ESS 공급…북미 시장 공략 가속\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• 삼성SDI (006400): 영업적자 제외\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "abe6d5fbf9315d5a",
+      "seen_at": "2026-10-25T23:59:47.320102+00:00",
+      "event": {
+        "event_title": "한국타이어, 포르쉐 신형 파나메라에 신차용 타이어 공급",
+        "event_key": "한국타이어_CONTRACT_57d2370c4997",
+        "event_subject_key": "한국타이어_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "파나메라"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "한국타이어, 포르쉐 신형 파나메라에 신차용 타이어 공급",
+            "summary": "한국타이어앤테크놀로지는 포르쉐의 신형 ‘파나메라’에 초고성능 슈퍼 스포츠 타이어 ‘벤투스 S1 에보 Z’를 신차용 타이어로 공급한다고 26일 밝혔다.(사진=한국타이어)이번 공급 대상에는 전륜용 275/35 ZR21과 후륜용 325/30 ZR21 등 21인치 규격이 새롭게 추가됐다. 한국타이어가 2021년부터 파나메라에 공급해온 19·20인치 규격도 신형 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02151686645616856",
+            "market": "KR",
+            "source": "이데일리_기업",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T08:57:10+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
