@@ -3,15 +3,23 @@ on:
   schedule:
     - cron: '2-57/5 * * * *'
   workflow_dispatch:
+    inputs:
+      cycles:
+        description: '조회 횟수 (기본 66회, 검증용 2회; 조회 간격 5분)'
+        default: '66'
+        required: true
+        type: choice
+        options: ['66', '2']
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: orion-breaking-news-live
   cancel-in-progress: false
 jobs:
   live-news:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,4 +46,11 @@ jobs:
           path: corp_code.csv
           key: orion-corp-code-v1-${{ runner.os }}-${{ env.ORION_CORP_WEEK }}
       - name: 실제 RSS 감시 및 텔레그램 2단계 알림
-        run: python -u breaking_news.py
+        env:
+          POLL_CYCLES: ${{ inputs.cycles || '66' }}
+        run: python -u breaking_worker.py --cycles "$POLL_CYCLES"
+      - name: 다음 감시 실행 인계
+        if: success() || failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -u breaking_worker.py --handoff-only

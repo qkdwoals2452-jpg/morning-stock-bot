@@ -16,6 +16,7 @@ from event_engine import build_events
 from event_identity_engine import canonical_link, same_event
 from news_engine import get_us_news, get_korea_news
 from telegram_bot import send_message
+from breaking_event_gate import headline_action
 
 UTC = timezone.utc
 KST = ZoneInfo('Asia/Seoul')
@@ -39,6 +40,7 @@ def article_time(article):
 
 def qualified(event):
     return (event.get('event_score', 0) >= 70 and event.get('event_type') in TYPES
+            and headline_action(event)
             and event.get('evidence_strength') in {'STRONG', 'MEDIUM'}
             and (event.get('event_type') != 'EARNINGS'
                  or event.get('evidence_strength') == 'STRONG'))
@@ -55,7 +57,7 @@ def equivalent(left, right):
 
 
 def escaped(value, limit=500):
-    return html.escape(str(value or '')[:limit])
+    return html.escape(html.unescape(str(value or ''))[:limit])
 
 
 def notice(event, now):
@@ -153,12 +155,14 @@ def scan(state, news, now):
     cutoff = now - timedelta(days=RETENTION_DAYS)
     # Keep unresolved records even past retention for explicit operator review.
     state['records'] = [r for r in state['records'] if timestamp(r['seen_at']) >= cutoff
-                        or r['notice']['phase'] not in {'sent', 'baseline'}
+                        or r['notice']['phase'] not in {'sent', 'baseline', 'suppressed'}
                         or (r['notice']['phase'] == 'sent' and r['analysis']['phase'] != 'sent')]
     dated = [a for a in news if article_time(a) and canonical_link(a.get('link'))
              and timedelta(0) <= now - article_time(a) <= timedelta(hours=36)]
     added = baseline = 0
     for event in build_events(dated):
+        if not headline_action(event):
+            print('BREAKING HEADLINE REJECT:', event.get('event_type'), event.get('event_title', '')[:200])
         if not qualified(event) or any(equivalent(event, r['event']) for r in state['records']):
             continue
         latest = max(article_time(a) for a in event['articles'])
@@ -181,6 +185,10 @@ def analyze(event):
 
 def process(state, save, news, now=None, send=send_message, analyze_event=analyze):
     now = now or datetime.now(UTC)
+    for record in state['records']:
+        if record['notice']['phase'] == 'ready' and not qualified(record['event']):
+            record['notice']['phase'] = 'suppressed'
+            record['analysis']['phase'] = 'suppressed'
     added, baseline = scan(state, news, now)
     save(state)
     deliver(state['activation'],
@@ -227,6 +235,7 @@ def process(state, save, news, now=None, send=send_message, analyze_event=analyz
 
 
 def run():
+    started = datetime.now(UTC)
     directory = os.environ.get('ORION_ALERT_STATE_DIR')
     if not directory:
         raise RuntimeError('영속 상태 경로 없이 실전 알림을 실행할 수 없습니다')
@@ -236,7 +245,14 @@ def run():
     news = get_us_news(diagnostics=diagnostics, limit=None) + get_korea_news(diagnostics=diagnostics, limit=None)
     if not news:
         raise RuntimeError('수집 뉴스 0건: 감시 정상으로 기록하지 않습니다')
-    process(state, store.save, news)
+    report = process(state, store.save, news)
+    previous = timestamp(state.get('last_poll', {}).get('started_at'))
+    state['last_poll'] = {'started_at': started.isoformat(),
+                          'previous_started_at': previous.isoformat() if previous else None,
+                          'start_gap_seconds': round((started - previous).total_seconds(), 2) if previous else None,
+                          'completed_at': datetime.now(UTC).isoformat(), **report}
+    store.save(state)
+    return report
 
 
 if __name__ == '__main__':
