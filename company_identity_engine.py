@@ -38,5 +38,5 @@ def has_company_mention(name, text):
     pattern = (r'(?<![가-힣A-Za-z0-9])(?:' + '|'.join(re.escape(n) for n in names)
                + r')(?=(?:은|는|이|가|을|를|와|과|의|에|에게|에서|으로부터|로부터|으로|로|도|만)?'
                  r'(?:[^가-힣A-Za-z0-9]|$))')
-    return bool(re.search(pattern, text)) or any(
+    return bool(re.search(pattern, text, re.I)) or any(
         joint_subject_end(name, line) is not None for line in re.split(r'[\n;]', text))

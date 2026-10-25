@@ -22,6 +22,7 @@ class CompanyIdentityTests(unittest.TestCase):
         self.assertEqual({r['candidate_codes'][0] for r in routes}, {'086790', '316140'})
 
     def test_aliases_full_joint_subjects_and_reversed_compact_subject(self):
+        self.assertTrue(has_company_mention('LG전자', 'lg전자, 신규 공장에 150억원 투자 결정'))
         for title in ['하나금융·우리금융, 3분기 순이익 1조 돌파',
                       '하나금융지주·우리금융지주, 3분기 순이익 1조 돌파',
                       '우리·하나금융, 3분기 순이익 1조 돌파',
