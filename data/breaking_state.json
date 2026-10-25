@@ -1128,5 +1128,18 @@
   "activation": {
     "phase": "sent"
   },
-  "initialized_at": "2026-10-23T00:40:39.561269+00:00"
+  "initialized_at": "2026-10-23T00:40:39.561269+00:00",
+  "last_poll": {
+    "started_at": "2026-10-25T21:35:53.362921+00:00",
+    "previous_started_at": null,
+    "start_gap_seconds": null,
+    "completed_at": "2026-10-25T21:36:34.340495+00:00",
+    "collected": 338,
+    "new": 0,
+    "baseline": 0,
+    "notices": 0,
+    "analyses": 0,
+    "pending": 0,
+    "uncertain": 0
+  }
 }
