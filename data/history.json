@@ -58,5 +58,11 @@
         "recorded_at": "2026-10-24T10:23:27.666145+09:00",
         "date_timezone": "Asia/Seoul",
         "results": []
+    },
+    {
+        "date": "2026-10-25",
+        "recorded_at": "2026-10-25T09:48:03.933629+09:00",
+        "date_timezone": "Asia/Seoul",
+        "results": []
     }
 ]
