@@ -1003,6 +1003,124 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nLG전자, 독일 쉴링에 상업용 세탁가전 공급…유럽 B2B 공략 가속\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• LG전자 (066570): 52주 고점 대비 -60% 이하\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "0a7687e804738376",
+      "seen_at": "2026-10-25T18:23:47.859209+00:00",
+      "event": {
+        "event_title": "What Is Meta Platforms (META) Telling Investors With Its Sundial Deal And New Stock?",
+        "event_key": "meta_M&A_4aef81b79b82",
+        "event_subject_key": "meta_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "its sundial deal and new stock"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "What Is Meta Platforms (META) Telling Investors With Its Sundial Deal And New Stock?",
+            "summary": "Meta Platforms (NasdaqGS:META) agreed to acquire AI data analytics platform Sundial, aiming to deepen its data-focused AI toolset. The company introduced a new nonvoting stock structure intended to address potential liabilities from a proposed California wealth tax on Mark Zuckerberg. Meta indicated that the nonvoting share class is designed so Zuckerberg can meet tax obligations without reducing his voting control over the business. The Sundial acquisition and new nonvoting stock both...",
+            "link": "https://finance.yahoo.com/markets/stocks/articles/meta-platforms-meta-telling-investors-160715261.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-25T16:07:15+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "eac7e3f2fa5d7cf1",
+      "seen_at": "2026-10-25T18:23:47.859209+00:00",
+      "event": {
+        "event_title": "Does enough capital exist to finance everyone’s ambitious AI spending plans?",
+        "event_key": "does_enough_CAPEX_9e748d2dd3ba",
+        "event_subject_key": "does_enough_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Does enough capital exist to finance everyone’s ambitious AI spending plans?",
+            "summary": "Investing.com -- Meta last week said that recent capital raises by peers such as Alphabet and SpaceX, and expected fundraising by Anthropic and OpenAI, have created an “increasingly challenging fundraising environment,” raising questions over whether enough capital exists to fund AI spending plans.",
+            "link": "https://finance.yahoo.com/technology/ai/articles/does-enough-capital-exist-finance-155732075.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-25T15:57:32+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
