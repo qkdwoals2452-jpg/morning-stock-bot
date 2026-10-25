@@ -1,0 +1,46 @@
+name: ORION Domestic Actor Check
+on:
+  pull_request:
+    paths: [company_identity_engine.py, stock_engine.py, impact_engine.py, test_company_identity.py, replay_domestic_routes.py, .github/workflows/domestic-route-check.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  domestic-actor-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml beautifulsoup4
+      - name: 전체 회귀검사
+        run: python -m unittest discover -v
+      - name: 실제 저장 사건 가져오기
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/checkout@v4
+        with:
+          ref: orion-alert-state
+          path: alert-state
+          sparse-checkout: data/breaking_state.json
+          sparse-checkout-cone-mode: false
+      - name: DART 주간 캐시 키
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          python - <<'PY'
+          import os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          year, week, _ = datetime.now(ZoneInfo('Asia/Seoul')).isocalendar()
+          with open(os.environ['GITHUB_ENV'], 'a') as f:
+              f.write(f'ORION_CORP_WEEK={year}-{week:02d}\n')
+          PY
+      - uses: actions/cache@v4
+        if: github.event_name == 'workflow_dispatch'
+        with:
+          path: corp_code.csv
+          key: orion-corp-code-v1-${{ runner.os }}-${{ env.ORION_CORP_WEEK }}
+      - name: 실제 KRX·DART·가격 조회로 저장 사건 검증
+        if: github.event_name == 'workflow_dispatch'
+        run: python -u replay_domestic_routes.py alert-state/data/breaking_state.json

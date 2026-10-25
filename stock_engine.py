@@ -5,6 +5,7 @@ import io
 import re
 from theme_engine import expand_theme_words
 from impact_engine import assess_company_event_relation
+from company_identity_engine import COMPANY_ALIASES, has_company_mention
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -95,10 +96,7 @@ def search_naver_related(theme_name, stocks):
 def _has_company_mention(name, text):
     # 하이브리드의 '하이브'처럼 다른 단어의 일부는 기업 언급이 아니다.
     # 한국어 조사는 허용하되 조사 뒤에도 단어 경계를 요구한다.
-    pattern = (r"(?<![가-힣A-Za-z0-9])" + re.escape(name)
-               + r"(?=(?:은|는|이|가|을|를|와|과|의|에|에게|에서|으로부터|로부터|으로|로|도|만)?"
-                 r"(?:[^가-힣A-Za-z0-9]|$))")
-    return bool(re.search(pattern, text))
+    return has_company_mention(name, text)
 
 
 def select_analysis_themes(themes, stocks, news, limit):
@@ -171,21 +169,15 @@ def find_direct_mentions(theme, stocks, news):
 
     text = " ".join(text_parts)
 
+    # 기존 약칭 탐색은 유지하되 분석 경로는 실제 KRX 행이 있어야 생성한다.
+    for official_name, aliases in COMPANY_ALIASES.items():
+        if any(_has_company_mention(alias, text) for alias in aliases):
+            found[official_name] = 100
+
     # =====================================================
     # ORION COMPANY ALIAS MAP
     # 언론에서 자주 사용하는 회사 약칭 → KRX 정식 회사명
     # =====================================================
-    company_aliases = {
-        "삼성重": "삼성중공업",
-        "삼성중": "삼성중공업",
-        "한화에어로": "한화에어로스페이스",
-    }
-
-    # 1. 약칭 직접 매칭
-    for alias, official_name in company_aliases.items():
-        if _has_company_mention(alias, text):
-            found[official_name] = 100
-
     # =====================================================
     # 2. KRX 정식 회사명 매칭
     #

@@ -1,11 +1,6 @@
 import re
 from event_understanding_engine import understand_event
-
-
-COMPANY_ALIASES = {
-    "삼성중공업": ("삼성重", "삼성중"),
-    "한화에어로스페이스": ("한화에어로",),
-}
+from company_identity_engine import COMPANY_ALIASES, has_company_mention, joint_subject_end
 
 
 def assess_company_event_relation(stock, articles):
@@ -32,7 +27,7 @@ def assess_company_event_relation(stock, articles):
             clauses = [clause for sentence in sentences for clause in
                        ([sentence] + sentence.split("…") if "…" in sentence else [sentence])]
             for sentence in clauses:
-                if not re.search(boundary, sentence, re.I):
+                if not has_company_mention(name, sentence):
                     continue
                 if re.search(r"지난해|작년|과거|\d+년\s*전|당시|previously|last year|전망|예상|기대|검토|분석|평가|목표주가|애널리스트|analyst|expects?|could|might|주가|급등|급락|수혜주|관련주|투자자\s*관심|부인|미체결|취소|불발|체결하지|denied|\bnot\b|\bnever\b", sentence, re.I):
                     continue
@@ -40,17 +35,18 @@ def assess_company_event_relation(stock, articles):
                 if not event.get("is_real_event"):
                     continue
                 actor_match = actor.search(sentence)
-                if actor_match:
-                    rest = sentence[actor_match.end():]
+                actor_end = actor_match.end() if actor_match else joint_subject_end(name, sentence)
+                if actor_end is not None:
+                    rest = sentence[actor_end:]
                     action = re.search(r"공급계약|계약|수주|투자|증설|인수|매출|영업이익|순이익|실적", rest)
                     prefix = rest[:action.start()] if action else rest
                     # 'GST, 엔비디아가 계약 체결'에서 GST를 계약 주체로 삼지 않는다.
                     if re.search(r"[가-힣A-Za-z0-9&.]+(?:은|는|이|가)\s", prefix):
-                        actor_match = None
+                        actor_end = None
                 counterparty_match = counterparty.search(sentence)
                 if counterparty_match and re.match(r"(?:경쟁|무관|관련|관한|따르면)", sentence[counterparty_match.end():].lstrip()):
                     counterparty_match = None
-                role = "EVENT_ACTOR" if actor_match else "NAMED_COUNTERPARTY" if counterparty_match else None
+                role = "EVENT_ACTOR" if actor_end is not None else "NAMED_COUNTERPARTY" if counterparty_match else None
                 if role is None:
                     continue
                 amounts = re.findall(r"(?:US\$|\$|€|₩)\s*[\d,.]+(?:\s*(?:million|billion|trillion))?|[\d,.]+\s*(?:조|억|만)\s*(?:원|달러)?", sentence, re.I)
