@@ -1,7 +1,7 @@
 name: ORION Breaking News Check
 on:
   pull_request:
-    paths: [breaking_news.py, main.py, news_engine.py, test_breaking_news.py, test_event_analysis_route.py, .github/workflows/breaking-news.yml, .github/workflows/breaking-news-check.yml]
+    paths: [breaking_news.py, breaking_event_gate.py, breaking_worker.py, main.py, news_engine.py, test_breaking_news.py, test_breaking_quality.py, test_event_analysis_route.py, .github/workflows/breaking-news.yml, .github/workflows/breaking-news-check.yml]
 permissions:
   contents: read
 jobs:
