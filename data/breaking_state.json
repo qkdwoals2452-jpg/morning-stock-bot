@@ -943,6 +943,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nAn OpenAI Model Spent Ethereum Without Permission. Here&#x27;s What That Means For Crypto Investors.\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "ae8f8f8fd00bb6d2",
+      "seen_at": "2026-10-25T01:27:32.361904+00:00",
+      "event": {
+        "event_title": "LG전자, 독일 쉴링에 상업용 세탁가전 공급…유럽 B2B 공략 가속",
+        "event_key": "LG전자_CONTRACT_d12c5358fb9a",
+        "event_subject_key": "LG전자_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "쉴링"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "LG전자, 독일 쉴링에 상업용 세탁가전 공급…유럽 B2B 공략 가속",
+            "summary": "LG전자가 독일 상업용 세탁 솔루션 기업 ‘쉴링(Schilling)’에 대용량 세탁가전을 공급하며 유럽 기업간거래(B2B) 시장 공략에 속도를 내고 있다. 북미에 이어 유럽에서도 공급망을 확대하며 글로벌 상업용 세탁가전 사업의 성장세를 이어가는 모습이다.LG전자는 다음 달 독일 상업용 세탁 솔루션 기업 쉴링에 대용량 상업용 세탁가전 ‘LG 프로페셔널(LG...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=01334966645616528",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-25T10:00:04+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
