@@ -1308,6 +1308,68 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n아우디, 美 조지아에 첫 생산공장 추진…40억달러 투자\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "6e847c943aa3ce58",
+      "seen_at": "2026-10-26T05:05:55.901938+00:00",
+      "event": {
+        "event_title": "유바이오로직스, 유니세프와 105억 규모 백신 납품 계약 체결",
+        "event_key": "유바이오로직스_CONTRACT_330708b802f1",
+        "event_subject_key": "유바이오로직스_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:10500000000"
+          ],
+          "counterparties": [
+            "유니세프"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "유바이오로직스, 유니세프와 105억 규모 백신 납품 계약 체결",
+            "summary": "유바이오로직스(206650)는 유니세프(모잠비크)와 약 105억원 규모의 경구용 콜레라 백신(유비콜-에스) 납품 계약을 체결했다고 26일 공시했다. 계약금액은 지난해 회사 매출액의 7.01%에 해당하는 규모다. 계약기간은 이달 23일부터 내년 1월 31일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03089766645616856",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T14:02:01+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
