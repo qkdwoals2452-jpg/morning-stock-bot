@@ -1675,6 +1675,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n디와이피엔에프, 실리콘 음극재 공장 480억원 수주…이차전지 사업 확대\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• 디와이피엔에프 (104460): 52주 고점 대비 -60% 이하\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "b872c4f6fe0c8b84",
+      "seen_at": "2026-10-26T13:22:05.851913+00:00",
+      "event": {
+        "event_title": "Surgery Partners to Be Acquired by Bon Secours for $5.7 Billion",
+        "event_key": "surgery_partners_M&A_f275f2b4f6be",
+        "event_subject_key": "surgery_partners_M&A",
+        "event_facts": {
+          "amounts": [
+            "USD:5700000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Surgery Partners to Be Acquired by Bon Secours for $5.7 Billion",
+            "summary": "Surgery Partners will be acquired by an affiliate of Bon Secours Mercy Health for an enterprise value of $5.7 billion, and the surgery group’s private equity backer Bain Capital will continue to hold a stake in the new entity.",
+            "link": "https://www.bloomberg.com/news/articles/2026-10-26/surgery-partners-to-be-acquired-by-bon-secours-for-5-7-billion",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T13:14:58+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
