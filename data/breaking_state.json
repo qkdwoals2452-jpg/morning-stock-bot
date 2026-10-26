@@ -1434,6 +1434,66 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n지아이텍, KCC글라스와 32억 규모 공급 계약 체결\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• 지아이텍 (382480): 120일선 아래\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "f156e5467db202cf",
+      "seen_at": "2026-10-26T07:10:57.477665+00:00",
+      "event": {
+        "event_title": "NH투자증권, 3분기 연결 순이익 3836억…전년比 35.5%↑",
+        "event_key": "NH투자증권_EARNINGS_2914f18daa68",
+        "event_subject_key": "NH투자증권_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:383600000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "NH투자증권, 3분기 연결 순이익 3836억…전년比 35.5%↑",
+            "summary": "NH투자증권이 올해 3분기 연결기준 순이익 3836억원을 기록하며 전년 대비 35.5% 증가했다고 26일 밝혔다. 3분기 누적 순이익은 1조 3489억원으로 지난해 연간 실적을 이미 넘어섰으며, 누적 ROE(자기자본이익률)도 17.6%로 개선됐다.(사진=NH투자증권)NH투자증권에 따르면 3분기에는 국내주식 거래대금 감소와 전분기 높은 실적에 따른 기저효과...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03660486645616856",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T16:03:47+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
