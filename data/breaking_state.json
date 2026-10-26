@@ -1243,6 +1243,70 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n한국타이어, 포르쉐 신형 파나메라에 신차용 타이어 공급\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "64815b81c25c58d5",
+      "seen_at": "2026-10-26T04:40:55.352955+00:00",
+      "event": {
+        "event_title": "아우디, 美 조지아에 첫 생산공장 추진…40억달러 투자",
+        "event_key": "아우디_CAPEX_3dd0100a4f45",
+        "event_subject_key": "아우디_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:4000000000"
+          ],
+          "counterparties": [
+            "조지아"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": [
+            "생산공장"
+          ]
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "아우디, 美 조지아에 첫 생산공장 추진…40억달러 투자",
+            "summary": "아우디가 미국 조지아주에 첫 현지 생산시설 설립을 추진한다. 약 40억달러(약 5조7000억원)를 투자해 연간 최대 20만대 규모의 생산능력을 확보하고, 약 4500개의 신규 일자리를 창출한다는 계획이다. 미국 현지 생산을 통해 북미 시장 경쟁력을 강화하고 무역·환율 변동에 따른 사업 위험을 줄이겠다는 전략이다.Audi aims to further str...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03017606645616856",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T13:38:54+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
