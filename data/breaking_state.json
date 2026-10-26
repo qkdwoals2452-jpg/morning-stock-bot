@@ -1559,6 +1559,120 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nfileAI Signs Strategic Collaboration Agreement with AWS to Accelerate Rollout of Outcome-Driven AI Agents for BFSI Leaders\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• NEW (160550): 기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "5270b197ab492bbf",
+      "seen_at": "2026-10-26T09:00:58.779669+00:00",
+      "event": {
+        "event_title": "삼성SDI, 美기업에 ESS 솔루션 공급",
+        "event_key": "삼성SDI_CONTRACT_b760d1ecbc31",
+        "event_subject_key": "삼성SDI_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성SDI, 美기업에 ESS 솔루션 공급",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026102659831",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T17:26:51+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "3482eb2835e4b1d0",
+      "seen_at": "2026-10-26T09:00:58.779669+00:00",
+      "event": {
+        "event_title": "디와이피엔에프, 실리콘 음극재 공장 480억원 수주…이차전지 사업 확대",
+        "event_key": "디와이피엔에프_CONTRACT_9d58c7b9b146",
+        "event_subject_key": "디와이피엔에프_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:48000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "디와이피엔에프, 실리콘 음극재 공장 480억원 수주…이차전지 사업 확대",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610265882i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T17:23:07+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
