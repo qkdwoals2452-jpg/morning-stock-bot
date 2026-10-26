@@ -1793,6 +1793,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nIntel to Acquire Startup Classiq in Quantum Computing Push\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "8c1615f6df1e4319",
+      "seen_at": "2026-10-26T22:44:26.294546+00:00",
+      "event": {
+        "event_title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+        "event_key": "팬오션_CONTRACT_4edae09e1eb8",
+        "event_subject_key": "팬오션_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "팬오션, 운임 호황에도 투자의견 '보유' 유지…선박 공급 과잉 우려-KB",
+            "summary": "KB증권은 팬오션에 대해 전쟁에 따른 해운 운임 급등으로 올해 3분기 영업이익이 시장 기대치를 웃돌 것으로 전망했다. 그러나 해상 운임이 정점을 지나고 있는 데다 최근 선박 발주 급증으로 중장기 공급 과잉이 우려된다며 투자의견 ‘보유(Hold)’를 유지했다.(자료=KB증권)27일 강성진 KB증권 연구원은 팬오션의 올해 3분기 영업이익을 1932억원으로 전...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02660086645617184",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T07:42:32+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
