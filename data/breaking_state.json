@@ -1735,6 +1735,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nSurgery Partners to Be Acquired by Bon Secours for $5.7 Billion\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "d96d261a5813a5c8",
+      "seen_at": "2026-10-26T21:44:25.626146+00:00",
+      "event": {
+        "event_title": "Intel to Acquire Startup Classiq in Quantum Computing Push",
+        "event_key": "intel_to_M&A_a0b0ae981902",
+        "event_subject_key": "intel_to_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Intel to Acquire Startup Classiq in Quantum Computing Push",
+            "summary": "Intel Corp. agreed to buy Israeli startup Classiq Technologies Ltd. as part of a push to capitalize on quantum computing, a still-nascent field that is seeking commercial applications.",
+            "link": "https://www.bloomberg.com/news/articles/2026-10-26/intel-to-buy-israeli-startup-classiq-in-quantum-computing-push",
+            "market": "US",
+            "source": "Bloomberg_Tech",
+            "origin_publisher": "",
+            "published_at": "2026-10-26T20:01:00+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
