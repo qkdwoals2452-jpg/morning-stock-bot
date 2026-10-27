@@ -2271,6 +2271,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n한화시스템, 3분기 영업이익률 10%대 탈환…방산수출 견인\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• 한화시스템 (272210): 사업내용 일부 관련, 추천 제외\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "0d02c9f1a8199cfa",
+      "seen_at": "2026-10-27T07:00:33.988175+00:00",
+      "event": {
+        "event_title": "Nvidia to invest $3 bln in Meta share offering as part of bigger AI partnership",
+        "event_key": "nvidia_CAPEX_e7a4d7348833",
+        "event_subject_key": "nvidia_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:3"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Nvidia to invest $3 bln in Meta share offering as part of bigger AI partnership",
+            "summary": "Investing.com-- Nvidia said on Tuesday it will invest $3 billion in a recent equity offering by Meta Platforms, as part of an expanded partnership focusing on the Instagram owner’s Muse line of artificial intelligence models.",
+            "link": "https://finance.yahoo.com/technology/ai/articles/nvidia-invest-3-bln-meta-064611851.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T06:46:11+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
