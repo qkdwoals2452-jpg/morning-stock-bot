@@ -2928,6 +2928,68 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n신한투자증권, 3분기 순이익 653억원…전년비 35% 감소\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "ed13684c4f8bcc13",
+      "seen_at": "2026-10-27T08:56:40.397683+00:00",
+      "event": {
+        "event_title": "다이소, 양주에 6000억 투자…온·오프 통합 물류거점 짓는다",
+        "event_key": "다이소_CAPEX_711add10ee9f",
+        "event_subject_key": "다이소_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:600000000000"
+          ],
+          "counterparties": [
+            "양주"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "다이소, 양주에 6000억 투자…온·오프 통합 물류거점 짓는다",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026102787361",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T17:47:58+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
