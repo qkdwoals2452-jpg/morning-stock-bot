@@ -2333,6 +2333,124 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nNvidia to invest $3 bln in Meta share offering as part of bigger AI partnership\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "630efbf295effbb4",
+      "seen_at": "2026-10-27T07:05:33.981127+00:00",
+      "event": {
+        "event_title": "Nvidia to Invest $3 Billion in Meta’s Equity Offering as They Expand AI Partnership",
+        "event_key": "nvidia_CAPEX_ba5e0560d01b",
+        "event_subject_key": "nvidia_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:3000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Nvidia to Invest $3 Billion in Meta’s Equity Offering as They Expand AI Partnership",
+            "summary": "The investment comes as Nvidia and Meta Platforms expand their partnership on the Facebook parent’s artificial-intelligence offering Muse.",
+            "link": "https://www.wsj.com/tech/ai/nvidia-to-invest-3-billion-in-metas-equity-offering-as-they-expand-ai-partnership-e8d3850a?mod=rss_markets_main",
+            "market": "US",
+            "source": "WSJ_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T07:01:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "9799ddf3fbbf3171",
+      "seen_at": "2026-10-27T07:05:33.981127+00:00",
+      "event": {
+        "event_title": "JB금융지주 ‘역대 최대’ 실적…3분기 누적 순이익 5957억",
+        "event_key": "누적_EARNINGS_06f149a4b1e6",
+        "event_subject_key": "누적_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:595700000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "JB금융지주 ‘역대 최대’ 실적…3분기 누적 순이익 5957억",
+            "summary": "JB금융지주(175330)가 분기 기준 역대 최대 순이익 기록을 갈아치웠다. 또 3분기 누적 순이익 기준으로도 역대 최대 실적을 냈다.JB금융지주 본점.(사진=JB금융지주)JB금융지주는 올해 3분기 지배기업 소유주지분 누적 당기순이익(연결 기준)이 5957억원으로 사상 최대 실적을 냈다고 27일 공시했다. 전년 동기 대비 2.9% 늘어난 수치다. 3분기 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04565766645617184",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T16:03:41+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
