@@ -2570,6 +2570,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n연간 생산능력 넘는 공급계약 따낸 로보티즈...하락분 되돌릴까\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "9a8c93aaf0039cea",
+      "seen_at": "2026-10-27T07:36:39.535178+00:00",
+      "event": {
+        "event_title": "LG이노텍, 3분기 영업익 '반토막'…매출 6조 돌파에도 환율 발목(종합)",
+        "event_key": "LG이노텍_EARNINGS_fc967e620ef3",
+        "event_subject_key": "LG이노텍_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:6000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "LG이노텍, 3분기 영업익 '반토막'…매출 6조 돌파에도 환율 발목(종합)",
+            "summary": "LG이노텍이 올해 3분기 매출 6조원을 처음으로 돌파했지만 영업이익은 전년 동기 대비 절반 이상 감소했다. 주요 고객사인 애플의 아이폰 신제품 출시와 고부가 반도체기판 수요 증가로 외형 성장을 이어갔으나 원·달러 환율 급락이 수익성에 부담으로 작용한 영향이다. LG이노텍은 반도체 패키지 기판 등 고부가 사업을 확대해 수익성 개선에 나선다는 계획이다.LG이...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04703526645617184",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T16:30:59+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
