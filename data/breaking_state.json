@@ -3051,6 +3051,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nVertiv Completes Acquisition of UtilityInnovation Group\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "2d4ef14232b6949a",
+      "seen_at": "2026-10-27T11:06:41.968781+00:00",
+      "event": {
+        "event_title": "Guidewire Signs Definitive Agreement to Acquire hyperexponential",
+        "event_key": "guidewire_signs_CONTRACT_e10357c48c65",
+        "event_subject_key": "guidewire_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Guidewire Signs Definitive Agreement to Acquire hyperexponential",
+            "summary": "Acquisition positions Guidewire to lead the transformation to agentic underwriting, setting a new standard where AI agents assess, price, and make decisions alongside underwriters and actuaries across commercial and specialty lines LAS VEGAS, Oct. 27, 2026 /PRNewswire/ -- CONNECTIONS...",
+            "link": "https://www.prnewswire.com/news-releases/guidewire-signs-definitive-agreement-to-acquire-hyperexponential-302920513.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-27T11:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
