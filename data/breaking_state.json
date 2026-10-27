@@ -1853,6 +1853,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n팬오션, 운임 호황에도 투자의견 &#x27;보유&#x27; 유지…선박 공급 과잉 우려-KB\n\n분석 종목 1개 / 검증 통과 1개\n• 팬오션 (028670): 60.0점\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "0fa204e775178b17",
+      "seen_at": "2026-10-27T00:29:27.043723+00:00",
+      "event": {
+        "event_title": "삼성카드, 3분기 누적 순이익 4503억원…전년比 9.5%↓",
+        "event_key": "삼성카드_EARNINGS_9b57d07772e1",
+        "event_subject_key": "삼성카드_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:450300000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성카드, 3분기 누적 순이익 4503억원…전년比 9.5%↓",
+            "summary": "삼성카드(029780)는 올해 3분기 누적 당기순이익(연결 기준)이 4503억원으로 전년 동기 대비 9.5% 줄었다고 27일 공시했다.(사진=삼성카드)3분기 당기순이익은 1398억원으로 지난해 3분기 대비 13.5% 감소하며 전체 누적 순이익 감소에 영향을 끼쳤다. 삼성카드 측은 이용금액과 상품채권잔고가 증가하면서 영업수익은 증가했지만 차입금 규모와 조달...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03004486645617184",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T09:26:29+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
