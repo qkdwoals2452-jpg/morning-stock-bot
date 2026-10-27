@@ -3175,6 +3175,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n[TODAY엔비디아]메타 유상증자에 30억달러 투자…AI 인프라 협력 확대\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "bdb28306880568cd",
+      "seen_at": "2026-10-27T11:46:42.402275+00:00",
+      "event": {
+        "event_title": "Nvidia (NASDAQ:NVDA) to Invest $3 Billion in Meta (NASDAQ:META) Share Offering as AI Partnership Expands",
+        "event_key": "nvidia_CAPEX_02ffec33cd72",
+        "event_subject_key": "nvidia_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:3000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Nvidia (NASDAQ:NVDA) to Invest $3 Billion in Meta (NASDAQ:META) Share Offering as AI Partnership Expands",
+            "summary": "Nvidia (NASDAQ:NVDA) announced Tuesday that it will invest $3 billion in an equity offering by Meta Platforms (NASDAQ:META), alongside an expansion of the companies’ artificial intelligence partnership focused on Meta’s Muse AI models and supporting computing infrastructure. The agreement includes collaboration on improving the training and inference performance of Meta’s Muse models, as well as plans to expand the use of Nvidia hardware and networking technology across Meta’s data centers.",
+            "link": "https://investorshub.advfn.com/market-news/article/38628/nvidia-nasdaqnvda-to-invest-3-billion-in-meta-nasdaqmeta-share-offering-as-ai-partnership-expands?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T11:19:16+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
