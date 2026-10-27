@@ -3605,6 +3605,119 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nDotwork Acquires Arcario Group to Accelerate Adoption of Its AI-Native Enterprise Operating Platform\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "8594ac180d924063",
+      "seen_at": "2026-10-27T23:39:27.982363+00:00",
+      "event": {
+        "event_title": "아리바이오홀딩스, 그린플러스 인수 계약 체결",
+        "event_key": "아리바이오홀딩스_M&A_f581cda69ed5",
+        "event_subject_key": "아리바이오홀딩스_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "아리바이오홀딩스, 그린플러스 인수 계약 체결",
+            "summary": "아리바이오홀딩스(290690)가 그린플러스의 경영권을 인수하며 사업 포트폴리오 확장에 나선다.(사진=아리바이오홀딩스)아리바이오홀딩스는 그린플러스의 경영권을 인수하는 계약을 마무리했다고 28일 공시했다. 기존 주식 인수와 3자배정 유상증자에 참여해 총 149억 5600만원 규모의 주식을 확보하며, 취득 예정일은 오는 12월 8일이다. 이에 더해 30억원 규...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02932326645617512",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T08:34:34+09:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "확정된 한국어 인수·합병 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "확정된 한국어 인수·합병 행동 확인"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "7e0bf95f559211d1",
+      "seen_at": "2026-10-27T23:39:27.982363+00:00",
+      "event": {
+        "event_title": "[속보] SK하이닉스 3분기 영업이익률 80% 기록…역대 최대",
+        "event_key": "3분기_EARNINGS_daac87faff92",
+        "event_subject_key": "3분기_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "[속보] SK하이닉스 3분기 영업이익률 80% 기록…역대 최대",
+            "summary": "SK하이닉스는 올해 3분기 영업이익률이 80%에 달한다고 28일 공시했다. 글로벌 제조기업이 80%대 영업이익률을 기록하는 것은 극히 이례적인 일이다.SK하이닉스 본사 모습(사진=뉴시스)",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02938886645617512",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T08:35:14+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
