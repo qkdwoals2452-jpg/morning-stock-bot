@@ -2031,6 +2031,68 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nLG엔솔, 에너직스와 ESS 2GWh 공급 추진…최대 4.5GWh 검토\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "390c41bff6f34417",
+      "seen_at": "2026-10-27T02:10:30.115800+00:00",
+      "event": {
+        "event_title": "앤트로픽, 첫 분기 영업익 냈지만…8000억달러 투자 약정에 '신중론'도",
+        "event_key": "앤트로픽_CAPEX_7864523d6606",
+        "event_subject_key": "앤트로픽_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:800000000000"
+          ],
+          "counterparties": [
+            "약정"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "앤트로픽, 첫 분기 영업익 냈지만…8000억달러 투자 약정에 '신중론'도",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610277195i",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T10:54:09+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
