@@ -3111,6 +3111,69 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nGuidewire Signs Definitive Agreement to Acquire hyperexponential\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• NEW (160550): 기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "8cadf46e12fe80d5",
+      "seen_at": "2026-10-27T11:31:41.873067+00:00",
+      "event": {
+        "event_title": "[TODAY엔비디아]메타 유상증자에 30억달러 투자…AI 인프라 협력 확대",
+        "event_key": "30억달러_CAPEX_a1997cbb3643",
+        "event_subject_key": "30억달러_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:3000000000"
+          ],
+          "counterparties": [
+            "유상증자"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "[TODAY엔비디아]메타 유상증자에 30억달러 투자…AI 인프라 협력 확대",
+            "summary": "엔비디아(NVDA)가 메타 플랫폼스(META)의 인공지능(AI) 모델 ‘뮤즈’ 시리즈에 특화된 파트너십을 확대하며, 메타의 최근 유상증자에 30억달러를 투자할 예정이라고 27일(현지시간) 밝혔다. 이번 행보는 메타가 AI 인프라 구축 자금을 마련하기 위해 총 950억달러 규모의 자금 조달을 추진하겠다고 발표한 이후 이뤄졌다.인베스팅닷컴에 따르면 양사는 공...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=06028646645617184",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T20:25:00+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "AI",
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
