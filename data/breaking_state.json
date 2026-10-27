@@ -1971,6 +1971,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n푸드 로봇업체 &#x27;롸버트치킨&#x27; 영국으로...빅토리아역 앞 매장에 치킨 로봇 공급\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "9225aab4dd7aa288",
+      "seen_at": "2026-10-27T02:05:29.643638+00:00",
+      "event": {
+        "event_title": "LG엔솔, 에너직스와 ESS 2GWh 공급 추진…최대 4.5GWh 검토",
+        "event_key": "LG엔솔_CONTRACT_c3840bb69ec2",
+        "event_subject_key": "LG엔솔_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "에너직스"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "LG엔솔, 에너직스와 ESS 2GWh 공급 추진…최대 4.5GWh 검토",
+            "summary": "LG에너지솔루션이 글로벌 재생에너지 기업 에너직스와 손잡고 유럽과 북미 에너지저장장치(ESS) 시장 공략을 확대한다. 우선 2GWh 규모의 제품 공급을 추진하고 향후 협력 규모를 최대 4.5GWh까지 넓히는 방안도 검토한다.(사진=LG에너지솔루션)LG에너지솔루션은 서울 여의도 파크원 본사에서 에너직스와 유럽·북미 ESS 프로젝트 협력을 위한 전략적 업무협...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03466966645617184",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T10:58:05+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
