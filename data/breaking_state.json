@@ -2453,6 +2453,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nJB금융지주 ‘역대 최대’ 실적…3분기 누적 순이익 5957억\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• JB금융지주 (175330): 금융업 전용 재무 검증 미지원으로 보류\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "a446b2c20ba96915",
+      "seen_at": "2026-10-27T07:15:34.347896+00:00",
+      "event": {
+        "event_title": "리앤모어 \"ISS, 우성·우성유통 합병 승인 건에 '찬성' 권고\"",
+        "event_key": "우성유통_M&A_cc1bf0bf4d6d",
+        "event_subject_key": "우성유통_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "건"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "리앤모어 \"ISS, 우성·우성유통 합병 승인 건에 '찬성' 권고\"",
+            "summary": "글로벌 의결권 자문기관인 ‘ISS’(Institutional Shareholder Services)가 우성의 임시주주총회에 상정된 자기주식 보유·처분 계획과 합병 승인안에 대해 전건 ‘찬성(FOR)’ 의견을 제시했다.(사진=리앤모어)기업 지배구조 및 의결권 자문사 리앤모어는 ISS가 우성 경영진이 제출한 자기주식 보유·처분 계획서 승인안과 합병 승인안에 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04588726645617184",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T16:09:27+09:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "확정된 한국어 인수·합병 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "확정된 한국어 인수·합병 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
