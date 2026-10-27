@@ -2867,6 +2867,66 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nInfineon to Invest €1.1 Billion in Key Austrian Chip Factory\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "2acbf2c130cf6663",
+      "seen_at": "2026-10-27T08:41:40.611581+00:00",
+      "event": {
+        "event_title": "신한투자증권, 3분기 순이익 653억원…전년비 35% 감소",
+        "event_key": "신한투자증권_EARNINGS_a5bd6a704da8",
+        "event_subject_key": "신한투자증권_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:65300000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "신한투자증권, 3분기 순이익 653억원…전년비 35% 감소",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026102785856",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T17:26:13+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
