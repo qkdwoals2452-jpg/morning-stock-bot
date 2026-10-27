@@ -2628,6 +2628,182 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nLG이노텍, 3분기 영업익 &#x27;반토막&#x27;…매출 6조 돌파에도 환율 발목(종합)\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• LG이노텍 (011070): 52주 고점 대비 -60% 이하\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "9512fb1b31507c4c",
+      "seen_at": "2026-10-27T07:51:39.558548+00:00",
+      "event": {
+        "event_title": "현대차그룹, 인도에 20조 투자…전기차·자율차로 주도권 굳힌다",
+        "event_key": "현대차그룹_CAPEX_6e1ece6da21c",
+        "event_subject_key": "현대차그룹_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:20000000000000"
+          ],
+          "counterparties": [
+            "인도"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "현대차그룹, 인도에 20조 투자…전기차·자율차로 주도권 굳힌다",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026102772431",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T16:26:10+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "6f3497d705f89d8d",
+      "seen_at": "2026-10-27T07:51:39.558548+00:00",
+      "event": {
+        "event_title": "한미약품 3분기 영업이익 378억원…작년 동기 대비 31.3%↓",
+        "event_key": "3분기_EARNINGS_bc8d7d94cc0b",
+        "event_subject_key": "3분기_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:37800000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "한미약품 3분기 영업이익 378억원…작년 동기 대비 31.3%↓",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610278370i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T16:16:25+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "e95c04380e46b9ea",
+      "seen_at": "2026-10-27T07:51:39.558548+00:00",
+      "event": {
+        "event_title": "동아제약 3분기 영업이익 351억원…5% 증가",
+        "event_key": "3분기_EARNINGS_8d1f21408d21",
+        "event_subject_key": "3분기_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:35100000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "동아제약 3분기 영업이익 351억원…5% 증가",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610278359i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-27T16:14:59+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
