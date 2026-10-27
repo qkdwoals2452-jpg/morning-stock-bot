@@ -2038,15 +2038,15 @@
   },
   "initialized_at": "2026-10-23T00:40:39.561269+00:00",
   "last_poll": {
-    "started_at": "2026-10-27T01:59:49.746756+00:00",
-    "previous_started_at": "2026-10-27T01:54:49.703645+00:00",
+    "started_at": "2026-10-27T02:04:49.783890+00:00",
+    "previous_started_at": "2026-10-27T01:59:49.746756+00:00",
     "start_gap_seconds": 300.04,
-    "completed_at": "2026-10-27T02:00:30.873378+00:00",
-    "collected": 541,
-    "new": 0,
+    "completed_at": "2026-10-27T02:05:59.673334+00:00",
+    "collected": 539,
+    "new": 1,
     "baseline": 0,
-    "notices": 0,
-    "analyses": 0,
+    "notices": 1,
+    "analyses": 1,
     "pending": 0,
     "uncertain": 0
   }
