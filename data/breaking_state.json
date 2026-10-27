@@ -3237,6 +3237,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nNvidia (NASDAQ:NVDA) to Invest $3 Billion in Meta (NASDAQ:META) Share Offering as AI Partnership Expands\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "456beb13dc150a05",
+      "seen_at": "2026-10-27T12:06:42.720660+00:00",
+      "event": {
+        "event_title": "Vuzix Signs Distribution Agreement with Commercial Electronics Systems and Begins Shipping Against Initial Six-Figure LX1 Smart Glasses Order",
+        "event_key": "vuzix_signs_CONTRACT_35a59ecc57e9",
+        "event_subject_key": "vuzix_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "commercial electronics systems and begins shipping"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Vuzix Signs Distribution Agreement with Commercial Electronics Systems and Begins Shipping Against Initial Six-Figure LX1 Smart Glasses Order",
+            "summary": "New relationship expands Vuzix enterprise sales channel and creates opportunities for broader smart glasses adoption across commercial automation and workforce modernization markets ROCHESTER, N.Y., Oct. 27, 2026 /PRNewswire/ -- Vuzix® Corporation (NASDAQ: VUZI) (\"Vuzix\" or the...",
+            "link": "https://www.prnewswire.com/news-releases/vuzix-signs-distribution-agreement-with-commercial-electronics-systems-and-begins-shipping-against-initial-six-figure-lx1-smart-glasses-order-302920469.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-27T12:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
