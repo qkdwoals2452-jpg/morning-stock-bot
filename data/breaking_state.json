@@ -3843,6 +3843,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nOneQode Signs 14 MW AI Capacity Agreement with AdaniConneX, with a Path to 114 MW\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "6ea2fbe9ebc500af",
+      "seen_at": "2026-10-28T01:32:03.646532+00:00",
+      "event": {
+        "event_title": "씨피시스템, 美 배터리 제조 자동화 설비에 케이블체인 공급…경쟁 제품 대체",
+        "event_key": "씨피시스템_CONTRACT_816c4c33f4c7",
+        "event_subject_key": "씨피시스템_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "설비"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "씨피시스템, 美 배터리 제조 자동화 설비에 케이블체인 공급…경쟁 제품 대체",
+            "summary": "첨단산업용 케이블 보호 솔루션 전문기업 씨피시스템(413630)이 국내 주요 배터리 셀 제조사의 미국 생산공장에 도입되는 분리·적재 자동화 장비에 자사 케이블체인이 적용돼 공급됐다고 28일 밝혔다. 씨피시스템은 이번 공급을 계기로 북미 이차전지 제조설비 시장 공략을 강화할 계획이다.씨피시스템 CI.(사진=씨피시스템)씨피시스템의 케이블체인은 국내 이차전지 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03886806645617512",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T10:26:56+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
