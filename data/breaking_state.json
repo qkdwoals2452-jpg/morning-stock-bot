@@ -3961,6 +3961,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n소마젠, 50억 규모 저커버그 재단 세포 분석 사업 추가 수주\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "305ab5c042346016",
+      "seen_at": "2026-10-28T04:47:06.678197+00:00",
+      "event": {
+        "event_title": "HD한국조선해양, 3분기 영업이익 1조 4472억원…전년比 37.3% 증가",
+        "event_key": "HD한국조선해양_EARNINGS_0481f4d7e11d",
+        "event_subject_key": "HD한국조선해양_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:1447200000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "HD한국조선해양, 3분기 영업이익 1조 4472억원…전년比 37.3% 증가",
+            "summary": "HD한국조선해양이 3분기 연결기준 매출 8조 2862억원, 영업이익 1조 4472억원을 시현했다.HD한국조선해양은 28일 3분기 실적을 공시했다. 올해 매출과 영업이익은 전년 동기 대비 각각 9.3%, 37.3% 증가했다. 계절적 요인에 따른 조업일수 감소와 환율 변동 등의 영향에도 불구하고 △생산성 향상 △선가 상승에 따른 매출 증가 △엔진기계 및 해양...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04513286645617512",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T13:40:49+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
