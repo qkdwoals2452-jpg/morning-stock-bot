@@ -3778,6 +3778,70 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n[속보] SK하이닉스 3분기 영업익 83조…영업이익률 80%\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• SK하이닉스 (000660): 기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "ab49d56bfecc8326",
+      "seen_at": "2026-10-28T01:02:03.145186+00:00",
+      "event": {
+        "event_title": "OneQode Signs 14 MW AI Capacity Agreement with AdaniConneX, with a Path to 114 MW",
+        "event_key": "oneqode_signs_CONTRACT_85004036a76d",
+        "event_subject_key": "oneqode_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "a path",
+            "adaniconnex"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "OneQode Signs 14 MW AI Capacity Agreement with AdaniConneX, with a Path to 114 MW",
+            "summary": "Agreement with AdaniConneX establishes OneQode's first major AI infrastructure deployment in India, with the companies continuing discussions on expansion of up to 114 MW, which can generate over US$6 billion in GPUaaS TCV revenue for OneQode. SINGAPORE, Oct. 27, 2026 /PRNewswire/ --...",
+            "link": "https://www.prnewswire.com/news-releases/oneqode-signs-14-mw-ai-capacity-agreement-with-adaniconnex-with-a-path-to-114-mw-302920277.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-28T01:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
