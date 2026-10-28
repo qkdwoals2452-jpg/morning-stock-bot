@@ -4077,6 +4077,69 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n삼성전기 3분기 영업이익 6910억 &#x27;역대 최대&#x27;…&quot;매 분기 큰 폭 성장할 것&quot;\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• 삼성전기 (009150): 120일선 아래\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "39208c2800346dda",
+      "seen_at": "2026-10-28T09:13:16.319264+00:00",
+      "event": {
+        "event_title": "기가비스, 6일 만에 반도체 장비 775억 수주…中 기판업체에 306억 공급",
+        "event_key": "기가비스_CONTRACT_b56960467012",
+        "event_subject_key": "기가비스_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:30600000000",
+            "UNKNOWN:77500000000"
+          ],
+          "counterparties": [
+            "만"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "기가비스, 6일 만에 반도체 장비 775억 수주…中 기판업체에 306억 공급",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610281326i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T17:17:03+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망",
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
