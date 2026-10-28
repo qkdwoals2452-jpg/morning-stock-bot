@@ -82,6 +82,19 @@ def followup(event, results, status, failed=False):
     analysis = status['analysis_status']
     message += (f"분석 종목 {analysis['analyzed_count']}개 / "
                 f"검증 통과 {analysis['selected_count']}개\n")
+    connections = analysis.get('connections', [])
+    for item in connections[:2]:
+        role = '기사상 사건 주체' if item['role'] == 'EVENT_ACTOR' else '기사상 거래 상대방'
+        message += escaped(f"연결 근거: {item['name']} ({item['code']}) · {role}", 180) + '\n'
+        for proof in item.get('evidence', [])[:1]:
+            amounts = proof.get('amount_text', [])
+            if amounts:
+                message += '기사 기재 금액: ' + escaped(', '.join(amounts[:2]), 80) + '\n'
+            url = canonical_link(proof.get('link'))
+            if url:
+                message += '<a href="' + html.escape(url, quote=True) + '">사건 당사자 근거 원문</a>\n'
+    if connections:
+        message += '기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n'
     seen = set()
     for block in results:
         for stock in block.get('ranked', []):
@@ -93,7 +106,26 @@ def followup(event, results, status, failed=False):
                     else '최종 검증 조건을 통과한 종목이 없습니다.\n')
     for item in analysis.get('excluded', [])[:5]:
         message += escaped(f"• {item['name']} ({item['code']}): {item['reason']}", 220) + '\n'
+    paths = status.get('supply_chain_watch', {}).get('paths', [])
+    if paths:
+        path = paths[0]
+        message += '\n공급망 관찰: ' + escaped(' → '.join(path['path']), 200) + '\n'
+        message += '기존 거래 관계만 확인. 이번 사건의 신규 수주·매출·이익 귀속은 미확정입니다.\n'
+        for edge in path.get('evidence', [])[:2]:
+            url = canonical_link(edge.get('source_url'))
+            if url:
+                message += '<a href="' + html.escape(url, quote=True) + '">관계 근거 원자료</a>\n'
     message += '\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.'
+    if len(message) > 3500:
+        # Rebuild complete HTML fragments; never slice an anchor or escaped entity.
+        message = ('🔎 ORION 후속 검증 · 2차\n\n' + escaped(event['event_title'])
+                   + f"\n\n분석 종목 {analysis['analyzed_count']}개 / 검증 통과 {analysis['selected_count']}개\n")
+        for block in results[:2]:
+            for stock in block.get('ranked', [])[:2]:
+                message += escaped(f"• {stock['name']} ({stock['code']}): {stock['final_score']}점", 160) + '\n'
+        for item in analysis.get('excluded', [])[:3]:
+            message += escaped(f"• {item['name']} ({item['code']}): {item['reason']}", 160) + '\n'
+        message += '\n상세 거래 근거는 1차 알림의 원문을 확인하세요. 매출·이익 귀속은 별도 검증이 필요합니다.\n가격 조건은 최근 정규장 일봉 기준입니다.'
     return message
 
 
