@@ -4385,6 +4385,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nFederal Reserve holds rates steady despite worsening US inflation\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "4ab187e5e6ac1faf",
+      "seen_at": "2026-10-28T18:24:24.276025+00:00",
+      "event": {
+        "event_title": "Here's How Much You'd Need to Invest in Coca-Cola to Generate $1,000 in Yearly Dividends",
+        "event_key": "here_s_CAPEX_6dff96462208",
+        "event_subject_key": "here_s_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:1000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Here's How Much You'd Need to Invest in Coca-Cola to Generate $1,000 in Yearly Dividends",
+            "summary": "Coca-Cola has raised its dividend for 64 straight years and offers a 2.3% yield.",
+            "link": "https://www.fool.com/investing/2026/10/28/how-much-invest-coca-cola-1000-yearly-dividends/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T18:09:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
