@@ -4019,6 +4019,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nHD한국조선해양, 3분기 영업이익 1조 4472억원…전년比 37.3% 증가\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• HD한국조선해양 (009540): 금융업 전용 재무 검증 미지원으로 보류\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "18695862da3405ee",
+      "seen_at": "2026-10-28T07:03:14.253252+00:00",
+      "event": {
+        "event_title": "삼성전기 3분기 영업이익 6910억 '역대 최대'…\"매 분기 큰 폭 성장할 것\"",
+        "event_key": "3분기_EARNINGS_6c4a4900f6f0",
+        "event_subject_key": "3분기_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:691000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성전기 3분기 영업이익 6910억 '역대 최대'…\"매 분기 큰 폭 성장할 것\"",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610281004i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T15:45:18+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
