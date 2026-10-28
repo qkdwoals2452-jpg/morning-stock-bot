@@ -21,6 +21,7 @@ MAX_SOURCE_AGE_DAYS = 366
 NEGATIVE = re.compile(r'\b(?:not|never|denied|cancelled|canceled|could|might|rumou?r|reportedly)\b|미체결|부인|취소|검토|수주\s*기대', re.I)
 SPENDING = re.compile(r'\b(?:capex|capital expenditures?|capital spending|invest(?:s|ed|ment|ments)?|supply contract|supply agreement|data[- ]cent(?:er|re)\s+(?:deal|contract|agreement)|begins production|mass production)\b|설비투자|공급계약|양산', re.I)
 NON_MANUFACTURING = re.compile(r'\bresearch labs?\b|\bresearch and development\b|\bR&D\b|\bbuybacks?\b|\bdividends?\b|연구소|자사주|배당', re.I)
+EQUITY_FINANCING = re.compile(r'\b(?:equity|share|stock)\s+offering\b|유상증자|지분\s*투자', re.I)
 
 
 def load_supply_chain_evidence():
@@ -169,7 +170,7 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_ev
                 if not actor_text:
                     continue
                 assessed_actors.add(start)
-                if NON_MANUFACTURING.search(actor_text):
+                if NON_MANUFACTURING.search(actor_text) or EQUITY_FINANCING.search(article.get('title', '')):
                     excluded['non_manufacturing_spending'] += 1
                     continue
                 context = text if event.get('event_type') == 'EARNINGS' else actor_text

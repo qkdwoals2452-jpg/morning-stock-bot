@@ -93,6 +93,15 @@ def followup(event, results, status, failed=False):
                     else '최종 검증 조건을 통과한 종목이 없습니다.\n')
     for item in analysis.get('excluded', [])[:5]:
         message += escaped(f"• {item['name']} ({item['code']}): {item['reason']}", 220) + '\n'
+    paths = status.get('supply_chain_watch', {}).get('paths', [])
+    if paths:
+        path = paths[0]
+        message += '\n공급망 관찰: ' + escaped(' → '.join(path['path']), 200) + '\n'
+        message += '기존 거래 관계만 확인. 이번 사건의 신규 수주·매출·이익 귀속은 미확정입니다.\n'
+        for edge in path.get('evidence', [])[:2]:
+            url = canonical_link(edge.get('source_url'))
+            if url:
+                message += '<a href="' + html.escape(url, quote=True) + '">관계 근거 원자료</a>\n'
     message += '\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.'
     return message
 

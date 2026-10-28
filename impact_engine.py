@@ -29,7 +29,9 @@ def assess_company_event_relation(stock, articles):
             for sentence in clauses:
                 if not has_company_mention(name, sentence):
                     continue
-                if re.search(r"지난해|작년|과거|\d+년\s*전|당시|previously|last year|전망|예상|기대|검토|분석|평가|목표주가|애널리스트|analyst|expects?|could|might|주가|급등|급락|수혜주|관련주|투자자\s*관심|부인|미체결|취소|불발|체결하지|denied|\bnot\b|\bnever\b", sentence, re.I):
+                # 분석 서비스의 제품명과 투자 의견의 '분석'을 구분한다.
+                opinion_text = re.sub(r'(?:단일\s*)?(?:세포|유전체|유전자|검체|혈액|영상|데이터)\s*분석', '', sentence)
+                if re.search(r"지난해|작년|과거|\d+년\s*전|당시|previously|last year|전망|예상|기대|검토|분석|평가|목표주가|애널리스트|analyst|expects?|could|might|주가|급등|급락|수혜주|관련주|투자자\s*관심|부인|미체결|취소|불발|체결하지|denied|\bnot\b|\bnever\b", opinion_text, re.I):
                     continue
                 event = understand_event({"title": sentence, "summary": ""})
                 if not event.get("is_real_event"):
@@ -38,7 +40,7 @@ def assess_company_event_relation(stock, articles):
                 actor_end = actor_match.end() if actor_match else joint_subject_end(name, sentence)
                 if actor_end is not None:
                     rest = sentence[actor_end:]
-                    action = re.search(r"공급계약|계약|수주|투자|증설|인수|매출|영업이익|순이익|실적", rest)
+                    action = re.search(r"(?:추가\s*)?(?:공급계약|계약|수주|투자|증설|인수)|매출|영업이익|순이익|실적", rest)
                     prefix = rest[:action.start()] if action else rest
                     # 'GST, 엔비디아가 계약 체결'에서 GST를 계약 주체로 삼지 않는다.
                     if re.search(r"[가-힣A-Za-z0-9&.]+(?:은|는|이|가)\s", prefix):

@@ -1,7 +1,7 @@
 name: ORION Domestic Actor Check
 on:
   pull_request:
-    paths: [company_identity_engine.py, stock_engine.py, impact_engine.py, test_company_identity.py, replay_domestic_routes.py, .github/workflows/domestic-route-check.yml]
+    paths: [company_identity_engine.py, finance_model_policy.py, stock_engine.py, impact_engine.py, test_company_identity.py, test_connection_repairs.py, replay_domestic_routes.py, .github/workflows/domestic-route-check.yml]
   workflow_dispatch:
 permissions:
   contents: read
