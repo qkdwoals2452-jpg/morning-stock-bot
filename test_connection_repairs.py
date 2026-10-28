@@ -77,3 +77,22 @@ class ConnectionRepairTests(unittest.TestCase):
         self.assertEqual(report['paths'], [])
         self.assertFalse(report['recommendation_eligible'])
         self.assertEqual(report['excluded']['non_manufacturing_spending'], 1)
+
+    def test_rejected_stock_keeps_article_actor_proof_in_followup(self):
+        status = {'analysis_status': {'analyzed_count': 1, 'selected_count': 0,
+            'connections': [{'name': '소마젠', 'code': '950200', 'role': 'EVENT_ACTOR',
+                'evidence': [{'amount_text': ['50억'], 'link': 'https://example.com/order'}]}],
+            'excluded': [{'name': '소마젠', 'code': '950200', 'reason': '영업적자 제외'}]}}
+        text = followup({'event_title': SOMA['title']}, [], status)
+        self.assertIn('기사상 사건 주체', text)
+        self.assertIn('50억', text)
+        self.assertIn('영업적자 제외', text)
+        self.assertIn('매출 인식·이익 효과는 별도 검증', text)
+
+    def test_very_long_proof_does_not_break_telegram_html_or_length(self):
+        status = {'analysis_status': {'analyzed_count': 1, 'selected_count': 0, 'excluded': [],
+                  'connections': [{'name': '소마젠', 'code': '950200', 'role': 'EVENT_ACTOR',
+                      'evidence': [{'link': 'https://example.com/' + 'a' * 4000}]}]}}
+        text = followup({'event_title': SOMA['title']}, [], status)
+        self.assertLessEqual(len(text), 3500)
+        self.assertNotIn('<a ', text)

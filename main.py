@@ -300,6 +300,11 @@ def run(news_override=None, notify=True, track_history=True):
                 reject(stock, 'connection', connection['reason'])
                 continue
             print("사건 연결 근거:", stock["name"], connection)
+            verified_connection = {
+                'name': stock['name'], 'code': stock['code'],
+                'role': connection['role'], 'evidence': connection.get('evidence', [])[:1]}
+            if verified_connection not in analysis_status.setdefault('connections', []):
+                analysis_status['connections'].append(verified_connection)
             verify = (verify_direct_company_event(stock, articles)
                       if theme.get('analysis_route') == 'DIRECT_EVENT'
                       else verify_company_theme(stock, theme['name']))
