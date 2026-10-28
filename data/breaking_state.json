@@ -4323,6 +4323,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nAlchemy Technology Group Acquires Freeit Data Solutions, an Austin-Based IT and Cybersecurity Solutions Provider\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "39399d369df1e03d",
+      "seen_at": "2026-10-28T18:14:24.076395+00:00",
+      "event": {
+        "event_title": "Federal Reserve holds rates steady despite worsening US inflation",
+        "event_key": "federal_reserve_FOMC_5d51dd01ada9",
+        "event_subject_key": "federal_reserve_FOMC",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "FOMC",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 정책·생산 행동 확인",
+        "event_score": 95,
+        "event_grade": "S",
+        "articles": [
+          {
+            "title": "Federal Reserve holds rates steady despite worsening US inflation",
+            "summary": "Central bank holds fire even as consumer price pressures pick up",
+            "link": "https://www.ft.com/content/516063c6-3820-4803-836a-73e24ebee0da?syn-25a6b1a6=1",
+            "market": "US",
+            "source": "FT_International",
+            "origin_publisher": "",
+            "published_at": "2026-10-28T16:51:06+00:00",
+            "event_score_raw": 95,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:FOMC",
+              "실제 미국 통화정책·금리 결정",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:FOMC",
+          "실제 미국 통화정책·금리 결정",
+          "US"
+        ],
+        "money_flow": [
+          "금리",
+          "환율",
+          "은행"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
