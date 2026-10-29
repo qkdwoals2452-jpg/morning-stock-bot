@@ -5,6 +5,7 @@ They must not turn a lifestyle/explainer headline into a breaking event.
 """
 import html
 import re
+from event_understanding_engine import is_personal_investment_explainer
 
 ACTION = {
     'CAPEX': r'\b(?:invest(?:s|ed)?|to invest|announces? investment|commits? .{0,40}(?:billion|million)|builds?|to build|opens? .{0,30}(?:plant|factory)|expands? .{0,30}(?:plant|factory|capacity))\b|(?:투자|증설|공장.{0,8}(?:신설|건설)).{0,10}(?:결정|확정|착수|발표)|\d[\d,.]*\s*(?:조|억|만).{0,15}(?:투자|증설)',
@@ -20,6 +21,8 @@ ACTION = {
 def headline_action(event):
     title = re.sub(r'\s+', ' ', html.unescape(event.get('event_title', '')).casefold()).strip()
     kind = event.get('event_type')
+    if is_personal_investment_explainer(title):
+        return False
     if re.search(r'투자의견|목표주가|\bprice target\b', title):
         return False
     if re.search(r'^(?:how|why|what|does|do|is|are|can|could|should)\b|\?|무엇|뜻은|일까', title):

@@ -24,6 +24,14 @@ def normalize_text(text):
     ).strip()
 
 
+def is_personal_investment_explainer(title):
+    """Investor allocation instructions are not a corporate spending event."""
+    title = normalize_text(title).replace('’', "'")
+    return bool(re.search(
+        r"^(?:here(?:'s| is)\s+)?how much\b.{0,100}\b(?:invest|investment)\b"
+        r"|\byou(?:'d| would)?\s+(?:would\s+)?need\s+to\s+invest\b", title))
+
+
 def contains_any(text, patterns):
     return any(
         pattern.lower() in text
@@ -330,6 +338,8 @@ def classify_article_role(title, summary=""):
     """
 
     title = normalize_text(title)
+    if is_personal_investment_explainer(title):
+        return 'ANALYSIS'
     summary = normalize_text(summary)
     text = f"{title} {summary}".strip()
 
