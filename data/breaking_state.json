@@ -4864,6 +4864,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n삼성SDI, 3분기 매출 4.6조, 영업이익 12분기 만에 최대\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 삼성SDI (006400) · 기사상 사건 주체\n기사 기재 금액: 4.6조\n<a href=\"https://www.hankyung.com/article/2026102942941\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 삼성SDI (006400): 영업적자 제외\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "70caad82eb74c7d0",
+      "seen_at": "2026-10-29T11:34:28.982139+00:00",
+      "event": {
+        "event_title": "Digital Science acquires Jenni AI, connecting 8 million students and researchers to the published research record",
+        "event_key": "digital_science_M&A_7f50614aa849",
+        "event_subject_key": "digital_science_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Digital Science acquires Jenni AI, connecting 8 million students and researchers to the published research record",
+            "summary": "More than 8 million students and researchers in 189 countries trust Jenni AI to turn great ideas into great work, from finding and understanding sources to drafting and checking citations Unlike general-purpose AI tools, Jenni AI is built around the demands of research, combining an...",
+            "link": "https://www.prnewswire.com/news-releases/digital-science-acquires-jenni-ai-connecting-8-million-students-and-researchers-to-the-published-research-record-302922620.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-29T11:30:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
