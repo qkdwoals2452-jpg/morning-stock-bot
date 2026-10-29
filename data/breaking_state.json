@@ -5414,6 +5414,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nCoveo Acquires Anglera to Make Product Data a Competitive Advantage in AI-Powered eCommerce\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "3fff138f45685469",
+      "seen_at": "2026-10-29T20:25:47.149234+00:00",
+      "event": {
+        "event_title": "Vusion Completes Acquisition of In-Store Media, Opening a New Chapter for Digital Retail Media in Physical Stores",
+        "event_key": "vusion_completes_M&A_039be4fec46e",
+        "event_subject_key": "vusion_completes_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Vusion Completes Acquisition of In-Store Media, Opening a New Chapter for Digital Retail Media in Physical Stores",
+            "summary": "Vusion and ISM combine connected store technology and retail media expertise to unlock the untapped advertising potential of physical stores PARIS, Oct. 29, 2026 /PRNewswire/ -- Vusion (VU - FR0010282822), the global leader in AI-powered digitalization solutions for physical commerce,...",
+            "link": "https://www.prnewswire.com/news-releases/vusion-completes-acquisition-of-in-store-media-opening-a-new-chapter-for-digital-retail-media-in-physical-stores-302924244.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-29T20:22:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
