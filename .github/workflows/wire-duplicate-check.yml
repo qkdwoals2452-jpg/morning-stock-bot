@@ -1,0 +1,25 @@
+name: ORION Wire Duplicate Replay
+on:
+  pull_request:
+    paths: [event_identity_engine.py, test_wire_duplicates.py, replay_wire_duplicates.py, .github/workflows/wire-duplicate-check.yml]
+permissions:
+  contents: read
+jobs:
+  wire-duplicate-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml beautifulsoup4
+      - run: python -m unittest discover
+      - uses: actions/checkout@v4
+        with:
+          ref: orion-alert-state
+          path: alert-state
+          sparse-checkout: data/breaking_state.json
+          sparse-checkout-cone-mode: false
+      - name: Actual stored duplicate replay (no state save or Telegram)
+        run: python -u replay_wire_duplicates.py alert-state/data/breaking_state.json
