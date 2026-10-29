@@ -2,25 +2,86 @@
   "schema_version": 1,
   "orders": [
     {
-      "contract_id": "hanmi_skhynix_20260608_hbm4_griffin", "buyer": "sk_hynix", "supplier": "hanmi",
-      "receipt_no": "20260608800436", "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260608800436",
-      "review_method": "manual_primary_source", "state": "disclosed_contract",
-      "published_on": "2026-06-08", "ordered_on": "2026-06-08", "delivery_end_on": "2026-09-02",
-      "reviewed_at": "2026-10-14T15:56:14+09:00", "amount": 44200000000, "currency": "KRW",
-      "product_terms": ["HBM4", "TC BONDER"],
+      "contract_id": "hanmi_skhynix_20260608_hbm4_griffin",
+      "buyer": "sk_hynix",
+      "supplier": "hanmi",
+      "receipt_no": "20260608800436",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260608800436",
+      "review_method": "manual_primary_source",
+      "state": "disclosed_contract",
+      "published_on": "2026-06-08",
+      "ordered_on": "2026-06-08",
+      "delivery_end_on": "2026-09-02",
+      "reviewed_at": "2026-10-14T15:56:14+09:00",
+      "amount": 44200000000,
+      "currency": "KRW",
+      "product_terms": [
+        "HBM4",
+        "TC BONDER"
+      ],
       "document_sha256": "ac1cf011d40efff9587fa1c996b2fb70a14526b55143582806dd2aac7e2ef747",
-      "source_fields": {"supplier": "한미반도체", "buyer": "SK하이닉스", "product": "HBM4 제조용 TC BONDER 4.5 GRIFFIN 장비 수주", "amount": "44,200,000,000", "section": "1. 체결계약명 / 2. 계약내역 / 3. 계약상대 / 5. 계약기간 / 7. 계약(수주)일자"},
+      "source_fields": {
+        "supplier": "한미반도체",
+        "buyer": "SK하이닉스",
+        "product": "HBM4 제조용 TC BONDER 4.5 GRIFFIN 장비 수주",
+        "amount": "44,200,000,000",
+        "section": "1. 체결계약명 / 2. 계약내역 / 3. 계약상대 / 5. 계약기간 / 7. 계약(수주)일자"
+      },
       "evidence_summary": "원본 ZIP 본문을 직접 검토. VAT 별도 계약금액, 주문일은 P/O 수령일, 납기는 고객 협의에 따라 변경 가능. 특정 미국 사건 인과·실제 납품 완료·매출 인식·현금 수령·이익을 확인한 것은 아님."
     },
     {
-      "contract_id": "hanmi_semco_20261002_msvp", "buyer": "samsung_electro_mechanics", "supplier": "hanmi",
-      "receipt_no": "20261006800023", "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800023",
-      "review_method": "manual_primary_source", "state": "disclosed_contract",
-      "published_on": "2026-10-06", "ordered_on": "2026-10-02", "delivery_end_on": "2027-12-17",
-      "reviewed_at": "2026-10-14T15:56:14+09:00", "amount": 24480000000, "currency": "KRW", "product_terms": ["MSVP"],
+      "contract_id": "hanmi_semco_20261002_msvp",
+      "buyer": "samsung_electro_mechanics",
+      "supplier": "hanmi",
+      "receipt_no": "20261006800023",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800023",
+      "review_method": "manual_primary_source",
+      "state": "disclosed_contract",
+      "published_on": "2026-10-06",
+      "ordered_on": "2026-10-02",
+      "delivery_end_on": "2027-12-17",
+      "reviewed_at": "2026-10-14T15:56:14+09:00",
+      "amount": 24480000000,
+      "currency": "KRW",
+      "product_terms": [
+        "MSVP"
+      ],
       "document_sha256": "35afd3fa1ae4bd02a1b6d02c3df5bb3237060d5f943a79626b03410d7916bdec",
-      "source_fields": {"supplier": "한미반도체", "buyer": "삼성전기", "product": "AI 반도체 기판 제조용 대면적 micro SAW & VISION PLACEMENT(MSVP) 장비 수주", "amount": "24,480,000,000", "section": "1. 세부내용 / 2. 계약내역 / 3. 계약상대 / 5. 계약기간 / 7. 계약(수주)일"},
+      "source_fields": {
+        "supplier": "한미반도체",
+        "buyer": "삼성전기",
+        "product": "AI 반도체 기판 제조용 대면적 micro SAW & VISION PLACEMENT(MSVP) 장비 수주",
+        "amount": "24,480,000,000",
+        "section": "1. 세부내용 / 2. 계약내역 / 3. 계약상대 / 5. 계약기간 / 7. 계약(수주)일"
+      },
       "evidence_summary": "원본 ZIP 본문을 직접 검토. VAT 별도 계약금액, 선급금 없음, 주문일은 P/O 수령일. HBM TC 본더 계약이 아니며 특정 Micron·NVIDIA 미국 사건에 귀속하지 않음."
+    },
+    {
+      "contract_id": "techwing_micron_india_20261027",
+      "buyer": "micron_india",
+      "supplier": "techwing",
+      "receipt_no": "20261028900224",
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028900224",
+      "review_method": "manual_primary_source",
+      "state": "disclosed_contract",
+      "published_on": "2026-10-28",
+      "ordered_on": "2026-10-27",
+      "delivery_end_on": "2027-04-16",
+      "reviewed_at": "2026-10-30T08:03:00+09:00",
+      "amount": 9497217450,
+      "currency": "KRW",
+      "product_terms": [
+        "검사장비"
+      ],
+      "document_sha256": "33e3ec2299e3ad0afcd0c973fd4cff107d4683b8e90178cbf1d6a24373950144",
+      "source_fields": {
+        "supplier": "테크윙",
+        "buyer": "Micron Semiconductor Technology India Private Limited(SEZ Unit)",
+        "product": "반도체 검사장비 공급계약 체결",
+        "amount": "9,497,217,450",
+        "section": "1. 공급계약 내용 / 2. 계약내역 / 3. 계약상대방 / 5. 계약기간"
+      },
+      "evidence_summary": "원문 직접 확인. 최종 납품 예정 2027-02-16, 종료일은 지급기일 포함. 고객 요청으로 금액·기간 변동 가능. 전체 정정·취소 이력 확인 및 신규 미국 사건 귀속·납품·현금수령·매출·이익은 미확정."
     }
   ],
   "review_log": {
@@ -43,13 +104,42 @@
     ],
     "unverified_filing_candidates": [],
     "resolved_filing_candidates": [
-      {"receipt_no": "20260608800436", "resolved_at": "2026-10-14T15:56:14+09:00", "status": "primary_document_reviewed", "route": "opendart_xml"},
-      {"receipt_no": "20261006800023", "resolved_at": "2026-10-14T15:56:14+09:00", "status": "primary_document_reviewed", "route": "opendart_xml"}
+      {
+        "receipt_no": "20260608800436",
+        "resolved_at": "2026-10-14T15:56:14+09:00",
+        "status": "primary_document_reviewed",
+        "route": "opendart_xml"
+      },
+      {
+        "receipt_no": "20261006800023",
+        "resolved_at": "2026-10-14T15:56:14+09:00",
+        "status": "primary_document_reviewed",
+        "route": "opendart_xml"
+      }
     ],
     "previous_unverified_candidates": [
-      {"receipt_no": "20260608800436", "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260608800436", "status": "primary_document_unavailable", "reason": "DART 웹·문서 API 원문 조회 시간초과. 2차 자료를 원자료 검토로 승격하지 않음."},
-      {"receipt_no": "20261006800023", "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800023", "status": "primary_document_unavailable", "reason": "DART 목록에서 접수번호는 확인했으나 웹·문서 API 본문 조회 시간초과. 계약 내용 미검증."}
+      {
+        "receipt_no": "20260608800436",
+        "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260608800436",
+        "status": "primary_document_unavailable",
+        "reason": "DART 웹·문서 API 원문 조회 시간초과. 2차 자료를 원자료 검토로 승격하지 않음."
+      },
+      {
+        "receipt_no": "20261006800023",
+        "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261006800023",
+        "status": "primary_document_unavailable",
+        "reason": "DART 목록에서 접수번호는 확인했으나 웹·문서 API 본문 조회 시간초과. 계약 내용 미검증."
+      }
     ],
-    "limitation": "원본을 직접 검토한 개별 계약 2건만 등록. 전체 정정·취소 이력을 검색한 것은 아니며 특정 미국 사건 귀속과 납품·매출 인식은 미확정. 조회하지 못한 원문과 비공개 주문은 주문 없음으로 판정하지 않음."
+    "limitation": "원본을 직접 검토한 개별 계약 2건만 등록. 전체 정정·취소 이력을 검색한 것은 아니며 특정 미국 사건 귀속과 납품·매출 인식은 미확정. 조회하지 못한 원문과 비공개 주문은 주문 없음으로 판정하지 않음.",
+    "additional_primary_reviews": [
+      {
+        "reviewed_at": "2026-10-30T08:03:00+09:00",
+        "receipt_no": "20261028900224",
+        "issuer": "테크윙",
+        "route": "opendart_xml",
+        "finding": "원본 해시 및 계약 상대·금액·제품 대조. 신규 미국 사건 귀속과 전체 정정·취소 이력은 미확정."
+      }
+    ]
   }
 }

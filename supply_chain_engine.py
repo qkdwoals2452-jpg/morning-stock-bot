@@ -14,9 +14,9 @@ from pre_news_activity_engine import parse_timestamp
 from supply_order_engine import review_supply_orders
 
 SEOUL = ZoneInfo('Asia/Seoul')
-ALLOWED_HOSTS = {'REGULATORY_FILING': {'kind.krx.co.kr', 'dart.fss.or.kr'},
+ALLOWED_HOSTS = {'REGULATORY_FILING': {'kind.krx.co.kr', 'dart.fss.or.kr', 'www.sec.gov'},
                  'CORPORATE_IR': {'investor.nvidia.com', 'investors.micron.com'}}
-RELATIONSHIPS = {'REPORTED_CUSTOMER', 'MEMORY_TECH_AGREEMENT'}
+RELATIONSHIPS = {'REPORTED_CUSTOMER', 'MEMORY_TECH_AGREEMENT', 'REPORTED_SUBSIDIARY'}
 MAX_SOURCE_AGE_DAYS = 366
 NEGATIVE = re.compile(r'\b(?:not|never|denied|cancelled|canceled|could|might|rumou?r|reportedly)\b|미체결|부인|취소|검토|수주\s*기대', re.I)
 SPENDING = re.compile(r'\b(?:capex|capital expenditures?|capital spending|invest(?:s|ed|ment|ments)?|supply contract|supply agreement|data[- ]cent(?:er|re)\s+(?:deal|contract|agreement)|begins production|mass production)\b|설비투자|공급계약|양산', re.I)
@@ -118,7 +118,7 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_ev
         return report
     entities = book.get('entities', {})
     if not isinstance(entities, dict) or any(not isinstance(v, dict) or not isinstance(v.get('name'), str)
-            or not v['name'] or v.get('country') not in ('US', 'KR') or not isinstance(v.get('aliases'), list)
+            or not v['name'] or v.get('country') not in ('US', 'KR', 'IN') or not isinstance(v.get('aliases'), list)
             or not v['aliases'] or any(not isinstance(a, str) or not a for a in v['aliases'])
             or (v.get('country') == 'KR' and not re.fullmatch(r'[0-9A-Z]{6}', str(v.get('code', ''))))
             or not isinstance(v.get('official_hosts', []), list) for v in entities.values()):
@@ -178,6 +178,9 @@ def build_supply_chain_watch(events, stocks, evidence=None, as_of=None, order_ev
                     if len(path) >= 2:
                         return
                     for edge in graph.get(node, []):
+                        # Ownership is a legal bridge, not a supplier/customer assertion.
+                        if edge['relationship'] == 'REPORTED_SUBSIDIARY' and path:
+                            continue
                         target = edge['supplier']
                         if target in nodes:
                             continue

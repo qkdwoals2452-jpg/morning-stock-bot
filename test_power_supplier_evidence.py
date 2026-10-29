@@ -47,7 +47,7 @@ class PowerSupplierEvidenceTests(unittest.TestCase):
     def test_no_path_before_current_review(self):
         r = self.report(now='2026-10-19T06:45:00+09:00')
         self.assertFalse(r['paths'])
-        self.assertEqual(r['excluded']['unavailable_at_assessment'], 2)
+        self.assertEqual(r['excluded']['unavailable_at_assessment'], sum(e['reviewed_at'] > '2026-10-19T06:45:00+09:00' for e in load_supply_chain_evidence()['edges']))
 
     def test_review_can_be_known_before_a_later_synthetic_event(self):
         r = self.report(article(published_at='2026-10-19T06:49:00+09:00'))

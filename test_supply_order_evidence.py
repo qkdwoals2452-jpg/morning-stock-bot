@@ -57,7 +57,7 @@ class SupplyOrderEvidenceTests(unittest.TestCase):
 
     def test_default_registry_does_not_promote_unread_candidates(self):
         book = load_supply_order_evidence()
-        self.assertEqual(len(book['orders']), 2)
+        self.assertEqual({o['receipt_no'] for o in book['orders']}, {'20260608800436', '20261006800023', '20261028900224'})
         self.assertEqual(book['review_log']['unverified_filing_candidates'], [])
         r = review_supply_orders('micron', 'hanmi', 'HBM', EVENT_AT, ENTITIES, NOW)
         self.assertEqual(r['status'], 'no_verified_order')

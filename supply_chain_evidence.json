@@ -1,67 +1,251 @@
 {
   "schema_version": 1,
   "entities": {
-    "nvidia": {"name": "NVIDIA", "aliases": ["NVIDIA", "엔비디아"], "country": "US"},
-    "micron": {"name": "Micron", "aliases": ["Micron", "Micron Technology", "Micron Technology, Inc.", "마이크론"], "country": "US", "official_hosts": ["investors.micron.com"]},
-    "sk_hynix": {"name": "SK하이닉스", "aliases": ["SK hynix", "SK하이닉스"], "country": "KR", "code": "000660"},
-    "hanmi": {"name": "한미반도체", "aliases": ["HANMI Semiconductor", "한미반도체"], "country": "KR", "code": "042700"},
-    "samsung_electro_mechanics": {"name": "삼성전기", "aliases": ["삼성전기", "SAMSUNG ELECTRO-MECHANICS CO., LTD."], "country": "KR", "code": "009150"},
-    "bloom_energy": {"name": "Bloom Energy", "aliases": ["Bloom Energy", "Bloom Energy Corporation", "블룸에너지"], "country": "US"},
-    "ls_electric_america": {"name": "LS ELECTRIC AMERICA", "aliases": ["LS ELECTRIC AMERICA", "LS ELECTRIC AMERICA Inc."], "country": "US"},
-    "ls_electric": {"name": "LS ELECTRIC", "aliases": ["LS ELECTRIC", "엘에스일렉트릭", "엘에스일렉트릭 주식회사"], "country": "KR", "code": "010120"}
+    "nvidia": {
+      "name": "NVIDIA",
+      "aliases": [
+        "NVIDIA",
+        "엔비디아"
+      ],
+      "country": "US"
+    },
+    "micron": {
+      "name": "Micron",
+      "aliases": [
+        "Micron",
+        "Micron Technology",
+        "Micron Technology, Inc.",
+        "마이크론"
+      ],
+      "country": "US",
+      "official_hosts": [
+        "investors.micron.com"
+      ]
+    },
+    "sk_hynix": {
+      "name": "SK하이닉스",
+      "aliases": [
+        "SK hynix",
+        "SK하이닉스"
+      ],
+      "country": "KR",
+      "code": "000660"
+    },
+    "hanmi": {
+      "name": "한미반도체",
+      "aliases": [
+        "HANMI Semiconductor",
+        "한미반도체"
+      ],
+      "country": "KR",
+      "code": "042700"
+    },
+    "samsung_electro_mechanics": {
+      "name": "삼성전기",
+      "aliases": [
+        "삼성전기",
+        "SAMSUNG ELECTRO-MECHANICS CO., LTD."
+      ],
+      "country": "KR",
+      "code": "009150"
+    },
+    "bloom_energy": {
+      "name": "Bloom Energy",
+      "aliases": [
+        "Bloom Energy",
+        "Bloom Energy Corporation",
+        "블룸에너지"
+      ],
+      "country": "US"
+    },
+    "ls_electric_america": {
+      "name": "LS ELECTRIC AMERICA",
+      "aliases": [
+        "LS ELECTRIC AMERICA",
+        "LS ELECTRIC AMERICA Inc."
+      ],
+      "country": "US"
+    },
+    "ls_electric": {
+      "name": "LS ELECTRIC",
+      "aliases": [
+        "LS ELECTRIC",
+        "엘에스일렉트릭",
+        "엘에스일렉트릭 주식회사"
+      ],
+      "country": "KR",
+      "code": "010120"
+    },
+    "micron_india": {
+      "name": "Micron Semiconductor Technology India",
+      "aliases": [
+        "Micron Semiconductor Technology India Private Limited(SEZ Unit)",
+        "Micron Semiconductor Technology India Private Limited",
+        "Micron Semiconductor Technology India"
+      ],
+      "country": "IN"
+    },
+    "techwing": {
+      "name": "테크윙",
+      "aliases": [
+        "테크윙",
+        "TECHWING"
+      ],
+      "country": "KR",
+      "code": "089030"
+    }
   },
   "edges": [
     {
       "id": "micron_hanmi_customer_2026q1",
-      "buyer": "micron", "supplier": "hanmi", "relationship": "REPORTED_CUSTOMER",
-      "context_terms": ["hbm", "memory", "advanced packaging", "semiconductor", "메모리", "반도체"],
+      "buyer": "micron",
+      "supplier": "hanmi",
+      "relationship": "REPORTED_CUSTOMER",
+      "context_terms": [
+        "hbm",
+        "memory",
+        "advanced packaging",
+        "semiconductor",
+        "메모리",
+        "반도체"
+      ],
       "source_url": "https://kind.krx.co.kr/external/2026/05/15/001759/20260515003902/11013.htm",
-      "source_kind": "REGULATORY_FILING", "published_on": "2026-05-15", "relationship_as_of": "2026-03-31",
-      "reviewed_at": "2026-10-14T07:04:59+09:00", "review_method": "manual_primary_source",
+      "source_kind": "REGULATORY_FILING",
+      "published_on": "2026-05-15",
+      "relationship_as_of": "2026-03-31",
+      "reviewed_at": "2026-10-14T07:04:59+09:00",
+      "review_method": "manual_primary_source",
       "evidence_summary": "2026년 1분기 보고서 주요매출처 항목에 Micron Technology를 고객사로 명시함. 해당 고객의 특정 HBM 투자와 특정 장비 주문 연결은 명시하지 않음.",
       "section": "II. 사업의 내용 / 주요매출처"
     },
     {
       "id": "skhynix_hanmi_customer_2026q1",
-      "buyer": "sk_hynix", "supplier": "hanmi", "relationship": "REPORTED_CUSTOMER",
-      "context_terms": ["hbm", "memory", "advanced packaging", "semiconductor", "메모리", "반도체"],
+      "buyer": "sk_hynix",
+      "supplier": "hanmi",
+      "relationship": "REPORTED_CUSTOMER",
+      "context_terms": [
+        "hbm",
+        "memory",
+        "advanced packaging",
+        "semiconductor",
+        "메모리",
+        "반도체"
+      ],
       "source_url": "https://kind.krx.co.kr/external/2026/05/15/001759/20260515003902/11013.htm",
-      "source_kind": "REGULATORY_FILING", "published_on": "2026-05-15", "relationship_as_of": "2026-03-31",
-      "reviewed_at": "2026-10-14T07:04:59+09:00", "review_method": "manual_primary_source",
+      "source_kind": "REGULATORY_FILING",
+      "published_on": "2026-05-15",
+      "relationship_as_of": "2026-03-31",
+      "reviewed_at": "2026-10-14T07:04:59+09:00",
+      "review_method": "manual_primary_source",
       "evidence_summary": "2026년 1분기 보고서 주요매출처 항목에 SK하이닉스를 고객사로 명시함. 이번 미국 사건에 따른 신규 장비 수주는 별도 확인 필요.",
       "section": "II. 사업의 내용 / 주요매출처"
     },
     {
       "id": "nvidia_skhynix_memory_agreement_20260607",
-      "buyer": "nvidia", "supplier": "sk_hynix", "relationship": "MEMORY_TECH_AGREEMENT",
-      "context_terms": ["hbm", "memory", "vera rubin", "메모리"],
+      "buyer": "nvidia",
+      "supplier": "sk_hynix",
+      "relationship": "MEMORY_TECH_AGREEMENT",
+      "context_terms": [
+        "hbm",
+        "memory",
+        "vera rubin",
+        "메모리"
+      ],
       "source_url": "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-and-SK-hynix-Announce-Multiyear-Technology-Partnership-to-Advance-Memory-for-AI-Factories/default.aspx",
-      "source_kind": "CORPORATE_IR", "published_on": "2026-06-07", "relationship_as_of": "2026-06-07",
-      "reviewed_at": "2026-10-14T07:04:59+09:00", "review_method": "manual_primary_source",
+      "source_kind": "CORPORATE_IR",
+      "published_on": "2026-06-07",
+      "relationship_as_of": "2026-06-07",
+      "reviewed_at": "2026-10-14T07:04:59+09:00",
+      "review_method": "manual_primary_source",
       "evidence_summary": "NVIDIA 공식 발표의 다년 메모리 기술 협약 및 메모리 공급 지원 관계. 주문 수량·금액·국내 장비사 매출 귀속은 제시되지 않음.",
       "section": "News Summary / multiyear agreement"
     },
     {
       "id": "bloom_lsamerica_fuelcell_project_20260514",
-      "buyer": "bloom_energy", "supplier": "ls_electric_america", "relationship": "REPORTED_CUSTOMER",
-      "context_terms": ["fuel cell", "fuel-cell", "SOFC", "연료전지"],
+      "buyer": "bloom_energy",
+      "supplier": "ls_electric_america",
+      "relationship": "REPORTED_CUSTOMER",
+      "context_terms": [
+        "fuel cell",
+        "fuel-cell",
+        "SOFC",
+        "연료전지"
+      ],
       "source_url": "https://kind.krx.co.kr/external/2026/05/14/000304/20260514000649/91370.htm",
-      "source_kind": "REGULATORY_FILING", "published_on": "2026-05-14", "relationship_as_of": "2026-04-28",
-      "reviewed_at": "2026-10-19T06:48:03+09:00", "review_method": "manual_primary_source",
+      "source_kind": "REGULATORY_FILING",
+      "published_on": "2026-05-14",
+      "relationship_as_of": "2026-04-28",
+      "reviewed_at": "2026-10-19T06:48:03+09:00",
+      "review_method": "manual_primary_source",
       "evidence_scope": "historical_individual_project_not_ongoing_or_exclusive_supply",
       "evidence_summary": "LS의 자회사 주요경영사항 정정공시 9항은 Bloom Energy 발주 북미 데이터센터 연료전지 전력설비 프로젝트를 LS ELECTRIC AMERICA가 수주했다고 명시한다. 이번 관찰 사건의 신규 주문·매출 귀속이나 관계의 현재 지속을 확정하지 않는다.",
       "section": "9. 기타 투자판단과 관련한 중요사항 / Bloom Energy 발주 프로젝트"
     },
     {
       "id": "lsamerica_lselectric_distribution_project_20260514",
-      "buyer": "ls_electric_america", "supplier": "ls_electric", "relationship": "REPORTED_CUSTOMER",
-      "context_terms": ["fuel cell", "fuel-cell", "SOFC", "연료전지"],
+      "buyer": "ls_electric_america",
+      "supplier": "ls_electric",
+      "relationship": "REPORTED_CUSTOMER",
+      "context_terms": [
+        "fuel cell",
+        "fuel-cell",
+        "SOFC",
+        "연료전지"
+      ],
       "source_url": "https://kind.krx.co.kr/external/2026/05/14/000304/20260514000649/91370.htm",
-      "source_kind": "REGULATORY_FILING", "published_on": "2026-05-14", "relationship_as_of": "2026-04-28",
-      "reviewed_at": "2026-10-19T06:48:03+09:00", "review_method": "manual_primary_source",
+      "source_kind": "REGULATORY_FILING",
+      "published_on": "2026-05-14",
+      "relationship_as_of": "2026-04-28",
+      "reviewed_at": "2026-10-19T06:48:03+09:00",
+      "review_method": "manual_primary_source",
       "evidence_scope": "historical_individual_project_not_ongoing_or_exclusive_supply",
       "evidence_summary": "동일 공시는 엘에스일렉트릭을 공급 주체, 미국 자회사 LS ELECTRIC AMERICA Inc.를 계약상대로 명시하고 수배전반·배전변압기 공급을 설명한다. Bloom Energy와 한국 상장사 간 직접 계약으로 축약하지 않는다. 공시상 계약금액은 매출 인식액·이익이 아니며 예정 납기는 실제 납품 완료 증거가 아니다.",
       "section": "자회사 주요경영사항 / 3. 계약상대 / 9. 수배전반·배전변압기 공급"
+    },
+    {
+      "published_on": "2026-10-09",
+      "relationship_as_of": "2026-09-03",
+      "reviewed_at": "2026-10-30T08:03:00+09:00",
+      "review_method": "manual_primary_source",
+      "source_kind": "REGULATORY_FILING",
+      "id": "micron_india_subsidiary_2026",
+      "buyer": "micron",
+      "supplier": "micron_india",
+      "relationship": "REPORTED_SUBSIDIARY",
+      "context_terms": [
+        "India",
+        "Sanand",
+        "Gujarat",
+        "인도",
+        "사난드",
+        "구자라트"
+      ],
+      "source_url": "https://www.sec.gov/Archives/edgar/data/723125/000072312526000023/a2026q4ex211-subsidiarieso.htm",
+      "section": "Exhibit 21.1 / Subsidiaries of the registrant",
+      "evidence_summary": "Micron의 SEC 연차보고서 자회사 명세에 인도 법인을 명시. 지분율·미국 본사의 특정 투자금 배분은 제시하지 않음."
+    },
+    {
+      "published_on": "2026-10-28",
+      "relationship_as_of": "2026-10-27",
+      "reviewed_at": "2026-10-30T08:03:00+09:00",
+      "review_method": "manual_primary_source",
+      "source_kind": "REGULATORY_FILING",
+      "id": "micron_india_techwing_contract_20261028",
+      "buyer": "micron_india",
+      "supplier": "techwing",
+      "relationship": "REPORTED_CUSTOMER",
+      "context_terms": [
+        "test",
+        "testing",
+        "assembly",
+        "packaging",
+        "검사",
+        "후공정"
+      ],
+      "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261028900224",
+      "section": "1. 공급계약 내용 / 2. 계약내역 / 3. 계약상대방",
+      "evidence_scope": "individual_contract_not_event_attribution",
+      "evidence_summary": "테크윙 원문에서 Micron 인도 SEZ 법인과 반도체 검사장비 9,497,217,450원 계약을 확인. 본사와의 직접 계약이나 특정 미국 투자 사건의 신규 주문·납품·매출·이익 귀속은 확인하지 않음."
     }
   ]
 }

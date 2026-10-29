@@ -1,0 +1,20 @@
+name: ORION Techwing Bridge Check
+on:
+  pull_request:
+    paths: [verify_techwing_bridge.py, supply_chain_evidence.json, supply_chain_engine.py, test_techwing_bridge.py, .github/workflows/techwing-bridge-check.yml]
+permissions:
+  contents: read
+jobs:
+  techwing-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml beautifulsoup4
+      - name: Original contract primary review
+        run: python -u verify_techwing_bridge.py
+      - name: Full regression
+        run: python -m unittest discover
