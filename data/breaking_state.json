@@ -5168,6 +5168,69 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nHungary, US Sign Agreement on ‘Trump Peace Pipeline Framework’\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "f6de958417cde6c1",
+      "seen_at": "2026-10-29T17:25:44.413844+00:00",
+      "event": {
+        "event_title": "Bluewater Learning Acquired by NIIT Learning Systems Limited to Power AI-Driven Learning and Talent Transformation",
+        "event_key": "bluewater_learning_M&A_891c16a73179",
+        "event_subject_key": "bluewater_learning_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Bluewater Learning Acquired by NIIT Learning Systems Limited to Power AI-Driven Learning and Talent Transformation",
+            "summary": "Expands HCM Technology Advisory, Integration, and Managed Services Capabilities PLANO, Texas, Oct. 29, 2026 /PRNewswire/ -- NIIT Learning Systems Limited (NSE, BSE: NIITMTS), a global leader in Managed Learning Services, today announced that it has acquired 100% of Bluewater Learning, LLC...",
+            "link": "https://www.prnewswire.com/news-releases/bluewater-learning-acquired-by-niit-learning-systems-limited-to-power-ai-driven-learning-and-talent-transformation-302924057.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-29T17:22:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI",
+          "전력",
+          "변압기"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
