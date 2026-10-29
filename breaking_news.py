@@ -107,8 +107,7 @@ def followup(event, results, status, failed=False):
     for item in analysis.get('excluded', [])[:5]:
         message += escaped(f"• {item['name']} ({item['code']}): {item['reason']}", 220) + '\n'
     paths = status.get('supply_chain_watch', {}).get('paths', [])
-    if paths:
-        path = paths[0]
+    for path in paths[:3]:
         message += '\n공급망 관찰: ' + escaped(' → '.join(path['path']), 200) + '\n'
         message += '기존 거래 관계만 확인. 이번 사건의 신규 수주·매출·이익 귀속은 미확정입니다.\n'
         for edge in path.get('evidence', [])[:2]:
