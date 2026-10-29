@@ -1,0 +1,19 @@
+name: ORION Chart Gate Audit
+on:
+  pull_request:
+    paths: [chart_engine.py, verify_chart_gates.py, test_chart_history.py, .github/workflows/chart-gate-audit.yml]
+permissions:
+  contents: read
+jobs:
+  chart-gate-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml beautifulsoup4
+      - run: python -m unittest discover
+      - name: Actual price source and exclusion audit
+        run: python -u verify_chart_gates.py
