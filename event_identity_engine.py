@@ -36,7 +36,49 @@ def published_day(article):
         return None
 
 
+def verified_wire_duplicate(left, right):
+    """Only verified PR Newswire RSS copies with identical content and instant."""
+    for article in (left, right):
+        if (article.get('source') != 'PRNewswire_Tech'
+                or article.get('publication_verified_by') != 'Publisher_RSS'
+                or article.get('content_kind') != 'distributed_press_release'
+                or article.get('market') != 'US'):
+            return False
+        url = urlsplit(canonical_link(article.get('link')))
+        if (url.scheme != 'https' or url.hostname != 'www.prnewswire.com'
+                or url.netloc not in ('www.prnewswire.com', 'www.prnewswire.com:443')
+                or not re.fullmatch(r'/news-releases/[^/]+-\d+\.html', url.path)):
+            return False
+    title = normalized_text(left.get('title'))
+    summary = normalized_text(left.get('summary'))
+    if (len(title) < 30 or len(summary) < 80
+            or title != normalized_text(right.get('title'))
+            or summary != normalized_text(right.get('summary'))
+            or not normalized_text(left.get('origin_publisher'))
+            or normalized_text(left.get('origin_publisher')) != normalized_text(right.get('origin_publisher'))):
+        return False
+    try:
+        stamps = [datetime.fromisoformat(str(a.get('published_at', '')).replace('Z', '+00:00'))
+                  for a in (left, right)]
+        return all(t.tzinfo is not None and t.utcoffset() is not None for t in stamps) and stamps[0] == stamps[1]
+    except ValueError:
+        return False
+
+
+def revision_kind(article):
+    title = normalized_text(article.get('title'))
+    patterns = {
+        'correction': r'정정|\bcorrection\b|\bcorrected\b',
+        'additional_order': r'추가\s*(?:수주|계약|공급)|\b(?:additional|follow-on)\s+(?:order|contract)',
+        'amendment': r'계약(?:금액|기간)?.{0,8}(?:변경|증액|감액|연장)|\bamend(?:s|ed|ment)?\b',
+        'cancellation': r'계약.{0,8}(?:해지|취소)|\b(?:cancelled|canceled|terminated)\b',
+    }
+    return sorted(k for k, pattern in patterns.items() if re.search(pattern, title))
+
+
 def duplicate_article(left, right):
+    if verified_wire_duplicate(left, right):
+        return True
     # 같은 단어 수로 중복을 판정하지 않는다. 다른 URL의 같은 제목도 반복 거래일 수 있다.
     if normalized_text(left.get("title")) != normalized_text(right.get("title")):
         return False
@@ -130,6 +172,8 @@ def strong_match(a, b):
 
 
 def same_event(left, right):
+    if revision_kind(left) != revision_kind(right):
+        return False
     a, b = event_facts(left), event_facts(right)
     if facts_conflict(a, b):
         return False
@@ -151,6 +195,9 @@ def instance_key(subject_key, articles):
     combined = {k: sorted({v for f in facts for v in f[k]}) for k in facts[0]}
     dates = [str(published_day(a)) for a in articles if published_day(a)]
     fingerprint = {"subject": subject_key, "facts": combined, "observed_day": min(dates) if dates else ""}
+    revisions = sorted({k for article in articles for k in revision_kind(article)})
+    if revisions:
+        fingerprint['revision_kind'] = revisions
     if not combined["amounts"] or not combined["counterparties"]:
         fingerprint["articles"] = sorted({(canonical_link(a.get("link")), normalized_text(a.get("title"))) for a in articles})
     digest = hashlib.sha1(json.dumps(fingerprint, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:12]
