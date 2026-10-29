@@ -5232,6 +5232,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nBluewater Learning Acquired by NIIT Learning Systems Limited to Power AI-Driven Learning and Talent Transformation\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "8898866e47f702dc",
+      "seen_at": "2026-10-29T19:45:46.932171+00:00",
+      "event": {
+        "event_title": "Cognizant Bookings Drop 7% as Growth Slows: Rapid Earnings Reaction",
+        "event_key": "cognizant_bookings_EARNINGS_5f8ff27c342a",
+        "event_subject_key": "cognizant_bookings_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Cognizant Bookings Drop 7% as Growth Slows: Rapid Earnings Reaction",
+            "summary": "Cognizant’s revenue rose 4.6%, but acquisitions and resold products supplied roughly 4 points of it. Here’s what the core business looks like without them, and why falling bookings matter.",
+            "link": "https://www.fool.com/investing/2026/10/29/cognizant-bookings-drop-7-as-growth-slows-rapid-earnings-reaction/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-29T19:30:16+00:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
