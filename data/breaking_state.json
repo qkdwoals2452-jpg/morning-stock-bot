@@ -4804,6 +4804,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nKB증권, 3분기 누적 순이익 1조원 돌파…전분기 대비로는 -39%\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "2adb84e5f38acce9",
+      "seen_at": "2026-10-29T09:28:16.289433+00:00",
+      "event": {
+        "event_title": "삼성SDI, 3분기 매출 4.6조, 영업이익 12분기 만에 최대",
+        "event_key": "삼성SDI_EARNINGS_916e05794fd5",
+        "event_subject_key": "삼성SDI_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:4600000000000"
+          ],
+          "counterparties": [
+            "만"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성SDI, 3분기 매출 4.6조, 영업이익 12분기 만에 최대",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026102942941",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-29T17:23:58+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
