@@ -5290,6 +5290,128 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nCognizant Bookings Drop 7% as Growth Slows: Rapid Earnings Reaction\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "f6af85079b602ee8",
+      "seen_at": "2026-10-29T20:05:46.699200+00:00",
+      "event": {
+        "event_title": "Coveo Acquires Anglera to Make Product Data a Competitive Advantage in AI-Powered eCommerce",
+        "event_key": "coveo_M&A_a99e98e2079a",
+        "event_subject_key": "coveo_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Coveo Acquires Anglera to Make Product Data a Competitive Advantage in AI-Powered eCommerce",
+            "summary": "The acquisition combines Anglera's agentic product data enrichment engine with Coveo's platform, helping manufacturers, distributors and enterprise retailers make products easier to find, compare, and buy, both on their own eCommerce websites and through AI-powered shopping assistants....",
+            "link": "https://www.prnewswire.com/news-releases/coveo-acquires-anglera-to-make-product-data-a-competitive-advantage-in-ai-powered-ecommerce-302924144.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-29T20:01:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "58e0a8663a693fb3",
+      "seen_at": "2026-10-29T20:05:46.699200+00:00",
+      "event": {
+        "event_title": "Coveo Acquires Anglera to Make Product Data a Competitive Advantage in AI-Powered eCommerce",
+        "event_key": "coveo_M&A_925f9abf23ea",
+        "event_subject_key": "coveo_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Coveo Acquires Anglera to Make Product Data a Competitive Advantage in AI-Powered eCommerce",
+            "summary": "The acquisition combines Anglera's agentic product data enrichment engine with Coveo's platform, helping manufacturers, distributors and enterprise retailers make products easier to find, compare, and buy, both on their own eCommerce websites and through AI-powered shopping assistants....",
+            "link": "https://www.prnewswire.com/news-releases/coveo-acquires-anglera-to-make-product-data-a-competitive-advantage-in-ai-powered-ecommerce-895803317.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-10-29T20:01:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
