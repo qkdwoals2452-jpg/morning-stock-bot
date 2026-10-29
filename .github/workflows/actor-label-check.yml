@@ -1,0 +1,31 @@
+name: ORION Actor Label Replay
+on:
+  pull_request:
+    paths: [company_identity_engine.py, impact_engine.py, event_understanding_engine.py, breaking_event_gate.py, test_actor_labels.py, replay_actor_labels.py, .github/workflows/actor-label-check.yml]
+permissions:
+  contents: read
+jobs:
+  actor-label-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml beautifulsoup4
+      - run: python -m unittest discover
+      - uses: actions/checkout@v4
+        with:
+          ref: orion-alert-state
+          path: alert-state
+          sparse-checkout: data/breaking_state.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/cache@v4
+        with:
+          path: corp_code.csv
+          key: actor-label-corp-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            orion-corp-code-v1-${{ runner.os }}-
+      - name: Replay actual stored articles without alerts or tracking writes
+        run: python -u replay_actor_labels.py alert-state/data/breaking_state.json

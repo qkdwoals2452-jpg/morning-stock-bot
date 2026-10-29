@@ -11,6 +11,7 @@ COMPACT_SUBJECTS = {
     '하나·우리금융': ('하나금융지주', '우리금융지주'),
     '우리·하나금융': ('우리금융지주', '하나금융지주'),
 }
+NEWS_LABEL_PREFIX = r'(?:\[(?:속보|단독|종합|공시|breaking)\]\s*)*'
 END = r'(?:\s*[,，:]|(?:은|는|이|가)\s|\s+)'
 
 
@@ -18,13 +19,13 @@ def joint_subject_end(name, sentence):
     """Return end of the entire shared subject, retaining original evidence text."""
     for compact, names in COMPACT_SUBJECTS.items():
         pattern = re.escape(compact).replace('·', r'\s*[·ㆍ]\s*')
-        match = re.match(r'^\s*["“\'‘]*' + pattern + END, sentence)
+        match = re.match(r'^\s*' + NEWS_LABEL_PREFIX + r'["“\'‘]*' + pattern + END, sentence)
         if name in names and match:
             return match.end()
     lookup = {alias: official for official, aliases in COMPANY_ALIASES.items()
               for alias in (official,) + aliases}
     terms = '|'.join(re.escape(x) for x in sorted(lookup, key=len, reverse=True))
-    match = re.match(r'^\s*["“\'‘]*(?P<subjects>(?:' + terms + r')(?:\s*[·ㆍ]\s*(?:'
+    match = re.match(r'^\s*' + NEWS_LABEL_PREFIX + r'["“\'‘]*(?P<subjects>(?:' + terms + r')(?:\s*[·ㆍ]\s*(?:'
                      + terms + r'))+)' + END, sentence)
     if match:
         parts = re.split(r'\s*[·ㆍ]\s*', match['subjects'])
