@@ -4627,6 +4627,66 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nTS트릴리온 &quot;자회사가 90억원 규모 데이터센터 공조설비 시공 수주&quot;\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• TS트릴리온 (317240): 기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "e3dfd49436bc5505",
+      "seen_at": "2026-10-29T00:51:57.747769+00:00",
+      "event": {
+        "event_title": "휴럼, 日 헬스케어 유통기업에 20억 투자…해외시장 공략 본격화",
+        "event_key": "휴럼_CAPEX_a99da7c20a38",
+        "event_subject_key": "휴럼_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:2000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "휴럼, 日 헬스케어 유통기업에 20억 투자…해외시장 공략 본격화",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610292502i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-29T09:34:33+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
