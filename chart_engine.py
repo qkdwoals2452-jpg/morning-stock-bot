@@ -146,7 +146,11 @@ def _secondary_candles(xml_text, code):
 def _repair_repeated_historical_close(code, prices):
     """전일 종가가 반복된 모순 행만 같은 고가·저가·거래량의 원본으로 교정한다."""
     targets = [index for index in range(1, len(prices) - 1)
-               if prices[index].get('quality_issues') == ['high_below_close']
+               # After the KRX session extension, this auxiliary endpoint does not
+               # identify a regular-session basis. Matching OHLCV is not sufficient.
+               # https://help.pay.naver.com/faq/content.help?faqId=18245
+               if prices[index]['date'] < '2026-09-14'
+               and prices[index].get('quality_issues') == ['high_below_close']
                and prices[index]['close'] == prices[index - 1]['close']]
     if not targets:
         return prices
@@ -400,3 +404,15 @@ def get_chart_score(stock, *, price_cache=None):
                 for item in history if item.get('price_correction')]
         }
     }
+
+
+def chart_rejection_evidence(chart):
+    """Keep the exact price snapshot used by a rejected chart decision."""
+    details = chart.get('details', {})
+    result = {k: details.get(k) for k in ('price_date', 'price_source')}
+    for key in ('current', 'ma120', 'high_52w', 'high_52w_gap'):
+        value = details.get(key)
+        number = to_float(value)
+        result[key] = (number if not isinstance(value, bool) and number is not None
+                       and math.isfinite(number) else None)
+    return result

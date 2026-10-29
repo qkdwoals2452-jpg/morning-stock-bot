@@ -106,6 +106,16 @@ def followup(event, results, status, failed=False):
                     else '최종 검증 조건을 통과한 종목이 없습니다.\n')
     for item in analysis.get('excluded', [])[:5]:
         message += escaped(f"• {item['name']} ({item['code']}): {item['reason']}", 220) + '\n'
+        proof = item.get('evidence', {})
+        if proof and proof.get('current') is not None:
+            values = [f"종가 {proof['current']:,.0f}원"]
+            for key, label in (('ma120', '120일선'), ('high_52w', '52주 고점')):
+                if proof.get(key) is not None:
+                    values.append(f"{label} {proof[key]:,.2f}원" if key == 'ma120' else f"{label} {proof[key]:,.0f}원")
+            if proof.get('high_52w_gap') is not None:
+                values.append(f"고점 대비 {proof['high_52w_gap']:.2f}%")
+            message += escaped(f"{proof.get('price_date', '')} 정규장 일봉 · " + ' / '.join(values), 240) + '\n'
+
     paths = status.get('supply_chain_watch', {}).get('paths', [])
     for path in paths[:3]:
         message += '\n공급망 관찰: ' + escaped(' → '.join(path['path']), 200) + '\n'

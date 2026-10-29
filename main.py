@@ -13,7 +13,7 @@ from stock_engine import load_korean_stocks, find_related_stocks, build_analysis
 from company_engine import get_company_match_score
 from impact_engine import get_news_impact_score, assess_company_event_relation
 from market_engine import get_market_score
-from chart_engine import get_chart_score, pass_long_term_trend
+from chart_engine import get_chart_score, pass_long_term_trend, chart_rejection_evidence
 from scoring_engine import make_stock_result, sort_results, make_grade
 from memory_engine import save_today_result, get_project_status
 from backtest_engine import save_recommendations, update_backtest_prices
@@ -115,11 +115,13 @@ def run(news_override=None, notify=True, track_history=True):
                        'strong_event_count': len(important_events), 'excluded': []}
     analyzed_codes = set()
 
-    def reject(stock, stage, reason):
+    def reject(stock, stage, reason, evidence=None):
         reason = reason or '검증 기준 미달'
         analysis_status['excluded'].append({
             'name': stock['name'], 'code': stock['code'],
             'stage': stage, 'reason': reason})
+        if evidence:
+            analysis_status['excluded'][-1]['evidence'] = evidence
         print('제외:', stock['name'], reason)
 
     event_news = []
@@ -402,20 +404,20 @@ def run(news_override=None, notify=True, track_history=True):
             
 
             if chart.get("details", {}).get("high_52w_gap") is None:
-                reject(stock, 'chart', '52주 고점 대비 낙폭 확인불가')
+                reject(stock, 'chart', '52주 고점 대비 낙폭 확인불가', chart_rejection_evidence(chart))
                 continue
 
             if chart.get("details", {}).get("high_52w_gap") is not None:
 
                 if chart["details"]["high_52w_gap"] <= -60:
 
-                    reject(stock, 'chart', '52주 고점 대비 -60% 이하')
+                    reject(stock, 'chart', '52주 고점 대비 -60% 이하', chart_rejection_evidence(chart))
 
                     continue
 
             trend_ok, trend_reason = pass_long_term_trend(chart)
             if not trend_ok:
-                reject(stock, 'chart', trend_reason)
+                reject(stock, 'chart', trend_reason, chart_rejection_evidence(chart))
                 continue
 
             if market.get("trading_value") is None:

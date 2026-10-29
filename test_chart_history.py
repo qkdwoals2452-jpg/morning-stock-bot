@@ -312,3 +312,35 @@ class ChartHistoryTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ChartSessionGuardTests(unittest.TestCase):
+    def test_unlabelled_auxiliary_cannot_repair_after_session_change(self):
+        for day in ('2026-09-14', '2026-10-20'):
+            records = [row('2026-09-01', 11530),
+                       row(day,11530,highPrice=11500,lowPrice=10930,
+                           accumulatedTradingVolume=4167020),row('2026-10-29',7230)]
+            history=chart._normalize_price_history(records,date(2026,9,1),date(2026,10,29),'YAHOO_REGULAR_CLOSE')
+            with patch.object(chart.requests,'get') as get:
+                self.assertEqual(chart._repair_repeated_historical_close('034220',history),history)
+                get.assert_not_called()
+            self.assertIsNone(history[1]['high'])
+
+    def test_rejection_evidence_retains_date_price_and_averages(self):
+        details={'price_date':'2026-10-29','price_source':'YAHOO_REGULAR_CLOSE',
+                 'current':155200,'ma120':201082.5,'high_52w':438000,'high_52w_gap':-64.57}
+        result=chart.chart_rejection_evidence({'details':details})
+        self.assertEqual(result,details)
+        result['current']=1
+        self.assertEqual(details['current'],155200)
+        self.assertIsNone(chart.chart_rejection_evidence({'details':{'current':float('nan'),'ma120':True}})['current'])
+
+    def test_followup_explains_chart_rejection_with_same_snapshot(self):
+        from breaking_news import followup
+        message=followup({'event_title':'검증 사건'},[],{'analysis_status':{
+            'analyzed_count':1,'selected_count':0,'excluded':[{
+                'name':'LG전자','code':'066570','reason':'52주 고점 대비 -60% 이하',
+                'evidence':{'price_date':'2026-10-29','current':155200,
+                            'ma120':201082.5,'high_52w':438000,'high_52w_gap':-64.57}}]}})
+        for value in ('2026-10-29','155,200원','201,082.50원','438,000원','-64.57%'):
+            self.assertIn(value,message)

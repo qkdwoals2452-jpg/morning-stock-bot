@@ -250,8 +250,11 @@ class EventAnalysisRouteTests(unittest.TestCase):
                 status = self.last_analysis_status
                 self.assertEqual(status['analyzed_count'], 1)
                 self.assertEqual(status['selected_count'], 0)
-                self.assertEqual(status['excluded'], [dict(
+                self.assertEqual([{k:v for k,v in item.items() if k != 'evidence'} for item in status['excluded']], [dict(
                     name='LG디스플레이', code='034220', stage=stage, reason=reason)])
+                if stage == 'chart':
+                    self.assertEqual(status['excluded'][0]['evidence']['current'], 100)
+                    self.assertEqual(status['excluded'][0]['evidence']['ma120'], 120 if failures.get('below_ma120') else 90)
         self.run_route(article=DISPLAY_ARTICLE, stock=DISPLAY_STOCK)
         self.assertEqual(self.last_analysis_status['selected_count'], 1)
         self.assertEqual(self.last_analysis_status['excluded'], [])
