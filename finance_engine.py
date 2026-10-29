@@ -1,5 +1,7 @@
 import requests
 import re
+from datetime import datetime, date
+from zoneinfo import ZoneInfo
 import pandas as pd
 
 corp_df = pd.read_csv("corp_code.csv", dtype=str)
@@ -84,7 +86,18 @@ def get_corp_code(stock_code):
 # DART 재무
 # ------------------------
 
-def get_dart_finance(stock_code):
+def report_candidates(as_of):
+    # Probe only completed periods. An unpublished report (013) permits fallback.
+    periods = []
+    for year in (as_of.year, as_of.year - 1):
+        for month, day, code in ((12, 31, '11011'), (9, 30, '11014'),
+                                 (6, 30, '11012'), (3, 31, '11013')):
+            if date(year, month, day) < as_of:
+                periods.append((year, code))
+    return periods
+
+
+def get_dart_finance(stock_code, as_of=None):
 
     corp_code = get_corp_code(stock_code)
 
@@ -94,38 +107,38 @@ def get_dart_finance(stock_code):
             "debt_ratio": None
         }
 
-    year = 2025
+    as_of = as_of or datetime.now(ZoneInfo("Asia/Seoul")).date()
+    report = {}
 
     try:
 
         url = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json"
 
-        params = {
-            "crtfc_key": DART_API_KEY,
-            "corp_code": corp_code,
-            "bsns_year": str(year),
-            "reprt_code": "11011",
-            "fs_div": "CFS"
-        }
-
-        res = requests.get(
-            url,
-            params=params,
-            timeout=10
-        )
-
-        data = res.json()
-
-        print("DART finance:", stock_code, data)
-
-        if data.get("status") != "000":
-            return {
-                "op_margin": None,
-                "debt_ratio": None
-            }
+        data = None
+        for year, report_code in report_candidates(as_of):
+            res = requests.get(url, params={
+                'crtfc_key': DART_API_KEY, 'corp_code': corp_code,
+                'bsns_year': str(year), 'reprt_code': report_code, 'fs_div': 'CFS'
+            }, timeout=10)
+            res.raise_for_status()
+            candidate = res.json()
+            if candidate.get('status') == '013':
+                continue
+            if candidate.get('status') != '000' or not candidate.get('list'):
+                break
+            receipts = {r.get('rcept_no', '') for r in candidate['list']} - {''}
+            if any(r[:8] > as_of.strftime('%Y%m%d') for r in receipts):
+                break
+            data = candidate
+            report = {'year': year, 'report_code': report_code, 'fs_div': 'CFS',
+                      'basis': 'annual' if report_code == '11011' else 'year_to_date',
+                      'receipt_numbers': sorted(receipts)}
+            break
+        if data is None:
+            return {'op_margin': None, 'debt_ratio': None, 'report': report}
 
         sales = 0
-        op = 0
+        op = None
         asset = None
         debt = None
         equity = None
@@ -137,7 +150,9 @@ def get_dart_finance(stock_code):
 
             name = re.sub(r"\s+", "", row.get("account_nm", ""))
             account_id = row.get("account_id", "")
-            amount = to_int(row.get("thstrm_amount"))
+            field = ('thstrm_add_amount' if report['report_code'] in ('11012', '11014')
+                     and row.get('sj_div') in {'IS', 'CIS'} else 'thstrm_amount')
+            amount = to_int(row.get(field))
 
             
 
@@ -176,7 +191,7 @@ def get_dart_finance(stock_code):
         op_margin = None
         debt_ratio = None
 
-        if sales > 0:
+        if sales > 0 and op is not None:
             op_margin = round(
                 op / sales * 100,
                 2
@@ -193,7 +208,8 @@ def get_dart_finance(stock_code):
 
         return {
             "op_margin": op_margin,
-            "debt_ratio": debt_ratio
+            "debt_ratio": debt_ratio,
+            "report": report
         }
 
     except:
@@ -323,6 +339,7 @@ def get_finance_score(stock):
         "op_margin": op_margin,
         "debt_ratio": debt_ratio,
         "quality": quality,
+        "report": dart.get("report", {}),
         "exclude": exclude,
         "exclude_reason": exclude_reason
     }

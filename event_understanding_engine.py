@@ -123,6 +123,8 @@ def is_analysis_article(title):
         "what to do now",
         "outlook",
 
+        "투자의견",
+        "목표주가",
         "주간증시전망",
         "증시전망",
     ]
@@ -471,6 +473,8 @@ def classify_article_role(title, summary=""):
         "what to do now",
         "valuation",
         "price target",
+        "투자의견",
+        "목표주가",
         "주간증시전망",
         "증시전망",
         "history says",
