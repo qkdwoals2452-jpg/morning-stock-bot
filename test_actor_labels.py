@@ -8,7 +8,7 @@ from company_identity_engine import joint_subject_end
 
 HYUNDAI='[속보] 현대차 3분기 영업이익 2조6772억…연간 판매 목표는 하향'
 COLA="Here's How Much You'd Need to Invest in Coca-Cola to Generate $1,000 in Yearly Dividends"
-STOCK={'name':'현대차','code':'005380'}
+STOCK={'name':'현대자동차','code':'005380'}
 
 class ActorLabelTests(unittest.TestCase):
     def test_observed_headline_keeps_original_proof_and_routes_actor(self):

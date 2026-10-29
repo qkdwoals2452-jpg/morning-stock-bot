@@ -23,7 +23,8 @@ for article in cola['articles']:
 assert not headline_action(cola)
 stocks=load_korean_stocks()
 stock=next(s for s in stocks if s['code']=='005380')
-assert assess_company_event_relation(stock,hyundai['articles'])['pass']
+print('ACTUAL KRX IDENTITY:', stock['name'], stock['code'], flush=True)
+assert assess_company_event_relation(stock,hyundai['articles'])['pass'], stock['name']
 routes=build_analysis_routes(build_events(hyundai['articles']),[],stocks,[],3)
 assert '005380' in {c for r in routes for c in r['candidate_codes']}
 from build_corp_db import ensure_corp_db
