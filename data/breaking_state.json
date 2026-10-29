@@ -4746,6 +4746,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n[속보] 현대차 3분기 영업이익 2조6772억…연간 판매 목표는 하향\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "234f122f63cc09b5",
+      "seen_at": "2026-10-29T06:58:14.322352+00:00",
+      "event": {
+        "event_title": "KB증권, 3분기 누적 순이익 1조원 돌파…전분기 대비로는 -39%",
+        "event_key": "KB증권_EARNINGS_417514e1a4c7",
+        "event_subject_key": "KB증권_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:1000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "KB증권, 3분기 누적 순이익 1조원 돌파…전분기 대비로는 -39%",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202610293894i",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-10-29T15:49:35+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
