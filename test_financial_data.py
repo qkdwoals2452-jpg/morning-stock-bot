@@ -96,7 +96,7 @@ class FinancialDataTests(unittest.TestCase):
         self.quality.corp_map['009150'] = '00126371'
         with patch('requests.get', return_value=Mock(json=lambda: {'status': '000', 'list': rows})), patch.object(
             self.finance, 'get_quality_score', return_value={'score': 0}
-        ):
+        ), patch.object(self.finance, 'report_candidates', return_value=[(2025, '11011')]):
             result = self.finance.get_finance_score({'code': '009150'})
             quality = self.quality.get_dart_year_finance('009150', 2025)
         self.assertEqual(result['op_margin'], 8.07)

@@ -1,7 +1,7 @@
 name: ORION Domestic Actor Check
 on:
   pull_request:
-    paths: [company_identity_engine.py, finance_model_policy.py, stock_engine.py, impact_engine.py, test_company_identity.py, test_connection_repairs.py, replay_domestic_routes.py, .github/workflows/domestic-route-check.yml]
+    paths: [finance_engine.py, test_financial_data.py, verify_current_disclosures.py, test_current_disclosures.py, event_understanding_engine.py, breaking_event_gate.py, company_identity_engine.py, finance_model_policy.py, stock_engine.py, impact_engine.py, test_company_identity.py, test_connection_repairs.py, replay_domestic_routes.py, .github/workflows/domestic-route-check.yml]
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,6 +17,8 @@ jobs:
       - run: pip install requests pandas lxml beautifulsoup4
       - name: 전체 회귀검사
         run: python -m unittest discover -v
+      - name: 최신 공시 실조회 검증 (발송·이력 변경 없음)
+        run: python -u verify_current_disclosures.py
       - name: 실제 저장 사건 가져오기
         if: github.event_name == 'workflow_dispatch'
         uses: actions/checkout@v4

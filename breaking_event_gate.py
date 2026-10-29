@@ -20,6 +20,8 @@ ACTION = {
 def headline_action(event):
     title = re.sub(r'\s+', ' ', html.unescape(event.get('event_title', '')).casefold()).strip()
     kind = event.get('event_type')
+    if re.search(r'투자의견|목표주가|\bprice target\b', title):
+        return False
     if re.search(r'^(?:how|why|what|does|do|is|are|can|could|should)\b|\?|무엇|뜻은|일까', title):
         return False
     if re.search(r'\b(?:stocktwits|stocks? (?:plunges?|surges?|jumps?|falls?|rises?)|st(?:icks?|aying) to .{0,20}strategy|without permission)\b', title):
