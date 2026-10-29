@@ -4503,6 +4503,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nMicrosoft shares climb 5% after cloud revenue beats expectations\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "7d714ce8bd535fb2",
+      "seen_at": "2026-10-29T00:20:41.565532+00:00",
+      "event": {
+        "event_title": "Federal Reserve Holds Interest Rates Steady Ahead of Midterms. Here's What That Means for the Market.",
+        "event_key": "federal_reserve_FOMC_868e5f234aed",
+        "event_subject_key": "federal_reserve_FOMC",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "FOMC",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 정책·생산 행동 확인",
+        "event_score": 95,
+        "event_grade": "S",
+        "articles": [
+          {
+            "title": "Federal Reserve Holds Interest Rates Steady Ahead of Midterms. Here's What That Means for the Market.",
+            "summary": "A December rate hike now seems all but certain.",
+            "link": "https://www.fool.com/investing/2026/10/28/federal-reserve-holds-interest-rates-steady-ahead-of-midterms-heres-what-that-means-for-the-market/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-29T00:03:01+00:00",
+            "event_score_raw": 95,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:FOMC",
+              "실제 미국 통화정책·금리 결정",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:FOMC",
+          "실제 미국 통화정책·금리 결정",
+          "US"
+        ],
+        "money_flow": [
+          "금리",
+          "환율",
+          "은행"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
