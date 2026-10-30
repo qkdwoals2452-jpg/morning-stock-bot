@@ -5490,6 +5490,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nForeign defence contractors will need to invest in UK under new rules\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "4c2a731d09788009",
+      "seen_at": "2026-10-30T10:49:00.213211+00:00",
+      "event": {
+        "event_title": "Amazon Shares Fall 7.5% as Q3 Earnings Miss Forecasts and AI Spending Weighs on Cash Flow",
+        "event_key": "amazon_EARNINGS_51df54ec742f",
+        "event_subject_key": "amazon_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Amazon Shares Fall 7.5% as Q3 Earnings Miss Forecasts and AI Spending Weighs on Cash Flow",
+            "summary": "Amazon (NASDAQ:AMZN) shares declined 7. 5% in premarket trading after the technology and e-commerce group reported third-quarter earnings and revenue below Wall Street expectations, while its holiday-quarter sales outlook failed to provide sufficient reassurance to investors.",
+            "link": "https://investorshub.advfn.com/market-news/article/38939/amazon-shares-fall-7-5-as-q3-earnings-miss-forecasts-and-ai-spending-weighs-on-cash-flow?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T10:22:36+00:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
