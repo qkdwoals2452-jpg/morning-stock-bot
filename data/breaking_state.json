@@ -5426,6 +5426,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nPAG Agrees to Buy China Evergrande Unit for $514 Million\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "80a7046ba8200de1",
+      "seen_at": "2026-10-30T05:32:44.834320+00:00",
+      "event": {
+        "event_title": "Murata Invests $6.4 Billion to Double Output and Meet AI Demand",
+        "event_key": "murata_CAPEX_b63250f32be4",
+        "event_subject_key": "murata_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:6400000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Murata Invests $6.4 Billion to Double Output and Meet AI Demand",
+            "summary": "Murata Manufacturing Co. will invest ¥1 trillion ($6.4 billion) over five years to more than double sales of its capacitors, which are in unprecedented demand from AI data center operators.",
+            "link": "https://www.bloomberg.com/news/articles/2026-10-30/murata-boosts-mlcc-output-investment-to-keep-pace-with-ai-demand",
+            "market": "US",
+            "source": "Bloomberg_Tech",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T05:07:16+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
