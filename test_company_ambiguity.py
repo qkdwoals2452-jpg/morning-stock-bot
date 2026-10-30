@@ -34,6 +34,10 @@ class CompanyAmbiguityTests(unittest.TestCase):
             a={'title':title,'market':'KR'}
             self.assertEqual(find_direct_mentions({'articles':[a]},[{'name':'NEW','code':'160550'}],[]),{})
 
+    def test_explicit_ticker_elsewhere_cannot_license_generic_actor(self):
+        a={'title':'New factory signs $150 million contract with NEW(160550) as an observer','summary':'','market':'US'}
+        self.assertFalse(assess_company_event_relation({'name':'NEW','code':'160550'},[a])['pass'])
+
     def test_reference_only_policy_precedes_business_keyword_search(self):
         from test_event_analysis_route import EventAnalysisRouteTests
         helper=EventAnalysisRouteTests()
