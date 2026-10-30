@@ -5432,6 +5432,63 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n삼성전기, AI용 MLCC 8800억 수주\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 삼성전기 (009150) · 기사상 사건 주체\n기사 기재 금액: 8800억\n<a href=\"https://www.hankyung.com/article/2026103068281\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 삼성전기 (009150): 120일선 아래\n2026-10-30 정규장 일봉 · 종가 1,196,000원 / 120일선 1,457,941.67원 / 52주 고점 2,417,000원 / 고점 대비 -50.52%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "558ff1e4306f101d",
+      "seen_at": "2026-10-30T10:22:48.215298+00:00",
+      "event": {
+        "event_title": "Foreign defence contractors will need to invest in UK under new rules",
+        "event_key": "foreign_defence_CAPEX_483d25e6872b",
+        "event_subject_key": "foreign_defence_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Foreign defence contractors will need to invest in UK under new rules",
+            "summary": "Foreign firms awarded large defence contracts will need to invest an equal value back into the UK, Wes Streeting announces.",
+            "link": "https://www.bbc.co.uk/news/articles/cw62yrzxjnk4o?at_medium=RSS&at_campaign=rss",
+            "market": "US",
+            "source": "BBC_Business",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T08:27:19+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
