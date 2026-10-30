@@ -2,64 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "2fc8b263e0db3c8d",
-      "seen_at": "2026-10-23T19:05:51.613427+00:00",
-      "event": {
-        "event_title": "Why Nearly 25% of the Country Is Still Watching ‘Seinfeld’",
-        "event_key": "why_nearly_M&A_dbbe8e3db3e9",
-        "event_subject_key": "why_nearly_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Why Nearly 25% of the Country Is Still Watching ‘Seinfeld’",
-            "summary": "The ‘Acquired’ podcast hosts argue that going out on top led to business immortality for the 1990s sitcom",
-            "link": "https://www.wsj.com/business/media/seinfeld-acquired-podcast-syndication-9370c0af?mod=pls_whats_news_us_business_f",
-            "market": "US",
-            "source": "WSJ_Business",
-            "origin_publisher": "",
-            "published_at": "2026-10-23T17:00:00+00:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nWhy Nearly 25% of the Country Is Still Watching ‘Seinfeld’\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "3c6781c85c441d19",
       "seen_at": "2026-10-23T22:02:08.160562+00:00",
       "event": {
