@@ -5535,6 +5535,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n도시유전, 플라스틱엑스와 폐플라스틱 설비 공급계약\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "d51931e656e125d1",
+      "seen_at": "2026-10-30T00:01:32.712272+00:00",
+      "event": {
+        "event_title": "PAG Agrees to Buy China Evergrande Unit for $514 Million",
+        "event_key": "pag_M&A_7ad0da6a024f",
+        "event_subject_key": "pag_M&A",
+        "event_facts": {
+          "amounts": [
+            "USD:514000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "PAG Agrees to Buy China Evergrande Unit for $514 Million",
+            "summary": "Private equity firm PAG has agreed to buy a majority stake in Evergrande Property Services Group Ltd. for HK$4.03 billion ($514 million), according to a Hong Kong stock exchange filing, confirming a previous Bloomberg report.",
+            "link": "https://www.bloomberg.com/news/articles/2026-10-29/pag-agrees-to-buy-china-evergrande-unit-for-514-million",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-10-29T23:53:01+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
