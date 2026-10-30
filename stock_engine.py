@@ -93,10 +93,10 @@ def search_naver_related(theme_name, stocks):
 
 
 
-def _has_company_mention(name, text):
+def _has_company_mention(name, text, code=None):
     # 하이브리드의 '하이브'처럼 다른 단어의 일부는 기업 언급이 아니다.
     # 한국어 조사는 허용하되 조사 뒤에도 단어 경계를 요구한다.
-    return has_company_mention(name, text)
+    return has_company_mention(name, text, code)
 
 
 def select_analysis_themes(themes, stocks, news, limit):
@@ -203,12 +203,12 @@ def find_direct_mentions(theme, stocks, news):
         if not name:
             continue
 
-        if not _has_company_mention(name, text):
+        if not _has_company_mention(name, text, stock.get('code')):
             continue
 
         # 두 글자 이름도 확정 사건의 당사자 근거가 있으면 허용한다.
         # 원익을 원익IPS의 일부로 찾거나 SK를 SK하이닉스로 오인하지 않는다.
-        if len(name) <= 2:
+        if len(name) <= 2 or re.fullmatch(r'[A-Za-z][A-Za-z0-9& .-]*', name):
             if assess_company_event_relation(stock, articles)["pass"]:
                 found[name] = 100
             continue
