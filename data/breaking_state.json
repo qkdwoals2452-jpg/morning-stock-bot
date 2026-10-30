@@ -5488,6 +5488,124 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nMurata Invests $6.4 Billion to Double Output and Meet AI Demand\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "8407218140bc7947",
+      "seen_at": "2026-10-30T08:57:47.996448+00:00",
+      "event": {
+        "event_title": "포스코퓨처엠, LG엔솔에 양·음극재 수조원대 공급",
+        "event_key": "포스코퓨처엠_CONTRACT_74c7e6cb70dc",
+        "event_subject_key": "포스코퓨처엠_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "lg엔솔"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "포스코퓨처엠, LG엔솔에 양·음극재 수조원대 공급",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026103068841",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T17:39:15+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "d91b6006373c581b",
+      "seen_at": "2026-10-30T08:57:47.996448+00:00",
+      "event": {
+        "event_title": "삼성전기, AI용 MLCC 8800억 수주",
+        "event_key": "삼성전기_CONTRACT_6898714ab267",
+        "event_subject_key": "삼성전기_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:880000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성전기, AI용 MLCC 8800억 수주",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026103068281",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T17:31:03+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
