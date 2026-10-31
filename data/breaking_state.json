@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "04c78bb8f8b9a81a",
-      "seen_at": "2026-10-24T19:00:24.908827+00:00",
-      "event": {
-        "event_title": "Bro went from a 700-person village in Slovakia to Google then built an app that makes $2k/day",
-        "event_key": "google_M&A_e38725c0f6d3",
-        "event_subject_key": "google_M&A",
-        "event_facts": {
-          "amounts": [
-            "USD:2"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Bro went from a 700-person village in Slovakia to Google then built an app that makes $2k/day",
-            "summary": "Bro went from a 700-person village in Slovakia to Google, then built a startup that got bought by Amazon.Meet Rasty. After high school he moved to Boston to work for a security company that got acquired by Google.",
-            "link": "https://starterstory.videonest.co/videos/2342774/bro-went-from-a-700-person-village-in-slovakia-to-GBHFM1OXyh?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-10-24T17:31:23+00:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nBro went from a 700-person village in Slovakia to Google then built an app that makes $2k/day\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "864735521c631a34",
       "seen_at": "2026-10-24T23:30:26.747526+00:00",
       "event": {
