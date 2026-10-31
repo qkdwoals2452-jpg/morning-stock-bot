@@ -5590,7 +5590,7 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending"
+        "phase": "sent"
       },
       "analysis": {
         "phase": "ready",
