@@ -390,15 +390,16 @@ def get_nasdaq_news(diagnostics=None):
 
 
 def get_verified_feeder_news(diagnostics=None):
-    """Supplemental Stocks feed; original RSS remains mandatory for verification."""
+    """Verify against original RSS or exact original article publication metadata."""
     from feeder_news_engine import fetch_verified_feeder
     reports = diagnostics if diagnostics is not None else {}
     originals = parse_rss(
         "https://www.nasdaq.com/feed/rssoutbound?category=Stocks",
         "US", "Nasdaq_Stocks_RSS", diagnostics=reports,
+        timeout=NASDAQ_TIMEOUT, max_attempts=NASDAQ_MAX_ATTEMPTS,
     )
     articles = fetch_verified_feeder(
-        "https://feeder.co/out/f/4f2c9005b8.json", originals, reports,
+        "https://feeder.co/out/f/4f2c9005b8.json", originals, reports, verify_articles=True,
     )
     report = reports["Nasdaq_Feeder_Verified"]
     print("Feeder 검증 수집: " + " | ".join(f"{key}={value}" for key, value in report.items()))
