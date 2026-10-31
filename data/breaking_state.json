@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "ab8823d13b427aca",
-      "seen_at": "2026-10-24T04:52:07.802126+00:00",
-      "event": {
-        "event_title": "Stocktwits Zero To Sixty: Tesla And SpaceX Form Merger Committees As Profits Drop, While Rivian Buys AI Startup And GM, Ford Advance EV Plans",
-        "event_key": "tesla_M&A_897150e84597",
-        "event_subject_key": "tesla_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Stocktwits Zero To Sixty: Tesla And SpaceX Form Merger Committees As Profits Drop, While Rivian Buys AI Startup And GM, Ford Advance EV Plans",
-            "summary": "Tesla and SpaceX formed special committees to explore a merger as the EV maker reported flat revenue and a sharp profit drop this week, while Rivian acquired a simulation AI startup and GM unveiled its next-gen EV platform.",
-            "link": "https://stocktwits.com/news-articles/markets/equity/stocktwits-zero-to-sixty-tesla-and-space-x-form-merger-committees-as-profits-drop-while-rivian-buys-ai-startup-and-gm-ford-advance-ev-plans/cZUG5xVRBU9?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-10-24T00:58:58+00:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": [
-          "AI",
-          "차량용 반도체",
-          "SDV"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nStocktwits Zero To Sixty: Tesla And SpaceX Form Merger Committees As Profits Drop, While Rivian Buys AI Startup And GM, Ford Advance EV Plans\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "04c78bb8f8b9a81a",
       "seen_at": "2026-10-24T19:00:24.908827+00:00",
       "event": {
@@ -5308,6 +5246,353 @@
         "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nSandisk Sinks 12% Despite Earnings Beat and 8-for-1 Split as Memory Stocks Slide: “It’s Absurd”\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
+      }
+    },
+    {
+      "id": "3a9db58acf7a95eb",
+      "seen_at": "2026-10-31T04:52:41.866579+00:00",
+      "event": {
+        "event_title": "삼성전기, 글로벌 대형기업에 8793억 규모 MLCC 공급",
+        "event_key": "삼성전기_CONTRACT_1b167d69c1a1",
+        "event_subject_key": "삼성전기_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:879300000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성전기, 글로벌 대형기업에 8793억 규모 MLCC 공급",
+            "summary": "삼성전기가 글로벌 대형기업과 8793억원 규모의 적층세라믹커패시터(MLCC) 공급계약을 체결했다. 올해 공시한 장기공급계약 규모는 누적 5조원을 넘어섰다. 글로벌 인공지능(AI) 데이터센터 투자 확대에 힘입어 고부가 전자부품 수요가 급증하면서 대형 공급계약도 잇따르고 있다. MLCC를 비롯해 실리콘 커패시터, 반도체 패키지기판 등으로 공급계약이 확대되면서...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04326326645618168",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T14:34:38+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "6397a5209af895d7",
+      "seen_at": "2026-10-31T04:52:41.866579+00:00",
+      "event": {
+        "event_title": "현대위아, 3분기 영업익 5.5%↑…2035년까지 미래사업 3.7조 투자",
+        "event_key": "현대위아_CAPEX_5f36714e39fc",
+        "event_subject_key": "현대위아_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:3700000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "현대위아, 3분기 영업익 5.5%↑…2035년까지 미래사업 3.7조 투자",
+            "summary": "현대위아(011210)가 올해 3분기 엔진과 모듈, 열관리 사업의 성장에 힘입어 매출과 영업이익을 모두 늘렸다. 특수사업부 매각을 추진하며 사업 포트폴리오를 미래 모빌리티 중심으로 재편하는 한편, 열관리와 로보틱스 등 성장 사업에 대한 중장기 투자도 확대할 계획이다.현대위아, 특수사업부 현대로템에 3584억원 양도…방산 일원화 가속현대위아는 올해 3분기 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04526406645618168",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T15:16:23+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "4b1b884e83e5d4a9",
+      "seen_at": "2026-10-31T04:52:41.866579+00:00",
+      "event": {
+        "event_title": "기아, 3분기 기준 역대최대 매출…영업익은 1.8조(상보)",
+        "event_key": "기아_EARNINGS_5052d48e5fd2",
+        "event_subject_key": "기아_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:1800000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "기아, 3분기 기준 역대최대 매출…영업익은 1.8조(상보)",
+            "summary": "기아가 올해 3분기 매출 31조원을 넘기며 3분기 기준 역대 최대 실적을 거뒀다. 다만 영업이익은 원자재 가격 상승과 중동 분쟁 여파로 시장 기대치를 밑돌았다.기아는 30일 2026년 3분기 경영실적 발표를 통해 연결 기준 매출액 31조 5970억원, 영업이익 1조 8180억원을 기록했다고 밝혔다. 전년 동기 대비 매출은 10.1%, 영업이익은 24.3%...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04182006645618168",
+            "market": "KR",
+            "source": "이데일리_기업",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T14:03:32+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "22c9767641495717",
+      "seen_at": "2026-10-31T04:52:41.866579+00:00",
+      "event": {
+        "event_title": "케이뱅크, 3분기 순이익 421억원…전년比 119.2%↑",
+        "event_key": "케이뱅크_EARNINGS_8ef480f6cf32",
+        "event_subject_key": "케이뱅크_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:42100000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "케이뱅크, 3분기 순이익 421억원…전년比 119.2%↑",
+            "summary": "케이뱅크(279570)가 기업대출을 적극 확대하며 올해 3분기 지난해 같은 기간의 2배가 넘는 순이익을 거뒀다.(사진=케이뱅크)케이뱅크는 올해 3분기 당기순이익이 전년 동기 대비 119.2% 늘어난 421억원이라고 30일 공시했다. 상반기 순이익을 합한 올해 누적 당기순이익은 1021억원으로 지난해 같은 기간보다 1.3% 줄었다.전체 매출 규모도 늘었다....",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04195126645618168",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T14:04:14+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "8963ba54d670c26d",
+      "seen_at": "2026-10-31T04:52:41.866579+00:00",
+      "event": {
+        "event_title": "수협은행, 3분기 누적 세전 순이익 2882억원…전년比 0.7% 증가",
+        "event_key": "수협은행_EARNINGS_6d7a73d1803e",
+        "event_subject_key": "수협은행_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:288200000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "수협은행, 3분기 누적 세전 순이익 2882억원…전년比 0.7% 증가",
+            "summary": "Sh수협은행이 올해 3분기까지 2882억원의 세전 당기순이익을 거뒀다. 지난해 같은 기간보다 소폭 증가한 수준이다.지난 28일 서울 송파구 수협은행 본사에서 경영전략회의 참석자들이 단체사진을 찍고 있다.(사진=Sh수협은행)수협은행은 올해 3분기 누적 세전 당기순이익이 2882억원으로 전년 동기(2861억원) 대비 0.7%(21억원) 증가했다고 30일 밝혔...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=05740006645618168",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T18:13:15+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "54ad8d30e984c009",
+      "seen_at": "2026-10-31T04:52:41.866579+00:00",
+      "event": {
+        "event_title": "알테오젠, MSD ‘키트루다 큐렉스’ 3분기 매출 1조1000억원",
+        "event_key": "알테오젠_EARNINGS_adbaaff0f93a",
+        "event_subject_key": "알테오젠_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:1100000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "알테오젠, MSD ‘키트루다 큐렉스’ 3분기 매출 1조1000억원",
+            "summary": "알테오젠은 하이브로자임 플랫폼 파트너인 글로벌 제약사 MSD의 피하주사(SC) 제형 키트루다 큐렉스(Keytruda Qlex)가 올해 3분기 8억3000만달러의 매출을 기록했다고 30일 밝혔다.키트루다 큐렉스. (사진=MSD)MSD가 29일(현지시간) 발표한 실적에 따르면 키트루다 큐렉스의 3분기 매출은 지난 2분기 4억6300만달러 대비 79.3% 증가...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04113126645618168",
+            "market": "KR",
+            "source": "이데일리_기업",
+            "origin_publisher": "",
+            "published_at": "2026-10-30T13:46:02+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
