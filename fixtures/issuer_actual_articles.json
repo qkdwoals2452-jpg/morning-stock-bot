@@ -1,0 +1,65 @@
+[
+  {
+    "title": "KB금융 3분기 순익 1.9조 … 역대 최대실적",
+    "summary": "5대 금융지주(KB·신한·하나·우리·NH농협)가 올 3분기에만 6조5000억원이 넘는 순이익을 거두며 역대 최대 실적을 새로 썼다. 기업대출을 중심으로 이자이익을 크게 늘린 결과다..",
+    "link": "https://www.mk.co.kr/news/economy/12190169",
+    "market": "KR",
+    "source": "매일경제_경제",
+    "origin_publisher": "",
+    "published_at": "2026-10-29T17:42:36",
+    "event_score_raw": 70,
+    "event_reasons": [
+      "사건신분:CONFIRMED",
+      "사건유형:EARNINGS",
+      "실적 기간과 확정된 실적 변화 확인"
+    ]
+  },
+  {
+    "title": "삼성전자, 설비투자 84조 승부수…역대최대 투자로 반도체 호황대응",
+    "summary": "‘반도체 호황 대응’ 2024년 54조 뛰어넘는 역대 최대 평택5공장 가동 앞당겨…3분기 메모리 영업익 108조삼성전자가 2028년까지 이어질 메모리 공급 부족에 대응하기 위해 올..",
+    "link": "https://www.mk.co.kr/news/business/12190229",
+    "market": "KR",
+    "source": "매일경제_기업",
+    "origin_publisher": "",
+    "published_at": "2026-10-29T17:52:31",
+    "event_score_raw": 80,
+    "event_reasons": [
+      "사건신분:CONFIRMED",
+      "사건유형:CAPEX",
+      "실제 투자·CAPEX·생산능력 변화"
+    ]
+  },
+  {
+    "title": "가온전선, 美에 배전케이블… 국내 최대 1200억 공급계약",
+    "summary": "가온전선의 미국 생산법인 LSCUS가 글로벌 클라우드 기업 1곳과 총 1200억원 규모의 배전케이블 공급 계약을 체결했다고 29일 가온전선이 밝혔다. 이번 공급은 국내 기업이 단일..",
+    "link": "https://www.mk.co.kr/news/business/12190196",
+    "market": "KR",
+    "source": "매일경제_기업",
+    "origin_publisher": "",
+    "published_at": "2026-10-29T17:46:42",
+    "event_score_raw": 80,
+    "event_reasons": [
+      "사건신분:CONFIRMED",
+      "사건유형:CONTRACT",
+      "실제 계약·수주·공급 변화"
+    ]
+  },
+  {
+    "title": "Vusion Completes Acquisition of In-Store Media, Opening a New Chapter for Digital Retail Media in Physical Stores",
+    "summary": "Vusion and ISM combine connected store technology and retail media expertise to unlock the untapped advertising potential of physical stores PARIS, Oct. 29, 2026 /PRNewswire/ -- Vusion (VU - FR0010282822), the global leader in AI-powered digitalization solutions for physical commerce,...",
+    "link": "https://www.prnewswire.com/news-releases/vusion-completes-acquisition-of-in-store-media-opening-a-new-chapter-for-digital-retail-media-in-physical-stores-302924244.html",
+    "market": "US",
+    "source": "PRNewswire_Tech",
+    "origin_publisher": "PR Newswire Association LLC.",
+    "published_at": "2026-10-29T20:22:00+00:00",
+    "publication_verified_by": "Publisher_RSS",
+    "content_kind": "distributed_press_release",
+    "event_score_raw": 85,
+    "event_reasons": [
+      "사건신분:CONFIRMED",
+      "사건유형:M&A",
+      "실제 인수·합병 사건",
+      "US"
+    ]
+  }
+]

@@ -307,6 +307,9 @@ def run(news_override=None, notify=True, track_history=True):
                 'role': connection['role'], 'evidence': connection.get('evidence', [])[:1]}
             if verified_connection not in analysis_status.setdefault('connections', []):
                 analysis_status['connections'].append(verified_connection)
+            if stock['code'] in {'005930', '000660', '034730', '402340'}:
+                reject(stock, 'policy', '대형주·지주사 참고용 제외')
+                continue
             verify = (verify_direct_company_event(stock, articles)
                       if theme.get('analysis_route') == 'DIRECT_EVENT'
                       else verify_company_theme(stock, theme['name']))
@@ -442,22 +445,6 @@ def run(news_override=None, notify=True, track_history=True):
                 event_score=theme["event_score"]
             )
             result["event_connection"] = connection
-            # 대형주/지주사는 TOP 추천에서 감점
-            mega_caps = [
-                "삼성전자",
-                "SK하이닉스",
-                "SK",
-                "SK스퀘어"
-            ]
-
-            if stock["name"] in mega_caps:
-                reject(stock, 'policy', '대형주·지주사 참고용 제외')
-                
-
-                print("참고용:", stock["name"], "대형주/지주사")
-
-                 
-                continue
             ranked.append(result)
         ranked = sort_results(ranked)
 

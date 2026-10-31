@@ -13,8 +13,9 @@ def assess_company_event_relation(stock, articles):
     boundary = r"(?<![가-힣A-Za-z0-9])(?:" + "|".join(re.escape(n) for n in names) + r")"
     # 원익을 원익IPS로, 이닉스를 SK하이닉스로 오인하지 않는다.
     boundary += r"(?=(?:은|는|이|가|와|과|에|의|으로부터|로부터)?(?:[^가-힣A-Za-z0-9]|$))"
-    actor = re.compile(r"^\s*" + NEWS_LABEL_PREFIX + r"[\"“'‘]*" + boundary + r"(?:\s*[,，:]|(?:은|는|이|가)\s|\s+)", re.I)
-    counterparty = re.compile(boundary + r"\s*(?:와|과|에게|에|으로부터|로부터)(?=\s)", re.I)
+    identity_flags = 0 if re.fullmatch(r'[A-Za-z][A-Za-z0-9& .-]*', name) else re.I
+    actor = re.compile(r"^\s*" + NEWS_LABEL_PREFIX + r"[\"“'‘]*" + boundary + r"(?:\s*\(" + re.escape(str(stock.get("code", ""))) + r"\))?" + r"(?:\s*[,，:]|(?:은|는|이|가)\s|\s+)", identity_flags)
+    counterparty = re.compile(boundary + r"\s*(?:와|과|에게|에|으로부터|로부터)(?=\s)", identity_flags)
     matches = []
     for article in articles:
         if not understand_event(article).get("is_real_event"):
@@ -27,7 +28,7 @@ def assess_company_event_relation(stock, articles):
             clauses = [clause for sentence in sentences for clause in
                        ([sentence] + sentence.split("…") if "…" in sentence else [sentence])]
             for sentence in clauses:
-                if not has_company_mention(name, sentence):
+                if not has_company_mention(name, sentence, str(stock.get("code", ""))):
                     continue
                 # 분석 서비스의 제품명과 투자 의견의 '분석'을 구분한다.
                 opinion_text = re.sub(r'(?:단일\s*)?(?:세포|유전체|유전자|검체|혈액|영상|데이터)\s*분석', '', sentence)

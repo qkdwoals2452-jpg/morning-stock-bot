@@ -1,0 +1,31 @@
+name: ORION Company Identity Audit
+on:
+  pull_request:
+    paths: [company_identity_engine.py, stock_engine.py, impact_engine.py, main.py, test_company_ambiguity.py, audit_company_identity.py, fixtures/issuer_actual_articles.json, .github/workflows/company-identity-audit.yml]
+permissions:
+  contents: read
+jobs:
+  company-identity-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml beautifulsoup4
+      - run: python -m unittest discover
+      - uses: actions/checkout@v4
+        with:
+          ref: orion-alert-state
+          path: alert-state
+          sparse-checkout: data/breaking_state.json
+          sparse-checkout-cone-mode: false
+      - uses: actions/cache@v4
+        with:
+          path: corp_code.csv
+          key: identity-audit-corp-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            orion-corp-code-v1-${{ runner.os }}-
+      - name: Actual article and full KRX English-name audit (no alerts/history)
+        run: python -u audit_company_identity.py alert-state/data/breaking_state.json
