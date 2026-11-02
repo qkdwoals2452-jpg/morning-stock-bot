@@ -5401,6 +5401,65 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n애경산업, 3분기 영업손실 33억…매출은 1904억 &#x27;역대 최대&#x27;\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 애경산업 (018250) · 기사상 사건 주체\n기사 기재 금액: 33억, 1904억\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=04477206645641784\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 애경산업 (018250): 120일선 아래\n2026-11-02 정규장 일봉 · 종가 10,610원 / 120일선 11,640.67원 / 52주 고점 19,100원 / 고점 대비 -44.45%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "0b6c4de6b71ca8e0",
+      "seen_at": "2026-11-02T10:05:48.628875+00:00",
+      "event": {
+        "event_title": "Gamehaus Signs Definitive Agreement to Acquire Majority Stake in Anamana",
+        "event_key": "gamehaus_signs_M&A_20801bf2bb2b",
+        "event_subject_key": "gamehaus_signs_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Gamehaus Signs Definitive Agreement to Acquire Majority Stake in Anamana",
+            "summary": "Transaction will accelerate Gamehaus's transition to an AI content production and distribution platform SHANGHAI, Nov. 2, 2026 /PRNewswire/ -- Gamehaus Holdings Inc. (\"Gamehaus\" or the \"Company\") (Nasdaq: GMHS), a technology-driven mobile game publisher, today announced that it has...",
+            "link": "https://www.prnewswire.com/news-releases/gamehaus-signs-definitive-agreement-to-acquire-majority-stake-in-anamana-302926152.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-02T10:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "기업 인수·합병 거래 계약 체결 확인(거래 종결은 별도)",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "기업 인수·합병 거래 계약 체결 확인(거래 종결은 별도)",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
