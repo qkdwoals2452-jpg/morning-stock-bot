@@ -5342,6 +5342,64 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n&quot;60조 수주전까지 날렸다&quot;…K방산 &#x27;집안싸움&#x27;에 특단 조치\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "a14df7ec4c0ba7de",
+      "seen_at": "2026-11-02T09:20:48.067868+00:00",
+      "event": {
+        "event_title": "애경산업, 3분기 영업손실 33억…매출은 1904억 '역대 최대'",
+        "event_key": "애경산업_EARNINGS_6ba4d5b3a37f",
+        "event_subject_key": "애경산업_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:190400000000",
+            "UNKNOWN:3300000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "애경산업, 3분기 영업손실 33억…매출은 1904억 '역대 최대'",
+            "summary": "애경산업이 올해 3분기 역대 최대 매출을 기록했지만 글로벌 브랜드 경쟁력 강화를 위한 마케팅 비용이 늘면서 영업이익은 적자로 돌아섰다.애경산업은 올해 3분기 연결 기준 매출액 1904억원, 영업손실 33억원을 기록했다고 2일 공시했다. 매출은 전년 동기 대비 12.5% 증가하며 3분기 기준 역대 최대치를 달성했다. 반면 영업이익은 지난해 같은 기간 73억...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04477206645641784",
+            "market": "KR",
+            "source": "이데일리_기업",
+            "origin_publisher": "",
+            "published_at": "2026-11-02T18:16:28+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
