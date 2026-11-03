@@ -5462,6 +5462,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n한솔로지스틱스, 배터리 물류사업 확장…2분기 매출 2.7% 증가\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 한솔로지스틱스 (009180) · 기사상 사건 주체\n<a href=\"https://www.hankyung.com/article/202611032358i\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 한솔로지스틱스 (009180): 120일선 아래\n2026-11-02 정규장 일봉 · 종가 2,725원 / 120일선 2,800.58원 / 52주 고점 3,750원 / 고점 대비 -27.33%\n• 한솔로지스틱스 (009180): 검증 키워드 없음\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "663ef8cb974501f9",
+      "seen_at": "2026-11-03T07:11:03.841279+00:00",
+      "event": {
+        "event_title": "Brookfield, QIA to Invest in Data Center for Drax",
+        "event_key": "brookfield_qia_CAPEX_41068cc315b3",
+        "event_subject_key": "brookfield_qia_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Brookfield, QIA to Invest in Data Center for Drax",
+            "summary": "Brookfield Asset Management and the Qatar Investment Authority have reached an agreement to invest £2.5 billion ($3.4 billion) in a data center project with UK power generator Drax Group Plc.",
+            "link": "https://www.bloomberg.com/news/articles/2026-11-03/brookfield-qai-to-invest-2-5-billion-in-data-center-for-drax",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-11-03T07:00:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "데이터센터",
+          "전력",
+          "냉각"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
