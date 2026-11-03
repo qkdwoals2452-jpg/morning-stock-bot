@@ -5040,7 +5040,7 @@
         ]
       },
       "notice": {
-        "phase": "sending"
+        "phase": "sent"
       },
       "analysis": {
         "phase": "ready",
