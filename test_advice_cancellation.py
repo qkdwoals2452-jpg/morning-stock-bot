@@ -29,6 +29,12 @@ class AdviceCancellationTests(unittest.TestCase):
                 self.assert_excluded({'title': title,
                                       'summary': 'Company announces $5 billion investment in a new plant.'}, 'ANALYSIS')
 
+    def test_recorded_500_etf_advice_is_not_capex(self):
+        title = "If I Only Had $500 to Invest Right Now, I'd Buy and Hold This ETF for the Next 25 Years"
+        for summary in ['', 'Company announces $5 billion investment in a new plant.']:
+            with self.subTest(summary=summary):
+                self.assert_excluded({'title': title, 'summary': summary}, 'ANALYSIS')
+
     def test_recorded_cancelled_land_contract_is_not_new_order(self):
         self.assert_excluded({
             'title': '[단독]LH 토지 계약해제, 4년 만에 6.9배…11조 규모 토지는 미재공급',
