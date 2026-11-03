@@ -2,64 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "177537a58fb0b9cf",
-      "seen_at": "2026-10-27T23:52:02.270245+00:00",
-      "event": {
-        "event_title": "[속보] SK하이닉스 3분기 영업익 83조…영업이익률 80%",
-        "event_key": "83조_EARNINGS_05cd8f0b0496",
-        "event_subject_key": "83조_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "UNKNOWN:83000000000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "[속보] SK하이닉스 3분기 영업익 83조…영업이익률 80%",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/202610278789i",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-10-28T08:31:09+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실적 기간과 확정된 실적 변화 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실적 기간과 확정된 실적 변화 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n[속보] SK하이닉스 3분기 영업익 83조…영업이익률 80%\n\n분석 종목 1개 / 검증 통과 0개\n최종 검증 조건을 통과한 종목이 없습니다.\n• SK하이닉스 (000660): 기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "ab49d56bfecc8326",
       "seen_at": "2026-10-28T01:02:03.145186+00:00",
       "event": {
