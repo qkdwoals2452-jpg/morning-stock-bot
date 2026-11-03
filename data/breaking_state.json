@@ -4986,6 +4986,126 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nBrookfield, QIA to Invest in Data Center for Drax\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "a4a363fb2adcf5f0",
+      "seen_at": "2026-11-03T09:56:03.966320+00:00",
+      "event": {
+        "event_title": "엘앤에프, LG엔솔에 1조 LFP 양극재 공급",
+        "event_key": "엘앤에프_CONTRACT_54a471459244",
+        "event_subject_key": "엘앤에프_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:1000000000000"
+          ],
+          "counterparties": [
+            "lg엔솔"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "엘앤에프, LG엔솔에 1조 LFP 양극재 공급",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026110337321",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-03T18:02:25+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "4f6305407275fae4",
+      "seen_at": "2026-11-03T09:56:03.966320+00:00",
+      "event": {
+        "event_title": "기아, 日 MK 택시에 PV5 대량 공급",
+        "event_key": "기아_CONTRACT_a5022e70336a",
+        "event_subject_key": "기아_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "택시"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "기아, 日 MK 택시에 PV5 대량 공급",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026110337271",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-03T18:01:26+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
