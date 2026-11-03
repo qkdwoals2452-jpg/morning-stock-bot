@@ -5162,7 +5162,7 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending"
       },
       "analysis": {
         "phase": "ready",
