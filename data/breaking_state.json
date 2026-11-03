@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "456beb13dc150a05",
-      "seen_at": "2026-10-27T12:06:42.720660+00:00",
-      "event": {
-        "event_title": "Vuzix Signs Distribution Agreement with Commercial Electronics Systems and Begins Shipping Against Initial Six-Figure LX1 Smart Glasses Order",
-        "event_key": "vuzix_signs_CONTRACT_35a59ecc57e9",
-        "event_subject_key": "vuzix_signs_CONTRACT",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [
-            "commercial electronics systems and begins shipping"
-          ],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Vuzix Signs Distribution Agreement with Commercial Electronics Systems and Begins Shipping Against Initial Six-Figure LX1 Smart Glasses Order",
-            "summary": "New relationship expands Vuzix enterprise sales channel and creates opportunities for broader smart glasses adoption across commercial automation and workforce modernization markets ROCHESTER, N.Y., Oct. 27, 2026 /PRNewswire/ -- Vuzix® Corporation (NASDAQ: VUZI) (\"Vuzix\" or the...",
-            "link": "https://www.prnewswire.com/news-releases/vuzix-signs-distribution-agreement-with-commercial-electronics-systems-and-begins-shipping-against-initial-six-figure-lx1-smart-glasses-order-302920469.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-10-27T12:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "실제 계약 체결 문장 확인",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "실제 계약 체결 문장 확인",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nVuzix Signs Distribution Agreement with Commercial Electronics Systems and Begins Shipping Against Initial Six-Figure LX1 Smart Glasses Order\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "9a06d36fba59a8df",
       "seen_at": "2026-10-27T13:03:06.776749+00:00",
       "event": {
@@ -4925,6 +4863,65 @@
         "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nWaters Acquires MOBILion Systems, Bringing Advanced Ion-Mobility Separation to its Mass Spectrometry Portfolio with the Speed and Resolution AI Workflows Require for Proteomics Biomarker Discovery\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
+      }
+    },
+    {
+      "id": "e57b8487825ce30c",
+      "seen_at": "2026-11-03T12:07:17.731526+00:00",
+      "event": {
+        "event_title": "Authentic Brands Group Completes Acquisition of Lee",
+        "event_key": "authentic_brands_M&A_63e6fac05bec",
+        "event_subject_key": "authentic_brands_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Authentic Brands Group Completes Acquisition of Lee",
+            "summary": "Assembles Global Network of Best-in-Class Apparel Operators Across Key Markets NEW YORK, Nov. 3, 2026 /PRNewswire/ -- Authentic Brands Group (Authentic), a global lifestyle and entertainment platform, today announced the completed acquisition of the intellectual property of Lee from...",
+            "link": "https://www.prnewswire.com/news-releases/authentic-brands-group-completes-acquisition-of-lee-302927787.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-03T11:59:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
