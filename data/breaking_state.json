@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "3ac731916de71569",
-      "seen_at": "2026-10-27T15:18:09.077356+00:00",
-      "event": {
-        "event_title": "AMD To Invest $1B In Meta Stock Offering As AI Partnership Expands — Helios Systems Now Running At Meta",
-        "event_key": "meta_CAPEX_4d9b5652a400",
-        "event_subject_key": "meta_CAPEX",
-        "event_facts": {
-          "amounts": [
-            "USD:1"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "AMD To Invest $1B In Meta Stock Offering As AI Partnership Expands — Helios Systems Now Running At Meta",
-            "summary": "AMD's Helios systems are being tested at Meta, while the Facebook parent has increased its planned equity fundraising to support its AI infrastructure expansion.",
-            "link": "https://stocktwits.com/news-articles/markets/equity/amd-to-invest-1-b-in-meta-stock-offering-as-ai-partnership-expands-helios-systems-now-running-at-meta/cZUeasFRBCK?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-10-27T14:59:12+00:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAMD To Invest $1B In Meta Stock Offering As AI Partnership Expands — Helios Systems Now Running At Meta\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "f57f83458bb75464",
       "seen_at": "2026-10-27T15:38:09.690701+00:00",
       "event": {
@@ -5228,6 +5166,63 @@
         "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nExpedient Acquires phoenixNAP&#x27;s U.S. Managed VMware Cloud Business\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
+      }
+    },
+    {
+      "id": "98903210b870d08f",
+      "seen_at": "2026-11-03T15:22:20.827749+00:00",
+      "event": {
+        "event_title": "Expedient Acquires phoenixNAP's U.S. Managed VMware Cloud Business",
+        "event_key": "expedient_M&A_e4275a61bc72",
+        "event_subject_key": "expedient_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Expedient Acquires phoenixNAP's U.S. Managed VMware Cloud Business",
+            "summary": "Expedient, a Cloud Service Provider delivering Intelligent Infrastructure for the AI era, today announced it has acquired the U.S. managed VMware cloud business of phoenixNAP, a Phoenix-based global IT services provider. The transaction covers phoenixNAP's managed VMware cloud services business and Veeam-based backup and disaster recovery as a service (DRaaS) business, serving U.S. clients from phoenixNAP facilities in Phoenix, Arizona, and Ashburn, Virginia. Terms were not disclosed.",
+            "link": "https://finance.yahoo.com/technology/articles/expedient-acquires-phoenixnaps-u-managed-150300947.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-03T15:03:00+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
