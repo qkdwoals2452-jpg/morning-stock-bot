@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "9a06d36fba59a8df",
-      "seen_at": "2026-10-27T13:03:06.776749+00:00",
-      "event": {
-        "event_title": "Nvidia to invest $3 billion in Meta, expand partnership on Muse",
-        "event_key": "nvidia_CAPEX_b19d41fd9ead",
-        "event_subject_key": "nvidia_CAPEX",
-        "event_facts": {
-          "amounts": [
-            "USD:3000000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Nvidia to invest $3 billion in Meta, expand partnership on Muse",
-            "summary": "Nvidia announced on Tuesday it will invest $3 billion in Meta after the social media giant laid out a plan to raise up to $95 billion for its AI infrastructure build-out.",
-            "link": "https://finance.yahoo.com/markets/article/nvidia-to-invest-3-billion-in-meta-expand-partnership-on-muse-125249944.html?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-10-27T12:52:49+00:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nNvidia to invest $3 billion in Meta, expand partnership on Muse\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "68d6d3c7038cdd57",
       "seen_at": "2026-10-27T13:08:06.755090+00:00",
       "event": {
@@ -4983,6 +4923,65 @@
         "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nEQT-backed SatPort Infrastructure completes acquisition of teleport business from Speedcast to expand its satellite ground infrastructure platform globally\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
+      }
+    },
+    {
+      "id": "a9fcb525cc564739",
+      "seen_at": "2026-11-03T13:07:19.986614+00:00",
+      "event": {
+        "event_title": "If I Only Had $500 to Invest Right Now, I'd Buy and Hold This ETF for the Next 25 Years",
+        "event_key": "if_i_CAPEX_f9eab55aabc5",
+        "event_subject_key": "if_i_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:500"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "If I Only Had $500 to Invest Right Now, I'd Buy and Hold This ETF for the Next 25 Years",
+            "summary": "You don't need thousands of dollars to start building long-term wealth.",
+            "link": "https://www.fool.com/investing/2026/11/03/if-i-only-had-500-to-invest-right-now-id-buy-and-h/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-03T12:45:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
