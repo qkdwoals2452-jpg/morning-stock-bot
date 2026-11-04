@@ -130,6 +130,20 @@ class BreakingTests(unittest.TestCase):
         self.assertIn('3회 실패', send.call_args.args[0])
         self.assertEqual(state['records'][0]['analysis']['phase'], 'sent')
 
+    def test_missing_reference_rechecks_before_sending_followup(self):
+        for status in ({'analysis_status': {'excluded': [{'stage': 'business_data'}]}},
+                       {'supply_chain_watch': {'status': 'evidence_unavailable'}}):
+            with self.subTest(status=status):
+                state, send = empty_state(), Mock()
+                analyze = Mock(side_effect=[([], status), analysis(None)])
+                first = process(state, Mock(), [article()], NOW, send, analyze)
+                self.assertEqual(first['pending'], 1)
+                self.assertEqual(send.call_count, 2)
+                second = process(state, Mock(), [article()], NOW + timedelta(minutes=5), send, analyze)
+                self.assertEqual(second['pending'], 0)
+                self.assertEqual(send.call_count, 3)
+                self.assertIn('120일선 아래', send.call_args.args[0])
+
     def test_first_notices_all_precede_analysis_and_queue_limits_survive_restart(self):
         state = empty_state()
         calls = []

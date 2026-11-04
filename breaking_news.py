@@ -226,6 +226,12 @@ def analyze(event):
     return run(news_override=event['articles'], notify=False, track_history=False)
 
 
+def incomplete_reference_data(status):
+    excluded = status.get('analysis_status', {}).get('excluded', [])
+    return (any(item.get('stage') == 'business_data' for item in excluded)
+            or status.get('supply_chain_watch', {}).get('status') == 'evidence_unavailable')
+
+
 def process(state, save, news, now=None, send=send_message, analyze_event=analyze):
     now = now or datetime.now(UTC)
     for record in state['records']:
@@ -254,6 +260,12 @@ def process(state, save, news, now=None, send=send_message, analyze_event=analyz
         if 'message' not in slot:
             try:
                 results, status = analyze_event(record['event'])
+                if incomplete_reference_data(status):
+                    slot['attempts'] += 1
+                    print('BREAKING REFERENCE RETRY:', record['id'], slot['attempts'])
+                    if slot['attempts'] < 3:
+                        save(state)
+                        continue
                 slot['message'] = followup(record['event'], results, status)
             except Exception as exc:
                 slot['attempts'] += 1

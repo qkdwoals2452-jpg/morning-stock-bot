@@ -5,6 +5,7 @@ from datetime import date, datetime, time, timedelta, timezone
 import json
 from pathlib import Path
 import re
+import subprocess
 from urllib.parse import urlsplit
 from zoneinfo import ZoneInfo
 
@@ -25,10 +26,27 @@ EQUITY_FINANCING = re.compile(r'\b(?:equity|share|stock)\s+offering\b|유상증�
 
 
 def load_supply_chain_evidence():
+    path = Path(__file__).with_name('supply_chain_evidence.json')
+    def parse(raw):
+        data = json.loads(raw)
+        if (not isinstance(data, dict) or data.get('schema_version') != 1
+                or not isinstance(data.get('entities'), dict) or not isinstance(data.get('edges'), list)):
+            raise ValueError('invalid evidence file')
+        return data
+
     try:
-        data = json.loads(Path(__file__).with_name('supply_chain_evidence.json').read_text(encoding='utf-8'))
-        return data if data.get('schema_version') == 1 else None
-    except (OSError, ValueError, AttributeError):
+        return parse(path.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        pass
+    # Recover only from the same deployed checkout; no scraped or inferred relationships.
+    try:
+        raw = subprocess.check_output(
+            ['git', 'show', 'HEAD:supply_chain_evidence.json'],
+            cwd=path.parent, stderr=subprocess.DEVNULL, timeout=3)
+        recovered = parse(raw)
+        print('공급망 자료 복구: 배포 커밋의 검토본 사용')
+        return recovered
+    except (OSError, ValueError, subprocess.SubprocessError):
         return None
 
 
