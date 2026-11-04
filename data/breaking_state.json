@@ -5166,15 +5166,15 @@
   },
   "initialized_at": "2026-10-23T00:40:39.561269+00:00",
   "last_poll": {
-    "started_at": "2026-11-04T11:21:58.613625+00:00",
-    "previous_started_at": "2026-11-04T11:06:58.405617+00:00",
-    "start_gap_seconds": 900.21,
-    "completed_at": "2026-11-04T11:23:41.320942+00:00",
-    "collected": 364,
+    "started_at": "2026-11-04T11:26:58.706930+00:00",
+    "previous_started_at": "2026-11-04T11:21:58.613625+00:00",
+    "start_gap_seconds": 300.09,
+    "completed_at": "2026-11-04T11:27:41.464712+00:00",
+    "collected": 365,
     "new": 0,
     "baseline": 0,
     "notices": 0,
-    "analyses": 1,
+    "analyses": 0,
     "pending": 0,
     "uncertain": 0
   }
