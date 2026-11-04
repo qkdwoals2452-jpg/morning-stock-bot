@@ -5,12 +5,11 @@ from news_quality_engine import filter_core_news
 from event_engine import build_events
 from event_audit_engine import print_event_audit
 from sector_filter_engine import pass_theme_sector_filter
-from company_verify_engine import verify_company_theme, verify_direct_company_event
+from company_verify_engine import verify_direct_company_event
 from config import *
 from news_engine import get_us_news, get_korea_news
-from theme_engine import extract_themes, expand_theme_words, build_event_analysis_themes
+from theme_engine import extract_themes, build_event_analysis_themes
 from stock_engine import load_korean_stocks, find_related_stocks, build_analysis_routes
-from company_engine import get_company_match_score
 from impact_engine import get_news_impact_score, assess_company_event_relation
 from market_engine import get_market_score
 from chart_engine import get_chart_score, pass_long_term_trend, chart_rejection_evidence
@@ -287,9 +286,6 @@ def run(news_override=None, notify=True, track_history=True):
                           if stock['code'] in theme['candidate_codes']]
         candidates = candidates[:10]
         print("실제 정밀분석 종목 수:", len(candidates))
-        theme_words = ([] if theme.get('analysis_route') == 'DIRECT_EVENT'
-                       else expand_theme_words(theme['name']))
-
         ranked = []
 
         for stock in candidates:
@@ -310,13 +306,11 @@ def run(news_override=None, notify=True, track_history=True):
             if stock['code'] in {'005930', '000660', '034730', '402340'}:
                 reject(stock, 'policy', '대형주·지주사 참고용 제외')
                 continue
-            verify = (verify_direct_company_event(stock, articles)
-                      if theme.get('analysis_route') == 'DIRECT_EVENT'
-                      else verify_company_theme(stock, theme['name']))
+            verify = verify_direct_company_event(stock, articles)
             print('기업 검증:', stock['name'], verify)
 
             if not verify["pass"]:
-                reject(stock, 'business', verify.get('memo', '사업내용 검증 미달'))
+                reject(stock, verify.get('stage', 'business'), verify.get('memo', '사업내용 검증 미달'))
                 continue
 
             finance = get_finance_score(stock)
@@ -335,17 +329,11 @@ def run(news_override=None, notify=True, track_history=True):
             market = get_market_score(stock, price_cache=regular_price_cache)
             chart = get_chart_score(stock, price_cache=regular_price_cache)
             learning = get_learning_score(stock)
-            if theme.get('analysis_route') == 'DIRECT_EVENT':
-                # 이 경로는 해당 회사 자신의 사건이다. AI 등 다른 분야의
-                # 검색 키워드 점수로 기업 카드를 만들거나 추천을 배제하지 않는다.
-                company = {
-                    'score': 0, 'exclude': not verify['pass'],
-                    'memo': verify['memo'], 'exclude_reason': verify['memo'],
-                    'matched': {'business': verify['matched']},
-                    'source': verify['source'],
-                }
-            else:
-                company = get_company_match_score(stock, theme_words)
+            # A proven participant uses the same evidence on every route.
+            company = {
+                'score': 0, 'exclude': False, 'memo': verify['memo'],
+                'matched': {'business': verify['matched']}, 'source': verify['source'],
+            }
             impact = get_news_impact_score(
 
                 stock=stock,

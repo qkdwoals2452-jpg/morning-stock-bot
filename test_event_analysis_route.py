@@ -166,13 +166,13 @@ class EventAnalysisRouteTests(unittest.TestCase):
                     get_us_news=Mock(return_value=[]), get_korea_news=Mock(return_value=[dict(article or ARTICLE)]),
                     update_backtest_prices=Mock(), save_today_result=Mock(), save_recommendations=Mock(),
                     get_project_status=Mock(return_value={}), send_telegram=saved, save_prediction=Mock(),
-                    verify_company_theme=Mock(return_value={'pass': verify_pass, 'score': 60, 'memo': '검증 결과'}),
+                    verify_direct_company_event=(main.verify_direct_company_event if verify_pass else
+                        Mock(return_value={'pass': False, 'memo': '사업 자료 확인불가', 'stage': 'business_data'})),
                     get_market_score=Mock(return_value={'score': 0, 'trading_value': market_value}),
                     get_chart_score=Mock(return_value={'score': 0, 'details': {
                         'high_52w_gap': None if missing_chart else -10, 'current': 100,
                         'ma120': None if missing_trend else 120 if below_ma120 else 90}}),
                     get_learning_score=Mock(return_value={'score': 0}),
-                    get_company_match_score=Mock(return_value={'score': 40, 'exclude': False}),
                     get_news_impact_score=Mock(return_value={'score': 70, 'exclude': False}),
                     pass_theme_sector_filter=Mock(return_value=(True, '')),
                 )
@@ -202,6 +202,8 @@ class EventAnalysisRouteTests(unittest.TestCase):
         self.assertEqual(calls, 1)
         self.assertEqual(results[0]['theme']['name'], '의료기기')
         self.assertEqual(results[0]['ranked'][0]['code'], '302550')
+        self.assertEqual(results[0]['ranked'][0]['verify']['source'], 'KRX_LIST_AND_EVENT_ARTICLE')
+        self.assertEqual(results[0]['ranked'][0]['company']['score'], 0)
         for failures in ({'verify_pass': False}, {'connection_pass': False},
                          {'missing_finance': True}, {'below_ma120': True},
                          {'missing_chart': True}, {'market_value': None}):
@@ -237,6 +239,9 @@ class EventAnalysisRouteTests(unittest.TestCase):
                                        stock=dict(DISPLAY_STOCK, sector=''))
         self.assertEqual(calls, 0)
         self.assertEqual(results, [])
+        decision = self.last_analysis_status['excluded'][0]
+        self.assertEqual(decision['stage'], 'business_data')
+        self.assertEqual(decision['reason'], 'KRX 등록 업종 자료 확인불가')
 
     def test_telegram_status_uses_actual_candidate_decision(self):
         cases = [({'below_ma120': True}, 'chart', '120일선 아래'),

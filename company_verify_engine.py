@@ -108,8 +108,9 @@ def verify_direct_company_event(stock, articles):
              and bool(sector) and relation['pass'])
     return {
         'pass': valid, 'score': 0,
+        'stage': 'business_data' if not sector else 'connection',
         'memo': ('KRX 등록 업종·기사 직접 사건 당사자 확인(산업 수혜 미확정)'
-                 if valid else '등록 업종 또는 직접 사건 근거 확인불가'),
+                 if valid else 'KRX 등록 업종 자료 확인불가' if not sector else '직접 사건 또는 종목코드 확인불가'),
         'matched': [sector] if sector else [], 'source': 'KRX_LIST_AND_EVENT_ARTICLE',
         'sector': sector, 'event_connection': relation,
     }
