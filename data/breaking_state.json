@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "b81e50a78ef6ce20",
-      "seen_at": "2026-10-28T12:59:25.937146+00:00",
-      "event": {
-        "event_title": "HOST Invests $50 Million to Accelerate Avondale Global Gateway's Next Phase of Growth",
-        "event_key": "host_CAPEX_57152fd70118",
-        "event_subject_key": "host_CAPEX",
-        "event_facts": {
-          "amounts": [
-            "USD:50000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "HOST Invests $50 Million to Accelerate Avondale Global Gateway's Next Phase of Growth",
-            "summary": "AVONDALE, La., Oct. 28, 2026 /PRNewswire/ -- T. Parker Host (HOST) today announced a $50 million capital investment in Avondale Global Gateway, expanding the infrastructure and capacity needed to support growing customer demand and position the Mississippi River industrial campus for its...",
-            "link": "https://www.prnewswire.com/news-releases/host-invests-50-million-to-accelerate-avondale-global-gateways-next-phase-of-growth-302921746.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-10-28T12:57:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nHOST Invests $50 Million to Accelerate Avondale Global Gateway&#x27;s Next Phase of Growth\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "8bc74e7fd93e7996",
       "seen_at": "2026-10-28T13:39:19.966884+00:00",
       "event": {
@@ -5276,6 +5214,65 @@
         "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nAMD Shares Surge Nearly 8% as Q3 Earnings Beat Forecasts and Revenue Outlook Exceeds Expectations\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
+      }
+    },
+    {
+      "id": "cd6323e69f7d9ebf",
+      "seen_at": "2026-11-04T13:02:41.320672+00:00",
+      "event": {
+        "event_title": "VisiQuate Acquires Artiva HCx, Uniting Revenue Cycle Intelligence and Workflow Expertise to Turn Insight Into Action",
+        "event_key": "visiquate_M&A_c947556a0a8f",
+        "event_subject_key": "visiquate_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "VisiQuate Acquires Artiva HCx, Uniting Revenue Cycle Intelligence and Workflow Expertise to Turn Insight Into Action",
+            "summary": "Combination brings together analytics and AI, proven workflow technology and deep operational expertise to help revenue cycle teams know which work matters and get it done SANTA ROSA, Calif., Nov. 4, 2026 /PRNewswire/ -- VisiQuate, a healthcare revenue cycle intelligence, workflow and...",
+            "link": "https://www.prnewswire.com/news-releases/visiquate-acquires-artiva-hcx-uniting-revenue-cycle-intelligence-and-workflow-expertise-to-turn-insight-into-action-302927996.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-04T13:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
