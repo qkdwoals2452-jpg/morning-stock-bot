@@ -32,6 +32,10 @@ class SupplyChainBridgeTests(unittest.TestCase):
     def setUp(self):
         self.book = deepcopy(load_supply_chain_evidence())
 
+    def test_corrupt_working_copy_recovers_reviewed_deployment_evidence(self):
+        with patch('supply_chain_engine.Path.read_text', return_value='{bad'):
+            self.assertEqual(load_supply_chain_evidence(), self.book)
+
     def report(self, a=None, stocks=None, book=None, now=NOW):
         a = a or article()
         return build_supply_chain_watch(build_events([a]), STOCKS if stocks is None else stocks,

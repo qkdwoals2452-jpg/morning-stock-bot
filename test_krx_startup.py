@@ -84,6 +84,13 @@ class KrxStartupTests(unittest.TestCase):
         self.assertEqual(len(result), 2)
         self.assertEqual(get.call_count, 2)
 
+    def test_official_refresh_only_recovers_same_issuer_missing_sector(self):
+        first = response(table([('원익', '032940', ''), ('신규회사', '0123A0', '')]))
+        retry = response(table([('원익', '032940', '반도체'), ('다른회사', '0123A0', '전자')]))
+        result, get, _, _ = self.load([first, retry])
+        self.assertEqual([row['sector'] for row in result], ['반도체', ''])
+        self.assertEqual(get.call_count, 2)
+
     def test_numeric_code_padding(self):
         result, _, _, _ = self.load([response(table([('회사', '5930', '전자')]))])
         self.assertEqual(result[0]['code'], '005930')

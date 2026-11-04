@@ -16,6 +16,7 @@ def load_korean_stocks():
     url = "https://kind.krx.co.kr/corpgeneral/corpList.do?method=download"
     # timeout은 소켓 대기 제한이며 전체 실행의 강제 종료 시간은 아니다.
     last_error = "unknown"
+    first_snapshot = None
     for attempt in range(1, 3):
         res = None
         try:
@@ -42,8 +43,21 @@ def load_korean_stocks():
                 sector = row["업종"]
                 stocks.append({"name": str(name).strip(), "code": code,
                                "sector": "" if pd.isna(sector) else str(sector).strip()})
-            print("KRX 종목 수:", len(stocks))
-            return stocks
+            if first_snapshot is None:
+                if attempt == 1 and any(not row["sector"] for row in stocks):
+                    first_snapshot = stocks
+                    print("KRX 업종 누락: 공식 목록 재조회")
+                else:
+                    print("KRX 종목 수:", len(stocks))
+                    return stocks
+            else:
+                # Only backfill the same issuer; a retry may reflect a listing change.
+                refreshed = {(row["code"], row["name"]): row["sector"] for row in stocks}
+                for row in first_snapshot:
+                    if not row["sector"]:
+                        row["sector"] = refreshed.get((row["code"], row["name"]), "")
+                print("KRX 종목 수:", len(first_snapshot))
+                return first_snapshot
         except (requests.RequestException, ValueError, KeyError) as exc:
             # 요청 URL이나 응답 본문 대신 오류 종류만 기록한다.
             last_error = type(exc).__name__
@@ -53,6 +67,8 @@ def load_korean_stocks():
                 res.close()
         if attempt < 2:
             time.sleep(1)
+    if first_snapshot is not None:
+        return first_snapshot
     raise RuntimeError(f"KRX 종목 목록 확인불가 ({last_error}) → 추천 실행 중단") from None
 
 
