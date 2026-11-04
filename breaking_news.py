@@ -117,6 +117,8 @@ def followup(event, results, status, failed=False):
             message += escaped(f"{proof.get('price_date', '')} 정규장 일봉 · " + ' / '.join(values), 240) + '\n'
 
     paths = status.get('supply_chain_watch', {}).get('paths', [])
+    if status.get('supply_chain_watch', {}).get('status') == 'evidence_unavailable':
+        message += '\n공급망 자료 확인불가 · 관계 판정 보류\n'
     for path in paths[:3]:
         message += '\n공급망 관찰: ' + escaped(' → '.join(path['path']), 200) + '\n'
         message += '기존 거래 관계만 확인. 이번 사건의 신규 수주·매출·이익 귀속은 미확정입니다.\n'

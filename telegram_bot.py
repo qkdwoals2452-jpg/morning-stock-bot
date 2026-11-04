@@ -115,6 +115,8 @@ def send_telegram(
         msg += '\n'
 
     watch = project_status.get('supply_chain_watch', {})
+    if watch.get('status') == 'evidence_unavailable':
+        msg += "🔎 공급망 자료 확인불가 · 관계 판정 보류\n"
     if watch.get('paths'):
         msg += "🔎 공급망 관찰 — 추천·신규 수주 확정 아님\n"
         msg += f"관찰 경로 {len(watch['paths'])}개 중 최대 5개 표시\n"
