@@ -24,6 +24,19 @@ class HeadlineTests(unittest.TestCase):
                 with self.subTest(title=title, kind=kind):
                     self.assertFalse(headline_action({'event_title': title, 'event_type': kind}))
 
+    def test_observed_investment_advice_is_not_capex(self):
+        from event_understanding_engine import understand_event
+        titles = [
+            "One Wall Street Analyst Says This Stock Is the Best Way to Invest in Anthropic and OpenAI. He's Right.",
+            "If I Only Had $500 to Invest Right Now, I'd Buy and Hold This ETF for the Next 25 Years",
+        ]
+        for title in titles:
+            with self.subTest(title=title):
+                self.assertFalse(headline_action({'event_title': title, 'event_type': 'CAPEX'}))
+                self.assertFalse(understand_event({'title': title, 'summary':
+                    'Microsoft invests $20 billion in a new data center factory.'})['is_real_event'])
+        self.assertTrue(headline_action({'event_title': 'Axon Invests $1.2 Billion in Skydio to Build the Future of Drone as First Responder', 'event_type': 'CAPEX'}))
+
     def test_actual_actions_remain_eligible(self):
         cases = [('CAPEX', 'Bombardier to Invest $270 Million in U.S. Expansion'),
                  ('CAPEX', "UK to invest £100m in 'world first' AI Biosecurity Lab"),

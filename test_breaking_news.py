@@ -31,6 +31,22 @@ def analysis(event):
 
 
 class BreakingTests(unittest.TestCase):
+    def test_unlinked_followup_explains_matching_event_evidence_only(self):
+        event = {'event_title': 'Example invests $1 billion', 'event_key': 'actual',
+                 'event_type': 'CAPEX'}
+        for stage in ('no_spending_evidence', 'no_reviewed_spending_actor',
+                      'no_verified_listed_supplier_path', 'event_input_unverified'):
+            status = {'analysis_status': {'analyzed_count': 0, 'selected_count': 0},
+                      'supply_chain_watch': {'status': 'ok', 'paths': [],
+                        'event_assessments': [{'event_key': 'actual', 'stage': stage}]}}
+            self.assertIn('연결 진단:', followup(event, [], status))
+            self.assertIn('실제 거래 관계가 없다는 뜻은 아닙니다', followup(event, [], status))
+            status['supply_chain_watch']['event_assessments'][0]['event_key'] = 'other'
+            self.assertNotIn('연결 진단:', followup(event, [], status))
+        message = followup(dict(event, event_type='M&A'), [], {
+            'analysis_status': {'analyzed_count': 0, 'selected_count': 0}})
+        self.assertIn('피인수기업', message)
+
     def test_initial_history_is_baseline_but_recent_article_alerts(self):
         state = empty_state()
         old = article(40, link='https://example.com/old', title='다른기업, 신규 공장에 250억원 투자 결정')
