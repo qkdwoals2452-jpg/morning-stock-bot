@@ -24,10 +24,10 @@
     "start_price": 20100.0,
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 19140.0,
-    "current_return": -4.78,
-    "highest_price": 20550.0,
-    "highest_return": 2.24,
+    "current_price": 20900.0,
+    "current_return": 3.98,
+    "highest_price": 20900.0,
+    "highest_return": 3.98,
     "lowest_price": 18610.0,
     "max_drawdown": -7.41,
     "result_1d": -0.95,
@@ -140,9 +140,15 @@
         "price": 19140.0,
         "return": -4.78,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-11-04",
+        "price": 20900.0,
+        "return": 3.98,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-11-03",
+    "last_updated": "2026-11-04",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-10-13",
@@ -225,7 +231,7 @@
       "max_drawdown": -5.07
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-11-04T11:53:19.688332+09:00",
+    "price_observed_at": "2026-11-05T12:06:01.730351+09:00",
     "checkpoint_price_sources": {
       "result_10d": "YAHOO_REGULAR_CLOSE"
     }
