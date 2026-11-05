@@ -57,6 +57,34 @@ class HeadlineTests(unittest.TestCase):
 
 
 class WorkerTests(unittest.TestCase):
+    def test_deployment_handoff_only_after_successful_checkpoint(self):
+        order, sleep = [], Mock()
+        scan = Mock(side_effect=lambda: order.append('saved'))
+        def changed():
+            self.assertEqual(order, ['saved'])
+            return True
+        poll(66, scan=scan, clock=lambda: 0, sleep=sleep, should_handoff=changed)
+        scan.assert_called_once()
+        sleep.assert_not_called()
+
+    def test_failed_poll_cannot_trigger_deployment_handoff(self):
+        changed = Mock(return_value=True)
+        scan = Mock(side_effect=[None, RuntimeError('checkpoint failed'), None])
+        changed.side_effect = [False, True]
+        poll(3, scan=scan, clock=lambda: 0, sleep=Mock(), should_handoff=changed)
+        self.assertEqual(scan.call_count, 3)
+        self.assertEqual(changed.call_count, 2)
+
+    def test_version_check_uses_local_checkout_and_redacts_network_error(self):
+        from breaking_worker import deployment_changed
+        import subprocess
+        with patch.dict('os.environ', {'GITHUB_REF': 'refs/heads/main'}), \
+                patch('breaking_worker.subprocess.check_output', side_effect=[b'old', b'new refs/heads/main']):
+            self.assertTrue(deployment_changed())
+        with patch.dict('os.environ', {'GITHUB_REF': 'refs/heads/main'}), \
+                patch('breaking_worker.subprocess.check_output', side_effect=subprocess.TimeoutExpired('git', 10)):
+            self.assertFalse(deployment_changed())
+
     def test_poll_uses_start_to_start_interval_and_does_not_sleep_after_last(self):
         scan, sleep = Mock(), Mock()
         poll(2, scan=scan, clock=Mock(side_effect=[0, 42, 300]), sleep=sleep)
