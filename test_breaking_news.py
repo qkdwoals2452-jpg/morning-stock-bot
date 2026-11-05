@@ -94,16 +94,54 @@ class BreakingTests(unittest.TestCase):
             checkpoints.append(copy.deepcopy(current))
         def failing_send(message):
             self.assertEqual(checkpoints[-1]['activation']['phase'], 'sending')
-            raise TimeoutError()
-        with self.assertRaisesRegex(RuntimeError, '불확실'):
-            process(state, save, [article()], NOW, failing_send, analysis)
+            if '시작했습니다' in message:
+                raise TimeoutError()
+        first = process(state, save, [article()], NOW, failing_send, analysis)
+        self.assertGreater(first['uncertain'], 0)
         self.assertEqual(state['activation']['phase'], 'uncertain')
         # A later poll still sends new event notices, while flagging the uncertain startup.
         send = Mock()
-        with self.assertRaisesRegex(RuntimeError, '미확정'):
-            process(state, save, [article()], NOW, send, analysis)
-        self.assertEqual(send.call_count, 2)
+        report = process(state, save, [article()], NOW, send, analysis)
+        self.assertGreater(report['uncertain'], 0)
+        self.assertEqual(send.call_count, 0)
         self.assertFalse(any('시작했습니다' in call.args[0] for call in send.call_args_list))
+
+    def test_old_sending_notice_does_not_block_other_events_or_checkpoint(self):
+        state = empty_state()
+        scan(state, [article()], NOW)
+        old = state['records'][0]
+        old['notice']['phase'] = 'sending'
+        state['activation']['phase'] = 'sent'
+        send, save = Mock(), Mock()
+        new = article(title='다른기업, 신규 공장에 250억원 투자 결정',
+                      link='https://example.com/another')
+        report = process(state, save, [new], NOW, send, analysis)
+        self.assertEqual(report['uncertain'], 1)
+        self.assertEqual(report['notices'], 1)
+        self.assertEqual(report['analyses'], 1)
+        self.assertEqual(send.call_count, 2)
+        self.assertEqual(old['notice']['phase'], 'sending')
+        self.assertEqual(old['analysis']['phase'], 'ready')
+        self.assertEqual(report['pending'], 0)
+
+    def test_run_records_completed_poll_with_existing_uncertain_delivery(self):
+        import breaking_news
+        state = empty_state()
+        scan(state, [article()], NOW)
+        state['activation']['phase'] = 'sent'
+        state['records'][0]['notice']['phase'] = 'sending'
+        store = Mock()
+        store.load.return_value = state
+        with patch.dict('os.environ', {'ORION_ALERT_STATE_DIR': '/unused'}), \
+                patch.object(breaking_news, 'GitState', return_value=store), \
+                patch.object(breaking_news, 'get_us_news', return_value=[article()]), \
+                patch.object(breaking_news, 'get_korea_news', return_value=[]):
+            result = breaking_news.run()
+        self.assertEqual(result['uncertain'], 1)
+        self.assertEqual(state['last_poll']['uncertain'], 1)
+        self.assertEqual(state['last_poll']['collected'], 1)
+        self.assertIn('completed_at', state['last_poll'])
+        store.save.assert_called_with(state)
 
     def test_crash_after_ack_leaves_durable_reservation_not_duplicate(self):
         state = empty_state()
