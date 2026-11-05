@@ -186,7 +186,8 @@ def deliver(slot, message, state, save, send):
     except Exception:
         slot['phase'] = 'uncertain'
         save(state)
-        raise RuntimeError('텔레그램 전송 결과 불확실: 자동 재전송 없이 운영 확인 필요') from None
+        print('BREAKING DELIVERY UNCERTAIN: 자동 재전송 없이 별도 확인 필요')
+        return False
     slot['phase'] = 'sent'
     save(state)
     return True
@@ -285,7 +286,7 @@ def process(state, save, news, now=None, send=send_message, analyze_event=analyz
                   notices=notices, analyses=analyses, pending=pending, uncertain=uncertain)
     print('BREAKING LIVE RESULT:', json.dumps(report, ensure_ascii=False))
     if uncertain:
-        raise RuntimeError('미확정 전송이 남아 있습니다: 상태 브랜치에서 수신 여부 확인 필요')
+        print('BREAKING DELIVERY WARNING:', uncertain, '미확정 전송 격리; 뉴스 조회 계속')
     return report
 
 
