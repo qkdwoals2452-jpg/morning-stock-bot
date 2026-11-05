@@ -5397,6 +5397,67 @@
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n최태원 &quot;2100조 투자, 이렇게 해도되나 싶었지만…&quot;\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
       }
+    },
+    {
+      "id": "e34b2511629beba4",
+      "seen_at": "2026-11-05T11:54:10.957794+00:00",
+      "event": {
+        "event_title": "Eos Energy Enterprises Reports Third Quarter 2026 Revenue of $82.7 Million, Up 171% Year Over Year, with Gross Margin Improving 58 Percentage Points",
+        "event_key": "eos_energy_EARNINGS_6f1f4bab1f45",
+        "event_subject_key": "eos_energy_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "USD:82700000"
+          ],
+          "counterparties": [
+            "gross margin improving 58 percentage points"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Eos Energy Enterprises Reports Third Quarter 2026 Revenue of $82.7 Million, Up 171% Year Over Year, with Gross Margin Improving 58 Percentage Points",
+            "summary": "Delivered record revenue of $82.7 million through deliveries to 10 projects Gross margin improved 58 percentage points and adjusted EBITDA margin improved 96 percentage points year over year, the eighth consecutive quarter both metrics improvedReceived $87 million first advance under the second tranche of the U.S. Department of Energy loanAnnounced a project with MN8 Energy to deliver 10 MW/100 MWh of Z3™ zinc-based LDES in West Virginia, serving Google’s data centers Discharged 6.9 GWh of cumul",
+            "link": "https://finance.yahoo.com/energy/articles/eos-energy-enterprises-reports-third-114500095.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-05T11:45:00+00:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
