@@ -35,9 +35,14 @@ def send_message(message):
             data=data,
             timeout=10
         )
-        if response.status_code != 200 or response.json().get('ok') is not True:
+        receipt = response.json()
+        if response.status_code != 200 or receipt.get('ok') is not True:
             raise RuntimeError('텔레그램 API 전송 거부')
-        print('TELEGRAM SENT:', response.json().get('result', {}).get('message_id'))
+        message_id = receipt.get('result', {}).get('message_id')
+        if type(message_id) is not int or message_id <= 0:
+            raise RuntimeError('텔레그램 전송 영수증 누락')
+        print('TELEGRAM SENT:', message_id, flush=True)
+        return message_id
 
     except Exception:
         # 예외 문자열에는 토큰이 포함된 요청 URL이 들어갈 수 있다.

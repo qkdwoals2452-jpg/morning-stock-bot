@@ -102,6 +102,7 @@ class BreakingTests(unittest.TestCase):
         with self.assertRaises(OSError):
             deliver(state['activation'], 'message', state, Mock(side_effect=OSError), send)
         send.assert_not_called()
+        self.assertEqual(state['activation']['phase'], 'ready')
 
     def test_reservation_is_durable_before_send_and_uncertain_is_not_retried(self):
         state = empty_state()
@@ -158,6 +159,28 @@ class BreakingTests(unittest.TestCase):
         self.assertEqual(state['last_poll']['collected'], 1)
         self.assertIn('completed_at', state['last_poll'])
         store.save.assert_called_with(state)
+
+    def test_telegram_returns_validated_message_receipt(self):
+        from telegram_bot import send_message
+        response = Mock(status_code=200)
+        response.json.return_value = {'ok': True, 'result': {'message_id': 2049}}
+        with patch('telegram_bot.requests.post', return_value=response):
+            self.assertEqual(send_message('receipt'), 2049)
+            for receipt in ({'ok': False}, {'ok': True, 'result': {}},
+                            {'ok': True, 'result': {'message_id': True}}):
+                response.json.return_value = receipt
+                with self.assertRaises(RuntimeError):
+                    send_message('receipt')
+
+    def test_receipt_checkpoint_retries_without_resending(self):
+        state, send = empty_state(), Mock(return_value=2049)
+        save = Mock(side_effect=[None, OSError('transient checkpoint'), None])
+        with patch('breaking_news.time.sleep'):
+            self.assertTrue(deliver(state['activation'], 'receipt test', state, save, send))
+        send.assert_called_once()
+        self.assertEqual(state['activation']['phase'], 'sent')
+        self.assertEqual(state['activation']['message_id'], 2049)
+        self.assertEqual(len(state['activation']['delivery_key']), 20)
 
     def test_crash_after_ack_leaves_durable_reservation_not_duplicate(self):
         state = empty_state()

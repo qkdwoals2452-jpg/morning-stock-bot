@@ -9,6 +9,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import time
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
@@ -204,17 +205,34 @@ def deliver(slot, message, state, save, send):
     if slot.get('phase') != 'ready':
         return False
     slot['phase'] = 'sending'
-    save(state)  # Durable reservation before issuing any Telegram request.
+    slot['delivery_key'] = hashlib.sha256(message.encode()).hexdigest()[:20]
     try:
-        send(message)
+        save(state)  # Durable reservation before issuing any Telegram request.
+    except Exception:
+        # No external request was issued, even if the reservation push succeeded.
+        slot['phase'] = 'ready'
+        raise
+    print('BREAKING DELIVERY RESERVED:', slot['delivery_key'], flush=True)
+    try:
+        receipt = send(message)
     except Exception:
         slot['phase'] = 'uncertain'
         save(state)
         print('BREAKING DELIVERY UNCERTAIN: 자동 재전송 없이 별도 확인 필요')
         return False
     slot['phase'] = 'sent'
-    save(state)
-    return True
+    if type(receipt) is int and receipt > 0:
+        slot['message_id'] = receipt
+        print('BREAKING DELIVERY ACK:', slot['delivery_key'], receipt, flush=True)
+    # A transient checkpoint error must never reissue the Telegram request.
+    for attempt in range(3):
+        try:
+            save(state)
+            return True
+        except Exception:
+            if attempt == 2:
+                raise
+            time.sleep(1)
 
 
 def scan(state, news, now):
