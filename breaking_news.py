@@ -75,6 +75,24 @@ def notice(event, now):
             '기사 기반 알림입니다. 국내 종목 연결과 재무·가격 조건을 추가 검증합니다.')
 
 
+def connection_diagnosis(event, watch):
+    """Explain the evidence gap without inventing a listed beneficiary."""
+    if event.get('event_type') == 'M&A':
+        return '인수 사건: 피인수기업·거래 상대방의 국내 상장사 연결 근거가 확보되지 않았습니다.'
+    labels = {
+        'no_spending_evidence': '기사에서 설비투자·생산·공급 지출 근거를 확인하지 못했습니다.',
+        'no_reviewed_spending_actor': '기사의 지출 주체와 연결할 공식 공급망 검토본이 확보되지 않았습니다.',
+        'no_verified_listed_supplier_path': '검토한 지출 주체에서 국내 상장 공급사까지 유효한 근거 경로를 찾지 못했습니다.',
+        'event_input_unverified': '기사 발행 시점·원문 또는 실제 사건 근거 확인이 필요합니다.',
+    }
+    for item in watch.get('event_assessments', []):
+        if item.get('event_key') == event.get('event_key') and item.get('event_key'):
+            reason = labels.get(item.get('stage'))
+            if reason:
+                return reason
+    return ''
+
+
 def followup(event, results, status, failed=False):
     message = f'🔎 ORION 후속 검증 · 2차\n\n{escaped(event["event_title"])}\n\n'
     if failed:
@@ -116,7 +134,13 @@ def followup(event, results, status, failed=False):
                 values.append(f"고점 대비 {proof['high_52w_gap']:.2f}%")
             message += escaped(f"{proof.get('price_date', '')} 정규장 일봉 · " + ' / '.join(values), 240) + '\n'
 
-    paths = status.get('supply_chain_watch', {}).get('paths', [])
+    watch = status.get('supply_chain_watch', {})
+    paths = watch.get('paths', [])
+    if not analysis['analyzed_count'] and not paths and watch.get('status') != 'evidence_unavailable':
+        diagnosis = connection_diagnosis(event, watch)
+        if diagnosis:
+            message += '\n연결 진단: ' + escaped(diagnosis, 250) + '\n'
+            message += '근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n'
     if status.get('supply_chain_watch', {}).get('status') == 'evidence_unavailable':
         message += '\n공급망 자료 확인불가 · 관계 판정 보류\n'
     for path in paths[:3]:

@@ -29,7 +29,9 @@ def is_personal_investment_explainer(title):
     title = normalize_text(title).replace('’', "'")
     return bool(re.search(
         r"^(?:here(?:'s| is)\s+)?how much\b.{0,100}\b(?:invest|investment)\b"
-        r"|\byou(?:'d| would)?\s+(?:would\s+)?need\s+to\s+invest\b", title))
+        r"|\byou(?:'d| would)?\s+(?:would\s+)?need\s+to\s+invest\b"
+        r"|\b(?:best|better|smartest)\s+ways?\s+to\s+invest\b"
+        r"|\bif i (?:only )?had\b.{0,65}\binvest\b.{0,65}\bi(?:'d| would)\s+buy\b", title))
 
 
 def contains_any(text, patterns):
