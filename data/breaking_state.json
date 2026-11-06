@@ -5482,6 +5482,65 @@
         "delivery_key": "8cbf2d485f19e49cb9b1",
         "message_id": 2070
       }
+    },
+    {
+      "id": "661e4d06bd9e2599",
+      "seen_at": "2026-11-06T14:05:42.350944+00:00",
+      "event": {
+        "event_title": "ASSAÍ REPORTS 55% PROFIT SURGE AND DELEVERAGES IN Q3",
+        "event_key": "assa_EARNINGS_412609d5e9eb",
+        "event_subject_key": "assa_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "ASSAÍ REPORTS 55% PROFIT SURGE AND DELEVERAGES IN Q3",
+            "summary": "SÃO PAULO, Nov. 6, 2026 /PRNewswire/ -- Assaí released its financial results for the third quarter of 2026 (3Q26), highlighting the resilience of its business model in a pressured consumer environment. Adjusted recurring net income reached R$ 248 million, representing a 55.2% growth...",
+            "link": "https://www.prnewswire.com/news-releases/assai-reports-55-profit-surge-and-deleverages-in-q3-302931363.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-06T14:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
