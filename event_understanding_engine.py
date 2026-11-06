@@ -27,6 +27,9 @@ def normalize_text(text):
 def is_personal_investment_explainer(title):
     """Investor allocation instructions are not a corporate spending event."""
     title = normalize_text(title).replace('’', "'")
+    # First-person hypothetical allocation is advice, not issuer CAPEX.
+    if re.search(r"^if i (?:only )?had\b.{0,120}\b(?:invest|buy|hold)\b", title):
+        return True
     return bool(re.search(
         r"^(?:here(?:'s| is)\s+)?how much\b.{0,100}\b(?:invest|investment)\b"
         r"|\byou(?:'d| would)?\s+(?:would\s+)?need\s+to\s+invest\b"
