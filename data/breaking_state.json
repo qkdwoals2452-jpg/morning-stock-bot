@@ -5681,6 +5681,67 @@
         "delivery_key": "fdaa4fd50dea67f94a13",
         "message_id": 2080
       }
+    },
+    {
+      "id": "0658d3a7b622ab9f",
+      "seen_at": "2026-11-06T21:57:01.416230+00:00",
+      "event": {
+        "event_title": "Accrete Signs Data Agreement with TenderAlpha to Deepen Supply Chain Risk Insight for Federal Customers",
+        "event_key": "accrete_signs_CONTRACT_d29e17d13a79",
+        "event_subject_key": "accrete_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "tenderalpha"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Accrete Signs Data Agreement with TenderAlpha to Deepen Supply Chain Risk Insight for Federal Customers",
+            "summary": "NEW YORK, Nov. 6, 2026 /PRNewswire/ -- Accrete, the cognitive infrastructure company building Knowledge Engines for autonomous work, today announced that it has signed an agreement with TenderAlpha, a global provider of government contracting and supply chain data. The agreement brings...",
+            "link": "https://www.prnewswire.com/news-releases/accrete-signs-data-agreement-with-tenderalpha-to-deepen-supply-chain-risk-insight-for-federal-customers-302932440.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-06T21:52:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
