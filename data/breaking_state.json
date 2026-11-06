@@ -5555,6 +5555,63 @@
         "delivery_key": "75ab4266dcf907977279",
         "message_id": 2076
       }
+    },
+    {
+      "id": "bf5f55637bc4c964",
+      "seen_at": "2026-11-06T18:26:58.832516+00:00",
+      "event": {
+        "event_title": "Not Oklo. Not X-Energy. This SMR Stock Just Signed a Contract to Start Building Reactor Components.",
+        "event_key": "not_oklo_CONTRACT_40363e4bfdd2",
+        "event_subject_key": "not_oklo_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Not Oklo. Not X-Energy. This SMR Stock Just Signed a Contract to Start Building Reactor Components.",
+            "summary": "NuScale Power signed an agreement to secure key nuclear reactor components. Could a major deal be on the horizon?",
+            "link": "https://www.fool.com/investing/2026/11/06/not-oklo-not-x-energy-this-smr-stock-just-signed-a/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-06T18:03:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
