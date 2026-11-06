@@ -5519,6 +5519,67 @@
         "delivery_key": "007290c3c99a6c63b913",
         "message_id": 2057
       }
+    },
+    {
+      "id": "4ba0daa8b633078f",
+      "seen_at": "2026-11-06T06:03:46.248870+00:00",
+      "event": {
+        "event_title": "씨이랩, 국민성장펀드서 80억 투자 유치…100억 규모 CB 발행",
+        "event_key": "씨이랩_CAPEX_a04ca34f4337",
+        "event_subject_key": "씨이랩_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:10000000000",
+            "UNKNOWN:8000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "씨이랩, 국민성장펀드서 80억 투자 유치…100억 규모 CB 발행",
+            "summary": "씨이랩(189330)이 국민성장펀드 자펀드 등으로부터 100억원 규모의 자금을 조달해 인공지능(AI) 데이터센터 사업 확대에 나선다. 최신 그래픽처리장치(GPU) 기반 인프라 구축과 자체 운영 소프트웨어를 결합해 사업 영역을 넓힌다는 계획이다.6일 금융감독원 전자공시에 따르면 씨이랩은 이사회 결의를 거쳐 100억원 규모의 제1회 무기명식 무보증 사모 전환...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=05421846645643096",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-06T14:56:41+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
