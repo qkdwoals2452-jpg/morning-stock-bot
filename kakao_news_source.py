@@ -5,7 +5,6 @@ The caller owns authenticated transport and persistent checkpoints.
 """
 import hashlib
 import re
-from collections import Counter
 from datetime import datetime, timedelta, timezone
 from urllib.parse import urlsplit
 
@@ -65,12 +64,9 @@ def parse_export(raw, room=ROOM):
         elif current:
             current['lines'].append(line)
     flush()
-    occurrences = Counter()
     for post in posts:
         value = '\0'.join((room, post['sender'], post['posted_at'], post['text']))
-        occurrence = occurrences[value]
-        occurrences[value] += 1
-        post['message_id'] = hashlib.sha256((value + '\0' + str(occurrence)).encode()).hexdigest()
+        post['message_id'] = hashlib.sha256(value.encode()).hexdigest()
         post['room'] = room
         post['source_kind'] = 'kakao_research_lead'
         post['publication_verified'] = False
