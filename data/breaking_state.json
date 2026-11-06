@@ -5747,6 +5747,65 @@
         "delivery_key": "73b876f93d150a8eb964",
         "message_id": 2082
       }
+    },
+    {
+      "id": "786f9bef5ff4fb9a",
+      "seen_at": "2026-11-06T22:02:01.646054+00:00",
+      "event": {
+        "event_title": "Cognizant Completes Acquisition of Wizeline",
+        "event_key": "cognizant_completes_M&A_eb0a67305b98",
+        "event_subject_key": "cognizant_completes_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Cognizant Completes Acquisition of Wizeline",
+            "summary": "Expanding Digital Engineering and Product Development Capabilities for Enterprise Clients TEANECK, N.J., Nov. 6, 2026 /PRNewswire/ -- Cognizant (Nasdaq: CTSH) today announced that it has acquired Wizeline, a global AI-native digital engineering and product development services firm...",
+            "link": "https://www.prnewswire.com/news-releases/cognizant-completes-acquisition-of-wizeline-302932412.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-06T22:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
