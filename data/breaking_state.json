@@ -5541,8 +5541,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "e3ab558504ccee058b94"
+        "phase": "sent",
+        "delivery_key": "e3ab558504ccee058b94",
+        "message_id": 2073
       },
       "analysis": {
         "phase": "ready",
