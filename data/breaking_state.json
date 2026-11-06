@@ -5570,8 +5570,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "d2ab218e392c89ce758e"
+        "phase": "sent",
+        "delivery_key": "d2ab218e392c89ce758e",
+        "message_id": 2056
       },
       "analysis": {
         "phase": "ready",
