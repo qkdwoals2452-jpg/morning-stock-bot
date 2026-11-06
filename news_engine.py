@@ -436,7 +436,7 @@ def _collect_feeds(feeds, market, diagnostics=None):
     return articles
 
 
-def get_us_news(diagnostics=None, limit=200):
+def get_us_news(diagnostics=None, limit=200, kakao_state=None):
     rss_list = [
         # 기존 미국 뉴스
 
@@ -474,7 +474,15 @@ def get_us_news(diagnostics=None, limit=200):
     news = filter_recent_news(news, hours=36)
     news = remove_duplicates(news)
 
+    from kakao_drive_bridge import collect as collect_kakao
+    kakao_articles = collect_kakao(news, state=kakao_state, diagnostics=diagnostics)
+    # Confirmed original articles keep their source and publication date. Chat
+    # assertions and unknown URLs never enter this list or event scoring.
     selected = news if limit is None else select_diverse_news(news, limit=limit)
+    by_url = {a.get('link'): a for a in selected}
+    for article in kakao_articles:
+        by_url[article['link']] = article
+    selected = list(by_url.values())
     counts = defaultdict(int)
     for article in selected:
         counts[publisher(article)[0]] += 1

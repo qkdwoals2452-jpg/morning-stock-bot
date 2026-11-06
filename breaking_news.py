@@ -65,12 +65,15 @@ def notice(event, now):
     article = max(event['articles'], key=article_time)
     published = article_time(article)
     label = '새 뉴스 감지' if now - published <= timedelta(minutes=30) else '지연 발견 뉴스'
+    chat_stamp = timestamp(article.get('kakao_posted_at'))
+    chat_line = f'카톡 게시: {chat_stamp.astimezone(KST):%m/%d %H:%M} KST\n' if chat_stamp else ''
     return (f'🚨 ORION {label} · 1차\n\n'
             f"{escaped(event['event_title'])}\n\n"
             f"유형: {escaped(event['event_type'])} / 사건 점수 {event['event_score']}\n"
             f"기사 근거: {escaped(event['evidence_strength'])}\n"
             f"발행: {published.astimezone(KST):%m/%d %H:%M} KST\n"
             f"감지: {now.astimezone(KST):%m/%d %H:%M} KST\n"
+            f"{chat_line}"
             f"출처: {escaped(article.get('source'))}\n"
             f'<a href="{html.escape(canonical_link(article["link"]), quote=True)}">원문 보기</a>\n\n'
             '기사 기반 알림입니다. 국내 종목 연결과 재무·가격 조건을 추가 검증합니다.')
@@ -340,7 +343,8 @@ def run():
     store = GitState(directory)
     state = store.load()
     diagnostics = {}
-    news = get_us_news(diagnostics=diagnostics, limit=None) + get_korea_news(diagnostics=diagnostics, limit=None)
+    news = get_us_news(diagnostics=diagnostics, limit=None,
+                       kakao_state=state.setdefault('kakao_source', {})) + get_korea_news(diagnostics=diagnostics, limit=None)
     if not news:
         raise RuntimeError('수집 뉴스 0건: 감시 정상으로 기록하지 않습니다')
     report = process(state, store.save, news)
