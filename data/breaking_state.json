@@ -5407,6 +5407,67 @@
         "delivery_key": "11c6ac39a8a0cec42f37",
         "message_id": 2066
       }
+    },
+    {
+      "id": "04422bd422f721a2",
+      "seen_at": "2026-11-06T11:03:51.256586+00:00",
+      "event": {
+        "event_title": "Kos Biotechnology Partners Announces Investment in Fathom Therapeutics to Advance Novel, AI-Driven Drug Discovery Platform",
+        "event_key": "kos_biotechnology_CAPEX_44eff4ee03ff",
+        "event_subject_key": "kos_biotechnology_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Kos Biotechnology Partners Announces Investment in Fathom Therapeutics to Advance Novel, AI-Driven Drug Discovery Platform",
+            "summary": "Kos joins Sutter Hill Ventures and other leading investors in backing Fathom Therapeutics's pioneering physics- and AI-powered drug discovery platform NEW YORK and ATHENS, Greece, Nov. 6, 2026 /PRNewswire/ -- Kos Biotechnology Partners (\"Kos\"), a global life sciences investment firm...",
+            "link": "https://www.prnewswire.com/news-releases/kos-biotechnology-partners-announces-investment-in-fathom-therapeutics-to-advance-novel-ai-driven-drug-discovery-platform-302931959.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-06T11:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
