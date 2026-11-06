@@ -5519,10 +5519,11 @@
         "message_id": 2065
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nHD한국조선, 초대형 암모니아선 4척 수주\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "11c6ac39a8a0cec42f37"
+        "delivery_key": "11c6ac39a8a0cec42f37",
+        "message_id": 2066
       }
     }
   ],
