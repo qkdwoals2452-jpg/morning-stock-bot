@@ -5617,6 +5617,65 @@
         "delivery_key": "050a940e0c6f9957de7c",
         "message_id": 2078
       }
+    },
+    {
+      "id": "872da08984c8003f",
+      "seen_at": "2026-11-06T20:02:00.723210+00:00",
+      "event": {
+        "event_title": "Alphabet’s Drone Unit to Invest Up to $125 Million in New Texas Facility",
+        "event_key": "alphabet_CAPEX_b370dbd75644",
+        "event_subject_key": "alphabet_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:125000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Alphabet’s Drone Unit to Invest Up to $125 Million in New Texas Facility",
+            "summary": "Wing is investing up to $125 million over the next two years on a new manufacturing facility in Fort Worth, with the capacity to build tens of thousands of aircraft each year.",
+            "link": "https://www.wsj.com/business/alphabets-drone-unit-to-invest-up-to-125-million-in-new-texas-facility-d9725c3b?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-06T19:56:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
