@@ -5473,6 +5473,68 @@
         "delivery_key": "282b114a63cba6a7069d",
         "message_id": 2068
       }
+    },
+    {
+      "id": "56f48b30f6a2b0ec",
+      "seen_at": "2026-11-06T11:13:51.808985+00:00",
+      "event": {
+        "event_title": "기아 3조 투자…\"광주공장 미래차 전환\"",
+        "event_key": "3조_CAPEX_2dd10c6cb359",
+        "event_subject_key": "3조_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:3000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": [
+            "광주공장"
+          ]
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "기아 3조 투자…\"광주공장 미래차 전환\"",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026110617211",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-06T19:48:20+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
