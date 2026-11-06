@@ -5467,8 +5467,10 @@
         "message_id": 2067
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\nKos Biotechnology Partners Announces Investment in Fathom Therapeutics to Advance Novel, AI-Driven Drug Discovery Platform\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 기사의 지출 주체와 연결할 공식 공급망 검토본이 확보되지 않았습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "282b114a63cba6a7069d"
       }
     }
   ],
