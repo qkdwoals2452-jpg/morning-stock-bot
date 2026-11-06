@@ -8,6 +8,11 @@ on:
 permissions:
   contents: write
 
+env:
+  ORION_DRIVE_CLIENT_ID: ${{ secrets.ORION_DRIVE_CLIENT_ID }}
+  ORION_DRIVE_CLIENT_SECRET: ${{ secrets.ORION_DRIVE_CLIENT_SECRET }}
+  ORION_DRIVE_REFRESH_TOKEN: ${{ secrets.ORION_DRIVE_REFRESH_TOKEN }}
+
 jobs:
   run-bot:
     runs-on: ubuntu-latest
