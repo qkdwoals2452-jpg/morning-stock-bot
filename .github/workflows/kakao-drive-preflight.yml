@@ -1,0 +1,43 @@
+name: ORION Kakao Drive Preflight
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/kakao-drive-preflight.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  authenticated-read:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests
+      - name: Check bot-side credentials and private export access
+        env:
+          ORION_DRIVE_CLIENT_ID: ${{ secrets.ORION_DRIVE_CLIENT_ID }}
+          ORION_DRIVE_CLIENT_SECRET: ${{ secrets.ORION_DRIVE_CLIENT_SECRET }}
+          ORION_DRIVE_REFRESH_TOKEN: ${{ secrets.ORION_DRIVE_REFRESH_TOKEN }}
+        run: |
+          python - <<'PY'
+          import os
+          from kakao_drive_bridge import access_token, DriveReader
+          from kakao_news_source import parse_export
+          names = ('ORION_DRIVE_CLIENT_ID', 'ORION_DRIVE_CLIENT_SECRET', 'ORION_DRIVE_REFRESH_TOKEN')
+          missing = [name for name in names if not os.environ.get(name)]
+          if missing:
+              print('KAKAO_DRIVE_PREFLIGHT: NOT_CONFIGURED')
+              print('Missing secret names: ' + ', '.join(missing))
+              raise SystemExit(1)
+          try:
+              reader = DriveReader(access_token())
+              metadata = reader.latest()
+              parse_export(reader.read(metadata))
+          except Exception as exc:
+              print('KAKAO_DRIVE_PREFLIGHT: AUTHENTICATED_READ_FAILED (' + type(exc).__name__ + ')')
+              raise SystemExit(1) from None
+          print('KAKAO_DRIVE_PREFLIGHT: AUTHENTICATED_READ_OK')
+          print('Private source contents and metadata omitted; no external messages sent.')
+          PY
