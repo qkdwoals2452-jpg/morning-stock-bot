@@ -2,126 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "8407218140bc7947",
-      "seen_at": "2026-10-30T08:57:47.996448+00:00",
-      "event": {
-        "event_title": "포스코퓨처엠, LG엔솔에 양·음극재 수조원대 공급",
-        "event_key": "포스코퓨처엠_CONTRACT_74c7e6cb70dc",
-        "event_subject_key": "포스코퓨처엠_CONTRACT",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [
-            "lg엔솔"
-          ],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "포스코퓨처엠, LG엔솔에 양·음극재 수조원대 공급",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/2026103068841",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-10-30T17:39:15+09:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "제목에서 실제 신규 수주 행동 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "제목에서 실제 신규 수주 행동 확인"
-        ],
-        "money_flow": [
-          "공급망"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n포스코퓨처엠, LG엔솔에 양·음극재 수조원대 공급\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 포스코퓨처엠 (003670) · 기사상 사건 주체\n<a href=\"https://www.hankyung.com/article/2026103068841\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 포스코퓨처엠 (003670): 120일선 아래\n2026-10-30 정규장 일봉 · 종가 162,100원 / 120일선 183,768.33원 / 52주 고점 299,500원 / 고점 대비 -45.88%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
-      "id": "d91b6006373c581b",
-      "seen_at": "2026-10-30T08:57:47.996448+00:00",
-      "event": {
-        "event_title": "삼성전기, AI용 MLCC 8800억 수주",
-        "event_key": "삼성전기_CONTRACT_6898714ab267",
-        "event_subject_key": "삼성전기_CONTRACT",
-        "event_facts": {
-          "amounts": [
-            "UNKNOWN:880000000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "계약 체결·확정 수주 근거 확인",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "삼성전기, AI용 MLCC 8800억 수주",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/2026103068281",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-10-30T17:31:03+09:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "제목에서 실제 신규 수주 행동 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "제목에서 실제 신규 수주 행동 확인"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n삼성전기, AI용 MLCC 8800억 수주\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 삼성전기 (009150) · 기사상 사건 주체\n기사 기재 금액: 8800억\n<a href=\"https://www.hankyung.com/article/2026103068281\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 삼성전기 (009150): 120일선 아래\n2026-10-30 정규장 일봉 · 종가 1,196,000원 / 120일선 1,457,941.67원 / 52주 고점 2,417,000원 / 고점 대비 -50.52%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "558ff1e4306f101d",
       "seen_at": "2026-10-30T10:22:48.215298+00:00",
       "event": {
@@ -5584,6 +5464,61 @@
         "message": "🔎 ORION 후속 검증 · 2차\n\n씨이랩, 국민성장펀드서 80억 투자 유치…100억 규모 CB 발행\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 씨이랩 (189330) · 기사상 사건 주체\n기사 기재 금액: 80억, 100억\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=05421846645643096\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 씨이랩 (189330): 영업적자 제외\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
         "delivery_key": "154d0bb67256ca659c2f",
         "message_id": 2060
+      }
+    },
+    {
+      "id": "95af127263f77879",
+      "seen_at": "2026-11-06T08:58:48.778528+00:00",
+      "event": {
+        "event_title": "HD한국조선, 초대형 암모니아선 4척 수주",
+        "event_key": "HD한국조선_CONTRACT_44d4601a25c4",
+        "event_subject_key": "HD한국조선_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "HD한국조선, 초대형 암모니아선 4척 수주",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026110615331",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-06T17:33:59+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
