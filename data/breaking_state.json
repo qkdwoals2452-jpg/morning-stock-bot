@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "679fe2dfbac27228",
-      "seen_at": "2026-11-01T20:07:03.445393+00:00",
-      "event": {
-        "event_title": "농장서 검증한 자체 온실기술…신뢰 쌓아 日에 20년 공급",
-        "event_key": "20_CONTRACT_229c4e12bbd5",
-        "event_subject_key": "20_CONTRACT",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [
-            "20"
-          ],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "농장서 검증한 자체 온실기술…신뢰 쌓아 日에 20년 공급",
-            "summary": "지난달 30일 찾은 경기 평택 그린케이팜의 스마트팜. 온실 프레임 아래로 딸기 재배대가 빼곡히 늘어서 있다. 일부 재배대를 들어 올리자 그 사이로 작업 통로가 나타났다. 재배대 옆으로는 냉온수를 흘려 뿌리 주변 온도를 조절하는 배관이 이어졌다. 이곳은 스마트팜 전문기업 그린플러스가 자회사 그린케이팜을 통해 운영하는 생산농장이다. 온실 설계·시공과 알루미늄...",
-            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=01407126645641784",
-            "market": "KR",
-            "source": "이데일리_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-02T05:00:03+09:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "제목에서 실제 신규 수주 행동 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "제목에서 실제 신규 수주 행동 확인"
-        ],
-        "money_flow": [
-          "공급망"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n농장서 검증한 자체 온실기술…신뢰 쌓아 日에 20년 공급\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "83f7cc83814c363f",
       "seen_at": "2026-11-02T05:04:32.929670+00:00",
       "event": {
