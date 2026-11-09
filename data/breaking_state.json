@@ -2,64 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "6b50c80f3f744ce2",
-      "seen_at": "2026-11-02T20:13:40.940762+00:00",
-      "event": {
-        "event_title": "IDEXX Soars 20.2% on Earnings Beat: What It Means for Your S&P 500 Index Fund",
-        "event_key": "idexx_soars_EARNINGS_891fc0151236",
-        "event_subject_key": "idexx_soars_EARNINGS",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "IDEXX Soars 20.2% on Earnings Beat: What It Means for Your S&P 500 Index Fund",
-            "summary": "Retirement savers who never chose IDEXX Laboratories (NASDAQ:IDXX) got a lift from it anyway on Monday. The veterinary diagnostics company was up 20.2% in the regular session as of 1:54 PM ET, trading at $662.55, after its third-quarter earnings report beat estimates and raised full-year guidance. In later trading the stock sat at $662.27. It […]",
-            "link": "https://247wallst.com/investing/etf/2026/11/02/idexx-soars-20-2-on-earnings-beat-what-it-means-for-your-sp-500-index-fund/?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-11-02T19:54:39+00:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실제 실적·가이던스 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실제 실적·가이던스 변화",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nIDEXX Soars 20.2% on Earnings Beat: What It Means for Your S&amp;P 500 Index Fund\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "f83d6fe39a2c37c6",
       "seen_at": "2026-11-03T02:14:51.023162+00:00",
       "event": {
