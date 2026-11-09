@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "4df0c532279b6272",
-      "seen_at": "2026-11-02T16:22:11.443486+00:00",
-      "event": {
-        "event_title": "Porter Acquires Pareto Intelligence, Creating the Only Organization Uniting Analytics, Engagement, and Care Delivery Across Medicare, Medicaid, and ACA Markets",
-        "event_key": "porter_M&A_675238177e96",
-        "event_subject_key": "porter_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Porter Acquires Pareto Intelligence, Creating the Only Organization Uniting Analytics, Engagement, and Care Delivery Across Medicare, Medicaid, and ACA Markets",
-            "summary": "The acquisition deepens Porter's technology and analytics to help health plans turn population insights into targeted interventions. BALTIMORE, Md. and FORT LAUDERDALE, Fla., Nov. 2, 2026 /PRNewswire/ -- Porter today announced its acquisition of Pareto Intelligence, strengthening its...",
-            "link": "https://www.prnewswire.com/news-releases/porter-acquires-pareto-intelligence-creating-the-only-organization-uniting-analytics-engagement-and-care-delivery-across-medicare-medicaid-and-aca-markets-302926663.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-02T16:17:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nPorter Acquires Pareto Intelligence, Creating the Only Organization Uniting Analytics, Engagement, and Care Delivery Across Medicare, Medicaid, and ACA Markets\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "6d670136e7de4c7d",
       "seen_at": "2026-11-02T16:37:12.574270+00:00",
       "event": {
