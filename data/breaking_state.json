@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "6d670136e7de4c7d",
-      "seen_at": "2026-11-02T16:37:12.574270+00:00",
-      "event": {
-        "event_title": "NEXUS CAPITAL MANAGEMENT COMPLETES ACQUISITION OF COLDWATER CREEK AND SOFT SURROUNDINGS",
-        "event_key": "nexus_capital_M&A_8b85ce3983d1",
-        "event_subject_key": "nexus_capital_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "NEXUS CAPITAL MANAGEMENT COMPLETES ACQUISITION OF COLDWATER CREEK AND SOFT SURROUNDINGS",
-            "summary": "FORT LAUDERDALE, Fla., Nov. 2, 2026 /PRNewswire/ -- Nexus Capital Management LP (together with certain affiliates, \"Nexus\"), a Los Angeles-based alternative asset management firm, today announced that it has completed its acquisition of CW Holdings, LLC (together with its subsidiaries,...",
-            "link": "https://www.prnewswire.com/news-releases/nexus-capital-management-completes-acquisition-of-coldwater-creek-and-soft-surroundings-302925846.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-02T16:30:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nNEXUS CAPITAL MANAGEMENT COMPLETES ACQUISITION OF COLDWATER CREEK AND SOFT SURROUNDINGS\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "b97ef8643595e644",
       "seen_at": "2026-11-02T17:07:12.075359+00:00",
       "event": {
