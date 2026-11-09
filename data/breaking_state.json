@@ -2,65 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "a14df7ec4c0ba7de",
-      "seen_at": "2026-11-02T09:20:48.067868+00:00",
-      "event": {
-        "event_title": "애경산업, 3분기 영업손실 33억…매출은 1904억 '역대 최대'",
-        "event_key": "애경산업_EARNINGS_6ba4d5b3a37f",
-        "event_subject_key": "애경산업_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "UNKNOWN:190400000000",
-            "UNKNOWN:3300000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "애경산업, 3분기 영업손실 33억…매출은 1904억 '역대 최대'",
-            "summary": "애경산업이 올해 3분기 역대 최대 매출을 기록했지만 글로벌 브랜드 경쟁력 강화를 위한 마케팅 비용이 늘면서 영업이익은 적자로 돌아섰다.애경산업은 올해 3분기 연결 기준 매출액 1904억원, 영업손실 33억원을 기록했다고 2일 공시했다. 매출은 전년 동기 대비 12.5% 증가하며 3분기 기준 역대 최대치를 달성했다. 반면 영업이익은 지난해 같은 기간 73억...",
-            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04477206645641784",
-            "market": "KR",
-            "source": "이데일리_기업",
-            "origin_publisher": "",
-            "published_at": "2026-11-02T18:16:28+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실적 기간과 확정된 실적 변화 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실적 기간과 확정된 실적 변화 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n애경산업, 3분기 영업손실 33억…매출은 1904억 &#x27;역대 최대&#x27;\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 애경산업 (018250) · 기사상 사건 주체\n기사 기재 금액: 33억, 1904억\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=04477206645641784\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 애경산업 (018250): 120일선 아래\n2026-11-02 정규장 일봉 · 종가 10,610원 / 120일선 11,640.67원 / 52주 고점 19,100원 / 고점 대비 -44.45%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "0b6c4de6b71ca8e0",
       "seen_at": "2026-11-02T10:05:48.628875+00:00",
       "event": {
