@@ -4999,6 +4999,65 @@
         "delivery_key": "2ad9de631b57d8b1b53e",
         "message_id": 2098
       }
+    },
+    {
+      "id": "16d3c1fd94b3a244",
+      "seen_at": "2026-11-09T12:03:49.797126+00:00",
+      "event": {
+        "event_title": "Quest Global acquires Tests Assured to strengthen advanced wearables engineering and testing capabilities",
+        "event_key": "quest_global_M&A_4b26d56803df",
+        "event_subject_key": "quest_global_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Quest Global acquires Tests Assured to strengthen advanced wearables engineering and testing capabilities",
+            "summary": "The acquisition aims to expand Quest Global's engineering capabilities for wearable products in the high-tech consumer space BANGALORE, India and WINDSOR, Conn., Nov. 9, 2026 /PRNewswire/ -- Quest Global Engineering Services Limited today announced the acquisition of Tests Assured, a...",
+            "link": "https://www.prnewswire.com/news-releases/quest-global-acquires-tests-assured-to-strengthen-advanced-wearables-engineering-and-testing-capabilities-302933015.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-09T12:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
