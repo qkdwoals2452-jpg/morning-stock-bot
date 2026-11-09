@@ -2,64 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "1a19dd0eeb8faeb4",
-      "seen_at": "2026-11-02T14:22:10.260141+00:00",
-      "event": {
-        "event_title": "Poundland's former owner offers to invest as minister prepares to meet board",
-        "event_key": "poundland_s_CAPEX_ed90c9457808",
-        "event_subject_key": "poundland_s_CAPEX",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Poundland's former owner offers to invest as minister prepares to meet board",
-            "summary": "Steve Smith says he has attempted to contact owners Gordon Brothers but has not had a reply.",
-            "link": "https://www.bbc.co.uk/news/articles/ck1wv1j0xgywo?at_medium=RSS&at_campaign=rss",
-            "market": "US",
-            "source": "BBC_Business",
-            "origin_publisher": "",
-            "published_at": "2026-11-02T13:40:36+00:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nPoundland&#x27;s former owner offers to invest as minister prepares to meet board\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "0b9b5479df593c28",
       "seen_at": "2026-11-02T14:42:09.789261+00:00",
       "event": {
