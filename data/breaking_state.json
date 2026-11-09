@@ -4768,6 +4768,65 @@
         "delivery_key": "d29d65635a2be5554871",
         "message_id": 2110
       }
+    },
+    {
+      "id": "a13062d2067cc5eb",
+      "seen_at": "2026-11-09T15:43:52.958145+00:00",
+      "event": {
+        "event_title": "Net at Work Acquires ERP Software Firm K&R Consulting Group",
+        "event_key": "net_at_M&A_7b9401a86c01",
+        "event_subject_key": "net_at_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Net at Work Acquires ERP Software Firm K&R Consulting Group",
+            "summary": "Acquisition expands expert business consulting talent and market presence in key verticals for Net at Work. NEW YORK, Nov. 9, 2026 /PRNewswire/ -- Net at Work, one of North America's leading technology advisors and a trusted partner to small and mid-sized businesses, today announced its...",
+            "link": "https://www.prnewswire.com/news-releases/net-at-work-acquires-erp-software-firm-kr-consulting-group-302933499.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-09T15:40:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
