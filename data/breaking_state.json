@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "0b6c4de6b71ca8e0",
-      "seen_at": "2026-11-02T10:05:48.628875+00:00",
-      "event": {
-        "event_title": "Gamehaus Signs Definitive Agreement to Acquire Majority Stake in Anamana",
-        "event_key": "gamehaus_signs_M&A_20801bf2bb2b",
-        "event_subject_key": "gamehaus_signs_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Gamehaus Signs Definitive Agreement to Acquire Majority Stake in Anamana",
-            "summary": "Transaction will accelerate Gamehaus's transition to an AI content production and distribution platform SHANGHAI, Nov. 2, 2026 /PRNewswire/ -- Gamehaus Holdings Inc. (\"Gamehaus\" or the \"Company\") (Nasdaq: GMHS), a technology-driven mobile game publisher, today announced that it has...",
-            "link": "https://www.prnewswire.com/news-releases/gamehaus-signs-definitive-agreement-to-acquire-majority-stake-in-anamana-302926152.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-02T10:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "기업 인수·합병 거래 계약 체결 확인(거래 종결은 별도)",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "기업 인수·합병 거래 계약 체결 확인(거래 종결은 별도)",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nGamehaus Signs Definitive Agreement to Acquire Majority Stake in Anamana\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "b0dff56fe7bab084",
       "seen_at": "2026-11-02T13:25:51.875880+00:00",
       "event": {
