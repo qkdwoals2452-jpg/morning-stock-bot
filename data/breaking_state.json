@@ -4832,6 +4832,65 @@
         "delivery_key": "a6a9a5a874a9bb17260c",
         "message_id": 2112
       }
+    },
+    {
+      "id": "6f2a1212f64aabf8",
+      "seen_at": "2026-11-09T16:03:53.262170+00:00",
+      "event": {
+        "event_title": "Bailey Equipment & Intralogistics Acquires Northwest Forklift, Doubling Pacific Northwest Team and Expanding Washington Operations",
+        "event_key": "bailey_equipment_M&A_deb71143cd0b",
+        "event_subject_key": "bailey_equipment_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Bailey Equipment & Intralogistics Acquires Northwest Forklift, Doubling Pacific Northwest Team and Expanding Washington Operations",
+            "summary": "NASHVILLE, Tenn., Nov. 9, 2026 /PRNewswire/ -- Bailey Equipment & Intralogistics, a leading provider of material handling and intralogistics solutions for more than 75 years, announced today the acquisition of Northwest Forklift, Inc., a respected material handling dealership serving...",
+            "link": "https://www.prnewswire.com/news-releases/bailey-equipment--intralogistics-acquires-northwest-forklift-doubling-pacific-northwest-team-and-expanding-washington-operations-302933540.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-09T15:58:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
