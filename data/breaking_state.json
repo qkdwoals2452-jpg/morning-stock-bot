@@ -4769,6 +4769,65 @@
         "delivery_key": "7718fefaf53b54f30e9a",
         "message_id": 2108
       }
+    },
+    {
+      "id": "4fc9521611405a2e",
+      "seen_at": "2026-11-09T15:13:54.219344+00:00",
+      "event": {
+        "event_title": "CoreWeave Signs Multi-Year Agreement to Support Wayve’s Autonomous Driving AI Development",
+        "event_key": "coreweave_signs_CONTRACT_edf12fcebf53",
+        "event_subject_key": "coreweave_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "CoreWeave Signs Multi-Year Agreement to Support Wayve’s Autonomous Driving AI Development",
+            "summary": "CoreWeave, Inc. (NASDAQ:CRWV) has entered into a multi-year agreement with autonomous vehicle technology company Wayve to provide cloud computing infrastructure for the development and training of its artificial intelligence driving systems.",
+            "link": "https://investorshub.advfn.com/market-news/article/39561/coreweave-signs-multi-year-agreement-to-support-wayves-autonomous-driving-ai-development?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T14:47:23+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
