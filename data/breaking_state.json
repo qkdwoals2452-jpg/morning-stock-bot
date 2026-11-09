@@ -5296,6 +5296,63 @@
         "delivery_key": "5b5f4ffabac8fd88229f",
         "message_id": 2096
       }
+    },
+    {
+      "id": "946c55e32339c30a",
+      "seen_at": "2026-11-09T06:57:34.741468+00:00",
+      "event": {
+        "event_title": "한국앤컴퍼니, 3분기 영업이익 665억…전년비 51.5%↓",
+        "event_key": "한국앤컴퍼니_EARNINGS_35a4c9868f71",
+        "event_subject_key": "한국앤컴퍼니_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:66500000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "한국앤컴퍼니, 3분기 영업이익 665억…전년비 51.5%↓",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611095406g",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T15:51:38+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
