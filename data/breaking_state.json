@@ -5234,6 +5234,63 @@
         "delivery_key": "8228930d086a7eb5d25b",
         "message_id": 2094
       }
+    },
+    {
+      "id": "87f4f7ad8fa52f7c",
+      "seen_at": "2026-11-09T06:27:33.373820+00:00",
+      "event": {
+        "event_title": "제이엠아이, 3분기 누적 매출 992억…영업익 두 배",
+        "event_key": "제이엠아이_EARNINGS_611ca10c2d8f",
+        "event_subject_key": "제이엠아이_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:99200000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "제이엠아이, 3분기 누적 매출 992억…영업익 두 배",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026110952486",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T15:10:24+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
