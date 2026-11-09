@@ -5344,6 +5344,67 @@
         "delivery_key": "517866376a3f1c6336bb",
         "message_id": 2086
       }
+    },
+    {
+      "id": "314090141957b8cf",
+      "seen_at": "2026-11-09T03:35:43.508838+00:00",
+      "event": {
+        "event_title": "Mitsui Chemicals to Acquire JSR With Development Bank of Japan for $8.8 Billion",
+        "event_key": "mitsui_chemicals_M&A_099a6d7dad54",
+        "event_subject_key": "mitsui_chemicals_M&A",
+        "event_facts": {
+          "amounts": [
+            "USD:8800000000"
+          ],
+          "counterparties": [
+            "development bank of japan"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Mitsui Chemicals to Acquire JSR With Development Bank of Japan for $8.8 Billion",
+            "summary": "Mitsui Chemicals has agreed to acquire semiconductor materials maker JSR jointly with government-owned Development Bank of Japan for about $8.8 billion.",
+            "link": "https://www.wsj.com/business/deals/mitsui-chemicals-to-acquire-jsr-with-development-bank-of-japan-for-8-8-billion-578ccd86?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T03:32:00+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
