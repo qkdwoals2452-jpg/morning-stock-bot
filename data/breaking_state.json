@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "79f03ee53be43328",
-      "seen_at": "2026-11-02T07:24:34.512277+00:00",
-      "event": {
-        "event_title": "Hexagon completes acquisition of Waygate Technologies",
-        "event_key": "hexagon_completes_M&A_0ea90a1b8cf2",
-        "event_subject_key": "hexagon_completes_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Hexagon completes acquisition of Waygate Technologies",
-            "summary": "STOCKHOLM, Nov. 2, 2026 /PRNewswire/ -- Hexagon, the global leader in measurement technologies, today announced that it has completed its previously announced acquisition of Waygate Technologies, a global leader in non-destructive testing (NDT), from Baker Hughes. Waygate Technologies...",
-            "link": "https://www.prnewswire.com/news-releases/hexagon-completes-acquisition-of-waygate-technologies-302926094.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-02T07:21:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nHexagon completes acquisition of Waygate Technologies\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "831f02a497cc678d",
       "seen_at": "2026-11-02T07:44:34.805893+00:00",
       "event": {
