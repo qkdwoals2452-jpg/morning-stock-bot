@@ -4776,6 +4776,65 @@
         "delivery_key": "d3a46361cb4082c2a934",
         "message_id": 2114
       }
+    },
+    {
+      "id": "24c07b81033d700e",
+      "seen_at": "2026-11-09T17:00:05.850433+00:00",
+      "event": {
+        "event_title": "Honda to Invest $3 Billion in New Ohio Plant to Boost Hybrid Vehicle Production",
+        "event_key": "honda_to_CAPEX_9c4ec2c22456",
+        "event_subject_key": "honda_to_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:3000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Honda to Invest $3 Billion in New Ohio Plant to Boost Hybrid Vehicle Production",
+            "summary": "The facility, which is expected to begin production in 2029, would be capable of building 240,000 vehicles a year, bringing the company’s total U.S. auto production capacity to about 1.3 million annually.",
+            "link": "https://www.wsj.com/business/autos/honda-to-invest-3-billion-in-new-ohio-plant-to-boost-hybrid-vehicle-production-4b2c7bc6?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T16:56:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
