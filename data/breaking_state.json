@@ -4943,6 +4943,65 @@
         "delivery_key": "5f4888eec801d72fc8f3",
         "message_id": 2103
       }
+    },
+    {
+      "id": "7f315fc18b4d9ec9",
+      "seen_at": "2026-11-09T13:33:51.490272+00:00",
+      "event": {
+        "event_title": "NRG Energy Signs $4 Billion Asset-Sale Agreement, Posts Higher Quarterly Earnings",
+        "event_key": "nrg_energy_CONTRACT_e4d7ae29d6ed",
+        "event_subject_key": "nrg_energy_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "USD:4000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "NRG Energy Signs $4 Billion Asset-Sale Agreement, Posts Higher Quarterly Earnings",
+            "summary": "NRG Energy said it will sell $4 billion worth of power-generation assets, a move that will allow it to pay down debt and buy back more stock. NRG also reported higher third-quarter profit and revenue.",
+            "link": "https://www.wsj.com/business/earnings/nrg-energy-signs-4-billion-asset-sale-agreement-posts-higher-quarterly-earnings-457b3efe?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T13:28:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
