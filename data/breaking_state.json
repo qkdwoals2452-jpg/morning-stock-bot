@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "b97ef8643595e644",
-      "seen_at": "2026-11-02T17:07:12.075359+00:00",
-      "event": {
-        "event_title": "Marvell to Acquire Lumentum in Historic $115 Billion Tech Deal",
-        "event_key": "marvell_to_M&A_69d3e52fb1f6",
-        "event_subject_key": "marvell_to_M&A",
-        "event_facts": {
-          "amounts": [
-            "USD:115000000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Marvell to Acquire Lumentum in Historic $115 Billion Tech Deal",
-            "summary": "Marvell Technology Inc. agreed to buy Lumentum Holdings Inc. at an enterprise value of $115 billion, clinching one of the largest technology deals in history in a push to capitalize on runaway data center spending.",
-            "link": "https://www.bloomberg.com/news/articles/2026-11-02/marvell-reaches-115-billion-deal-for-lumentum-holdings",
-            "market": "US",
-            "source": "Bloomberg_Tech",
-            "origin_publisher": "",
-            "published_at": "2026-11-02T12:15:11+00:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nMarvell to Acquire Lumentum in Historic $115 Billion Tech Deal\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "6b50c80f3f744ce2",
       "seen_at": "2026-11-02T20:13:40.940762+00:00",
       "event": {
