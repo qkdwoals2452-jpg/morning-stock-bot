@@ -5105,10 +5105,11 @@
         "message_id": 2130
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nTBH글로벌, 3분기 누적 영업익 24억원 &#x27;흑자 전환&#x27;…매출 11% 증가\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "8b05aaca425000ddf94b"
+        "delivery_key": "8b05aaca425000ddf94b",
+        "message_id": 2131
       }
     }
   ],
