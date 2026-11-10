@@ -5167,10 +5167,11 @@
         "message_id": 2133
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n컬리, 네이버 협력 통했다…3분기 매출 7779억원 &#x27;역대 최대&#x27;\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "d3b440635074e0e8817f"
+        "delivery_key": "d3b440635074e0e8817f",
+        "message_id": 2134
       }
     }
   ],
