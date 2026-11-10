@@ -4910,6 +4910,129 @@
         "delivery_key": "806be13db32e53825cbf",
         "message_id": 2122
       }
+    },
+    {
+      "id": "5c6a4f4124394387",
+      "seen_at": "2026-11-10T00:56:23.621457+00:00",
+      "event": {
+        "event_title": "쎄크, 마이크론에 58억 규모 HBM 검사장비 공급…작년 매출 9.8%",
+        "event_key": "쎄크_CONTRACT_7c30eb1b3bd8",
+        "event_subject_key": "쎄크_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:5800000000"
+          ],
+          "counterparties": [
+            "마이크론"
+          ],
+          "products": [
+            "hbm",
+            "inspection_equipment"
+          ],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "쎄크, 마이크론에 58억 규모 HBM 검사장비 공급…작년 매출 9.8%",
+            "summary": "전자빔(e-beam) 기반 검사기술 전문기업 쎄크(081180)가 글로벌 메모리 반도체 기업 마이크론에 고대역폭메모리(HBM)용 검사장비를 공급한다. 쎄크 CI.(사진=쎄크)10일 금융감독원 전자공시시스템에 따르면 쎄크는 마이크론의 싱가포르 법인인 마이크론 세미컨덕터 아시아 오퍼레이션스(Micron Semiconductor Asia Operations P...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03660486645644408",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T09:50:28+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "HBM",
+          "반도체",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "636359f883555a51",
+      "seen_at": "2026-11-10T00:56:23.621457+00:00",
+      "event": {
+        "event_title": "TPC로보틱스, 3분기 영업이익 16.9억원 ‘흑자전환’",
+        "event_key": "TPC로보틱스_EARNINGS_1a3c4598017c",
+        "event_subject_key": "TPC로보틱스_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:1690000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "TPC로보틱스, 3분기 영업이익 16.9억원 ‘흑자전환’",
+            "summary": "TPC로보틱스(048770)가 고대역폭메모리(HBM) 장비용 자동화 부품 공급 확대에 힘입어 한 분기 만에 흑자 전환했다. 반도체 부문 매출 폭증이 실적 개선을 이끈 가운데, 4분기부터는 휴머노이드 로봇 부품 사업의 성과도 가시화될 전망이다.(사진=TPC로보틱스)는 지난 9일 분기보고서 공시를 통해 2026년 3분기 연결 기준 매출액 266억원, 영업이익...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03663766645644408",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T09:50:28+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
