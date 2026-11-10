@@ -5315,6 +5315,65 @@
         "delivery_key": "221adb0e82b73c4be15a",
         "message_id": 2151
       }
+    },
+    {
+      "id": "b39a60ad6e053929",
+      "seen_at": "2026-11-10T13:05:07.317151+00:00",
+      "event": {
+        "event_title": "Scalestack Raises New Funding Led by Leonis Capital, Acquires Alysio to Build the Autonomous Infrastructure for Enterprise Agents",
+        "event_key": "scalestack_M&A_97c4fff46eff",
+        "event_subject_key": "scalestack_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Scalestack Raises New Funding Led by Leonis Capital, Acquires Alysio to Build the Autonomous Infrastructure for Enterprise Agents",
+            "summary": "Also backed by Deel and other corporate partners, Scalestack gives enterprises trusted context and full control over what their agents can access, change and spend. NEW YORK, Nov. 10, 2026 /PRNewswire/ -- Scalestack, the secure platform to scale autonomous AI agents, today announced new...",
+            "link": "https://www.prnewswire.com/news-releases/scalestack-raises-new-funding-led-by-leonis-capital-acquires-alysio-to-build-the-autonomous-infrastructure-for-enterprise-agents-302934268.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-10T13:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
