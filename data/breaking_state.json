@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "a007cdb742a02c0e",
-      "seen_at": "2026-11-03T21:08:44.442145+00:00",
-      "event": {
-        "event_title": "Analog Devices Completes Acquisition of Alif Semiconductor",
-        "event_key": "analog_devices_M&A_14c9970354df",
-        "event_subject_key": "analog_devices_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Analog Devices Completes Acquisition of Alif Semiconductor",
-            "summary": "WILMINGTON, Mass., Nov. 3, 2026 /PRNewswire/ -- Analog Devices, Inc. (NASDAQ: ADI) today announced the completion of its acquisition of Alif Semiconductor. The combination of ADI's leadership across sensing, signal processing, power, connectivity and application software, with Alif's...",
-            "link": "https://www.prnewswire.com/news-releases/analog-devices-completes-acquisition-of-alif-semiconductor-302928307.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-03T21:05:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAnalog Devices Completes Acquisition of Alif Semiconductor\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "f99fbc256d02325b",
       "seen_at": "2026-11-03T21:33:44.494087+00:00",
       "event": {
