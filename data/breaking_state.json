@@ -4784,6 +4784,122 @@
         "delivery_key": "1e481063c2c99008de6d",
         "message_id": 2118
       }
+    },
+    {
+      "id": "a3ea8690afdb476f",
+      "seen_at": "2026-11-10T00:51:23.895518+00:00",
+      "event": {
+        "event_title": "넥센타이어, 현대차 신형 투싼에 신차용 타이어 공급",
+        "event_key": "넥센타이어_CONTRACT_bdfabe2cbc19",
+        "event_subject_key": "넥센타이어_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "투싼"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "넥센타이어, 현대차 신형 투싼에 신차용 타이어 공급",
+            "summary": "넥센타이어는 현대자동차의 준중형 스포츠유틸리티차(SUV) ‘디 올 뉴 투싼’에 신차용 타이어(OE)를 공급한다고 9일 밝혔다.넥센타이어는 이미 국내 판매 투싼에 ‘로디안 GTX’ 17인치와 ‘엔페라 슈프림 S’ 18·19·20인치 제품 공급을 시작했으며, 올 연말부터 북미와 유럽 판매 투싼에도 자사 타이어를 순차 공급할 예정이다.국내와 같은 제품 구성인 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04444406645644080",
+            "market": "KR",
+            "source": "이데일리_기업",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T19:15:32+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "64af7ace355e3811",
+      "seen_at": "2026-11-10T00:51:23.895518+00:00",
+      "event": {
+        "event_title": "엘앤씨바이오, 창사 첫 ‘매출 1000억원 시대’…3분기 누적 영업익 892% 급증",
+        "event_key": "엘앤씨바이오_EARNINGS_9261a6a44802",
+        "event_subject_key": "엘앤씨바이오_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:100000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "엘앤씨바이오, 창사 첫 ‘매출 1000억원 시대’…3분기 누적 영업익 892% 급증",
+            "summary": "엘앤씨바이오가 인체 유래 세포외기질(ECM) 제품 '리투오(Re2O)'의 수요 증가에 힘입어 올해 3분기 누적 실적에서 큰 폭의 성장세를 나타냈다. 엘앤씨바이오는 제조시설 확장과 해외 판매망 구축을 통해 글로벌 시장에서 사업 영역을 넓혀 나간다는 방침이다.9일 엘앤씨바이오에 따르면 올해 3분기 누적 연결 기준 매출액은 1075억원으로 지난해 같은 기간보다...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03352166645644080",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-09T15:06:02+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
