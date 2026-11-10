@@ -5020,6 +5020,63 @@
         "delivery_key": "87295a668b368d20e60d",
         "message_id": 2155
       }
+    },
+    {
+      "id": "11422b4c14ae7ee5",
+      "seen_at": "2026-11-10T17:01:26.614800+00:00",
+      "event": {
+        "event_title": "5 Best US Stocks to Invest In for Long Term",
+        "event_key": "5_best_CAPEX_6c6c16f98179",
+        "event_subject_key": "5_best_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "5 Best US Stocks to Invest In for Long Term",
+            "summary": "In this article, we will be looking at the 5 best American stocks to invest in for long term. Recent economic and corporate developments have highlighted the importance of identifying businesses with durable growth opportunities. According to the US Bureau of Economic Analysis, the real gross domestic product (GDP) increased at an annual rate of […]",
+            "link": "https://finance.yahoo.com/markets/stocks/articles/5-best-us-stocks-invest-164820837.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T16:48:20+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
