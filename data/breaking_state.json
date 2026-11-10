@@ -4837,8 +4837,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "2db7b0726b19b9419e84"
+        "phase": "sent",
+        "delivery_key": "2db7b0726b19b9419e84",
+        "message_id": 2119
       },
       "analysis": {
         "phase": "ready",
