@@ -5167,10 +5167,11 @@
         "message_id": 2142
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nPCB Technologies Reports Q3 2026 Results: USD 62 Million in New Orders, Backlog and expected orders Rise to USD 270 Million, Revenue Up 8% from Q2 2026 to USD 50.5 Million\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 기사에서 설비투자·생산·공급 지출 근거를 확인하지 못했습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "221adb0e82b73c4be15a"
+        "delivery_key": "221adb0e82b73c4be15a",
+        "message_id": 2143
       }
     }
   ],
