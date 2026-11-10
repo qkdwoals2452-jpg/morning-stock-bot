@@ -5293,8 +5293,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "5ebbb59627fda452298f"
+        "phase": "sent",
+        "delivery_key": "5ebbb59627fda452298f",
+        "message_id": 2147
       },
       "analysis": {
         "phase": "ready",
