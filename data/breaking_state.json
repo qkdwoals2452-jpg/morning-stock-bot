@@ -4956,6 +4956,65 @@
         "delivery_key": "8fbeede008f9a393e6be",
         "message_id": 2153
       }
+    },
+    {
+      "id": "9a58d800388b9e07",
+      "seen_at": "2026-11-10T16:16:25.683373+00:00",
+      "event": {
+        "event_title": "Pixelworks Signs Multi-Year Agreement with Meta to Bring TrueCut Motion Technology to VR Devices",
+        "event_key": "meta_CONTRACT_71c011fb14ba",
+        "event_subject_key": "meta_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "meta"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Pixelworks Signs Multi-Year Agreement with Meta to Bring TrueCut Motion Technology to VR Devices",
+            "summary": "Pixelworks, Inc. (NASDAQ:PXLW) announced a multi-year partnership and device certification agreement with Meta to bring its TrueCut Motion cinematic technology to Meta’s virtual reality devices, including the upcoming Meta VR Glasses.",
+            "link": "https://investorshub.advfn.com/market-news/article/39717/pixelworks-signs-multi-year-agreement-with-meta-to-bring-truecut-motion-technology-to-vr-devices?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T15:53:47+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
