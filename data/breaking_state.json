@@ -5105,6 +5105,69 @@
         "delivery_key": "4fcde8aa9673a9b07e17",
         "message_id": 2139
       }
+    },
+    {
+      "id": "277d2f48c1305b9c",
+      "seen_at": "2026-11-10T11:55:07.845635+00:00",
+      "event": {
+        "event_title": "PCB Technologies Reports Q3 2026 Results: USD 62 Million in New Orders, Backlog and expected orders Rise to USD 270 Million, Revenue Up 8% from Q2 2026 to USD 50.5 Million",
+        "event_key": "pcb_technologies_EARNINGS_9f72140da1e4",
+        "event_subject_key": "pcb_technologies_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "USD:270000000",
+            "USD:50500000",
+            "USD:62000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "PCB Technologies Reports Q3 2026 Results: USD 62 Million in New Orders, Backlog and expected orders Rise to USD 270 Million, Revenue Up 8% from Q2 2026 to USD 50.5 Million",
+            "summary": "MIGDAL HAEMEK, Israel, Nov. 10, 2026 /PRNewswire/ -- PCB Technologies (TASE: PCBT), a global leader in advanced electronic and PCB manufacturing solutions, today announced its Q3 2026 results: record sales, orders and backlog, with improved profitability. Q3 2026 Highlights Record Q3...",
+            "link": "https://www.prnewswire.com/news-releases/pcb-technologies-reports-q3-2026-results-usd-62-million-in-new-orders-backlog-and-expected-orders-rise-to-usd-270-million-revenue-up-8-from-q2-2026-to-usd-50-5-million-302934834.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-10T11:52:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "분기 실적 기사에서 실제 결과·가이던스 변화 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "분기 실적 기사에서 실제 결과·가이던스 변화 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
