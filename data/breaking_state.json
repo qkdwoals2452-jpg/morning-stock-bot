@@ -5016,8 +5016,10 @@
         "message_id": 2160
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\nSenesTech Reports Record Q3 2026 Revenue with 59% Year-Over-Year Growth\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 기사에서 설비투자·생산·공급 지출 근거를 확인하지 못했습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "359ccaa94b27feb98972"
       }
     }
   ],
