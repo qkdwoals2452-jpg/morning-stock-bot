@@ -4896,8 +4896,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "344ad064ab4db22720a9"
+        "phase": "sent",
+        "delivery_key": "344ad064ab4db22720a9",
+        "message_id": 2120
       },
       "analysis": {
         "phase": "ready",
