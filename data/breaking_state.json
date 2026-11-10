@@ -4722,6 +4722,63 @@
         "delivery_key": "a38a2b1507af465d02be",
         "message_id": 2116
       }
+    },
+    {
+      "id": "1860006ad775eead",
+      "seen_at": "2026-11-10T00:21:22.792716+00:00",
+      "event": {
+        "event_title": "ExxonMobil Signs Deal in Step Toward Re-Entering Venezuela",
+        "event_key": "exxonmobil_signs_CONTRACT_b4a4f8d045fc",
+        "event_subject_key": "exxonmobil_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "ExxonMobil Signs Deal in Step Toward Re-Entering Venezuela",
+            "summary": "ExxonMobil Holdings Corp. formalized negotiations with Venezuela about operating one or more oil fields, months after Chief Executive Officer Darren Woods called the country “uninvestable” given its condition at the time.",
+            "link": "https://www.bloomberg.com/news/articles/2026-11-10/exxonmobil-signs-deal-in-step-toward-re-entering-venezuela",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T00:01:34+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
