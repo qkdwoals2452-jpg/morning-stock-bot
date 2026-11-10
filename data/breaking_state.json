@@ -5173,6 +5173,65 @@
         "delivery_key": "221adb0e82b73c4be15a",
         "message_id": 2143
       }
+    },
+    {
+      "id": "c2548e2dc9ccf2e6",
+      "seen_at": "2026-11-10T12:05:07.138511+00:00",
+      "event": {
+        "event_title": "Sapient Acquires Wealthgate Trust Company, Adding a Dedicated Affiliated Corporate Trustee for Multi-Generational Families",
+        "event_key": "sapient_M&A_985e75201c61",
+        "event_subject_key": "sapient_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Sapient Acquires Wealthgate Trust Company, Adding a Dedicated Affiliated Corporate Trustee for Multi-Generational Families",
+            "summary": "INDIANAPOLIS, Nov. 10, 2026 /PRNewswire/ -- Sapient Capital (\"Sapient\"), an independent wealth advisory firm serving multi-generational families, ultra-high-net-worth individuals, endowments, and foundations, today announced it has completed its acquisition of Wealthgate Trust Company,...",
+            "link": "https://www.prnewswire.com/news-releases/sapient-acquires-wealthgate-trust-company-adding-a-dedicated-affiliated-corporate-trustee-for-multi-generational-families-302934237.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-10T12:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
