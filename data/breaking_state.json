@@ -4962,6 +4962,63 @@
         "delivery_key": "9efed8082c35ee1b3827",
         "message_id": 2157
       }
+    },
+    {
+      "id": "a886508ad9797378",
+      "seen_at": "2026-11-10T21:17:44.703137+00:00",
+      "event": {
+        "event_title": "SenesTech Reports Record Q3 2026 Revenue with 59% Year-Over-Year Growth",
+        "event_key": "senestech_EARNINGS_fd88bd67aaad",
+        "event_subject_key": "senestech_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "SenesTech Reports Record Q3 2026 Revenue with 59% Year-Over-Year Growth",
+            "summary": "Revenue increased 42% sequentially as e-commerce and subscriptions expanded; Gross profit reached a record $796,000 SURPRISE, Ariz., Nov. 10, 2026 (GLOBE NEWSWIRE) -- SenesTech, Inc. (NASDAQ: SNES), an innovator in rodent control, today announced financial results for the third quarter ended September 30, 2026. Q3 2026 Financial Highlights Total revenue increased 42% sequentially to a record $1.097 million in Q3 2026, compared to $770,000 in Q2 2026, and increased 59% compared to $690,000 in Q3",
+            "link": "https://finance.yahoo.com/markets/stocks/articles/senestech-reports-record-q3-2026-210500939.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T21:05:00+00:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
