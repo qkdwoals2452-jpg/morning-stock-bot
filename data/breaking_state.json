@@ -5111,6 +5111,63 @@
         "delivery_key": "8b05aaca425000ddf94b",
         "message_id": 2131
       }
+    },
+    {
+      "id": "e787fa106f6ed990",
+      "seen_at": "2026-11-10T06:28:47.733966+00:00",
+      "event": {
+        "event_title": "컬리, 네이버 협력 통했다…3분기 매출 7779억원 '역대 최대'",
+        "event_key": "컬리_EARNINGS_fd2c566dfded",
+        "event_subject_key": "컬리_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:777900000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "컬리, 네이버 협력 통했다…3분기 매출 7779억원 '역대 최대'",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611107705g",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T14:51:08+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
