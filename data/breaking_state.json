@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "663ef8cb974501f9",
-      "seen_at": "2026-11-03T07:11:03.841279+00:00",
-      "event": {
-        "event_title": "Brookfield, QIA to Invest in Data Center for Drax",
-        "event_key": "brookfield_qia_CAPEX_41068cc315b3",
-        "event_subject_key": "brookfield_qia_CAPEX",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Brookfield, QIA to Invest in Data Center for Drax",
-            "summary": "Brookfield Asset Management and the Qatar Investment Authority have reached an agreement to invest £2.5 billion ($3.4 billion) in a data center project with UK power generator Drax Group Plc.",
-            "link": "https://www.bloomberg.com/news/articles/2026-11-03/brookfield-qai-to-invest-2-5-billion-in-data-center-for-drax",
-            "market": "US",
-            "source": "Bloomberg_Markets",
-            "origin_publisher": "",
-            "published_at": "2026-11-03T07:00:00+00:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": [
-          "데이터센터",
-          "전력",
-          "냉각"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nBrookfield, QIA to Invest in Data Center for Drax\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "a4a363fb2adcf5f0",
       "seen_at": "2026-11-03T09:56:03.966320+00:00",
       "event": {
