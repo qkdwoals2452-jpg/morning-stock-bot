@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "b74a88bdb549f1b7",
-      "seen_at": "2026-11-03T12:52:18.998712+00:00",
-      "event": {
-        "event_title": "EQT-backed SatPort Infrastructure completes acquisition of teleport business from Speedcast to expand its satellite ground infrastructure platform globally",
-        "event_key": "eqt_backed_M&A_3607e4768cf2",
-        "event_subject_key": "eqt_backed_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "EQT-backed SatPort Infrastructure completes acquisition of teleport business from Speedcast to expand its satellite ground infrastructure platform globally",
-            "summary": "The acquisition adds 12 teleports across five continents, establishing SatPort Infrastructure as a global, dedicated, carrier-neutral ground infrastructure platform for satellite operators, governments, and enterprise customers SatPort provides secure and resilient teleport and gateway...",
-            "link": "https://www.prnewswire.com/news-releases/eqt-backed-satport-infrastructure-completes-acquisition-of-teleport-business-from-speedcast-to-expand-its-satellite-ground-infrastructure-platform-globally-302927816.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-03T12:47:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nEQT-backed SatPort Infrastructure completes acquisition of teleport business from Speedcast to expand its satellite ground infrastructure platform globally\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "a9fcb525cc564739",
       "seen_at": "2026-11-03T13:07:19.986614+00:00",
       "event": {
