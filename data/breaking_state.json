@@ -5230,8 +5230,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "fce6d3741fd95d5d6a93"
+        "phase": "sent",
+        "delivery_key": "fce6d3741fd95d5d6a93",
+        "message_id": 2146
       },
       "analysis": {
         "phase": "ready",
