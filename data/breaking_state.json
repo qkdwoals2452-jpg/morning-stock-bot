@@ -5111,6 +5111,63 @@
         "delivery_key": "d3b440635074e0e8817f",
         "message_id": 2134
       }
+    },
+    {
+      "id": "b73695f64a985986",
+      "seen_at": "2026-11-10T07:38:48.675198+00:00",
+      "event": {
+        "event_title": "엘앤씨바이오, 3분기 누적 영업익 892% 급증…매출 1075억",
+        "event_key": "엘앤씨바이오_EARNINGS_1c7e365e0ae5",
+        "event_subject_key": "엘앤씨바이오_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:107500000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "엘앤씨바이오, 3분기 누적 영업익 892% 급증…매출 1075억",
+            "summary": "인체조직 기반 세포외기질(ECM) 플랫폼 기업 엘앤씨바이오(290650)가 올해 3분기 누적 매출과 영업이익을 큰 폭으로 늘리며 성장세를 이어갔다. 주력 제품인 리투오의 국내 공급 확대와 기존 인체조직 이식재 사업의 성장이 실적 개선을 이끌었다.엘앤씨바이오 CI.(사진=엘앤씨바이오)10일 엘앤씨바이오는 2026년 3분기 실적발표를 통해 누적 연결기준 매출...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=05215206645644408",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-10T16:28:02+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
