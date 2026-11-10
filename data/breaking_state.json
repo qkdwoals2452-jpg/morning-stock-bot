@@ -5236,17 +5236,17 @@
   },
   "initialized_at": "2026-10-23T00:40:39.561269+00:00",
   "last_poll": {
-    "started_at": "2026-11-10T07:43:08.657195+00:00",
-    "previous_started_at": "2026-11-10T07:38:08.562609+00:00",
-    "start_gap_seconds": 300.09,
-    "completed_at": "2026-11-10T07:43:49.336987+00:00",
-    "collected": 535,
+    "started_at": "2026-11-10T07:53:08.850620+00:00",
+    "previous_started_at": "2026-11-10T07:43:08.657195+00:00",
+    "start_gap_seconds": 600.19,
+    "completed_at": "2026-11-10T07:53:50.654592+00:00",
+    "collected": 533,
     "new": 0,
     "baseline": 0,
     "notices": 0,
     "analyses": 0,
     "pending": 0,
-    "uncertain": 2
+    "uncertain": 3
   },
   "kakao_source": {}
 }
