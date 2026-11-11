@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "dfda3ffa6321b7a6",
-      "seen_at": "2026-11-04T15:03:59.003452+00:00",
-      "event": {
-        "event_title": "Clusia Acquires Optim ACH Solutions to Scale Its AI-Native Assurance Firm",
-        "event_key": "clusia_M&A_0aa8abf01135",
-        "event_subject_key": "clusia_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Clusia Acquires Optim ACH Solutions to Scale Its AI-Native Assurance Firm",
-            "summary": "The acquisition brings Optim's auditors and clients onto Clusia's assurance model. Brian Stearns joins from Wespay as Managing Director of Assurance Operations. NEW YORK, Nov. 4, 2026 /PRNewswire/ -- Clusia, an assurance firm for financial technology companies and banks, today announced...",
-            "link": "https://www.prnewswire.com/news-releases/clusia-acquires-optim-ach-solutions-to-scale-its-ai-native-assurance-firm-302928857.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-04T15:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nClusia Acquires Optim ACH Solutions to Scale Its AI-Native Assurance Firm\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "fdb0d2428205db39",
       "seen_at": "2026-11-04T15:48:59.137657+00:00",
       "event": {
