@@ -5018,7 +5018,8 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "269e130a91afa122e009"
       },
       "analysis": {
         "phase": "ready",
