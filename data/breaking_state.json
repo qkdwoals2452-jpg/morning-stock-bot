@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "c8353ca7202587b3",
-      "seen_at": "2026-11-04T08:31:27.019970+00:00",
-      "event": {
-        "event_title": "Samsung Electronics Acquires 10.16% Stake in TCL CSOT, Deepening Strategic Alignment and Business Collaboration",
-        "event_key": "samsung_electronics_M&A_a1f766c0dcc2",
-        "event_subject_key": "samsung_electronics_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Samsung Electronics Acquires 10.16% Stake in TCL CSOT, Deepening Strategic Alignment and Business Collaboration",
-            "summary": "SHENZHEN, China, Nov. 4, 2026 /PRNewswire/ -- TCL Technology and Samsung Electronics Co., Ltd. (Samsung Electronics) jointly announced after market close on October 30 that Samsung Display Co., Ltd. (Samsung Display) will transfer its 10.16% stake in TCL China Star Optoelectronics...",
-            "link": "https://www.prnewswire.com/news-releases/samsung-electronics-acquires-10-16-stake-in-tcl-csot-deepening-strategic-alignment-and-business-collaboration-302929043.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-04T08:27:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nSamsung Electronics Acquires 10.16% Stake in TCL CSOT, Deepening Strategic Alignment and Business Collaboration\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "7cb340d5f94f7018",
       "seen_at": "2026-11-04T11:12:39.218103+00:00",
       "event": {
