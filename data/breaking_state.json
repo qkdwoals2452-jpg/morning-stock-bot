@@ -5293,10 +5293,11 @@
         "message_id": 2181
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nJYP엔터, 3분기 영업이익 480억원…전년比 17.6%↑\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "40e57bf1727d19a0c656"
+        "delivery_key": "40e57bf1727d19a0c656",
+        "message_id": 2182
       }
     }
   ],
