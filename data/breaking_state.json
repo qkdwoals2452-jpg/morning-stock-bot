@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "b99572f87fbe37d7",
-      "seen_at": "2026-11-04T16:03:59.844637+00:00",
-      "event": {
-        "event_title": "Andavi Solutions Acquires Infilect to Expand AI-Powered Retail Execution and Agentic AI Capabilities",
-        "event_key": "andavi_solutions_M&A_fbabb6931703",
-        "event_subject_key": "andavi_solutions_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Andavi Solutions Acquires Infilect to Expand AI-Powered Retail Execution and Agentic AI Capabilities",
-            "summary": "The combination pairs Andavi's salesforce automation platform with Infilect's image recognition and agentic AI, creating a comprehensive AI-led platform for retail execution. NEW YORK, Nov. 4, 2026 /PRNewswire/ -- Andavi Solutions, provider of an end-to-end sales execution platform for...",
-            "link": "https://www.prnewswire.com/news-releases/andavi-solutions-acquires-infilect-to-expand-ai-powered-retail-execution-and-agentic-ai-capabilities-302929466.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-04T15:56:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAndavi Solutions Acquires Infilect to Expand AI-Powered Retail Execution and Agentic AI Capabilities\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "5756ffa7c09b4280",
       "seen_at": "2026-11-04T21:20:09.721154+00:00",
       "event": {
