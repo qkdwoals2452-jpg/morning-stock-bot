@@ -5159,6 +5159,69 @@
         "delivery_key": "e3e3a753c475bd961cb6",
         "message_id": 2171
       }
+    },
+    {
+      "id": "9856d6521efc69ab",
+      "seen_at": "2026-11-11T04:45:55.025705+00:00",
+      "event": {
+        "event_title": "TSMC, 오픈AI·앤트로픽에 10억달러 투자…AI 생태계 확대",
+        "event_key": "TSMC_CAPEX_86c7475e4aa5",
+        "event_subject_key": "TSMC_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:1000000000"
+          ],
+          "counterparties": [
+            "앤트로픽"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "TSMC, 오픈AI·앤트로픽에 10억달러 투자…AI 생태계 확대",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611110093i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T13:35:55+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "AI",
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
