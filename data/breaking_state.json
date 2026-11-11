@@ -5097,6 +5097,63 @@
         "delivery_key": "1dc00365521f518ded63",
         "message_id": 2169
       }
+    },
+    {
+      "id": "56387be21bae3b43",
+      "seen_at": "2026-11-11T02:22:49.184951+00:00",
+      "event": {
+        "event_title": "에이치케이, 3분기 영업익 흑자전환…매출 175억원 56% 증가",
+        "event_key": "에이치케이_EARNINGS_1d4d6fa8970f",
+        "event_subject_key": "에이치케이_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:17500000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "에이치케이, 3분기 영업익 흑자전환…매출 175억원 56% 증가",
+            "summary": "레이저 가공기 전문기업 에이치케이(044780)가 미국 등 해외 시장 판매 확대에 힘입어 올해 3분기 연결기준 영업이익 흑자전환에 성공했다고 11일 밝혔다.에이치케이 CI.(사진=에이치케이)에이치케이의 3분기 연결 매출액은 175억원으로 전년 동기 대비 약 56% 증가했다. 영업이익은 3억 4000만원을 기록하며 흑자로 돌아섰다. 다만 당기순손실은 35억...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04060646645644736",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T11:14:07+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
