@@ -5430,7 +5430,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "27e0bafe13b245257d54"
       },
       "analysis": {
         "phase": "ready",
