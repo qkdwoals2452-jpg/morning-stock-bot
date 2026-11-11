@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "7cb340d5f94f7018",
-      "seen_at": "2026-11-04T11:12:39.218103+00:00",
-      "event": {
-        "event_title": "Google to Invest $15 Billion in Malaysia Over Two Years",
-        "event_key": "google_CAPEX_b081ad2d2529",
-        "event_subject_key": "google_CAPEX",
-        "event_facts": {
-          "amounts": [
-            "USD:15000000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Google to Invest $15 Billion in Malaysia Over Two Years",
-            "summary": "Alphabet’s Google will invest $15 billion in Malaysia over 2027 and 2028 to expand its digital infrastructure, develop local talent and support clean-energy and water initiatives.",
-            "link": "https://www.wsj.com/tech/google-to-invest-15-billion-in-malaysia-over-two-years-0c7400dd?mod=rss_markets_main",
-            "market": "US",
-            "source": "WSJ_Markets",
-            "origin_publisher": "",
-            "published_at": "2026-11-04T11:06:00+00:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nGoogle to Invest $15 Billion in Malaysia Over Two Years\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "115a3b94fdf51ca4",
       "seen_at": "2026-11-04T12:02:40.656039+00:00",
       "event": {
