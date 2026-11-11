@@ -5430,8 +5430,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "27e0bafe13b245257d54"
+        "phase": "sent",
+        "delivery_key": "27e0bafe13b245257d54",
+        "message_id": 2189
       },
       "analysis": {
         "phase": "ready",
