@@ -5239,6 +5239,130 @@
         "delivery_key": "40e57bf1727d19a0c656",
         "message_id": 2182
       }
+    },
+    {
+      "id": "c057a6b7005108d5",
+      "seen_at": "2026-11-11T08:48:06.366236+00:00",
+      "event": {
+        "event_title": "KKR, Germany’s RWE Invest $16 Billion in U.K. Wind-Power Projects",
+        "event_key": "kkr_germany_CAPEX_c7093250f270",
+        "event_subject_key": "kkr_germany_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:16000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "KKR, Germany’s RWE Invest $16 Billion in U.K. Wind-Power Projects",
+            "summary": "Both parties will develop, construct and operate the Vanguard West and East projects in the British North Sea, which rank among the U.K.’s largest offshore-wind developments.",
+            "link": "https://www.wsj.com/business/deals/rwe-kkr-join-forces-on-16-billion-of-u-k-wind-power-projects-4b489bce?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T08:44:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "전력",
+          "변압기"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "356b713c6f38ab51",
+      "seen_at": "2026-11-11T08:48:06.366236+00:00",
+      "event": {
+        "event_title": "KKR, Germany’s RWE Invest $16 Billion in U.K. Wind-Power Projects",
+        "event_key": "kkr_germany_CAPEX_d5c211a83053",
+        "event_subject_key": "kkr_germany_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:16000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "KKR, Germany’s RWE Invest $16 Billion in U.K. Wind-Power Projects",
+            "summary": "Both parties will develop, construct and operate the Vanguard West and East projects in the British North Sea, which rank among the U.K.’s largest offshore-wind developments.",
+            "link": "https://www.wsj.com/business/deals/rwe-kkr-join-forces-on-16-billion-of-u-k-wind-power-projects-4b489bce?mod=rss_markets_main",
+            "market": "US",
+            "source": "WSJ_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T08:44:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "전력",
+          "변압기"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
