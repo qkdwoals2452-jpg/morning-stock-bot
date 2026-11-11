@@ -2,128 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "62a6ef88437f8087",
-      "seen_at": "2026-11-04T14:02:41.931221+00:00",
-      "event": {
-        "event_title": "Copado Acquires Valo.ai to Extend AI-Powered Governance from Release to Runtime",
-        "event_key": "copado_M&A_d65716edacb2",
-        "event_subject_key": "copado_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Copado Acquires Valo.ai to Extend AI-Powered Governance from Release to Runtime",
-            "summary": "Acquisition connects governed software delivery with production intelligence to help Salesforce teams manage access, identify risk and simplify operations. NEW ORLEANS, Nov. 4, 2026 /PRNewswire/ -- Copado, a leader in AI-powered AgentOps for business applications, today announced that it...",
-            "link": "https://www.prnewswire.com/news-releases/copado-acquires-valoai-to-extend-ai-powered-governance-from-release-to-runtime-302928956.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-04T14:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nCopado Acquires Valo.ai to Extend AI-Powered Governance from Release to Runtime\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
-      "id": "7e081f78ec9f4dfe",
-      "seen_at": "2026-11-04T14:02:41.931221+00:00",
-      "event": {
-        "event_title": "Qloo's Global Agentic Hackathon Draws Nearly 3,000 Developers, as Jason Calacanis pledges to invest in winner",
-        "event_key": "qloo_s_CAPEX_2424b6413885",
-        "event_subject_key": "qloo_s_CAPEX",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Qloo's Global Agentic Hackathon Draws Nearly 3,000 Developers, as Jason Calacanis pledges to invest in winner",
-            "summary": "NEW YORK, Nov. 4, 2026 /PRNewswire/ -- Qloo, a leading artificial intelligence company providing taste intelligence for AI agents and consumer experiences , today announced that nearly 3,000 developers worldwide participated in its Global Agentic Hackathon, building functional AI...",
-            "link": "https://www.prnewswire.com/news-releases/qloos-global-agentic-hackathon-draws-nearly-3-000-developers-as-jason-calacanis-pledges-to-invest-in-winner-302928810.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-04T14:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nQloo&#x27;s Global Agentic Hackathon Draws Nearly 3,000 Developers, as Jason Calacanis pledges to invest in winner\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "dfda3ffa6321b7a6",
       "seen_at": "2026-11-04T15:03:59.003452+00:00",
       "event": {
@@ -5142,6 +5020,65 @@
         "message": "🔎 ORION 후속 검증 · 2차\n\n[美특징주]TSMC, 앤트로픽·오픈AI에 최대 10억달러 투자…개장전 &#x27;강세&#x27;\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
         "delivery_key": "67d25d1464c5150e7c20",
         "message_id": 2190
+      }
+    },
+    {
+      "id": "0ea24f49ce3c6435",
+      "seen_at": "2026-11-11T14:04:20.311745+00:00",
+      "event": {
+        "event_title": "ADB SAFEGATE acquires Synaptic Aviation",
+        "event_key": "adb_safegate_M&A_a9557f71aefc",
+        "event_subject_key": "adb_safegate_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "ADB SAFEGATE acquires Synaptic Aviation",
+            "summary": "The acquisition brings AI-powered turnaround intelligence to the AIRSIDE 4.0® strategy, accelerating the roadmap toward the Intelligent Apron. BRUSSELS, Belgium, Nov. 11, 2026 /PRNewswire/ -- ADB SAFEGATE today announced that it has completed the acquisition of Synaptic Aviation Inc., a...",
+            "link": "https://www.prnewswire.com/news-releases/adb-safegate-acquires-synaptic-aviation-302936474.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-11T14:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
