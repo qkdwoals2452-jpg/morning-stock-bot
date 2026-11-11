@@ -5032,6 +5032,66 @@
         "delivery_key": "e96a46c15102f979dbde",
         "message_id": 2167
       }
+    },
+    {
+      "id": "b1737b9615f6ec62",
+      "seen_at": "2026-11-11T01:07:48.107813+00:00",
+      "event": {
+        "event_title": "골드만·씨티 등 21곳 스테이블코인 발행 컨소시엄, 3900억 투자",
+        "event_key": "3900억_CAPEX_66c9865aa70d",
+        "event_subject_key": "3900억_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:390000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "골드만·씨티 등 21곳 스테이블코인 발행 컨소시엄, 3900억 투자",
+            "summary": "골드만삭스그룹과 씨티그룹, 방코 산탄데르, 도이체방크 등 글로벌 금융회사 21곳이 공동으로 참여하는 스테이블코인 발행 컨소시엄이 약 2억7000만달러(원화 약 3900억원)를 투자하기로 약정한 것으로 알려졌다.10일(현지시간) 블룸버그통신은 이 이슈에 정통한 복수의 소식통을 인용, 이번 투자자금은 신설 회사의 향후 5년간 운영비를 충당하는 데 사용될 예정...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03758886645644736",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T10:02:04+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
