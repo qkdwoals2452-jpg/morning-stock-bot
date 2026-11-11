@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "115a3b94fdf51ca4",
-      "seen_at": "2026-11-04T12:02:40.656039+00:00",
-      "event": {
-        "event_title": "Yellow Card Acquires GoMoney, Establishing Direct Operations in Brazil",
-        "event_key": "yellow_card_M&A_c472c3182899",
-        "event_subject_key": "yellow_card_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Yellow Card Acquires GoMoney, Establishing Direct Operations in Brazil",
-            "summary": "ATLANTA, Nov. 4, 2026 /PRNewswire/ -- Yellow Card, a leading global Stablecoin payments infrastructure provider, today announced that, in October, it completed the acquisition of GoMoney Sociedade Prestadora de Serviços de Ativos Virtuais Ltda. (GoMoney), a virtual asset service provider...",
-            "link": "https://www.prnewswire.com/news-releases/yellow-card-acquires-gomoney-establishing-direct-operations-in-brazil-302928255.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-04T12:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nYellow Card Acquires GoMoney, Establishing Direct Operations in Brazil\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "22f313dcea675e43",
       "seen_at": "2026-11-04T12:12:40.470593+00:00",
       "event": {
