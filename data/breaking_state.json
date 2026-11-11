@@ -2,66 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "cd6323e69f7d9ebf",
-      "seen_at": "2026-11-04T13:02:41.320672+00:00",
-      "event": {
-        "event_title": "VisiQuate Acquires Artiva HCx, Uniting Revenue Cycle Intelligence and Workflow Expertise to Turn Insight Into Action",
-        "event_key": "visiquate_M&A_c947556a0a8f",
-        "event_subject_key": "visiquate_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "VisiQuate Acquires Artiva HCx, Uniting Revenue Cycle Intelligence and Workflow Expertise to Turn Insight Into Action",
-            "summary": "Combination brings together analytics and AI, proven workflow technology and deep operational expertise to help revenue cycle teams know which work matters and get it done SANTA ROSA, Calif., Nov. 4, 2026 /PRNewswire/ -- VisiQuate, a healthcare revenue cycle intelligence, workflow and...",
-            "link": "https://www.prnewswire.com/news-releases/visiquate-acquires-artiva-hcx-uniting-revenue-cycle-intelligence-and-workflow-expertise-to-turn-insight-into-action-302927996.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-04T13:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nVisiQuate Acquires Artiva HCx, Uniting Revenue Cycle Intelligence and Workflow Expertise to Turn Insight Into Action\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "62a6ef88437f8087",
       "seen_at": "2026-11-04T14:02:41.931221+00:00",
       "event": {
