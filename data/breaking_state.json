@@ -4908,6 +4908,120 @@
         "delivery_key": "7746dedfa182866ab275",
         "message_id": 2163
       }
+    },
+    {
+      "id": "6e9f488c12ebfda2",
+      "seen_at": "2026-11-11T00:32:47.163654+00:00",
+      "event": {
+        "event_title": "케이엔에스, 3분기 누적 영업익 144% 증가…매출 478억",
+        "event_key": "케이엔에스_EARNINGS_aad3df269029",
+        "event_subject_key": "케이엔에스_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:47800000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "케이엔에스, 3분기 누적 영업익 144% 증가…매출 478억",
+            "summary": "첨단산업 무인 자동화 전문기업 케이엔에스(432470)가 4680(46파이) 원통형 배터리 장비 수주 확대와 더불어 베트남 법인의 로봇 사업 부문 성과 확대에 힘입어 3분기에도 가파른 실적 성장세를 이어갔다고 11일 밝혔다.케이엔에스 CI.(자료=케이엔에스)케이엔에스는 올해 3분기 연결 기준 누적 매출액이 전년 동기 대비 36.1% 증가한 478억원을 기...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03555526645644736",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T09:28:34+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "d3dff36a8acc636f",
+      "seen_at": "2026-11-11T00:32:47.163654+00:00",
+      "event": {
+        "event_title": "씨피시스템, 3분기 영업이익 21억…전년比 279%↑",
+        "event_key": "씨피시스템_EARNINGS_8456160e8480",
+        "event_subject_key": "씨피시스템_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:2100000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "씨피시스템, 3분기 영업이익 21억…전년比 279%↑",
+            "summary": "반도체와 이차전지 공정에 들어가는 케이블 보호 솔루션 기업 씨피시스템(413630)이 3분기 30%가 넘는 영업이익률을 달성하며 뚜렷한 실적 모멘텀을 입증했다.(사진=씨피시스템)씨피시스템은 연결 기준 올해 3분기 영업이익이 21억원으로 전년 동기 대비 278.9% 증가했다고 11일 공시했다. 매출액은 37.2% 늘어난 63억원, 영업이익률은 33.1%에 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03552246645644736",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T09:27:13+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
