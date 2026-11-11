@@ -4903,6 +4903,63 @@
         "delivery_key": "93f6dba1e4e3ee4ecd2c",
         "message_id": 2192
       }
+    },
+    {
+      "id": "bae43b7611bf9c97",
+      "seen_at": "2026-11-11T17:19:22.915039+00:00",
+      "event": {
+        "event_title": "Inveniam Acquires Docugami to Create the Gold Standard for Verifiable Document Data in the Agentic Era",
+        "event_key": "inveniam_M&A_d77c69392935",
+        "event_subject_key": "inveniam_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Inveniam Acquires Docugami to Create the Gold Standard for Verifiable Document Data in the Agentic Era",
+            "summary": "KIRKLAND, Wash. & DETROIT, November 11, 2026--Inveniam acquires Docugami, the document intelligence pioneer, to create the native language for AI agents working with unstructured documents.",
+            "link": "https://finance.yahoo.com/technology/ai/articles/inveniam-acquires-docugami-create-gold-170000965.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-11T17:00:00+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
