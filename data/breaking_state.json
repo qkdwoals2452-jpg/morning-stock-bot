@@ -2,64 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "a97005c7b006870c",
-      "seen_at": "2026-11-04T06:41:25.282190+00:00",
-      "event": {
-        "event_title": "KGM, 3분기 누적 매출 3조3129억원…전년비 5.8% 증가",
-        "event_key": "KGM_EARNINGS_0b280509ab3e",
-        "event_subject_key": "KGM_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "KRW:3312900000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "KGM, 3분기 누적 매출 3조3129억원…전년비 5.8% 증가",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/202611045711g",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-04T15:22:06+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실적 기간과 확정된 실적 변화 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실적 기간과 확정된 실적 변화 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nKGM, 3분기 누적 매출 3조3129억원…전년비 5.8% 증가\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "c8353ca7202587b3",
       "seen_at": "2026-11-04T08:31:27.019970+00:00",
       "event": {
