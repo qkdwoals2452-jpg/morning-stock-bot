@@ -569,5 +569,11 @@
                 ]
             }
         ]
+    },
+    {
+        "date": "2026-11-13",
+        "recorded_at": "2026-11-13T07:36:36.133661+09:00",
+        "date_timezone": "Asia/Seoul",
+        "results": []
     }
 ]

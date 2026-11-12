@@ -33,6 +33,11 @@
           "date": "2026-11-10",
           "close": 967000.0,
           "return_pct": -2.2245
+        },
+        "5": {
+          "date": "2026-11-12",
+          "close": 902000.0,
+          "return_pct": -8.7968
         }
       },
       "base_date": "2026-11-05",
@@ -74,6 +79,11 @@
           "date": "2026-11-10",
           "close": 6050.0,
           "return_pct": 1.34
+        },
+        "5": {
+          "date": "2026-11-12",
+          "close": 5850.0,
+          "return_pct": -2.0101
         }
       },
       "base_date": "2026-11-05",
@@ -115,6 +125,11 @@
           "date": "2026-11-10",
           "close": 1882.0,
           "return_pct": 21.4194
+        },
+        "5": {
+          "date": "2026-11-12",
+          "close": 1800.0,
+          "return_pct": 16.129
         }
       },
       "base_date": "2026-11-05",
@@ -135,6 +150,195 @@
         "negative_operating_margin",
         "debt_ratio_gte_300"
       ]
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "000270",
+      "chart",
+      "120일선 아래"
+    ],
+    "name": "기아",
+    "code": "000270",
+    "decision_at": "2026-11-13T07:36:36.253705+09:00",
+    "recorded_at": "2026-11-13T07:36:36.253705+09:00",
+    "decision": "rejected_or_held",
+    "stage": "chart",
+    "reason": "120일선 아래",
+    "evidence": {
+      "price_date": "2026-11-12",
+      "price_source": "YAHOO_REGULAR_CLOSE",
+      "current": 93600.0,
+      "ma120": 131990.83,
+      "high_52w": 212500.0,
+      "high_52w_gap": -55.95
+    },
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "016360",
+      "finance_model",
+      "금융업 전용 재무 검증 미지원으로 보류"
+    ],
+    "name": "삼성증권",
+    "code": "016360",
+    "decision_at": "2026-11-13T07:36:36.253705+09:00",
+    "recorded_at": "2026-11-13T07:36:36.253705+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance_model",
+    "reason": "금융업 전용 재무 검증 미지원으로 보류",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "006800",
+      "finance_model",
+      "금융업 전용 재무 검증 미지원으로 보류"
+    ],
+    "name": "미래에셋증권",
+    "code": "006800",
+    "decision_at": "2026-11-13T07:36:36.253705+09:00",
+    "recorded_at": "2026-11-13T07:36:36.253705+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance_model",
+    "reason": "금융업 전용 재무 검증 미지원으로 보류",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "063170",
+      "chart",
+      "120일선 아래"
+    ],
+    "name": "서울옥션",
+    "code": "063170",
+    "decision_at": "2026-11-13T07:36:36.253705+09:00",
+    "recorded_at": "2026-11-13T07:36:36.253705+09:00",
+    "decision": "rejected_or_held",
+    "stage": "chart",
+    "reason": "120일선 아래",
+    "evidence": {
+      "price_date": "2026-11-12",
+      "price_source": "YAHOO_REGULAR_CLOSE",
+      "current": 4810.0,
+      "ma120": 5273.46,
+      "high_52w": 9950.0,
+      "high_52w_gap": -51.66
+    },
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "020560",
+      "finance",
+      "PBR 과도 제외"
+    ],
+    "name": "아시아나항공",
+    "code": "020560",
+    "decision_at": "2026-11-13T07:36:36.253705+09:00",
+    "recorded_at": "2026-11-13T07:36:36.253705+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "PBR 과도 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "049800",
+      "finance",
+      "영업적자 제외"
+    ],
+    "name": "우진플라임",
+    "code": "049800",
+    "decision_at": "2026-11-13T07:36:36.253705+09:00",
+    "recorded_at": "2026-11-13T07:36:36.253705+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "영업적자 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "082210",
+      "finance",
+      "부채비율 과다 제외"
+    ],
+    "name": "옵트론텍",
+    "code": "082210",
+    "decision_at": "2026-11-13T07:36:36.253705+09:00",
+    "recorded_at": "2026-11-13T07:36:36.253705+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "부채비율 과다 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
     }
   }
 ]
