@@ -5727,6 +5727,118 @@
         "delivery_key": "671ef37d873e98e9df1d",
         "message_id": 2230
       }
+    },
+    {
+      "id": "eea7dbd4be925b1d",
+      "seen_at": "2026-11-12T08:35:06.844779+00:00",
+      "event": {
+        "event_title": "에스에프에이, 3분기 별도 영업이익률 13.8%…반도체 수주 확대",
+        "event_key": "에스에프에이_EARNINGS_23b9cbe96076",
+        "event_subject_key": "에스에프에이_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "에스에프에이, 3분기 별도 영업이익률 13.8%…반도체 수주 확대",
+            "summary": "에스에프에이(056190)(SFA)는 올해 3분기 별도기준 매출액 1923억원, 영업이익 266억원을 기록했다고 12일 밝혔다. 전년 동기 대비 각각 2.1%, 3.2% 감소한 수치다. 다만 영업이익률은 13.8%로 올해 1분기(11.5%), 2분기(12.8%)에 이어 개선세를 이어갔다.올해 3분기까지 누적 별도기준 매출액은 5719억원으로 전년 동기(6...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04493606645645064",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T17:28:26+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": [
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "cfebb9d6bef1f831",
+      "seen_at": "2026-11-12T08:35:06.844779+00:00",
+      "event": {
+        "event_title": "아시아나 3분기 여객 매출 10% 증가…'통합 대한항공' 출범 채비",
+        "event_key": "여객_EARNINGS_433d2eabe5da",
+        "event_subject_key": "여객_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "아시아나 3분기 여객 매출 10% 증가…'통합 대한항공' 출범 채비",
+            "summary": "대한항공과의 통합을 한달여 앞둔 아시아나항공이 올 3분기 여객 매출을 10% 늘리며 판매 기반을 다졌다. 다만, 고유가와 통합 준비 비용 부담 속 영업적자는 이어졌다.아시아나항공은 올 3분기 별도기준으로 매출 1조 5262억원과 영업손실 1790억원을 기록했다고 12일 밝혔다. 매출은 전년 동기보다 4.2% 늘고 영업손실은 전년(1757억원) 수준을 유지...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04503446645645064",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T17:29:39+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
