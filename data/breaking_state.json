@@ -5149,10 +5149,11 @@
         "message_id": 2201
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n호르무즈 차질에도 OPEC+ 증산…사우디가 공급 회복 주도\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "b4824ce41b3e03124d91"
+        "delivery_key": "b4824ce41b3e03124d91",
+        "message_id": 2202
       }
     }
   ],
