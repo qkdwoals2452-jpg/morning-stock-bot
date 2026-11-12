@@ -5468,6 +5468,61 @@
         "delivery_key": "f231ae8d01a31ce31ec9",
         "message_id": 2217
       }
+    },
+    {
+      "id": "5f39dd31e1675572",
+      "seen_at": "2026-11-12T06:08:11.549083+00:00",
+      "event": {
+        "event_title": "공정위, 진에어·에어서울·에어부산 합병 승인…내년 3월 통합 출범",
+        "event_key": "공정위_M&A_fbc8d997eeda",
+        "event_subject_key": "공정위_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "공정위, 진에어·에어서울·에어부산 합병 승인…내년 3월 통합 출범",
+            "summary": "공정거래위원회가 진에어와 에어서울·에어부산의 기업결합을 승인했다. (사진=연합뉴스)공정위는 12일 진에어와 에어서울·에어부산의 기업결합 신고를 승인했다고 밝혔다. 국토교통부도 이날 항공사업법에 따른 심사를 거쳐 3사 합병을 인가했다. 이에 통합 항공사는 내년 3월 17일 진에어를 중심으로 출범할 예정이다.이번 합병은 대한항공의 자회사인 진에어와 아시아나항...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03722806645645064",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T15:00:03+09:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "확정된 한국어 인수·합병 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "확정된 한국어 인수·합병 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
