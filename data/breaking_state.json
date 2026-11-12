@@ -5217,6 +5217,68 @@
         "delivery_key": "3b1d85a68a67d50227e0",
         "message_id": 2206
       }
+    },
+    {
+      "id": "97aedb5d1cd8fdbc",
+      "seen_at": "2026-11-12T02:01:54.334062+00:00",
+      "event": {
+        "event_title": "미래컴퍼니, 삼성전자에 반도체 장비 48억원 공급…작년 매출의 11.7%",
+        "event_key": "미래컴퍼니_CONTRACT_02069a12f22a",
+        "event_subject_key": "미래컴퍼니_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:4800000000"
+          ],
+          "counterparties": [
+            "삼성전자"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "미래컴퍼니, 삼성전자에 반도체 장비 48억원 공급…작년 매출의 11.7%",
+            "summary": "미래컴퍼니(049950)가 삼성전자에 48억원 규모의 반도체 제조장비를 공급한다. 지난해 매출의 11.7%에 해당하는 규모다.미래컴퍼니 CI.(사진=미래컴퍼니)12일 금융감독원 전자공시시스템에 따르면 미래컴퍼니는 삼성전자와 반도체 제조장비 공급계약을 체결했다고 공시했다. 계약금액은 48억원으로 지난해 연결 기준 매출액 408억 9779만원의 11.74%에...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02929046645645064",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T10:54:16+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "공급망",
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
