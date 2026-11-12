@@ -5093,6 +5093,63 @@
         "delivery_key": "4bfcbe26dca1f202ae24",
         "message_id": 2200
       }
+    },
+    {
+      "id": "1ed93c37e6cd0e37",
+      "seen_at": "2026-11-12T00:15:42.690439+00:00",
+      "event": {
+        "event_title": "호르무즈 차질에도 OPEC+ 증산…사우디가 공급 회복 주도",
+        "event_key": "opec_CONTRACT_22acde965eca",
+        "event_subject_key": "opec_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "호르무즈 차질에도 OPEC+ 증산…사우디가 공급 회복 주도",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611121652i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T08:12:19+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
