@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "3b74dbac5f4d8b0d",
-      "seen_at": "2026-11-05T09:04:07.896280+00:00",
-      "event": {
-        "event_title": "Asper.ai acquires Pricing One's RGM expertise and key assets to Strengthen Its Agentic RGM Platform and Expand its European Presence",
-        "event_key": "asper_ai_M&A_4d959f0e700b",
-        "event_subject_key": "asper_ai_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Asper.ai acquires Pricing One's RGM expertise and key assets to Strengthen Its Agentic RGM Platform and Expand its European Presence",
-            "summary": "The acquisition combines Asper's agentic AI capabilities with Pricing One's deep RGM expertise, 650+ proven commercial execution plans and experienced practitioners, helping CPG companies unlock the potential for 6-8% incremental top- and bottom-line growth. NEW YORK and GENEVA, Nov. 5,...",
-            "link": "https://www.prnewswire.com/news-releases/asperai-acquires-pricing-ones-rgm-expertise-and-key-assets-to-strengthen-its-agentic-rgm-platform-and-expand-its-european-presence-302930467.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-05T09:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAsper.ai acquires Pricing One&#x27;s RGM expertise and key assets to Strengthen Its Agentic RGM Platform and Expand its European Presence\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "47a430e77c6fb318",
       "seen_at": "2026-11-05T11:04:10.009818+00:00",
       "event": {
