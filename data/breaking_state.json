@@ -5926,6 +5926,65 @@
         "delivery_key": "a6b3eb06cf7f529d16c1",
         "message_id": 2251
       }
+    },
+    {
+      "id": "88501f31394c662a",
+      "seen_at": "2026-11-12T15:21:21.065364+00:00",
+      "event": {
+        "event_title": "BlueMatrix Completes Acquisition of Aiera",
+        "event_key": "bluematrix_completes_M&A_07507515dfd8",
+        "event_subject_key": "bluematrix_completes_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "BlueMatrix Completes Acquisition of Aiera",
+            "summary": "NEW YORK and MIAMI, Nov. 12, 2026 /PRNewswire/ -- BlueMatrix, the global leader in capital markets content publishing technology, today announced that it has completed its acquisition of Aiera, a consortium-backed content delivery platform, bringing research authoring, governance and AI...",
+            "link": "https://www.prnewswire.com/news-releases/bluematrix-completes-acquisition-of-aiera-302938033.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-12T15:15:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
