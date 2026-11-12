@@ -63,68 +63,6 @@
       }
     },
     {
-      "id": "1f6c63f6851b6d35",
-      "seen_at": "2026-11-05T21:06:50.407207+00:00",
-      "event": {
-        "event_title": "Axon Invests $1.2 Billion in Skydio to Build the Future of Drone as First Responder",
-        "event_key": "axon_CAPEX_e4bf848b2800",
-        "event_subject_key": "axon_CAPEX",
-        "event_facts": {
-          "amounts": [
-            "USD:1200000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Axon Invests $1.2 Billion in Skydio to Build the Future of Drone as First Responder",
-            "summary": "With an expanded partnership, Axon becomes exclusive Skydio distributor for public safety in the U.S. and Canada SCOTTSDALE, Ariz., Nov. 5, 2026 /PRNewswire/ -- Axon (Nasdaq: AXON), the global leader in public safety technology, today announced an additional $1.2 billion investment in...",
-            "link": "https://www.prnewswire.com/news-releases/axon-invests-1-2-billion-in-skydio-to-build-the-future-of-drone-as-first-responder-302930993.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-05T21:01:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAxon Invests $1.2 Billion in Skydio to Build the Future of Drone as First Responder\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "616e8090aac0c187",
       "seen_at": "2026-11-05T21:21:50.708352+00:00",
       "event": {
