@@ -64,6 +64,11 @@ def run(news_override=None, notify=True, track_history=True):
     event_decisions = []
     events = build_events(news, decisions=event_decisions)
     print_event_audit(event_decisions, len(events))
+    state_counts = Counter(
+        claim['state'] for decision in event_decisions
+        for group in ('contract_claims', 'cash_claims', 'revenue_claims')
+        for claim in decision.get('financial_states', {}).get(group, []))
+    print('계약·현금 상태 감사(기사 주장, 수령≠매출):', dict(state_counts))
     supply_chain_watch = build_supply_chain_watch(events, stocks)
     print("미국 사건→국내 공급망 관찰(점수 반영 없음):", supply_chain_watch)
 
