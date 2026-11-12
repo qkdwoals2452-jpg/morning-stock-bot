@@ -5528,6 +5528,63 @@
         "delivery_key": "6b031a1a307c3cf0d32a",
         "message_id": 2219
       }
+    },
+    {
+      "id": "7d7d8c143f0f55ac",
+      "seen_at": "2026-11-12T06:43:12.799215+00:00",
+      "event": {
+        "event_title": "미래에셋증권, 3분기 적자전환…4056억 순손실 '어닝쇼크'",
+        "event_key": "미래에셋증권_EARNINGS_f4ce6448b42c",
+        "event_subject_key": "미래에셋증권_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:405600000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "미래에셋증권, 3분기 적자전환…4056억 순손실 '어닝쇼크'",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026111231536",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T15:35:07+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
