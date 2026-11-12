@@ -2,67 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "47a430e77c6fb318",
-      "seen_at": "2026-11-05T11:04:10.009818+00:00",
-      "event": {
-        "event_title": "최태원 \"2100조 투자, 이렇게 해도되나 싶었지만…\"",
-        "event_key": "2100조_CAPEX_eb07f9e355f8",
-        "event_subject_key": "2100조_CAPEX",
-        "event_facts": {
-          "amounts": [
-            "UNKNOWN:2100000000000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "최태원 \"2100조 투자, 이렇게 해도되나 싶었지만…\"",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/2026110591741",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-05T18:24:21+09:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "구체적 투자 금액과 확정 투자 행동 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "구체적 투자 금액과 확정 투자 행동 확인"
-        ],
-        "money_flow": [
-          "투자",
-          "CAPEX"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n최태원 &quot;2100조 투자, 이렇게 해도되나 싶었지만…&quot;\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "e34b2511629beba4",
       "seen_at": "2026-11-05T11:54:10.957794+00:00",
       "event": {
