@@ -5990,6 +5990,65 @@
         "delivery_key": "1727ba63941f690db5ae",
         "message_id": 2253
       }
+    },
+    {
+      "id": "ee9c596bec888d1f",
+      "seen_at": "2026-11-12T15:36:21.391954+00:00",
+      "event": {
+        "event_title": "Polar Light Technologies Signs First Optical Interconnect Agreement, Leveraging its MicroLED Technology Platform",
+        "event_key": "polar_light_CONTRACT_9bb18d14faeb",
+        "event_subject_key": "polar_light_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Polar Light Technologies Signs First Optical Interconnect Agreement, Leveraging its MicroLED Technology Platform",
+            "summary": "Foxconn collaboration examines light sources for optical connections in data centers and high-performance computing LINKÖPING, Sweden, Nov. 12, 2026 /PRNewswire/ -- Polar Light Technologies AB (\"Polar Light\"), a global leader in MicroLED and NanoLED technology, today announced its first...",
+            "link": "https://www.prnewswire.com/news-releases/polar-light-technologies-signs-first-optical-interconnect-agreement-leveraging-its-microled-technology-platform-302938050.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-12T15:32:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
