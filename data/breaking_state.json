@@ -5155,6 +5155,63 @@
         "delivery_key": "b4824ce41b3e03124d91",
         "message_id": 2202
       }
+    },
+    {
+      "id": "3dda810b956e39d3",
+      "seen_at": "2026-11-12T01:16:54.024862+00:00",
+      "event": {
+        "event_title": "파인텍, 3분기 영업익 21억원 흑자 전환…매출 68% 증가",
+        "event_key": "파인텍_EARNINGS_2b20fbdda7ec",
+        "event_subject_key": "파인텍_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:2100000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "파인텍, 3분기 영업익 21억원 흑자 전환…매출 68% 증가",
+            "summary": "파인텍(131760)이 디스플레이 장비 수주 확대에 힘입어 올해 3분기 영업이익 흑자전환에 성공했다. 매출도 전년 동기 대비 68% 증가하며 성장세를 이어갔다고 12일 밝혔다.파인텍 CI.(사진=파인텍)파인텍의 3분기 연결기준 매출액은 246억원으로 전년 동기 대비 68.1% 증가했다. 영업이익은 21억원을 기록하며 흑자전환했다. 3분기 누적 매출액은 4...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02683046645645064",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T10:08:11+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
