@@ -4969,6 +4969,120 @@
         "delivery_key": "6ce7b925807973d07765",
         "message_id": 2196
       }
+    },
+    {
+      "id": "40226b18f543c189",
+      "seen_at": "2026-11-12T00:10:41.624876+00:00",
+      "event": {
+        "event_title": "지니언스, 3분기 영업이익 38억원…전년 동기 대비 253%↑",
+        "event_key": "지니언스_EARNINGS_86978e965b97",
+        "event_subject_key": "지니언스_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:3800000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "지니언스, 3분기 영업이익 38억원…전년 동기 대비 253%↑",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026111217846",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T08:49:12+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "8254aa220e7ae825",
+      "seen_at": "2026-11-12T00:10:41.624876+00:00",
+      "event": {
+        "event_title": "와이즈버즈, 3분기 영업이익 37억원…\"분기 기준 사상 최대\"",
+        "event_key": "와이즈버즈_EARNINGS_29f8955185ce",
+        "event_subject_key": "와이즈버즈_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:3700000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "와이즈버즈, 3분기 영업이익 37억원…\"분기 기준 사상 최대\"",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026111216976",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T08:22:00+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
