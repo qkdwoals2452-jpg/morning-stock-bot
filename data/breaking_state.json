@@ -5344,6 +5344,63 @@
         "delivery_key": "8d25a20cad1ba2cdeb5f",
         "message_id": 2210
       }
+    },
+    {
+      "id": "9b433b9efad4358b",
+      "seen_at": "2026-11-12T03:21:57.031863+00:00",
+      "event": {
+        "event_title": "서울옥션, 3분기 영업이익 2억원…전년 동기 대비 흑자전환",
+        "event_key": "서울옥션_EARNINGS_0e027048653a",
+        "event_subject_key": "서울옥션_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:200000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "서울옥션, 3분기 영업이익 2억원…전년 동기 대비 흑자전환",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026111224596",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T11:15:18+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
