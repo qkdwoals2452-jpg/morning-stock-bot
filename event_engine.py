@@ -840,6 +840,7 @@ def calc_event_score(article):
     cap = contract_score_cap(article, event_type)
     if cap is not None:
         score = min(score, cap)
+        reasons[0] = '사건신분:PRELIMINARY'
         reasons.append('예비·비구속 계약: 확정계약 점수 상한 적용')
     return min(score, 100), reasons
 
