@@ -5924,6 +5924,63 @@
         "delivery_key": "4d296caa06c5a2ce60de",
         "message_id": 2247
       }
+    },
+    {
+      "id": "8ca826e0297b1130",
+      "seen_at": "2026-11-12T12:36:19.261981+00:00",
+      "event": {
+        "event_title": "Stegra and Meta sign agreement for environmental attribute certificates to advance green steel",
+        "event_key": "meta_CONTRACT_585334f61c49",
+        "event_subject_key": "meta_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Stegra and Meta sign agreement for environmental attribute certificates to advance green steel",
+            "summary": "Stegra has signed a multi-year agreement with Meta for environmental attribute certificates (EACs) linked to Stegra's green steel plant in Northern Sweden, currently under construction. As part of the agreement, the EACs associated with the physical steel are verified by an accredited third party. Meta is purchasing EACs to drive demand for lower carbon materials, address emissions in its supply chain, and help scale and finance early-stage manufacturing.",
+            "link": "https://finance.yahoo.com/energy/articles/stegra-meta-sign-agreement-environmental-122500751.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T12:25:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
