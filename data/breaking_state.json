@@ -5710,8 +5710,10 @@
         "message_id": 2227
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\n3분기 10대 증권사 순이익 83% 급감 1조 하회...과징금·평가손 여파\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "a564ac6e57aab386b5ff"
       }
     }
   ],
