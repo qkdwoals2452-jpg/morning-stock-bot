@@ -5406,6 +5406,63 @@
         "delivery_key": "420bd83bc7ebbd2a8295",
         "message_id": 2212
       }
+    },
+    {
+      "id": "0a36ef249cb9fdee",
+      "seen_at": "2026-11-12T04:48:11.140747+00:00",
+      "event": {
+        "event_title": "센코, 3분기 누적 매출 326억원…전년比 35% 증가",
+        "event_key": "센코_EARNINGS_d6582b600a6c",
+        "event_subject_key": "센코_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:32600000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "센코, 3분기 누적 매출 326억원…전년比 35% 증가",
+            "summary": "센코(347000)는 올해 3분기 누적 연결기준 매출액이 326억원으로 전년 동기 대비 35% 증가했다고 12일 밝혔다. 같은 기간 영업이익은 22억원으로 33% 늘었다.3분기 개별로는 매출액과 영업이익이 각각 111억원, 9억6000만원을 기록해 모두 전년 동기 대비 두 자릿수 증가율을 기록했다. 해외 산업용 가스검지기 판매 확대와 국내 반도체 고객사향...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03434166645645064",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T13:42:24+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
