@@ -5273,7 +5273,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "a37a5f29f2086b41081e"
       },
       "analysis": {
         "phase": "ready",
