@@ -5338,10 +5338,11 @@
         "message_id": 2209
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n삼성화재, 3분기 순이익 8.3% 감소…자동차보험은 흑자 전환\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "8d25a20cad1ba2cdeb5f"
+        "delivery_key": "8d25a20cad1ba2cdeb5f",
+        "message_id": 2210
       }
     }
   ],
