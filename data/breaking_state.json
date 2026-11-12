@@ -6054,6 +6054,67 @@
         "delivery_key": "97914c2b759e62bff46b",
         "message_id": 2255
       }
+    },
+    {
+      "id": "8bf52e70596d2f9c",
+      "seen_at": "2026-11-12T16:36:22.262451+00:00",
+      "event": {
+        "event_title": "SATIM signs contract with Polish Ministry of National Defence for SAR analytics software",
+        "event_key": "satim_signs_CONTRACT_04e044375e18",
+        "event_subject_key": "satim_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "polish ministry of national defence"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "SATIM signs contract with Polish Ministry of National Defence for SAR analytics software",
+            "summary": "The contract strengthens Poland's ability to turn satellite radar imagery from MikroSAR program into actionable intelligence. KRAKÓW, Poland, Nov. 12, 2026 /PRNewswire/ -- SATIM has announced it has entered a contract with Poland's Ministry of National Defence to provide software for the...",
+            "link": "https://www.prnewswire.com/news-releases/satim-signs-contract-with-polish-ministry-of-national-defence-for-sar-analytics-software-302938144.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-12T16:31:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
