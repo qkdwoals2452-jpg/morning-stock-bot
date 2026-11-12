@@ -74,7 +74,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for history_file in orion_backtest.json data/history.json; do
+          for history_file in orion_backtest.json data/history.json data/rejected_candidates.json; do
             if [ -f "$history_file" ]; then
               git add -- "$history_file"
             fi

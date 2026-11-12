@@ -22,9 +22,10 @@ class CurrentDisclosureTests(unittest.TestCase):
                     ('BS', 'ifrs-full_Liabilities', 50, 999)]]
 
     def test_latest_published_report_uses_consistent_ytd(self):
-        with patch('requests.get', side_effect=[self.response('013'), self.response(rows=self.rows())]) as get:
+        with patch('requests.get', side_effect=[self.response('013'), self.response('013'), self.response(rows=self.rows())]) as get:
             result = self.finance.get_dart_finance('022100', date(2026,10,30))
-        self.assertEqual([c.kwargs['params']['reprt_code'] for c in get.call_args_list], ['11014','11012'])
+        self.assertEqual([c.kwargs['params']['reprt_code'] for c in get.call_args_list], ['11014','11014','11012'])
+        self.assertEqual([c.kwargs['params']['fs_div'] for c in get.call_args_list], ['CFS','OFS','CFS'])
         self.assertEqual(result['op_margin'], -5)
         self.assertEqual(result['debt_ratio'], 50)
         self.assertEqual(result['report']['year'], 2026)

@@ -12,6 +12,7 @@ corp_map = dict(zip(
 ))
 from config import DART_API_KEY
 from finance_model_policy import financial_model_unsupported
+from dart_statement_reader import read_statement
 from quality_engine import get_quality_score
 HEADERS = {
     "User-Agent": "Mozilla/5.0"
@@ -104,7 +105,8 @@ def get_dart_finance(stock_code, as_of=None):
     if corp_code is None:
         return {
             "op_margin": None,
-            "debt_ratio": None
+            "debt_ratio": None,
+            "report": {"status": "missing_corp_code"}
         }
 
     as_of = as_of or datetime.now(ZoneInfo("Asia/Seoul")).date()
@@ -112,29 +114,8 @@ def get_dart_finance(stock_code, as_of=None):
 
     try:
 
-        url = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json"
-
-        data = None
-        for year, report_code in report_candidates(as_of):
-            res = requests.get(url, params={
-                'crtfc_key': DART_API_KEY, 'corp_code': corp_code,
-                'bsns_year': str(year), 'reprt_code': report_code, 'fs_div': 'CFS'
-            }, timeout=10)
-            res.raise_for_status()
-            candidate = res.json()
-            if candidate.get('status') == '013':
-                continue
-            if candidate.get('status') != '000' or not candidate.get('list'):
-                break
-            receipts = {r.get('rcept_no', '') for r in candidate['list']} - {''}
-            if any(r[:8] > as_of.strftime('%Y%m%d') for r in receipts):
-                break
-            data = candidate
-            report = {'year': year, 'report_code': report_code, 'fs_div': 'CFS',
-                      'basis': 'annual' if report_code == '11011' else 'year_to_date',
-                      'receipt_numbers': sorted(receipts)}
-            break
-        if data is None:
+        rows, report = read_statement(corp_code, report_candidates(as_of), as_of)
+        if rows is None:
             return {'op_margin': None, 'debt_ratio': None, 'report': report}
 
         sales = 0
@@ -143,7 +124,7 @@ def get_dart_finance(stock_code, as_of=None):
         debt = None
         equity = None
 
-        for row in data.get("list", []):
+        for row in rows:
 
             if row.get("sj_div") not in {"BS", "IS", "CIS"}:
                 continue
@@ -212,12 +193,9 @@ def get_dart_finance(stock_code, as_of=None):
             "report": report
         }
 
-    except:
-
-        return {
-            "op_margin": None,
-            "debt_ratio": None
-        }
+    except Exception as exc:
+        return {"op_margin": None, "debt_ratio": None,
+                "report": {**report, "status": "parse_error", "error_type": type(exc).__name__}}
 
 
 # ------------------------
