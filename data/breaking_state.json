@@ -63,68 +63,6 @@
       }
     },
     {
-      "id": "94256a7a6df44ad5",
-      "seen_at": "2026-11-05T12:04:11.039931+00:00",
-      "event": {
-        "event_title": "Swift Ascent Acquires MMAX with backing from Bluestone Investment Partners to Enhance Capabilities and Services for Intelligence Customers.",
-        "event_key": "swift_ascent_M&A_b869b27909df",
-        "event_subject_key": "swift_ascent_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [
-            "backing from bluestone investment partners"
-          ],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Swift Ascent Acquires MMAX with backing from Bluestone Investment Partners to Enhance Capabilities and Services for Intelligence Customers.",
-            "summary": "The combined company sees accelerating demand for its systems engineering and technology services within the IC. CHANTILLY, Va., Nov. 5, 2026 /PRNewswire/ -- Swift Ascent, a growing provider of technology delivery, operations, and mission-support solutions to the Intelligence Community...",
-            "link": "https://www.prnewswire.com/news-releases/swift-ascent-acquires-mmax-with-backing-from-bluestone-investment-partners-to-enhance-capabilities-and-services-for-intelligence-customers-302930160.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-05T12:00:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nSwift Ascent Acquires MMAX with backing from Bluestone Investment Partners to Enhance Capabilities and Services for Intelligence Customers.\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "82b04c8ca5f32073",
       "seen_at": "2026-11-05T13:54:12.488915+00:00",
       "event": {
@@ -5917,6 +5855,69 @@
         "message": "🔎 ORION 후속 검증 · 2차\n\nFoxconn Reports 34% Rise in Quarterly Profit to T$77.5 Billion, Expects Continued AI Demand\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 기사에서 설비투자·생산·공급 지출 근거를 확인하지 못했습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
         "delivery_key": "abd252834058e9f8b89f",
         "message_id": 2245
+      }
+    },
+    {
+      "id": "353506652845e1e5",
+      "seen_at": "2026-11-12T12:05:10.479455+00:00",
+      "event": {
+        "event_title": "Worker.ai acquires DeltaGen, launches with backing from billionaire Veeam founder Ratmir Timashev",
+        "event_key": "worker_ai_M&A_be623e0b6bf8",
+        "event_subject_key": "worker_ai_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "backing from billionaire veeam founder ratmir timas"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Worker.ai acquires DeltaGen, launches with backing from billionaire Veeam founder Ratmir Timashev",
+            "summary": "The acquisition brings DeltaGen's real-time AI technology to Worker's operating system for small businesses, as Timashev bets on AI to transform Main Street. RALEIGH, N.C., Nov. 12, 2026 /PRNewswire/ -- Worker.ai today announced the acquisition of Techstars-backed DeltaGen and launched...",
+            "link": "https://www.prnewswire.com/news-releases/workerai-acquires-deltagen-launches-with-backing-from-billionaire-veeam-founder-ratmir-timashev-302936953.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-12T12:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
