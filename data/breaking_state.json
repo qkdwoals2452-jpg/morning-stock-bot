@@ -5654,6 +5654,63 @@
         "delivery_key": "4ef0f233e6da6c91ee30",
         "message_id": 2226
       }
+    },
+    {
+      "id": "9a13aae23f554b0a",
+      "seen_at": "2026-11-12T07:30:06.450448+00:00",
+      "event": {
+        "event_title": "3분기 10대 증권사 순이익 83% 급감 1조 하회...과징금·평가손 여파",
+        "event_key": "증권사_EARNINGS_fbb96767f123",
+        "event_subject_key": "증권사_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:1000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "3분기 10대 증권사 순이익 83% 급감 1조 하회...과징금·평가손 여파",
+            "summary": "올 상반기 ‘불장’에 사상 최대 실적을 썼던 증권사들이 3분기 들어 급제동이 걸렸다. 자기자본 상위 10개 증권사의 순이익은 전분기보다 80% 넘게 줄었다. 증시 조정으로 거래대금과 운용이익이 함께 줄어든 데다, 국고채 입찰 담합 과징금과 투자자산 평가손실까지 겹쳤다.12일 금융투자업계에 따르면 자기자본 상위 10개 증권사의 3분기 연결 기준 당기순이익 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04152486645645064",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T16:27:21+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
