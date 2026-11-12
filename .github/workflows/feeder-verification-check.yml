@@ -1,0 +1,67 @@
+name: ORION Feeder Original Verification Check
+on:
+  pull_request:
+    paths: [feeder_news_engine.py, test_feeder_news.py, news_engine.py, .github/workflows/feeder-verification-check.yml]
+permissions:
+  contents: read
+jobs:
+  original-verification:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-14]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas lxml
+      - name: Full regression tests
+        run: python -m unittest discover -v
+      - name: Live original verification (no bot or Telegram)
+        run: |
+          python -u - <<'PY'
+          import json
+          from news_engine import get_verified_feeder_news, filter_recent_news
+          diagnostics = {}
+          articles = get_verified_feeder_news(diagnostics)
+          recent = filter_recent_news(articles, hours=36)
+          print('LIVE ORIGINAL VERIFICATION:', json.dumps({
+              'diagnostics': diagnostics, 'verified': len(articles),
+              'recent': len(recent),
+              'evidence': [{'title': a['title'], 'published_at': a['published_at'],
+                            'verified_by': a['publication_verified_by']} for a in recent],
+          }, ensure_ascii=False))
+          assert articles, 'No original-verified articles; transport recovery is NOT proven'
+          PY
+      - name: Public source protocol diagnostics
+        if: failure()
+        run: |
+          python -u - <<'PYDIAG'
+          import subprocess, tempfile, json, xml.etree.ElementTree as ET
+          from pathlib import Path
+          from feeder_news_engine import original_from_article
+          sources = [('rss', 'https://www.nasdaq.com/feed/rssoutbound?category=Stocks'),
+                     ('article', 'https://www.nasdaq.com/articles/coffee-prices-fall-ice-coffee-inventories-rise')]
+          for kind, url in sources:
+              for protocol in ('--http1.1', '--http2'):
+                  with tempfile.TemporaryDirectory() as directory:
+                      body = Path(directory) / 'response'
+                      result = subprocess.run(['curl', protocol, '--silent', '--show-error',
+                          '--connect-timeout', '3', '--max-time', '8',
+                          '--user-agent', 'ORION Stock Research Bot qkdwoals2452@gmail.com',
+                          '--output', str(body), '--write-out', '%{http_code} %{http_version}', url],
+                          capture_output=True, text=True, timeout=10)
+                      evidence = None
+                      if result.returncode == 0 and result.stdout.startswith('200'):
+                          try:
+                              text = body.read_text()
+                              evidence = (len(ET.fromstring(text).findall('.//item')) if kind == 'rss'
+                                          else bool(original_from_article(text, url)))
+                          except (ValueError, ET.ParseError):
+                              evidence = 'parse_failed'
+                      print('PUBLIC SOURCE PROTOCOL:', json.dumps({'kind': kind, 'protocol': protocol,
+                          'exit': result.returncode, 'http': result.stdout, 'evidence': evidence}))
+          PYDIAG
