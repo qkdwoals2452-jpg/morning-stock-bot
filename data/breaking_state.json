@@ -63,66 +63,6 @@
       }
     },
     {
-      "id": "616e8090aac0c187",
-      "seen_at": "2026-11-05T21:21:50.708352+00:00",
-      "event": {
-        "event_title": "Automated Logic Signs Agreement to Acquire Logical Solutions, Inc.",
-        "event_key": "automated_logic_CONTRACT_5cfb7efee470",
-        "event_subject_key": "automated_logic_CONTRACT",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Automated Logic Signs Agreement to Acquire Logical Solutions, Inc.",
-            "summary": "Advances Carrier's ability to deliver solutions for intelligent, autonomous and efficient buildings in key verticals and expands its national presence in strategic markets KENNESAW, Ga., Nov. 5, 2026 /PRNewswire/ -- Automated Logic Contracting Services, Inc. (Automated Logic), a leading...",
-            "link": "https://www.prnewswire.com/news-releases/automated-logic-signs-agreement-to-acquire-logical-solutions-inc-302931296.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-05T21:15:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "실제 계약 체결 문장 확인",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "실제 계약 체결 문장 확인",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAutomated Logic Signs Agreement to Acquire Logical Solutions, Inc.\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "e22ef19438ed6372",
       "seen_at": "2026-11-05T21:50:57.863354+00:00",
       "event": {
