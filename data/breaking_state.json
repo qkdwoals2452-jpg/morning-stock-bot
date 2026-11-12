@@ -5783,8 +5783,10 @@
         "message_id": 2233
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\n에스에프에이, 3분기 별도 영업이익률 13.8%…반도체 수주 확대\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "57b9985f5909f53717c9"
       }
     },
     {
