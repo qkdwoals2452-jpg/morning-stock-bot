@@ -160,5 +160,414 @@
         "recorded_at": "2026-11-11T11:36:31.523169+09:00",
         "date_timezone": "Asia/Seoul",
         "results": []
+    },
+    {
+        "date": "2026-11-12",
+        "recorded_at": "2026-11-12T12:42:58.349972+09:00",
+        "date_timezone": "Asia/Seoul",
+        "results": [
+            {
+                "theme": {
+                    "name": "기업 직접사건",
+                    "analysis_route": "DIRECT_EVENT",
+                    "candidate_codes": [
+                        "263860"
+                    ],
+                    "articles": [
+                        {
+                            "title": "지니언스, 3분기 영업이익 38억원…전년 동기 대비 253%↑",
+                            "summary": "",
+                            "link": "https://www.hankyung.com/article/2026111217846",
+                            "market": "KR",
+                            "source": "한국경제_증권",
+                            "origin_publisher": "",
+                            "published_at": "2026-11-12T08:49:12+09:00",
+                            "event_score_raw": 70,
+                            "event_reasons": [
+                                "사건신분:CONFIRMED",
+                                "사건유형:EARNINGS",
+                                "실적 기간과 확정된 실적 변화 확인"
+                            ]
+                        }
+                    ],
+                    "score": 70,
+                    "event_score": 70,
+                    "frequency_score": 0,
+                    "event_keys": [
+                        "지니언스_EARNINGS_86978e965b97"
+                    ],
+                    "reason": "기사에 확인된 국내 상장사 직접사건 검증"
+                },
+                "ranked": [
+                    {
+                        "name": "지니언스",
+                        "code": "263860",
+                        "sector": "소프트웨어 개발 및 공급업",
+                        "theme_score": 0,
+                        "event_score": 70,
+                        "relation_score": 100,
+                        "finance": {
+                            "score": 42,
+                            "memo": "PER 양호, PBR 높음, 영업이익률 우수, 부채 안정, Champion 57점",
+                            "per": 26.89,
+                            "pbr": 4.14,
+                            "op_margin": 20.9,
+                            "debt_ratio": 27.7,
+                            "quality": {
+                                "score": 57,
+                                "grade": "D",
+                                "sales_growth": 51.58,
+                                "profit_growth": 18.63,
+                                "roe_avg": 14.71,
+                                "roe_min": 12.05,
+                                "op_margin": 14.48,
+                                "debt_ratio": 29.24,
+                                "memo": "Champion Score 57점",
+                                "records": [
+                                    {
+                                        "year": 2021,
+                                        "sales": 31917740934,
+                                        "op": 5906832874,
+                                        "net_income": 6173648163,
+                                        "equity": 41124448191,
+                                        "roe": 15.01,
+                                        "op_margin": 18.51,
+                                        "debt_ratio": 28.16
+                                    },
+                                    {
+                                        "year": 2022,
+                                        "sales": 38452577834,
+                                        "op": 6920292722,
+                                        "net_income": 7146285721,
+                                        "equity": 47901167626,
+                                        "roe": 14.92,
+                                        "op_margin": 18.0,
+                                        "debt_ratio": 24.62
+                                    },
+                                    {
+                                        "year": 2023,
+                                        "sales": 42891621151,
+                                        "op": 6467031062,
+                                        "net_income": 6246383767,
+                                        "equity": 50510731531,
+                                        "roe": 12.37,
+                                        "op_margin": 15.08,
+                                        "debt_ratio": 26.0
+                                    },
+                                    {
+                                        "year": 2024,
+                                        "sales": 49605420747,
+                                        "op": 9839923500,
+                                        "net_income": 10908526190,
+                                        "equity": 56786413084,
+                                        "roe": 19.21,
+                                        "op_margin": 19.84,
+                                        "debt_ratio": 22.04
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "sales": 48381253076,
+                                        "op": 7007064713,
+                                        "net_income": 7496920564,
+                                        "equity": 62211095881,
+                                        "roe": 12.05,
+                                        "op_margin": 14.48,
+                                        "debt_ratio": 29.24
+                                    }
+                                ],
+                                "reason": [
+                                    "5년 매출 성장 우수",
+                                    "5년 영업이익 유지",
+                                    "5년 평균 ROE 보통 14.71%",
+                                    "ROE 안정성 보통",
+                                    "최근 영업이익률 양호",
+                                    "부채비율 안정"
+                                ]
+                            },
+                            "report": {
+                                "year": 2026,
+                                "report_code": "11014",
+                                "fs_div": "CFS",
+                                "basis": "year_to_date",
+                                "receipt_numbers": [
+                                    "20261112000006"
+                                ]
+                            },
+                            "exclude": false,
+                            "exclude_reason": ""
+                        },
+                        "market": {
+                            "score": 20,
+                            "memo": "상승 반응, 거래대금 양호",
+                            "change_rate": 3.6,
+                            "volume": 4318550,
+                            "trading_value": 111850445000,
+                            "trading_date": "20261111",
+                            "trading_value_is_estimate": true,
+                            "close_price": 25900.0,
+                            "price_date": "2026-11-11",
+                            "price_source": "YAHOO_REGULAR_CLOSE"
+                        },
+                        "verify": {
+                            "pass": true,
+                            "score": 0,
+                            "stage": "connection",
+                            "memo": "KRX 등록 업종·기사 직접 사건 당사자 확인(산업 수혜 미확정)",
+                            "matched": [
+                                "소프트웨어 개발 및 공급업"
+                            ],
+                            "source": "KRX_LIST_AND_EVENT_ARTICLE",
+                            "sector": "소프트웨어 개발 및 공급업",
+                            "event_connection": {
+                                "pass": true,
+                                "role": "EVENT_ACTOR",
+                                "evidence": [
+                                    {
+                                        "role": "EVENT_ACTOR",
+                                        "event_type": "EARNINGS",
+                                        "text": "지니언스, 3분기 영업이익 38억원…전년 동기 대비 253%↑",
+                                        "source": "한국경제_증권",
+                                        "link": "https://www.hankyung.com/article/2026111217846",
+                                        "published_at": "2026-11-12T08:49:12+09:00",
+                                        "amount_text": [
+                                            "38억원"
+                                        ]
+                                    },
+                                    {
+                                        "role": "EVENT_ACTOR",
+                                        "event_type": "EARNINGS",
+                                        "text": "지니언스, 3분기 영업이익 38억원",
+                                        "source": "한국경제_증권",
+                                        "link": "https://www.hankyung.com/article/2026111217846",
+                                        "published_at": "2026-11-12T08:49:12+09:00",
+                                        "amount_text": [
+                                            "38억원"
+                                        ]
+                                    }
+                                ],
+                                "reason": "기사에 명시된 사건 당사자(매출 귀속·이익 효과는 별도 검증)"
+                            }
+                        },
+                        "company": {
+                            "score": 0,
+                            "exclude": false,
+                            "memo": "KRX 등록 업종·기사 직접 사건 당사자 확인(산업 수혜 미확정)",
+                            "matched": {
+                                "business": [
+                                    "소프트웨어 개발 및 공급업"
+                                ]
+                            },
+                            "source": "KRX_LIST_AND_EVENT_ARTICLE"
+                        },
+                        "chart": {
+                            "score": 17,
+                            "memo": "20일선 위, 60일선 위, 120일선 위",
+                            "details": {
+                                "current": 25900.0,
+                                "price_date": "2026-11-11",
+                                "price_source": "YAHOO_REGULAR_CLOSE",
+                                "ma20": 23610.0,
+                                "ma60": 19669.83,
+                                "ma120": 16648.58,
+                                "high_52w": 35200.0,
+                                "high_52w_start_exclusive": "2025-11-12",
+                                "high_52w_end": "2026-11-11",
+                                "high_52w_invalid_dates": [],
+                                "high_52w_gap": -26.42,
+                                "price_corrections": []
+                            }
+                        },
+                        "learning": {
+                            "score": 0,
+                            "memo": "검증 표본 부족",
+                            "sample_count": 0,
+                            "status": "no_verified_outcomes",
+                            "minimum_samples": 5,
+                            "horizon": 5,
+                            "average_return": null,
+                            "excluded": {},
+                            "source": "completed_trading_checkpoints"
+                        },
+                        "impact": {
+                            "score": 70,
+                            "raw_score": 70,
+                            "event_connection": {
+                                "pass": true,
+                                "role": "EVENT_ACTOR",
+                                "evidence": [
+                                    {
+                                        "role": "EVENT_ACTOR",
+                                        "event_type": "EARNINGS",
+                                        "text": "지니언스, 3분기 영업이익 38억원…전년 동기 대비 253%↑",
+                                        "source": "한국경제_증권",
+                                        "link": "https://www.hankyung.com/article/2026111217846",
+                                        "published_at": "2026-11-12T08:49:12+09:00",
+                                        "amount_text": [
+                                            "38억원"
+                                        ]
+                                    },
+                                    {
+                                        "role": "EVENT_ACTOR",
+                                        "event_type": "EARNINGS",
+                                        "text": "지니언스, 3분기 영업이익 38억원",
+                                        "source": "한국경제_증권",
+                                        "link": "https://www.hankyung.com/article/2026111217846",
+                                        "published_at": "2026-11-12T08:49:12+09:00",
+                                        "amount_text": [
+                                            "38억원"
+                                        ]
+                                    }
+                                ],
+                                "reason": "기사에 명시된 사건 당사자(매출 귀속·이익 효과는 별도 검증)"
+                            },
+                            "memo": "뉴스 사건 당사자 연결 확인(이익 효과 미확인)",
+                            "matched": [],
+                            "strong_matched": [],
+                            "customer_matched": [],
+                            "reasons": [
+                                "기사의 사건 당사자 기업명 확인"
+                            ],
+                            "exclude": false,
+                            "exclude_reason": ""
+                        },
+                        "final_score": 79.0,
+                        "score_version": "evidence_dedup_v2",
+                        "score_breakdown": {
+                            "finance": 42.0,
+                            "market": 20.0,
+                            "business": 0,
+                            "chart": 17.0,
+                            "learning": 0.0
+                        },
+                        "score_excluded": {
+                            "article_frequency": 0.0,
+                            "direct_mention": 100.0,
+                            "event_relation": 70.0
+                        },
+                        "score_unit": "heuristic_ranking_points_not_probability",
+                        "grade_status": "uncalibrated",
+                        "grade": "🧪 검증중",
+                        "reason": [
+                            "사건 신호 70점",
+                            "사업영역 후보",
+                            "재무 우수",
+                            "시장 반응 확인",
+                            "20일선 위, 60일선 위, 120일선 위",
+                            "뉴스 사건 당사자 연결 확인(이익 효과 미확인)"
+                        ],
+                        "event_connection": {
+                            "pass": true,
+                            "role": "EVENT_ACTOR",
+                            "evidence": [
+                                {
+                                    "role": "EVENT_ACTOR",
+                                    "event_type": "EARNINGS",
+                                    "text": "지니언스, 3분기 영업이익 38억원…전년 동기 대비 253%↑",
+                                    "source": "한국경제_증권",
+                                    "link": "https://www.hankyung.com/article/2026111217846",
+                                    "published_at": "2026-11-12T08:49:12+09:00",
+                                    "amount_text": [
+                                        "38억원"
+                                    ]
+                                },
+                                {
+                                    "role": "EVENT_ACTOR",
+                                    "event_type": "EARNINGS",
+                                    "text": "지니언스, 3분기 영업이익 38억원",
+                                    "source": "한국경제_증권",
+                                    "link": "https://www.hankyung.com/article/2026111217846",
+                                    "published_at": "2026-11-12T08:49:12+09:00",
+                                    "amount_text": [
+                                        "38억원"
+                                    ]
+                                }
+                            ],
+                            "reason": "기사에 명시된 사건 당사자(매출 귀속·이익 효과는 별도 검증)"
+                        },
+                        "pre_news_activity": {
+                            "status": "ok",
+                            "volume_ratio": 1.8441,
+                            "estimated_value_ratio": 1.7828,
+                            "score_effect": 0,
+                            "cutoff_policy": "strict_prior_calendar_day",
+                            "value_method": "close_x_volume_estimate",
+                            "reference_at": "2026-11-12T08:49:12+09:00",
+                            "analysis_as_of": "2026-11-12T12:41:43.701694+09:00",
+                            "observed_sessions": 25,
+                            "required_sessions": 25,
+                            "session_dates": [
+                                "2026-10-07",
+                                "2026-10-08",
+                                "2026-10-12",
+                                "2026-10-13",
+                                "2026-10-14",
+                                "2026-10-15",
+                                "2026-10-16",
+                                "2026-10-19",
+                                "2026-10-20",
+                                "2026-10-21",
+                                "2026-10-22",
+                                "2026-10-23",
+                                "2026-10-26",
+                                "2026-10-27",
+                                "2026-10-28",
+                                "2026-10-29",
+                                "2026-10-30",
+                                "2026-11-02",
+                                "2026-11-03",
+                                "2026-11-04",
+                                "2026-11-05",
+                                "2026-11-06",
+                                "2026-11-09",
+                                "2026-11-10",
+                                "2026-11-11"
+                            ],
+                            "baseline_sessions": 20,
+                            "recent_sessions": 5,
+                            "baseline_dates": [
+                                "2026-10-07",
+                                "2026-10-08",
+                                "2026-10-12",
+                                "2026-10-13",
+                                "2026-10-14",
+                                "2026-10-15",
+                                "2026-10-16",
+                                "2026-10-19",
+                                "2026-10-20",
+                                "2026-10-21",
+                                "2026-10-22",
+                                "2026-10-23",
+                                "2026-10-26",
+                                "2026-10-27",
+                                "2026-10-28",
+                                "2026-10-29",
+                                "2026-10-30",
+                                "2026-11-02",
+                                "2026-11-03",
+                                "2026-11-04"
+                            ],
+                            "recent_dates": [
+                                "2026-11-05",
+                                "2026-11-06",
+                                "2026-11-09",
+                                "2026-11-10",
+                                "2026-11-11"
+                            ],
+                            "baseline_avg_volume": 916339.6,
+                            "recent_avg_volume": 1689830.6,
+                            "baseline_avg_estimated_value": 23735488353.0,
+                            "recent_avg_estimated_value": 42316549820.0,
+                            "last_session_date": "2026-11-11",
+                            "reference_scope": "earliest_available_linked_article",
+                            "news_link": "https://www.hankyung.com/article/2026111217846",
+                            "news_source": "한국경제_증권",
+                            "news_timezone_assumed_kst": false,
+                            "data_source": "NAVER_daily_chart",
+                            "observation_recorded_at": "2026-11-12T03:41:44.744411+00:00"
+                        }
+                    }
+                ]
+            }
+        ]
     }
 ]
