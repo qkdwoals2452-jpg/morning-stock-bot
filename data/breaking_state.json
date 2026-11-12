@@ -63,66 +63,6 @@
       }
     },
     {
-      "id": "67f87fc1b644bb09",
-      "seen_at": "2026-11-05T14:20:33.961292+00:00",
-      "event": {
-        "event_title": "Awesome Motive Backed WPBeginner Growth Fund Acquires Drip & Sleeknote, an Email, SMS, and Onsite Marketing Platform for Small Businesses",
-        "event_key": "awesome_motive_M&A_ae602430c905",
-        "event_subject_key": "awesome_motive_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Awesome Motive Backed WPBeginner Growth Fund Acquires Drip & Sleeknote, an Email, SMS, and Onsite Marketing Platform for Small Businesses",
-            "summary": "WEST PALM BEACH, Fla., Nov. 5, 2026 /PRNewswire/ -- WPBeginner Growth Fund, a leading investment fund specializing in B2B software businesses backed by Awesome Motive, is thrilled to announce its acquisition of Drip, an email & SMS marketing automation platform for small businesses, and...",
-            "link": "https://www.prnewswire.com/news-releases/awesome-motive-backed-wpbeginner-growth-fund-acquires-drip--sleeknote-an-email-sms-and-onsite-marketing-platform-for-small-businesses-302930844.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-05T14:15:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAwesome Motive Backed WPBeginner Growth Fund Acquires Drip &amp; Sleeknote, an Email, SMS, and Onsite Marketing Platform for Small Businesses\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "c35bb29f443c9196",
       "seen_at": "2026-11-05T19:41:49.248871+00:00",
       "event": {
