@@ -74,6 +74,17 @@ class FinancialStateTests(unittest.TestCase):
             self.assertEqual(event['event_score'], 60)
             self.assertEqual(event['evidence_strength'], 'MEDIUM')
 
+    def test_real_term_sheet_path_is_not_confirmed_or_strong(self):
+        for title in ['Company signs term sheet agreement for power supply',
+                      'Company signs nonbinding supply agreement']:
+            article = {'title': title}
+            score, reasons = calc_event_score(article)
+            self.assertEqual(score, 60)
+            self.assertNotIn('사건신분:CONFIRMED', reasons)
+            event = build_events([article])[0]
+            self.assertEqual(event['evidence_strength'], 'MEDIUM')
+            self.assertLess(event['event_score'], 70)
+
     def test_rejected_article_still_audited_and_input_not_mutated_by_extractor(self):
         article = {'title': 'Company signs non-binding supply agreement', 'summary': ''}
         original = deepcopy(article)
