@@ -1,0 +1,22 @@
+name: ORION Financial State Check
+on:
+  push:
+    branches: [main, orion-financial-state-fix]
+    paths: [financial_state_engine.py, event_engine.py, main.py, test_financial_states.py, .github/workflows/financial-state-check.yml]
+  pull_request:
+    paths: [financial_state_engine.py, event_engine.py, main.py, test_financial_states.py, .github/workflows/financial-state-check.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  financial-state-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - run: pip install requests pandas
+      - name: Financial states and event routing regressions
+        run: python -m unittest -v test_financial_states test_event_certainty test_event_identity test_event_audit test_money_flow_relation test_event_analysis_route test_pre_news_activity
