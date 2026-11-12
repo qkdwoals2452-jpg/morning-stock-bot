@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "5400831e1d323276",
-      "seen_at": "2026-11-05T05:27:52.889494+00:00",
-      "event": {
-        "event_title": "A&O Shearman invests $1.1bn in AI",
-        "event_key": "a_o_CAPEX_e5b9ed6c5dda",
-        "event_subject_key": "a_o_CAPEX",
-        "event_facts": {
-          "amounts": [
-            "USD:1.1"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CAPEX",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "A&O Shearman invests $1.1bn in AI",
-            "summary": "The ‘magic circle’ firm has told lawyers each practice area must commit at least 3% of billable time to creating AI tools",
-            "link": "https://www.ft.com/content/b832654a-79d1-4db0-9de8-d1a65251539d?syn-25a6b1a6=1",
-            "market": "US",
-            "source": "FT_International",
-            "origin_publisher": "",
-            "published_at": "2026-11-05T05:00:16+00:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CAPEX",
-              "실제 투자·CAPEX·생산능력 변화",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CAPEX",
-          "실제 투자·CAPEX·생산능력 변화",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nA&amp;O Shearman invests $1.1bn in AI\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "5d2f49bb3c7ca2ef",
       "seen_at": "2026-11-05T07:22:54.311017+00:00",
       "event": {
@@ -5467,6 +5405,63 @@
         "message": "🔎 ORION 후속 검증 · 2차\n\n센코, 3분기 누적 매출 326억원…전년比 35% 증가\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 센코 (347000) · 기사상 사건 주체\n기사 기재 금액: 326억원\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=03434166645645064\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 센코 (347000): 120일선 아래\n2026-11-11 정규장 일봉 · 종가 1,679원 / 120일선 1,792.04원 / 52주 고점 2,625원 / 고점 대비 -36.04%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
         "delivery_key": "5b7c9276da104e1c2665",
         "message_id": 2215
+      }
+    },
+    {
+      "id": "ffe36734e6a2bc5b",
+      "seen_at": "2026-11-12T05:28:10.887562+00:00",
+      "event": {
+        "event_title": "태웅로직스, 3분기 누적 영업익 304% 증가…매출 1조원 돌파",
+        "event_key": "태웅로직스_EARNINGS_442981c8ec46",
+        "event_subject_key": "태웅로직스_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:1000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "태웅로직스, 3분기 누적 영업익 304% 증가…매출 1조원 돌파",
+            "summary": "종합물류서비스 기업 태웅로직스(124560)가 올해 3분기 누적 영업이익을 전년 동기 대비 304% 늘리며 수익성을 개선했다고 12일 밝혔다. 태웅로직스 CI.(사진=태웅로직스)태웅로직스는 2026년 3분기 연결기준 누적 매출액이 1조 588억원으로 전년 동기 대비 28% 증가했다고 공시했다. 같은 기간 누적 영업이익은 223억원으로 304% 늘었다. ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03634246645645064",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T14:23:41+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
