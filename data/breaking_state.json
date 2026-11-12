@@ -5155,6 +5155,63 @@
         "delivery_key": "a2b17e4413a513533e0a",
         "message_id": 2204
       }
+    },
+    {
+      "id": "e79a77d016eb6004",
+      "seen_at": "2026-11-12T01:46:54.950936+00:00",
+      "event": {
+        "event_title": "서울옥션, 3분기 누적 매출 249억…전년比 58%↑",
+        "event_key": "서울옥션_EARNINGS_110c8e11bddd",
+        "event_subject_key": "서울옥션_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:24900000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "서울옥션, 3분기 누적 매출 249억…전년比 58%↑",
+            "summary": "국내 1위 미술품 경매사 서울옥션(063170)이 미술 시장 침체 우려를 뚫고 3개 분기 연속 영업이익 흑자 행진을 이어갔다. 특히 3분기까지 거둔 누적 매출액과 낙찰총액이 이미 지난해 연간 전체 실적을 넘어서면서 4분기 대규모 기획 경매를 통한 본격적인 연간 실적 턴어라운드가 가시화되고 있다.(사진=서울옥션)12일 서울옥션에 따르면 올해 3분기 연결 기...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02856886645645064",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T10:43:25+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
