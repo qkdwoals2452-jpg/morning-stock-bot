@@ -63,68 +63,6 @@
       }
     },
     {
-      "id": "82b04c8ca5f32073",
-      "seen_at": "2026-11-05T13:54:12.488915+00:00",
-      "event": {
-        "event_title": "EDB Acquires Altinity to Bring Together the Two Leading Open Source Databases, Advancing Its Sovereign AI Data System and Reducing Overall Costs for Customers",
-        "event_key": "edb_M&A_226122d88e25",
-        "event_subject_key": "edb_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "EDB Acquires Altinity to Bring Together the Two Leading Open Source Databases, Advancing Its Sovereign AI Data System and Reducing Overall Costs for Customers",
-            "summary": "Postgres®and ClickHouse® expertise unite to connect transactions, real-time analytics, and agentic AI in one multi-model data system under customer control WILMINGTON, Del., Nov. 5, 2026 /PRNewswire/ -- EnterpriseDB (EDB), the leading sovereign data and AI company, today announced the...",
-            "link": "https://www.prnewswire.com/news-releases/edb-acquires-altinity-to-bring-together-the-two-leading-open-source-databases-advancing-its-sovereign-ai-data-system-and-reducing-overall-costs-for-customers-302930209.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-05T13:49:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nEDB Acquires Altinity to Bring Together the Two Leading Open Source Databases, Advancing Its Sovereign AI Data System and Reducing Overall Costs for Customers\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "67f87fc1b644bb09",
       "seen_at": "2026-11-05T14:20:33.961292+00:00",
       "event": {
