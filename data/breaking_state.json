@@ -5716,6 +5716,70 @@
         "delivery_key": "a564ac6e57aab386b5ff",
         "message_id": 2228
       }
+    },
+    {
+      "id": "3c00c31b5f5a5c63",
+      "seen_at": "2026-11-12T07:50:06.236213+00:00",
+      "event": {
+        "event_title": "아이에스시, 송도에 350억 투자…AI 반도체 테스트 소켓 공장 건립",
+        "event_key": "아이에스시_CAPEX_fd262cbd1de1",
+        "event_subject_key": "아이에스시_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:35000000000"
+          ],
+          "counterparties": [
+            "송도"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "아이에스시, 송도에 350억 투자…AI 반도체 테스트 소켓 공장 건립",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611123387i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T16:40:50+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "AI",
+          "투자",
+          "CAPEX",
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
