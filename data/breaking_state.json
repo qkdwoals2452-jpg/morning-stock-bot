@@ -5284,6 +5284,61 @@
         "delivery_key": "399466e1a7d48cf6aff3",
         "message_id": 2208
       }
+    },
+    {
+      "id": "8332861f83690ab6",
+      "seen_at": "2026-11-12T02:16:55.500840+00:00",
+      "event": {
+        "event_title": "삼성화재, 3분기 순이익 8.3% 감소…자동차보험은 흑자 전환",
+        "event_key": "삼성화재_EARNINGS_77fdd12b9b8b",
+        "event_subject_key": "삼성화재_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성화재, 3분기 순이익 8.3% 감소…자동차보험은 흑자 전환",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611122144i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T10:43:44+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
