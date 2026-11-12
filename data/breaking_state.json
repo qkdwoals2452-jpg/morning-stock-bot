@@ -2,68 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "c30606e3dee67378",
-      "seen_at": "2026-11-05T01:21:36.268515+00:00",
-      "event": {
-        "event_title": "전 세계 3분기 반도체 매출 5000억달러 돌파…\"AIDC 투자가 수요 견인\"",
-        "event_key": "반도체_EARNINGS_b858ae242421",
-        "event_subject_key": "반도체_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "USD:500000000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "전 세계 3분기 반도체 매출 5000억달러 돌파…\"AIDC 투자가 수요 견인\"",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/202611057522i",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-05T10:14:17+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실적 기간과 확정된 실적 변화 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실적 기간과 확정된 실적 변화 확인"
-        ],
-        "money_flow": [
-          "투자",
-          "CAPEX",
-          "반도체"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n전 세계 3분기 반도체 매출 5000억달러 돌파…&quot;AIDC 투자가 수요 견인&quot;\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "5400831e1d323276",
       "seen_at": "2026-11-05T05:27:52.889494+00:00",
       "event": {
