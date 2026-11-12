@@ -63,66 +63,6 @@
       }
     },
     {
-      "id": "c35bb29f443c9196",
-      "seen_at": "2026-11-05T19:41:49.248871+00:00",
-      "event": {
-        "event_title": "Meta (META) Acquires Conductor As New U.S. AI Rules Cloud The Payoff",
-        "event_key": "meta_M&A_9b7c788a64fb",
-        "event_subject_key": "meta_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Meta (META) Acquires Conductor As New U.S. AI Rules Cloud The Payoff",
-            "summary": "Meta Platforms (NasdaqGS:META) has acquired AI coding startup Conductor to expand its AI driven developer tools offering. The purchase adds code generation and automation capabilities that Meta plans to integrate across its internal engineering platforms. Following Democratic gains in the U.S. midterm elections, lawmakers are signaling tighter oversight of large scale AI infrastructure projects. The Conductor acquisition and fresh U.S. regulatory pressure on AI infrastructure are worth...",
-            "link": "https://finance.yahoo.com/technology/ai/articles/meta-meta-acquires-conductor-u-191123838.html?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-11-05T19:11:23+00:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": [
-          "AI"
-        ]
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nMeta (META) Acquires Conductor As New U.S. AI Rules Cloud The Payoff\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "1f6c63f6851b6d35",
       "seen_at": "2026-11-05T21:06:50.407207+00:00",
       "event": {
