@@ -2,64 +2,6 @@
   "version": 1,
   "records": [
     {
-      "id": "5d2f49bb3c7ca2ef",
-      "seen_at": "2026-11-05T07:22:54.311017+00:00",
-      "event": {
-        "event_title": "Canada’s Avenir Global Acquires Marker Collective, Adding Nvidia, Meta Clients",
-        "event_key": "nvidia_M&A_9c5eb7410479",
-        "event_subject_key": "nvidia_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Canada’s Avenir Global Acquires Marker Collective, Adding Nvidia, Meta Clients",
-            "summary": "Canadian holding company Avenir Global struck a deal to acquire communications and marketing firms owned by London’s Next 15 Group Plc, expanding its client list to reach more technology companies.",
-            "link": "https://www.bloomberg.com/news/articles/2026-11-05/canada-s-avenir-global-acquires-marker-collective-adding-nvidia-meta-clients",
-            "market": "US",
-            "source": "Bloomberg_Markets",
-            "origin_publisher": "",
-            "published_at": "2026-11-05T07:01:00+00:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent"
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nCanada’s Avenir Global Acquires Marker Collective, Adding Nvidia, Meta Clients\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다."
-      }
-    },
-    {
       "id": "a18d93156e436e7d",
       "seen_at": "2026-11-05T07:57:54.644676+00:00",
       "event": {
