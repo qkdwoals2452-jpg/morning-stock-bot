@@ -5849,6 +5849,65 @@
         "delivery_key": "52cce940039a69d778a3",
         "message_id": 2236
       }
+    },
+    {
+      "id": "6986d5aec3f464bd",
+      "seen_at": "2026-11-12T08:50:07.533543+00:00",
+      "event": {
+        "event_title": "아시아나항공, 3분기 영업손실 1790억원…환율 효과에 순이익 흑자전환",
+        "event_key": "아시아나항공_EARNINGS_09ac19e90915",
+        "event_subject_key": "아시아나항공_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:179000000000"
+          ],
+          "counterparties": [
+            "효과"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "아시아나항공, 3분기 영업손실 1790억원…환율 효과에 순이익 흑자전환",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611123530g",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-12T17:24:31+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
