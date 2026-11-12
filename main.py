@@ -16,6 +16,7 @@ from chart_engine import get_chart_score, pass_long_term_trend, chart_rejection_
 from scoring_engine import make_stock_result, sort_results, make_grade
 from memory_engine import save_today_result, get_project_status
 from backtest_engine import save_recommendations, update_backtest_prices
+from rejected_candidate_engine import track_rejections
 from memory_learning_engine import get_learning_score, save_prediction
 from telegram_bot import send_telegram
 from pre_news_activity_engine import get_pre_news_activity
@@ -319,7 +320,10 @@ def run(news_override=None, notify=True, track_history=True):
                 reject(stock, 'finance_model', finance['exclude_reason'])
                 continue
             if finance.get("op_margin") is None or finance.get("debt_ratio") is None:
-                reject(stock, 'finance', '핵심 재무 데이터 확인불가')
+                reject(stock, 'finance', '핵심 재무 데이터 확인불가', evidence={
+                    'report': finance.get('report', {}),
+                    'missing_fields': [key for key in ('op_margin', 'debt_ratio')
+                                       if finance.get(key) is None]})
                 continue
             if finance.get("exclude"):
 
@@ -471,6 +475,8 @@ def run(news_override=None, notify=True, track_history=True):
     analysis_status['selected_count'] = len(selected_codes)
     analysis_status['excluded'] = [item for item in analysis_status['excluded']
                                    if item['code'] not in selected_codes]
+    if track_history:
+        track_rejections(analysis_status['excluded'], price_cache=regular_price_cache)
     project_status['analysis_status'] = analysis_status
     print('운영 분석 결과:', analysis_status)
 

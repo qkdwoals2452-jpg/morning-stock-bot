@@ -141,6 +141,22 @@ class FinancialDataTests(unittest.TestCase):
                 self.assertEqual(self.finance.get_dart_finance('022100')['debt_ratio'], expected)
                 self.assertEqual(self.quality.get_dart_year_finance('022100', 2025)['debt_ratio'], expected)
 
+    def test_separate_statement_missing_operating_profit_is_unknown(self):
+        rows = [self.row('CIS', 'ifrs-full_Revenue', '매출액', 100),
+                self.row('BS', 'ifrs-full_Equity', '자본총계', 100),
+                self.row('BS', 'ifrs-full_Liabilities', '부채총계', 50)]
+        def fetch(url, **kwargs):
+            return Mock(json=lambda: ({'status': '013'} if kwargs['params']['fs_div'] == 'CFS'
+                                      else {'status': '000', 'list': rows}))
+        with patch('requests.get', side_effect=fetch):
+            finance = self.finance.get_dart_finance('022100')
+            quality = self.quality.get_dart_year_finance('022100', 2025)
+        self.assertIsNone(finance['op_margin'])
+        self.assertIsNone(quality['op_margin'])
+        self.assertIsNone(quality['op'])
+        self.assertEqual(finance['report']['fs_div'], 'OFS')
+        self.assertEqual(quality['report']['fs_div'], 'OFS')
+
     def test_per_pbr_integration_fields(self):
         response = Mock(json=lambda: {'totalInfos': [
             {'code': 'per', 'value': '100.48배'}, {'code': 'pbr', 'value': '5.68배'}]})

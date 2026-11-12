@@ -1,7 +1,7 @@
 import copy
 import os
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 from datetime import datetime, timezone
 from kakao_drive_bridge import collect, intake, join_originals, BASELINE, FOLDER, DriveReader
 from kakao_news_source import ROOM, parse_export
@@ -106,7 +106,9 @@ class BridgeTests(unittest.TestCase):
         def bridge(originals, state=None, diagnostics=None):
             return intake(Reader(), originals, state, NOW)[0]
         with patch('news_engine._collect_feeds', return_value=[ARTICLE]), \
-             patch('kakao_drive_bridge.collect', side_effect=bridge):
+             patch('kakao_drive_bridge.collect', side_effect=bridge), \
+             patch('news_engine.datetime', Mock(wraps=datetime)) as clock:
+            clock.now.return_value = NOW
             result = get_us_news(limit=0, kakao_state=state)
         self.assertEqual(len(result), 1)
         self.assertEqual(result[0]['published_at'], ARTICLE['published_at'])

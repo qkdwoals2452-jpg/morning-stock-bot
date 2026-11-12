@@ -3,6 +3,7 @@ import re
 import pandas as pd
 from datetime import datetime
 from config import DART_API_KEY
+from dart_statement_reader import read_statement
 
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
@@ -28,31 +29,18 @@ def get_dart_year_finance(stock_code, year):
     if corp_code is None:
         return None
 
-    url = "https://opendart.fss.or.kr/api/fnlttSinglAcntAll.json"
-
-    params = {
-        "crtfc_key": DART_API_KEY,
-        "corp_code": corp_code,
-        "bsns_year": str(year),
-        "reprt_code": "11011",
-        "fs_div": "CFS"
-    }
-
     try:
-        res = requests.get(url, params=params, timeout=10)
-        data = res.json()
-
-        if data.get("status") != "000":
+        rows, report = read_statement(corp_code, [(year, '11011')])
+        if rows is None:
             return None
 
         sales = 0
-        op = 0
+        op = None
         net_income = None
         asset = None
         debt = None
         equity = None
 
-        rows = data.get("list", [])
         has_total_profit = any(row.get("sj_div") in {"IS", "CIS"}
                                and row.get("account_id") == "ifrs-full_ProfitLoss"
                                and to_int(row.get("thstrm_amount")) is not None
@@ -107,7 +95,7 @@ def get_dart_year_finance(stock_code, year):
             if net_income is not None:
                 roe = round(net_income / equity * 100, 2)
 
-        if sales > 0:
+        if sales > 0 and op is not None:
             op_margin = round(op / sales * 100, 2)
 
         if equity is not None and equity > 0 and debt is not None:
@@ -115,6 +103,7 @@ def get_dart_year_finance(stock_code, year):
 
         return {
             "year": year,
+            "report": report,
             "sales": sales,
             "op": op,
             "net_income": net_income,
@@ -125,7 +114,7 @@ def get_dart_year_finance(stock_code, year):
         }
 
     except Exception as e:
-        print("QUALITY DART ERROR:", stock_code, year, e)
+        print("QUALITY DART ERROR:", stock_code, year, type(e).__name__)
         return None
 
 
@@ -164,7 +153,7 @@ def get_quality_score(stock):
 
     for year in years:
         data = get_dart_year_finance(code, year)
-        if data:
+        if data and data.get("op") is not None:
             records.append(data)
 
     if len(records) < 3:
