@@ -6,6 +6,7 @@ from event_understanding_engine import (
 from collections import defaultdict
 import re
 from event_identity_engine import event_facts, same_event, instance_key, publisher, corroboration_bonus
+from financial_state_engine import assess_financial_states, contract_score_cap
 
 IMPORTANT_KEYWORDS = [
     "investment", "invest", "capex", "spending",
@@ -836,7 +837,11 @@ def calc_event_score(article):
         score = min(100, score + 5)
         reasons.append("공식출처")
 
-    return min(score, 100), reasons    
+    cap = contract_score_cap(article, event_type)
+    if cap is not None:
+        score = min(score, cap)
+        reasons.append('예비·비구속 계약: 확정계약 점수 상한 적용')
+    return min(score, 100), reasons
 
 
 def make_event_grade(score):
@@ -1215,6 +1220,7 @@ def merge_same_events(news, decisions=None):
                 'title': article.get('title', ''),
                 'role': classify_article_role(article.get('title', ''), article.get('summary', '')),
                 'score': score,
+                'financial_states': assess_financial_states(article),
                 'accepted': score >= 30,
                 'reason': reasons[-1] if score < 30 else '사건 점수 기준 통과',
             })
@@ -1258,6 +1264,13 @@ def merge_same_events(news, decisions=None):
         source_bonus = corroboration_bonus(articles)
         score += source_bonus
 
+        # 교차보도 가산으로 예비계약 점수 상한을 우회하지 못하게 한다.
+        cap = contract_score_cap(best, event_info.get('event_type'))
+        if cap is not None:
+            score = min(score, cap)
+            evidence = {'evidence_strength': 'MEDIUM',
+                        'evidence_reason': '예비·비구속 계약이며 확정계약으로 미승격'}
+
         if score > 100:
             score = 100
 
@@ -1266,6 +1279,7 @@ def merge_same_events(news, decisions=None):
             "event_key": instance_key(key, articles),
             "event_subject_key": key,
             "event_facts": event_facts(best),
+            "financial_states": assess_financial_states(best),
             "event_type": event_info.get("event_type", "NO_EVENT"),
             "evidence_strength": evidence.get(
                 "evidence_strength",
