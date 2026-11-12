@@ -5020,7 +5020,8 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "7f226b8bc0ac44bad23f"
       },
       "analysis": {
         "phase": "ready",
