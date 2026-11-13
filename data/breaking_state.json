@@ -5781,6 +5781,78 @@
         "delivery_key": "da5453f63738829c1a32",
         "message_id": 2267
       }
+    },
+    {
+      "id": "f97ba0676d768ca0",
+      "seen_at": "2026-11-13T08:41:27.716140+00:00",
+      "event": {
+        "event_title": "젠슨 황 없는 엔비디아, 韓에 GPU 26만장 약속대로 공급",
+        "event_key": "엔비디아_CONTRACT_741ced3f2395",
+        "event_subject_key": "엔비디아_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:260000"
+          ],
+          "counterparties": [],
+          "products": [
+            "gpu"
+          ],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "젠슨 황 없는 엔비디아, 韓에 GPU 26만장 약속대로 공급",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026111357627",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-13T17:36:39+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "GPU",
+          "HBM",
+          "반도체",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
