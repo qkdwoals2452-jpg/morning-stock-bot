@@ -124,68 +124,6 @@
       }
     },
     {
-      "id": "bf5f55637bc4c964",
-      "seen_at": "2026-11-06T18:26:58.832516+00:00",
-      "event": {
-        "event_title": "Not Oklo. Not X-Energy. This SMR Stock Just Signed a Contract to Start Building Reactor Components.",
-        "event_key": "not_oklo_CONTRACT_40363e4bfdd2",
-        "event_subject_key": "not_oklo_CONTRACT",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "Not Oklo. Not X-Energy. This SMR Stock Just Signed a Contract to Start Building Reactor Components.",
-            "summary": "NuScale Power signed an agreement to secure key nuclear reactor components. Could a major deal be on the horizon?",
-            "link": "https://www.fool.com/investing/2026/11/06/not-oklo-not-x-energy-this-smr-stock-just-signed-a/?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-11-06T18:03:00+00:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "실제 계약 체결 문장 확인",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "실제 계약 체결 문장 확인",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "dfdef9011843d784ade6",
-        "message_id": 2077
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nNot Oklo. Not X-Energy. This SMR Stock Just Signed a Contract to Start Building Reactor Components.\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 기사에서 설비투자·생산·공급 지출 근거를 확인하지 못했습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "050a940e0c6f9957de7c",
-        "message_id": 2078
-      }
-    },
-    {
       "id": "872da08984c8003f",
       "seen_at": "2026-11-06T20:02:00.723210+00:00",
       "event": {
