@@ -124,66 +124,6 @@
       }
     },
     {
-      "id": "9ab1bfb749bb211e",
-      "seen_at": "2026-11-06T01:16:21.605601+00:00",
-      "event": {
-        "event_title": "가온전선, 새만금 수상태양광 전력망 사업 수주",
-        "event_key": "가온전선_CONTRACT_9beff1a446ae",
-        "event_subject_key": "가온전선_CONTRACT",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "MEDIUM",
-        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "가온전선, 새만금 수상태양광 전력망 사업 수주",
-            "summary": "가온전선이 새만금 수상태양광 전력망 사업을 수주했다. 가온전선은 이 같은 수주 실적을 바탕으로 국내외 재생에너지 전력망 시장을 적극 공략할 계획이다.가온전선은 BS한양과 ‘새만금 햇빛나눔사업’의 154㎸ 초고압 케이블 공급 및 시공 계약을 체결했다고 6일 밝혔다.새만금 햇빛나눔사업은 전북 군산시 옥구읍 일대에서 73.2㎿급 수상태양광 발전시설을 구축하는 ...",
-            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04031126645643096",
-            "market": "KR",
-            "source": "이데일리_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-06T10:10:02+09:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "제목에서 실제 신규 수주 행동 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "제목에서 실제 신규 수주 행동 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "7ff3cec1e506efc1798c",
-        "message_id": 2054
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n가온전선, 새만금 수상태양광 전력망 사업 수주\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 가온전선 (000500) · 기사상 사건 주체\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=04031126645643096\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 가온전선 (000500): PBR 과도 제외\n• 가온전선 (000500): PBR 과도 제외\n• 가온전선 (000500): PBR 과도 제외\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "137c87df2961b0620727",
-        "message_id": 2055
-      }
-    },
-    {
       "id": "dfdd6d1213492b38",
       "seen_at": "2026-11-06T01:51:21.922979+00:00",
       "event": {
