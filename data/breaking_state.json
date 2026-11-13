@@ -124,66 +124,6 @@
       }
     },
     {
-      "id": "95af127263f77879",
-      "seen_at": "2026-11-06T08:58:48.778528+00:00",
-      "event": {
-        "event_title": "HD한국조선, 초대형 암모니아선 4척 수주",
-        "event_key": "HD한국조선_CONTRACT_44d4601a25c4",
-        "event_subject_key": "HD한국조선_CONTRACT",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "CONTRACT",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "계약 체결·확정 수주 근거 확인",
-        "event_score": 80,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "HD한국조선, 초대형 암모니아선 4척 수주",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/2026110615331",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-06T17:33:59+09:00",
-            "event_score_raw": 80,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:CONTRACT",
-              "제목에서 실제 신규 수주 행동 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:CONTRACT",
-          "제목에서 실제 신규 수주 행동 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "f946db28c879f7ebed4f",
-        "message_id": 2065
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nHD한국조선, 초대형 암모니아선 4척 수주\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "11c6ac39a8a0cec42f37",
-        "message_id": 2066
-      }
-    },
-    {
       "id": "04422bd422f721a2",
       "seen_at": "2026-11-06T11:03:51.256586+00:00",
       "event": {
