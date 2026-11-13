@@ -5709,6 +5709,69 @@
         "delivery_key": "158691abbe5fea6c33c7",
         "message_id": 2262
       }
+    },
+    {
+      "id": "6489e511b30c222d",
+      "seen_at": "2026-11-13T02:05:08.951687+00:00",
+      "event": {
+        "event_title": "씨이랩, 3분기 누적 매출 64% 증가…수주잔고 102배 늘어",
+        "event_key": "씨이랩_EARNINGS_2336e6da0188",
+        "event_subject_key": "씨이랩_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "씨이랩, 3분기 누적 매출 64% 증가…수주잔고 102배 늘어",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611134666i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-13T10:17:18+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
