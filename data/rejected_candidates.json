@@ -340,5 +340,55 @@
       "interpretation": "exclusion_audit_not_tradable_return",
       "checkpoints": {}
     }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "189330",
+      "finance",
+      "부채비율 과다 제외"
+    ],
+    "name": "씨이랩",
+    "code": "189330",
+    "decision_at": "2026-11-13T12:13:11.474392+09:00",
+    "recorded_at": "2026-11-13T12:13:11.474392+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "부채비율 과다 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-13",
+      "220260",
+      "market",
+      "거래대금 30억 미만"
+    ],
+    "name": "켐트로스",
+    "code": "220260",
+    "decision_at": "2026-11-13T12:13:11.474392+09:00",
+    "recorded_at": "2026-11-13T12:13:11.474392+09:00",
+    "decision": "rejected_or_held",
+    "stage": "market",
+    "reason": "거래대금 30억 미만",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
   }
 ]
