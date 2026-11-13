@@ -5767,6 +5767,71 @@
         "delivery_key": "f2108bfeeaf5f100b9a4",
         "message_id": 2259
       }
+    },
+    {
+      "id": "7240223366d439d5",
+      "seen_at": "2026-11-13T01:05:08.207305+00:00",
+      "event": {
+        "event_title": "켐트로스, 반도체 소재 매출 185% 급증…3분기 최대 실적",
+        "event_key": "켐트로스_EARNINGS_777df3a752cb",
+        "event_subject_key": "켐트로스_EARNINGS",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "켐트로스, 반도체 소재 매출 185% 급증…3분기 최대 실적",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611134546i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-13T09:55:19+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": [
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
