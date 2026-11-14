@@ -178,10 +178,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 94600.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -203,10 +206,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 73900.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -228,10 +234,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 21350.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -260,10 +269,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 4785.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -285,10 +297,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 8440.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -310,10 +325,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 1756.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -335,10 +353,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 1825.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -360,10 +381,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 7280.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -381,6 +405,41 @@
     "stage": "market",
     "reason": "거래대금 30억 미만",
     "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "tracking",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {},
+      "base_date": "2026-11-13",
+      "base_close": 4080.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
+    }
+  },
+  {
+    "key": [
+      "2026-11-14",
+      "452160",
+      "chart",
+      "52주 고점 대비 -60% 이하"
+    ],
+    "name": "제이엔비",
+    "code": "452160",
+    "decision_at": "2026-11-14T11:56:49.328775+09:00",
+    "recorded_at": "2026-11-14T11:56:49.328775+09:00",
+    "decision": "rejected_or_held",
+    "stage": "chart",
+    "reason": "52주 고점 대비 -60% 이하",
+    "evidence": {
+      "price_date": "2026-11-13",
+      "price_source": "YAHOO_REGULAR_CLOSE",
+      "current": 3285.0,
+      "ma120": 3403.04,
+      "high_52w": 8930.0,
+      "high_52w_gap": -63.21
+    },
     "provenance": {
       "source": "runtime_analysis"
     },
