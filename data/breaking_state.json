@@ -7808,8 +7808,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "387a2a25b96d909f04ba"
+        "phase": "sent",
+        "delivery_key": "387a2a25b96d909f04ba",
+        "message_id": 2364
       },
       "analysis": {
         "phase": "ready",
