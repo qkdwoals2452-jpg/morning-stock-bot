@@ -8081,6 +8081,73 @@
         "delivery_key": "b302be03170d59b85394",
         "message_id": 2371
       }
+    },
+    {
+      "id": "d99dc6cd61ef128f",
+      "seen_at": "2026-11-16T13:54:00.051541+00:00",
+      "event": {
+        "event_title": "The Best Dividend Stock to Invest $1,000 in Right Now",
+        "event_key": "the_best_CAPEX_1a8f49d490b3",
+        "event_subject_key": "the_best_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:1000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "The Best Dividend Stock to Invest $1,000 in Right Now",
+            "summary": "Invitation Homes has a 4.5% dividend yield -- and it's growing.",
+            "link": "https://www.fool.com/investing/2026/11/16/the-best-dividend-stock-to-invest-1000-in-right-no/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T13:35:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
