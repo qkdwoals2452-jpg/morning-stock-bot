@@ -8337,6 +8337,73 @@
         "delivery_key": "445b8d79ff4a09c18372",
         "message_id": 2387
       }
+    },
+    {
+      "id": "72aff7b5a074c510",
+      "seen_at": "2026-11-16T18:59:04.686514+00:00",
+      "event": {
+        "event_title": "Altimeter Capital to invest $5 billion in Anthropic IPO - report",
+        "event_key": "altimeter_capital_CAPEX_a35cc2a07b3c",
+        "event_subject_key": "altimeter_capital_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:5000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Altimeter Capital to invest $5 billion in Anthropic IPO - report",
+            "summary": "Investing.com -- Altimeter Capital will invest $5 billion in Anthropic's initial public offering, according to Brad Gerstner, who spoke on CNBC's \"Halftime Report\" on Monday.",
+            "link": "https://finance.yahoo.com/markets/stocks/articles/altimeter-capital-invest-5-billion-184641881.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T18:46:41+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
