@@ -8477,6 +8477,203 @@
         "delivery_key": "785728d629f1f9d565db",
         "message_id": 2389
       }
+    },
+    {
+      "id": "a007a0b6c2d5c92a",
+      "seen_at": "2026-11-16T23:55:18.347648+00:00",
+      "event": {
+        "event_title": "Shamrock’s Lasalle: Different Ways To Invest in Sports",
+        "event_key": "shamrock_s_CAPEX_e4aa513ecbf0",
+        "event_subject_key": "shamrock_s_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Shamrock’s Lasalle: Different Ways To Invest in Sports",
+            "summary": "Mike LaSalle, co-president and partner at Shamrock Capital, says the firm is assessing how upcoming sports contracts and shifting cash flows could create investment opportunities. Jason Sklar, partner at Shamrock Capital, talks about the financial shortages emerging in the sports industry and the role Shamrock Capital plays. They speak with Romaine Bostick on \"The Close\". (Source: Bloomberg)",
+            "link": "https://www.bloomberg.com/news/videos/2026-11-16/shamrock-s-lasalle-different-ways-to-invest-in-sports-video",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T23:50:28+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "aae9cff5db27d5dd",
+      "seen_at": "2026-11-16T23:55:18.347648+00:00",
+      "event": {
+        "event_title": "\"MDS테크, 휴머노이드 프로젝트 수주…피지컬 AI 성과 가시화\"",
+        "event_key": "프로젝트_CONTRACT_9153654c6f84",
+        "event_subject_key": "프로젝트_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "성"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "\"MDS테크, 휴머노이드 프로젝트 수주…피지컬 AI 성과 가시화\"",
+            "summary": "임베디드 시스템 전문기업 MDS테크(086960)가 수익성 개선과 함께 신사업 성과를 구체화하고 있다. 고정비 부담을 넘어서는 매출 성장으로 이익 체력을 높이는 한편, 휴머노이드 로봇과 소프트웨어 중심 자동차(SDV) 분야로 공급 영역을 넓히는 모습이다.(사진=MDS테크)독립리서치 밸류파인더는 17일 기업분석보고서를 통해 MDS테크가 올해 3분기 누적 기...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02482966645646704",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-17T08:48:03+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "8f8049cc5fe62313",
+      "seen_at": "2026-11-16T23:55:18.347648+00:00",
+      "event": {
+        "event_title": "KG스틸, 3분기 매출 1조원 돌파…통화선도거래로 환율 하락 방어",
+        "event_key": "KG스틸_EARNINGS_141e7355bf3a",
+        "event_subject_key": "KG스틸_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "KRW:1000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "KG스틸, 3분기 매출 1조원 돌파…통화선도거래로 환율 하락 방어",
+            "summary": "KG스틸의 3분기 연결기준 매출액이 1조원을 돌파했다. 전년 동기 대비 20.5% 성장한 기록이다. 철강 시황 부진에 환율 하락까지 겹친 상황에서도 통화선도거래로 환ㄴ실을 막아내며 세전이익을 늘렸다.KG스틸은 3분기 연결기준 매출액 1조 9억원, 세전이익 271억원을 기록했다고 밝혔다. 영업이익과 세전이익은 각각 전년 동기 대비 20.5%, 57.0% 증...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02499366645646704",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-17T08:50:07+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
