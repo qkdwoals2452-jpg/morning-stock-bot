@@ -6444,8 +6444,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "c2e307cf773e8104464c"
+        "phase": "sent",
+        "delivery_key": "c2e307cf773e8104464c",
+        "message_id": 2321
       },
       "analysis": {
         "phase": "ready",
