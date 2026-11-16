@@ -6011,6 +6011,137 @@
         "delivery_key": "925b19c1f0b8829b103f",
         "message_id": 2305
       }
+    },
+    {
+      "id": "20a0c444e7d0a034",
+      "seen_at": "2026-11-16T04:21:28.723264+00:00",
+      "event": {
+        "event_title": "유니셈, 3분기 매출 908억·영업이익 128억…영업이익률 14.09%",
+        "event_key": "유니셈_EARNINGS_225e4a023196",
+        "event_subject_key": "유니셈_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:12800000000",
+            "UNKNOWN:90800000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "유니셈, 3분기 매출 908억·영업이익 128억…영업이익률 14.09%",
+            "summary": "반도체 장비 전문기업 유니셈(036200)이 글로벌 메모리·파운드리 빅테크들의 대규모 설비투자(CAPEX) 재개에 힘입어 3분기 어닝 서프라이즈를 기록했다.(사진=유니셈)16일 유니셈에 따르면 회사의 올해 3분기 연결 기준 영업이익은 128억원으로 전년 동기 대비 632.4% 급증했다. 같은 기간 매출액은 59.8% 뛴 908억원, 당기순이익은 73.8%...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02250086645646376",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T13:13:13+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실적 기간과 확정된 실적 변화 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실적 기간과 확정된 실적 변화 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "4fdab26d700dc308",
+      "seen_at": "2026-11-16T04:21:28.723264+00:00",
+      "event": {
+        "event_title": "대한광통신, 3분기 영업이익 29억…2개 분기 연속 영업흑자",
+        "event_key": "대한광통신_EARNINGS_fb9135f0a2f2",
+        "event_subject_key": "대한광통신_EARNINGS",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:2900000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "EARNINGS",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "실제 실적 수치·결과 확인",
+        "event_score": 70,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "대한광통신, 3분기 영업이익 29억…2개 분기 연속 영업흑자",
+            "summary": "광통신케이블 전문기업 대한광통신(010170)이 북미 인공지능(AI) 데이터센터 인프라 투자 확대와 미국 현지 자회사 편입 효과에 힘입어 가파른 실적 반등세를 이어가고 있다.대한광통신 CI.(사진=대한광통신)16일 대한광통신에 따르면 회사의 올해 3분기 연결기준 영업이익은 29억원으로 전년 동기 대비 흑자전환에 성공했다. 같은 기간 매출액은 39.3% 증...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02256646645646376",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T13:16:24+09:00",
+            "event_score_raw": 70,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:EARNINGS",
+              "실제 실적·가이던스 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:EARNINGS",
+          "실제 실적·가이던스 변화"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
