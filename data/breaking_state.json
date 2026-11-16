@@ -8405,6 +8405,73 @@
         "phase": "ready",
         "attempts": 0
       }
+    },
+    {
+      "id": "96817c60340c81f5",
+      "seen_at": "2026-11-16T21:40:17.272188+00:00",
+      "event": {
+        "event_title": "Tesla Will Invest $3.31 Billion to Expand German Factory for Cybercab Production",
+        "event_key": "tesla_CAPEX_93b417761f33",
+        "event_subject_key": "tesla_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:3310000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Tesla Will Invest $3.31 Billion to Expand German Factory for Cybercab Production",
+            "summary": "Tesla will add a new facility at its Berlin-Brandenburg factory as the electric-vehicle maker seeks to boost production of its autonomous Cybercab.",
+            "link": "https://www.wsj.com/business/autos/tesla-to-invest-over-3-billion-to-expand-german-factory-in-cybercab-bet-6355017a?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T21:33:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
