@@ -8259,6 +8259,71 @@
         "delivery_key": "25dcedbd0a95791141d4",
         "message_id": 2383
       }
+    },
+    {
+      "id": "f0a2abf847564c51",
+      "seen_at": "2026-11-16T16:34:03.061506+00:00",
+      "event": {
+        "event_title": "Tesla to invest 3 bn euros to expand German factory",
+        "event_key": "tesla_CAPEX_6da6132be603",
+        "event_subject_key": "tesla_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Tesla to invest 3 bn euros to expand German factory",
+            "summary": "US electric carmaker Tesla said Monday it will invest three billion euros ($3.4 billion) to expand its German factory, which will in future have capacity to produce one million driverless Cybercabs annually. - 'Enormous significance' - Under the investment plans announced Monday, a new facility will be constructed where up to one million Cybercabs a year will eventually be produced, according to Tesla.",
+            "link": "https://finance.yahoo.com/economy/articles/tesla-invest-3-bn-euros-161336143.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T16:13:36+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
