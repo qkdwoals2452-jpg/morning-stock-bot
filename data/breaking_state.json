@@ -7819,6 +7819,98 @@
         "delivery_key": "c836b7f89c51af21a9cb",
         "message_id": 2365
       }
+    },
+    {
+      "id": "ca7c789474cfdb4f",
+      "seen_at": "2026-11-16T13:02:44.179439+00:00",
+      "event": {
+        "event_title": "Corvex Signs $103 Million Take-or-Pay Agreement for NVIDIA Blackwell Capacity; $21 Million of Annual Contract Revenue per Megawatt",
+        "event_key": "nvidia_CONTRACT_6991113034a9",
+        "event_subject_key": "nvidia_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "USD:103000000",
+            "USD:21000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "Corvex Signs $103 Million Take-or-Pay Agreement for NVIDIA Blackwell Capacity",
+              "state": "signed"
+            },
+            {
+              "field": "title",
+              "text": " $21 Million of Annual Contract Revenue per Megawatt",
+              "state": "unknown"
+            },
+            {
+              "field": "summary",
+              "text": "3-Year Agreement Will More Than Double Mid-Atlantic 1 Contracted Annual Recurring Revenue from $22 Million to Approximately $56 Million Customer Prepayment and Debt Financing Fund More Than 80% of Deployment Corvex Diversifies Its Customer Base With Another Scaled Inference Platform...",
+              "state": "planned"
+            }
+          ],
+          "cash_claims": [
+            {
+              "field": "summary",
+              "text": "3-Year Agreement Will More Than Double Mid-Atlantic 1 Contracted Annual Recurring Revenue from $22 Million to Approximately $56 Million Customer Prepayment and Debt Financing Fund More Than 80% of Deployment Corvex Diversifies Its Customer Base With Another Scaled Inference Platform...",
+              "state": "expected"
+            }
+          ],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Corvex Signs $103 Million Take-or-Pay Agreement for NVIDIA Blackwell Capacity; $21 Million of Annual Contract Revenue per Megawatt",
+            "summary": "3-Year Agreement Will More Than Double Mid-Atlantic 1 Contracted Annual Recurring Revenue from $22 Million to Approximately $56 Million Customer Prepayment and Debt Financing Fund More Than 80% of Deployment Corvex Diversifies Its Customer Base With Another Scaled Inference Platform...",
+            "link": "https://www.prnewswire.com/news-releases/corvex-signs-103-million-take-or-pay-agreement-for-nvidia-blackwell-capacity-21-million-of-annual-contract-revenue-per-megawatt-302940368.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-16T13:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
