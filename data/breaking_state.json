@@ -7649,8 +7649,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "73665c9721dc54f36704"
+        "phase": "sent",
+        "delivery_key": "73665c9721dc54f36704",
+        "message_id": 2358
       },
       "analysis": {
         "phase": "ready",
