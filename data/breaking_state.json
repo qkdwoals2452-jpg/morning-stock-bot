@@ -124,68 +124,6 @@
       }
     },
     {
-      "id": "5d3a6096d2136c95",
-      "seen_at": "2026-11-09T14:08:51.510935+00:00",
-      "event": {
-        "event_title": "1754 Properties and Vander Capital Partners Acquire 40 Jessie Street, a 100% Google-Leased Office Building in Downtown San Francisco",
-        "event_key": "google_M&A_4c482af789f3",
-        "event_subject_key": "google_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "1754 Properties and Vander Capital Partners Acquire 40 Jessie Street, a 100% Google-Leased Office Building in Downtown San Francisco",
-            "summary": "SAN FRANCISCO, November 09, 2026--A joint venture between affiliates of 1754 Properties and Vander Capital Partners acquired 40 Jessie Street.",
-            "link": "https://finance.yahoo.com/real-estate/articles/1754-properties-vander-capital-partners-135500569.html?.tsrc=rss",
-            "market": "US",
-            "source": "YahooFinance",
-            "origin_publisher": "",
-            "published_at": "2026-11-09T13:55:00+00:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "실제 인수·합병 사건",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "실제 인수·합병 사건",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "d1ebf95a68623fab833b",
-        "message_id": 2107
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n1754 Properties and Vander Capital Partners Acquire 40 Jessie Street, a 100% Google-Leased Office Building in Downtown San Francisco\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 인수 사건: 피인수기업·거래 상대방의 국내 상장사 연결 근거가 확보되지 않았습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "7718fefaf53b54f30e9a",
-        "message_id": 2108
-      }
-    },
-    {
       "id": "4fc9521611405a2e",
       "seen_at": "2026-11-09T15:13:54.219344+00:00",
       "event": {
