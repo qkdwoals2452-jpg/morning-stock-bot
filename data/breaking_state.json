@@ -8605,7 +8605,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "5cf17eac3140e889bb66"
       },
       "analysis": {
         "phase": "ready",
