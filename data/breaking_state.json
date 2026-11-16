@@ -7582,10 +7582,11 @@
         "message_id": 2353
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n빗썸 3분기 15억원 적자…가상자산 거래 줄자 매출 69.7% 감소\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "b998b3f4f4d3c97633f8"
+        "delivery_key": "b998b3f4f4d3c97633f8",
+        "message_id": 2355
       }
     }
   ],
