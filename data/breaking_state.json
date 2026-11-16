@@ -7154,10 +7154,11 @@
         "message_id": 2342
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nSK하이닉스, 美 매출 147조로 3배↑…설비투자도 31조 &#x27;역대 최대&#x27;\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: SK하이닉스 (000660) · 기사상 사건 주체\n기사 기재 금액: 147조, 31조\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=03280006645646376\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• SK하이닉스 (000660): 대형주·지주사 참고용 제외\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "f1701f0fdf0f62265a5f"
+        "delivery_key": "f1701f0fdf0f62265a5f",
+        "message_id": 2343
       }
     }
   ],
