@@ -6289,8 +6289,10 @@
         "message_id": 2311
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\n아이패밀리SC, 3분기 영업이익 19억원…&quot;재고 정리·해외 투자 비용 때문&quot;\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "3c8a967a6f143b88caf5"
       }
     }
   ],
