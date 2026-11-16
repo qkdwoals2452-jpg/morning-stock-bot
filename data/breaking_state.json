@@ -5508,8 +5508,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "1b66ea90c7df7aeaa288"
+        "phase": "sent",
+        "delivery_key": "1b66ea90c7df7aeaa288",
+        "message_id": 2289
       },
       "analysis": {
         "phase": "ready",
