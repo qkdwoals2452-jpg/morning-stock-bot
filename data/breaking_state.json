@@ -8091,6 +8091,144 @@
         "delivery_key": "22a5beaa9abea5f38f37",
         "message_id": 2373
       }
+    },
+    {
+      "id": "ccc38403c0d735d2",
+      "seen_at": "2026-11-16T14:14:00.625131+00:00",
+      "event": {
+        "event_title": "EQT Ventures Invests $10 Million in Enterprise AI Company Edra",
+        "event_key": "eqt_ventures_CAPEX_080367d63292",
+        "event_subject_key": "eqt_ventures_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:10000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "EQT Ventures Invests $10 Million in Enterprise AI Company Edra",
+            "summary": "Move comes after EQT Ventures deployed Edra’s technology at its internal service desk. The company said it has continued to use Edra within its IT operations and plans to roll it out to other areas of its business.",
+            "link": "https://www.wsj.com/tech/ai/eqt-ventures-invests-10-million-in-enterprise-ai-company-edra-4a17c551?mod=pls_whats_news_us_business_f",
+            "market": "US",
+            "source": "WSJ_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T14:07:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "fbf63a1b33fb117c",
+      "seen_at": "2026-11-16T14:14:00.625131+00:00",
+      "event": {
+        "event_title": "EQT Ventures Invests $10 Million in Enterprise AI Company Edra",
+        "event_key": "eqt_ventures_CAPEX_4de47b91513e",
+        "event_subject_key": "eqt_ventures_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:10000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "EQT Ventures Invests $10 Million in Enterprise AI Company Edra",
+            "summary": "Move comes after EQT Ventures deployed Edra’s technology at its internal service desk. The company said it has continued to use Edra within its IT operations and plans to roll it out to other areas of its business.",
+            "link": "https://www.wsj.com/tech/ai/eqt-ventures-invests-10-million-in-enterprise-ai-company-edra-4a17c551?mod=rss_Technology",
+            "market": "US",
+            "source": "WSJ_Tech",
+            "origin_publisher": "",
+            "published_at": "2026-11-16T14:07:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
