@@ -7808,7 +7808,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "387a2a25b96d909f04ba"
       },
       "analysis": {
         "phase": "ready",
