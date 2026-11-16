@@ -6281,8 +6281,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "b230001a005a0a9864a4"
+        "phase": "sent",
+        "delivery_key": "b230001a005a0a9864a4",
+        "message_id": 2311
       },
       "analysis": {
         "phase": "ready",
