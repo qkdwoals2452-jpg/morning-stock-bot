@@ -7075,7 +7075,8 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "9b024b8cff62259fa97e"
       },
       "analysis": {
         "phase": "ready",
