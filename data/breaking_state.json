@@ -8225,8 +8225,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "c3571bd0b3c233d9708c"
+        "phase": "sent",
+        "delivery_key": "c3571bd0b3c233d9708c",
+        "message_id": 2375
       },
       "analysis": {
         "phase": "ready",
