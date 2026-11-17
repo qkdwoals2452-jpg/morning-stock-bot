@@ -8977,6 +8977,76 @@
         "delivery_key": "9b8537b15c3560241a05",
         "message_id": 2421
       }
+    },
+    {
+      "id": "16b64485520d4889",
+      "seen_at": "2026-11-17T09:58:02.589426+00:00",
+      "event": {
+        "event_title": "“주식으로 1원도 안 잃어”…곽범, 삼전 1억 투자 결과 봤더니",
+        "event_key": "1억_CAPEX_2e9f7784de2d",
+        "event_subject_key": "1억_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:100000000"
+          ],
+          "counterparties": [
+            "결"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "“주식으로 1원도 안 잃어”…곽범, 삼전 1억 투자 결과 봤더니",
+            "summary": "개그맨 곽범이 자신의 주식 투자 경험을 공유하며 “대한민국에 몇 명 없는, 주식으로 1원도 안 잃어본 남자”라고 밝혀 눈길을 끌었다. 특히 삼성전자 주식을 주당 6만원에 1억원어치 매수한 뒤 일찌감치 매도했지만, 주가가 크게 오른 지금도 후회하지 않는다고 털어놨다.(사진=키움증권 유튜브 채널 ‘채널크크’의 웹 예능 ‘돈쭐청문회’)곽범은 전날 공개된 키움증...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=04926566645646704",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-17T18:51:06+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
