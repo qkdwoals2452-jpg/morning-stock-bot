@@ -9183,7 +9183,8 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "de7ddb7514a7a20f2009"
       },
       "analysis": {
         "phase": "ready",
