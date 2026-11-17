@@ -8760,8 +8760,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "639e652f81956ea0014a"
+        "phase": "sent",
+        "delivery_key": "639e652f81956ea0014a",
+        "message_id": 2398
       },
       "analysis": {
         "phase": "ready",
