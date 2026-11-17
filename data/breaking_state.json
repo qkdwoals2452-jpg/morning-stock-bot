@@ -9041,8 +9041,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "78640284476edba72ef4"
+        "phase": "sent",
+        "delivery_key": "78640284476edba72ef4",
+        "message_id": 2422
       },
       "analysis": {
         "phase": "ready",
