@@ -8882,17 +8882,17 @@
   },
   "initialized_at": "2026-10-23T00:40:39.561269+00:00",
   "last_poll": {
-    "started_at": "2026-11-17T03:35:58.101025+00:00",
-    "previous_started_at": "2026-11-17T03:30:58.000968+00:00",
-    "start_gap_seconds": 300.1,
-    "completed_at": "2026-11-17T03:36:38.733315+00:00",
+    "started_at": "2026-11-17T03:45:58.238510+00:00",
+    "previous_started_at": "2026-11-17T03:35:58.101025+00:00",
+    "start_gap_seconds": 600.14,
+    "completed_at": "2026-11-17T03:47:33.602960+00:00",
     "collected": 569,
     "new": 0,
     "baseline": 0,
     "notices": 0,
-    "analyses": 0,
+    "analyses": 1,
     "pending": 0,
-    "uncertain": 7
+    "uncertain": 8
   },
   "kakao_source": {}
 }
