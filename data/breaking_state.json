@@ -9031,6 +9031,73 @@
         "delivery_key": "46ca7802bcb7beddc5cf",
         "message_id": 2432
       }
+    },
+    {
+      "id": "b22f92f228050c57",
+      "seen_at": "2026-11-17T13:04:16.773132+00:00",
+      "event": {
+        "event_title": "Revelio Labs Acquires Job Posting Data Provider SourceStack",
+        "event_key": "revelio_labs_M&A_76e066d7b85c",
+        "event_subject_key": "revelio_labs_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Revelio Labs Acquires Job Posting Data Provider SourceStack",
+            "summary": "The deal adds SourceStack's AI-driven collection technology to Revelio Labs' workforce intelligence platform, extending the company's lead in job posting coverage. SourceStack founder Alec Barrett-Wilsdon joins Revelio Labs as General Manager of Sourcing. NEW YORK, Nov. 17, 2026...",
+            "link": "https://www.prnewswire.com/news-releases/revelio-labs-acquires-job-posting-data-provider-sourcestack-302942006.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-17T13:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
