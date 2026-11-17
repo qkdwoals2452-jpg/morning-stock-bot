@@ -9111,6 +9111,140 @@
         "delivery_key": "5598459272d3c22ae41b",
         "message_id": 2436
       }
+    },
+    {
+      "id": "de0777e80020b8f7",
+      "seen_at": "2026-11-17T14:09:17.473297+00:00",
+      "event": {
+        "event_title": "Z2A Digital Acquires Lootably to Expand into Rewarded and Incentivized Markets",
+        "event_key": "z2a_digital_M&A_16ba3d3dfe52",
+        "event_subject_key": "z2a_digital_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Z2A Digital Acquires Lootably to Expand into Rewarded and Incentivized Markets",
+            "summary": "TEL AVIV, Israel, Nov. 17, 2026 /PRNewswire/ -- Z2A Digital, a full-funnel growth agency based in Tel Aviv, announced the acquisition of Lootably, a rewarded platform. The purpose of the acquisition is to position Z2A Digital as an all-encompassing partner and provider of end-to-end...",
+            "link": "https://www.prnewswire.com/news-releases/z2a-digital-acquires-lootably-to-expand-into-rewarded-and-incentivized-markets-302942246.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-17T14:07:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "fcee02c482d9fac8",
+      "seen_at": "2026-11-17T14:09:17.473297+00:00",
+      "event": {
+        "event_title": "Z2A Digital Acquires Lootably to Expand into Rewarded and Incentivized Markets",
+        "event_key": "z2a_digital_M&A_bbd146261429",
+        "event_subject_key": "z2a_digital_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Z2A Digital Acquires Lootably to Expand into Rewarded and Incentivized Markets",
+            "summary": "TEL AVIV, Israel, Nov. 17, 2026 /PRNewswire/ -- Z2A Digital, a full-funnel growth agency based in Tel Aviv, announced the acquisition of Lootably, a rewarded platform. The purpose of the acquisition is to position Z2A Digital as an all-encompassing partner and provider of end-to-end...",
+            "link": "https://www.prnewswire.com/news-releases/z2a-digital-acquires-lootably-to-expand-into-rewarded-and-incentivized-markets-302942241.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-17T14:05:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
