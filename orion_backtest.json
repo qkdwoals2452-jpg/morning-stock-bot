@@ -24,8 +24,8 @@
     "start_price": 20100.0,
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 21250.0,
-    "current_return": 5.72,
+    "current_price": 21100.0,
+    "current_return": 4.98,
     "highest_price": 21800.0,
     "highest_return": 8.46,
     "lowest_price": 18610.0,
@@ -188,9 +188,15 @@
         "price": 21250.0,
         "return": 5.72,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-11-16",
+        "price": 21100.0,
+        "return": 4.98,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-11-13",
+    "last_updated": "2026-11-16",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-10-13",
@@ -275,7 +281,7 @@
       "max_drawdown": -5.07
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-11-14T11:53:39.910056+09:00",
+    "price_observed_at": "2026-11-17T13:56:32.010652+09:00",
     "checkpoint_price_sources": {
       "result_10d": "YAHOO_REGULAR_CLOSE",
       "result_20d": "YAHOO_REGULAR_CLOSE"
@@ -316,10 +322,10 @@
     "start_price_source": "YAHOO_REGULAR_CLOSE",
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 34300.0,
-    "current_return": 32.43,
-    "highest_price": 34300.0,
-    "highest_return": 32.43,
+    "current_price": 34400.0,
+    "current_return": 32.82,
+    "highest_price": 34400.0,
+    "highest_return": 32.82,
     "lowest_price": 25900.0,
     "max_drawdown": 0.0,
     "result_1d": 32.43,
@@ -345,9 +351,15 @@
         "price": 34300.0,
         "return": 32.43,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-11-16",
+        "price": 34400.0,
+        "return": 32.82,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-11-13",
+    "last_updated": "2026-11-16",
     "pre_news_activity": {
       "status": "ok",
       "volume_ratio": 1.8441,
@@ -441,7 +453,7 @@
       "max_drawdown": 0.0
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-11-14T11:53:40.025321+09:00",
+    "price_observed_at": "2026-11-17T13:56:32.095957+09:00",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-11-13"
