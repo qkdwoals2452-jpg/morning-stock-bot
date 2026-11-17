@@ -8976,17 +8976,17 @@
   },
   "initialized_at": "2026-10-23T00:40:39.561269+00:00",
   "last_poll": {
-    "started_at": "2026-11-17T08:12:21.828251+00:00",
-    "previous_started_at": "2026-11-17T08:07:21.757269+00:00",
-    "start_gap_seconds": 300.07,
-    "completed_at": "2026-11-17T08:13:02.543776+00:00",
+    "started_at": "2026-11-17T08:22:21.969543+00:00",
+    "previous_started_at": "2026-11-17T08:12:21.828251+00:00",
+    "start_gap_seconds": 600.14,
+    "completed_at": "2026-11-17T08:23:03.008465+00:00",
     "collected": 526,
     "new": 0,
     "baseline": 0,
     "notices": 0,
     "analyses": 0,
     "pending": 0,
-    "uncertain": 8
+    "uncertain": 9
   },
   "kakao_source": {}
 }
