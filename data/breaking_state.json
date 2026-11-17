@@ -8830,8 +8830,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "7b3faa258adb467fe58a"
+        "phase": "sent",
+        "delivery_key": "7b3faa258adb467fe58a",
+        "message_id": 2400
       },
       "analysis": {
         "phase": "ready",
