@@ -180,74 +180,6 @@
       }
     },
     {
-      "id": "277d2f48c1305b9c",
-      "seen_at": "2026-11-10T11:55:07.845635+00:00",
-      "event": {
-        "event_title": "PCB Technologies Reports Q3 2026 Results: USD 62 Million in New Orders, Backlog and expected orders Rise to USD 270 Million, Revenue Up 8% from Q2 2026 to USD 50.5 Million",
-        "event_key": "pcb_technologies_EARNINGS_9f72140da1e4",
-        "event_subject_key": "pcb_technologies_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "USD:270000000",
-            "USD:50500000",
-            "USD:62000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "PCB Technologies Reports Q3 2026 Results: USD 62 Million in New Orders, Backlog and expected orders Rise to USD 270 Million, Revenue Up 8% from Q2 2026 to USD 50.5 Million",
-            "summary": "MIGDAL HAEMEK, Israel, Nov. 10, 2026 /PRNewswire/ -- PCB Technologies (TASE: PCBT), a global leader in advanced electronic and PCB manufacturing solutions, today announced its Q3 2026 results: record sales, orders and backlog, with improved profitability. Q3 2026 Highlights Record Q3...",
-            "link": "https://www.prnewswire.com/news-releases/pcb-technologies-reports-q3-2026-results-usd-62-million-in-new-orders-backlog-and-expected-orders-rise-to-usd-270-million-revenue-up-8-from-q2-2026-to-usd-50-5-million-302934834.html",
-            "market": "US",
-            "source": "PRNewswire_Tech",
-            "origin_publisher": "PR Newswire Association LLC.",
-            "published_at": "2026-11-10T11:52:00+00:00",
-            "publication_verified_by": "Publisher_RSS",
-            "content_kind": "distributed_press_release",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "분기 실적 기사에서 실제 결과·가이던스 변화 확인",
-              "US"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "US",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "분기 실적 기사에서 실제 결과·가이던스 변화 확인",
-          "US"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "8745b2d7d78bf97c3c95",
-        "message_id": 2142
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nPCB Technologies Reports Q3 2026 Results: USD 62 Million in New Orders, Backlog and expected orders Rise to USD 270 Million, Revenue Up 8% from Q2 2026 to USD 50.5 Million\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 기사에서 설비투자·생산·공급 지출 근거를 확인하지 못했습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "221adb0e82b73c4be15a",
-        "message_id": 2143
-      }
-    },
-    {
       "id": "c2548e2dc9ccf2e6",
       "seen_at": "2026-11-10T12:05:07.138511+00:00",
       "event": {
@@ -9193,6 +9125,92 @@
         "message": "🔎 ORION 후속 검증 · 2차\n\nQuorum Cyber Completes Acquisition of Ontinue, Advancing Its Vision for Microsoft-First Autonomous Cyber Defense\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 인수 사건: 피인수기업·거래 상대방의 국내 상장사 연결 근거가 확보되지 않았습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
         "delivery_key": "c35677fa91ce9eaa31eb",
         "message_id": 2427
+      }
+    },
+    {
+      "id": "6e2386e086ad62e6",
+      "seen_at": "2026-11-17T11:59:15.209521+00:00",
+      "event": {
+        "event_title": "Quaise Energy Signs 50 MW Geothermal Power Purchase Agreement with Google",
+        "event_key": "google_CONTRACT_3bd139242fb4",
+        "event_subject_key": "google_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "google"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "Quaise Energy Signs 50 MW Geothermal Power Purchase Agreement with Google",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "BEND, Ore., November 17, 2026--Quaise Energy, a leading developer of utility-scale superhot geothermal energy, today announced that Google has signed a power purchase agreement (PPA) for 50 megawatts (MW) of superhot geothermal power from Project Obsidian, Quaise’s flagship project in Central Oregon.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "The agreement will help catalyze the c",
+              "state": "planned"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Quaise Energy Signs 50 MW Geothermal Power Purchase Agreement with Google",
+            "summary": "BEND, Ore., November 17, 2026--Quaise Energy, a leading developer of utility-scale superhot geothermal energy, today announced that Google has signed a power purchase agreement (PPA) for 50 megawatts (MW) of superhot geothermal power from Project Obsidian, Quaise’s flagship project in Central Oregon. Once online, this always-on, carbon-free energy is slated to support Google’s existing data center operations in The Dalles, Ore. and the region’s communities. The agreement will help catalyze the c",
+            "link": "https://finance.yahoo.com/energy/articles/quaise-energy-signs-50-mw-115000131.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-17T11:50:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": [
+          "전력",
+          "변압기"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
       }
     }
   ],
