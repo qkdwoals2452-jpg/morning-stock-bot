@@ -9394,8 +9394,10 @@
         "message_id": 2443
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\n록히드마틴, 韓에 10억달러 투자…&quot;차세대 헬기 공동 개발하자&quot;\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "7cecba7e05cf10c85b7d"
       }
     }
   ],
