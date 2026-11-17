@@ -9039,6 +9039,73 @@
         "delivery_key": "7f3979a7c6a4867919be",
         "message_id": 2434
       }
+    },
+    {
+      "id": "1f3cc9fedbbbb965",
+      "seen_at": "2026-11-17T13:49:17.578448+00:00",
+      "event": {
+        "event_title": "Amazon to invest $7bn in Indian renewable energy projects by 2030",
+        "event_key": "amazon_CAPEX_c0e5e4f52899",
+        "event_subject_key": "amazon_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:7"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Amazon to invest $7bn in Indian renewable energy projects by 2030",
+            "summary": "Amazon has committed to four new utility-scale wind and solar projects in India, totalling 934MW of capacity.",
+            "link": "https://www.power-technology.com/news/amazon-7bn-indian-renewable-projects-2030/?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-17T13:29:18+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
