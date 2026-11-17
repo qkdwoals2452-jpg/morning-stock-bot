@@ -9052,6 +9052,73 @@
         "delivery_key": "be7f3f6b36043c9a07be",
         "message_id": 2423
       }
+    },
+    {
+      "id": "4152c1869c5d2368",
+      "seen_at": "2026-11-17T10:03:02.644585+00:00",
+      "event": {
+        "event_title": "Quorum Cyber Completes Acquisition of Ontinue, Advancing Its Vision for Microsoft-First Autonomous Cyber Defense",
+        "event_key": "microsoft_M&A_232f8b34f176",
+        "event_subject_key": "microsoft_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Quorum Cyber Completes Acquisition of Ontinue, Advancing Its Vision for Microsoft-First Autonomous Cyber Defense",
+            "summary": "Combination Brings Together Agentic AI, Experienced Cyber Defenders and Deep Microsoft Expertise to Deliver Proactive, Continuous and Trusted Cyber Defense EDINBURGH and ZURICH, Nov. 17, 2026 /PRNewswire/ -- Quorum Cyber, an award-winning Microsoft-centric cybersecurity services provider,...",
+            "link": "https://www.prnewswire.com/news-releases/quorum-cyber-completes-acquisition-of-ontinue-advancing-its-vision-for-microsoft-first-autonomous-cyber-defense-302940933.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-17T10:00:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
