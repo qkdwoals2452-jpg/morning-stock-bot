@@ -9443,6 +9443,75 @@
         "delivery_key": "d25803b280573dac7fca",
         "message_id": 2465
       }
+    },
+    {
+      "id": "e8668dae954941cc",
+      "seen_at": "2026-11-18T06:34:17.737059+00:00",
+      "event": {
+        "event_title": "Redseer Builds MENA CXO's Intelligence Layer; Commits $5 Million Investment to the Benchmarks Platform",
+        "event_key": "redseer_builds_CAPEX_b904ecad604c",
+        "event_subject_key": "redseer_builds_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:5000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Redseer Builds MENA CXO's Intelligence Layer; Commits $5 Million Investment to the Benchmarks Platform",
+            "summary": "Benchmarks MENA 2.0 brings together proprietary data and strategic advisory across nine markets in MENA's $200 billion digital economy. DUBAI, UAE, Nov. 18, 2026 /PRNewswire/ -- Redseer Strategy Consultants today announced the official launch of Benchmarks MENA 2.0, its proprietary...",
+            "link": "https://www.prnewswire.com/news-releases/redseer-builds-mena-cxos-intelligence-layer-commits-5-million-investment-to-the-benchmarks-platform-302942563.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-18T06:30:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
