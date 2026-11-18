@@ -9398,8 +9398,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "32fdba4d4b1845e5c77c"
+        "phase": "sent",
+        "delivery_key": "32fdba4d4b1845e5c77c",
+        "message_id": 2472
       },
       "analysis": {
         "phase": "ready",
