@@ -180,68 +180,6 @@
       }
     },
     {
-      "id": "fcfa0d5efabdf4d6",
-      "seen_at": "2026-11-11T08:05:57.664432+00:00",
-      "event": {
-        "event_title": "실리콘투, 3분기 매출액 4244억원…'분기 최대'",
-        "event_key": "실리콘투_EARNINGS_fe569dad598b",
-        "event_subject_key": "실리콘투_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "KRW:424400000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "실리콘투, 3분기 매출액 4244억원…'분기 최대'",
-            "summary": "K뷰티 유통업체인 실리콘투가 3분기 역대 분기 최대 매출액을 다시 썼다. 북미·중남미를 중심으로 높은 성장세가 이어지면서다. 실리콘투(257720)는 연결 기준 3분기 매출액이 4244억원으로 전년 동기 대비 41.7% 증가했다고 11일 공시했다. 같은 기간 영업이익은 10.4% 늘어난 696억원, 당기순이익은 84.9% 줄어든 88억원으로 각각 잠정 집...",
-            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=05297206645644736",
-            "market": "KR",
-            "source": "이데일리_기업",
-            "origin_publisher": "",
-            "published_at": "2026-11-11T16:58:26+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실적 기간과 확정된 실적 변화 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실적 기간과 확정된 실적 변화 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "d71270b8236950214baa",
-        "message_id": 2178
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n실리콘투, 3분기 매출액 4244억원…&#x27;분기 최대&#x27;\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 실리콘투 (257720) · 기사상 사건 주체\n기사 기재 금액: 4244억원\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=05297206645644736\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 실리콘투 (257720): 120일선 아래\n2026-11-11 정규장 일봉 · 종가 26,700원 / 120일선 37,360.42원 / 52주 고점 56,100원 / 고점 대비 -52.41%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "eb0b23057aa1cef599b6",
-        "message_id": 2179
-      }
-    },
-    {
       "id": "887f897923b8a2aa",
       "seen_at": "2026-11-11T08:18:06.215990+00:00",
       "event": {
