@@ -533,7 +533,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-17",
+          "close": 445000.0,
+          "return_pct": -3.7838
+        }
+      },
       "base_date": "2026-11-16",
       "base_close": 462500.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -561,7 +567,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-17",
+          "close": 1577.0,
+          "return_pct": -8.4204
+        }
+      },
       "base_date": "2026-11-16",
       "base_close": 1722.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -589,7 +601,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-17",
+          "close": 2865.0,
+          "return_pct": 0.5263
+        }
+      },
       "base_date": "2026-11-16",
       "base_close": 2850.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -624,7 +642,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-17",
+          "close": 1288.0,
+          "return_pct": 3.3708
+        }
+      },
       "base_date": "2026-11-16",
       "base_close": 1246.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -652,7 +676,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-17",
+          "close": 6990.0,
+          "return_pct": 1.5988
+        }
+      },
       "base_date": "2026-11-16",
       "base_close": 6880.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -687,7 +717,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-17",
+          "close": 30350.0,
+          "return_pct": -4.2587
+        }
+      },
       "base_date": "2026-11-16",
       "base_close": 31700.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -715,7 +751,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-17",
+          "close": 561.0,
+          "return_pct": 0.0
+        }
+      },
       "base_date": "2026-11-16",
       "base_close": 561.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -747,10 +789,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-17",
+      "base_close": 30350.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -772,10 +817,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-17",
+      "base_close": 11800.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -797,10 +845,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-17",
+      "base_close": 2400.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -829,10 +880,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-17",
+      "base_close": 4200.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -846,6 +900,116 @@
     "code": "030200",
     "decision_at": "2026-11-17T14:02:39.767955+09:00",
     "recorded_at": "2026-11-17T14:02:39.767955+09:00",
+    "decision": "rejected_or_held",
+    "stage": "connection",
+    "reason": "기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "tracking",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {},
+      "base_date": "2026-11-17",
+      "base_close": 51000.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
+    }
+  },
+  {
+    "key": [
+      "2026-11-18",
+      "009150",
+      "chart",
+      "52주 고점 대비 -60% 이하"
+    ],
+    "name": "삼성전기",
+    "code": "009150",
+    "decision_at": "2026-11-18T13:07:11.157702+09:00",
+    "recorded_at": "2026-11-18T13:07:11.157702+09:00",
+    "decision": "rejected_or_held",
+    "stage": "chart",
+    "reason": "52주 고점 대비 -60% 이하",
+    "evidence": {
+      "price_date": "2026-11-17",
+      "price_source": "YAHOO_REGULAR_CLOSE",
+      "current": 754000.0,
+      "ma120": 1451341.67,
+      "high_52w": 2417000.0,
+      "high_52w_gap": -68.8
+    },
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-18",
+      "005930",
+      "policy",
+      "대형주·지주사 참고용 제외"
+    ],
+    "name": "삼성전자",
+    "code": "005930",
+    "decision_at": "2026-11-18T13:07:11.157702+09:00",
+    "recorded_at": "2026-11-18T13:07:11.157702+09:00",
+    "decision": "rejected_or_held",
+    "stage": "policy",
+    "reason": "대형주·지주사 참고용 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-18",
+      "193250",
+      "connection",
+      "기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음"
+    ],
+    "name": "링크드",
+    "code": "193250",
+    "decision_at": "2026-11-18T13:07:11.157702+09:00",
+    "recorded_at": "2026-11-18T13:07:11.157702+09:00",
+    "decision": "rejected_or_held",
+    "stage": "connection",
+    "reason": "기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-18",
+      "000660",
+      "connection",
+      "기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음"
+    ],
+    "name": "SK하이닉스",
+    "code": "000660",
+    "decision_at": "2026-11-18T13:07:11.157702+09:00",
+    "recorded_at": "2026-11-18T13:07:11.157702+09:00",
     "decision": "rejected_or_held",
     "stage": "connection",
     "reason": "기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음",
