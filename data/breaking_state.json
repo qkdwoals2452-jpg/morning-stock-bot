@@ -9460,8 +9460,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "57186bebbf585e2147c2"
+        "phase": "sent",
+        "delivery_key": "57186bebbf585e2147c2",
+        "message_id": 2468
       },
       "analysis": {
         "phase": "ready",
