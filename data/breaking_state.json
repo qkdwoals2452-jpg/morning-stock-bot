@@ -9570,8 +9570,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "09657e5697b9beb7149d"
+        "phase": "sent",
+        "delivery_key": "09657e5697b9beb7149d",
+        "message_id": 2486
       },
       "analysis": {
         "phase": "ready",
