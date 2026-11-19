@@ -186,6 +186,11 @@
           "date": "2026-11-16",
           "close": 95000.0,
           "return_pct": 0.4228
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 92200.0,
+          "return_pct": -2.537
         }
       },
       "base_date": "2026-11-13",
@@ -220,6 +225,11 @@
           "date": "2026-11-16",
           "close": 73100.0,
           "return_pct": -1.0825
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 74000.0,
+          "return_pct": 0.1353
         }
       },
       "base_date": "2026-11-13",
@@ -254,6 +264,11 @@
           "date": "2026-11-16",
           "close": 20400.0,
           "return_pct": -4.4496
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 20350.0,
+          "return_pct": -4.6838
         }
       },
       "base_date": "2026-11-13",
@@ -295,6 +310,11 @@
           "date": "2026-11-16",
           "close": 4640.0,
           "return_pct": -3.0303
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 4600.0,
+          "return_pct": -3.8662
         }
       },
       "base_date": "2026-11-13",
@@ -329,6 +349,11 @@
           "date": "2026-11-16",
           "close": 8490.0,
           "return_pct": 0.5924
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 8390.0,
+          "return_pct": -0.5924
         }
       },
       "base_date": "2026-11-13",
@@ -363,6 +388,11 @@
           "date": "2026-11-16",
           "close": 1789.0,
           "return_pct": 1.8793
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 1835.0,
+          "return_pct": 4.4989
         }
       },
       "base_date": "2026-11-13",
@@ -397,6 +427,11 @@
           "date": "2026-11-16",
           "close": 1775.0,
           "return_pct": -2.7397
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 1700.0,
+          "return_pct": -6.8493
         }
       },
       "base_date": "2026-11-13",
@@ -431,6 +466,11 @@
           "date": "2026-11-16",
           "close": 6700.0,
           "return_pct": -7.967
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 6800.0,
+          "return_pct": -6.5934
         }
       },
       "base_date": "2026-11-13",
@@ -465,6 +505,11 @@
           "date": "2026-11-16",
           "close": 3685.0,
           "return_pct": -9.6814
+        },
+        "3": {
+          "date": "2026-11-18",
+          "close": 3700.0,
+          "return_pct": -9.3137
         }
       },
       "base_date": "2026-11-13",
@@ -792,7 +837,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-18",
+          "close": 31500.0,
+          "return_pct": 3.7891
+        }
+      },
       "base_date": "2026-11-17",
       "base_close": 30350.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -820,7 +871,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-18",
+          "close": 12060.0,
+          "return_pct": 2.2034
+        }
+      },
       "base_date": "2026-11-17",
       "base_close": 11800.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -848,7 +905,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-18",
+          "close": 2490.0,
+          "return_pct": 3.75
+        }
+      },
       "base_date": "2026-11-17",
       "base_close": 2400.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -883,7 +946,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-18",
+          "close": 4275.0,
+          "return_pct": 1.7857
+        }
+      },
       "base_date": "2026-11-17",
       "base_close": 4200.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -911,7 +980,13 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-18",
+          "close": 49500.0,
+          "return_pct": -2.9412
+        }
+      },
       "base_date": "2026-11-17",
       "base_close": 51000.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
@@ -943,10 +1018,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-18",
+      "base_close": 810000.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -968,10 +1046,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-18",
+      "base_close": 194700.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -993,10 +1074,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-18",
+      "base_close": 1589.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -1014,6 +1098,41 @@
     "stage": "connection",
     "reason": "기업명·키워드 언급만으로 사건 당사자 관계를 확인할 수 없음",
     "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "tracking",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {},
+      "base_date": "2026-11-18",
+      "base_close": 1144000.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
+    }
+  },
+  {
+    "key": [
+      "2026-11-19",
+      "042660",
+      "chart",
+      "52주 고점 대비 -60% 이하"
+    ],
+    "name": "한화오션",
+    "code": "042660",
+    "decision_at": "2026-11-19T13:01:58.239368+09:00",
+    "recorded_at": "2026-11-19T13:01:58.239368+09:00",
+    "decision": "rejected_or_held",
+    "stage": "chart",
+    "reason": "52주 고점 대비 -60% 이하",
+    "evidence": {
+      "price_date": "2026-11-18",
+      "price_source": "YAHOO_REGULAR_CLOSE",
+      "current": 44700.0,
+      "ma120": 84688.75,
+      "high_52w": 154800.0,
+      "high_52w_gap": -71.12
+    },
     "provenance": {
       "source": "runtime_analysis"
     },
