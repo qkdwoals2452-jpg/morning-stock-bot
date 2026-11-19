@@ -8958,6 +8958,71 @@
         "delivery_key": "6e83dce1fbe27d084ae9",
         "message_id": 2507
       }
+    },
+    {
+      "id": "af8e8b21d759995d",
+      "seen_at": "2026-11-19T10:07:00.386746+00:00",
+      "event": {
+        "event_title": "일진전기, 싱가포르서 1125억 초고압 케이블 수주",
+        "event_key": "일진전기_CONTRACT_8b062f9fe5ff",
+        "event_subject_key": "일진전기_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:112500000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "일진전기, 싱가포르서 1125억 초고압 케이블 수주",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026111982701",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-19T18:05:33+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
