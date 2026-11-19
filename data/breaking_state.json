@@ -8937,8 +8937,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "66c29b4943c6846ef45a"
+        "phase": "sent",
+        "delivery_key": "66c29b4943c6846ef45a",
+        "message_id": 2521
       },
       "analysis": {
         "phase": "ready",
