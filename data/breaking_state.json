@@ -9067,8 +9067,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "ffa65afeb2fecd49e224"
+        "phase": "sent",
+        "delivery_key": "ffa65afeb2fecd49e224",
+        "message_id": 2506
       },
       "analysis": {
         "phase": "ready",
