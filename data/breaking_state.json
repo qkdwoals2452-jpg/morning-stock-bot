@@ -9388,8 +9388,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "ca5133c512972275f5da"
+        "phase": "sent",
+        "delivery_key": "ca5133c512972275f5da",
+        "message_id": 2497
       },
       "analysis": {
         "phase": "ready",
