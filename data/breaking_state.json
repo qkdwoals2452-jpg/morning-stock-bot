@@ -9495,10 +9495,11 @@
         "message_id": 2494
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 3,
         "message": "🔎 ORION 후속 검증 · 2차\n\n이미지스, 美 서크에 노트북용 터치IC 공급…작년 매출의 49.8%\n\n외부 데이터 조회·분석이 3회 실패했습니다. 종목 검증 보류로 기록했으며 운영 확인이 필요합니다.",
-        "delivery_key": "7890b40d3604b260f8c7"
+        "delivery_key": "7890b40d3604b260f8c7",
+        "message_id": 2495
       }
     }
   ],
