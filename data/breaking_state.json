@@ -180,68 +180,6 @@
       }
     },
     {
-      "id": "9b433b9efad4358b",
-      "seen_at": "2026-11-12T03:21:57.031863+00:00",
-      "event": {
-        "event_title": "서울옥션, 3분기 영업이익 2억원…전년 동기 대비 흑자전환",
-        "event_key": "서울옥션_EARNINGS_0e027048653a",
-        "event_subject_key": "서울옥션_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "KRW:200000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "서울옥션, 3분기 영업이익 2억원…전년 동기 대비 흑자전환",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/2026111224596",
-            "market": "KR",
-            "source": "한국경제_증권",
-            "origin_publisher": "",
-            "published_at": "2026-11-12T11:15:18+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실제 실적·가이던스 변화"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실제 실적·가이던스 변화"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "4a9b875ff5e9d50715d4",
-        "message_id": 2211
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n서울옥션, 3분기 영업이익 2억원…전년 동기 대비 흑자전환\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 서울옥션 (063170) · 기사상 사건 주체\n기사 기재 금액: 2억원\n<a href=\"https://www.hankyung.com/article/2026111224596\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 서울옥션 (063170): 120일선 아래\n2026-11-11 정규장 일봉 · 종가 4,800원 / 120일선 5,285.71원 / 52주 고점 9,950원 / 고점 대비 -51.76%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "420bd83bc7ebbd2a8295",
-        "message_id": 2212
-      }
-    },
-    {
       "id": "0a36ef249cb9fdee",
       "seen_at": "2026-11-12T04:48:11.140747+00:00",
       "event": {
