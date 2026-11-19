@@ -9410,8 +9410,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "af6705570e5f9ccf93d4"
+        "phase": "sent",
+        "delivery_key": "af6705570e5f9ccf93d4",
+        "message_id": 2500
       },
       "analysis": {
         "phase": "ready",
