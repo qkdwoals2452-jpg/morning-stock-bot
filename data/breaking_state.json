@@ -180,66 +180,6 @@
       }
     },
     {
-      "id": "8332861f83690ab6",
-      "seen_at": "2026-11-12T02:16:55.500840+00:00",
-      "event": {
-        "event_title": "삼성화재, 3분기 순이익 8.3% 감소…자동차보험은 흑자 전환",
-        "event_key": "삼성화재_EARNINGS_77fdd12b9b8b",
-        "event_subject_key": "삼성화재_EARNINGS",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "삼성화재, 3분기 순이익 8.3% 감소…자동차보험은 흑자 전환",
-            "summary": "",
-            "link": "https://www.hankyung.com/article/202611122144i",
-            "market": "KR",
-            "source": "한국경제_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-12T10:43:44+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실제 실적·가이던스 변화"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실제 실적·가이던스 변화"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "37682550f1785f554886",
-        "message_id": 2209
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n삼성화재, 3분기 순이익 8.3% 감소…자동차보험은 흑자 전환\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "8d25a20cad1ba2cdeb5f",
-        "message_id": 2210
-      }
-    },
-    {
       "id": "9b433b9efad4358b",
       "seen_at": "2026-11-12T03:21:57.031863+00:00",
       "event": {
