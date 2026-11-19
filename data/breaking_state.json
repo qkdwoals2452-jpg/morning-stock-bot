@@ -180,68 +180,6 @@
       }
     },
     {
-      "id": "e79a77d016eb6004",
-      "seen_at": "2026-11-12T01:46:54.950936+00:00",
-      "event": {
-        "event_title": "서울옥션, 3분기 누적 매출 249억…전년比 58%↑",
-        "event_key": "서울옥션_EARNINGS_110c8e11bddd",
-        "event_subject_key": "서울옥션_EARNINGS",
-        "event_facts": {
-          "amounts": [
-            "UNKNOWN:24900000000"
-          ],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "EARNINGS",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "실제 실적 수치·결과 확인",
-        "event_score": 70,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "서울옥션, 3분기 누적 매출 249억…전년比 58%↑",
-            "summary": "국내 1위 미술품 경매사 서울옥션(063170)이 미술 시장 침체 우려를 뚫고 3개 분기 연속 영업이익 흑자 행진을 이어갔다. 특히 3분기까지 거둔 누적 매출액과 낙찰총액이 이미 지난해 연간 전체 실적을 넘어서면서 4분기 대규모 기획 경매를 통한 본격적인 연간 실적 턴어라운드가 가시화되고 있다.(사진=서울옥션)12일 서울옥션에 따르면 올해 3분기 연결 기...",
-            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02856886645645064",
-            "market": "KR",
-            "source": "이데일리_증권",
-            "origin_publisher": "",
-            "published_at": "2026-11-12T10:43:25+09:00",
-            "event_score_raw": 70,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:EARNINGS",
-              "실적 기간과 확정된 실적 변화 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:EARNINGS",
-          "실적 기간과 확정된 실적 변화 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "778a81ab08bcbff11600",
-        "message_id": 2205
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n서울옥션, 3분기 누적 매출 249억…전년比 58%↑\n\n분석 종목 1개 / 검증 통과 0개\n연결 근거: 서울옥션 (063170) · 기사상 사건 주체\n기사 기재 금액: 249억\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=02856886645645064\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n최종 검증 조건을 통과한 종목이 없습니다.\n• 서울옥션 (063170): 120일선 아래\n2026-11-11 정규장 일봉 · 종가 4,800원 / 120일선 5,285.71원 / 52주 고점 9,950원 / 고점 대비 -51.76%\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "3b1d85a68a67d50227e0",
-        "message_id": 2206
-      }
-    },
-    {
       "id": "97aedb5d1cd8fdbc",
       "seen_at": "2026-11-12T02:01:54.334062+00:00",
       "event": {
