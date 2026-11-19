@@ -13,6 +13,9 @@ FUTURE = re.compile(r'\b(?:expect\w*|anticipat\w*|will|would|forecast\w*|guidanc
 NEGATED = re.compile(r'\b(?:not|never|no)\b(?!\s+only)|미수령|미인식|미체결|받지\s*않|인식하지\s*않', re.I)
 SIGNED = re.compile(r'\b(?:signs|signed|executed|entered into|enters into)\b|계약\s*체결|체결했|체결하였', re.I)
 SIGNING_INTENT = re.compile(r'\b(?:plans? to|expects? to|will|would|may|might|could|aims? to)\s+(?:sign|execute|enter into)\b|체결\s*(?:예정|추진|목표)', re.I)
+# Completed amendment wording is a change to an agreement, not a new order.
+AMENDED = re.compile(r'\bamended\s+(?:(?:their|its|the|our|an?|existing|substrate|supply|definitive)\s+){0,8}(?:agreement|contract)\b|\b(?:agreement|contract)\s+(?:(?:has|have|had)\s+been|was|were)\s+amended\b', re.I)
+AMENDMENT_INTENT = re.compile(r'\b(?:may|might|could|aims? to)\s+(?:have\s+)?amend(?:ed)?\b', re.I)
 RECEIVED = re.compile(r'\b(?:received|collected|receipt of)\b|수령했|수령하였|수령\s*완료|수취했|입금\s*완료', re.I)
 RECOGNIZED = re.compile(r'\b(?:recognized|recognised)\b.{0,45}\brevenue\b|매출.{0,15}인식(?:했|하였|\s*완료)', re.I)
 
@@ -36,8 +39,10 @@ def assess_financial_states(article):
                     state = 'unconfirmed_or_negated'
                 elif re.search(r'\b(?:mou|memorandum of understanding|letter of intent|term sheet)\b|양해각서|조건합의', clause, re.I):
                     state = 'preliminary'
-                elif SIGNING_INTENT.search(clause) or (future and not SIGNED.search(clause)):
+                elif SIGNING_INTENT.search(clause) or AMENDMENT_INTENT.search(clause) or (future and not SIGNED.search(clause)):
                     state = 'planned'
+                elif AMENDED.search(clause):
+                    state = 'amended'
                 elif SIGNED.search(clause):
                     state = 'signed'
                 else:
