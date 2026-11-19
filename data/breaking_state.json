@@ -180,66 +180,6 @@
       }
     },
     {
-      "id": "5f39dd31e1675572",
-      "seen_at": "2026-11-12T06:08:11.549083+00:00",
-      "event": {
-        "event_title": "공정위, 진에어·에어서울·에어부산 합병 승인…내년 3월 통합 출범",
-        "event_key": "공정위_M&A_fbc8d997eeda",
-        "event_subject_key": "공정위_M&A",
-        "event_facts": {
-          "amounts": [],
-          "counterparties": [],
-          "products": [],
-          "event_dates": [],
-          "contract_years": [],
-          "locations": []
-        },
-        "event_type": "M&A",
-        "evidence_strength": "STRONG",
-        "evidence_reason": "확정 인수·합병 근거 확인",
-        "event_score": 85,
-        "event_grade": "A",
-        "articles": [
-          {
-            "title": "공정위, 진에어·에어서울·에어부산 합병 승인…내년 3월 통합 출범",
-            "summary": "공정거래위원회가 진에어와 에어서울·에어부산의 기업결합을 승인했다. (사진=연합뉴스)공정위는 12일 진에어와 에어서울·에어부산의 기업결합 신고를 승인했다고 밝혔다. 국토교통부도 이날 항공사업법에 따른 심사를 거쳐 3사 합병을 인가했다. 이에 통합 항공사는 내년 3월 17일 진에어를 중심으로 출범할 예정이다.이번 합병은 대한항공의 자회사인 진에어와 아시아나항...",
-            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03722806645645064",
-            "market": "KR",
-            "source": "이데일리_경제",
-            "origin_publisher": "",
-            "published_at": "2026-11-12T15:00:03+09:00",
-            "event_score_raw": 85,
-            "event_reasons": [
-              "사건신분:CONFIRMED",
-              "사건유형:M&A",
-              "확정된 한국어 인수·합병 행동 확인"
-            ]
-          }
-        ],
-        "source_count": 1,
-        "source_bonus": 0,
-        "market": "KR",
-        "reason": [
-          "사건신분:CONFIRMED",
-          "사건유형:M&A",
-          "확정된 한국어 인수·합병 행동 확인"
-        ],
-        "money_flow": []
-      },
-      "notice": {
-        "phase": "sent",
-        "delivery_key": "fc4770d9ff299244a2e2",
-        "message_id": 2218
-      },
-      "analysis": {
-        "phase": "sent",
-        "attempts": 0,
-        "message": "🔎 ORION 후속 검증 · 2차\n\n공정위, 진에어·에어서울·에어부산 합병 승인…내년 3월 통합 출범\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 인수 사건: 피인수기업·거래 상대방의 국내 상장사 연결 근거가 확보되지 않았습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "6b031a1a307c3cf0d32a",
-        "message_id": 2219
-      }
-    },
-    {
       "id": "7d7d8c143f0f55ac",
       "seen_at": "2026-11-12T06:43:12.799215+00:00",
       "event": {
