@@ -11,6 +11,46 @@ class FinancialStateTests(unittest.TestCase):
     def claims(self, text, kind):
         return assess_financial_states({'summary': text})[kind]
 
+    def test_nvidia_samsung_existing_agreement_amendment_is_not_new_order(self):
+        # NVIDIA IR, 2026-11-17: short source excerpt; text classification only.
+        text = ('NVIDIA and Samsung Electro-Mechanics have amended their '
+                'existing substrate supply agreement')
+        article = {'summary': text}
+        before = deepcopy(article)
+        result = assess_financial_states(article)
+        self.assertEqual(result['contract_claims'][0]['state'], 'amended')
+        self.assertEqual(result['contract_claims'][0]['text'], text)
+        self.assertEqual(result['cash_claims'], [])
+        self.assertEqual(result['revenue_claims'], [])
+        self.assertEqual(result['verification'], 'article_text_only')
+        self.assertEqual(result['score_bonus'], 0)
+        self.assertEqual(article, before)
+
+    def test_amendment_boundaries_do_not_promote_intent_or_denial(self):
+        cases = [
+            ('Company signed an amended supply agreement.', 'amended'),
+            ('The supply agreement has been amended.', 'amended'),
+            ('Company has not amended its supply agreement.', 'unconfirmed_or_negated'),
+            ('Company will sign an amended supply agreement.', 'planned'),
+            ('Company may have amended its supply agreement.', 'planned'),
+            ('Company signed a nonbinding amended supply agreement.', 'nonbinding'),
+            ('Company signed an amended term sheet agreement.', 'preliminary'),
+            ('An amended filing discusses the supply agreement.', 'unknown'),
+            ('Company signed a new supply agreement.', 'signed'),
+        ]
+        for text, expected in cases:
+            with self.subTest(text=text):
+                self.assertEqual(self.claims(text, 'contract_claims')[0]['state'], expected)
+
+    def test_amendment_retained_in_event_audit_without_score_change(self):
+        article = {'title': 'Company signs supply agreement',
+                   'summary': 'Company signed an amended supply agreement.'}
+        original_score = calc_event_score(article)
+        event = build_events([article])[0]
+        self.assertEqual(event['financial_states']['contract_claims'][1]['state'], 'amended')
+        self.assertEqual(event['financial_states']['score_bonus'], 0)
+        self.assertEqual(calc_event_score(article), original_score)
+
     def test_ppl_style_split_does_not_make_term_sheet_binding(self):
         text = ('Invitium agreed to key commercial terms with QTS. '
                 'The term sheet is nonbinding. '
