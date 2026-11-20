@@ -10500,8 +10500,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "514abad0e1bfa90200a3"
+        "phase": "sent",
+        "delivery_key": "514abad0e1bfa90200a3",
+        "message_id": 2572
       },
       "analysis": {
         "phase": "ready",
