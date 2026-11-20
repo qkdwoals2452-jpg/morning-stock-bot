@@ -9746,6 +9746,90 @@
         "delivery_key": "780f1399a138204454fe",
         "message_id": 2547
       }
+    },
+    {
+      "id": "8a74bd9792f940c8",
+      "seen_at": "2026-11-20T06:16:26.237577+00:00",
+      "event": {
+        "event_title": "에피소드컴퍼니, 98.5억 규모 공동·외주제작 계약 체결",
+        "event_key": "에피소드컴퍼니_CONTRACT_c599b22a53d4",
+        "event_subject_key": "에피소드컴퍼니_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:9850000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "에피소드컴퍼니, 98.5억 규모 공동·외주제작 계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "에피소드컴퍼니(317530)는 주식회사 몬스터컴퍼니와 98억4965만원 규모의 드라마 ‘프로모터’ 공동제작 및 외주제작 계약을 체결했다고 20일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 오는 2027년 1월30일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "에피소드컴퍼니, 98.5억 규모 공동·외주제작 계약 체결",
+            "summary": "에피소드컴퍼니(317530)는 주식회사 몬스터컴퍼니와 98억4965만원 규모의 드라마 ‘프로모터’ 공동제작 및 외주제작 계약을 체결했다고 20일 공시했다. 이는 최근 매출액 대비 173.30%에 해당한다. 계약기간은 오는 2027년 1월30일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03276726645647688",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T15:10:24+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
