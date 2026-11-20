@@ -62,3 +62,25 @@ Official references:
 
 Tests run without Drive credentials or external Telegram delivery:
 `python -m unittest test_kakao_news_source test_kakao_drive_bridge test_primary_news test_feeder_news test_breaking_news test_breaking_quality`
+
+## 2026-11-20 intake incident and coverage measurement
+
+A read-only replay of the acknowledged 11:01 KST export failed in `parse_export`
+with `ValueError: Invalid IPv6 URL`. One malformed URL in a cumulative export
+prevented all posts from being parsed, including otherwise valid new posts.
+URL extraction now skips malformed authorities/ports and credential-bearing
+links individually, preserving message text, IDs and posting times.
+
+After the fix, the same real export parsed 8,718 messages through 10:58 KST.
+Its November 20 non-media posts numbered 186: 60 contained usable links and
+126 had none. Zero of those 60 posts linked to either currently supported RSS
+host. This is a coverage measurement, not an investment signal or proof that
+bot-side credentials are configured. Private chat bodies are not committed.
+
+The current bridge is therefore not a general research/verification system.
+Unsupported publishers and linkless leads require a separate verification
+queue; they must not be silently described as analyzed stocks or rejected
+investment opportunities. Broadening that coverage requires source-specific
+original retrieval, publication-time verification and deduplication tests.
+Weekly research reports have no automatic code-application path in this bridge;
+any claimed implementation must identify a change, its validation and deployment.
