@@ -30,6 +30,64 @@ class Reader:
         return OLD if metadata['id'] == BASELINE else NEW
 
 class BridgeTests(unittest.TestCase):
+    def setUp(self):
+        patcher = patch('kakao_drive_bridge.fetch_original', return_value=None)
+        self.fetch_original = patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_supported_original_is_retrieved_without_rss_membership(self):
+        url = 'https://www.reuters.com/business/actual-contract/'
+        reader = Reader()
+        reader.read = lambda metadata: OLD if metadata['id'] == BASELINE else NEW.replace(URL.encode(), url.encode())
+        verified = dict(ARTICLE, link=url, source='Reuters_Original',
+                        publication_verified_by='Publisher_Article_JSONLD')
+        self.fetch_original.return_value = verified
+        state = {}
+        joined, report = intake(reader, [], state, NOW)
+        self.assertEqual(len(joined), 1)
+        self.assertEqual(joined[0]['summary'], ARTICLE['summary'])
+        self.assertEqual(joined[0]['published_at'], ARTICLE['published_at'])
+        self.assertEqual(report['original_pages_verified'], 1)
+        self.assertEqual(intake(reader, [], state, NOW)[0], [])
+
+    def test_supported_original_failure_preserves_retry_url_not_chat_body(self):
+        url = 'https://www.reuters.com/business/actual-contract/'
+        reader = Reader()
+        reader.read = lambda metadata: OLD if metadata['id'] == BASELINE else NEW.replace(URL.encode(), url.encode())
+        state = {}
+        self.assertEqual(intake(reader, [], state, NOW)[0], [])
+        self.assertEqual(state['pending'][0]['urls'], [url])
+        self.assertNotIn('text', state['pending'][0])
+        self.assertEqual(state['original_attempt_counts'][url], 1)
+
+    def test_older_pending_checkpoint_recovers_newly_supported_url(self):
+        url = 'https://www.reuters.com/business/actual-contract/'
+        data = NEW.replace(URL.encode(), url.encode())
+        post = parse_export(data)[-1]
+        reader = Reader()
+        reader.read = lambda metadata: data
+        state = {'initialized': True, 'known_ids': [post['message_id']],
+                 'pending': [{'message_id': post['message_id'], 'posted_at': post['posted_at'], 'urls': []}]}
+        self.fetch_original.return_value = dict(ARTICLE, link=url, source='Reuters_Original',
+                        publication_verified_by='Publisher_Article_JSONLD')
+        joined, report = intake(reader, [], state, NOW)
+        self.assertEqual(len(joined), 1)
+        self.assertEqual(report['new_leads'], 0)
+
+    def test_retry_budget_rotates_instead_of_starving_older_links(self):
+        urls = ['https://www.reuters.com/business/contract-%d/' % i for i in range(3)]
+        data = raw(''.join('[봇] [오후 2:0%d] %s\n' % (i+1, u) for i,u in enumerate(urls)))
+        reader = Reader()
+        reader.read = lambda metadata: OLD if metadata['id'] == BASELINE else data
+        state = {}
+        intake(reader, [], state, NOW)
+        self.assertEqual(self.fetch_original.call_count, 2)
+        first = {c.args[0] for c in self.fetch_original.call_args_list}
+        self.fetch_original.reset_mock()
+        intake(reader, [], state, NOW)
+        second = {c.args[0] for c in self.fetch_original.call_args_list}
+        self.assertEqual(first | second, set(urls))
+
     def test_original_owns_text_and_publication_date(self):
         state = {}
         joined, report = intake(Reader(), [ARTICLE], state, NOW)

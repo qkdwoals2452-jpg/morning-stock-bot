@@ -15,10 +15,19 @@ unit test as an authenticated live deployment.
   existing serialized `orion-alert-state` checkpoint, before Telegram requests.
   No sender names or message bodies are persisted. The morning job is stateless
   and uses the bootstrap rule; the breaking worker owns durable intake tracking.
-- Only exact canonical URL matches to the supported issuer/publisher RSS records
-  (NVIDIA newsroom and PR Newswire) are eligible for the analysis engine. This
-  verifies a publication record, not the financial truth of every issuer claim.
-  Other links and linkless posts remain unverified and cannot generate a signal.
+- Exact canonical URL matches to NVIDIA newsroom and PR Newswire RSS remain
+  eligible. Supported public original pages can also be retrieved directly:
+  Reuters, NVIDIA newsroom/IR, Micron IR, Intel newsroom, Coherent IR, Anthropic
+  and Lumentum. The page must contain an Article/NewsArticle structured record
+  with matching original URL, a full articleBody and timezone-aware datePublished
+  within 36 hours. Search snippets, descriptions and dateModified are insufficient.
+  This verifies publication metadata, not the financial truth of every claim.
+  Access denials, redirects, unsupported layouts and linkless posts stay unverified.
+  No access-wall bypass or arbitrary redirect/short-link traversal is attempted.
+- Direct-page requests are bounded to two unique URLs per scan and 2 MiB per
+  response, with finite timeouts. Attempt counts rotate retries so one inaccessible
+  newest URL cannot starve older pending links. No chat bodies/sender names are
+  added to the checkpoint, and originals never inherit chat posting time.
 - Confirmed records retain the original title, summary and publication time.
   Kakao posting time is separate metadata. No score bonus is awarded for a chat
   mention; existing event, company, finance and chart gates still apply.
@@ -61,7 +70,7 @@ Official references:
    message should be sent merely to demonstrate the bridge.
 
 Tests run without Drive credentials or external Telegram delivery:
-`python -m unittest test_kakao_news_source test_kakao_drive_bridge test_primary_news test_feeder_news test_breaking_news test_breaking_quality`
+`python -m unittest test_kakao_news_source test_kakao_drive_bridge test_kakao_original_source test_primary_news test_feeder_news test_breaking_news test_breaking_quality`
 
 ## 2026-11-20 intake incident and coverage measurement
 
@@ -77,7 +86,7 @@ Its November 20 non-media posts numbered 186: 60 contained usable links and
 host. This is a coverage measurement, not an investment signal or proof that
 bot-side credentials are configured. Private chat bodies are not committed.
 
-The current bridge is therefore not a general research/verification system.
+At the time of that measurement the bridge was not a general research/verification system.
 Unsupported publishers and linkless leads require a separate verification
 queue; they must not be silently described as analyzed stocks or rejected
 investment opportunities. Broadening that coverage requires source-specific
