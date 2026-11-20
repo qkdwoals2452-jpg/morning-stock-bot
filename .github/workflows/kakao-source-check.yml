@@ -4,6 +4,7 @@ on:
     paths:
       - kakao_news_source.py
       - kakao_drive_bridge.py
+      - kakao_original_source.py
       - test_kakao*.py
       - news_engine.py
       - breaking_news.py
@@ -19,4 +20,4 @@ jobs:
         with:
           python-version: '3.10'
       - run: pip install requests pandas lxml beautifulsoup4
-      - run: python -m unittest test_kakao_news_source test_kakao_drive_bridge test_primary_news test_feeder_news test_breaking_news test_breaking_quality
+      - run: python -m unittest test_kakao_news_source test_kakao_drive_bridge test_kakao_original_source test_primary_news test_feeder_news test_breaking_news test_breaking_quality

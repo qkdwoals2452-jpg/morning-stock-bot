@@ -1,7 +1,7 @@
 """Private Drive intake; chat text never enters the investment engine.
 
-Only an exact URL join to an issuer/publisher RSS record is eligible. The
-original article owns title, body and publication date. Unknown links stay pending.
+Exact URL joins to publisher RSS or structured public original articles are
+eligible. The original owns title, body and publication date; failures stay pending.
 """
 import os
 from datetime import datetime, timedelta, timezone
@@ -9,6 +9,7 @@ from urllib.parse import urlsplit
 import requests
 from event_identity_engine import canonical_link
 from kakao_news_source import parse_export, select_new_posts
+from kakao_original_source import ORIGINAL_HOSTS, MAX_FETCHES, supported_url, fetch_original
 
 FOLDER = '188Lv-7_iifjiYyiUyiJXNPrHFmSzbpd3'
 BASELINE = '1eMOugPMULBShjb2Ya9d8KlLS1dRThgmt'
@@ -103,9 +104,12 @@ def join_originals(posts, originals, now):
         key = canonical_link(article.get('link', ''))
         stamp = timestamp(article.get('published_at'))
         host = urlsplit(key).hostname
-        if (article.get('publication_verified_by') != 'Publisher_RSS'
+        rss_verified = (article.get('publication_verified_by') == 'Publisher_RSS'
+                        and host == PRIMARY.get(article.get('source')))
+        page_verified = (article.get('publication_verified_by') == 'Publisher_Article_JSONLD'
+                         and supported_url(key) and ORIGINAL_HOSTS.get(host) == article.get('source'))
+        if (not (rss_verified or page_verified)
                 or urlsplit(key).scheme != 'https'
-                or host != PRIMARY.get(article.get('source'))
                 or not stamp or not now - timedelta(hours=36) <= stamp <= now):
             continue
         index.setdefault(key, []).append(article)
@@ -146,18 +150,43 @@ def intake(reader, originals, state, now):
             # sender identities, arbitrary attachments or private link tokens.
             'urls': list(dict.fromkeys(canonical_link(url) for url in p['urls']
                          if urlsplit(url).scheme == 'https'
-                         and urlsplit(url).hostname in PRIMARY.values()))}
+                         and (urlsplit(url).hostname in PRIMARY.values() or supported_url(url))))}
 
-    joined, pending = join_originals(list(pending_index.values()), originals, now)
+    # Older checkpoints discarded unsupported URLs. Re-read URLs only for still
+    # pending message IDs, without replaying acknowledged completed messages.
+    for p in posts:
+        if p['message_id'] in pending_index:
+            pending_index[p['message_id']]['urls'] = list(dict.fromkeys(
+                pending_index[p['message_id']].get('urls', []) + [canonical_link(u)
+                for u in p['urls'] if supported_url(u)]))
+
+    pending_posts = list(pending_index.values())
+    joined, pending = join_originals(pending_posts, originals, now)
+    # RSS absence is not a reason to discard a supported public original.
+    # Try each URL once per scan with a bounded budget; failures remain pending.
+    urls = list(dict.fromkeys(u for p in reversed(pending) for u in p.get('urls', [])
+                             if supported_url(u)))
+    attempts = {u: state.get('original_attempt_counts', {}).get(u, 0) for u in urls}
+    urls.sort(key=lambda u: attempts[u])
+    fetched = []
+    for url in urls[:MAX_FETCHES]:
+        attempts[url] += 1
+        article = fetch_original(url, now)
+        if article:
+            fetched.append(article)
+    if fetched:
+        joined, pending = join_originals(pending_posts, originals + fetched, now)
     modified = timestamp(metadata['modifiedTime'])
     report = {'status': 'ok', 'file_id': metadata['id'], 'modified_at': metadata['modifiedTime'],
               'last_posted_at': max((p['posted_at'] for p in posts), default=None),
               'new_leads': len(recent), 'verified_articles': len(joined),
               'pending_unverified': len(pending),
+              'original_urls_attempted': min(len(urls), MAX_FETCHES),
+              'original_pages_verified': len(fetched),
               'file_stale': bool(modified and now - modified > timedelta(minutes=30))}
     # Commit the checkpoint only after successful parsing and verification.
     state.update(initialized=True, known_ids=list(dict.fromkeys(p['message_id'] for p in posts)),
-                 pending=pending, last_scan=report)
+                 pending=pending, last_scan=report, original_attempt_counts=attempts)
     return joined, report
 
 
