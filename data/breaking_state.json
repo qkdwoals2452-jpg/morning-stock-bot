@@ -10203,6 +10203,86 @@
         "delivery_key": "9fa86efdee3e96052b8c",
         "message_id": 2560
       }
+    },
+    {
+      "id": "3d56128075e78d34",
+      "seen_at": "2026-11-20T13:42:36.848196+00:00",
+      "event": {
+        "event_title": "ScaleCapacity Signs Multi-Year Strategic Collaboration Agreement with AWS to Accelerate Amazon Connect Customer Adoption",
+        "event_key": "amazon_CONTRACT_e92c24fb3dec",
+        "event_subject_key": "amazon_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "aws"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "ScaleCapacity Signs Multi-Year Strategic Collaboration Agreement with AWS to Accelerate Amazon Connect Customer Adoption",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "Three-year agreement expands ScaleCapacity's Amazon Connect Customer practice to help organizations modernize contact centers BURBANK, Calif., Nov. 20, 2026 /PRNewswire/ -- ScaleCapacity, Inc., an AWS Premier Tier Services Partner, today announced a multi-year Strategic Collaboration...",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "ScaleCapacity Signs Multi-Year Strategic Collaboration Agreement with AWS to Accelerate Amazon Connect Customer Adoption",
+            "summary": "Three-year agreement expands ScaleCapacity's Amazon Connect Customer practice to help organizations modernize contact centers BURBANK, Calif., Nov. 20, 2026 /PRNewswire/ -- ScaleCapacity, Inc., an AWS Premier Tier Services Partner, today announced a multi-year Strategic Collaboration...",
+            "link": "https://www.prnewswire.com/news-releases/scalecapacity-signs-multi-year-strategic-collaboration-agreement-with-aws-to-accelerate-amazon-connect-customer-adoption-302945831.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-20T13:37:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
