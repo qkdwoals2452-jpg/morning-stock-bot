@@ -9735,8 +9735,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "2dcfd556b9176b23df37"
+        "phase": "sent",
+        "delivery_key": "2dcfd556b9176b23df37",
+        "message_id": 2546
       },
       "analysis": {
         "phase": "ready",
