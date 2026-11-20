@@ -10269,8 +10269,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "4ef2edcfe0313a2bbdd6"
+        "phase": "sent",
+        "delivery_key": "4ef2edcfe0313a2bbdd6",
+        "message_id": 2559
       },
       "analysis": {
         "phase": "ready",
