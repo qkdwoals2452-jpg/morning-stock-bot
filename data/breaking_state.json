@@ -9728,8 +9728,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "77010d94c426a74629c0"
+        "phase": "sent",
+        "delivery_key": "77010d94c426a74629c0",
+        "message_id": 2543
       },
       "analysis": {
         "phase": "ready",
