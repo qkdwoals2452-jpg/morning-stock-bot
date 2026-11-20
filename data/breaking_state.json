@@ -10013,6 +10013,174 @@
         "delivery_key": "310dc62a2290d845b03a",
         "message_id": 2553
       }
+    },
+    {
+      "id": "bcba5c139a85feae",
+      "seen_at": "2026-11-20T07:06:26.686817+00:00",
+      "event": {
+        "event_title": "금양그린파워, 2300억원 규모 공급계약 체결",
+        "event_key": "금양그린파워_CONTRACT_4f7c565b0b4f",
+        "event_subject_key": "금양그린파워_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:230000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "금양그린파워, 2300억원 규모 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "금양그린파워(282720)는 주식회사 메가데이타코리아와 2300억원 규모의 원주메가클러스터AI데이터센터 전기, 통신 공사 계약을 체결했다고 20일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 오는 2029년 3월30일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "금양그린파워, 2300억원 규모 공급계약 체결",
+            "summary": "금양그린파워(282720)는 주식회사 메가데이타코리아와 2300억원 규모의 원주메가클러스터AI데이터센터 전기, 통신 공사 계약을 체결했다고 20일 공시했다. 이는 최근 매출액 대비 86.87%에 해당한다. 계약기간은 오는 2029년 3월30일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03598166645647688",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T16:01:10+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "317949c2e00251f7",
+      "seen_at": "2026-11-20T07:06:26.686817+00:00",
+      "event": {
+        "event_title": "HLB펩, 6.7억 규모 공급계약 체결",
+        "event_key": "HLB펩_CONTRACT_18236b772ea3",
+        "event_subject_key": "HLB펩_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:670000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "HLB펩, 6.7억 규모 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "HLB펩(196300)은 주식회사 스킨메드와 6억6600만원 규모의 임상 2상용 원료의약품 위탁개발생산계약을 체결했다고 20일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약 기간은 오는 2028년 9월30일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "HLB펩, 6.7억 규모 공급계약 체결",
+            "summary": "HLB펩(196300)은 주식회사 스킨메드와 6억6600만원 규모의 임상 2상용 원료의약품 위탁개발생산계약을 체결했다고 20일 공시했다. 이는 최근 매출액 대비 13.42%에 해당한다. 계약 기간은 오는 2028년 9월30일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03581766645647688",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T15:59:17+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
