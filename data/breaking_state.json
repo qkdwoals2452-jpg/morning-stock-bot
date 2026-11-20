@@ -10277,8 +10277,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "4f93ed49fc8a23df7e32"
+        "phase": "sent",
+        "delivery_key": "4f93ed49fc8a23df7e32",
+        "message_id": 2564
       },
       "analysis": {
         "phase": "ready",
