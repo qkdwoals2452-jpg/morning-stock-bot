@@ -10177,7 +10177,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "455e7855204c05fe59f7"
       },
       "analysis": {
         "phase": "ready",
