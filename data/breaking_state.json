@@ -9835,6 +9835,90 @@
         "delivery_key": "40b47683c2cefa5b987e",
         "message_id": 2549
       }
+    },
+    {
+      "id": "7667b946981ccc21",
+      "seen_at": "2026-11-20T06:31:26.322848+00:00",
+      "event": {
+        "event_title": "대신정보통신, 199억 규모 용역계약 체결",
+        "event_key": "대신정보통신_CONTRACT_5c8047134ad1",
+        "event_subject_key": "대신정보통신_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:19900000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "대신정보통신, 199억 규모 용역계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "대신정보통신(020180)은 조달청과 199억2450만원 규모의 국가정보자원관리원 2026년 제2차 정보자원 통합구축 용역계약을 체결했다고 20일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 오는 2027년 3월22일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "대신정보통신, 199억 규모 용역계약 체결",
+            "summary": "대신정보통신(020180)은 조달청과 199억2450만원 규모의 국가정보자원관리원 2026년 제2차 정보자원 통합구축 용역계약을 체결했다고 20일 공시했다. 이는 최근 매출액 대비 7.67%에 해당한다. 계약기간은 오는 2027년 3월22일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03355446645647688",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T15:25:39+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
