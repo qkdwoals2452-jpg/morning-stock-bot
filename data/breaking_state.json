@@ -10191,6 +10191,90 @@
         "delivery_key": "11e3f9c0e742b7d6ce20",
         "message_id": 2558
       }
+    },
+    {
+      "id": "e4460ac31adb77fb",
+      "seen_at": "2026-11-20T07:46:27.593678+00:00",
+      "event": {
+        "event_title": "큐라티스, 24.9억 규모 공급계약 체결",
+        "event_key": "큐라티스_CONTRACT_4d26226fafe5",
+        "event_subject_key": "큐라티스_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:2490000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "큐라티스, 24.9억 규모 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "큐라티스(348080)는 Access to Advanced Health (UK) Ltd와 24억8916억원 규모의 임상 의약품 공급계약을 체결했다고 20일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 오는 2030년 6월30일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "큐라티스, 24.9억 규모 공급계약 체결",
+            "summary": "큐라티스(348080)는 Access to Advanced Health (UK) Ltd와 24억8916억원 규모의 임상 의약품 공급계약을 체결했다고 20일 공시했다. 이는 최근 매출액 대비 101.31%에 해당한다. 계약기간은 오는 2030년 6월30일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03798246645647688",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T16:42:18+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
