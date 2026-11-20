@@ -10288,6 +10288,84 @@
         "delivery_key": "2545b86586a09141de30",
         "message_id": 2565
       }
+    },
+    {
+      "id": "4092966029b3e667",
+      "seen_at": "2026-11-20T13:52:37.446006+00:00",
+      "event": {
+        "event_title": "ScaleCapacity Signs Multi-Year Strategic Collaboration Agreement with AWS to Accelerate Amazon Connect Customer Adoption",
+        "event_key": "amazon_CONTRACT_df606143e5cb",
+        "event_subject_key": "amazon_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "aws"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "ScaleCapacity Signs Multi-Year Strategic Collaboration Agreement with AWS to Accelerate Amazon Connect Customer Adoption",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "ScaleCapacity, Inc., an AWS Premier Tier Services Partner, today announced a multi-year Strategic Collaboration Agreement (SCA) with Amazon Web Services, Inc. (AWS) to help organizations move to Amazon Connect Customer, the AWS cloud contact center.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "ScaleCapacity Signs Multi-Year Strategic Collaboration Agreement with AWS to Accelerate Amazon Connect Customer Adoption",
+            "summary": "ScaleCapacity, Inc., an AWS Premier Tier Services Partner, today announced a multi-year Strategic Collaboration Agreement (SCA) with Amazon Web Services, Inc. (AWS) to help organizations move to Amazon Connect Customer, the AWS cloud contact center.",
+            "link": "https://finance.yahoo.com/technology/articles/scalecapacity-signs-multi-strategic-collaboration-133700731.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T13:37:00+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
