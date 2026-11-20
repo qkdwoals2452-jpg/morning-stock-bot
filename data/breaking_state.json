@@ -9216,6 +9216,79 @@
         "delivery_key": "020d7fb5855640618ede",
         "message_id": 2530
       }
+    },
+    {
+      "id": "07a328d01b8a42a6",
+      "seen_at": "2026-11-20T01:16:05.009555+00:00",
+      "event": {
+        "event_title": "광진실업 자회사, 중국 면세점에 K-뷰티·K팝 상품 공급",
+        "event_key": "자회사_CONTRACT_d15481b0a613",
+        "event_subject_key": "자회사_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "면세점"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "summary",
+              "text": "광진실업(026910)의 자회사 케이제이글로벌이 더블유티씨에이치(WTCH)와 제품 공급 및 유통 계약을 체결하고 중국 면세사업에 진출한다고 20일 밝혔다.광진실업 CI.(사진=광진실업)이번 계약에 따라 케이제이글로벌은 한국 화장품과 K팝 앨범, 공식 응원봉 및 기획상품(MD) 등을 공급한다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "광진실업 자회사, 중국 면세점에 K-뷰티·K팝 상품 공급",
+            "summary": "광진실업(026910)의 자회사 케이제이글로벌이 더블유티씨에이치(WTCH)와 제품 공급 및 유통 계약을 체결하고 중국 면세사업에 진출한다고 20일 밝혔다.광진실업 CI.(사진=광진실업)이번 계약에 따라 케이제이글로벌은 한국 화장품과 K팝 앨범, 공식 응원봉 및 기획상품(MD) 등을 공급한다. 해당 제품은 중국 하이난성 싼야에 위치한 하이요우면세점(HTDF...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02414086645647688",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T10:08:39+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
