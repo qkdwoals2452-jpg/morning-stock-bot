@@ -10002,7 +10002,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "ef53a24678b6b28c97c8"
       },
       "analysis": {
         "phase": "ready",
