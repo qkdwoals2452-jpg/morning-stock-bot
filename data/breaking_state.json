@@ -10435,10 +10435,11 @@
         "message_id": 2570
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\nSearch Holds 38.8% of U.S. Internet Ad Revenue as Social Grows 32.6%, Growth Partner Index Analysis Finds\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n연결 진단: 기사에서 설비투자·생산·공급 지출 근거를 확인하지 못했습니다.\n근거 미확보는 실제 거래 관계가 없다는 뜻은 아닙니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "021de46b194137d10d8f"
+        "delivery_key": "021de46b194137d10d8f",
+        "message_id": 2571
       }
     }
   ],
