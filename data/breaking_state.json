@@ -9924,6 +9924,90 @@
         "delivery_key": "3d1991abed8e4b53b0e5",
         "message_id": 2551
       }
+    },
+    {
+      "id": "a3fdc2b296abadf5",
+      "seen_at": "2026-11-20T07:01:26.843330+00:00",
+      "event": {
+        "event_title": "에어레인, 98억원 규모 공급계약 체결",
+        "event_key": "에어레인_CONTRACT_0d8fdb89c3cc",
+        "event_subject_key": "에어레인_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:9800000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "에어레인, 98억원 규모 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "에어레인(163280)은 한국가스기술공사와 98억원 규모의 당진 청정수소 패키지(CO2 포집 및 바이오고품질화) 제작 및 설치 계약을 체결했다고 20일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 오는 2027년 12월31일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "에어레인, 98억원 규모 공급계약 체결",
+            "summary": "에어레인(163280)은 한국가스기술공사와 98억원 규모의 당진 청정수소 패키지(CO2 포집 및 바이오고품질화) 제작 및 설치 계약을 체결했다고 20일 공시했다. 이는 최근 매출액 대비 34.91%에 해당한다. 계약기간은 오는 2027년 12월31일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03575206645647688",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T15:57:36+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
