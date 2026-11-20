@@ -10360,8 +10360,9 @@
         "money_flow": []
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "912be5865f5676fc9100"
+        "phase": "sent",
+        "delivery_key": "912be5865f5676fc9100",
+        "message_id": 2566
       },
       "analysis": {
         "phase": "ready",
