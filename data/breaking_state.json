@@ -9275,8 +9275,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "6ade5f38710647d49afc"
+        "phase": "sent",
+        "delivery_key": "6ade5f38710647d49afc",
+        "message_id": 2529
       },
       "analysis": {
         "phase": "ready",
