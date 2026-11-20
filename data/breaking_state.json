@@ -9547,8 +9547,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "08600e044d73877485f2"
+        "phase": "sent",
+        "delivery_key": "08600e044d73877485f2",
+        "message_id": 2538
       },
       "analysis": {
         "phase": "ready",
