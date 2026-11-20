@@ -10177,8 +10177,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "455e7855204c05fe59f7"
+        "phase": "sent",
+        "delivery_key": "455e7855204c05fe59f7",
+        "message_id": 2556
       },
       "analysis": {
         "phase": "ready",
