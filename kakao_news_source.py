@@ -17,6 +17,24 @@ SYSTEM = re.compile(r'^.+님이 (?:들어왔습니다|나갔습니다|퇴장했�
 MEDIA = {'사진', '동영상', '이모티콘', '삭제된 메시지입니다.'}
 
 
+def extract_public_links(text):
+    """A malformed link must not prevent intake of the entire export."""
+    links = []
+    for value in URL.findall(text):
+        value = value.rstrip(').,;]')
+        try:
+            parsed = urlsplit(value)
+            if (parsed.scheme not in ('http', 'https') or not parsed.hostname
+                    or parsed.username or parsed.password):
+                continue
+            parsed.port  # Invalid ports also fail here, before downstream parsing.
+        except ValueError:
+            continue
+        if value not in links:
+            links.append(value)
+    return links
+
+
 def decode_export(raw):
     if raw.startswith((b'\xff\xfe', b'\xfe\xff')):
         return raw.decode('utf-16')
@@ -70,10 +88,7 @@ def parse_export(raw, room=ROOM):
         post['room'] = room
         post['source_kind'] = 'kakao_research_lead'
         post['publication_verified'] = False
-        post['urls'] = list(dict.fromkeys(
-            url.rstrip(').,;]') for url in URL.findall(post['text'])
-            if urlsplit(url).hostname
-        ))
+        post['urls'] = extract_public_links(post['text'])
         post['media_only'] = post['text'] in MEDIA
     return posts
 

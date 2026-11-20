@@ -8,6 +8,18 @@ def export(body, room=ROOM):
 
 
 class KakaoSourceTests(unittest.TestCase):
+    def test_bad_url_does_not_drop_other_posts_or_valid_originals(self):
+        posts = parse_export(export('--------------- 2026년 11월 6일 금요일 ---------------\n'
+            '[봇] [오전 9:01] https://[broken https://example.com:bad/x\n'
+            'https://user:secret@example.com/private\n'
+            '[원문](https://example.com/news)\n'
+            '[봇] [오전 9:02] 다음 계약 https://example.com/next\n'))
+        self.assertEqual(len(posts), 2)
+        self.assertEqual(posts[0]['urls'], ['https://example.com/news'])
+        self.assertEqual(posts[1]['urls'], ['https://example.com/next'])
+        self.assertIn('https://[broken', posts[0]['text'])
+        self.assertEqual(posts[0]['posted_at'], '2026-11-06T09:01:00+09:00')
+
     def test_multiline_links_and_time_are_preserved(self):
         posts = parse_export(export('--------------- 2026년 11월 6일 금요일 ---------------\n'
             '[캐롤라인] [오후 12:01] 증설 계약\n둘째 줄\n[원문](https://example.com/news)\n'
