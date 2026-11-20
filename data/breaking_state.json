@@ -9547,7 +9547,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "08600e044d73877485f2"
       },
       "analysis": {
         "phase": "ready",
