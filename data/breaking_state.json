@@ -9913,8 +9913,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "ae3b81124d3870c92106"
+        "phase": "sent",
+        "delivery_key": "ae3b81124d3870c92106",
+        "message_id": 2550
       },
       "analysis": {
         "phase": "ready",
