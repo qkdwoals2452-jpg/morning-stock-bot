@@ -10301,6 +10301,71 @@
         "delivery_key": "2545b86586a09141de30",
         "message_id": 2567
       }
+    },
+    {
+      "id": "02037f62addc613f",
+      "seen_at": "2026-11-20T16:33:45.091490+00:00",
+      "event": {
+        "event_title": "Veteran investors talk new book, 'demystifying' financial jargon to invest sooner and smarter",
+        "event_key": "veteran_investors_CAPEX_22399b77a2c1",
+        "event_subject_key": "veteran_investors_CAPEX",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Veteran investors talk new book, 'demystifying' financial jargon to invest sooner and smarter",
+            "summary": "Yahoo Finance Executive Editor Brian Sozzi sits down with former BNY Wealth Management CEO Catherine Keating and former Bridgewater Associates chief investment strategist Rebecca Patterson to talk about their new book — \"Investment Wisdom For Our Friends And Loved Ones: Timeless Lessons from Today's Top Finance Experts\" — while sharing their own wisdom they could impart on younger investors just starting to save today.",
+            "link": "https://finance.yahoo.com/video/veteran-investors-talk-new-book-demystifying-financial-jargon-to-invest-sooner-and-smarter-161606156.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-20T16:16:06+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
