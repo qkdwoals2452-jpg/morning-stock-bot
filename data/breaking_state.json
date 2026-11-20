@@ -9461,8 +9461,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "02002275f87550b37744"
+        "phase": "sent",
+        "delivery_key": "02002275f87550b37744",
+        "message_id": 2537
       },
       "analysis": {
         "phase": "ready",
