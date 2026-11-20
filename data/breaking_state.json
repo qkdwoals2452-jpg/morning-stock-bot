@@ -9283,7 +9283,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "7728e22a3b784a4f17fe"
       },
       "analysis": {
         "phase": "ready",
