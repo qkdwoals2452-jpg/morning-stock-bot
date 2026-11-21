@@ -191,6 +191,11 @@
           "date": "2026-11-18",
           "close": 92200.0,
           "return_pct": -2.537
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 88200.0,
+          "return_pct": -6.7653
         }
       },
       "base_date": "2026-11-13",
@@ -230,6 +235,11 @@
           "date": "2026-11-18",
           "close": 74000.0,
           "return_pct": 0.1353
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 69200.0,
+          "return_pct": -6.3599
         }
       },
       "base_date": "2026-11-13",
@@ -269,6 +279,11 @@
           "date": "2026-11-18",
           "close": 20350.0,
           "return_pct": -4.6838
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 18960.0,
+          "return_pct": -11.1944
         }
       },
       "base_date": "2026-11-13",
@@ -315,6 +330,11 @@
           "date": "2026-11-18",
           "close": 4600.0,
           "return_pct": -3.8662
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 4685.0,
+          "return_pct": -2.0899
         }
       },
       "base_date": "2026-11-13",
@@ -354,6 +374,11 @@
           "date": "2026-11-18",
           "close": 8390.0,
           "return_pct": -0.5924
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 8490.0,
+          "return_pct": 0.5924
         }
       },
       "base_date": "2026-11-13",
@@ -393,6 +418,11 @@
           "date": "2026-11-18",
           "close": 1835.0,
           "return_pct": 4.4989
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 1772.0,
+          "return_pct": 0.9112
         }
       },
       "base_date": "2026-11-13",
@@ -432,6 +462,11 @@
           "date": "2026-11-18",
           "close": 1700.0,
           "return_pct": -6.8493
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 1706.0,
+          "return_pct": -6.5205
         }
       },
       "base_date": "2026-11-13",
@@ -471,6 +506,11 @@
           "date": "2026-11-18",
           "close": 6800.0,
           "return_pct": -6.5934
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 6080.0,
+          "return_pct": -16.4835
         }
       },
       "base_date": "2026-11-13",
@@ -510,6 +550,11 @@
           "date": "2026-11-18",
           "close": 3700.0,
           "return_pct": -9.3137
+        },
+        "5": {
+          "date": "2026-11-20",
+          "close": 3390.0,
+          "return_pct": -16.9118
         }
       },
       "base_date": "2026-11-13",
@@ -877,6 +922,11 @@
           "date": "2026-11-18",
           "close": 31500.0,
           "return_pct": 3.7891
+        },
+        "3": {
+          "date": "2026-11-20",
+          "close": 29350.0,
+          "return_pct": -3.2949
         }
       },
       "base_date": "2026-11-17",
@@ -911,6 +961,11 @@
           "date": "2026-11-18",
           "close": 12060.0,
           "return_pct": 2.2034
+        },
+        "3": {
+          "date": "2026-11-20",
+          "close": 11980.0,
+          "return_pct": 1.5254
         }
       },
       "base_date": "2026-11-17",
@@ -945,6 +1000,11 @@
           "date": "2026-11-18",
           "close": 2490.0,
           "return_pct": 3.75
+        },
+        "3": {
+          "date": "2026-11-20",
+          "close": 2380.0,
+          "return_pct": -0.8333
         }
       },
       "base_date": "2026-11-17",
@@ -986,6 +1046,11 @@
           "date": "2026-11-18",
           "close": 4275.0,
           "return_pct": 1.7857
+        },
+        "3": {
+          "date": "2026-11-20",
+          "close": 4065.0,
+          "return_pct": -3.2143
         }
       },
       "base_date": "2026-11-17",
@@ -1020,6 +1085,11 @@
           "date": "2026-11-18",
           "close": 49500.0,
           "return_pct": -2.9412
+        },
+        "3": {
+          "date": "2026-11-20",
+          "close": 45500.0,
+          "return_pct": -10.7843
         }
       },
       "base_date": "2026-11-17",
@@ -1199,10 +1269,66 @@
       "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {},
+      "checkpoints": {
+        "1": {
+          "date": "2026-11-20",
+          "close": 42100.0,
+          "return_pct": -6.4444
+        }
+      },
       "base_date": "2026-11-19",
       "base_close": 45000.0,
       "price_source": "YAHOO_REGULAR_CLOSE"
+    }
+  },
+  {
+    "key": [
+      "2026-11-21",
+      "032350",
+      "finance",
+      "부채비율 과다 제외"
+    ],
+    "name": "롯데관광개발",
+    "code": "032350",
+    "decision_at": "2026-11-21T12:47:29.349561+09:00",
+    "recorded_at": "2026-11-21T12:47:29.349561+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "부채비율 과다 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-21",
+      "104040",
+      "finance",
+      "영업적자 제외"
+    ],
+    "name": "디에스엠",
+    "code": "104040",
+    "decision_at": "2026-11-21T12:47:29.349561+09:00",
+    "recorded_at": "2026-11-21T12:47:29.349561+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "영업적자 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
     }
   }
 ]

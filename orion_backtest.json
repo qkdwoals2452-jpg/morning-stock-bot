@@ -24,8 +24,8 @@
     "start_price": 20100.0,
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 22150.0,
-    "current_return": 10.2,
+    "current_price": 20900.0,
+    "current_return": 3.98,
     "highest_price": 22150.0,
     "highest_return": 10.2,
     "lowest_price": 18610.0,
@@ -212,9 +212,15 @@
         "price": 22150.0,
         "return": 10.2,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-11-20",
+        "price": 20900.0,
+        "return": 3.98,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-11-19",
+    "last_updated": "2026-11-20",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-10-13",
@@ -299,7 +305,7 @@
       "max_drawdown": -5.07
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-11-20T12:51:17.324424+09:00",
+    "price_observed_at": "2026-11-21T12:44:23.731826+09:00",
     "checkpoint_price_sources": {
       "result_10d": "YAHOO_REGULAR_CLOSE",
       "result_20d": "YAHOO_REGULAR_CLOSE"
@@ -340,8 +346,8 @@
     "start_price_source": "YAHOO_REGULAR_CLOSE",
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 38150.0,
-    "current_return": 47.3,
+    "current_price": 36400.0,
+    "current_return": 40.54,
     "highest_price": 38450.0,
     "highest_return": 48.46,
     "lowest_price": 25900.0,
@@ -393,9 +399,15 @@
         "price": 38150.0,
         "return": 47.3,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-11-20",
+        "price": 36400.0,
+        "return": 40.54,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-11-19",
+    "last_updated": "2026-11-20",
     "pre_news_activity": {
       "status": "ok",
       "volume_ratio": 1.8441,
@@ -489,7 +501,7 @@
       "max_drawdown": 0.0
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-11-20T12:51:17.398630+09:00",
+    "price_observed_at": "2026-11-21T12:44:23.822953+09:00",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-11-13",
