@@ -9790,8 +9790,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "897e9fb7a1af6eea750d"
+        "phase": "sent",
+        "delivery_key": "897e9fb7a1af6eea750d",
+        "message_id": 2582
       },
       "analysis": {
         "phase": "ready",
