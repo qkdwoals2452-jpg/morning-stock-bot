@@ -7786,8 +7786,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "db4888379e2a6f539a00"
+        "phase": "sent",
+        "delivery_key": "db4888379e2a6f539a00",
+        "message_id": 2598
       },
       "analysis": {
         "phase": "ready",
