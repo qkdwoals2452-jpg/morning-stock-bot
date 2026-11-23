@@ -7789,6 +7789,75 @@
         "delivery_key": "de5cac7d384b9c0a8057",
         "message_id": 2595
       }
+    },
+    {
+      "id": "66ef2d4243b225ca",
+      "seen_at": "2026-11-23T14:20:23.800378+00:00",
+      "event": {
+        "event_title": "Workday Completes Acquisition of C1.ai",
+        "event_key": "workday_completes_M&A_50b15adf3f42",
+        "event_subject_key": "workday_completes_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Workday Completes Acquisition of C1.ai",
+            "summary": "With C1.ai, Workday Becomes the Identity Governance Layer for People and Agents PLEASANTON, Calif., Nov. 23, 2026 /PRNewswire/ -- Workday, Inc. (NASDAQ: WDAY), the trusted agentic platform for HR, finance, and IT, today announced it has completed its acquisition of C1.ai, a leading...",
+            "link": "https://www.prnewswire.com/news-releases/workday-completes-acquisition-of-c1ai-302947290.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-23T14:15:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
