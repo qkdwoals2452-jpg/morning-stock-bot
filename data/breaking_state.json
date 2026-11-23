@@ -7655,6 +7655,73 @@
         "delivery_key": "1667116b85749d735a53",
         "message_id": 2599
       }
+    },
+    {
+      "id": "3f42ac85a3c23c31",
+      "seen_at": "2026-11-23T17:21:32.508147+00:00",
+      "event": {
+        "event_title": "Top Midday Stories: Nvidia Reappoints Jensen Huang as CEO, Stocks Soar; CrowdStrike Agrees to Acquire Zscaler for $43.9 billion",
+        "event_key": "nvidia_M&A_02c9ff2cfed6",
+        "event_subject_key": "nvidia_M&A",
+        "event_facts": {
+          "amounts": [
+            "USD:43900000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Top Midday Stories: Nvidia Reappoints Jensen Huang as CEO, Stocks Soar; CrowdStrike Agrees to Acquire Zscaler for $43.9 billion",
+            "summary": "All three major US stock indexes were up over 3%, with the Nasdaq Composite up nearly 7%, after Nvid",
+            "link": "https://finance.yahoo.com/markets/stocks/articles/top-midday-stories-nvidia-reappoints-170336731.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-23T17:03:36+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
