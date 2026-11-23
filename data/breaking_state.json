@@ -9863,8 +9863,10 @@
         "message_id": 2584
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\n하나에어로다이내믹스, KAI 인니 훈련기 수명연장 사업 수주\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "83118861f378fa097b14"
       }
     }
   ],
