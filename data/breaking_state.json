@@ -9790,7 +9790,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "897e9fb7a1af6eea750d"
       },
       "analysis": {
         "phase": "ready",
