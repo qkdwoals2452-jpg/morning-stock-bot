@@ -8446,8 +8446,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "5ce17ed5905c110edee0"
+        "phase": "sent",
+        "delivery_key": "5ce17ed5905c110edee0",
+        "message_id": 2589
       },
       "analysis": {
         "phase": "ready",
