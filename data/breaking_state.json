@@ -9931,6 +9931,73 @@
         "delivery_key": "d76671d76548e6bffe73",
         "message_id": 2573
       }
+    },
+    {
+      "id": "b63cc27c9db56257",
+      "seen_at": "2026-11-23T02:37:51.914548+00:00",
+      "event": {
+        "event_title": "Tata Steel to Acquire 26.4% in APL Apollo Tubes for $1.7 Billion",
+        "event_key": "tata_steel_M&A_e9309e9dc07b",
+        "event_subject_key": "tata_steel_M&A",
+        "event_facts": {
+          "amounts": [
+            "USD:1700000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Tata Steel to Acquire 26.4% in APL Apollo Tubes for $1.7 Billion",
+            "summary": "Tata Steel Ltd. has agreed to acquire a 26.4% stake in APL Apollo Tubes Ltd. for as much as 155.1 billion rupees ($1.7 billion), deepening its presence in India’s structural steel products market.",
+            "link": "https://www.bloomberg.com/news/articles/2026-11-23/tata-steel-to-acquire-26-4-in-apl-apollo-tubes-for-1-7-billion",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-11-23T02:30:05+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
