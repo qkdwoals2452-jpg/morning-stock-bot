@@ -7929,6 +7929,81 @@
         "delivery_key": "4ea3417455bedfb0e3d6",
         "message_id": 2590
       }
+    },
+    {
+      "id": "b2b685198afa59ae",
+      "seen_at": "2026-11-23T13:50:23.384158+00:00",
+      "event": {
+        "event_title": "Vuzix Signs Reseller Agreement with Friends With Holograms to Support Enterprise Smart Glasses Adoption",
+        "event_key": "vuzix_signs_CONTRACT_e6cf39b77e85",
+        "event_subject_key": "vuzix_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "friends with holograms"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "Vuzix Signs Reseller Agreement with Friends With Holograms to Support Enterprise Smart Glasses Adoption",
+              "state": "signed"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Vuzix Signs Reseller Agreement with Friends With Holograms to Support Enterprise Smart Glasses Adoption",
+            "summary": "New relationship combines Vuzix smart glasses with business assessment, custom solution development and deployment services Friends With Holograms has worked with Fortune 100 companies such as Walmart, Lowe's, and Verizon, and consultants like Accenture and PwC ROCHESTER, N.Y., Nov. 23,...",
+            "link": "https://www.prnewswire.com/news-releases/vuzix-signs-reseller-agreement-with-friends-with-holograms-to-support-enterprise-smart-glasses-adoption-302947896.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-23T13:45:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
