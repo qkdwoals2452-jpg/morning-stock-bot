@@ -7153,7 +7153,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "eea0c8e23ac85fe21afb"
       },
       "analysis": {
         "phase": "ready",
