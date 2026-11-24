@@ -6823,6 +6823,73 @@
         "delivery_key": "659c7ff8f2de789588fc",
         "message_id": 2618
       }
+    },
+    {
+      "id": "b4ad136aad997a70",
+      "seen_at": "2026-11-24T11:05:27.898026+00:00",
+      "event": {
+        "event_title": "Actuate to Invest $327 million in Spain’s Largest Battery Deal",
+        "event_key": "actuate_to_CAPEX_792df3260156",
+        "event_subject_key": "actuate_to_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "USD:327000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "투자 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Actuate to Invest $327 million in Spain’s Largest Battery Deal",
+            "summary": "Actuate Energy, a clean-energy story firm backed by private equity NGP Energy Capital Management LLC, and Sungrow Renewables are set to develop the largest renewable energy storage portfolio in Spain.",
+            "link": "https://www.bloomberg.com/news/articles/2026-11-24/actuate-to-invest-327-million-in-spain-s-largest-battery-deal",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-11-24T10:34:12+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
