@@ -6968,6 +6968,73 @@
         "delivery_key": "abbb52f4581c79014136",
         "message_id": 2612
       }
+    },
+    {
+      "id": "e1570f21760377a6",
+      "seen_at": "2026-11-24T09:35:26.516086+00:00",
+      "event": {
+        "event_title": "Sanofi Agrees to Buy US Biotech Insmed for $41 Billion",
+        "event_key": "sanofi_M&A_82cd817286f4",
+        "event_subject_key": "sanofi_M&A",
+        "event_facts": {
+          "amounts": [
+            "USD:41000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Sanofi Agrees to Buy US Biotech Insmed for $41 Billion",
+            "summary": "Sanofi agreed to buy US biotech Insmed for $41 billion in the biggest pharma acquisition in three years, expanding the French company’s immunology and rare-disease portfolio as it faces the loss of patent protection on its top-selling drug. Bloomberg Intelligence's Sam Fazeli has the details. (Source: Bloomberg)",
+            "link": "https://www.bloomberg.com/news/videos/2026-11-24/sanofi-agrees-to-buy-us-biotech-insmed-for-41-billion-video",
+            "market": "US",
+            "source": "Bloomberg_Markets",
+            "origin_publisher": "",
+            "published_at": "2026-11-24T09:29:06+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
