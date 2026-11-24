@@ -6440,6 +6440,75 @@
         "delivery_key": "c0be679580a315867781",
         "message_id": 2622
       }
+    },
+    {
+      "id": "a9e8817a7466e6a4",
+      "seen_at": "2026-11-24T15:37:00.298031+00:00",
+      "event": {
+        "event_title": "Amazon.com (AMZN) Agreed To Acquire Decart AI Optimization Technology For $7.5 Billion",
+        "event_key": "amazon_M&A_3804a7923ded",
+        "event_subject_key": "amazon_M&A",
+        "event_facts": {
+          "amounts": [
+            "USD:7500000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Amazon.com (AMZN) Agreed To Acquire Decart AI Optimization Technology For $7.5 Billion",
+            "summary": "Amazon.com (NasdaqGS:AMZN) agreed to acquire Decart AI Optimization Technology and its team for US$7.5b. The deal targets Amazon's proprietary AI infrastructure and custom silicon efforts, including its Trainium chip program. Decart's engineers are expected to join Amazon to work on in house AI models and data center hardware integration. Amazon's US$7.5b move for Decart AI Optimization Technology fits into a broader pattern our research has been tracking for the group. Take a look at 1...",
+            "link": "https://finance.yahoo.com/technology/ai/articles/amazon-com-amzn-agreed-acquire-151147626.html?.tsrc=rss",
+            "market": "US",
+            "source": "YahooFinance",
+            "origin_publisher": "",
+            "published_at": "2026-11-24T15:11:47+00:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
