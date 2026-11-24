@@ -6508,9 +6508,10 @@
         "message_id": 2623
       },
       "analysis": {
-        "phase": "ready",
+        "phase": "sending",
         "attempts": 3,
-        "message": "🔎 ORION 후속 검증 · 2차\n\nAmazon.com (AMZN) Agreed To Acquire Decart AI Optimization Technology For $7.5 Billion\n\n외부 데이터 조회·분석이 3회 실패했습니다. 종목 검증 보류로 기록했으며 운영 확인이 필요합니다."
+        "message": "🔎 ORION 후속 검증 · 2차\n\nAmazon.com (AMZN) Agreed To Acquire Decart AI Optimization Technology For $7.5 Billion\n\n외부 데이터 조회·분석이 3회 실패했습니다. 종목 검증 보류로 기록했으며 운영 확인이 필요합니다.",
+        "delivery_key": "b241098c628a5bdba536"
       }
     }
   ],
