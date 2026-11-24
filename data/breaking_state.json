@@ -7153,8 +7153,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "eea0c8e23ac85fe21afb"
+        "phase": "sent",
+        "delivery_key": "eea0c8e23ac85fe21afb",
+        "message_id": 2606
       },
       "analysis": {
         "phase": "ready",
