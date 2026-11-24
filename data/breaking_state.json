@@ -7087,6 +7087,76 @@
         "delivery_key": "c49b82bcbc810e5e2a4f",
         "message_id": 2601
       }
+    },
+    {
+      "id": "03ebd21457310092",
+      "seen_at": "2026-11-24T02:59:04.192232+00:00",
+      "event": {
+        "event_title": "\"환경개선에 5400억 썼다\"는 영풍…설비투자 지출은 '반토막'",
+        "event_key": "설비_CAPEX_d7d6639ec660",
+        "event_subject_key": "설비_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:540000000000"
+          ],
+          "counterparties": [
+            "환경개선"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "\"환경개선에 5400억 썼다\"는 영풍…설비투자 지출은 '반토막'",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611246366g",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-24T11:02:13+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "실제 투자·CAPEX·생산능력 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "실제 투자·CAPEX·생산능력 변화"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
