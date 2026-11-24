@@ -7171,7 +7171,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "0f0cda7fbe15358693f0"
       },
       "analysis": {
         "phase": "ready",
