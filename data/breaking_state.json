@@ -6506,10 +6506,11 @@
         "message_id": 2621
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 3,
         "message": "🔎 ORION 후속 검증 · 2차\n\nLive Data Technologies Acquires Champify\n\n외부 데이터 조회·분석이 3회 실패했습니다. 종목 검증 보류로 기록했으며 운영 확인이 필요합니다.",
-        "delivery_key": "c0be679580a315867781"
+        "delivery_key": "c0be679580a315867781",
+        "message_id": 2622
       }
     }
   ],
