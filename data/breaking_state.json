@@ -6943,6 +6943,218 @@
         "delivery_key": "f61e0aab70aaaed3dcaf",
         "message_id": 2603
       }
+    },
+    {
+      "id": "296616ae6bd4618e",
+      "seen_at": "2026-11-24T04:04:05.206606+00:00",
+      "event": {
+        "event_title": "포스코, 美 애팔래치안 셰일가스전 인수 완료…연 1000억 영업익 기대",
+        "event_key": "포스코_M&A_e506444d73af",
+        "event_subject_key": "포스코_M&A",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:100000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "확정 인수·합병 근거 확인",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "포스코, 美 애팔래치안 셰일가스전 인수 완료…연 1000억 영업익 기대",
+            "summary": "포스코그룹이 미국 셰일가스전 인수를 완료하며 북미 에너지 시장에 생산거점을 확보했다. 철강과 리튬에 이어 에너지자원 분야에서도 해외 생산기지를 확보하면서 장인화 포스코그룹 회장이 제시한 ‘트리플 코어’(Triple Core) 전략에 가속도가 붙고 있다. 포스코인터내셔널은 23일(현지시간) 미국 코드에너지가 보유한 펜실베이니아주 애팔래치안 셰일가스전 지분 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02266486645649000",
+            "market": "KR",
+            "source": "이데일리_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-24T09:53:42+09:00",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "확정된 한국어 인수·합병 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "확정된 한국어 인수·합병 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "5a2bce8ae8302071",
+      "seen_at": "2026-11-24T04:04:05.206606+00:00",
+      "event": {
+        "event_title": "네오셈, 142억 규모 반도체 검사장비 공급계약",
+        "event_key": "네오셈_CONTRACT_1da330793681",
+        "event_subject_key": "네오셈_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:14200000000"
+          ],
+          "counterparties": [],
+          "products": [
+            "inspection_equipment"
+          ],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "네오셈, 142억 규모 반도체 검사장비 공급계약",
+              "state": "unknown"
+            },
+            {
+              "field": "summary",
+              "text": "네오셈(253590)이 해외 종속회사인 네오셈 테크놀로지와 약 142억 1025만원 규모의 반도체 검사장비 공급계약을 체결했다고 24일 공시했다.",
+              "state": "signed"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "네오셈, 142억 규모 반도체 검사장비 공급계약",
+            "summary": "네오셈(253590)이 해외 종속회사인 네오셈 테크놀로지와 약 142억 1025만원 규모의 반도체 검사장비 공급계약을 체결했다고 24일 공시했다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02948726645649000",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-24T12:52:21+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망",
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "813be5a1656529ae",
+      "seen_at": "2026-11-24T04:04:05.206606+00:00",
+      "event": {
+        "event_title": "아이씨에이치, ‘로봇손’ 관절 소재 공급…글로벌 전기차 고객사향",
+        "event_key": "아이씨에이치_CONTRACT_c397bcf1c3ab",
+        "event_subject_key": "아이씨에이치_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "아이씨에이치, ‘로봇손’ 관절 소재 공급…글로벌 전기차 고객사향",
+            "summary": "휴머노이드 로봇 상용화 경쟁의 핵심 승부처가 ‘정밀한 손동작’으로 좁혀지면서 스마트폰용 초경량·고내구성 소재 기술이 로봇 부품 시장의 새로운 해법으로 부상하고 있다. 국내 첨단 전자소재 기업 아이씨에이치(368600)가 폴더블 스마트폰에 적용하던 소재 기술을 확장해 글로벌 전기차 기업의 휴머노이드 로봇손 공급망에 진입했다.(사진=아이씨에이치)24일 아이씨...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02794566645649000",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-24T11:36:31+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
