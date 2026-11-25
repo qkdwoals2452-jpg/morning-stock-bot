@@ -5920,6 +5920,73 @@
         "delivery_key": "654fb67de305e5621031",
         "message_id": 2628
       }
+    },
+    {
+      "id": "3f252c4897ce5667",
+      "seen_at": "2026-11-25T05:26:57.985197+00:00",
+      "event": {
+        "event_title": "이삭토스트, 베이글 토스트 판매 증가에 생산·공급 물량 확대",
+        "event_key": "이삭토스트_CONTRACT_3ff7b636b989",
+        "event_subject_key": "이삭토스트_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "증가"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "이삭토스트, 베이글 토스트 판매 증가에 생산·공급 물량 확대",
+            "summary": "이삭토스트가 베이글 토스트 판매 수요 증가에 대응하기 위해 생산 및 공급 물량 확보에 나선다. 회사 측에 따르면 최근 베이글 토스트의 일판매량이 베이글 일생산량을 넘어섰으며, 현재 생산량은 가맹점 판매량의 약 50% 수준이다.이삭토스트는 전국 매장에서 재고 부족이 발생할 가능성이 있다고 보고 베이글 추가 생산과 공급 물량 확보를 추진하고 있다.지난 16일...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02961846645649328",
+            "market": "KR",
+            "source": "이데일리_기업",
+            "origin_publisher": "",
+            "published_at": "2026-11-25T14:23:26+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
