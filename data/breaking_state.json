@@ -6036,6 +6036,139 @@
         "delivery_key": "e178eafa849215f895c1",
         "message_id": 2638
       }
+    },
+    {
+      "id": "390164132b6bbecd",
+      "seen_at": "2026-11-25T09:16:57.245607+00:00",
+      "event": {
+        "event_title": "삼성디스플레이, 3000억 투자…'ams오스람' 최대주주 된다",
+        "event_key": "삼성디스플레이_CAPEX_3203bb7e0e58",
+        "event_subject_key": "삼성디스플레이_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:300000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "삼성디스플레이, 3000억 투자…'ams오스람' 최대주주 된다",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026112502291",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-25T17:40:41+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "투자",
+          "CAPEX"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "c0cbdd6c0809597a",
+      "seen_at": "2026-11-25T09:16:57.245607+00:00",
+      "event": {
+        "event_title": "현대모비스, 유럽·북미서 제동부품 1조 수주",
+        "event_key": "현대모비스_CONTRACT_58e22b76e171",
+        "event_subject_key": "현대모비스_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:1000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "현대모비스, 유럽·북미서 제동부품 1조 수주",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026112502301",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-25T17:40:24+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
