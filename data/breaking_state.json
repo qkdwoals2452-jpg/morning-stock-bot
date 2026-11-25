@@ -6033,6 +6033,82 @@
         "delivery_key": "a6d421ba0160ac766c96",
         "message_id": 2634
       }
+    },
+    {
+      "id": "9295a0064dc4418a",
+      "seen_at": "2026-11-25T08:01:55.925829+00:00",
+      "event": {
+        "event_title": "KAI, 달 착륙선 본체 구조계 개발 사업 수주…150억 규모",
+        "event_key": "KAI_CONTRACT_5aa647de7970",
+        "event_subject_key": "KAI_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:15000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "summary",
+              "text": "한국항공우주산업(KAI)이 달 착륙선 본체 구조계 개발 사업을 수주하며 우주탐사 분야 사업 영역을 확대한다.KAI는 23일 한국항공우주연구원(항우연)과 ‘달 착륙선 본체 구조계 개발’ 계약을 체결했다고 25일 밝혔다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약 규모는 약 150억원이다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "KAI, 달 착륙선 본체 구조계 개발 사업 수주…150억 규모",
+            "summary": "한국항공우주산업(KAI)이 달 착륙선 본체 구조계 개발 사업을 수주하며 우주탐사 분야 사업 영역을 확대한다.KAI는 23일 한국항공우주연구원(항우연)과 ‘달 착륙선 본체 구조계 개발’ 계약을 체결했다고 25일 밝혔다. 계약 규모는 약 150억원이다. KAI는 2030년 12월까지 시험용 2대와 비행검증용 2대 등 총 4대의 본체 구조계를 개발해 항우연에 ...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03670326645649328",
+            "market": "KR",
+            "source": "이데일리_기업",
+            "origin_publisher": "",
+            "published_at": "2026-11-25T16:53:14+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
