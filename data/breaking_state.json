@@ -5930,6 +5930,73 @@
         "delivery_key": "1037a8157e56213caa1e",
         "message_id": 2626
       }
+    },
+    {
+      "id": "89c724f2cbc63da5",
+      "seen_at": "2026-11-25T04:34:24.536702+00:00",
+      "event": {
+        "event_title": "대성하이텍, 中 반도체 후공정 장비 225억원 수주…내년 6월부터 납품",
+        "event_key": "대성하이텍_CONTRACT_51589472e35b",
+        "event_subject_key": "대성하이텍_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:22500000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "대성하이텍, 中 반도체 후공정 장비 225억원 수주…내년 6월부터 납품",
+            "summary": "정밀기계 및 부품 전문기업 대성하이텍(129920)은 중국 장쑤 한촹 머시너리(Jiangsu Hanchuang Machinery)로부터 약 225억원 규모의 반도체 후공정 검사부품 가공장비를 수주했다고 25일 밝혔다.이번에 수주한 장비는 일본 자회사 노무라DS(Nomura DS)의 원천기술과 대성하이텍의 정밀가공 기술을 결합한 제품이다. 고객사의 생산공정...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02801126645649328",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-25T13:32:00+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
