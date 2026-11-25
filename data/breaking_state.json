@@ -6103,10 +6103,11 @@
         "message_id": 2641
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n삼성디스플레이, 3000억 투자…&#x27;ams오스람&#x27; 최대주주 된다\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "51ba4ca0bec3871fc0cc"
+        "delivery_key": "51ba4ca0bec3871fc0cc",
+        "message_id": 2643
       }
     },
     {
