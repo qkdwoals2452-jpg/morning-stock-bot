@@ -5857,6 +5857,74 @@
         "delivery_key": "b241098c628a5bdba536",
         "message_id": 2624
       }
+    },
+    {
+      "id": "bb9f74deaf8ad8a8",
+      "seen_at": "2026-11-25T04:24:24.264063+00:00",
+      "event": {
+        "event_title": "아이티아이즈, 화순전남대병원에 맞춤형 의료 AI 솔루션 공급",
+        "event_key": "아이티아이즈_CONTRACT_8e7c8a56fc47",
+        "event_subject_key": "아이티아이즈_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "화순전남대병원"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "아이티아이즈, 화순전남대병원에 맞춤형 의료 AI 솔루션 공급",
+            "summary": "인공지능(AI) 플랫폼 전문기업 아이티아이즈(372800)는 화순전남대학교병원에 의료 AI 플랫폼 ‘GENAI ME(제나이 미)’ 기반의 맞춤형 AI 에이전트 솔루션을 공급했다고 25일 밝혔다. 이번 솔루션은 화순전남대병원이 추진하는 ‘암 환자 진료 연속성 강화를 위한 온프레미스 소형언어모델(sLLM) 기반 외부 진료 의뢰서 자동 구조화 및 요약 에이전트...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02751926645649328",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-25T13:22:00+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "AI",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
