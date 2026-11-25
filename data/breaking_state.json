@@ -6088,6 +6088,90 @@
         "delivery_key": "110e4d08464bf2e47e8c",
         "message_id": 2632
       }
+    },
+    {
+      "id": "00ed99079a6af90c",
+      "seen_at": "2026-11-25T06:06:54.731504+00:00",
+      "event": {
+        "event_title": "대성하이텍, 중국 업체에 225억원 규모 반도체 후공정 장비 공급",
+        "event_key": "대성하이텍_CONTRACT_d1bbb9a4124a",
+        "event_subject_key": "대성하이텍_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:22500000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "summary",
+              "text": "대성하이텍(129920)은 중국 장쑤 한촹 머시너리(JIANGSU HANCHUANG MACHINERY)와 224억9624만원 규모의 반도체 후공정 테스트용 부품 제작 장비 공급 계약을 체결했다고 25일 공시했다.계약금액은 최근 매출액(952억1619만원)의 23.63% 수준이다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "전액 확정 계약금액이고 조건부 계약금액은 없다.",
+              "state": "unknown"
+            },
+            {
+              "field": "summary",
+              "text": "공급지역은 중국이다.계약기간...",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "대성하이텍, 중국 업체에 225억원 규모 반도체 후공정 장비 공급",
+            "summary": "대성하이텍(129920)은 중국 장쑤 한촹 머시너리(JIANGSU HANCHUANG MACHINERY)와 224억9624만원 규모의 반도체 후공정 테스트용 부품 제작 장비 공급 계약을 체결했다고 25일 공시했다.계약금액은 최근 매출액(952억1619만원)의 23.63% 수준이다. 전액 확정 계약금액이고 조건부 계약금액은 없다. 공급지역은 중국이다.계약기간...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03119286645649328",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-25T14:59:52+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "공급망",
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
