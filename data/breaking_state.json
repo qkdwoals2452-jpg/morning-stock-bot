@@ -5986,6 +5986,71 @@
         "delivery_key": "ce235cf457655c6cd375",
         "message_id": 2667
       }
+    },
+    {
+      "id": "a0442a4b56da704f",
+      "seen_at": "2026-11-26T09:38:33.851521+00:00",
+      "event": {
+        "event_title": "UK signs £8bn deal to ensure submarines are 'warfighting ready'",
+        "event_key": "uk_signs_CONTRACT_1c6049778ba0",
+        "event_subject_key": "uk_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "UK signs £8bn deal to ensure submarines are 'warfighting ready'",
+            "summary": "The deal will allow \"work around the clock to get our submarines back out to sea\" , Wes Streeting says.",
+            "link": "https://www.bbc.co.uk/news/articles/cq39gz99l1pyo?at_medium=RSS&at_campaign=rss",
+            "market": "US",
+            "source": "BBC_Business",
+            "origin_publisher": "",
+            "published_at": "2026-11-26T09:23:46+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
