@@ -5869,10 +5869,11 @@
         "message_id": 2653
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n엑시콘, 삼성전자와 80억원 규모 공급계약 체결\n\n분석 종목 2개 / 검증 통과 1개\n연결 근거: 삼성전자 (005930) · 기사상 거래 상대방\n기사 기재 금액: 80억원\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=02745366645649656\">사건 당사자 근거 원문</a>\n연결 근거: 엑시콘 (092870) · 기사상 사건 주체\n기사 기재 금액: 80억원\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=02745366645649656\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n• 엑시콘 (092870): 29.0점\n• 삼성전자 (005930): 대형주·지주사 참고용 제외\n• 삼성전자 (005930): 대형주·지주사 참고용 제외\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "1c23c1d4cc5448950d0c"
+        "delivery_key": "1c23c1d4cc5448950d0c",
+        "message_id": 2654
       }
     }
   ],
