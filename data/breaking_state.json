@@ -5784,6 +5784,92 @@
         "delivery_key": "eebde380a9dbf2c2df2c",
         "message_id": 2652
       }
+    },
+    {
+      "id": "fc297237c6f3cd16",
+      "seen_at": "2026-11-26T03:07:14.097659+00:00",
+      "event": {
+        "event_title": "엑시콘, 삼성전자와 80억원 규모 공급계약 체결",
+        "event_key": "엑시콘_CONTRACT_4636c0b1ba19",
+        "event_subject_key": "엑시콘_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:8000000000"
+          ],
+          "counterparties": [
+            "삼성전자"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "엑시콘, 삼성전자와 80억원 규모 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "엑시콘(092870)은 삼성전자(005930)와 80억3740만원 규모의 ‘CLT 인터페이스 보드’ 공급계약을 체결했다고 26일 공시했다.계약금액은 지난해 연결 매출액의 12.2%에 해당한다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 지난 25일부터 내년 2월28일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "엑시콘, 삼성전자와 80억원 규모 공급계약 체결",
+            "summary": "엑시콘(092870)은 삼성전자(005930)와 80억3740만원 규모의 ‘CLT 인터페이스 보드’ 공급계약을 체결했다고 26일 공시했다.계약금액은 지난해 연결 매출액의 12.2%에 해당한다. 계약기간은 지난 25일부터 내년 2월28일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02745366645649656",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-26T11:58:33+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
