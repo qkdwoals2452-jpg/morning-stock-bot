@@ -5964,7 +5964,8 @@
         ]
       },
       "notice": {
-        "phase": "ready"
+        "phase": "sending",
+        "delivery_key": "3f051b1fba7391faa72b"
       },
       "analysis": {
         "phase": "ready",
