@@ -5969,8 +5969,10 @@
         "message_id": 2658
       },
       "analysis": {
-        "phase": "ready",
-        "attempts": 0
+        "phase": "sending",
+        "attempts": 0,
+        "message": "🔎 ORION 후속 검증 · 2차\n\n에이치브이엠, 110억 규모 공급계약 체결\n\n분석 종목 1개 / 검증 통과 1개\n연결 근거: 에이치브이엠 (295310) · 기사상 사건 주체\n기사 기재 금액: 110억\n<a href=\"http://www.edaily.co.kr/news/newspath.asp?newsid=03499766645649656\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n• 에이치브이엠 (295310): 40.0점\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
+        "delivery_key": "55bc702cda68cb157d8c"
       }
     }
   ],
