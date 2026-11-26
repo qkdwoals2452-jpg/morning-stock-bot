@@ -5797,6 +5797,90 @@
         "delivery_key": "1c23c1d4cc5448950d0c",
         "message_id": 2654
       }
+    },
+    {
+      "id": "fffce0ce8fa2f931",
+      "seen_at": "2026-11-26T06:08:30.131075+00:00",
+      "event": {
+        "event_title": "파두, 204억 규모 기업용 SSD 컨트롤러 공급계약 체결",
+        "event_key": "파두_CONTRACT_151609bd4611",
+        "event_subject_key": "파두_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:20400000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "파두, 204억 규모 기업용 SSD 컨트롤러 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "파두(440110)는 해외 낸드플래시 메모리 제조사와 204억2272만원 규모의 기업용 SSD 컨트롤러 공급계약을 체결했다고 26일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 오는 2027년 5월25일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "파두, 204억 규모 기업용 SSD 컨트롤러 공급계약 체결",
+            "summary": "파두(440110)는 해외 낸드플래시 메모리 제조사와 204억2272만원 규모의 기업용 SSD 컨트롤러 공급계약을 체결했다고 26일 공시했다. 이는 최근 매출액 대비 22.10%에 해당한다. 계약기간은 오는 2027년 5월25일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03414486645649656",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-26T15:03:16+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
