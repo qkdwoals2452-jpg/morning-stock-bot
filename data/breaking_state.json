@@ -5809,6 +5809,85 @@
         "delivery_key": "55bc702cda68cb157d8c",
         "message_id": 2659
       }
+    },
+    {
+      "id": "e3b3644e86ee73ab",
+      "seen_at": "2026-11-26T07:03:31.152025+00:00",
+      "event": {
+        "event_title": "에코앤드림, 243.6억 규모 전구체 공급계약 체결",
+        "event_key": "에코앤드림_CONTRACT_9a4ad186f646",
+        "event_subject_key": "에코앤드림_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:24360000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "에코앤드림, 243.6억 규모 전구체 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 내년 3월6일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "에코앤드림, 243.6억 규모 전구체 공급계약 체결",
+            "summary": "에코앤드림(101360)은 유미코아(Umicore SA)로부터 243억6491만원 규모의 하이니켈 NCM 전구체 공급 발주서(PO)를 수령했다고 26일 공시했다. 이는 최근 매출액 대비 17.16%에 해당한다. 계약기간은 내년 3월6일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=03647366645649656",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-26T15:55:01+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
