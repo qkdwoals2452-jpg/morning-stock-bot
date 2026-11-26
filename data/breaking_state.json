@@ -6049,8 +6049,9 @@
         ]
       },
       "notice": {
-        "phase": "sending",
-        "delivery_key": "fdd168b75b8896b263b7"
+        "phase": "sent",
+        "delivery_key": "fdd168b75b8896b263b7",
+        "message_id": 2666
       },
       "analysis": {
         "phase": "ready",
