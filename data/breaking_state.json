@@ -5478,6 +5478,71 @@
         "delivery_key": "d96d00121ef8274aa8c3",
         "message_id": 2669
       }
+    },
+    {
+      "id": "50dece3c232e538e",
+      "seen_at": "2026-11-26T21:47:18.737611+00:00",
+      "event": {
+        "event_title": "\"中에 1%라도 임대하면 칩 공급 안 해\"…엔비디아 판매상 강경방침",
+        "event_key": "1_CONTRACT_b6c6ad2a54a2",
+        "event_subject_key": "1_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "\"中에 1%라도 임대하면 칩 공급 안 해\"…엔비디아 판매상 강경방침",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026112735397",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-27T06:13:00+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
