@@ -5607,6 +5607,93 @@
         "delivery_key": "9ded58a30502d889e021",
         "message_id": 2644
       }
+    },
+    {
+      "id": "7d2e3609af055cb1",
+      "seen_at": "2026-11-26T01:05:59.667854+00:00",
+      "event": {
+        "event_title": "유니테스트, 마이크론 인도와 반도체 123억 규모 공급계약 체결",
+        "event_key": "유니테스트_CONTRACT_a768e7467e7b",
+        "event_subject_key": "유니테스트_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "UNKNOWN:12300000000"
+          ],
+          "counterparties": [
+            "인도"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "유니테스트, 마이크론 인도와 반도체 123억 규모 공급계약 체결",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "유니테스트(086390)는 마이크론 인도(Micron Semiconductor TechnologyIndia)와 123억원 규모의 반도체 검사장비(GEN6 SSD TESTER) 공급계약을 체결했다고 26일 공시했다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 오는 2027년 3월20일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "유니테스트, 마이크론 인도와 반도체 123억 규모 공급계약 체결",
+            "summary": "유니테스트(086390)는 마이크론 인도(Micron Semiconductor TechnologyIndia)와 123억원 규모의 반도체 검사장비(GEN6 SSD TESTER) 공급계약을 체결했다고 26일 공시했다. 이는 최근 매출액 대비 11.17%에 해당한다. 계약기간은 오는 2027년 3월20일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02223846645649656",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-26T10:00:50+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망",
+          "반도체"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
