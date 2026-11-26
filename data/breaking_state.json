@@ -5960,10 +5960,11 @@
         "message_id": 2663
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n&quot;급식 넘어 헬스케어로&quot;…현대그린푸드, 1500억 투자\n\n분석 종목 1개 / 검증 통과 1개\n연결 근거: 현대그린푸드 (453340) · 기사상 사건 주체\n기사 기재 금액: 1500억\n<a href=\"https://www.hankyung.com/article/202611262792g\">사건 당사자 근거 원문</a>\n기사상 거래 연결이며 계약별 매출 인식·이익 효과는 별도 검증이 필요합니다.\n• 현대그린푸드 (453340): 43.0점\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "e231b76243836d6b9180"
+        "delivery_key": "e231b76243836d6b9180",
+        "message_id": 2665
       }
     }
   ],
