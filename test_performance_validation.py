@@ -176,6 +176,39 @@ class PerformanceValidationTests(unittest.TestCase):
         self.assertEqual(completed_performance({}, AS_OF)['status'], 'invalid_input')
         self.assertEqual(completed_performance([], AS_OF, horizon=5.0)['status'], 'invalid_input')
 
+    def test_explicit_invalid_assessment_cannot_fall_back_to_live_clock(self):
+        # Synthetic outcomes: accepting a missing replay cutoff can expose later results.
+        rows = [record()]
+        original = copy.deepcopy(rows)
+        for cutoff in ['', False, 0, 0.0, [], {}, 'not-a-time']:
+            with self.subTest(cutoff=cutoff):
+                report = completed_performance(rows, as_of=cutoff)
+                self.assertEqual(report['status'], 'invalid_input')
+                self.assertEqual(report['count'], 0)
+                self.assertEqual(report['samples'], [])
+                self.assertIsNone(report['accuracy'])
+                self.assertIsNone(report['average'])
+        self.assertEqual(rows, original)
+
+    def test_invalid_replay_cutoff_cannot_award_learning_points(self):
+        rows = [record(12, (date(2026, 9, 1) - timedelta(days=i)).isoformat())
+                for i in range(5)]
+        with patch.object(bt, 'load_backtest', return_value=rows):
+            for cutoff in ['', False, 0]:
+                with self.subTest(cutoff=cutoff):
+                    score = learning.get_learning_score({'code': '032940'}, as_of=cutoff)
+                    self.assertEqual(score['score'], 0)
+                    self.assertEqual(score['sample_count'], 0)
+                    self.assertEqual(score['status'], 'invalid_input')
+                    self.assertEqual(learning.get_project_report(cutoff)['count'], 0)
+            # A valid cutoff retains the existing score ladder and sample population.
+            self.assertEqual(learning.get_learning_score({'code': '032940'}, AS_OF)['score'], 20)
+
+    def test_omitted_or_none_assessment_keeps_live_clock_default(self):
+        for report in [completed_performance([]), completed_performance([], as_of=None)]:
+            self.assertEqual(report['status'], 'no_verified_outcomes')
+            self.assertIsNotNone(report['as_of'])
+
 
 if __name__ == '__main__':
     unittest.main()
