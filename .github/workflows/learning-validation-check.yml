@@ -2,7 +2,8 @@ name: ORION Learning Validation Check
 
 on:
   push:
-    branches: [orion-learning-validation-fix]
+    branches: [main, orion-learning-validation-fix]
+    paths: [performance_validation_engine.py, memory_learning_engine.py, backtest_engine.py, main.py, test_performance_validation.py, .github/workflows/learning-validation-check.yml]
   pull_request:
     paths: [performance_validation_engine.py, memory_learning_engine.py, backtest_engine.py, main.py, test_performance_validation.py, .github/workflows/learning-validation-check.yml]
   workflow_dispatch:
