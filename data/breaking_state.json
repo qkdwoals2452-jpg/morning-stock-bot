@@ -5536,6 +5536,155 @@
         "delivery_key": "1d30e5a5a16493c7876f",
         "message_id": 2646
       }
+    },
+    {
+      "id": "109d2a669fb86098",
+      "seen_at": "2026-11-26T02:27:13.249967+00:00",
+      "event": {
+        "event_title": "우원개발, 1528억원 규모 GTX-C노선 공사 수주",
+        "event_key": "우원개발_CONTRACT_84ceef1320d6",
+        "event_subject_key": "우원개발_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "KRW:152800000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "summary",
+              "text": "우원개발(046940)은 한화(000880)와 1527억8000만원 규모의 수도권광역급행철도(GTX)-C노선 ‘토공 및 구조물공 1구간’ 공사 계약을 체결했다고 26일 공시했다.계약금액은 지난해 연결 매출액의 40.59%에 해당한다.",
+              "state": "signed"
+            },
+            {
+              "field": "summary",
+              "text": "계약기간은 이날부터 2031년 9월14일까지다.",
+              "state": "unknown"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "우원개발, 1528억원 규모 GTX-C노선 공사 수주",
+            "summary": "우원개발(046940)은 한화(000880)와 1527억8000만원 규모의 수도권광역급행철도(GTX)-C노선 ‘토공 및 구조물공 1구간’ 공사 계약을 체결했다고 26일 공시했다.계약금액은 지난해 연결 매출액의 40.59%에 해당한다. 계약기간은 이날부터 2031년 9월14일까지다.",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02640406645649656",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-26T11:21:16+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
+    },
+    {
+      "id": "7161f19125cba12d",
+      "seen_at": "2026-11-26T02:27:13.249967+00:00",
+      "event": {
+        "event_title": "윈하이텍, 쌍용건설 적도기니 프로젝트에 데크플레이트 공급",
+        "event_key": "윈하이텍_CONTRACT_f072d8d24ea0",
+        "event_subject_key": "윈하이텍_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "프로젝트"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "summary",
+              "text": "기존 납품 실적을 바탕으로 후속 계약을 확보하면서 해외 건설자재 시장에서 공급 기반을 넓히는 모습이다.윈하이텍은 쌍용건설과 적도기니 건설 프로젝트에 데크플레이트를 공급하는 계약을 체결했다고 26일 밝혔다.윈하이텍 관...",
+              "state": "signed"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "윈하이텍, 쌍용건설 적도기니 프로젝트에 데크플레이트 공급",
+            "summary": "건축자재 전문기업 윈하이텍(192390)이 쌍용건설의 적도기니 건설 프로젝트에 데크플레이트를 연이어 공급하며 해외 사업 확대에 나서고 있다. 기존 납품 실적을 바탕으로 후속 계약을 확보하면서 해외 건설자재 시장에서 공급 기반을 넓히는 모습이다.윈하이텍은 쌍용건설과 적도기니 건설 프로젝트에 데크플레이트를 공급하는 계약을 체결했다고 26일 밝혔다.윈하이텍 관...",
+            "link": "http://www.edaily.co.kr/news/newspath.asp?newsid=02633846645649656",
+            "market": "KR",
+            "source": "이데일리_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-26T11:20:03+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "제목에서 실제 신규 수주 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "제목에서 실제 신규 수주 행동 확인"
+        ],
+        "money_flow": [
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
