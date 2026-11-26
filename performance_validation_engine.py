@@ -23,7 +23,8 @@ def finite_number(value):
 
 
 def completed_performance(records, as_of=None, horizon=5):
-    assessed = aware_timestamp(as_of or datetime.now(timezone.utc))
+    # Only omission selects the live clock; invalid replay cutoffs must fail closed.
+    assessed = aware_timestamp(datetime.now(timezone.utc) if as_of is None else as_of)
     excluded = Counter()
     groups = defaultdict(list)
     if assessed is None or not isinstance(horizon, int) or horizon not in (1, 3, 5, 10, 20) or isinstance(horizon, bool) or not isinstance(records, list):
