@@ -5444,10 +5444,11 @@
         "message_id": 2674
       },
       "analysis": {
-        "phase": "sending",
+        "phase": "sent",
         "attempts": 0,
         "message": "🔎 ORION 후속 검증 · 2차\n\n펩트론, 글로벌 제약사와 기술평가 계약 체결 소식에 강세\n\n분석 종목 0개 / 검증 통과 0개\n국내 직접 분석 후보가 연결되지 않았습니다.\n\n가격 조건은 최근 정규장 일봉 기준이며 실시간 체결가 검증은 아닙니다.",
-        "delivery_key": "77862d98d60cb0f86a9e"
+        "delivery_key": "77862d98d60cb0f86a9e",
+        "message_id": 2675
       }
     }
   ],
