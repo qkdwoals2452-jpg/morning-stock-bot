@@ -4064,6 +4064,73 @@
         "delivery_key": "fd564980c4d7386de6fa",
         "message_id": 2678
       }
+    },
+    {
+      "id": "f9e76a575fcda3cd",
+      "seen_at": "2026-11-27T15:53:39.319153+00:00",
+      "event": {
+        "event_title": "MDA SPACE COMPLETES ACQUISITION OF BLUE CANYON TECHNOLOGIES",
+        "event_key": "mda_space_M&A_88c23f445748",
+        "event_subject_key": "mda_space_M&A",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "M&A",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "M&A 행동은 확인됐으나 확정 표현 강도는 중간",
+        "event_score": 85,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "MDA SPACE COMPLETES ACQUISITION OF BLUE CANYON TECHNOLOGIES",
+            "summary": "TORONTO, Nov. 27, 2026 /PRNewswire/ -- MDA Space Ltd. (TSX: MDA) (NYSE: MDA) (the \"Company\"), a trusted mission partner to the rapidly expanding global defence and space industry, today announced that it has completed its previously announced acquisition of Blue Canyon Technologies (BCT)...",
+            "link": "https://www.prnewswire.com/news-releases/mda-space-completes-acquisition-of-blue-canyon-technologies-302951817.html",
+            "market": "US",
+            "source": "PRNewswire_Tech",
+            "origin_publisher": "PR Newswire Association LLC.",
+            "published_at": "2026-11-27T15:49:00+00:00",
+            "publication_verified_by": "Publisher_RSS",
+            "content_kind": "distributed_press_release",
+            "event_score_raw": 85,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:M&A",
+              "실제 인수·합병 사건",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:M&A",
+          "실제 인수·합병 사건",
+          "US"
+        ],
+        "money_flow": []
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
