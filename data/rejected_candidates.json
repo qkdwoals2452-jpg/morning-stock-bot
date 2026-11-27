@@ -1379,6 +1379,11 @@
           "date": "2026-11-24",
           "close": 43200.0,
           "return_pct": -4.0
+        },
+        "5": {
+          "date": "2026-11-26",
+          "close": 41400.0,
+          "return_pct": -8.0
         }
       },
       "base_date": "2026-11-19",
@@ -1462,10 +1467,13 @@
       "source": "runtime_analysis"
     },
     "evaluation": {
-      "status": "missing_decision_close",
+      "status": "tracking",
       "reference": "decision_day_close",
       "interpretation": "exclusion_audit_not_tradable_return",
-      "checkpoints": {}
+      "checkpoints": {},
+      "base_date": "2026-11-26",
+      "base_close": 329500.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
     }
   },
   {
@@ -1489,6 +1497,91 @@
       "ma120": 10785.75,
       "high_52w": 19510.0,
       "high_52w_gap": -48.9
+    },
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "tracking",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {},
+      "base_date": "2026-11-26",
+      "base_close": 10440.0,
+      "price_source": "YAHOO_REGULAR_CLOSE"
+    }
+  },
+  {
+    "key": [
+      "2026-11-27",
+      "278470",
+      "finance",
+      "PBR 과도 제외"
+    ],
+    "name": "에이피알",
+    "code": "278470",
+    "decision_at": "2026-11-27T13:47:29.713547+09:00",
+    "recorded_at": "2026-11-27T13:47:29.713547+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "PBR 과도 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-27",
+      "289930",
+      "finance",
+      "영업적자 제외"
+    ],
+    "name": "웨이비스",
+    "code": "289930",
+    "decision_at": "2026-11-27T13:47:29.713547+09:00",
+    "recorded_at": "2026-11-27T13:47:29.713547+09:00",
+    "decision": "rejected_or_held",
+    "stage": "finance",
+    "reason": "영업적자 제외",
+    "evidence": {},
+    "provenance": {
+      "source": "runtime_analysis"
+    },
+    "evaluation": {
+      "status": "missing_decision_close",
+      "reference": "decision_day_close",
+      "interpretation": "exclusion_audit_not_tradable_return",
+      "checkpoints": {}
+    }
+  },
+  {
+    "key": [
+      "2026-11-27",
+      "272210",
+      "chart",
+      "52주 고점 대비 -60% 이하"
+    ],
+    "name": "한화시스템",
+    "code": "272210",
+    "decision_at": "2026-11-27T13:47:29.713547+09:00",
+    "recorded_at": "2026-11-27T13:47:29.713547+09:00",
+    "decision": "rejected_or_held",
+    "stage": "chart",
+    "reason": "52주 고점 대비 -60% 이하",
+    "evidence": {
+      "price_date": "2026-11-26",
+      "price_source": "YAHOO_REGULAR_CLOSE",
+      "current": 49050.0,
+      "ma120": 71228.75,
+      "high_52w": 184000.0,
+      "high_52w_gap": -73.34
     },
     "provenance": {
       "source": "runtime_analysis"

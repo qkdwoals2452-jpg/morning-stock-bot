@@ -24,8 +24,8 @@
     "start_price": 20100.0,
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 21200.0,
-    "current_return": 5.47,
+    "current_price": 20350.0,
+    "current_return": 1.24,
     "highest_price": 22150.0,
     "highest_return": 10.2,
     "lowest_price": 18610.0,
@@ -230,9 +230,15 @@
         "price": 21200.0,
         "return": 5.47,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-11-26",
+        "price": 20350.0,
+        "return": 1.24,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-11-25",
+    "last_updated": "2026-11-26",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-10-13",
@@ -317,7 +323,7 @@
       "max_drawdown": -5.07
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-11-26T13:41:21.450073+09:00",
+    "price_observed_at": "2026-11-27T13:45:16.945591+09:00",
     "checkpoint_price_sources": {
       "result_10d": "YAHOO_REGULAR_CLOSE",
       "result_20d": "YAHOO_REGULAR_CLOSE"
@@ -358,8 +364,8 @@
     "start_price_source": "YAHOO_REGULAR_CLOSE",
     "return_basis": "reference_price_only",
     "reference_price_status": "available",
-    "current_price": 42050.0,
-    "current_return": 62.36,
+    "current_price": 40350.0,
+    "current_return": 55.79,
     "highest_price": 42050.0,
     "highest_return": 62.36,
     "lowest_price": 25900.0,
@@ -367,7 +373,7 @@
     "result_1d": 32.43,
     "result_3d": 41.31,
     "result_5d": 47.3,
-    "result_10d": null,
+    "result_10d": 55.79,
     "result_20d": null,
     "price_history": [
       {
@@ -429,9 +435,15 @@
         "price": 42050.0,
         "return": 62.36,
         "price_source": "YAHOO_REGULAR_CLOSE"
+      },
+      {
+        "date": "2026-11-26",
+        "price": 40350.0,
+        "return": 55.79,
+        "price_source": "YAHOO_REGULAR_CLOSE"
       }
     ],
-    "last_updated": "2026-11-25",
+    "last_updated": "2026-11-26",
     "pre_news_activity": {
       "status": "ok",
       "volume_ratio": 1.8441,
@@ -525,23 +537,26 @@
       "max_drawdown": 0.0
     },
     "current_price_source": "YAHOO_REGULAR_CLOSE",
-    "price_observed_at": "2026-11-26T13:41:21.512063+09:00",
+    "price_observed_at": "2026-11-27T13:45:17.037914+09:00",
     "checkpoint_method": "trading_sessions_v1",
     "checkpoint_dates": {
       "result_1d": "2026-11-13",
       "result_3d": "2026-11-17",
-      "result_5d": "2026-11-19"
+      "result_5d": "2026-11-19",
+      "result_10d": "2026-11-26"
     },
     "checkpoint_status": "pending",
     "checkpoint_observed_at": {
       "result_1d": "2026-11-14T11:53:40.152971+09:00",
       "result_3d": "2026-11-18T13:00:29.530671+09:00",
-      "result_5d": "2026-11-20T12:51:17.469663+09:00"
+      "result_5d": "2026-11-20T12:51:17.469663+09:00",
+      "result_10d": "2026-11-27T13:45:17.100944+09:00"
     },
     "checkpoint_price_sources": {
       "result_1d": "YAHOO_REGULAR_CLOSE",
       "result_3d": "YAHOO_REGULAR_CLOSE",
-      "result_5d": "YAHOO_REGULAR_CLOSE"
+      "result_5d": "YAHOO_REGULAR_CLOSE",
+      "result_10d": "YAHOO_REGULAR_CLOSE"
     }
   }
 ]
