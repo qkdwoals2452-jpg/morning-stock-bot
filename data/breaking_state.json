@@ -5370,6 +5370,81 @@
         "delivery_key": "535181cc23c62294900e",
         "message_id": 2673
       }
+    },
+    {
+      "id": "fd926f89f1cc61a4",
+      "seen_at": "2026-11-27T00:43:31.329442+00:00",
+      "event": {
+        "event_title": "펩트론, 글로벌 제약사와 기술평가 계약 체결 소식에 강세",
+        "event_key": "펩트론_CONTRACT_bdb81845b584",
+        "event_subject_key": "펩트론_CONTRACT",
+        "event_facts": {
+          "amounts": [],
+          "counterparties": [
+            "소식",
+            "제약사"
+          ],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [
+            {
+              "field": "title",
+              "text": "펩트론, 글로벌 제약사와 기술평가 계약 체결 소식에 강세",
+              "state": "signed"
+            }
+          ],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "계약 체결·확정 수주 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "펩트론, 글로벌 제약사와 기술평가 계약 체결 소식에 강세",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/2026112739916",
+            "market": "KR",
+            "source": "한국경제_증권",
+            "origin_publisher": "",
+            "published_at": "2026-11-27T09:21:16+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약·수주·공급 변화"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약·수주·공급 변화"
+        ],
+        "money_flow": [
+          "계약",
+          "공급망"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
