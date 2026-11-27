@@ -4158,6 +4158,75 @@
         "delivery_key": "77862d98d60cb0f86a9e",
         "message_id": 2675
       }
+    },
+    {
+      "id": "622915ca8b7fc74f",
+      "seen_at": "2026-11-27T12:47:21.114186+00:00",
+      "event": {
+        "event_title": "Poland Signs $300 Million Palantir Deal to Use AI for Defense",
+        "event_key": "poland_signs_CONTRACT_b631b131f4eb",
+        "event_subject_key": "poland_signs_CONTRACT",
+        "event_facts": {
+          "amounts": [
+            "USD:300000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CONTRACT",
+        "evidence_strength": "MEDIUM",
+        "evidence_reason": "계약 관련 행동은 확인되나 확정 근거 강도는 중간",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "Poland Signs $300 Million Palantir Deal to Use AI for Defense",
+            "summary": "Poland will use artificial intelligence-based software from Palantir Technologies Inc. to analyze battlefield data, bucking a push by some European allies to reduce their reliance on US technology for critical defense capabilities.",
+            "link": "https://www.bloomberg.com/news/articles/2026-11-27/poland-signs-300-million-palantir-deal-to-use-ai-for-defense",
+            "market": "US",
+            "source": "Bloomberg_Tech",
+            "origin_publisher": "",
+            "published_at": "2026-11-27T12:30:04+00:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CONTRACT",
+              "실제 계약 체결 문장 확인",
+              "US"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "US",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CONTRACT",
+          "실제 계약 체결 문장 확인",
+          "US"
+        ],
+        "money_flow": [
+          "AI"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
