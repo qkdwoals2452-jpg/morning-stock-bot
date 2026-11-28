@@ -3926,6 +3926,78 @@
         "delivery_key": "88fdaff6226d13f731c5",
         "message_id": 2680
       }
+    },
+    {
+      "id": "024a4b935dcd80b1",
+      "seen_at": "2026-11-28T05:31:19.987170+00:00",
+      "event": {
+        "event_title": "GS, '메가프로젝트' 동해 AI 데이터센터 착공…15조원 투자",
+        "event_key": "GS_CAPEX_61a80a0564e7",
+        "event_subject_key": "GS_CAPEX",
+        "event_facts": {
+          "amounts": [
+            "KRW:15000000000000"
+          ],
+          "counterparties": [],
+          "products": [],
+          "event_dates": [],
+          "contract_years": [],
+          "locations": []
+        },
+        "financial_states": {
+          "contract_claims": [],
+          "cash_claims": [],
+          "revenue_claims": [],
+          "verification": "article_text_only",
+          "cash_is_revenue": false,
+          "score_bonus": 0
+        },
+        "event_type": "CAPEX",
+        "evidence_strength": "STRONG",
+        "evidence_reason": "구체적 투자·시설 확정 근거 확인",
+        "event_score": 80,
+        "event_grade": "A",
+        "articles": [
+          {
+            "title": "GS, '메가프로젝트' 동해 AI 데이터센터 착공…15조원 투자",
+            "summary": "",
+            "link": "https://www.hankyung.com/article/202611285956i",
+            "market": "KR",
+            "source": "한국경제_경제",
+            "origin_publisher": "",
+            "published_at": "2026-11-28T13:34:46+09:00",
+            "event_score_raw": 80,
+            "event_reasons": [
+              "사건신분:CONFIRMED",
+              "사건유형:CAPEX",
+              "구체적 투자 금액과 확정 투자 행동 확인"
+            ]
+          }
+        ],
+        "source_count": 1,
+        "source_bonus": 0,
+        "market": "KR",
+        "reason": [
+          "사건신분:CONFIRMED",
+          "사건유형:CAPEX",
+          "구체적 투자 금액과 확정 투자 행동 확인"
+        ],
+        "money_flow": [
+          "AI",
+          "투자",
+          "CAPEX",
+          "데이터센터",
+          "전력",
+          "냉각"
+        ]
+      },
+      "notice": {
+        "phase": "ready"
+      },
+      "analysis": {
+        "phase": "ready",
+        "attempts": 0
+      }
     }
   ],
   "activation": {
